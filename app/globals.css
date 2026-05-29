@@ -213,19 +213,16 @@ h1, h2, h3, h4 {
   border-color: rgba(212,175,55,0.8) !important;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .initiatives-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
-@media (max-width: 540px) {
+@media (max-width: 768px) {
   .initiatives-grid { grid-template-columns: 1fr !important; }
 }
 
 /* ── Why Gwags ── */
 @media (max-width: 1024px) {
   .whygwags-grid { grid-template-columns: repeat(2, 1fr) !important; }
-}
-@media (max-width: 480px) {
-  .whygwags-grid { grid-template-columns: 1fr !important; }
 }
 
 /* ── Leadership Quote ── */
@@ -260,11 +257,8 @@ h1, h2, h3, h4 {
 .more-about-card:hover {
   transform: translateY(-4px);
 }
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .more-about-grid { grid-template-columns: repeat(2, 1fr) !important; }
-}
-@media (max-width: 540px) {
-  .more-about-grid { grid-template-columns: 1fr !important; }
 }
 
 /* ── Get Involved ── */
@@ -880,4 +874,88 @@ h1, h2, h3, h4 {
   .os-narrative { padding: 48px 20px !important; }
   .narrative-drop-cap::first-letter { font-size: 48px !important; }
   .os-closing { padding: 60px 20px !important; }
+}
+
+/* ================================================================
+   COMPREHENSIVE RESPONSIVE SYSTEM
+   All eyebrow text: use .eyebrow class
+   All body/paragraph text: use .body-text class
+   Section padding: use .site-section class
+   ================================================================ */
+
+/* === TABLET BREAKPOINT (768px - 1024px) === */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* TABLET: h1 size */
+  main h1 { font-size: 34px !important; }
+  /* TABLET: h2 size */
+  main h2 { font-size: 28px !important; }
+  /* TABLET: body text size */
+  .body-text { font-size: 17px !important; }
+  .hero-body { font-size: 17px !important; }
+  /* TABLET: eyebrow text size */
+  .eyebrow { font-size: 14px !important; }
+  /* TABLET: section padding */
+  .site-section { padding: 60px 32px !important; }
+  /* TABLET: four-column grids become 2x2 */
+  .initiatives-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  /* TABLET: three-column grids stay, reduced gap */
+  .whygwags-grid { gap: 16px !important; }
+  .more-about-grid { gap: 20px !important; }
+  .getinvolved-grid { gap: 14px !important; }
+  /* TABLET: How We Work sections reduce padding */
+  .hww-hero-section { padding: 60px 60px !important; }
+  .hww-init-strip { padding: 48px 60px !important; }
+  .hww-coordination-section { padding: 60px 60px !important; }
+  .hww-working-with-section { padding: 60px 60px !important; }
+}
+
+/* === MOBILE BREAKPOINT (480px - 768px) === */
+@media (max-width: 768px) {
+  /* MOBILE: h1 size */
+  main h1 { font-size: 28px !important; }
+  /* MOBILE: h2 size */
+  main h2 { font-size: 24px !important; }
+  /* MOBILE: body text size */
+  .body-text { font-size: 16px !important; }
+  .hero-body { font-size: 16px !important; }
+  /* MOBILE: eyebrow text size */
+  .eyebrow { font-size: 13px !important; }
+  /* MOBILE: section padding */
+  .site-section { padding: 48px 20px !important; }
+  /* MOBILE: ALL grids single column */
+  .initiatives-grid { grid-template-columns: 1fr !important; }
+  .whygwags-grid { grid-template-columns: 1fr !important; }
+  .more-about-grid { grid-template-columns: 1fr !important; }
+  .getinvolved-grid { grid-template-columns: 1fr !important; }
+  .whatweare-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  /* MOBILE: Timeline body text */
+  .tl2-body { font-size: 16px !important; }
+  .tl2-eyebrow { font-size: 13px !important; }
+}
+
+/* === SMALL PHONE BREAKPOINT (below 480px) === */
+@media (max-width: 480px) {
+  /* SMALL PHONE: h1 size */
+  main h1 { font-size: 24px !important; }
+  /* SMALL PHONE: h2 size */
+  main h2 { font-size: 22px !important; }
+  /* SMALL PHONE: body text size */
+  .body-text { font-size: 15px !important; }
+  .hero-body { font-size: 15px !important; }
+  /* SMALL PHONE: eyebrow text size */
+  .eyebrow { font-size: 12px !important; }
+  /* SMALL PHONE: section padding */
+  .site-section { padding: 36px 16px !important; }
+  /* SMALL PHONE: hero adjustments */
+  .hero-h1 { font-size: 24px !important; }
+  .hero-buttons { flex-direction: column !important; align-items: stretch !important; }
+  /* SMALL PHONE: stats ticker */
+  .stats-ticker { grid-template-columns: 1fr !important; }
+  .stats-ticker .has-divider { border-right: none !important; border-bottom: 0.5px solid rgba(212,175,55,0.11) !important; }
+}
+
+/* ── Mobile Navigation Fix ── */
+/* All mobile menu text must be clearly visible at 16px white */
+@media (max-width: 900px) {
+  .nav-dropdown-link { font-size: 16px !important; color: rgba(255,255,255,0.92) !important; }
 }

@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useRef, Fragment } from 'react'
+import Link from 'next/link'
 import { Lang, t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -27,7 +28,7 @@ function HeroSection({ lang }: { lang: Lang }) {
   return (
     <section className="os-hero-section" style={{ background: '#ffffff', padding: '100px 28px 92px', textAlign: 'center' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <p style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.25em', marginBottom: '24px' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.25em', marginBottom: '24px' }}>
           {p.hero.eyebrow}
         </p>
         <h1 className="hero-h1 os-hero-h1" style={{ color: '#0A1128', fontSize: '42px', fontWeight: 400, lineHeight: 1.18, fontFamily: 'Georgia, serif', margin: 0 }}>
@@ -63,7 +64,7 @@ function NarrativeSection({ lang }: { lang: Lang }) {
               </h3>
             )}
             <p
-              className={i === 0 ? 'narrative-drop-cap' : undefined}
+              className={i === 0 ? 'narrative-drop-cap body-text' : 'body-text'}
               style={{ fontSize: '18px', lineHeight: 1.85, color: '#4A4A4A', marginTop: 0, marginBottom: i < p.narrative.length - 1 ? '28px' : 0 }}
             >
               {para}
@@ -109,7 +110,7 @@ function TimelineSection({ lang }: { lang: Lang }) {
   return (
     <section className="tl2-section">
       <div className="tl2-header">
-        <p className="tl2-eyebrow">{p.timeline.eyebrow}</p>
+        <p className="tl2-eyebrow eyebrow">{p.timeline.eyebrow}</p>
         <h2 className="tl2-h2">{p.timeline.h2}</h2>
       </div>
 
@@ -145,7 +146,7 @@ function TimelineSection({ lang }: { lang: Lang }) {
 
                     <div className="tl2-content">
                       <h3 className="tl2-title">{entry.title}</h3>
-                      <p className={`tl2-body${isActive ? ' active' : ''}`}>{entry.body}</p>
+                      <p className={`tl2-body body-text${isActive ? ' active' : ''}`}>{entry.body}</p>
                     </div>
 
                     <div className="tl2-image-col">
@@ -178,12 +179,15 @@ function ClosingSection({ lang }: { lang: Lang }) {
         <h2 style={{ color: '#fff', fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px', marginTop: 0 }}>
           {p.closing.h2}
         </h2>
-        <p style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.78, marginBottom: '40px', marginTop: 0 }}>
+        <p className="body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.78, marginBottom: '40px', marginTop: 0 }}>
           {p.closing.body}
         </p>
-        <button style={{ background: '#D4AF37', color: '#0A1128', fontSize: '14px', fontWeight: 500, padding: '14px 36px', border: 'none', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em' }}>
+        <Link
+          href="/get-involved"
+          style={{ display: 'inline-block', background: '#D4AF37', color: '#0A1128', fontSize: '14px', fontWeight: 500, padding: '14px 36px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em', textDecoration: 'none' }}
+        >
           {p.closing.btn}
-        </button>
+        </Link>
       </div>
     </section>
   )

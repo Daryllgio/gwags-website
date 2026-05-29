@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import { Lang, t } from '@/lib/translations'
 
 interface HeroProps {
@@ -16,7 +17,7 @@ export default function Hero({ lang }: HeroProps) {
       <div className="hero-circle" style={{ position: 'absolute', right: '60px', top: '60px', width: '280px', height: '280px', border: '1px solid rgba(212,175,55,0.15)', borderRadius: '50%' }} />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        <p className="hero-eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.25em', marginBottom: '24px' }}>
+        <p className="hero-eyebrow eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.25em', marginBottom: '24px' }}>
           {h.eyebrow}
         </p>
 
@@ -26,17 +27,23 @@ export default function Hero({ lang }: HeroProps) {
           {h.h1Line3}
         </h1>
 
-        <p className="hero-body" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.78, maxWidth: '500px', marginBottom: '44px' }}>
+        <p className="hero-body body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.78, maxWidth: '500px', marginBottom: '44px' }}>
           {h.body}
         </p>
 
         <div className="hero-buttons" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-          <button style={{ background: '#D4AF37', color: '#0A1128', fontSize: '14px', fontWeight: 500, padding: '14px 32px', border: 'none', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em' }}>
+          <a
+            href="#initiatives"
+            style={{ background: '#D4AF37', color: '#0A1128', fontSize: '14px', fontWeight: 500, padding: '14px 32px', border: 'none', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em', textDecoration: 'none', display: 'inline-block' }}
+          >
             {h.btn1}
-          </button>
-          <button style={{ background: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '14px', padding: '14px 32px', border: '0.5px solid rgba(255,255,255,0.3)', borderRadius: '3px', cursor: 'pointer' }}>
+          </a>
+          <Link
+            href="/get-involved"
+            style={{ background: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '14px', padding: '14px 32px', border: '0.5px solid rgba(255,255,255,0.3)', borderRadius: '3px', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}
+          >
             {h.btn2}
-          </button>
+          </Link>
         </div>
       </div>
 

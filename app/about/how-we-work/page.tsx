@@ -37,13 +37,13 @@ function HeroSection({ lang }: { lang: Lang }) {
   return (
     <section className="hww-hero-section" style={{ background: '#0A1128', padding: '80px 100px' }}>
       <div style={{ maxWidth: '760px' }}>
-        <p style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 24px 0' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 24px 0' }}>
           {p.eyebrow}
         </p>
         <h1 className="hww-hero-h1" style={{ color: '#ffffff', fontSize: '46px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.18, margin: '0 0 28px 0' }}>
           {p.h1}
         </h1>
-        <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.8, maxWidth: '600px', margin: 0 }}>
+        <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.8, maxWidth: '600px', margin: 0 }}>
           {p.body}
         </p>
       </div>
@@ -57,28 +57,28 @@ function SplitSection({ lang }: { lang: Lang }) {
   return (
     <div className="hww-split">
       <div className="hww-split-left">
-        <p style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
           {p.left.label}
         </p>
         <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '28px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.3 }}>
           {p.left.heading}
         </h2>
         {p.left.body.map((para, i) => (
-          <p key={i} style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.85, margin: i < p.left.body.length - 1 ? '0 0 20px 0' : '0' }}>
+          <p key={i} className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.85, margin: i < p.left.body.length - 1 ? '0 0 20px 0' : '0' }}>
             {para}
           </p>
         ))}
       </div>
 
       <div className="hww-split-right">
-        <p style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
           {p.right.label}
         </p>
         <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '28px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.3 }}>
           {p.right.heading}
         </h2>
         {p.right.body.map((para, i) => (
-          <p key={i} style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.85, margin: i < p.right.body.length - 1 ? '0 0 20px 0' : '0' }}>
+          <p key={i} className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.85, margin: i < p.right.body.length - 1 ? '0 0 20px 0' : '0' }}>
             {para}
           </p>
         ))}
@@ -92,7 +92,7 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.initiatives
   return (
     <section className="hww-init-strip" style={{ background: '#ffffff', padding: '60px 80px' }}>
-      <p style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
+      <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
         {p.eyebrow}
       </p>
       <div className="hww-init-grid">
@@ -122,13 +122,13 @@ function CoordinationSection({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.coordination
   return (
     <section className="hww-coordination-section" style={{ background: '#F7F6F3', padding: '80px' }}>
-      <p style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
+      <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
         {p.eyebrow}
       </p>
       <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 16px 0', lineHeight: 1.25 }}>
         {p.h2}
       </h2>
-      <p style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.75, maxWidth: '650px', margin: '0 0 60px 0' }}>
+      <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.75, maxWidth: '650px', margin: '0 0 60px 0' }}>
         {p.intro}
       </p>
 
@@ -141,7 +141,7 @@ function CoordinationSection({ lang }: { lang: Lang }) {
               <h3 style={{ color: '#0A1128', fontSize: '20px', fontWeight: 600, margin: '0 0 12px 0', fontFamily: 'Georgia, serif' }}>
                 {step.title}
               </h3>
-              <p style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.8, margin: 0 }}>
+              <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.8, margin: 0 }}>
                 {step.body}
               </p>
             </div>
@@ -157,7 +157,7 @@ function WorkingWithSection({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.workingWith
   return (
     <section className="hww-working-with-section" style={{ background: '#0A1128', padding: '80px' }}>
-      <p style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
+      <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
         {p.eyebrow}
       </p>
       <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 48px 0', lineHeight: 1.25 }}>
@@ -169,7 +169,7 @@ function WorkingWithSection({ lang }: { lang: Lang }) {
             <h3 style={{ color: '#ffffff', fontSize: '18px', fontWeight: 600, margin: '0 0 12px 0' }}>
               {card.title}
             </h3>
-            <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.75, margin: 0 }}>
+            <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.75, margin: 0 }}>
               {card.body}
             </p>
           </div>
@@ -187,12 +187,12 @@ function CTASection({ lang }: { lang: Lang }) {
       <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '30px', fontWeight: 400, margin: '0 0 16px 0', lineHeight: 1.3 }}>
         {p.h2}
       </h2>
-      <p style={{ color: 'rgba(10,17,40,0.65)', fontSize: '18px', maxWidth: '480px', margin: '0 auto 36px', lineHeight: 1.75 }}>
+      <p className="body-text" style={{ color: 'rgba(10,17,40,0.65)', fontSize: '18px', maxWidth: '480px', margin: '0 auto 36px', lineHeight: 1.75 }}>
         {p.body}
       </p>
       <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-        <button className="hww-cta-btn-dark">{p.btn1}</button>
-        <button className="hww-cta-btn-outline">{p.btn2}</button>
+        <Link href="/get-involved" className="hww-cta-btn-dark">{p.btn1}</Link>
+        <Link href="/about/our-role" className="hww-cta-btn-outline">{p.btn2}</Link>
       </div>
     </section>
   )

@@ -52,8 +52,10 @@ export default function Footer({ lang }: FooterProps) {
             {f.copy}
           </span>
           <div style={{ display: 'flex', gap: '20px' }}>
-            <a href="#" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '15px', textDecoration: 'none' }}>{f.privacy}</a>
-            <a href="#" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '15px', textDecoration: 'none' }}>{f.terms}</a>
+            {/* TODO: Create this page */}
+            <Link href="/privacy" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '15px', textDecoration: 'none' }}>{f.privacy}</Link>
+            {/* TODO: Create this page */}
+            <Link href="/terms" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '15px', textDecoration: 'none' }}>{f.terms}</Link>
           </div>
         </div>
 

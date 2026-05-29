@@ -11,15 +11,15 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
   const w = t[lang].whyGwags
 
   return (
-    <section style={{ background: '#F7F6F3', padding: '80px 28px' }}>
+    <section className="site-section" style={{ background: '#F7F6F3', padding: '80px 28px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <p style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>
           {w.eyebrow}
         </p>
         <h2 style={{ color: '#0A1128', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '14px', maxWidth: '520px' }}>
           {w.h2}
         </h2>
-        <p style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.8, maxWidth: '560px', marginBottom: '52px' }}>
+        <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.8, maxWidth: '560px', marginBottom: '52px' }}>
           {w.body}
         </p>
 
@@ -44,7 +44,7 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
                 <div style={{ fontSize: '18px', fontWeight: 500, color: '#0A1128', marginBottom: '10px' }}>
                   {item.title}
                 </div>
-                <p style={{ fontSize: '18px', color: '#5A5A5A', lineHeight: 1.68 }}>
+                <p className="body-text" style={{ fontSize: '18px', color: '#5A5A5A', lineHeight: 1.68 }}>
                   {item.desc}
                 </p>
               </div>

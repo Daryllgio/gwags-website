@@ -69,9 +69,9 @@ export const t = {
     initiatives: {
       eyebrow: 'OUR INITIATIVES',
       h2: 'Programs built to create lasting change.',
-      body: 'Gwags carries its own portfolio of initiatives, each designed around a specific dimension of human development. These are the building blocks of our broader institutional mission.',
+      body: 'Gwags carries its own portfolio of initiatives, each designed around a specific dimension of societal transformation. These are the building blocks of our broader institutional mission.',
       items: [
-        { title: 'Gwags Scholars Program', desc: 'Recognizing academic excellence and investing in the next generation of African leaders through targeted scholarship support.', tag: 'EDUCATION' },
+        { title: 'Gwags Scholars Program', desc: 'A flagship program investing in the next generation of African leaders through financial support and professional development opportunities.', tag: 'EXCELLENCE' },
         { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY' },
         { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH' },
         { title: 'Youth Development', desc: 'Where it all began. Gwags continues to invest in the protection, education and empowerment of vulnerable youth.', tag: 'YOUTH' },
@@ -123,7 +123,8 @@ export const t = {
           title: 'Our network',
           desc: 'A growing ecosystem of organizations, institutions, and leaders connected by shared standards and a common ambition.',
           link: 'Learn more',
-          href: '/network',
+          // TODO: Update to /network when network page is created
+          href: '/get-involved',
         },
       ],
     },
@@ -221,7 +222,7 @@ export const t = {
       initiatives: {
         eyebrow: 'OUR ACTIVE INITIATIVES',
         items: [
-          { title: 'Gwags Scholars Program', desc: 'Investing in academic excellence and the next generation of African leaders.', href: '/initiatives/scholars' },
+          { title: 'Gwags Scholars Program', desc: 'A flagship program investing in the next generation of African leaders through financial support and professional development opportunities.', href: '/initiatives/scholars' },
           { title: 'Mbal Lekeaka Fund', desc: 'Channeling resources into community-led initiatives with measurable impact.', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Health Outreach Program', desc: 'Bringing free healthcare to underserved communities through field campaigns.', href: '/initiatives/health-outreach' },
           { title: 'Youth Development', desc: 'Protecting, educating, and empowering vulnerable youth since day one.', href: '/initiatives/youth-development' },
@@ -506,9 +507,9 @@ export const t = {
     initiatives: {
       eyebrow: 'NOS INITIATIVES',
       h2: 'Des programmes construits pour créer un changement durable.',
-      body: 'Gwags porte son propre portefeuille d\'initiatives, chacune conçue autour d\'une dimension spécifique du développement humain.',
+      body: 'Gwags porte son propre portefeuille d\'initiatives, chacune conçue autour d\'une dimension spécifique de la transformation sociale.',
       items: [
-        { title: 'Programme Gwags Scholars', desc: 'Reconnaître l\'excellence académique et investir dans la prochaine génération de leaders africains.', tag: 'ÉDUCATION' },
+        { title: 'Programme Gwags Scholars', desc: 'Un programme phare investissant dans la prochaine génération de leaders africains à travers un soutien financier et des opportunités de développement professionnel.', tag: 'EXCELLENCE' },
         { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ' },
         { title: 'Programme de Santé Communautaire', desc: 'Apporter des soins de santé gratuits et l\'éducation médicale aux communautés mal desservies.', tag: 'SANTÉ' },
         { title: 'Développement des Jeunes', desc: 'Là où tout a commencé. Gwags continue d\'investir dans la protection, l\'éducation et l\'autonomisation des jeunes vulnérables.', tag: 'JEUNESSE' },
@@ -658,7 +659,7 @@ export const t = {
       initiatives: {
         eyebrow: 'NOS INITIATIVES ACTIVES',
         items: [
-          { title: 'Programme Gwags Scholars', desc: "Investir dans l'excellence académique et la prochaine génération de leaders africains.", href: '/initiatives/scholars' },
+          { title: 'Programme Gwags Scholars', desc: 'Un programme phare investissant dans la prochaine génération de leaders africains à travers un soutien financier et des opportunités de développement professionnel.', href: '/initiatives/scholars' },
           { title: 'Fonds Mbal Lekeaka', desc: 'Canaliser les ressources vers des initiatives communautaires à impact mesurable.', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Programme de Santé', desc: 'Apporter des soins gratuits aux communautés mal desservies via des campagnes de terrain.', href: '/initiatives/health-outreach' },
           { title: 'Développement des Jeunes', desc: "Protéger, éduquer et autonomiser les jeunes vulnérables depuis le premier jour.", href: '/initiatives/youth-development' },

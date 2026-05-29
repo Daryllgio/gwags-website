@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Lang, t } from '@/lib/translations'
 
 interface CTAProps {
@@ -13,16 +14,22 @@ export default function CTA({ lang }: CTAProps) {
         <h2 className="cta-h2" style={{ color: '#fff', fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px' }}>
           {c.h2}
         </h2>
-        <p style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.78, marginBottom: '40px' }}>
+        <p className="body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.78, marginBottom: '40px' }}>
           {c.body}
         </p>
         <div className="cta-buttons" style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button style={{ background: '#D4AF37', color: '#0A1128', fontSize: '14px', fontWeight: 500, padding: '14px 32px', border: 'none', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em' }}>
+          <Link
+            href="/get-involved"
+            style={{ background: '#D4AF37', color: '#0A1128', fontSize: '14px', fontWeight: 500, padding: '14px 32px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em', textDecoration: 'none', display: 'inline-block' }}
+          >
             {c.btn1}
-          </button>
-          <button style={{ background: 'none', color: 'rgba(255,255,255,0.92)', fontSize: '14px', padding: '14px 32px', border: '0.5px solid rgba(255,255,255,0.3)', borderRadius: '3px', cursor: 'pointer' }}>
+          </Link>
+          <a
+            href="/#initiatives"
+            style={{ background: 'none', color: 'rgba(255,255,255,0.92)', fontSize: '14px', padding: '14px 32px', border: '0.5px solid rgba(255,255,255,0.3)', borderRadius: '3px', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}
+          >
             {c.btn2}
-          </button>
+          </a>
         </div>
       </div>
     </section>
