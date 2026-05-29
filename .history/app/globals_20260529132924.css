@@ -1016,7 +1016,7 @@ h1, h2, h3, h4 {
   /* Initiatives */
   .ini-img-ph    { height: 160px !important; }
   .ini-card-body { padding: 16px 16px 20px !important; }
-  .ini-card-title { font-size: 17px !important; }
+  .ini-card-title { font-size: 30px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 24px 16px 20px !important; }
