@@ -959,3 +959,117 @@ h1, h2, h3, h4 {
 @media (max-width: 900px) {
   .nav-dropdown-link { font-size: 16px !important; color: rgba(255,255,255,0.92) !important; }
 }
+
+/* ================================================================
+   CARD AND ELEMENT SIZING
+   Every box, card, image placeholder, and card title has a class.
+   Change sizes here by breakpoint.
+
+   Classes:
+     .hero-section      — homepage hero section padding
+     .ini-section       — initiatives section (overrides site-section bg)
+     .ini-img-ph        — initiative card image placeholder height
+     .ini-card-body     — initiative card content area padding
+     .ini-card-title    — initiative card title font size
+     .wg-card           — Why Gwags card padding
+     .wg-card-title     — Why Gwags card title font size
+     .ma-img-ph         — More About card image placeholder height
+     .ma-card-body      — More About card content area padding
+     .ma-card-title     — More About card title font size
+     .gi-card-box       — Get Involved (homepage) card padding
+     .gi-card-title     — Get Involved (homepage) card title font size
+     .stats-ticker-cell — Stats ticker cell padding
+   ================================================================ */
+
+/* === TABLET (768px – 1024px) === */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Hero section */
+  .hero-section { padding: 64px 32px 72px !important; }
+
+  /* Initiatives */
+  .ini-img-ph    { height: 190px !important; }
+  .ini-card-body { padding: 18px 18px 22px !important; }
+  .ini-card-title { font-size: 16px !important; }
+
+  /* Why Gwags */
+  .wg-card       { padding: 24px 18px 22px !important; }
+  .wg-card-title { font-size: 16px !important; }
+
+  /* More About */
+  .ma-img-ph    { height: 200px !important; }
+  .ma-card-body { padding: 20px 20px 24px !important; }
+  .ma-card-title { font-size: 18px !important; }
+
+  /* Get Involved (homepage) */
+  .gi-card-box   { padding: 28px 18px 24px !important; }
+  .gi-card-title { font-size: 16px !important; }
+
+  /* Stats ticker */
+  .stats-ticker-cell { padding: 18px 20px !important; }
+}
+
+/* === MOBILE (max-width: 768px) === */
+@media (max-width: 768px) {
+  /* Hero section */
+  .hero-section { padding: 60px 20px 64px !important; }
+
+  /* Initiatives */
+  .ini-img-ph    { height: 160px !important; }
+  .ini-card-body { padding: 16px 16px 20px !important; }
+  .ini-card-title { font-size: 16px !important; }
+
+  /* Why Gwags */
+  .wg-card       { padding: 24px 16px 20px !important; }
+  .wg-card-title { font-size: 16px !important; }
+
+  /* More About */
+  .ma-img-ph    { height: 180px !important; }
+  .ma-card-body { padding: 18px 18px 22px !important; }
+  .ma-card-title { font-size: 17px !important; }
+
+  /* Get Involved (homepage) */
+  .gi-card-box   { padding: 28px 16px 24px !important; }
+  .gi-card-title { font-size: 16px !important; }
+
+  /* Stats ticker */
+  .stats-ticker-cell { padding: 16px 20px !important; }
+
+  /* Timeline entry title */
+  .tl2-title { font-size: 22px !important; }
+
+  /* How We Work step number */
+  .hww-step-num { font-size: 36px !important; }
+}
+
+/* === SMALL PHONE (max-width: 480px) === */
+@media (max-width: 480px) {
+  /* Hero section */
+  .hero-section { padding: 48px 16px 56px !important; }
+
+  /* Initiatives */
+  .ini-img-ph    { height: 140px !important; }
+  .ini-card-body { padding: 14px 14px 18px !important; }
+  .ini-card-title { font-size: 15px !important; }
+
+  /* Why Gwags */
+  .wg-card       { padding: 20px 14px 18px !important; }
+  .wg-card-title { font-size: 15px !important; }
+
+  /* More About */
+  .ma-img-ph    { height: 150px !important; }
+  .ma-card-body { padding: 14px 16px 20px !important; }
+  .ma-card-title { font-size: 16px !important; }
+
+  /* Get Involved (homepage) */
+  .gi-card-box   { padding: 24px 14px 20px !important; }
+  .gi-card-title { font-size: 15px !important; }
+
+  /* Stats ticker */
+  .stats-ticker-cell { padding: 14px 12px !important; }
+
+  /* Timeline entry title */
+  .tl2-title { font-size: 20px !important; }
+
+  /* How We Work step number */
+  .hww-step-num { font-size: 32px !important; }
+}

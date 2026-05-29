@@ -29,6 +29,7 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
             return (
               <div
                 key={i}
+                className="wg-card"
                 style={{
                   background: '#fff',
                   border: '0.5px solid rgba(10,17,40,0.1)',
@@ -41,7 +42,7 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
                 <div style={{ marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
                   <Icon size={28} color="#D4AF37" />
                 </div>
-                <div style={{ fontSize: '18px', fontWeight: 500, color: '#0A1128', marginBottom: '10px' }}>
+                <div className="wg-card-title" style={{ fontSize: '18px', fontWeight: 500, color: '#0A1128', marginBottom: '10px' }}>
                   {item.title}
                 </div>
                 <p className="body-text" style={{ fontSize: '18px', color: '#5A5A5A', lineHeight: 1.68 }}>

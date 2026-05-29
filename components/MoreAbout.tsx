@@ -39,17 +39,17 @@ export default function MoreAbout({ lang }: MoreAboutProps) {
               {/* To replace with a real image: swap this div for
                   <img src="/images/about/[name].jpg" alt="..." style={{ width: '100%', height: '260px', objectFit: 'cover' }} />
                   or use Next.js <Image> with fill and a relative-positioned wrapper */}
-              <div style={{ height: '260px', width: '100%', background: '#F7F6F3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="ma-img-ph" style={{ height: '260px', width: '100%', background: '#F7F6F3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '13px', letterSpacing: '0.1em' }}>
                   {imagePlaceholders[i]}
                 </span>
               </div>
 
-              <div style={{ padding: '24px 28px 32px' }}>
-                <div style={{ fontFamily: 'Georgia, serif', fontSize: '20px', fontWeight: 600, color: '#0A1128', marginBottom: '10px', lineHeight: 1.3 }}>
+              <div className="ma-card-body" style={{ padding: '24px 28px 32px' }}>
+                <div className="ma-card-title" style={{ fontFamily: 'Georgia, serif', fontSize: '20px', fontWeight: 600, color: '#0A1128', marginBottom: '10px', lineHeight: 1.3 }}>
                   {card.title}
                 </div>
-                <p style={{ fontSize: '16px', color: '#4A4A4A', lineHeight: 1.7, marginBottom: '16px' }}>
+                <p className="body-text" style={{ fontSize: '16px', color: '#4A4A4A', lineHeight: 1.7, marginBottom: '16px' }}>
                   {card.desc}
                 </p>
               </div>

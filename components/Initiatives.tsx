@@ -25,7 +25,7 @@ export default function Initiatives({ lang }: InitiativesProps) {
   const ini = t[lang].initiatives
 
   return (
-    <section id="initiatives" style={{ background: '#050F22', padding: '80px 28px' }}>
+    <section id="initiatives" className="site-section ini-section" style={{ background: '#050F22', padding: '80px 28px' }}>
       <div style={{ maxWidth: '1230px', margin: '0 auto' }}>
         <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>
           {ini.eyebrow}
@@ -59,17 +59,17 @@ export default function Initiatives({ lang }: InitiativesProps) {
                 {/* To replace with a real image: swap this div for
                     <img src="/images/initiatives/[name].jpg" alt="..." style={{ width: '100%', height: '250px', objectFit: 'cover' }} />
                     or use Next.js <Image> with fill and a relative-positioned wrapper */}
-                <div style={{ height: '250px', width: '100%', background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <div className="ini-img-ph" style={{ height: '250px', width: '100%', background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', letterSpacing: '0.1em' }}>
                     {imagePlaceholders[i]}
                   </span>
                 </div>
 
-                <div style={{ padding: '24px 24px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                <div className="ini-card-body" style={{ padding: '24px 24px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{ marginBottom: '16px' }}>
                     <Icon size={24} color="#D4AF37" />
                   </div>
-                  <div style={{ color: '#fff', fontSize: '18px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35 }}>
+                  <div className="ini-card-title" style={{ color: '#fff', fontSize: '18px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35 }}>
                     {item.title}
                   </div>
                   <p className="body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.68, flex: 1 }}>

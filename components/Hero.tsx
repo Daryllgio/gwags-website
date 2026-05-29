@@ -10,7 +10,7 @@ export default function Hero({ lang }: HeroProps) {
   const h = t[lang].hero
 
   return (
-    <section style={{ background: '#0A1128', padding: '88px 28px 96px', position: 'relative', overflow: 'hidden', width: '100%', boxSizing: 'border-box' }}>
+    <section className="hero-section" style={{ background: '#0A1128', padding: '88px 28px 96px', position: 'relative', overflow: 'hidden', width: '100%', boxSizing: 'border-box' }}>
 
       <div className="hero-circle" style={{ position: 'absolute', right: '-100px', top: '-100px', width: '600px', height: '600px', border: '1px solid rgba(212,175,55,0.25)', borderRadius: '50%' }} />
       <div className="hero-circle" style={{ position: 'absolute', right: '-25px', top: '-25px', width: '450px', height: '450px', border: '1px solid rgba(212,175,55,0.20)', borderRadius: '50%' }} />

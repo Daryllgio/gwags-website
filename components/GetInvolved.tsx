@@ -36,6 +36,7 @@ export default function GetInvolved({ lang }: GetInvolvedProps) {
                 style={{ textDecoration: 'none', display: 'block' }}
               >
                 <div
+                  className="gi-card-box"
                   style={{
                     background: '#F7F6F3',
                     border: '0.5px solid rgba(10,17,40,0.1)',
@@ -48,7 +49,7 @@ export default function GetInvolved({ lang }: GetInvolvedProps) {
                   <div style={{ marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
                     <Icon size={28} color="#D4AF37" />
                   </div>
-                  <div style={{ color: '#0A1128', fontSize: '18px', fontWeight: 500, marginBottom: '10px' }}>
+                  <div className="gi-card-title" style={{ color: '#0A1128', fontSize: '18px', fontWeight: 500, marginBottom: '10px' }}>
                     {item.title}
                   </div>
                   <p className="body-text" style={{ color: '#5A5A5A', fontSize: '18px', lineHeight: 1.65 }}>
