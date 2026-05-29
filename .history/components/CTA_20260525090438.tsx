@@ -1,0 +1,65 @@
+import { Lang, t } from '@/lib/translations'
+import { IconBuildingCommunity, IconHandHeart, IconBriefcase } from '@tabler/icons-react'
+
+interface GetInvolvedProps {
+  lang: Lang
+}
+
+const icons = [
+  <IconBuildingCommunity size={28} color="#D4AF37" />,
+  <IconHandHeart size={28} color="#D4AF37" />,
+  <IconBriefcase size={28} color="#D4AF37" />,
+]
+
+export default function GetInvolved({ lang }: GetInvolvedProps) {
+  const g = t[lang].getInvolved
+
+  return (
+    <section style={{ background: '#0A1128', padding: '80px 28px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+
+        <p style={{ color: '#D4AF37', fontSize: '11px', letterSpacing: '0.22em', marginBottom: '14px' }}>
+          {g.eyebrow}
+        </p>
+        <h2 style={{ color: '#fff', fontSize: '30px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, maxWidth: '500px', marginBottom: '14px' }}>
+          {g.h2}
+        </h2>
+        <p style={{ color: 'rgba(255,255,255,0.48)', fontSize: '17px', lineHeight: 1.75, maxWidth: '500px', marginBottom: '52px' }}>
+          {g.body}
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }} className="getinvolved-grid">
+          {g.items.map((item, i) => (
+            <div
+              key={i}
+              style={{
+                background: 'rgba(255,255,255,0.04)',
+                border: '0.5px solid rgba(212,175,55,0.18)',
+                borderRadius: '6px',
+                padding: '36px 24px 32px',
+                textAlign: 'center',
+              }}
+            >
+              <div style={{ marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
+                {icons[i]}
+              </div>
+              <div style={{ color: '#fff', fontSize: '15px', fontWeight: 500, marginBottom: '10px' }}>
+                {item.title}
+              </div>
+              <p style={{ color: 'rgba(255,255,255,0.42)', fontSize: '14px', lineHeight: 1.65 }}>
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .getinvolved-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  )
+}

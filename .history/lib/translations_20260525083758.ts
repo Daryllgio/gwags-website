@@ -1,0 +1,241 @@
+export type Lang = "en" | "fr";
+
+export const t = {
+  en: {
+    nav: {
+      about: "About",
+      initiatives: "Initiatives",
+      story: "Our Story",
+      involved: "Get Involved",
+      contact: "Contact",
+    },
+    hero: {
+      eyebrow: "Empowering Communities Worldwide",
+      h1a: "Building a World of",
+      h1gold: "Lasting Impact",
+      h1b: "",
+      body: "Gwags Global Impact Institution partners with communities, donors, and institutions to drive measurable change through education, health, and youth development.",
+      cta1: "Explore Our Work",
+      cta2: "Partner With Us",
+    },
+    stats: {
+      initiatives: { value: "4+", label: "Active Initiatives" },
+      countries: { value: "3", label: "Countries Active" },
+      network: { value: "1", label: "Global Network" },
+    },
+    whatWeAre: {
+      eyebrow: "Who We Are",
+      h2: "A Global Institution Built on Purpose",
+      p1: "Gwags Global Impact Institution is a nonprofit organization committed to creating sustainable change in underserved communities across the world. We operate at the intersection of education, health, and human development.",
+      p2: "Founded on the principle that every person deserves the opportunity to thrive, we design programs that address root causes rather than symptoms — building lasting capacity within communities.",
+      p3: "We work alongside local leaders, international partners, and passionate donors to co-create solutions that are both culturally grounded and globally informed.",
+      link: "Read Our Full Story",
+      items: [
+        { title: "Mission-Driven", desc: "Every decision is guided by our commitment to equity and lasting impact." },
+        { title: "Community-Centered", desc: "We design with communities, not for them, ensuring local ownership of every initiative." },
+        { title: "Accountable", desc: "Transparent governance, rigorous reporting, and measurable outcomes define our operations." },
+        { title: "Globally Connected", desc: "Our international network amplifies local work into global momentum." },
+      ],
+    },
+    initiatives: {
+      eyebrow: "What We Do",
+      h2: "Our Core Initiatives",
+      body: "Each program is designed to address a specific dimension of human potential — from access to education to health equity to the full development of young leaders.",
+      cards: [
+        {
+          tag: "EDUCATION",
+          title: "Gwags Scholars Program",
+          desc: "Providing scholarship access and academic mentorship to exceptional students from underserved backgrounds.",
+        },
+        {
+          tag: "COMMUNITY",
+          title: "Mbal Lekeaka Fund",
+          desc: "A community development fund that seeds grassroots projects with micro-grants and strategic support.",
+        },
+        {
+          tag: "HEALTH",
+          title: "Health Outreach Program",
+          desc: "Mobile health clinics and preventive care campaigns reaching remote communities with essential services.",
+        },
+        {
+          tag: "YOUTH",
+          title: "Youth Development",
+          desc: "Leadership training, mentorship circles, and skills workshops that prepare young people for impact.",
+        },
+      ],
+    },
+    whyGwags: {
+      eyebrow: "Why Partner With Us",
+      h2: "What Sets Gwags Apart",
+      body: "We bring together institutional credibility, global reach, and deep community trust — a rare combination that makes every partnership more effective.",
+      cards: [
+        { title: "Credibility", desc: "Registered nonprofit with transparent governance structures and verified impact reporting." },
+        { title: "International Network", desc: "Connections across three continents link your support to where it matters most." },
+        { title: "Capacity to Scale", desc: "Our operational infrastructure supports programs from seed stage to full deployment." },
+        { title: "Funding Pathways", desc: "We match community needs with institutional funding opportunities efficiently." },
+        { title: "Strategic Visibility", desc: "Partners gain recognition through our global communications and reporting channels." },
+        { title: "Governance Standards", desc: "Board oversight, annual reporting, and audit-ready financial management." },
+      ],
+    },
+    quote: {
+      text: "We did not build Gwags to be another organization on paper. We built it to be a force — one that communities trust, that institutions respect, and that the world cannot ignore.",
+      name: "Daryll Giovanny Bikak Mbal",
+      role: "Founder and Board Chair, Gwags Global Impact Institution",
+    },
+    ourStory: {
+      eyebrow: "Our Journey",
+      h2: "The Story Behind Gwags",
+      steps: [
+        { label: "The Beginning", sublabel: "Born from Conviction", desc: "Gwags was founded by Daryll Giovanny Bikak Mbal from a deep belief that structured, principled institutions can change lives at scale." },
+        { label: "The Evolution", sublabel: "Growing the Mission", desc: "From a single vision to a multi-program institution, Gwags developed its core initiatives through community consultation and strategic design." },
+        { label: "Now and Beyond", sublabel: "A Global Institution", desc: "Today Gwags operates across multiple countries, building partnerships that extend our reach and deepen our impact year after year." },
+      ],
+    },
+    getInvolved: {
+      eyebrow: "Join the Movement",
+      h2: "Ways to Partner With Gwags",
+      body: "Whether you lead an organization, manage a fund, or represent an institution, there is a meaningful way for you to contribute to the Gwags mission.",
+      cards: [
+        { title: "Organizations", desc: "Align your CSR or program goals with one of our active initiatives for co-branded, measurable impact." },
+        { title: "Donors & Funders", desc: "Direct your philanthropic capital toward programs with verified outcomes and institutional accountability." },
+        { title: "Institutional Partners", desc: "Universities, governments, and NGOs can formalize collaboration through our partnership framework." },
+      ],
+    },
+    cta: {
+      h2: "Ready to Create Lasting Impact?",
+      body: "Join the growing network of individuals and institutions building a better world through the Gwags Global Impact Institution.",
+      cta1: "Get Involved Today",
+      cta2: "Contact Us",
+    },
+    footer: {
+      tagline: "Building lasting impact across communities worldwide.",
+      countries: "Operating in Cameroon · Canada · USA",
+      colInstitution: "Institution",
+      colInvolve: "Get Involved",
+      linksInstitution: ["About Us", "Our Initiatives", "Our Story", "Leadership"],
+      linksInvolve: ["Partner With Us", "Donate", "Volunteer", "Contact"],
+      copyright: "© 2025 Gwags Global Impact Institution. All rights reserved.",
+      privacy: "Privacy Policy",
+      terms: "Terms of Use",
+    },
+  },
+
+  fr: {
+    nav: {
+      about: "À Propos",
+      initiatives: "Initiatives",
+      story: "Notre Histoire",
+      involved: "S'impliquer",
+      contact: "Contact",
+    },
+    hero: {
+      eyebrow: "Transformer les Communautés Mondiales",
+      h1a: "Construire un Monde d'",
+      h1gold: "Impact Durable",
+      h1b: "",
+      body: "Gwags Global Impact Institution collabore avec des communautés, des donateurs et des institutions pour produire un changement mesurable dans l'éducation, la santé et le développement des jeunes.",
+      cta1: "Explorer Nos Travaux",
+      cta2: "Devenir Partenaire",
+    },
+    stats: {
+      initiatives: { value: "4+", label: "Initiatives Actives" },
+      countries: { value: "3", label: "Pays Actifs" },
+      network: { value: "1", label: "Réseau Mondial" },
+    },
+    whatWeAre: {
+      eyebrow: "Qui Nous Sommes",
+      h2: "Une Institution Mondiale Fondée sur la Purpose",
+      p1: "Gwags Global Impact Institution est une organisation à but non lucratif engagée à créer un changement durable dans les communautés défavorisées à travers le monde.",
+      p2: "Fondée sur le principe que chaque personne mérite l'opportunité de s'épanouir, nous concevons des programmes qui s'attaquent aux causes profondes plutôt qu'aux symptômes.",
+      p3: "Nous travaillons aux côtés de leaders locaux, de partenaires internationaux et de donateurs passionnés pour co-créer des solutions ancrées culturellement et informées globalement.",
+      link: "Lire Notre Histoire Complète",
+      items: [
+        { title: "Guidé par la Mission", desc: "Chaque décision est guidée par notre engagement envers l'équité et l'impact durable." },
+        { title: "Centré sur la Communauté", desc: "Nous concevons avec les communautés, pas pour elles, assurant une appropriation locale." },
+        { title: "Responsable", desc: "Une gouvernance transparente, des rapports rigoureux et des résultats mesurables définissent nos opérations." },
+        { title: "Connecté Mondialement", desc: "Notre réseau international amplifier le travail local en dynamique mondiale." },
+      ],
+    },
+    initiatives: {
+      eyebrow: "Ce Que Nous Faisons",
+      h2: "Nos Initiatives Fondamentales",
+      body: "Chaque programme est conçu pour aborder une dimension spécifique du potentiel humain — de l'accès à l'éducation à l'équité en santé jusqu'au développement complet des jeunes leaders.",
+      cards: [
+        {
+          tag: "ÉDUCATION",
+          title: "Programme Gwags Scholars",
+          desc: "Offrir des bourses d'études et du mentorat académique aux étudiants exceptionnels issus de milieux défavorisés.",
+        },
+        {
+          tag: "COMMUNAUTÉ",
+          title: "Fonds Mbal Lekeaka",
+          desc: "Un fonds de développement communautaire qui soutient les projets locaux par des micro-subventions et un appui stratégique.",
+        },
+        {
+          tag: "SANTÉ",
+          title: "Programme de Santé Communautaire",
+          desc: "Des cliniques mobiles et des campagnes de prévention atteignant les communautés éloignées avec des services essentiels.",
+        },
+        {
+          tag: "JEUNESSE",
+          title: "Développement des Jeunes",
+          desc: "Formation au leadership, cercles de mentorat et ateliers de compétences préparant les jeunes à l'impact.",
+        },
+      ],
+    },
+    whyGwags: {
+      eyebrow: "Pourquoi Nous Choisir",
+      h2: "Ce Qui Distingue Gwags",
+      body: "Nous réunissons crédibilité institutionnelle, portée mondiale et confiance communautaire profonde — une combinaison rare qui rend chaque partenariat plus efficace.",
+      cards: [
+        { title: "Crédibilité", desc: "Organisation à but non lucratif enregistrée avec une gouvernance transparente et des rapports d'impact vérifiés." },
+        { title: "Réseau International", desc: "Des connexions sur trois continents relient votre soutien là où il compte le plus." },
+        { title: "Capacité à Grandir", desc: "Notre infrastructure opérationnelle supporte les programmes du stade initial au déploiement complet." },
+        { title: "Voies de Financement", desc: "Nous associons efficacement les besoins communautaires aux opportunités de financement institutionnel." },
+        { title: "Visibilité Stratégique", desc: "Les partenaires bénéficient d'une reconnaissance dans nos communications et rapports mondiaux." },
+        { title: "Standards de Gouvernance", desc: "Supervision du conseil, rapports annuels et gestion financière prête pour l'audit." },
+      ],
+    },
+    quote: {
+      text: "Nous n'avons pas construit Gwags pour être une autre organisation sur papier. Nous l'avons construit pour être une force — une force en qui les communautés ont confiance, que les institutions respectent, et que le monde ne peut ignorer.",
+      name: "Daryll Giovanny Bikak Mbal",
+      role: "Fondateur et Président du Conseil, Gwags Global Impact Institution",
+    },
+    ourStory: {
+      eyebrow: "Notre Parcours",
+      h2: "L'Histoire Derrière Gwags",
+      steps: [
+        { label: "Le Début", sublabel: "Né d'une Conviction", desc: "Gwags a été fondé par Daryll Giovanny Bikak Mbal par la profonde conviction que des institutions structurées et fondées sur des principes peuvent changer des vies à grande échelle." },
+        { label: "L'Évolution", sublabel: "Développer la Mission", desc: "D'une vision unique à une institution multi-programmes, Gwags a développé ses initiatives grâce à la consultation communautaire et à la conception stratégique." },
+        { label: "Maintenant et Au-Delà", sublabel: "Une Institution Mondiale", desc: "Aujourd'hui Gwags opère dans plusieurs pays, construisant des partenariats qui étendent notre portée et approfondissent notre impact d'année en année." },
+      ],
+    },
+    getInvolved: {
+      eyebrow: "Rejoignez le Mouvement",
+      h2: "Comment Collaborer avec Gwags",
+      body: "Que vous dirigiez une organisation, gériez un fonds ou représentiez une institution, il existe un moyen significatif de contribuer à la mission de Gwags.",
+      cards: [
+        { title: "Organisations", desc: "Alignez vos objectifs RSE ou programmatiques avec l'une de nos initiatives actives pour un impact co-marqué et mesurable." },
+        { title: "Donateurs et Financeurs", desc: "Dirigez votre capital philanthropique vers des programmes avec des résultats vérifiés et une responsabilité institutionnelle." },
+        { title: "Partenaires Institutionnels", desc: "Les universités, gouvernements et ONG peuvent formaliser la collaboration via notre cadre de partenariat." },
+      ],
+    },
+    cta: {
+      h2: "Prêt à Créer un Impact Durable?",
+      body: "Rejoignez le réseau croissant d'individus et d'institutions construisant un monde meilleur à travers Gwags Global Impact Institution.",
+      cta1: "S'Impliquer Aujourd'hui",
+      cta2: "Nous Contacter",
+    },
+    footer: {
+      tagline: "Créer un impact durable dans les communautés du monde entier.",
+      countries: "Opérant au Cameroun · Canada · États-Unis",
+      colInstitution: "Institution",
+      colInvolve: "S'impliquer",
+      linksInstitution: ["À Propos", "Nos Initiatives", "Notre Histoire", "Direction"],
+      linksInvolve: ["Devenir Partenaire", "Faire un Don", "Bénévolat", "Contact"],
+      copyright: "© 2025 Gwags Global Impact Institution. Tous droits réservés.",
+      privacy: "Politique de Confidentialité",
+      terms: "Conditions d'Utilisation",
+    },
+  },
+};
