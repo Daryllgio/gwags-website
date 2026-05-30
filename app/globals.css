@@ -948,7 +948,7 @@ h1, h2, h3, h4 {
   .site-section { padding: 36px 16px !important; }
   /* SMALL PHONE: hero adjustments */
   .hero-h1 { font-size: 24px !important; }
-  .hero-buttons { flex-direction: column !important; align-items: center !important; }
+  .hero-buttons { flex-direction: column !important; align-items: stretch !important; }
   /* SMALL PHONE: stats ticker */
   .stats-ticker { grid-template-columns: 1fr !important; }
   .stats-ticker .has-divider { border-right: none !important; border-bottom: 0.5px solid rgba(212,175,55,0.11) !important; }
@@ -1112,13 +1112,9 @@ h1, h2, h3, h4 {
   .stats-label { font-size: 10px !important; letter-spacing: 0.1em !important; }
 }
 
-/* Hero buttons — stack vertically at mobile (768px), centred not stretched */
+/* Hero buttons — stack vertically at mobile (768px), stretch to full width */
 @media (max-width: 768px) {
-  .hero-buttons { flex-direction: column !important; align-items: center !important; }
-  .hero-btn { min-width: 220px !important; text-align: center !important; }
-}
-@media (max-width: 480px) {
-  .hero-btn { min-width: 200px !important; }
+  .hero-buttons { flex-direction: column !important; align-items: stretch !important; }
 }
 
 /* Footer text */
