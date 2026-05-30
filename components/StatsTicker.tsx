@@ -23,10 +23,10 @@ export default function StatsTicker({ lang }: StatsTickerProps) {
             borderRight: i < 2 ? '0.5px solid rgba(212,175,55,0.11)' : 'none',
           }}
         >
-          <div style={{ color: '#D4AF37', fontSize: '32px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1 }}>
+          <div className="stats-num" style={{ color: '#D4AF37', fontSize: '32px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1 }}>
             {item.n}
           </div>
-          <div style={{ color: 'rgba(255,255,255,0.85)', fontSize: '11px', letterSpacing: '0.14em', marginTop: '8px' }}>
+          <div className="stats-label" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '11px', letterSpacing: '0.14em', marginTop: '8px' }}>
             {item.l}
           </div>
         </div>

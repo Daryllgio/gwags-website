@@ -18,7 +18,7 @@ export default function MoreAbout({ lang }: MoreAboutProps) {
     <section style={{ background: '#ffffff', padding: '40px 28px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
-        <h2 style={{ color: '#D4AF37', fontSize: '16px', fontWeight: 400, letterSpacing: '0.15em', marginBottom: '48px', fontFamily: 'inherit' }}>
+        <h2 className="ma-heading" style={{ color: '#D4AF37', fontSize: '16px', fontWeight: 400, letterSpacing: '0.15em', marginBottom: '48px', fontFamily: 'inherit' }}>
           {m.heading}
         </h2>
 

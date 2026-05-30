@@ -948,7 +948,7 @@ h1, h2, h3, h4 {
   .site-section { padding: 36px 16px !important; }
   /* SMALL PHONE: hero adjustments */
   .hero-h1 { font-size: 24px !important; }
-  .hero-buttons { flex-direction: column !important; align-items: stretch !important; }
+  .hero-buttons { flex-direction: column !important; align-items: center !important; }
   /* SMALL PHONE: stats ticker */
   .stats-ticker { grid-template-columns: 1fr !important; }
   .stats-ticker .has-divider { border-right: none !important; border-bottom: 0.5px solid rgba(212,175,55,0.11) !important; }
@@ -1072,4 +1072,47 @@ h1, h2, h3, h4 {
 
   /* How We Work step number */
   .hww-step-num { font-size: 32px !important; }
+}
+
+/* ================================================================
+   FIXES FOR PREVIOUSLY UNCOVERED ELEMENTS
+   ================================================================ */
+
+/* MORE ABOUT heading is a small label (16px by design).
+   The general "main h2" rule was incorrectly enlarging it to 24px on mobile.
+   This override keeps it small at every screen size. */
+.ma-heading { font-size: 16px !important; }
+@media (max-width: 768px) { .ma-heading { font-size: 14px !important; } }
+@media (max-width: 480px) { .ma-heading { font-size: 13px !important; } }
+
+/* WhatWeAre pillar titles ("Institutional development", etc.) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .wwa-pillar-title { font-size: 16px !important; }
+}
+@media (max-width: 768px) {
+  .wwa-pillar-title { font-size: 15px !important; }
+}
+@media (max-width: 480px) {
+  .wwa-pillar-title { font-size: 14px !important; }
+}
+
+/* Stats ticker numbers ("4+", "3", "1") */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .stats-num { font-size: 26px !important; }
+}
+@media (max-width: 768px) {
+  .stats-num { font-size: 24px !important; }
+}
+@media (max-width: 480px) {
+  .stats-num { font-size: 20px !important; }
+}
+
+/* Stats ticker labels ("ACTIVE INITIATIVES", etc.) */
+@media (max-width: 480px) {
+  .stats-label { font-size: 10px !important; letter-spacing: 0.1em !important; }
+}
+
+/* Hero buttons — stack vertically at mobile (768px), centred not stretched */
+@media (max-width: 768px) {
+  .hero-buttons { flex-direction: column !important; align-items: center !important; }
 }

@@ -39,7 +39,7 @@ export default function WhatWeAre({ lang }: WhatWeAreProps) {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
                 <div style={{ width: '6px', height: '6px', background: '#D4AF37', borderRadius: '50%', flexShrink: 0 }} />
-                <div style={{ fontSize: '18px', fontWeight: 500, color: '#0A1128' }}>{pillar.title}</div>
+                <div className="wwa-pillar-title" style={{ fontSize: '18px', fontWeight: 500, color: '#0A1128' }}>{pillar.title}</div>
               </div>
               <p className="body-text" style={{ color: '#5A5A5A', fontSize: '18px', lineHeight: 1.7, paddingLeft: '16px' }}>
                 {pillar.desc}
