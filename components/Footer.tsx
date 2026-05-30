@@ -28,7 +28,7 @@ export default function Footer({ lang }: FooterProps) {
               {f.col1.heading}
             </h4>
             {f.col1.links.map((link) => (
-              <Link key={link.label} href={link.href} style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '17px', marginBottom: '12px', textDecoration: 'none' }}>
+              <Link key={link.label} href={link.href} className="footer-link" style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '17px', marginBottom: '12px', textDecoration: 'none' }}>
                 {link.label}
               </Link>
             ))}
@@ -39,7 +39,7 @@ export default function Footer({ lang }: FooterProps) {
               {f.col2.heading}
             </h4>
             {f.col2.links.map((link) => (
-              <Link key={link.label} href={link.href} style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '17px', marginBottom: '12px', textDecoration: 'none' }}>
+              <Link key={link.label} href={link.href} className="footer-link" style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '17px', marginBottom: '12px', textDecoration: 'none' }}>
                 {link.label}
               </Link>
             ))}
@@ -48,7 +48,7 @@ export default function Footer({ lang }: FooterProps) {
         </div>
 
         <div style={{ borderTop: '0.5px solid rgba(255,255,255,0.06)', paddingTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
-          <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '15px' }}>
+          <span className="footer-copy" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '15px' }}>
             {f.copy}
           </span>
           <div style={{ display: 'flex', gap: '20px' }}>

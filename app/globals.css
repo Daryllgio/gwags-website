@@ -1116,3 +1116,23 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) {
   .hero-buttons { flex-direction: column !important; align-items: center !important; }
 }
+
+/* Footer text */
+@media (max-width: 768px) {
+  .footer-link { font-size: 15px !important; }
+  .footer-copy { font-size: 13px !important; }
+  .footer-tagline { font-size: 15px !important; }
+}
+@media (max-width: 480px) {
+  .footer-link { font-size: 14px !important; }
+  .footer-copy { font-size: 12px !important; }
+  .footer-tagline { font-size: 14px !important; }
+}
+
+/* "Our vision and mission" link */
+@media (max-width: 768px) {
+  .wwa-vision-link { font-size: 15px !important; }
+}
+@media (max-width: 480px) {
+  .wwa-vision-link { font-size: 14px !important; }
+}
