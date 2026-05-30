@@ -1115,6 +1115,10 @@ h1, h2, h3, h4 {
 /* Hero buttons — stack vertically at mobile (768px), centred not stretched */
 @media (max-width: 768px) {
   .hero-buttons { flex-direction: column !important; align-items: center !important; }
+  .hero-btn { min-width: 220px !important; text-align: center !important; }
+}
+@media (max-width: 480px) {
+  .hero-btn { min-width: 200px !important; }
 }
 
 /* Footer text */
