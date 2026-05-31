@@ -29,11 +29,8 @@ export default function LeadershipQuote({ lang }: LeadershipQuoteProps) {
         <div className="lq-name" style={{ color: '#D4AF37', fontSize: '19px', fontWeight: 500, letterSpacing: '0.08em', marginBottom: '6px' }}>
           {q.name}
         </div>
-        <div className="lq-role" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', letterSpacing: '0.04em', marginBottom: '4px' }}>
-          {q.role}
-        </div>
         <div className="lq-role" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', letterSpacing: '0.04em' }}>
-          {q.roleOrg}
+          {q.role}
         </div>
 
       </div>
