@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { Lang } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
-import StatsTicker from '@/components/StatsTicker'
 import WhatWeAre from '@/components/WhatWeAre'
 import Initiatives from '@/components/Initiatives'
 import WhyGwags from '@/components/WhyGwags'
@@ -24,7 +23,6 @@ export default function Home() {
     <main>
       <Nav lang={lang} onToggleLang={toggleLang} />
       <Hero lang={lang} />
-      <StatsTicker lang={lang} />
       <WhatWeAre lang={lang} />
       <Initiatives lang={lang} />
       <WhyGwags lang={lang} />
