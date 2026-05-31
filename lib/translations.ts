@@ -613,7 +613,7 @@ export const t = {
       h2: 'Prêt à construire quelque chose qui dure?',
       body: 'Gwags construit une infrastructure internationale pour l\'impact. Contactez-nous pour explorer comment nous pouvons travailler ensemble.',
       btn1: 'Nous contacter',
-      btn2: 'Nos initiatives',
+      btn2: 'Comment nous travaillons',
     },
     footer: {
       tagline: 'Un réseau mondial. Une vision commune. Un impact durable.',

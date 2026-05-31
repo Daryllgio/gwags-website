@@ -15,8 +15,9 @@ export default function Footer({ lang }: FooterProps) {
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '48px', marginBottom: '48px' }} className="footer-grid">
 
           <div>
-            <div className="footer-logo" style={{ color: '#D4AF37', fontSize: '20px', fontFamily: 'Georgia, serif', letterSpacing: '0.1em', marginBottom: '10px' }}>
-              Gwags
+            {/* LOGO: Replace this div with <Image src="/images/gwags-logo.svg" alt="Gwags" /> when your logo file is ready */}
+            <div className="footer-logo-ph" style={{ width: '120px', height: '36px', background: 'rgba(212,175,55,0.1)', border: '1px dashed rgba(212,175,55,0.4)', borderRadius: '3px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+              <span style={{ color: 'rgba(212,175,55,0.5)', fontSize: '10px', letterSpacing: '0.15em' }}>LOGO</span>
             </div>
             <p className="footer-tagline" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '17px', lineHeight: 1.82, maxWidth: '320px', marginBottom: '0' }}>
               {f.tagline}
@@ -24,7 +25,7 @@ export default function Footer({ lang }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="footer-col-heading" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '10px', letterSpacing: '0.2em', marginBottom: '18px' }}>
+            <h4 className="footer-col-heading" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '10px', fontWeight: 600, letterSpacing: '0.2em', marginBottom: '18px' }}>
               {f.col1.heading}
             </h4>
             {f.col1.links.map((link) => (
@@ -35,7 +36,7 @@ export default function Footer({ lang }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="footer-col-heading" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '10px', letterSpacing: '0.2em', marginBottom: '18px' }}>
+            <h4 className="footer-col-heading" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '10px', fontWeight: 600, letterSpacing: '0.2em', marginBottom: '18px' }}>
               {f.col2.heading}
             </h4>
             {f.col2.links.map((link) => (
@@ -53,9 +54,9 @@ export default function Footer({ lang }: FooterProps) {
           </span>
           <div style={{ display: 'flex', gap: '20px' }}>
             {/* TODO: Create this page */}
-            <Link href="/privacy" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '15px', textDecoration: 'none' }}>{f.privacy}</Link>
+            <Link href="/privacy" className="footer-privacy-terms" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '15px', textDecoration: 'none' }}>{f.privacy}</Link>
             {/* TODO: Create this page */}
-            <Link href="/terms" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '15px', textDecoration: 'none' }}>{f.terms}</Link>
+            <Link href="/terms" className="footer-privacy-terms" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '15px', textDecoration: 'none' }}>{f.terms}</Link>
           </div>
         </div>
 

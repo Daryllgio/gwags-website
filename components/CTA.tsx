@@ -24,8 +24,9 @@ export default function CTA({ lang }: CTAProps) {
           >
             {c.btn1}
           </Link>
+          {/* btn2 = "How we work" button */}
           <a
-            href="/#initiatives"
+            href="/about/how-we-work"
             style={{ background: 'none', color: 'rgba(255,255,255,0.92)', fontSize: '14px', padding: '13px 24px', border: '0.5px solid rgba(255,255,255,0.3)', borderRadius: '3px', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}
           >
             {c.btn2}
