@@ -257,6 +257,18 @@ h1, h2, h3, h4 {
 .more-about-card:hover {
   transform: translateY(-4px);
 }
+
+/* ── Disable all card hover effects on mobile (touch devices don't need them) ── */
+@media (max-width: 768px) {
+  .initiative-card { transition: none !important; }
+  .initiative-card:hover {
+    transform: none !important;
+    border-color: rgba(212,175,55,0.18) !important;
+  }
+  .more-about-card { transition: none !important; }
+  .more-about-card:hover { transform: none !important; }
+  .hww-init-card:hover { transform: none !important; box-shadow: none !important; }
+}
 @media (max-width: 1024px) {
   .more-about-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
@@ -1122,7 +1134,7 @@ h1, h2, h3, h4 {
 /* Footer text */
 @media (min-width: 768px) and (max-width: 1024px) {
   .footer-tagline      { font-size: 17px !important; }
-  .footer-col-heading  { font-size: 16px !important; }
+  .footer-col-heading  { font-size: 14px !important; }
   .footer-link         { font-size: 17px !important; }
   .footer-copy         { font-size: 16px !important; }
   .footer-privacy-terms { font-size: 16px !important; }
@@ -1130,7 +1142,7 @@ h1, h2, h3, h4 {
 }
 @media (max-width: 768px) {
   .footer-tagline      { font-size: 16px !important; }
-  .footer-col-heading  { font-size: 15px !important; }
+  .footer-col-heading  { font-size: 13px !important; }
   .footer-link         { font-size: 16px !important; }
   .footer-copy         { font-size: 15px !important; }
   .footer-privacy-terms { font-size: 15px !important; }
@@ -1138,7 +1150,7 @@ h1, h2, h3, h4 {
 }
 @media (max-width: 480px) {
   .footer-tagline      { font-size: 15px !important; }
-  .footer-col-heading  { font-size: 14px !important; }
+  .footer-col-heading  { font-size: 12px !important; }
   .footer-link         { font-size: 15px !important; }
   .footer-copy         { font-size: 14px !important; }
   .footer-privacy-terms { font-size: 14px !important; }
