@@ -886,14 +886,14 @@ h1, h2, h3, h4 {
 /* === TABLET BREAKPOINT (768px - 1024px) === */
 @media (min-width: 768px) and (max-width: 1024px) {
   /* TABLET: h1 size */
-  main h1 { font-size: 34px !important; }
+  main h1 { font-size: 36px !important; }
   /* TABLET: h2 size */
   main h2 { font-size: 28px !important; }
   /* TABLET: body text size */
   .body-text { font-size: 17px !important; }
   .hero-body { font-size: 17px !important; }
   /* TABLET: eyebrow text size */
-  .eyebrow { font-size: 14px !important; }
+  .eyebrow { font-size: 15px !important; }
   /* TABLET: section padding */
   .site-section { padding: 60px 32px !important; }
   /* TABLET: four-column grids become 2x2 */
@@ -912,14 +912,14 @@ h1, h2, h3, h4 {
 /* === MOBILE BREAKPOINT (480px - 768px) === */
 @media (max-width: 768px) {
   /* MOBILE: h1 size */
-  main h1 { font-size: 28px !important; }
+  main h1 { font-size: 30px !important; }
   /* MOBILE: h2 size */
   main h2 { font-size: 24px !important; }
   /* MOBILE: body text size */
   .body-text { font-size: 16px !important; }
   .hero-body { font-size: 16px !important; }
   /* MOBILE: eyebrow text size */
-  .eyebrow { font-size: 13px !important; }
+  .eyebrow { font-size: 15px !important; }
   /* MOBILE: section padding */
   .site-section { padding: 48px 20px !important; }
   /* MOBILE: ALL grids single column */
@@ -936,18 +936,18 @@ h1, h2, h3, h4 {
 /* === SMALL PHONE BREAKPOINT (below 480px) === */
 @media (max-width: 480px) {
   /* SMALL PHONE: h1 size */
-  main h1 { font-size: 24px !important; }
+  main h1 { font-size: 26px !important; }
   /* SMALL PHONE: h2 size */
   main h2 { font-size: 22px !important; }
   /* SMALL PHONE: body text size */
   .body-text { font-size: 15px !important; }
   .hero-body { font-size: 15px !important; }
   /* SMALL PHONE: eyebrow text size */
-  .eyebrow { font-size: 12px !important; }
+  .eyebrow { font-size: 14px !important; }
   /* SMALL PHONE: section padding */
   .site-section { padding: 36px 16px !important; }
   /* SMALL PHONE: hero adjustments */
-  .hero-h1 { font-size: 24px !important; }
+  .hero-h1 { font-size: 26px !important; }
   .hero-buttons { flex-direction: column !important; align-items: stretch !important; }
   /* SMALL PHONE: stats ticker */
   .stats-ticker { grid-template-columns: 1fr !important; }
@@ -987,13 +987,13 @@ h1, h2, h3, h4 {
   .hero-section { padding: 64px 32px 72px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 190px !important; }
+  .ini-img-ph    { height: 220px !important; }
   .ini-card-body { padding: 18px 18px 22px !important; }
-  .ini-card-title { font-size: 16px !important; }
+  .ini-card-title { font-size: 18px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 24px 18px 22px !important; }
-  .wg-card-title { font-size: 16px !important; }
+  .wg-card-title { font-size: 18px !important; }
 
   /* More About */
   .ma-img-ph    { height: 200px !important; }
@@ -1002,7 +1002,7 @@ h1, h2, h3, h4 {
 
   /* Get Involved (homepage) */
   .gi-card-box   { padding: 28px 18px 24px !important; }
-  .gi-card-title { font-size: 16px !important; }
+  .gi-card-title { font-size: 18px !important; }
 
   /* Stats ticker */
   .stats-ticker-cell { padding: 18px 20px !important; }
@@ -1014,7 +1014,7 @@ h1, h2, h3, h4 {
   .hero-section { padding: 60px 20px 64px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 160px !important; }
+  .ini-img-ph    { height: 200px !important; }
   .ini-card-body { padding: 16px 16px 20px !important; }
   .ini-card-title { font-size: 17px !important; }
 
@@ -1029,7 +1029,7 @@ h1, h2, h3, h4 {
 
   /* Get Involved (homepage) */
   .gi-card-box   { padding: 28px 16px 24px !important; }
-  .gi-card-title { font-size: 16px !important; }
+  .gi-card-title { font-size: 17px !important; }
 
   /* Stats ticker */
   .stats-ticker-cell { padding: 16px 20px !important; }
@@ -1047,13 +1047,13 @@ h1, h2, h3, h4 {
   .hero-section { padding: 48px 16px 56px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 140px !important; }
+  .ini-img-ph    { height: 185px !important; }
   .ini-card-body { padding: 14px 14px 18px !important; }
-  .ini-card-title { font-size: 15px !important; }
+  .ini-card-title { font-size: 16px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 20px 14px 18px !important; }
-  .wg-card-title { font-size: 15px !important; }
+  .wg-card-title { font-size: 16px !important; }
 
   /* More About */
   .ma-img-ph    { height: 150px !important; }
@@ -1062,7 +1062,7 @@ h1, h2, h3, h4 {
 
   /* Get Involved (homepage) */
   .gi-card-box   { padding: 24px 14px 20px !important; }
-  .gi-card-title { font-size: 15px !important; }
+  .gi-card-title { font-size: 16px !important; }
 
   /* Stats ticker */
   .stats-ticker-cell { padding: 14px 12px !important; }
@@ -1087,13 +1087,13 @@ h1, h2, h3, h4 {
 
 /* WhatWeAre pillar titles ("Institutional development", etc.) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .wwa-pillar-title { font-size: 16px !important; }
+  .wwa-pillar-title { font-size: 18px !important; }
 }
 @media (max-width: 768px) {
-  .wwa-pillar-title { font-size: 15px !important; }
+  .wwa-pillar-title { font-size: 17px !important; }
 }
 @media (max-width: 480px) {
-  .wwa-pillar-title { font-size: 14px !important; }
+  .wwa-pillar-title { font-size: 16px !important; }
 }
 
 /* Stats ticker numbers ("4+", "3", "1") */
@@ -1130,9 +1130,26 @@ h1, h2, h3, h4 {
 }
 
 /* "Our vision and mission" link */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .wwa-vision-link { font-size: 17px !important; }
+}
 @media (max-width: 768px) {
-  .wwa-vision-link { font-size: 15px !important; }
+  .wwa-vision-link { font-size: 16px !important; }
 }
 @media (max-width: 480px) {
-  .wwa-vision-link { font-size: 14px !important; }
+  .wwa-vision-link { font-size: 15px !important; }
+}
+
+/* Leadership Quote name and role */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .lq-name { font-size: 18px !important; }
+  .lq-role { font-size: 17px !important; }
+}
+@media (max-width: 768px) {
+  .lq-name { font-size: 17px !important; }
+  .lq-role { font-size: 16px !important; }
+}
+@media (max-width: 480px) {
+  .lq-name { font-size: 16px !important; }
+  .lq-role { font-size: 15px !important; }
 }

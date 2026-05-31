@@ -69,7 +69,7 @@ export default function Initiatives({ lang }: InitiativesProps) {
                   <div style={{ marginBottom: '16px' }}>
                     <Icon size={24} color="#D4AF37" />
                   </div>
-                  <div className="ini-card-title" style={{ color: '#fff', fontSize: '18px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35 }}>
+                  <div className="ini-card-title" style={{ color: '#fff', fontSize: '19px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35 }}>
                     {item.title}
                   </div>
                   <p className="body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.68, flex: 1 }}>

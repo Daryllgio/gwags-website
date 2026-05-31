@@ -11,7 +11,7 @@ export default function LeadershipQuote({ lang }: LeadershipQuoteProps) {
     <section className="leadership-quote-section" style={{ background: '#0A1128', padding: '88px 28px' }}>
       <div style={{ maxWidth: '780px', margin: '0 auto', textAlign: 'center' }}>
 
-        <div style={{ color: '#D4AF37', fontSize: '64px', fontFamily: 'Georgia, serif', lineHeight: 0.8, marginBottom: '32px', opacity: 0.5 }}>
+        <div style={{ color: '#D4AF37', fontSize: '64px', fontFamily: 'Georgia, serif', lineHeight: 0.8, marginBottom: '12px', opacity: 0.5 }}>
           &ldquo;
         </div>
 
@@ -26,11 +26,14 @@ export default function LeadershipQuote({ lang }: LeadershipQuoteProps) {
           <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '16px', letterSpacing: '0.05em' }}>DGB</span>
         </div>
 
-        <div style={{ color: '#D4AF37', fontSize: '17px', fontWeight: 500, letterSpacing: '0.08em', marginBottom: '6px' }}>
+        <div className="lq-name" style={{ color: '#D4AF37', fontSize: '19px', fontWeight: 500, letterSpacing: '0.08em', marginBottom: '6px' }}>
           {q.name}
         </div>
-        <div style={{ color: 'rgba(255,255,255,0.85)', fontSize: '16px', letterSpacing: '0.04em' }}>
+        <div className="lq-role" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', letterSpacing: '0.04em', marginBottom: '4px' }}>
           {q.role}
+        </div>
+        <div className="lq-role" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', letterSpacing: '0.04em' }}>
+          {q.roleOrg}
         </div>
 
       </div>

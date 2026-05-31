@@ -22,7 +22,7 @@ export default function WhatWeAre({ lang }: WhatWeAreProps) {
           <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.82, marginBottom: '16px' }}>{w.p1}</p>
           <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.82, marginBottom: '16px' }}>{w.p2}</p>
           <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.82, marginBottom: '28px' }}>{w.p3}</p>
-          <Link href="/about/our-role" className="wwa-vision-link" style={{ color: '#D4AF37', fontSize: '17px', textDecoration: 'none', borderBottom: '0.5px solid rgba(212,175,55,0.5)', paddingBottom: '2px', letterSpacing: '0.06em' }}>
+          <Link href="/about/our-role#vision-mission" className="wwa-vision-link" style={{ color: '#D4AF37', fontSize: '18px', textDecoration: 'none', borderBottom: '0.5px solid rgba(212,175,55,0.5)', paddingBottom: '2px', letterSpacing: '0.06em' }}>
             {w.link}
           </Link>
         </div>
@@ -39,7 +39,7 @@ export default function WhatWeAre({ lang }: WhatWeAreProps) {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
                 <div style={{ width: '6px', height: '6px', background: '#D4AF37', borderRadius: '50%', flexShrink: 0 }} />
-                <div className="wwa-pillar-title" style={{ fontSize: '18px', fontWeight: 500, color: '#0A1128' }}>{pillar.title}</div>
+                <div className="wwa-pillar-title" style={{ fontSize: '19px', fontWeight: 500, color: '#0A1128' }}>{pillar.title}</div>
               </div>
               <p className="body-text" style={{ color: '#5A5A5A', fontSize: '18px', lineHeight: 1.7, paddingLeft: '16px' }}>
                 {pillar.desc}

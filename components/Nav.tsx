@@ -259,12 +259,6 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
             </Link>
           ))}
 
-          <button
-            onClick={() => { onToggleLang(); setMenuOpen(false) }}
-            style={{ marginTop: '16px', background: 'none', border: '0.5px solid rgba(212,175,55,0.6)', color: '#D4AF37', fontSize: '12px', padding: '8px 16px', borderRadius: '3px', cursor: 'pointer', minHeight: '44px' }}
-          >
-            {lang === 'en' ? 'FR' : 'EN'}
-          </button>
         </div>
       )}
 

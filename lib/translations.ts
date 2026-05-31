@@ -93,7 +93,8 @@ export const t = {
     quote: {
       text: 'The challenges facing our societies are too interconnected for any single organization to solve alone. Gwags exists to build the infrastructure that makes collective action possible so that the people, initiatives and institutions committed to change can do so with the structure, credibility and network they deserve.',
       name: 'Daryll Giovanny Bikak Mbal',
-      role: 'Founder and Board Chair, Gwags Global Impact Institution',
+      role: 'Founder and Board Chair',
+      roleOrg: 'Gwags Global Impact Institution',
     },
     ourStory: {
       eyebrow: 'OUR STORY',
@@ -531,7 +532,8 @@ export const t = {
     quote: {
       text: 'Les défis auxquels nos sociétés font face sont trop interconnectés pour qu\'une seule organisation puisse les résoudre seule. Gwags existe pour construire l\'infrastructure qui rend l\'action collective possible afin que les personnes, les initiatives et les institutions engagées dans le changement puissent le faire avec la structure, la crédibilité et le réseau qu\'elles méritent.',
       name: 'Daryll Giovanny Bikak Mbal',
-      role: 'Fondateur et Président du Conseil, Gwags Global Impact Institution',
+      role: 'Fondateur et Président du Conseil',
+      roleOrg: 'Gwags Global Impact Institution',
     },
     ourStory: {
       eyebrow: 'NOTRE HISTOIRE',

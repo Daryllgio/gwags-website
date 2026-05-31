@@ -75,7 +75,7 @@ function NarrativeSection({ lang }: { lang: Lang }) {
 function VisionMissionSection({ lang }: { lang: Lang }) {
   const p = t[lang].ourRole.visionMission
   return (
-    <section className="or-vm-section">
+    <section id="vision-mission" className="or-vm-section">
       <div className="or-vm-grid">
         <div className="or-vm-block">
           <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.2em', margin: '0 0 12px 0' }}>
