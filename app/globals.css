@@ -474,7 +474,7 @@ h1, h2, h3, h4 {
 }
 
 .tl2-body {
-  font-size: 17px;
+  font-size: 18px;
   color: #4A4A4A;
   line-height: 1.8;
   overflow: hidden;
@@ -563,8 +563,7 @@ h1, h2, h3, h4 {
 
   .tl2-event {
     display: block;
-    /* left padding (24px) = gutter for the month marker; the gold line at 35px passes through it */
-    padding: 0 24px;
+    padding: 0;
     min-height: auto;
     margin-bottom: 48px;
   }
@@ -574,6 +573,8 @@ h1, h2, h3, h4 {
     justify-content: flex-start;
     width: auto;
     margin-bottom: 8px;
+    /* left gutter for the month marker (the gold line at 35px passes through it) */
+    padding-left: 24px;
   }
 
   .tl2-content-spacer {
@@ -581,17 +582,22 @@ h1, h2, h3, h4 {
   }
 
   .tl2-content {
-    max-width: 100%;
-    /* ADJUST ▸ left padding so the title/body sit to the RIGHT of the gold line (clearance from the line) */
-    padding-left: 38px;
+    /* VERTICAL TIMELINE: content width - adjust here */
+    max-width: 78%;
+    width: auto;
+    /* VERTICAL TIMELINE: gap between line and content - adjust here (gold line 35px + 40px gap = 75px) */
+    margin-left: 75px;
+    /* VERTICAL TIMELINE: right margin - adjust here */
+    margin-right: 24px;
   }
 
   .tl2-image-col {
-    width: 100%;
+    /* image matches the content area: keep these equal to .tl2-content above */
+    max-width: 78%;   /* VERTICAL TIMELINE: content width - adjust here (match .tl2-content) */
+    width: auto;
     margin-top: 16px;
-    margin-left: 0;
-    /* ADJUST ▸ left padding so the image sits to the RIGHT of the gold line (keep equal to .tl2-content) */
-    padding-left: 38px;
+    margin-left: 75px;   /* VERTICAL TIMELINE: gap between line and content - adjust here (match .tl2-content) */
+    margin-right: 24px;  /* VERTICAL TIMELINE: right margin - adjust here (match .tl2-content) */
   }
 
   .tl2-image-ph {
@@ -920,6 +926,11 @@ h1, h2, h3, h4 {
   .os-photo-banner { height: 600px !important; }
   .os-narrative-h3 { font-size: 24px !important; }
   .tl2-month-text { font-size: 15px !important; }
+  /* Timeline — tablet */
+  .tl2-year-num { font-size: 40px !important; }
+  .tl2-year-num.active { font-size: 70px !important; }
+  .tl2-title { font-size: 26px !important; }
+  .tl2-body { font-size: 17px !important; }
 }
 
 /* Our Story — small phone (≤480px). Higher specificity (.os-hero-section .os-hero-h1)
@@ -928,6 +939,9 @@ h1, h2, h3, h4 {
   .os-hero-section .os-hero-h1 { font-size: 28px !important; }
   .os-narrative-h3 { font-size: 21px !important; }
   .tl2-month-text { font-size: 15px !important; }
+  /* Timeline — small phone */
+  .tl2-year-num { font-size: 25px !important; }
+  .tl2-year-num.active { font-size: 55px !important; }
 }
 
 /* ================================================================
@@ -985,6 +999,12 @@ h1, h2, h3, h4 {
   /* MOBILE: Timeline body text */
   .tl2-body { font-size: 16px !important; }
   .tl2-eyebrow { font-size: 13px !important; }
+  /* MOBILE: Timeline year number */
+  .tl2-year-num { font-size: 30px !important; }
+  .tl2-year-num.active { font-size: 60px !important; }
+  /* MOBILE: Timeline content width — VERTICAL TIMELINE: content width - adjust here (phone) */
+  .tl2-content { max-width: 85% !important; }
+  .tl2-image-col { max-width: 85% !important; }
 }
 
 /* === SMALL PHONE BREAKPOINT (below 480px) === */
