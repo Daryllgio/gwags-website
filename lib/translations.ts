@@ -71,7 +71,7 @@ export const t = {
       h2: 'Programs built to create lasting change.',
       body: 'Gwags carries its own portfolio of initiatives, each designed around a specific dimension of societal transformation. These are the building blocks of our broader institutional mission.',
       items: [
-        { title: 'Gwags Scholars Program', desc: 'A flagship program investing in the next generation of African leaders through financial support and professional development opportunities.', tag: 'EXCELLENCE' },
+        { title: 'Gwags Scholars Program', desc: 'A flagship program investing in the next generation of Cameroonian leaders through financial support and professional development opportunities.', tag: 'EXCELLENCE' },
         { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY' },
         { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH' },
         { title: 'Youth Development', desc: 'Where it all began. Gwags continues to invest in the protection, education and empowerment of vulnerable youth.', tag: 'YOUTH' },
@@ -223,7 +223,7 @@ export const t = {
       initiatives: {
         eyebrow: 'OUR ACTIVE INITIATIVES',
         items: [
-          { title: 'Gwags Scholars Program', desc: 'A flagship program investing in the next generation of African leaders through financial support and professional development opportunities.', href: '/initiatives/scholars' },
+          { title: 'Gwags Scholars Program', desc: 'A flagship program investing in the next generation of Cameroonian leaders through financial support and professional development opportunities.', href: '/initiatives/scholars' },
           { title: 'Mbal Lekeaka Fund', desc: 'Channeling resources into community-led initiatives with measurable impact.', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Health Outreach Program', desc: 'Bringing free healthcare to underserved communities through field campaigns.', href: '/initiatives/health-outreach' },
           { title: 'Youth Development', desc: 'Protecting, educating, and empowering vulnerable youth since day one.', href: '/initiatives/youth-development' },
@@ -321,7 +321,7 @@ export const t = {
           {
             year: '2026', month: 'JANUARY',
             title: 'Launch of the Gwags Scholars Program',
-            body: 'Gwags launches its first flagship initiative, a scholarship program awarding grants to university students across Cameroon. The program recognizes academic excellence and invests in the next generation of African leaders.',
+            body: 'Gwags launches the Gwags Scholars Program, a flagship initiative designed to support outstanding university students across Cameroon. The program provides financial support and professional development opportunities, investing in the next generation of Cameroonian leaders.',
             photo: 'Photo: scholars program',
           },
           {
@@ -512,7 +512,7 @@ export const t = {
       h2: 'Des programmes construits pour créer un changement durable.',
       body: 'Gwags porte son propre portefeuille d\'initiatives, chacune conçue autour d\'une dimension spécifique de la transformation sociale.',
       items: [
-        { title: 'Programme Gwags Scholars', desc: 'Un programme phare investissant dans la prochaine génération de leaders africains à travers un soutien financier et des opportunités de développement professionnel.', tag: 'EXCELLENCE' },
+        { title: 'Programme Gwags Scholars', desc: 'Un programme phare investissant dans la prochaine génération de leaders camerounais à travers un soutien financier et des opportunités de développement professionnel.', tag: 'EXCELLENCE' },
         { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ' },
         { title: 'Programme de Santé Communautaire', desc: 'Apporter des soins de santé gratuits et l\'éducation médicale aux communautés mal desservies.', tag: 'SANTÉ' },
         { title: 'Développement des Jeunes', desc: 'Là où tout a commencé. Gwags continue d\'investir dans la protection, l\'éducation et l\'autonomisation des jeunes vulnérables.', tag: 'JEUNESSE' },
@@ -663,7 +663,7 @@ export const t = {
       initiatives: {
         eyebrow: 'NOS INITIATIVES ACTIVES',
         items: [
-          { title: 'Programme Gwags Scholars', desc: 'Un programme phare investissant dans la prochaine génération de leaders africains à travers un soutien financier et des opportunités de développement professionnel.', href: '/initiatives/scholars' },
+          { title: 'Programme Gwags Scholars', desc: 'Un programme phare investissant dans la prochaine génération de leaders camerounais à travers un soutien financier et des opportunités de développement professionnel.', href: '/initiatives/scholars' },
           { title: 'Fonds Mbal Lekeaka', desc: 'Canaliser les ressources vers des initiatives communautaires à impact mesurable.', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Programme de Santé', desc: 'Apporter des soins gratuits aux communautés mal desservies via des campagnes de terrain.', href: '/initiatives/health-outreach' },
           { title: 'Développement des Jeunes', desc: "Protéger, éduquer et autonomiser les jeunes vulnérables depuis le premier jour.", href: '/initiatives/youth-development' },
@@ -761,7 +761,7 @@ export const t = {
           {
             year: '2026', month: 'JANVIER',
             title: 'Lancement du Programme Gwags Scholars',
-            body: "Gwags lance sa première initiative phare, un programme de bourses attribuant des subventions à des étudiants universitaires à travers le Cameroun. Le programme reconnaît l'excellence académique et investit dans la prochaine génération de leaders africains.",
+            body: "Gwags lance le Programme Gwags Scholars, une initiative phare conçue pour soutenir les étudiants universitaires exceptionnels à travers le Cameroun. Le programme offre un soutien financier et des opportunités de développement professionnel, investissant dans la prochaine génération de leaders camerounais.",
             photo: 'Photo: programme Scholars',
           },
           {
