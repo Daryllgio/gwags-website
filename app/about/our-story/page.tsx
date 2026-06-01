@@ -43,7 +43,7 @@ function HeroSection({ lang }: { lang: Lang }) {
 function PhotoBanner({ lang }: { lang: Lang }) {
   const p = t[lang].ourStoryPage
   return (
-    <div className="os-photo-banner" style={{ height: '480px', background: '#1a2a44', borderTop: '2px solid #D4AF37', borderBottom: '2px solid #D4AF37', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.25)', fontSize: '13px', letterSpacing: '0.22em', position: 'relative', overflow: 'hidden' }}>
+    <div className="os-photo-banner" style={{ height: '510px', background: '#1a2a44', borderTop: '2px solid #D4AF37', borderBottom: '2px solid #D4AF37', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.25)', fontSize: '13px', letterSpacing: '0.22em', position: 'relative', overflow: 'hidden' }}>
       {/* IMAGE: Replace this placeholder with <Image src="/images/our-story-hero.jpg" alt="Our Story" fill style={{ objectFit: 'cover' }} /> */}
       {p.photoBanner}
     </div>
@@ -59,13 +59,13 @@ function NarrativeSection({ lang }: { lang: Lang }) {
         {p.narrative.map((para, i) => (
           <Fragment key={i}>
             {p.narrativeHeadings[i] && (
-              <h3 style={{ fontSize: '24px', fontWeight: 500, color: '#0A1128', marginTop: '40px', marginBottom: '16px', fontFamily: 'Georgia, serif' }}>
+              <h3 className="os-narrative-h3" style={{ fontSize: '24px', fontWeight: 500, color: '#0A1128', marginTop: '30px', marginBottom: '13px', fontFamily: 'Georgia, serif' }}>
                 {p.narrativeHeadings[i]}
               </h3>
             )}
             <p
               className={i === 0 ? 'narrative-drop-cap body-text' : 'body-text'}
-              style={{ fontSize: '18px', lineHeight: 1.85, color: '#4A4A4A', marginTop: 0, marginBottom: i < p.narrative.length - 1 ? '28px' : 0 }}
+              style={{ fontSize: '18px', lineHeight: 1.85, color: '#4A4A4A', marginTop: 0, marginBottom: i < p.narrative.length - 1 ? '18px' : 0 }}
             >
               {para}
             </p>

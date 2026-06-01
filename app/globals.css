@@ -372,8 +372,8 @@ h1, h2, h3, h4 {
 .tl2-timeline-body::before {
   content: '';
   position: absolute;
-  /* center of tl2-left-col: 80px event padding + 70px (half of 140px left-col) */
-  left: 150px;
+  /* center of tl2-left-col: 80px event padding + 85px (half of 170px left-col) */
+  left: 165px;
   /* starts 10px above first year text: year-header padding-top(48) + year-num padding-top(4) - 10 = 42px */
   top: 42px;
   bottom: 0;
@@ -389,7 +389,7 @@ h1, h2, h3, h4 {
 }
 
 .tl2-year-left-col {
-  width: 140px;
+  width: 170px;
   flex-shrink: 0;
   display: flex;
   justify-content: center;
@@ -423,7 +423,7 @@ h1, h2, h3, h4 {
 }
 
 .tl2-left-col {
-  width: 140px;
+  width: 170px;
   flex-shrink: 0;
   display: flex;
   justify-content: center;
@@ -431,7 +431,7 @@ h1, h2, h3, h4 {
 }
 
 .tl2-month-text {
-  font-size: 10px;
+  font-size: 18px;
   letter-spacing: 0.18em;
   color: #D4AF37;
   background: #F7F6F3;
@@ -887,11 +887,27 @@ h1, h2, h3, h4 {
 /* ── Our Story Page ── */
 @media (max-width: 768px) {
   .os-hero-section { padding: 60px 20px 48px !important; }
-  .os-hero-h1 { font-size: 28px !important; }
+  .os-hero-h1 { font-size: 32px !important; }
   .os-photo-banner { height: 280px !important; }
   .os-narrative { padding: 48px 20px !important; }
+  .os-narrative-h3 { font-size: 22px !important; }
   .narrative-drop-cap::first-letter { font-size: 48px !important; }
+  .tl2-month-text { font-size: 16px !important; }
   .os-closing { padding: 60px 20px !important; }
+}
+
+/* Our Story — tablet (769–1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .os-narrative-h3 { font-size: 23px !important; }
+  .tl2-month-text { font-size: 17px !important; }
+}
+
+/* Our Story — small phone (≤480px). Higher specificity (.os-hero-section .os-hero-h1)
+   so the Hero H1 override wins over the shared .hero-h1 rules regardless of order. */
+@media (max-width: 480px) {
+  .os-hero-section .os-hero-h1 { font-size: 28px !important; }
+  .os-narrative-h3 { font-size: 19px !important; }
+  .tl2-month-text { font-size: 15px !important; }
 }
 
 /* ================================================================
@@ -1003,6 +1019,7 @@ h1, h2, h3, h4 {
 @media (min-width: 768px) and (max-width: 1024px) {
   /* Hero section */
   .hero-section { padding: 64px 32px 72px !important; }
+  .hero-section .hero-h1 { font-size: 36px !important; }
 
   /* Initiatives */
   .ini-img-ph    { height: 220px !important; }
