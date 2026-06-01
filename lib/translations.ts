@@ -303,7 +303,7 @@ export const t = {
           {
             year: '2021', month: 'DECEMBER',
             title: 'First orphanage visit',
-            body: 'Four high school students in Douala, Cameroon, have to undertake a community service project as part of their academic program. They organize a visit to the Ami de Jésuite orphanage, where they spend time with the children, provide essential supplies, and witness firsthand the realities these children face daily. What is meant to fulfill an assignment becomes the starting point of a much larger commitment.',
+            body: 'Four high school students in Douala, Cameroon, have to undertake a community service project as part of their academic program. They organize a visit to the Ami de Jésuite orphanage, where they spend time with the children, provide essential supplies, and witness firsthand the realities these children face daily.',
             photo: 'Photo: orphanage visit',
           },
           {
@@ -327,7 +327,7 @@ export const t = {
           {
             year: '2026', month: 'JULY',
             title: 'Launch of the Mbal Lekeaka Fund',
-            body: "Gwags establishes a dedicated grant program to fund community-led initiatives in Cameroon. The fund's first supported project is the Nguti 2026 Health Campaign, co-funded with support from strategic partners.",
+            body: 'Gwags establishes the Mbal Lekeaka Fund, a grant program designed to support community-led initiatives in Cameroon. The fund addresses a critical gap faced by many locally driven initiatives that struggle to scale or sustain their activities due to limited access to financial resources.',
             photo: 'Photo: community initiative',
           },
           {
@@ -743,7 +743,7 @@ export const t = {
           {
             year: '2021', month: 'DÉCEMBRE',
             title: "Première visite à l'orphelinat",
-            body: "Quatre lycéens à Douala, au Cameroun, doivent réaliser un projet de service communautaire dans le cadre de leur programme scolaire. Ils organisent une visite à l'orphelinat Ami de Jésuite, où ils passent du temps avec les enfants, fournissent des fournitures essentielles et constatent de première main les réalités auxquelles ces enfants font face au quotidien. Ce qui devait remplir un devoir scolaire devient le point de départ d'un engagement bien plus grand.",
+            body: "Quatre lycéens à Douala, au Cameroun, doivent réaliser un projet de service communautaire dans le cadre de leur programme scolaire. Ils organisent une visite à l'orphelinat Ami de Jésuite, où ils passent du temps avec les enfants, fournissent des fournitures essentielles et constatent de première main les réalités auxquelles ces enfants font face au quotidien.",
             photo: "Photo: orphelinat",
           },
           {
@@ -767,7 +767,7 @@ export const t = {
           {
             year: '2026', month: 'JUILLET',
             title: 'Lancement du Fonds Mbal Lekeaka',
-            body: "Gwags crée un programme de subventions dédié au financement d'initiatives communautaires au Cameroun. Le premier projet soutenu est la Campagne de Santé Nguti 2026, cofinancée avec le soutien de partenaires stratégiques.",
+            body: "Gwags établit le Fonds Mbal Lekeaka, un programme de subventions conçu pour soutenir les initiatives communautaires au Cameroun. Le fonds répond à un manque critique auquel font face de nombreuses initiatives locales qui peinent à se développer ou à maintenir leurs activités en raison d'un accès limité aux ressources financières.",
             photo: 'Photo: initiative communautaire',
           },
           {
