@@ -43,7 +43,7 @@ function HeroSection({ lang }: { lang: Lang }) {
 function PhotoBanner({ lang }: { lang: Lang }) {
   const p = t[lang].ourStoryPage
   return (
-    <div className="os-photo-banner" style={{ height: '510px', background: '#1a2a44', borderTop: '2px solid #D4AF37', borderBottom: '2px solid #D4AF37', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.25)', fontSize: '13px', letterSpacing: '0.22em', position: 'relative', overflow: 'hidden' }}>
+    <div className="os-photo-banner" style={{ height: '600px', background: '#1a2a44', borderTop: '2px solid #D4AF37', borderBottom: '2px solid #D4AF37', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.25)', fontSize: '13px', letterSpacing: '0.22em', position: 'relative', overflow: 'hidden' }}>
       {/* IMAGE: Replace this placeholder with <Image src="/images/our-story-hero.jpg" alt="Our Story" fill style={{ objectFit: 'cover' }} /> */}
       {p.photoBanner}
     </div>
