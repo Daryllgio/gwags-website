@@ -284,7 +284,7 @@ export const t = {
       },
       photoBanner: 'HERO PHOTO',
       narrative: [
-        'In December 2021, four high school students in Douala, Cameroon, were assigned a community service project as part of their academic program. In order to fulfill this requirement, they organized a visit to the Ami de Jésuite orphanage, where they spent time with the children, provided essential supplies, and witnessed firsthand the conditions these children were navigating daily.',
+        'In December 2021, four high school students in Douala, Cameroon, had to undertake a community service project as part of their academic program. In order to fulfill this requirement, they organized a visit to the Ami de Jésuite orphanage, where they spent time with the children, provided essential supplies, and witnessed firsthand the conditions these children were navigating daily.',
         'The experience left a lasting impression. They encountered children with limited resources and few opportunities, but with undeniable potential. The gaps were obvious, but so was the possibility of what consistent, structured support could unlock over time.',
         'That visit was meant to fulfill an assignment. But what they experienced made it impossible to treat as a one-time effort. It became the starting point of a much larger commitment.',
         'The following year, the team organized a second initiative. They partnered with a Cameroonian organization called Codam Technologies to provide hands-on technology exposure to the children. The scope of the work had already expanded well beyond basic support, and what had started as an orphanage visit was evolving into something more structured.',
@@ -303,7 +303,7 @@ export const t = {
           {
             year: '2021', month: 'DECEMBER',
             title: 'First orphanage visit',
-            body: 'Four students visit the Ami de Jesuite orphanage in Douala as part of a school initiative. What was planned as a one-time project becomes the starting point of a longer commitment to youth support and community impact.',
+            body: 'Four high school students in Douala, Cameroon, had to undertake a community service project as part of their academic program. They organized a visit to the Ami de Jésuite orphanage, where they spent time with the children, provided essential supplies, and witnessed firsthand the realities these children faced daily. What was meant to fulfill an assignment became the starting point of a much larger commitment.',
             photo: 'Photo: orphanage visit',
           },
           {
@@ -724,7 +724,7 @@ export const t = {
       },
       photoBanner: 'PHOTO PRINCIPALE',
       narrative: [
-        "En décembre 2021, quatre lycéens à Douala, au Cameroun, se sont vu confier un projet de service communautaire dans le cadre de leur programme scolaire. Pour répondre à cette exigence, ils ont organisé une visite à l'orphelinat Ami de Jésuite, où ils ont passé du temps avec les enfants, fourni des fournitures essentielles et constaté de première main les conditions que ces enfants affrontaient au quotidien.",
+        "En décembre 2021, quatre lycéens à Douala, au Cameroun, devaient réaliser un projet de service communautaire dans le cadre de leur programme scolaire. Pour répondre à cette exigence, ils ont organisé une visite à l'orphelinat Ami de Jésuite, où ils ont passé du temps avec les enfants, fourni des fournitures essentielles et constaté de première main les conditions que ces enfants affrontaient au quotidien.",
         "L'expérience a laissé une impression durable. Ils ont rencontré des enfants disposant de ressources limitées et de peu d'opportunités, mais dotés d'un potentiel indéniable. Les lacunes étaient évidentes, mais la possibilité de ce qu'un soutien constant et structuré pourrait débloquer au fil du temps l'était tout autant.",
         "Cette visite devait remplir un devoir scolaire. Mais ce qu'ils ont vécu a rendu impossible de la traiter comme un effort ponctuel. Elle est devenue le point de départ d'un engagement bien plus grand.",
         "L'année suivante, l'équipe a organisé une deuxième initiative. Cette fois, ils se sont associés à une organisation camerounaise appelée Codam Technologies pour offrir aux enfants une exposition pratique à la technologie. La portée du travail avait déjà largement dépassé le soutien de base, et ce qui avait commencé comme une visite dans un orphelinat évoluait vers quelque chose de plus structuré.",
@@ -743,7 +743,7 @@ export const t = {
           {
             year: '2021', month: 'DÉCEMBRE',
             title: "Première visite à l'orphelinat",
-            body: "Quatre étudiants visitent l'orphelinat Ami de Jesuite à Douala dans le cadre d'une initiative scolaire. Ce qui était prévu comme un projet ponctuel devient le point de départ d'un engagement durable en faveur du soutien à la jeunesse et de l'impact communautaire.",
+            body: "Quatre lycéens à Douala, au Cameroun, devaient réaliser un projet de service communautaire dans le cadre de leur programme scolaire. Ils ont organisé une visite à l'orphelinat Ami de Jésuite, où ils ont passé du temps avec les enfants, fourni des fournitures essentielles et constaté de première main les réalités auxquelles ces enfants faisaient face au quotidien. Ce qui devait remplir un devoir scolaire est devenu le point de départ d'un engagement bien plus grand.",
             photo: "Photo: orphelinat",
           },
           {
