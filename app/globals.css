@@ -890,7 +890,7 @@ h1, h2, h3, h4 {
   .os-hero-h1 { font-size: 32px !important; }
   .os-photo-banner { height: 280px !important; }
   .os-narrative { padding: 48px 20px !important; }
-  .os-narrative-h3 { font-size: 22px !important; }
+  .os-narrative-h3 { font-size: 23px !important; }
   .narrative-drop-cap::first-letter { font-size: 48px !important; }
   .tl2-month-text { font-size: 16px !important; }
   .os-closing { padding: 60px 20px !important; }
@@ -898,7 +898,7 @@ h1, h2, h3, h4 {
 
 /* Our Story — tablet (769–1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .os-narrative-h3 { font-size: 23px !important; }
+  .os-narrative-h3 { font-size: 24px !important; }
   .tl2-month-text { font-size: 17px !important; }
 }
 
@@ -906,7 +906,7 @@ h1, h2, h3, h4 {
    so the Hero H1 override wins over the shared .hero-h1 rules regardless of order. */
 @media (max-width: 480px) {
   .os-hero-section .os-hero-h1 { font-size: 28px !important; }
-  .os-narrative-h3 { font-size: 19px !important; }
+  .os-narrative-h3 { font-size: 21px !important; }
   .tl2-month-text { font-size: 15px !important; }
 }
 

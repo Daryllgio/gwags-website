@@ -59,13 +59,13 @@ function NarrativeSection({ lang }: { lang: Lang }) {
         {p.narrative.map((para, i) => (
           <Fragment key={i}>
             {p.narrativeHeadings[i] && (
-              <h3 className="os-narrative-h3" style={{ fontSize: '24px', fontWeight: 500, color: '#0A1128', marginTop: '30px', marginBottom: '13px', fontFamily: 'Georgia, serif' }}>
+              <h3 className="os-narrative-h3" style={{ fontSize: '24px', fontWeight: 500, color: '#0A1128', marginTop: '25px', marginBottom: '11px', fontFamily: 'Georgia, serif' }}>
                 {p.narrativeHeadings[i]}
               </h3>
             )}
             <p
               className={i === 0 ? 'narrative-drop-cap body-text' : 'body-text'}
-              style={{ fontSize: '18px', lineHeight: 1.85, color: '#4A4A4A', marginTop: 0, marginBottom: i < p.narrative.length - 1 ? '18px' : 0 }}
+              style={{ fontSize: '18px', lineHeight: 1.85, color: '#4A4A4A', marginTop: 0, marginBottom: i < p.narrative.length - 1 ? '15px' : 0 }}
             >
               {para}
             </p>
