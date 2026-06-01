@@ -303,7 +303,7 @@ export const t = {
           {
             year: '2021', month: 'DECEMBER',
             title: 'First orphanage visit',
-            body: 'Four high school students in Douala, Cameroon, had to undertake a community service project as part of their academic program. They organized a visit to the Ami de Jésuite orphanage, where they spent time with the children, provided essential supplies, and witnessed firsthand the realities these children faced daily. What was meant to fulfill an assignment became the starting point of a much larger commitment.',
+            body: 'Four high school students in Douala, Cameroon, have to undertake a community service project as part of their academic program. They organize a visit to the Ami de Jésuite orphanage, where they spend time with the children, provide essential supplies, and witness firsthand the realities these children face daily. What is meant to fulfill an assignment becomes the starting point of a much larger commitment.',
             photo: 'Photo: orphanage visit',
           },
           {
@@ -743,7 +743,7 @@ export const t = {
           {
             year: '2021', month: 'DÉCEMBRE',
             title: "Première visite à l'orphelinat",
-            body: "Quatre lycéens à Douala, au Cameroun, devaient réaliser un projet de service communautaire dans le cadre de leur programme scolaire. Ils ont organisé une visite à l'orphelinat Ami de Jésuite, où ils ont passé du temps avec les enfants, fourni des fournitures essentielles et constaté de première main les réalités auxquelles ces enfants faisaient face au quotidien. Ce qui devait remplir un devoir scolaire est devenu le point de départ d'un engagement bien plus grand.",
+            body: "Quatre lycéens à Douala, au Cameroun, doivent réaliser un projet de service communautaire dans le cadre de leur programme scolaire. Ils organisent une visite à l'orphelinat Ami de Jésuite, où ils passent du temps avec les enfants, fournissent des fournitures essentielles et constatent de première main les réalités auxquelles ces enfants font face au quotidien. Ce qui devait remplir un devoir scolaire devient le point de départ d'un engagement bien plus grand.",
             photo: "Photo: orphelinat",
           },
           {
