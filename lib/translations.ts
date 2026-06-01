@@ -314,8 +314,8 @@ export const t = {
           },
           {
             year: '2025', month: 'MAY',
-            title: 'Incorporation in the United States',
-            body: 'Gwags formalizes its structure by incorporating as a nonprofit organization in Maryland, United States. The 501(c)(3) application process begins, establishing the legal and institutional foundation for international operations.',
+            title: 'Incorporation in the United States and Cameroon',
+            body: 'Gwags formalizes its structure by incorporating as a nonprofit organization in both the United States and Cameroon. The 501(c)(3) application process begins, establishing the legal and institutional foundation for sustained international operations. What had been an informal student initiative becomes a legally recognized institution with the capacity to operate, partner, and grow on an international level.',
             photo: '',
           },
           {
@@ -754,8 +754,8 @@ export const t = {
           },
           {
             year: '2025', month: 'MAI',
-            title: 'Incorporation aux États-Unis',
-            body: "Gwags formalise sa structure en s'incorporant comme organisation à but non lucratif dans le Maryland, aux États-Unis. La procédure de demande du statut 501(c)(3) est lancée, établissant les bases juridiques et institutionnelles pour des opérations internationales.",
+            title: 'Incorporation aux États-Unis et au Cameroun',
+            body: "Gwags formalise sa structure en s'incorporant en tant qu'organisation à but non lucratif aux États-Unis et au Cameroun. Le processus de demande 501(c)(3) commence, établissant les bases juridiques et institutionnelles pour des opérations internationales durables. Ce qui avait été une initiative étudiante informelle devient une institution légalement reconnue avec la capacité d'opérer, de s'associer et de croître à l'échelle internationale.",
             photo: '',
           },
           {
