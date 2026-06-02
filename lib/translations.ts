@@ -241,11 +241,11 @@ export const t = {
           },
           {
             title: 'Strategic integration',
-            body: 'Gwags works actively with affiliated organizations to coordinate programs, align strategic objectives, and identify opportunities for collaboration within the network. As opportunities arise, resources are shared, programs are co-developed, and collective strategies are built. The goal is coordinated impact, ensuring the work of individual organizations contributes to something larger than any one of them could achieve alone.',
+            body: 'Gwags works with affiliated organizations to coordinate programs, align strategic objectives, and identify opportunities for collaboration within the network. As opportunities arise, resources are shared, programs are co-developed, and collective strategies are built. The goal is coordinated impact, ensuring the work of individual organizations contributes to something larger than any one of them could achieve alone.',
           },
           {
             title: 'Scaling together',
-            body: 'The purpose of the Gwags model is growth in impact, in reach, and in the capacity of every organization within the network to deliver on its mission. Through the network, affiliated organizations gain access to funding pathways, international partnerships, governance frameworks, and strategic visibility that would be difficult to build independently. As each organization grows, the network grows.',
+            body: 'The Gwags model is built for growth in impact, in reach, and in the capacity of every organization within the network to deliver on its mission. Through the network, affiliated organizations gain access to funding pathways, international partnerships, governance frameworks, and strategic visibility that would be difficult to build independently. As each organization grows, the network grows.',
           },
         ],
       },
@@ -678,11 +678,11 @@ export const t = {
           },
           {
             title: 'Intégration stratégique',
-            body: "Gwags travaille activement avec les organisations affiliées pour coordonner les programmes, aligner les objectifs stratégiques et identifier les opportunités de collaboration au sein du réseau. Lorsque les opportunités se présentent, les ressources sont partagées, les programmes sont co-développés et des stratégies collectives sont élaborées. L'objectif est un impact coordonné, garantissant que le travail de chaque organisation contribue à quelque chose de plus grand que ce qu'une seule pourrait accomplir.",
+            body: "Gwags travaille avec les organisations affiliées pour coordonner les programmes, aligner les objectifs stratégiques et identifier les opportunités de collaboration au sein du réseau. Lorsque les opportunités se présentent, les ressources sont partagées, les programmes sont co-développés et des stratégies collectives sont élaborées. L'objectif est un impact coordonné, garantissant que le travail de chaque organisation contribue à quelque chose de plus grand que ce qu'une seule pourrait accomplir.",
           },
           {
             title: 'Croître ensemble',
-            body: "L'objectif du modèle Gwags est la croissance en impact, en portée et en capacité de chaque organisation au sein du réseau à remplir sa mission. À travers le réseau, les organisations affiliées accèdent à des voies de financement, des partenariats internationaux, des cadres de gouvernance et une visibilité stratégique qu'il serait difficile de construire de manière indépendante. À mesure que chaque organisation grandit, le réseau grandit.",
+            body: "Le modèle Gwags est conçu pour la croissance en impact, en portée et en capacité de chaque organisation au sein du réseau à remplir sa mission. À travers le réseau, les organisations affiliées accèdent à des voies de financement, des partenariats internationaux, des cadres de gouvernance et une visibilité stratégique qu'il serait difficile de construire de manière indépendante. À mesure que chaque organisation grandit, le réseau grandit.",
           },
         ],
       },
