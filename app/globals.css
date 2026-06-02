@@ -944,6 +944,28 @@ h1, h2, h3, h4 {
   /* Timeline — small phone */
   .tl2-year-num { font-size: 25px !important; }
   .tl2-year-num.active { font-size: 55px !important; }
+
+  /* PHONE TIMELINE (≤480px): reverted to full-width content, normal padding, no gold-line offset.
+     The narrow content + gold line only applies to iPad portrait / tablet (≥480px).
+     Selectors use .tl2-event scope (specificity 0,2,0) so they win over the ≤768px
+     `.tl2-content { max-width: 60% !important }` rule that appears later in the file. */
+  /* PHONE: hide the gold vertical line (content is full width here) */
+  .tl2-timeline-body::before { display: none !important; }
+  /* PHONE: content full width with normal side padding (not pushed to the right) */
+  .tl2-event .tl2-content {
+    max-width: 100% !important;   /* PHONE content width - adjust here */
+    margin-left: 0 !important;    /* PHONE: no gold-line gap */
+    margin-right: 0 !important;
+    padding-left: 24px;           /* PHONE: normal left padding - adjust here */
+    padding-right: 24px;          /* PHONE: normal right padding - adjust here */
+  }
+  .tl2-event .tl2-image-col {
+    max-width: 100% !important;   /* PHONE image width - adjust here */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
 /* ================================================================
