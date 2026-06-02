@@ -583,7 +583,7 @@ h1, h2, h3, h4 {
 
   .tl2-content {
     /* VERTICAL TIMELINE: content width - adjust here */
-    max-width: 60%;
+    max-width: 36%;
     width: auto;
     /* VERTICAL TIMELINE: gap between line and content - adjust here (gold line 35px + 100px gap = 135px) */
     margin-left: 135px;
@@ -593,7 +593,7 @@ h1, h2, h3, h4 {
 
   .tl2-image-col {
     /* image matches the content area: keep these equal to .tl2-content above */
-    max-width: 60%;   /* VERTICAL TIMELINE: content width - adjust here (match .tl2-content) */
+    max-width: 36%;   /* VERTICAL TIMELINE: content width - adjust here (match .tl2-content) */
     width: auto;
     margin-top: 16px;
     margin-left: 135px;  /* VERTICAL TIMELINE: gap between line and content - adjust here (match .tl2-content) */
