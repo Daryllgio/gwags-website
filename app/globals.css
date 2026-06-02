@@ -1002,9 +1002,9 @@ h1, h2, h3, h4 {
   /* MOBILE: Timeline year number */
   .tl2-year-num { font-size: 30px !important; }
   .tl2-year-num.active { font-size: 60px !important; }
-  /* MOBILE: Timeline content width — VERTICAL TIMELINE: content width - adjust here (phone) */
-  .tl2-content { max-width: 80% !important; }
-  .tl2-image-col { max-width: 80% !important; }
+  /* MOBILE: Timeline content width — VERTICAL TIMELINE: content width - adjust here (phone ≤768px) */
+  .tl2-content { max-width: 45% !important; }
+  .tl2-image-col { max-width: 45% !important; }
 }
 
 /* === SMALL PHONE BREAKPOINT (below 480px) === */
