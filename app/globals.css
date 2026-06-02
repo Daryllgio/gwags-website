@@ -945,25 +945,51 @@ h1, h2, h3, h4 {
   .tl2-year-num { font-size: 25px !important; }
   .tl2-year-num.active { font-size: 55px !important; }
 
-  /* PHONE TIMELINE (≤480px): full-width content, normal padding, with a purely
-     decorative gold line sitting BEHIND the content (content is not moved).
+  /* PHONE TIMELINE (≤480px): full-width content, normal padding (content is not moved).
      The narrow content + masked gold line only applies to iPad portrait / tablet (≥480px).
      Selectors use .tl2-event scope (specificity 0,2,0) so they win over the ≤768px
      `.tl2-content { max-width: 60% !important }` rule that appears later in the file. */
-  /* PHONE: decorative gold line — behind the content via z-index (does not move anything) */
-  .tl2-timeline-body::before {
-    display: block !important;
-    /* PHONE GOLD LINE: horizontal position from left screen edge - adjust here */
+
+  /* PHONE GOLD LINE — rebuilt as SEGMENTS (no continuous line). Two visible pieces per entry:
+     (1) through each year down to its month, and (2) below each entry's image down to the next
+     year/month. The content region (month → title → body → image) has NO line behind it. */
+  /* hide the old continuous line on phone */
+  .tl2-timeline-body::before { display: none !important; }
+
+  /* SEGMENT 1 — year → month: spans the year header (behind the year text, whose #F7F6F3
+     background masks the line over it) and down through the gap to where the month begins. */
+  .tl2-year-header { position: relative; }
+  .tl2-year-header::before {
+    content: '';
+    position: absolute;
+    /* PHONE GOLD LINE: horizontal position from left screen edge - adjust here (keep in sync with Segment 2) */
     left: 25px;
     top: 0;
     bottom: 0;
+    width: 2px;
+    background: #D4AF37;
+    transform: translateX(-50%);
     z-index: 0;
   }
-  /* PHONE: content sits ON TOP of the decorative line (full width, overlaps it naturally) */
-  .tl2-year-group {
-    position: relative;
-    z-index: 1;
+
+  /* SEGMENT 2 — below image → next entry: starts at the bottom of the entry (below the image
+     or last element) and bridges the 48px gap down to the next year/month. */
+  .tl2-event { position: relative; }
+  .tl2-event::after {
+    content: '';
+    position: absolute;
+    /* PHONE GOLD LINE: horizontal position from left screen edge - adjust here (keep in sync with Segment 1) */
+    left: 25px;
+    top: 100%;
+    height: 48px;   /* bridges the inter-entry gap (matches .tl2-event margin-bottom: 48px) */
+    width: 2px;
+    background: #D4AF37;
+    transform: translateX(-50%);
+    z-index: 0;
   }
+  /* no Segment 2 below the very last entry (nothing to connect down to) */
+  .tl2-year-group:last-child .tl2-event:last-child::after { display: none; }
+
   /* PHONE: content full width with normal side padding (not pushed to the right) */
   .tl2-event .tl2-content {
     max-width: 100% !important;   /* PHONE content width - adjust here */
