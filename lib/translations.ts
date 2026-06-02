@@ -204,9 +204,8 @@ export const t = {
           label: 'DIRECT ACTION',
           heading: 'We build our own initiatives.',
           body: [
-            'Gwags does not only coordinate. We design and deliver programs that address real needs on the ground. From scholarships that invest in academic talent to health campaigns that bring free medical care to underserved districts, our initiatives are built with clear structure, measurable outcomes, and a commitment to consistency over time.',
-            'Our current portfolio spans four active programs across education, health, community development, and youth empowerment. Each one was created to fill a gap that we identified firsthand through years of direct engagement with the communities we serve. These programs are not side projects. They are core to who we are as an institution and they inform every aspect of how we support the organizations around us.',
-            'Running our own initiatives gives us something that many institutional platforms lack: direct operational experience. We understand the challenges of implementation because we face them ourselves. That understanding makes our guidance, our standards, and our support to affiliated organizations more practical and more credible.',
+            'Gwags designs and delivers programs that address needs on the ground. The current portfolio spans education, health, community development, and youth empowerment. Each initiative was created to fill a gap identified firsthand through years of direct engagement with the communities we serve. They are core to who we are as an institution and they shape every aspect of how we operate.',
+            'Running these initiatives provides something that many institutional platforms lack: direct operational experience. We understand the challenges of implementation because we face them ourselves. That understanding makes the support we offer to affiliated organizations more grounded and credible.',
           ],
         },
         right: {
@@ -644,9 +643,8 @@ export const t = {
           label: 'ACTION DIRECTE',
           heading: 'Nous construisons nos propres initiatives.',
           body: [
-            "Gwags ne se contente pas de coordonner. Nous concevons et mettons en oeuvre des programmes qui répondent à de véritables besoins sur le terrain. Des bourses qui investissent dans les talents académiques aux campagnes de santé qui apportent des soins médicaux gratuits aux districts mal desservis, nos initiatives sont construites avec une structure claire, des résultats mesurables et un engagement envers la cohérence dans le temps.",
-            "Notre portefeuille actuel couvre quatre programmes actifs dans les domaines de l'éducation, de la santé, du développement communautaire et de l'autonomisation des jeunes. Chacun a été créé pour combler un écart que nous avons identifié directement au fil de nos années d'engagement direct avec les communautés que nous servons. Ces programmes ne sont pas des projets secondaires. Ils sont au coeur de ce que nous sommes en tant qu'institution et ils éclairent chaque aspect de notre soutien aux organisations qui nous entourent.",
-            "Gérer nos propres initiatives nous donne quelque chose que de nombreuses plateformes institutionnelles n'ont pas: une expérience opérationnelle directe. Nous comprenons les défis de la mise en oeuvre parce que nous les affrontons nous-mêmes. Cette compréhension rend nos conseils, nos normes et notre soutien aux organisations affiliées plus pratiques et plus crédibles.",
+            "Gwags conçoit et met en oeuvre des programmes qui répondent aux besoins sur le terrain. Le portefeuille actuel couvre l'éducation, la santé, le développement communautaire et l'autonomisation des jeunes. Chaque initiative a été créée pour combler un manque identifié de première main à travers des années d'engagement direct avec les communautés que nous servons. Elles sont au coeur de ce que nous sommes en tant qu'institution et façonnent chaque aspect de notre fonctionnement.",
+            "Gérer ces initiatives apporte quelque chose que de nombreuses plateformes institutionnelles n'ont pas: une expérience opérationnelle directe. Nous comprenons les défis de la mise en oeuvre parce que nous les affrontons nous-mêmes. Cette compréhension rend le soutien que nous offrons aux organisations affiliées plus ancré et plus crédible.",
           ],
         },
         right: {
