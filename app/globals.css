@@ -945,12 +945,25 @@ h1, h2, h3, h4 {
   .tl2-year-num { font-size: 25px !important; }
   .tl2-year-num.active { font-size: 55px !important; }
 
-  /* PHONE TIMELINE (≤480px): reverted to full-width content, normal padding, no gold-line offset.
-     The narrow content + gold line only applies to iPad portrait / tablet (≥480px).
+  /* PHONE TIMELINE (≤480px): full-width content, normal padding, with a purely
+     decorative gold line sitting BEHIND the content (content is not moved).
+     The narrow content + masked gold line only applies to iPad portrait / tablet (≥480px).
      Selectors use .tl2-event scope (specificity 0,2,0) so they win over the ≤768px
      `.tl2-content { max-width: 60% !important }` rule that appears later in the file. */
-  /* PHONE: hide the gold vertical line (content is full width here) */
-  .tl2-timeline-body::before { display: none !important; }
+  /* PHONE: decorative gold line — behind the content via z-index (does not move anything) */
+  .tl2-timeline-body::before {
+    display: block !important;
+    /* PHONE GOLD LINE: horizontal position from left screen edge - adjust here */
+    left: 25px;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+  /* PHONE: content sits ON TOP of the decorative line (full width, overlaps it naturally) */
+  .tl2-year-group {
+    position: relative;
+    z-index: 1;
+  }
   /* PHONE: content full width with normal side padding (not pushed to the right) */
   .tl2-event .tl2-content {
     max-width: 100% !important;   /* PHONE content width - adjust here */
