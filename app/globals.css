@@ -583,20 +583,20 @@ h1, h2, h3, h4 {
 
   .tl2-content {
     /* VERTICAL TIMELINE: content width - adjust here */
-    max-width: 78%;
+    max-width: 70%;
     width: auto;
-    /* VERTICAL TIMELINE: gap between line and content - adjust here (gold line 35px + 40px gap = 75px) */
-    margin-left: 75px;
+    /* VERTICAL TIMELINE: gap between line and content - adjust here (gold line 35px + 65px gap = 100px) */
+    margin-left: 100px;
     /* VERTICAL TIMELINE: right margin - adjust here */
     margin-right: 24px;
   }
 
   .tl2-image-col {
     /* image matches the content area: keep these equal to .tl2-content above */
-    max-width: 78%;   /* VERTICAL TIMELINE: content width - adjust here (match .tl2-content) */
+    max-width: 70%;   /* VERTICAL TIMELINE: content width - adjust here (match .tl2-content) */
     width: auto;
     margin-top: 16px;
-    margin-left: 75px;   /* VERTICAL TIMELINE: gap between line and content - adjust here (match .tl2-content) */
+    margin-left: 100px;  /* VERTICAL TIMELINE: gap between line and content - adjust here (match .tl2-content) */
     margin-right: 24px;  /* VERTICAL TIMELINE: right margin - adjust here (match .tl2-content) */
   }
 
@@ -1003,8 +1003,8 @@ h1, h2, h3, h4 {
   .tl2-year-num { font-size: 30px !important; }
   .tl2-year-num.active { font-size: 60px !important; }
   /* MOBILE: Timeline content width — VERTICAL TIMELINE: content width - adjust here (phone) */
-  .tl2-content { max-width: 85% !important; }
-  .tl2-image-col { max-width: 85% !important; }
+  .tl2-content { max-width: 80% !important; }
+  .tl2-image-col { max-width: 80% !important; }
 }
 
 /* === SMALL PHONE BREAKPOINT (below 480px) === */
