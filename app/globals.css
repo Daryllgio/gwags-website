@@ -925,7 +925,7 @@ h1, h2, h3, h4 {
 
 /* Our Story — tablet (769–1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .os-photo-banner { height: 550px !important; }
+  .os-photo-banner { height: 510px !important; }
   .os-narrative-h3 { font-size: 24px !important; }
   .tl2-month-text { font-size: 15px !important; }
   /* Timeline — tablet */
