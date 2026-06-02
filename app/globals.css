@@ -583,7 +583,7 @@ h1, h2, h3, h4 {
 
   .tl2-content {
     /* VERTICAL TIMELINE: content width - adjust here */
-    max-width: 62.5%;
+    max-width: 60%;
     width: auto;
     /* VERTICAL TIMELINE: gap between line and content - adjust here (gold line 35px + 100px gap = 135px) */
     margin-left: 135px;
@@ -593,7 +593,7 @@ h1, h2, h3, h4 {
 
   .tl2-image-col {
     /* image matches the content area: keep these equal to .tl2-content above */
-    max-width: 62.5%;   /* VERTICAL TIMELINE: content width - adjust here (match .tl2-content) */
+    max-width: 60%;   /* VERTICAL TIMELINE: content width - adjust here (match .tl2-content) */
     width: auto;
     margin-top: 16px;
     margin-left: 135px;  /* VERTICAL TIMELINE: gap between line and content - adjust here (match .tl2-content) */
@@ -925,7 +925,7 @@ h1, h2, h3, h4 {
 
 /* Our Story — tablet (769–1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .os-photo-banner { height: 510px !important; }
+  .os-photo-banner { height: 500px !important; }
   .os-narrative-h3 { font-size: 24px !important; }
   .tl2-month-text { font-size: 15px !important; }
   /* Timeline — tablet */
@@ -1005,8 +1005,8 @@ h1, h2, h3, h4 {
   .tl2-year-num { font-size: 30px !important; }
   .tl2-year-num.active { font-size: 60px !important; }
   /* MOBILE: Timeline content width — VERTICAL TIMELINE: content width - adjust here (phone ≤768px) */
-  .tl2-content { max-width: 62.5% !important; }
-  .tl2-image-col { max-width: 62.5% !important; }
+  .tl2-content { max-width: 60% !important; }
+  .tl2-image-col { max-width: 60% !important; }
 }
 
 /* === SMALL PHONE BREAKPOINT (below 480px) === */
