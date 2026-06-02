@@ -229,23 +229,23 @@ export const t = {
       coordination: {
         eyebrow: 'THE COORDINATION MODEL',
         h2: 'How affiliation works.',
-        intro: 'Organizations that align with Gwags enter a structured partnership built on shared values, clear expectations, and mutual benefit. The model is intentionally designed to strengthen without constraining. Affiliation is not a transaction. It is a long-term institutional relationship.',
+        intro: 'Organizations that align with Gwags enter a structured affiliation built on shared values, clear expectations, and mutual benefit. It is a long-term institutional relationship.',
         steps: [
           {
             title: 'Shared vision and values',
-            body: 'Every affiliation begins with alignment. Organizations must demonstrate a genuine commitment to the standards that define Gwags as an institution: ethical governance, transparency, accountability, and a measurable approach to impact. This is not a formality. It is the foundation of everything that follows. Gwags does not grow by lowering the bar. We grow by finding organizations that already meet it or are committed to reaching it.',
+            body: 'Every affiliation begins with alignment. Organizations must demonstrate a genuine commitment to ethical governance, transparency, accountability, and a measurable approach to impact. These standards define what the Gwags network represents, and every affiliated organization is expected to uphold them consistently.',
           },
           {
             title: 'Joining the network',
-            body: 'Once alignment is established, organizations gain access to the Gwags institutional framework. This includes use of the Gwags brand under defined guidelines, integration into the broader network, and access to resources, knowledge, and support structures designed to accelerate their growth. Affiliated organizations retain their legal identity, their leadership, and their operational independence. What changes is the institutional weight behind them.',
+            body: "Once alignment is established, organizations gain access to the Gwags institutional framework. This includes use of the Gwags brand under defined guidelines, integration into the broader network, and access to resources and support structures. Gwags maintains governance representation, including designated seats on the organization's board, to ensure strategic alignment and accountability across the network.",
           },
           {
             title: 'Strategic integration',
-            body: 'Affiliation is not passive. Gwags works actively with affiliated organizations to coordinate programs, align strategic objectives, and identify opportunities for collaboration within the network. Where it makes sense, resources are shared, programs are co-developed, and collective strategies are built. The goal is not centralized control but coordinated impact, making sure the work of individual organizations contributes to something larger than any one of them could achieve alone.',
+            body: 'Gwags works actively with affiliated organizations to coordinate programs, align strategic objectives, and identify opportunities for collaboration within the network. As opportunities arise, resources are shared, programs are co-developed, and collective strategies are built. The goal is coordinated impact, ensuring the work of individual organizations contributes to something larger than any one of them could achieve alone.',
           },
           {
             title: 'Scaling together',
-            body: 'The ultimate purpose of the Gwags model is growth. Not growth for its own sake, but growth in impact, in reach, and in the capacity of every organization within the network to deliver on its mission. Through the network, affiliated organizations gain access to funding pathways, international partnerships, governance frameworks, and strategic visibility that would be extremely difficult to build independently. As each organization grows, the network grows. And as the network grows, so does the possibility of systemic, lasting transformation.',
+            body: 'The purpose of the Gwags model is growth in impact, in reach, and in the capacity of every organization within the network to deliver on its mission. Through the network, affiliated organizations gain access to funding pathways, international partnerships, governance frameworks, and strategic visibility that would be difficult to build independently. As each organization grows, the network grows.',
           },
         ],
       },
@@ -666,23 +666,23 @@ export const t = {
       coordination: {
         eyebrow: 'LE MODÈLE DE COORDINATION',
         h2: "Comment fonctionne l'affiliation.",
-        intro: "Les organisations qui s'alignent sur Gwags entrent dans un partenariat structuré fondé sur des valeurs partagées, des attentes claires et un bénéfice mutuel. Le modèle est intentionnellement conçu pour renforcer sans contraindre. L'affiliation n'est pas une transaction. C'est une relation institutionnelle à long terme.",
+        intro: "Les organisations qui s'alignent avec Gwags entrent dans une affiliation structurée fondée sur des valeurs partagées, des attentes claires et un bénéfice mutuel. Il s'agit d'une relation institutionnelle à long terme.",
         steps: [
           {
             title: 'Vision et valeurs partagées',
-            body: "Chaque affiliation commence par un alignement. Les organisations doivent démontrer un engagement sincère envers les normes qui définissent Gwags en tant qu'institution: gouvernance éthique, transparence, responsabilité et une approche mesurable de l'impact. Ce n'est pas une formalité. C'est le fondement de tout ce qui suit. Gwags ne grandit pas en abaissant la barre. Nous grandissons en trouvant des organisations qui la satisfont déjà ou qui s'engagent à l'atteindre.",
+            body: "Toute affiliation commence par un alignement. Les organisations doivent démontrer un engagement sincère envers la gouvernance éthique, la transparence, la responsabilité et une approche mesurable de l'impact. Ces standards définissent ce que le réseau Gwags représente, et chaque organisation affiliée est tenue de les respecter de manière constante.",
           },
           {
             title: 'Rejoindre le réseau',
-            body: "Une fois l'alignement établi, les organisations accèdent au cadre institutionnel de Gwags. Cela comprend l'utilisation de la marque Gwags selon des directives définies, l'intégration dans le réseau élargi et l'accès aux ressources, aux connaissances et aux structures de soutien conçues pour accélérer leur croissance. Les organisations affiliées conservent leur identité juridique, leur leadership et leur indépendance opérationnelle. Ce qui change, c'est le poids institutionnel derrière elles.",
+            body: "Une fois l'alignement établi, les organisations accèdent au cadre institutionnel de Gwags. Cela inclut l'utilisation de la marque Gwags selon des directives définies, l'intégration au réseau élargi et l'accès aux ressources et aux structures de soutien. Gwags maintient une représentation au sein de la gouvernance, y compris des sièges désignés au conseil d'administration de l'organisation, pour assurer l'alignement stratégique et la responsabilité à travers le réseau.",
           },
           {
             title: 'Intégration stratégique',
-            body: "L'affiliation n'est pas passive. Gwags travaille activement avec les organisations affiliées pour coordonner les programmes, aligner les objectifs stratégiques et identifier les opportunités de collaboration au sein du réseau. Lorsque cela est pertinent, les ressources sont partagées, les programmes sont co-développés et des stratégies collectives sont élaborées. L'objectif n'est pas un contrôle centralisé mais un impact coordonné, s'assurant que le travail des organisations individuelles contribue à quelque chose de plus grand que ce qu'elles pourraient accomplir seules.",
+            body: "Gwags travaille activement avec les organisations affiliées pour coordonner les programmes, aligner les objectifs stratégiques et identifier les opportunités de collaboration au sein du réseau. Lorsque les opportunités se présentent, les ressources sont partagées, les programmes sont co-développés et des stratégies collectives sont élaborées. L'objectif est un impact coordonné, garantissant que le travail de chaque organisation contribue à quelque chose de plus grand que ce qu'une seule pourrait accomplir.",
           },
           {
             title: 'Croître ensemble',
-            body: "Le but ultime du modèle Gwags est la croissance. Non pas la croissance pour elle-même, mais la croissance en impact, en portée et en capacité de chaque organisation du réseau à accomplir sa mission. Grâce au réseau, les organisations affiliées accèdent à des voies de financement, des partenariats internationaux, des cadres de gouvernance et une visibilité stratégique qu'il serait extrêmement difficile de construire de manière indépendante. À mesure que chaque organisation grandit, le réseau grandit. Et à mesure que le réseau grandit, la possibilité d'une transformation systémique et durable s'accroît.",
+            body: "L'objectif du modèle Gwags est la croissance en impact, en portée et en capacité de chaque organisation au sein du réseau à remplir sa mission. À travers le réseau, les organisations affiliées accèdent à des voies de financement, des partenariats internationaux, des cadres de gouvernance et une visibilité stratégique qu'il serait difficile de construire de manière indépendante. À mesure que chaque organisation grandit, le réseau grandit.",
           },
         ],
       },
