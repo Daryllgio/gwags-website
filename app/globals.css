@@ -583,7 +583,7 @@ h1, h2, h3, h4 {
 
   .tl2-content {
     /* VERTICAL TIMELINE: content width - adjust here */
-    max-width: 65%;
+    max-width: 62.5%;
     width: auto;
     /* VERTICAL TIMELINE: gap between line and content - adjust here (gold line 35px + 100px gap = 135px) */
     margin-left: 135px;
@@ -593,7 +593,7 @@ h1, h2, h3, h4 {
 
   .tl2-image-col {
     /* image matches the content area: keep these equal to .tl2-content above */
-    max-width: 65%;   /* VERTICAL TIMELINE: content width - adjust here (match .tl2-content) */
+    max-width: 62.5%;   /* VERTICAL TIMELINE: content width - adjust here (match .tl2-content) */
     width: auto;
     margin-top: 16px;
     margin-left: 135px;  /* VERTICAL TIMELINE: gap between line and content - adjust here (match .tl2-content) */
@@ -602,12 +602,14 @@ h1, h2, h3, h4 {
 
   .tl2-image-ph {
     width: 100%;
-    height: 180px;
+    /* VERTICAL TIMELINE: image height (collapsed) - adjust here */
+    height: 240px;
   }
 
   .tl2-image-ph.active {
     width: 100%;
-    height: 240px;
+    /* VERTICAL TIMELINE: image height (expanded/active) - adjust here */
+    height: 320px;
   }
 
   .tl2-image-empty {
@@ -1003,8 +1005,8 @@ h1, h2, h3, h4 {
   .tl2-year-num { font-size: 30px !important; }
   .tl2-year-num.active { font-size: 60px !important; }
   /* MOBILE: Timeline content width — VERTICAL TIMELINE: content width - adjust here (phone ≤768px) */
-  .tl2-content { max-width: 65% !important; }
-  .tl2-image-col { max-width: 65% !important; }
+  .tl2-content { max-width: 62.5% !important; }
+  .tl2-image-col { max-width: 62.5% !important; }
 }
 
 /* === SMALL PHONE BREAKPOINT (below 480px) === */
