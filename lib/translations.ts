@@ -250,20 +250,20 @@ export const t = {
         ],
       },
       workingWith: {
-        eyebrow: 'WORKING WITH GWAGS',
-        h2: 'What to expect.',
+        eyebrow: 'PARTNERING WITH GWAGS',
+        h2: 'What to expect as a partner.',
         cards: [
           {
-            title: 'Autonomy with structure',
-            body: 'Affiliated organizations keep their identity, their leadership, and their decision-making independence. Gwags does not dictate how you run your programs. What we provide is a governance framework, institutional standards, and a support system that makes your organization stronger without making it dependent. You remain in control. We make sure you have the tools to lead effectively.',
+            title: 'Shared objectives',
+            body: 'Gwags partners with organizations to deliver projects and initiatives where goals align. Each partnership is built around clear objectives, defined roles, and measurable outcomes.',
           },
           {
-            title: 'Accountability both ways',
-            body: 'We hold our partners to high standards because credibility is the currency of this work. Transparent reporting, ethical governance, and measurable outcomes are not optional. But accountability at Gwags is not a one-way street. We hold ourselves to the same standards we expect from others, and we are transparent about our own progress, our challenges, and our decisions.',
+            title: 'Collaboration, not dependency',
+            body: 'Partnerships with Gwags are built on mutual contribution and full independence. There is no governance overlap or structural obligation beyond the agreed scope of work.',
           },
           {
-            title: 'Long-term commitment',
-            body: 'Gwags is not interested in short-term partnerships that look good on paper and dissolve after a funding cycle ends. We invest in relationships that are built to last, designed to deepen over time, and structured to compound impact year after year. If you are looking for a quick collaboration, we are probably not the right partner. If you are building something that you want to last, we are exactly the right partner.',
+            title: 'Long-term perspective',
+            body: 'Gwags approaches every partnership with a long-term view. Collaborations are designed not just for immediate results, but to build a foundation for ongoing cooperation as both organizations grow.',
           },
         ],
       },
@@ -687,20 +687,20 @@ export const t = {
         ],
       },
       workingWith: {
-        eyebrow: 'TRAVAILLER AVEC GWAGS',
-        h2: 'À quoi s\'attendre.',
+        eyebrow: 'PARTENARIAT AVEC GWAGS',
+        h2: 'Ce à quoi s\'attendre en tant que partenaire.',
         cards: [
           {
-            title: 'Autonomie et structure',
-            body: "Les organisations affiliées conservent leur identité, leur leadership et leur indépendance décisionnelle. Gwags ne dicte pas la façon dont vous gérez vos programmes. Ce que nous fournissons, c'est un cadre de gouvernance, des normes institutionnelles et un système de soutien qui renforce votre organisation sans la rendre dépendante. Vous restez aux commandes. Nous veillons à ce que vous ayez les outils pour diriger efficacement.",
+            title: 'Objectifs partagés',
+            body: "Gwags s'associe avec des organisations pour réaliser des projets et des initiatives dont les objectifs convergent. Chaque partenariat est construit autour d'objectifs clairs, de rôles définis et de résultats mesurables.",
           },
           {
-            title: 'Responsabilité dans les deux sens',
-            body: "Nous tenons nos partenaires à des normes élevées parce que la crédibilité est la monnaie de ce travail. Des rapports transparents, une gouvernance éthique et des résultats mesurables ne sont pas facultatifs. Mais la responsabilité chez Gwags n'est pas à sens unique. Nous nous tenons aux mêmes normes que nous attendons des autres, et nous sommes transparents sur nos propres progrès, nos défis et nos décisions.",
+            title: 'Collaboration, pas dépendance',
+            body: "Les partenariats avec Gwags reposent sur une contribution mutuelle et une indépendance totale. Il n'y a aucun chevauchement de gouvernance ni d'obligation structurelle au-delà du cadre de travail convenu.",
           },
           {
-            title: 'Engagement à long terme',
-            body: "Gwags ne s'intéresse pas aux partenariats à court terme qui semblent bons sur le papier et se dissolvent après un cycle de financement. Nous investissons dans des relations construites pour durer, conçues pour s'approfondir avec le temps et structurées pour multiplier l'impact année après année. Si vous cherchez une collaboration rapide, nous ne sommes probablement pas le bon partenaire. Si vous construisez quelque chose qui doit durer, nous sommes exactement le bon partenaire.",
+            title: 'Perspective à long terme',
+            body: "Gwags aborde chaque partenariat avec une vision à long terme. Les collaborations sont conçues non seulement pour des résultats immédiats, mais pour construire une base de coopération continue à mesure que les deux organisations grandissent.",
           },
         ],
       },
