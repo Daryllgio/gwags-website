@@ -652,7 +652,7 @@ h1, h2, h3, h4 {
 
 /* Image fills its half completely (top, bottom, and out to the right viewport edge). */
 .hww-hero-img {
-  min-height: 500px;
+  min-height: 420px;
 }
 
 .hww-init-grid {
@@ -794,7 +794,7 @@ h1, h2, h3, h4 {
 @media (min-width: 769px) and (max-width: 850px) {
   /* 1. Hero: text on top, full-width image below */
   .hww-hero-grid { grid-template-columns: 1fr; }
-  .hww-hero-img { min-height: 320px; }
+  .hww-hero-img { min-height: 500px; }
 
   /* 2. Split screen: Direct Action on top, Institutional Support below */
   .hww-split { grid-template-columns: 1fr; }
