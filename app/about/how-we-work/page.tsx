@@ -169,7 +169,7 @@ function CoordinationSection({ lang }: { lang: Lang }) {
             <div className="hww-step-num">{i + 1}</div>
             <div className="hww-step-line" />
             <div className="hww-step-content">
-              <h3 style={{ color: '#0A1128', fontSize: '20px', fontWeight: 600, margin: '0 0 12px 0', fontFamily: 'Georgia, serif' }}>
+              <h3 className="hww-step-title" style={{ color: '#0A1128', fontSize: '20px', fontWeight: 600, margin: '0 0 12px 0', fontFamily: 'Georgia, serif' }}>
                 {step.title}
               </h3>
               <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.8, margin: 0 }}>
@@ -200,7 +200,7 @@ function WorkingWithSection({ lang }: { lang: Lang }) {
       <div className="hww-cards-grid">
         {p.cards.map((card, i) => (
           <div key={i} className="hww-card">
-            <h3 style={{ color: '#ffffff', fontSize: '18px', fontWeight: 600, margin: '0 0 12px 0' }}>
+            <h3 className="hww-card-title" style={{ color: '#ffffff', fontSize: '19px', fontWeight: 600, margin: '0 0 12px 0' }}>
               {card.title}
             </h3>
             <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.75, margin: 0 }}>

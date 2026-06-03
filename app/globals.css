@@ -1045,6 +1045,9 @@ h1, h2, h3, h4 {
   .hero-body { font-size: 17px !important; }
   /* TABLET: eyebrow text size */
   .eyebrow { font-size: 16px !important; }
+  /* TABLET: How We Work step & card titles */
+  .hww-step-title { font-size: 19px !important; }
+  .hww-card-title { font-size: 18px !important; }
   /* TABLET: section padding */
   .site-section { padding: 60px 32px !important; }
   /* TABLET: four-column grids become 2x2 */
@@ -1071,6 +1074,9 @@ h1, h2, h3, h4 {
   .hero-body { font-size: 16px !important; }
   /* MOBILE: eyebrow text size */
   .eyebrow { font-size: 16px !important; }
+  /* MOBILE: How We Work step & card titles */
+  .hww-step-title { font-size: 18px !important; }
+  .hww-card-title { font-size: 17px !important; }
   /* MOBILE: section padding */
   .site-section { padding: 48px 20px !important; }
   /* MOBILE: ALL grids single column */
@@ -1101,6 +1107,9 @@ h1, h2, h3, h4 {
   .hero-body { font-size: 15px !important; }
   /* SMALL PHONE: eyebrow text size */
   .eyebrow { font-size: 15px !important; }
+  /* SMALL PHONE: How We Work step & card titles */
+  .hww-step-title { font-size: 17px !important; }
+  .hww-card-title { font-size: 16px !important; }
   /* SMALL PHONE: section padding */
   .site-section { padding: 36px 16px !important; }
   /* SMALL PHONE: hero adjustments */
