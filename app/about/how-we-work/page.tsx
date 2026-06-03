@@ -5,13 +5,14 @@ import { Lang, t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import {
-  IconAward,
-  IconHeartHandshake,
-  IconActivity,
-  IconUsers,
+  IconSchool,
+  IconSeedling,
+  IconMedicalCross,
+  IconHeart,
 } from '@tabler/icons-react'
 
-const initiativeIcons = [IconAward, IconHeartHandshake, IconActivity, IconUsers]
+// Same icon set as the homepage Initiatives cards
+const initiativeIcons = [IconSchool, IconSeedling, IconMedicalCross, IconHeart]
 
 export default function HowWeWorkPage() {
   const [lang, setLang] = useState<Lang>('en')
@@ -117,12 +118,12 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
               key={i}
               href={item.href}
               className="initiative-card"
-              style={{ display: 'flex', flexDirection: 'column', background: '#070E20', border: '0.5px solid rgba(212,175,55,0.18)', borderRadius: '8px', textDecoration: 'none', cursor: 'pointer', overflow: 'hidden' }}
+              style={{ display: 'flex', flexDirection: 'column', background: '#F7F6F3', border: '0.5px solid rgba(10,17,40,0.08)', borderRadius: '8px', textDecoration: 'none', cursor: 'pointer', overflow: 'hidden' }}
             >
               {/* IMAGE: Replace this placeholder with
                   <img src="/images/initiatives/[name].jpg" alt="..." style={{ width: '100%', height: '250px', objectFit: 'cover' }} /> */}
-              <div className="ini-img-ph" style={{ height: '250px', width: '100%', background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', letterSpacing: '0.1em' }}>
+              <div className="ini-img-ph" style={{ height: '250px', width: '100%', background: '#E6E3DC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <span style={{ color: 'rgba(10,17,40,0.35)', fontSize: '12px', letterSpacing: '0.1em' }}>
                   {initiativeImagePlaceholders[i]}
                 </span>
               </div>
@@ -130,10 +131,10 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
                 <div style={{ marginBottom: '16px' }}>
                   <Icon size={24} color="#D4AF37" />
                 </div>
-                <div className="ini-card-title" style={{ color: '#fff', fontSize: '19px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35 }}>
+                <div className="ini-card-title" style={{ color: '#0A1128', fontSize: '19px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35 }}>
                   {item.title}
                 </div>
-                <p className="body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.68, flex: 1, margin: 0 }}>
+                <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.68, flex: 1, margin: 0 }}>
                   {item.desc}
                 </p>
                 <div style={{ marginTop: '16px', color: '#D4AF37', fontSize: '12px', letterSpacing: '0.18em', fontWeight: 500 }}>
