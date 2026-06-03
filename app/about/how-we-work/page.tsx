@@ -51,7 +51,7 @@ function HeroSection({ lang }: { lang: Lang }) {
         </div>
         {/* IMAGE: Replace this placeholder with
             <img src="/images/how-we-work-hero.jpg" alt="How We Work" style={{ width: '100%', height: '360px', objectFit: 'cover', borderRadius: '8px' }} /> */}
-        <div className="hww-hero-img-ph" style={{ height: '360px', width: '100%', background: '#0F1E3D', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div className="hww-hero-img-ph" style={{ minHeight: '360px', height: '100%', width: '100%', background: '#0F1E3D', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px', letterSpacing: '0.12em' }}>Photo: How We Work</span>
         </div>
       </div>
@@ -137,9 +137,6 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
                 <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.68, flex: 1, margin: 0 }}>
                   {item.desc}
                 </p>
-                <div style={{ marginTop: '16px', color: '#D4AF37', fontSize: '12px', letterSpacing: '0.18em', fontWeight: 500 }}>
-                  {item.tag}
-                </div>
               </div>
             </Link>
           )

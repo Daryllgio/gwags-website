@@ -636,12 +636,13 @@ h1, h2, h3, h4 {
 }
 
 /* Initiative strip */
-/* How We Work hero: two-column (text | image) */
+/* How We Work hero: two-column (text | image). Image stretches to fill the
+   full height of the row (matches the text column). */
 .hww-hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
-  align-items: center;
+  align-items: stretch;
 }
 
 .hww-init-grid {
