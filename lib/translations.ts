@@ -218,12 +218,12 @@ export const t = {
         },
       },
       initiatives: {
-        eyebrow: 'OUR ACTIVE INITIATIVES',
+        eyebrow: 'OUR INITIATIVES',
         items: [
-          { title: 'Gwags Scholars Program', desc: 'A flagship program investing in the next generation of Cameroonian leaders through financial support and professional development opportunities.', href: '/initiatives/scholars' },
-          { title: 'Mbal Lekeaka Fund', desc: 'Channeling resources into community-led initiatives with measurable impact.', href: '/initiatives/mbal-lekeaka-fund' },
-          { title: 'Health Outreach Program', desc: 'Bringing free healthcare to underserved communities through field campaigns.', href: '/initiatives/health-outreach' },
-          { title: 'Youth Development', desc: 'Protecting, educating, and empowering vulnerable youth since day one.', href: '/initiatives/youth-development' },
+          { title: 'Gwags Scholars Program', desc: 'A flagship program investing in the next generation of Cameroonian leaders through financial support and professional development opportunities.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
+          { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY', href: '/initiatives/mbal-lekeaka-fund' },
+          { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH', href: '/initiatives/health-outreach' },
+          { title: 'Youth Development', desc: 'Where it all began. Gwags continues to invest in the protection, education and empowerment of vulnerable youth.', tag: 'YOUTH', href: '/initiatives/youth-development' },
         ],
       },
       coordination: {
@@ -656,12 +656,12 @@ export const t = {
         },
       },
       initiatives: {
-        eyebrow: 'NOS INITIATIVES ACTIVES',
+        eyebrow: 'NOS INITIATIVES',
         items: [
-          { title: 'Programme Gwags Scholars', desc: 'Un programme phare investissant dans la prochaine génération de leaders camerounais à travers un soutien financier et des opportunités de développement professionnel.', href: '/initiatives/scholars' },
-          { title: 'Fonds Mbal Lekeaka', desc: 'Canaliser les ressources vers des initiatives communautaires à impact mesurable.', href: '/initiatives/mbal-lekeaka-fund' },
-          { title: 'Programme de Santé', desc: 'Apporter des soins gratuits aux communautés mal desservies via des campagnes de terrain.', href: '/initiatives/health-outreach' },
-          { title: 'Développement des Jeunes', desc: "Protéger, éduquer et autonomiser les jeunes vulnérables depuis le premier jour.", href: '/initiatives/youth-development' },
+          { title: 'Programme Gwags Scholars', desc: 'Un programme phare investissant dans la prochaine génération de leaders camerounais à travers un soutien financier et des opportunités de développement professionnel.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
+          { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ', href: '/initiatives/mbal-lekeaka-fund' },
+          { title: 'Programme de Santé', desc: "Apporter des soins de santé gratuits et l'éducation médicale aux communautés mal desservies.", tag: 'SANTÉ', href: '/initiatives/health-outreach' },
+          { title: 'Développement des Jeunes', desc: "Là où tout a commencé. Gwags continue d'investir dans la protection, l'éducation et l'autonomisation des jeunes vulnérables.", tag: 'JEUNESSE', href: '/initiatives/youth-development' },
         ],
       },
       coordination: {

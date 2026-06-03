@@ -36,16 +36,23 @@ function HeroSection({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.hero
   return (
     <section className="hww-hero-section" style={{ background: '#0A1128', padding: '80px 100px' }}>
-      <div style={{ maxWidth: '760px' }}>
-        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 24px 0' }}>
-          {p.eyebrow}
-        </p>
-        <h1 className="hww-hero-h1" style={{ color: '#ffffff', fontSize: '46px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.18, margin: '0 0 28px 0' }}>
-          {p.h1}
-        </h1>
-        <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.8, maxWidth: '600px', margin: 0 }}>
-          {p.body}
-        </p>
+      <div className="hww-hero-grid">
+        <div>
+          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 24px 0' }}>
+            {p.eyebrow}
+          </p>
+          <h1 className="hww-hero-h1" style={{ color: '#ffffff', fontSize: '46px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.18, margin: '0 0 28px 0' }}>
+            {p.h1}
+          </h1>
+          <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.8, margin: 0 }}>
+            {p.body}
+          </p>
+        </div>
+        {/* IMAGE: Replace this placeholder with
+            <img src="/images/how-we-work-hero.jpg" alt="How We Work" style={{ width: '100%', height: '360px', objectFit: 'cover', borderRadius: '8px' }} /> */}
+        <div className="hww-hero-img-ph" style={{ height: '360px', width: '100%', background: '#0F1E3D', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px', letterSpacing: '0.12em' }}>Photo: How We Work</span>
+        </div>
       </div>
     </section>
   )
@@ -87,7 +94,14 @@ function SplitSection({ lang }: { lang: Lang }) {
   )
 }
 
-/* ── Initiative Strip ── */
+/* ── Initiative Strip (cards match the homepage Initiatives design) ── */
+const initiativeImagePlaceholders = [
+  'Photo: Scholars Program',
+  'Photo: Mbal Lekeaka Fund',
+  'Photo: Health Outreach',
+  'Photo: Youth Development',
+]
+
 function InitiativeStrip({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.initiatives
   return (
@@ -95,20 +109,37 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
       <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
         {p.eyebrow}
       </p>
-      <div className="hww-init-grid">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginTop: '40px' }} className="initiatives-grid">
         {p.items.map((item, i) => {
           const Icon = initiativeIcons[i]
           return (
-            <Link key={i} href={item.href} className="hww-init-card">
-              <div style={{ marginBottom: '12px' }}>
-                <Icon size={22} color="#D4AF37" />
+            <Link
+              key={i}
+              href={item.href}
+              className="initiative-card"
+              style={{ display: 'flex', flexDirection: 'column', background: '#070E20', border: '0.5px solid rgba(212,175,55,0.18)', borderRadius: '8px', textDecoration: 'none', cursor: 'pointer', overflow: 'hidden' }}
+            >
+              {/* IMAGE: Replace this placeholder with
+                  <img src="/images/initiatives/[name].jpg" alt="..." style={{ width: '100%', height: '250px', objectFit: 'cover' }} /> */}
+              <div className="ini-img-ph" style={{ height: '250px', width: '100%', background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', letterSpacing: '0.1em' }}>
+                  {initiativeImagePlaceholders[i]}
+                </span>
               </div>
-              <div style={{ fontSize: '16px', fontWeight: 600, color: '#0A1128', marginBottom: '6px' }}>
-                {item.title}
+              <div className="ini-card-body" style={{ padding: '24px 24px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                <div style={{ marginBottom: '16px' }}>
+                  <Icon size={24} color="#D4AF37" />
+                </div>
+                <div className="ini-card-title" style={{ color: '#fff', fontSize: '19px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35 }}>
+                  {item.title}
+                </div>
+                <p className="body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.68, flex: 1, margin: 0 }}>
+                  {item.desc}
+                </p>
+                <div style={{ marginTop: '16px', color: '#D4AF37', fontSize: '12px', letterSpacing: '0.18em', fontWeight: 500 }}>
+                  {item.tag}
+                </div>
               </div>
-              <p style={{ fontSize: '15px', color: '#5A5A5A', margin: 0, lineHeight: 1.55 }}>
-                {item.desc}
-              </p>
             </Link>
           )
         })}

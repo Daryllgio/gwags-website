@@ -636,6 +636,14 @@ h1, h2, h3, h4 {
 }
 
 /* Initiative strip */
+/* How We Work hero: two-column (text | image) */
+.hww-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
 .hww-init-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -693,8 +701,12 @@ h1, h2, h3, h4 {
   padding-top: 4px;
 }
 
+/* Last step: keep a short gold segment so the line reaches number 4 and
+   continues slightly below it (instead of stopping above it). */
 .hww-step:last-child .hww-step-line {
-  background: transparent;
+  background: #D4AF37;
+  align-self: start;
+  height: 64px;
 }
 
 /* Working with Gwags cards */
@@ -780,6 +792,12 @@ h1, h2, h3, h4 {
   .hww-init-strip { padding: 48px 20px !important; }
   .hww-coordination-section { padding: 60px 20px !important; }
   .hww-working-with-section { padding: 60px 20px !important; }
+
+  /* Hero: stack text on top, image below */
+  .hww-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  /* Coordination steps: shrink the number column + gap so the text isn't squashed */
+  .hww-step { grid-template-columns: 36px 2px 1fr; gap: 0 14px; }
 }
 
 /* ── Our Role Page ── */
@@ -1172,7 +1190,7 @@ h1, h2, h3, h4 {
   .tl2-title { font-size: 20px !important; }
 
   /* How We Work step number */
-  .hww-step-num { font-size: 32px !important; }
+  .hww-step-num { font-size: 36px !important; }
 }
 
 /* ================================================================
