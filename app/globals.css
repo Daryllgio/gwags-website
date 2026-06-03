@@ -816,8 +816,8 @@ h1, h2, h3, h4 {
   .hww-hero-img { min-height: 280px; }
 
   /* Coordination steps: shrink the number column + gap so the text isn't squashed.
-     First value (10px) = how far the number is pushed right; gap (12px) = space before the text. */
-  .hww-step { grid-template-columns: 10px 2px 1fr; gap: 0 12px; }
+     First value (13px) = how far the number is pushed right; gap (12px) = space before the text. */
+  .hww-step { grid-template-columns: 13px 2px 1fr; gap: 0 12px; }
 }
 
 /* ── Our Role Page ── */
@@ -1177,7 +1177,7 @@ h1, h2, h3, h4 {
   .tl2-title { font-size: 22px !important; }
 
   /* How We Work step number */
-  .hww-step-num { font-size: 24px !important; }
+  .hww-step-num { font-size: 30px !important; }
 }
 
 /* === SMALL PHONE (max-width: 480px) === */
@@ -1209,7 +1209,8 @@ h1, h2, h3, h4 {
   /* Timeline entry title */
   .tl2-title { font-size: 20px !important; }
 
-  /* How We Work step number */
+  /* How We Work step number + indent (10px, independent of the mobile value) */
+  .hww-step { grid-template-columns: 10px 2px 1fr; gap: 0 12px; }
   .hww-step-num { font-size: 20px !important; }
 }
 
