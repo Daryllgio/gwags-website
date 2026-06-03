@@ -1025,7 +1025,7 @@ h1, h2, h3, h4 {
   .body-text { font-size: 17px !important; }
   .hero-body { font-size: 17px !important; }
   /* TABLET: eyebrow text size */
-  .eyebrow { font-size: 15px !important; }
+  .eyebrow { font-size: 16px !important; }
   /* TABLET: section padding */
   .site-section { padding: 60px 32px !important; }
   /* TABLET: four-column grids become 2x2 */
@@ -1051,7 +1051,7 @@ h1, h2, h3, h4 {
   .body-text { font-size: 16px !important; }
   .hero-body { font-size: 16px !important; }
   /* MOBILE: eyebrow text size */
-  .eyebrow { font-size: 15px !important; }
+  .eyebrow { font-size: 16px !important; }
   /* MOBILE: section padding */
   .site-section { padding: 48px 20px !important; }
   /* MOBILE: ALL grids single column */
@@ -1081,7 +1081,7 @@ h1, h2, h3, h4 {
   .body-text { font-size: 15px !important; }
   .hero-body { font-size: 15px !important; }
   /* SMALL PHONE: eyebrow text size */
-  .eyebrow { font-size: 14px !important; }
+  .eyebrow { font-size: 15px !important; }
   /* SMALL PHONE: section padding */
   .site-section { padding: 36px 16px !important; }
   /* SMALL PHONE: hero adjustments */
