@@ -797,8 +797,9 @@ h1, h2, h3, h4 {
   /* Hero: stack text on top, image below */
   .hww-hero-grid { grid-template-columns: 1fr; gap: 32px; }
 
-  /* Coordination steps: shrink the number column + gap so the text isn't squashed */
-  .hww-step { grid-template-columns: 36px 2px 1fr; gap: 0 14px; }
+  /* Coordination steps: shrink the number column + gap so the text isn't squashed.
+     First value (26px) = how far the number is pushed right; gap (12px) = space before the text. */
+  .hww-step { grid-template-columns: 26px 2px 1fr; gap: 0 12px; }
 }
 
 /* ── Our Role Page ── */
