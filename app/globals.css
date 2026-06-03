@@ -721,9 +721,9 @@ h1, h2, h3, h4 {
 }
 
 /* iPad / tablet: smaller digits and indent than desktop.
-   First grid value (45px) = how far the number is pushed right; font-size = digit size. */
+   First grid value (25px) = how far the number is pushed right; font-size = digit size. */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .hww-step { grid-template-columns: 45px 2px 1fr; }
+  .hww-step { grid-template-columns: 25px 2px 1fr; }
   .hww-step-num { font-size: 32px; }
 }
 
