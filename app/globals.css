@@ -787,6 +787,25 @@ h1, h2, h3, h4 {
   }
 }
 
+/* ── iPad PORTRAIT ONLY (769px–850px) ──
+   Stacks the hero and split sections and switches the card grids to 2 columns.
+   The min-width:769 guard keeps phones (<=768px) on their own rules, and the
+   max-width:850 ceiling keeps iPad landscape (1024px) and desktop untouched. */
+@media (min-width: 769px) and (max-width: 850px) {
+  /* 1. Hero: text on top, full-width image below */
+  .hww-hero-grid { grid-template-columns: 1fr; }
+  .hww-hero-img { min-height: 320px; }
+
+  /* 2. Split screen: Direct Action on top, Institutional Support below */
+  .hww-split { grid-template-columns: 1fr; }
+
+  /* 3. Partnering With Gwags cards: 2 columns (third card wraps below) */
+  .hww-cards-grid { grid-template-columns: 1fr 1fr; }
+
+  /* 4. Initiatives cards: 2x2 grid */
+  .initiatives-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
 @media (max-width: 768px) {
   .hww-split {
     grid-template-columns: 1fr;
