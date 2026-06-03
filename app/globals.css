@@ -720,6 +720,13 @@ h1, h2, h3, h4 {
   height: 64px;
 }
 
+/* iPad / tablet: smaller digits and indent than desktop.
+   First grid value (45px) = how far the number is pushed right; font-size = digit size. */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hww-step { grid-template-columns: 45px 2px 1fr; }
+  .hww-step-num { font-size: 32px; }
+}
+
 /* Working with Gwags cards */
 .hww-cards-grid {
   display: grid;
@@ -809,8 +816,8 @@ h1, h2, h3, h4 {
   .hww-hero-img { min-height: 280px; }
 
   /* Coordination steps: shrink the number column + gap so the text isn't squashed.
-     First value (15px) = how far the number is pushed right; gap (12px) = space before the text. */
-  .hww-step { grid-template-columns: 15px 2px 1fr; gap: 0 12px; }
+     First value (10px) = how far the number is pushed right; gap (12px) = space before the text. */
+  .hww-step { grid-template-columns: 10px 2px 1fr; gap: 0 12px; }
 }
 
 /* ── Our Role Page ── */
@@ -1170,7 +1177,7 @@ h1, h2, h3, h4 {
   .tl2-title { font-size: 22px !important; }
 
   /* How We Work step number */
-  .hww-step-num { font-size: 15px !important; }
+  .hww-step-num { font-size: 24px !important; }
 }
 
 /* === SMALL PHONE (max-width: 480px) === */
@@ -1203,7 +1210,7 @@ h1, h2, h3, h4 {
   .tl2-title { font-size: 20px !important; }
 
   /* How We Work step number */
-  .hww-step-num { font-size: 15px !important; }
+  .hww-step-num { font-size: 20px !important; }
 }
 
 /* ================================================================
