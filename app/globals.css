@@ -1177,7 +1177,7 @@ h1, h2, h3, h4 {
   .tl2-title { font-size: 22px !important; }
 
   /* How We Work step number */
-  .hww-step-num { font-size: 25px !important; }
+  .hww-step-num { font-size: 60px !important; }
 }
 
 /* === SMALL PHONE (max-width: 480px) === */
