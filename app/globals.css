@@ -652,7 +652,7 @@ h1, h2, h3, h4 {
 
 /* Image fills its half completely (top, bottom, and out to the right viewport edge). */
 .hww-hero-img {
-  min-height: 420px;
+  min-height: 500px;
 }
 
 .hww-init-grid {
