@@ -1153,7 +1153,7 @@ h1, h2, h3, h4 {
   .hero-section { padding: 60px 20px 64px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 200px !important; }
+  .ini-img-ph    { height: 215px !important; }
   .ini-card-body { padding: 16px 16px 20px !important; }
   .ini-card-title { font-size: 17px !important; }
 
@@ -1162,7 +1162,7 @@ h1, h2, h3, h4 {
   .wg-card-title { font-size: 17px !important; }
 
   /* More About */
-  .ma-img-ph    { height: 200px !important; }
+  .ma-img-ph    { height: 215px !important; }
   .ma-card-body { padding: 18px 18px 22px !important; }
   .ma-card-title { font-size: 17px !important; }
 
@@ -1186,7 +1186,7 @@ h1, h2, h3, h4 {
   .hero-section { padding: 48px 16px 56px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 185px !important; }
+  .ini-img-ph    { height: 200px !important; }
   .ini-card-body { padding: 14px 14px 18px !important; }
   .ini-card-title { font-size: 16px !important; }
 
@@ -1195,7 +1195,7 @@ h1, h2, h3, h4 {
   .wg-card-title { font-size: 16px !important; }
 
   /* More About */
-  .ma-img-ph    { height: 185px !important; }
+  .ma-img-ph    { height: 200px !important; }
   .ma-card-body { padding: 14px 16px 20px !important; }
   .ma-card-title { font-size: 16px !important; }
 
