@@ -13,7 +13,6 @@ export default function OurRolePage() {
     <main>
       <Nav lang={lang} onToggleLang={toggleLang} />
       <HeroSection lang={lang} />
-      <NarrativeSection lang={lang} />
       <VisionMissionSection lang={lang} />
       <ConvictionsSection lang={lang} />
       <LookingAheadSection lang={lang} />
@@ -38,34 +37,6 @@ function HeroSection({ lang }: { lang: Lang }) {
         <p className="body-text" style={{ color: 'rgba(10,17,40,0.7)', fontSize: '18px', lineHeight: 1.8, maxWidth: '600px', margin: 0 }}>
           {p.body}
         </p>
-      </div>
-    </section>
-  )
-}
-
-/* ── Narrative ── */
-function NarrativeSection({ lang }: { lang: Lang }) {
-  const p = t[lang].ourRole.narrative
-  return (
-    <section className="or-narrative">
-      <div className="or-narrative-inner">
-        <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 500, margin: '0 0 24px 0', lineHeight: 1.25 }}>
-          {p.section1.heading}
-        </h2>
-        {p.section1.paragraphs.map((para, i) => (
-          <p key={i} className="body-text" style={{ fontSize: '18px', color: '#4A4A4A', lineHeight: 1.85, margin: i < p.section1.paragraphs.length - 1 ? '0 0 20px 0' : '0 0 64px 0' }}>
-            {para}
-          </p>
-        ))}
-
-        <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 500, margin: '0 0 24px 0', lineHeight: 1.25 }}>
-          {p.section2.heading}
-        </h2>
-        {p.section2.paragraphs.map((para, i) => (
-          <p key={i} className="body-text" style={{ fontSize: '18px', color: '#4A4A4A', lineHeight: 1.85, margin: i < p.section2.paragraphs.length - 1 ? '0 0 20px 0' : '0' }}>
-            {para}
-          </p>
-        ))}
       </div>
     </section>
   )

@@ -367,25 +367,6 @@ export const t = {
         h1: 'We exist to structure what others start.',
         body: 'Across the world, organizations are working to tackle the challenges their communities face. Many are driven by genuine commitment and firsthand understanding of the problems. But commitment alone rarely provides the structure, resources, and networks needed to create impact beyond their current capacity. That is where Gwags comes in.',
       },
-      narrative: {
-        section1: {
-          heading: 'Why Gwags exists.',
-          paragraphs: [
-            'Gwags was not created to add another organization to an already crowded landscape. It was created because the landscape itself is missing something fundamental.',
-            'There is no shortage of initiatives. There is no shortage of talented, motivated people working to make a difference. What there is, consistently and across nearly every sector, is a shortage of infrastructure. The governance frameworks that keep organizations accountable. The funding pathways that allow them to plan beyond the next grant cycle. The networks that connect them to partners, knowledge, and opportunities they cannot access on their own. The institutional credibility that opens doors that talent alone cannot.',
-            'Without that infrastructure, even the most promising initiatives are left to figure things out on their own. Some succeed despite the odds. Many do not. And the ones that fail rarely fail because the people behind them were not good enough. They fail because the system around them was not built to support what they were trying to do.',
-            'Gwags exists to change that. We are building the institutional layer that sits beneath the work, the infrastructure that makes it possible for organizations, leaders, and communities to create impact that does not depend on luck, personal connections, or a single funding source.',
-          ],
-        },
-        section2: {
-          heading: 'What we mean by an impact institution.',
-          paragraphs: [
-            'The term institution is deliberate. Gwags is not a project. It is not a campaign. It is not built around a single cause or a single funding cycle. It is designed to be permanent, to grow over time, and to outlast any individual leader or program.',
-            'An institution sets standards. It builds systems. It creates frameworks that other people and organizations can rely on. That is what Gwags is doing. We are not just running programs, although we do run our own initiatives across education, health, community development, and youth empowerment. We are building the systems that allow programs to work better, last longer, and reach further.',
-            'A foundation writes checks. A network makes introductions. An institution builds the underlying architecture that makes both of those things more effective, more sustainable, and more scalable. That is the distinction, and that is the role Gwags plays.',
-          ],
-        },
-      },
       visionMission: {
         vision: {
           label: 'OUR VISION',
@@ -804,25 +785,6 @@ export const t = {
         eyebrow: 'NOTRE RÔLE',
         h1: "Nous existons pour structurer ce que d'autres commencent.",
         body: "À travers le monde, des organisations travaillent à relever les défis auxquels font face leurs communautés. Beaucoup sont animées d'un engagement sincère et d'une compréhension directe des problèmes. Mais l'engagement seul suffit rarement à fournir la structure, les ressources et les réseaux nécessaires pour créer un impact au-delà de leur capacité actuelle. C'est là qu'intervient Gwags.",
-      },
-      narrative: {
-        section1: {
-          heading: 'Pourquoi Gwags existe.',
-          paragraphs: [
-            "Gwags n'a pas été créé pour ajouter une organisation de plus à un paysage déjà encombré. Il a été créé parce que le paysage lui-même manque de quelque chose de fondamental.",
-            "Les initiatives ne manquent pas. Les personnes talentueuses et motivées qui cherchent à faire une différence ne manquent pas non plus. Ce qui manque, de manière constante et dans presque tous les secteurs, c'est l'infrastructure. Les cadres de gouvernance qui maintiennent les organisations responsables. Les voies de financement qui leur permettent de planifier au-delà du prochain cycle de subventions. Les réseaux qui les connectent aux partenaires, aux connaissances et aux opportunités auxquels elles ne peuvent pas accéder par elles-mêmes. La crédibilité institutionnelle qui ouvre des portes que le talent seul ne peut pas.",
-            "Sans cette infrastructure, même les initiatives les plus prometteuses sont livrées à elles-mêmes. Certaines réussissent malgré les obstacles. Beaucoup n'y parviennent pas. Et celles qui échouent échouent rarement parce que les personnes qui les portent n'étaient pas assez compétentes. Elles échouent parce que le système autour d'elles n'était pas conçu pour soutenir ce qu'elles essayaient de faire.",
-            "Gwags existe pour changer cela. Nous construisons la couche institutionnelle qui s'étend sous le travail, l'infrastructure qui permet aux organisations, aux leaders et aux communautés de créer un impact qui ne dépend pas de la chance, des relations personnelles ou d'une seule source de financement.",
-          ],
-        },
-        section2: {
-          heading: "Ce que nous entendons par institution d'impact.",
-          paragraphs: [
-            "Le terme institution est délibéré. Gwags n'est pas un projet. Ce n'est pas une campagne. Il n'est pas construit autour d'une seule cause ou d'un seul cycle de financement. Il est conçu pour être permanent, pour grandir avec le temps et pour durer au-delà de tout leader ou programme individuel.",
-            "Une institution établit des normes. Elle construit des systèmes. Elle crée des cadres sur lesquels d'autres personnes et organisations peuvent s'appuyer. C'est ce que fait Gwags. Nous ne gérons pas seulement des programmes, bien que nous gérions nos propres initiatives dans les domaines de l'éducation, de la santé, du développement communautaire et de l'autonomisation des jeunes. Nous construisons les systèmes qui permettent aux programmes de mieux fonctionner, de durer plus longtemps et d'atteindre plus loin.",
-            "Une fondation écrit des chèques. Un réseau fait des introductions. Une institution construit l'architecture sous-jacente qui rend ces deux choses plus efficaces, plus durables et plus évolutives. C'est la distinction, et c'est le rôle que joue Gwags.",
-          ],
-        },
       },
       visionMission: {
         vision: {
