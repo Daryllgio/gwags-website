@@ -641,8 +641,18 @@ h1, h2, h3, h4 {
 .hww-hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 0;
   align-items: stretch;
+}
+
+/* Text stays in a constrained, padded column; the image bleeds to the section edges. */
+.hww-hero-text {
+  padding: 80px 60px 80px 100px;
+}
+
+/* Image fills its half completely (top, bottom, and out to the right viewport edge). */
+.hww-hero-img {
+  min-height: 420px;
 }
 
 .hww-init-grid {
@@ -788,18 +798,19 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr;
   }
 
-  .hww-hero-section { padding: 60px 20px !important; }
+  .hww-hero-text { padding: 60px 20px !important; }
   .hww-hero-h1 { font-size: 28px !important; }
   .hww-init-strip { padding: 48px 20px !important; }
   .hww-coordination-section { padding: 60px 20px !important; }
   .hww-working-with-section { padding: 60px 20px !important; }
 
-  /* Hero: stack text on top, image below */
-  .hww-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  /* Hero: stack text on top, image (full-bleed, fixed height) below */
+  .hww-hero-grid { grid-template-columns: 1fr; gap: 0; }
+  .hww-hero-img { min-height: 280px; }
 
   /* Coordination steps: shrink the number column + gap so the text isn't squashed.
-     First value (26px) = how far the number is pushed right; gap (12px) = space before the text. */
-  .hww-step { grid-template-columns: 26px 2px 1fr; gap: 0 12px; }
+     First value (15px) = how far the number is pushed right; gap (12px) = space before the text. */
+  .hww-step { grid-template-columns: 15px 2px 1fr; gap: 0 12px; }
 }
 
 /* ── Our Role Page ── */
@@ -1017,7 +1028,7 @@ h1, h2, h3, h4 {
   .more-about-grid { gap: 20px !important; }
   .getinvolved-grid { gap: 14px !important; }
   /* TABLET: How We Work sections reduce padding */
-  .hww-hero-section { padding: 60px 60px !important; }
+  .hww-hero-text { padding: 60px 40px 60px 60px !important; }
   .hww-init-strip { padding: 48px 60px !important; }
   .hww-coordination-section { padding: 60px 60px !important; }
   .hww-working-with-section { padding: 60px 60px !important; }
@@ -1159,7 +1170,7 @@ h1, h2, h3, h4 {
   .tl2-title { font-size: 22px !important; }
 
   /* How We Work step number */
-  .hww-step-num { font-size: 25px !important; }
+  .hww-step-num { font-size: 15px !important; }
 }
 
 /* === SMALL PHONE (max-width: 480px) === */
@@ -1192,7 +1203,7 @@ h1, h2, h3, h4 {
   .tl2-title { font-size: 20px !important; }
 
   /* How We Work step number */
-  .hww-step-num { font-size: 25px !important; }
+  .hww-step-num { font-size: 15px !important; }
 }
 
 /* ================================================================

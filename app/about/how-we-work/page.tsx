@@ -36,9 +36,9 @@ export default function HowWeWorkPage() {
 function HeroSection({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.hero
   return (
-    <section className="hww-hero-section" style={{ background: '#0A1128', padding: '80px 100px' }}>
+    <section className="hww-hero-section" style={{ background: '#0A1128' }}>
       <div className="hww-hero-grid">
-        <div>
+        <div className="hww-hero-text">
           <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 24px 0' }}>
             {p.eyebrow}
           </p>
@@ -50,9 +50,9 @@ function HeroSection({ lang }: { lang: Lang }) {
           </p>
         </div>
         {/* IMAGE: Replace the inner placeholder div with
-            <img src="/images/how-we-work-hero.jpg" alt="How We Work" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} /> */}
-        <div style={{ position: 'relative', minHeight: '360px', width: '100%' }}>
-          <div className="hww-hero-img-ph" style={{ position: 'absolute', inset: 0, background: '#0F1E3D', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src="/images/how-we-work-hero.jpg" alt="How We Work" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} /> */}
+        <div className="hww-hero-img" style={{ position: 'relative', width: '100%' }}>
+          <div className="hww-hero-img-ph" style={{ position: 'absolute', inset: 0, background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px', letterSpacing: '0.12em' }}>Photo: How We Work</span>
           </div>
         </div>
