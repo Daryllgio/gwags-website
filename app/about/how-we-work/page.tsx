@@ -51,7 +51,7 @@ function HeroSection({ lang }: { lang: Lang }) {
         </div>
         {/* IMAGE: Replace this placeholder with
             <img src="/images/how-we-work-hero.jpg" alt="How We Work" style={{ width: '100%', height: '360px', objectFit: 'cover', borderRadius: '8px' }} /> */}
-        <div className="hww-hero-img-ph" style={{ minHeight: '360px', height: '100%', width: '100%', background: '#0F1E3D', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div className="hww-hero-img-ph" style={{ minHeight: '360px', width: '100%', background: '#0F1E3D', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px', letterSpacing: '0.12em' }}>Photo: How We Work</span>
         </div>
       </div>
