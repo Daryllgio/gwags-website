@@ -365,7 +365,7 @@ export const t = {
       hero: {
         eyebrow: 'OUR ROLE',
         h1: 'We exist to structure what others start.',
-        body: 'Across the world, organizations and individuals are working to solve some of the most pressing challenges facing communities. Many of them are driven by deep commitment and firsthand understanding of the problems. But commitment alone is not enough to create change that lasts. That is where Gwags comes in.',
+        body: 'Across the world, organizations are working to tackle the challenges their communities face. Many are driven by genuine commitment and firsthand understanding of the problems. But commitment alone rarely provides the structure, resources, and networks needed to create impact beyond their current capacity. That is where Gwags comes in.',
       },
       narrative: {
         section1: {
@@ -803,7 +803,7 @@ export const t = {
       hero: {
         eyebrow: 'NOTRE RÔLE',
         h1: "Nous existons pour structurer ce que d'autres commencent.",
-        body: "Partout dans le monde, des organisations et des individus travaillent à résoudre certains des défis les plus pressants auxquels font face les communautés. Beaucoup sont animés par un engagement profond et une compréhension directe des problèmes. Mais l'engagement seul ne suffit pas pour créer un changement durable. C'est là qu'intervient Gwags.",
+        body: "À travers le monde, des organisations travaillent à relever les défis auxquels font face leurs communautés. Beaucoup sont animées d'un engagement sincère et d'une compréhension directe des problèmes. Mais l'engagement seul suffit rarement à fournir la structure, les ressources et les réseaux nécessaires pour créer un impact au-delà de leur capacité actuelle. C'est là qu'intervient Gwags.",
       },
       narrative: {
         section1: {
