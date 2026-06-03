@@ -160,9 +160,12 @@ function WorkingWithSection({ lang }: { lang: Lang }) {
       <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
         {p.eyebrow}
       </p>
-      <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 48px 0', lineHeight: 1.25 }}>
+      <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.25 }}>
         {p.h2}
       </h2>
+      <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.75, maxWidth: '720px', margin: '0 0 48px 0' }}>
+        {p.intro}
+      </p>
       <div className="hww-cards-grid">
         {p.cards.map((card, i) => (
           <div key={i} className="hww-card">

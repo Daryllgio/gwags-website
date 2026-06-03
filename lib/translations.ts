@@ -229,7 +229,7 @@ export const t = {
       coordination: {
         eyebrow: 'THE COORDINATION MODEL',
         h2: 'How affiliation works.',
-        intro: 'Organizations that align with Gwags enter a structured affiliation built on shared values, clear expectations, and mutual benefit. It is a long-term institutional relationship.',
+        intro: "Through affiliation, organizations join the Gwags network under a long-term institutional relationship. Gwags provides governance support, strategic coordination, and access to a broader ecosystem. Affiliated organizations align with the standards that define the network and accept Gwags's governance representation within their structures.",
         steps: [
           {
             title: 'Shared vision and values',
@@ -252,6 +252,7 @@ export const t = {
       workingWith: {
         eyebrow: 'PARTNERING WITH GWAGS',
         h2: 'What to expect as a partner.',
+        intro: 'Through partnership, Gwags collaborates with organizations outside its network on shared goals. Partnerships do not involve governance integration or structural obligations. They are built around specific projects and initiatives where both organizations contribute toward a shared outcome.',
         cards: [
           {
             title: 'Shared objectives',
@@ -666,7 +667,7 @@ export const t = {
       coordination: {
         eyebrow: 'LE MODÈLE DE COORDINATION',
         h2: "Comment fonctionne l'affiliation.",
-        intro: "Les organisations qui s'alignent avec Gwags entrent dans une affiliation structurée fondée sur des valeurs partagées, des attentes claires et un bénéfice mutuel. Il s'agit d'une relation institutionnelle à long terme.",
+        intro: "Par le biais de l'affiliation, les organisations rejoignent le réseau Gwags dans le cadre d'une relation institutionnelle à long terme. Gwags fournit un soutien en gouvernance, une coordination stratégique et un accès à un écosystème plus large. Les organisations affiliées s'alignent sur les standards qui définissent le réseau et acceptent la représentation de Gwags au sein de leurs structures de gouvernance.",
         steps: [
           {
             title: 'Vision et valeurs partagées',
@@ -689,6 +690,7 @@ export const t = {
       workingWith: {
         eyebrow: 'PARTENARIAT AVEC GWAGS',
         h2: 'Ce à quoi s\'attendre en tant que partenaire.',
+        intro: "Par le biais du partenariat, Gwags collabore avec des organisations en dehors de son réseau sur des objectifs communs. Les partenariats n'impliquent pas d'intégration de gouvernance ni d'obligations structurelles. Ils sont construits autour de projets et d'initiatives spécifiques où les deux organisations contribuent à un résultat commun.",
         cards: [
           {
             title: 'Objectifs partagés',
