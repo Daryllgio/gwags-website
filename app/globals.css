@@ -712,12 +712,12 @@ h1, h2, h3, h4 {
   padding-top: 4px;
 }
 
-/* Last step: keep a short gold segment so the line reaches number 4 and
-   continues slightly below it (instead of stopping above it). */
-.hww-step:last-child .hww-step-line {
-  background: #D4AF37;
-  align-self: start;
-  height: 64px;
+/* Last step: the line stretches (default) to fill the row. Removing the last
+   step's bottom padding makes the row end exactly at the last line of step 4's
+   body text, so the gold line continues past number 4 and stops level with the
+   end of the text — on every screen size. */
+.hww-step:last-child .hww-step-content {
+  padding-bottom: 0;
 }
 
 /* iPad / tablet: smaller digits and indent than desktop.
