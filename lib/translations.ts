@@ -394,7 +394,7 @@ export const t = {
           },
           {
             heading: 'Credibility is earned through action, not positioning.',
-            body: 'Gwags holds itself to the same standards it sets for the organizations within its network. Transparent governance. Measurable outcomes. Honest communication about what is working and what is not. We do not claim credibility through branding or institutional language. We earn it through the quality of our programs, the integrity of our partnerships, and the consistency of our follow-through. That standard is what makes the Gwags network meaningful. When an organization affiliates with Gwags, it signals something real, not because we say so, but because the work behind the name proves it.',
+            body: 'Gwags holds itself to the same standards it sets for the organizations within its network. Transparent governance, measurable outcomes, and clear communication about operations are non-negotiable. Our credibility is built through the quality of our programs, the integrity of our partnerships, and the consistency of our follow-through. That is what makes affiliation with Gwags meaningful.',
           },
         ],
       },
@@ -807,7 +807,7 @@ export const t = {
           },
           {
             heading: "La crédibilité se gagne par l'action, pas par le positionnement.",
-            body: "Gwags se tient aux mêmes exigences qu'il fixe pour les organisations de son réseau. Gouvernance transparente. Résultats mesurables. Communication honnête sur ce qui fonctionne et ce qui ne fonctionne pas. Nous ne revendiquons pas la crédibilité par l'image de marque ou le langage institutionnel. Nous la gagnons par la qualité de nos programmes, l'intégrité de nos partenariats et la constance de nos engagements. C'est cette exigence qui donne du sens au réseau Gwags. Quand une organisation s'affilie à Gwags, cela signale quelque chose de réel, non pas parce que nous le disons, mais parce que le travail derrière le nom le prouve.",
+            body: "Gwags s'impose les mêmes standards qu'il exige des organisations au sein de son réseau. Une gouvernance transparente, des résultats mesurables et une communication claire sur les opérations sont non négociables. Notre crédibilité se construit à travers la qualité de nos programmes, l'intégrité de nos partenariats et la constance de notre suivi. C'est ce qui rend l'affiliation avec Gwags significative.",
           },
         ],
       },
