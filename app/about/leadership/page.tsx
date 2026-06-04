@@ -70,7 +70,7 @@ function PersonCard({ name, role, bio, showBio = true, showLink = true }: {
       <p className="mt-3 lp-person-name" style={{ color: NAVY, fontSize: '24px', fontWeight: 600 }}>{name}</p>
 
       {/* Role */}
-      <p className="mt-1 lp-person-role" style={{ color: '#1A3060', fontSize: '24px', fontWeight: 200 }}>{role}</p>
+      <p className="mt-1 lp-person-role" style={{ color: '#3D3D3D', fontSize: '24px', fontWeight: 200 }}>{role}</p>
 
       {/* Bio */}
       {showBio && bio && (
@@ -127,7 +127,7 @@ function TeamDropdown({ value, onChange }: { value: string; onChange: (v: string
           fontSize: '15px',
         }}
       >
-        <span>{value === 'All' ? 'Team: All' : value}</span>
+        <span>{value}</span>
         <svg
           width="12" height="12" viewBox="0 0 12 12" fill="none"
           style={{ marginLeft: '8px', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}
@@ -217,17 +217,17 @@ export default function LeadershipPage() {
       `}</style>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      <div className="px-8 py-16 max-w-7xl mx-auto">
+      <div className="px-8 py-16 max-w-7xl mx-auto lp-container">
 
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10 lp-header">
           <h1
-            className="font-black uppercase leading-tight"
+            className="font-black uppercase leading-tight lp-heading"
             style={{ color: NAVY, fontSize: '48px', fontFamily: 'Georgia, "Times New Roman", serif' }}
           >
             Leadership
           </h1>
-          <p className="leading-relaxed self-center" style={{ color: NAVY, fontSize: '18px' }}>
+          <p className="leading-relaxed self-center lp-subtitle" style={{ color: NAVY, fontSize: '18px' }}>
             {lang === 'fr'
               ? "Nos équipes de gouvernance et exécutive rassemblent une expertise dans le leadership organisationnel, la mise en œuvre des programmes, les opérations et l'engagement communautaire. Nos leaders sont guidés par la mission de l'institution de construire l'infrastructure qui permet aux organisations de créer un impact à grande échelle."
               : "Our governance and executive teams bring together expertise across organizational leadership, program delivery, operations, and community engagement. Our leaders are guided by the institution's mission to build the infrastructure that enables organizations to create impact at scale."}
