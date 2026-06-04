@@ -1361,3 +1361,50 @@ h1, h2, h3, h4 {
 @media (max-width: 480px) {
   .lq-circle { width: 48px !important; height: 48px !important; }
 }
+
+/* ── Leadership Page ── */
+
+/* iPad (768–1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .lp-container     { padding: 48px 24px !important; }
+  .lp-heading       { font-size: 38px !important; }
+  .lp-subtitle      { font-size: 17px !important; }
+  .lp-section-title { font-size: 26px !important; }
+  .lp-person-name   { font-size: 20px !important; }
+  .lp-person-role   { font-size: 18px !important; }
+  .lp-person-bio    { font-size: 15px !important; }
+  .view-profile-link { font-size: 14px !important; }
+  .lp-photo         { height: 240px !important; }
+  .lp-section       { margin-bottom: 56px !important; }
+  .lp-grid          { gap: 24px !important; }
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
+  .lp-container     { padding: 40px 20px !important; }
+  .lp-heading       { font-size: 32px !important; }
+  .lp-subtitle      { font-size: 16px !important; }
+  .lp-section-title { font-size: 22px !important; }
+  .lp-person-name   { font-size: 18px !important; }
+  .lp-person-role   { font-size: 16px !important; }
+  .lp-person-bio    { font-size: 15px !important; }
+  .view-profile-link { font-size: 14px !important; }
+  .lp-photo         { height: 220px !important; }
+  .lp-section       { margin-bottom: 48px !important; }
+  .lp-grid          { gap: 24px !important; }
+}
+
+/* Phone (≤480px) */
+@media (max-width: 480px) {
+  .lp-container     { padding: 32px 16px !important; }
+  .lp-heading       { font-size: 26px !important; }
+  .lp-subtitle      { font-size: 15px !important; }
+  .lp-section-title { font-size: 20px !important; }
+  .lp-person-name   { font-size: 17px !important; }
+  .lp-person-role   { font-size: 15px !important; }
+  .lp-person-bio    { font-size: 14px !important; }
+  .view-profile-link { font-size: 13px !important; }
+  .lp-photo         { height: 200px !important; }
+  .lp-section       { margin-bottom: 40px !important; }
+  .lp-grid          { gap: 20px !important; }
+}
