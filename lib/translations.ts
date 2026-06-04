@@ -370,13 +370,13 @@ export const t = {
       visionMission: {
         vision: {
           label: 'OUR VISION',
-          main: 'To build the most impactful international infrastructure dedicated to accelerating, structuring, and coordinating the initiatives, organizations, and leaders transforming societies sustainably.',
-          expansion: 'This is not a vision for Gwags alone. It is a vision for the ecosystem we are building. A world where organizations committed to impact do not struggle alone for resources, credibility, or direction. Where the infrastructure to support their growth already exists, and where collective progress is not an aspiration but an operational reality.',
+          main: 'To build the most impactful international infrastructure dedicated to accelerating, structuring, and coordinating the initiatives and organizations transforming societies sustainably.',
+          expansion: 'It is a vision for the ecosystem Gwags is building. One where organizations committed to impact do not struggle alone for resources, credibility, or direction, and where the infrastructure to support their growth already exists.',
         },
         mission: {
           label: 'OUR MISSION',
-          main: 'To accelerate and amplify global impact by connecting organizations, initiatives, and actors committed to human development, social innovation, and the sustainable transformation of communities.',
-          expansion: 'We carry out this mission on two fronts. Directly, through our own portfolio of initiatives that address real needs on the ground. And institutionally, by serving as a coordination platform that strengthens, connects, and elevates the organizations around us. These two roles are not separate. They reinforce each other. The experience we gain from running programs makes our institutional support more credible. And the institutional framework we build makes our programs more sustainable.',
+          main: 'To accelerate and amplify global impact by connecting organizations and initiatives committed to human development, social innovation, and the sustainable transformation of communities.',
+          expansion: 'Gwags pursues this mission on two fronts: directly, through its own portfolio of initiatives across education, health, and community development; and institutionally, by coordinating, supporting, and strengthening the organizations within its network.',
         },
       },
       convictions: {
@@ -783,13 +783,13 @@ export const t = {
       visionMission: {
         vision: {
           label: 'NOTRE VISION',
-          main: "Construire l'infrastructure internationale la plus impactante dédiée à l'accélération, la structuration et la coordination des initiatives, organisations et leaders qui transforment durablement les sociétés.",
-          expansion: "Ce n'est pas une vision pour Gwags seul. C'est une vision pour l'écosystème que nous construisons. Un monde où les organisations engagées dans l'impact ne luttent pas seules pour les ressources, la crédibilité ou la direction. Où l'infrastructure pour soutenir leur croissance existe déjà, et où le progrès collectif n'est pas une aspiration mais une réalité opérationnelle.",
+          main: "Construire l'infrastructure internationale la plus impactante dédiée à accélérer, structurer et coordonner les initiatives et organisations qui transforment les sociétés de manière durable.",
+          expansion: "C'est une vision pour l'écosystème que Gwags construit. Un monde où les organisations engagées dans l'impact ne luttent pas seules pour les ressources, la crédibilité ou la direction, et où l'infrastructure pour soutenir leur croissance existe déjà.",
         },
         mission: {
           label: 'NOTRE MISSION',
-          main: "Accélérer et amplifier l'impact mondial en connectant les organisations, initiatives et acteurs engagés dans le développement humain, l'innovation sociale et la transformation durable des communautés.",
-          expansion: "Nous accomplissons cette mission sur deux fronts. Directement, à travers notre propre portefeuille d'initiatives qui répondent à de véritables besoins sur le terrain. Et institutionnellement, en servant de plateforme de coordination qui renforce, connecte et élève les organisations qui nous entourent. Ces deux rôles ne sont pas séparés. Ils se renforcent mutuellement. L'expérience que nous acquérons en gérant des programmes rend notre soutien institutionnel plus crédible. Et le cadre institutionnel que nous construisons rend nos programmes plus durables.",
+          main: "Accélérer et amplifier l'impact mondial en connectant les organisations et initiatives engagées dans le développement humain, l'innovation sociale et la transformation durable des communautés.",
+          expansion: "Gwags poursuit cette mission sur deux fronts: directement, à travers son propre portefeuille d'initiatives dans l'éducation, la santé et le développement communautaire; et institutionnellement, en coordonnant, soutenant et renforçant les organisations au sein de son réseau.",
         },
       },
       convictions: {
