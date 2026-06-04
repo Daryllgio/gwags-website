@@ -13,7 +13,7 @@ const governanceBoard = [
   {
     name: 'D. Giovanny Bikak Mbal',
     role: 'Chair, Board Member',
-    bio:  "Leads the foundation’s governance and strategic direction across its operations.",
+    bio:  "Leads the foundation's governance and strategic direction across its operations.",
   },
   {
     name: 'Vianney Tanifor',
@@ -23,16 +23,16 @@ const governanceBoard = [
   {
     name: 'Noa Winner',
     role: 'Board Member',
-    bio:  "Supports the foundation’s mission through strategic oversight and partnerships.",
+    bio:  "Supports the foundation's mission through strategic oversight and partnerships.",
   },
 ]
 
 const executiveTeam = [
-  { name: ‘Marcus Thibodeau’, role: ‘Executive Director’,                          bio: "Marcus leads day-to-day operations and drives the foundation’s mission delivery on the ground." },
-  { name: ‘Isabelle Mvondo’,  role: ‘Director of Programs’,                        bio: "Isabelle designs and oversees the foundation’s youth and community programs in Cameroon." },
-  { name: ‘Samuel Eze’,       role: ‘Director of Operations’,                      bio: ‘Samuel manages internal systems, logistics, and organizational infrastructure.’ },
-  { name: ‘Laure Menguele’,   role: ‘Director of Communications & Partnerships’,   bio: ‘Laure leads external communications and builds partnerships with donors and peer organizations.’ },
-  { name: ‘Name Placeholder’, role: ‘Director of Resource Mobilization’,           bio: ‘’ },
+  { name: 'Marcus Thibodeau', role: 'Executive Director',                          bio: "Marcus leads day-to-day operations and drives the foundation's mission delivery on the ground." },
+  { name: 'Isabelle Mvondo',  role: 'Director of Programs',                        bio: "Isabelle designs and oversees the foundation's youth and community programs in Cameroon." },
+  { name: 'Samuel Eze',       role: 'Director of Operations',                      bio: 'Samuel manages internal systems, logistics, and organizational infrastructure.' },
+  { name: 'Laure Menguele',   role: 'Director of Communications & Partnerships',   bio: 'Laure leads external communications and builds partnerships with donors and peer organizations.' },
+  { name: 'Name Placeholder', role: 'Director of Resource Mobilization',           bio: '' },
 ]
 
 const historicalLeadership = [
