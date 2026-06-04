@@ -65,14 +65,17 @@ export default function LeadershipPage() {
   const [search, setSearch]     = useState('')
   const [teamFilter, setTeamFilter] = useState('All')
 
-  const filter = (people: typeof governanceBoard) =>
-    people.filter(p =>
+  const filteredBoard = useMemo(() =>
+    governanceBoard.filter(p =>
       p.name.toLowerCase().includes(search.toLowerCase()) ||
       p.role.toLowerCase().includes(search.toLowerCase())
-    )
+    ), [search])
 
-  const filteredBoard = useMemo(() => filter(governanceBoard), [search])
-  const filteredExec  = useMemo(() => filter(executiveTeam),   [search])
+  const filteredExec = useMemo(() =>
+    executiveTeam.filter(p =>
+      p.name.toLowerCase().includes(search.toLowerCase()) ||
+      p.role.toLowerCase().includes(search.toLowerCase())
+    ), [search])
 
   const showBoard = (teamFilter === 'All' || teamFilter === 'Governance Board') && filteredBoard.length > 0
   const showExec  = (teamFilter === 'All' || teamFilter === 'Executive Team')   && filteredExec.length  > 0
@@ -90,7 +93,7 @@ export default function LeadershipPage() {
             Meet Our Team
           </h1>
           <p className="text-gray-500 leading-relaxed self-center">
-            The Gwags Foundation's leaders are committed to creating lasting change for children and youth in Cameroon.
+            The Gwags Foundation&apos;s leaders are committed to creating lasting change for children and youth in Cameroon.
             Our team brings together expertise in governance, program delivery, operations, and community engagement.
           </p>
         </div>
