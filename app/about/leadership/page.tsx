@@ -58,7 +58,7 @@ function PersonCard({ name, role, bio, showBio = true, showLink = true }: {
   name: string; role: string; bio?: string; showBio?: boolean; showLink?: boolean
 }) {
   return (
-    <div className="bg-white rounded-xl p-4">
+    <div>
       {/* Photo placeholder */}
       <div
         className="w-full rounded-xl flex items-center justify-center"
@@ -68,24 +68,22 @@ function PersonCard({ name, role, bio, showBio = true, showLink = true }: {
       </div>
 
       {/* Name */}
-      <p className="font-bold mt-3" style={{ color: NAVY, fontSize: '20px' }}>{name}</p>
+      <p className="mt-3" style={{ color: NAVY, fontSize: '22px', fontWeight: 700 }}>{name}</p>
 
       {/* Role */}
-      <p className="mt-1" style={{ color: '#4A5568', fontSize: '16px' }}>{role}</p>
+      <p className="mt-1" style={{ color: '#1A3060', fontSize: '20px', fontWeight: 400 }}>{role}</p>
 
       {/* Bio */}
       {showBio && bio && (
-        <p className="mt-2 leading-relaxed" style={{ color: NAVY, fontSize: '18px' }}>{bio}</p>
+        <p className="mt-2 leading-relaxed" style={{ color: NAVY, fontSize: '16px', fontWeight: 400 }}>{bio}</p>
       )}
 
       {/* View profile */}
       {showLink && (
         <a
           href="#"
-          className="mt-3 inline-block"
-          style={{ color: NAVY, fontSize: '15px' }}
-          onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = GOLD; (e.currentTarget as HTMLAnchorElement).style.textDecoration = 'underline' }}
-          onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = NAVY; (e.currentTarget as HTMLAnchorElement).style.textDecoration = 'none' }}
+          className="mt-3 inline-block view-profile-link"
+          style={{ color: NAVY, fontSize: '15px', textDecoration: 'none' }}
         >
           View profile
         </a>
@@ -98,7 +96,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
       className="font-black uppercase mb-8"
-      style={{ color: NAVY, fontSize: '30px', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
+      style={{ color: NAVY, fontSize: '30px', fontFamily: 'Georgia, "Times New Roman", serif' }}
     >
       {children}
     </h2>
@@ -198,6 +196,26 @@ export default function LeadershipPage() {
 
   return (
     <main style={{ background: '#F7F6F3', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+      <style>{`
+        .view-profile-link {
+          position: relative;
+          display: inline-block;
+        }
+        .view-profile-link::after {
+          content: "";
+          display: block;
+          height: 1.5px;
+          background: #D4AF37;
+          width: 0%;
+          transition: width 0.3s ease;
+        }
+        .view-profile-link:hover {
+          color: #D4AF37 !important;
+        }
+        .view-profile-link:hover::after {
+          width: 100%;
+        }
+      `}</style>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
       <div className="px-8 py-16 max-w-7xl mx-auto">
