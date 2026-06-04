@@ -28,20 +28,20 @@ function HeroSection({ lang }: { lang: Lang }) {
   return (
     <section className="or-hero">
       <div style={{ maxWidth: '760px' }}>
-        <p className="eyebrow" style={{ color: '#0A1128', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 24px 0' }}>
+        <p className="eyebrow" style={{ color: '#0A1128', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 24px 0' }}>
           {p.eyebrow}
         </p>
         <h1 className="or-hero-h1" style={{ color: '#0A1128', fontSize: '46px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.18, margin: '0 0 28px 0' }}>
           {p.h1}
         </h1>
-        <p className="body-text" style={{ color: 'rgba(10,17,40,0.7)', fontSize: '18px', lineHeight: 1.8, maxWidth: '600px', margin: 0 }}>
+        <p className="body-text" style={{ color: '#0A1128', fontSize: '18px', lineHeight: 1.8, maxWidth: '600px', margin: 0 }}>
           {p.body}
         </p>
       </div>
 
       {/* IMAGE: Replace the div below with:
-          <img src="/images/our-role.jpg" alt="Our Role" className="or-hero-img" style={{ display: 'block', width: '85%', height: '420px', objectFit: 'cover', borderRadius: '16px', margin: '48px auto 48px' }} /> */}
-      <div className="or-hero-img" style={{ width: '85%', height: '420px', borderRadius: '16px', background: 'rgba(0,0,0,0.15)', margin: '48px auto 48px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <img src="/images/our-role.jpg" alt="Our Role" className="or-hero-img" style={{ display: 'block', width: '95%', height: '600px', objectFit: 'cover', borderRadius: '16px', margin: '48px auto 48px' }} /> */}
+      <div className="or-hero-img" style={{ width: '95%', height: '600px', borderRadius: '16px', background: 'rgba(0,0,0,0.15)', margin: '48px auto 48px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <span style={{ color: 'rgba(0,0,0,0.3)', fontSize: '13px', letterSpacing: '0.1em' }}>Photo: Our Role</span>
       </div>
     </section>
@@ -55,10 +55,10 @@ function VisionMissionSection({ lang }: { lang: Lang }) {
     <section id="vision-mission" className="or-vm-section">
       <div className="or-vm-grid">
         <div className="or-vm-block">
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.2em', margin: '0 0 12px 0' }}>
+          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.2em', margin: '0 0 12px 0' }}>
             {p.vision.label}
           </p>
-          <p style={{ fontSize: '20px', color: '#0A1128', fontFamily: 'Georgia, serif', fontWeight: 500, lineHeight: 1.6, margin: '0 0 16px 0' }}>
+          <p className="or-vm-main" style={{ fontSize: '19px', color: '#0A1128', fontFamily: 'Georgia, serif', fontWeight: 500, lineHeight: 1.6, margin: '0 0 16px 0' }}>
             {p.vision.main}
           </p>
           <p className="body-text" style={{ fontSize: '18px', color: '#4A4A4A', lineHeight: 1.8, margin: 0 }}>
@@ -67,10 +67,10 @@ function VisionMissionSection({ lang }: { lang: Lang }) {
         </div>
 
         <div className="or-vm-block">
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.2em', margin: '0 0 12px 0' }}>
+          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.2em', margin: '0 0 12px 0' }}>
             {p.mission.label}
           </p>
-          <p style={{ fontSize: '20px', color: '#0A1128', fontFamily: 'Georgia, serif', fontWeight: 500, lineHeight: 1.6, margin: '0 0 16px 0' }}>
+          <p className="or-vm-main" style={{ fontSize: '19px', color: '#0A1128', fontFamily: 'Georgia, serif', fontWeight: 500, lineHeight: 1.6, margin: '0 0 16px 0' }}>
             {p.mission.main}
           </p>
           <p className="body-text" style={{ fontSize: '18px', color: '#4A4A4A', lineHeight: 1.8, margin: 0 }}>
@@ -88,7 +88,7 @@ function ConvictionsSection({ lang }: { lang: Lang }) {
   return (
     <section className="or-convictions">
       <div className="or-convictions-inner">
-        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
           {p.eyebrow}
         </p>
         <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.25 }}>
@@ -101,7 +101,7 @@ function ConvictionsSection({ lang }: { lang: Lang }) {
         )}
         {p.items.map((item, i) => (
           <div key={i}>
-            <h3 style={{ color: '#ffffff', fontSize: '22px', fontWeight: 600, marginTop: i === 0 ? '32px' : '40px', marginBottom: '16px', fontFamily: 'inherit' }}>
+            <h3 className="or-conviction-title" style={{ color: '#ffffff', fontSize: '21px', fontWeight: 600, marginTop: i === 0 ? '32px' : '40px', marginBottom: '16px', fontFamily: 'inherit' }}>
               {item.heading}
             </h3>
             <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.85, margin: 0 }}>
@@ -120,7 +120,7 @@ function LookingAheadSection({ lang }: { lang: Lang }) {
   return (
     <section className="or-ahead">
       <div className="or-ahead-inner">
-        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
           {p.eyebrow}
         </p>
         <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 24px 0', lineHeight: 1.25 }}>

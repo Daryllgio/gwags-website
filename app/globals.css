@@ -949,7 +949,11 @@ h1, h2, h3, h4 {
 
   .or-hero-img {
     width: 100% !important;
+    height: 280px !important;
   }
+  /* MOBILE: Our Role */
+  .or-vm-main { font-size: 17px !important; }
+  .or-conviction-title { font-size: 18px !important; }
 
   .or-narrative {
     padding: 60px 24px;
@@ -1065,6 +1069,10 @@ h1, h2, h3, h4 {
   .hww-init-strip { padding: 48px 60px !important; }
   .hww-coordination-section { padding: 60px 60px !important; }
   .hww-working-with-section { padding: 60px 60px !important; }
+  /* TABLET: Our Role */
+  .or-hero-img { height: 500px !important; }
+  .or-vm-main { font-size: 18px !important; }
+  .or-conviction-title { font-size: 20px !important; }
 }
 
 /* === MOBILE BREAKPOINT (480px - 768px) === */
@@ -1105,15 +1113,18 @@ h1, h2, h3, h4 {
   /* SMALL PHONE: h1 size */
   main h1 { font-size: 26px !important; }
   /* SMALL PHONE: h2 size */
-  main h2 { font-size: 22px !important; }
+  main h2 { font-size: 23px !important; }
   /* SMALL PHONE: body text size */
-  .body-text { font-size: 15px !important; }
-  .hero-body { font-size: 15px !important; }
+  .body-text { font-size: 16px !important; }
+  .hero-body { font-size: 16px !important; }
   /* SMALL PHONE: eyebrow text size */
   .eyebrow { font-size: 15px !important; }
   /* SMALL PHONE: How We Work step & card titles */
   .hww-step-title { font-size: 17px !important; }
   .hww-card-title { font-size: 16px !important; }
+  /* SMALL PHONE: Our Role */
+  .or-vm-main { font-size: 17px !important; }
+  .or-conviction-title { font-size: 18px !important; }
   /* SMALL PHONE: section padding */
   .site-section { padding: 36px 16px !important; }
   /* SMALL PHONE: hero adjustments */
