@@ -386,7 +386,7 @@ export const t = {
         items: [
           {
             heading: 'Impact is systemic.',
-            body: 'The challenges facing communities are not isolated problems with isolated solutions. Education, health, governance, entrepreneurship, culture, technology, all of these are connected. A child who is healthy but cannot access education is still held back. A community with schools but no healthcare infrastructure is still vulnerable. A young entrepreneur with a strong idea but no institutional support is still likely to fail. Gwags works across sectors because we believe transformation only happens when you address the full picture. That is why our initiatives span education, health, community development, and youth empowerment. And it is why our institutional model is designed to connect rather than specialize.',
+            body: 'The problems that affect communities rarely exist in isolation. Health, education, economic opportunity, and reduced inequalities are deeply interconnected. Progress in one area without attention to the others produces limited and often temporary results. That is why Gwags works across sectors, both through its own initiatives and through the organizations within its network, each addressing different dimensions of the same interconnected challenges.',
           },
           {
             heading: 'Structure is what separates intention from impact.',
@@ -799,7 +799,7 @@ export const t = {
         items: [
           {
             heading: "L'impact est systémique.",
-            body: "Les défis auxquels font face les communautés ne sont pas des problèmes isolés avec des solutions isolées. L'éducation, la santé, la gouvernance, l'entrepreneuriat, la culture, la technologie, tout cela est interconnecté. Un enfant en bonne santé mais qui n'a pas accès à l'éducation est toujours freiné. Une communauté avec des écoles mais sans infrastructure de soins de santé est toujours vulnérable. Un jeune entrepreneur avec une idée solide mais sans soutien institutionnel a toujours peu de chances de réussir. Gwags travaille dans tous les secteurs parce que nous croyons que la transformation n'advient que lorsqu'on s'attaque à l'ensemble du tableau. C'est pourquoi nos initiatives couvrent l'éducation, la santé, le développement communautaire et l'autonomisation des jeunes. Et c'est pourquoi notre modèle institutionnel est conçu pour connecter plutôt que spécialiser.",
+            body: "Les problèmes qui affectent les communautés existent rarement de manière isolée. La santé, l'éducation, les opportunités économiques et la réduction des inégalités sont profondément interconnectées. Les progrès dans un domaine sans attention aux autres produisent des résultats limités et souvent temporaires. C'est pourquoi Gwags travaille dans plusieurs secteurs, à la fois à travers ses propres initiatives et à travers les organisations au sein de son réseau, chacune abordant différentes dimensions des mêmes défis interconnectés.",
           },
           {
             heading: "La structure est ce qui sépare l'intention de l'impact.",
