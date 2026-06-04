@@ -390,7 +390,7 @@ export const t = {
           },
           {
             heading: 'Structure is what separates intention from impact.',
-            body: 'The world is not short on good intentions. It is not short on talented people or promising ideas. What is consistently missing is structure. The governance frameworks that keep organizations accountable over time. The funding mechanisms that allow them to plan beyond the next donation. The institutional credibility that turns a local initiative into something that international partners take seriously. We have seen too many promising efforts collapse not because the people behind them lacked commitment, but because they lacked the scaffolding to sustain what they started. That gap between intention and impact is exactly what Gwags was built to close.',
+            body: 'The limiting factor is rarely ambition. Most organizations working to create impact face the same structural gaps: limited access to funding, weak governance frameworks, and insufficient institutional credibility to grow beyond their immediate environment. Those are the gaps Gwags was built to fill.',
           },
           {
             heading: 'Credibility is earned through action, not positioning.',
@@ -803,7 +803,7 @@ export const t = {
           },
           {
             heading: "La structure est ce qui sépare l'intention de l'impact.",
-            body: "Le monde ne manque pas de bonnes intentions. Il ne manque pas de personnes talentueuses ni d'idées prometteuses. Ce qui manque de manière constante, c'est la structure. Les cadres de gouvernance qui maintiennent les organisations responsables dans le temps. Les mécanismes de financement qui leur permettent de planifier au-delà du prochain don. La crédibilité institutionnelle qui transforme une initiative locale en quelque chose que les partenaires internationaux prennent au sérieux. Nous avons vu trop d'efforts prometteurs s'effondrer non pas parce que les personnes qui les portaient manquaient d'engagement, mais parce qu'elles manquaient d'échafaudage pour soutenir ce qu'elles avaient commencé. C'est précisément cet écart entre intention et impact que Gwags a été construit pour combler.",
+            body: "Le facteur limitant est rarement l'ambition. La plupart des organisations qui travaillent à créer de l'impact font face aux mêmes lacunes structurelles: un accès limité au financement, des cadres de gouvernance faibles et une crédibilité institutionnelle insuffisante pour croître au-delà de leur environnement immédiat. Ce sont ces lacunes que Gwags a été construit pour combler.",
           },
           {
             heading: "La crédibilité se gagne par l'action, pas par le positionnement.",
