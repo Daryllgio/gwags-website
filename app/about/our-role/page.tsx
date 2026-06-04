@@ -13,12 +13,24 @@ export default function OurRolePage() {
     <main>
       <Nav lang={lang} onToggleLang={toggleLang} />
       <HeroSection lang={lang} />
+      <PhotoBanner />
       <VisionMissionSection lang={lang} />
       <ConvictionsSection lang={lang} />
       <LookingAheadSection lang={lang} />
       <CTASection lang={lang} />
       <Footer lang={lang} />
     </main>
+  )
+}
+
+/* ── Photo Banner ── */
+function PhotoBanner() {
+  return (
+    /* IMAGE: Replace this div with:
+       <img src="/images/our-role-banner.jpg" alt="Our Role" style={{ width: '100%', height: '500px', objectFit: 'cover', display: 'block' }} /> */
+    <div className="or-photo-banner" style={{ width: '100%', height: '500px', background: '#1a2a44', borderTop: '2px solid #D4AF37', borderBottom: '2px solid #D4AF37', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.25)', fontSize: '13px', letterSpacing: '0.22em' }}>
+      PHOTO
+    </div>
   )
 }
 
