@@ -95,7 +95,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
       className="font-black uppercase mb-8 lp-section-title"
-      style={{ color: NAVY, fontSize: '32px', fontFamily: 'Georgia, "Times New Roman", serif' }}
+      style={{ color: NAVY, fontSize: '30px', fontFamily: 'Georgia, "Times New Roman", serif' }}
     >
       {children}
     </h2>
@@ -223,7 +223,7 @@ export default function LeadershipPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10 lp-header">
           <h1
             className="font-black uppercase leading-tight lp-heading"
-            style={{ color: NAVY, fontSize: '42px', fontFamily: 'Georgia, "Times New Roman", serif' }}
+            style={{ color: NAVY, fontSize: '40px', fontFamily: 'Georgia, "Times New Roman", serif' }}
           >
             Leadership
           </h1>
