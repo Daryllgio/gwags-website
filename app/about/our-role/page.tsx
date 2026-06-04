@@ -13,24 +13,12 @@ export default function OurRolePage() {
     <main>
       <Nav lang={lang} onToggleLang={toggleLang} />
       <HeroSection lang={lang} />
-      <PhotoBanner />
       <VisionMissionSection lang={lang} />
       <ConvictionsSection lang={lang} />
       <LookingAheadSection lang={lang} />
       <CTASection lang={lang} />
       <Footer lang={lang} />
     </main>
-  )
-}
-
-/* ── Photo Banner ── */
-function PhotoBanner() {
-  return (
-    /* IMAGE: Replace this div with:
-       <img src="/images/our-role-banner.jpg" alt="Our Role" style={{ width: '100%', height: '500px', objectFit: 'cover', display: 'block' }} /> */
-    <div className="or-photo-banner" style={{ width: '100%', height: '500px', background: '#1a2a44', borderTop: '2px solid #D4AF37', borderBottom: '2px solid #D4AF37', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.25)', fontSize: '13px', letterSpacing: '0.22em' }}>
-      PHOTO
-    </div>
   )
 }
 
@@ -49,6 +37,12 @@ function HeroSection({ lang }: { lang: Lang }) {
         <p className="body-text" style={{ color: 'rgba(10,17,40,0.7)', fontSize: '18px', lineHeight: 1.8, maxWidth: '600px', margin: 0 }}>
           {p.body}
         </p>
+      </div>
+
+      {/* IMAGE: Replace the div below with:
+          <img src="/images/our-role.jpg" alt="Our Role" className="or-hero-img" style={{ display: 'block', width: '85%', height: '420px', objectFit: 'cover', borderRadius: '16px', margin: '48px auto 48px' }} /> */}
+      <div className="or-hero-img" style={{ width: '85%', height: '420px', borderRadius: '16px', background: 'rgba(0,0,0,0.15)', margin: '48px auto 48px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <span style={{ color: 'rgba(0,0,0,0.3)', fontSize: '13px', letterSpacing: '0.1em' }}>Photo: Our Role</span>
       </div>
     </section>
   )
