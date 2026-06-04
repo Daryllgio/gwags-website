@@ -61,21 +61,21 @@ function PersonCard({ name, role, bio, showBio = true, showLink = true }: {
     <div>
       {/* Photo placeholder */}
       <div
-        className="w-full rounded-xl flex items-center justify-center lp-photo"
+        className="w-full rounded-xl flex items-center justify-center"
         style={{ height: '280px', background: '#e8e8e8' }}
       >
         <PersonIcon />
       </div>
 
       {/* Name */}
-      <p className="mt-3 lp-person-name" style={{ color: NAVY, fontSize: '22px', fontWeight: 700 }}>{name}</p>
+      <p className="mt-3" style={{ color: NAVY, fontSize: '22px', fontWeight: 700 }}>{name}</p>
 
       {/* Role */}
-      <p className="mt-1 lp-person-role" style={{ color: '#1A3060', fontSize: '20px', fontWeight: 400 }}>{role}</p>
+      <p className="mt-1" style={{ color: '#1A3060', fontSize: '20px', fontWeight: 400 }}>{role}</p>
 
       {/* Bio */}
       {showBio && bio && (
-        <p className="mt-2 leading-relaxed lp-person-bio" style={{ color: NAVY, fontSize: '16px', fontWeight: 400 }}>{bio}</p>
+        <p className="mt-2 leading-relaxed" style={{ color: NAVY, fontSize: '16px', fontWeight: 400 }}>{bio}</p>
       )}
 
       {/* View profile */}
@@ -95,7 +95,7 @@ function PersonCard({ name, role, bio, showBio = true, showLink = true }: {
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
-      className="font-black uppercase mb-8 lp-section-title"
+      className="font-black uppercase mb-8"
       style={{ color: NAVY, fontSize: '30px', fontFamily: 'Georgia, "Times New Roman", serif' }}
     >
       {children}
@@ -218,17 +218,17 @@ export default function LeadershipPage() {
       `}</style>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      <div className="px-8 py-16 max-w-7xl mx-auto lp-container">
+      <div className="px-8 py-16 max-w-7xl mx-auto">
 
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10">
           <h1
-            className="font-black uppercase leading-tight lp-heading"
+            className="font-black uppercase leading-tight"
             style={{ color: NAVY, fontSize: '48px', fontFamily: 'Georgia, "Times New Roman", serif' }}
           >
             Leadership
           </h1>
-          <p className="leading-relaxed self-center lp-subtitle" style={{ color: NAVY, fontSize: '18px' }}>
+          <p className="leading-relaxed self-center" style={{ color: NAVY, fontSize: '18px' }}>
             The Gwags Foundation&apos;s leaders are committed to creating lasting change for children and youth in Cameroon.
             Our team brings together expertise in governance, program delivery, operations, and community engagement.
           </p>
@@ -281,9 +281,9 @@ export default function LeadershipPage() {
 
         {/* Governance Board */}
         {showBoard && (
-          <section className="mb-16 lp-section">
+          <section className="mb-16">
             <SectionTitle>Governance Board</SectionTitle>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lp-grid">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredBoard.map(p => <PersonCard key={p.name} {...p} />)}
             </div>
           </section>
@@ -291,9 +291,9 @@ export default function LeadershipPage() {
 
         {/* Executive Team */}
         {showExec && (
-          <section className="mb-16 lp-section">
+          <section className="mb-16">
             <SectionTitle>Executive Team</SectionTitle>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lp-grid">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredExec.map(p => <PersonCard key={p.name} {...p} />)}
             </div>
           </section>
@@ -301,9 +301,9 @@ export default function LeadershipPage() {
 
         {/* Historical Leadership */}
         {showHistorical && (
-          <section className="mb-16 lp-section">
+          <section className="mb-16">
             <SectionTitle>Historical Leadership</SectionTitle>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lp-grid">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredHistorical.map(p => (
                 <PersonCard key={p.name} name={p.name} role={p.role} bio="" showBio={false} showLink={false} />
               ))}
