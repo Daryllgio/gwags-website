@@ -1,68 +1,176 @@
 'use client'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { Lang } from '@/lib/translations'
 
-const NAVY = '#1e2d3d'
+const NAVY  = '#0A1128'
+const GOLD  = '#D4AF37'
+
+/* ── Data ─────────────────────────────────────────────────────────────── */
 
 const governanceBoard = [
-  { name: 'Amara Nwosu',    role: 'Board Chair & President',              bio: "Amara leads the foundation's strategic vision and oversees its operations across Cameroon and North America." },
-  { name: 'Claire Fontaine', role: 'Vice Chair',                           bio: 'Claire supports board leadership and brings expertise in nonprofit governance and international development.' },
-  { name: 'Daniel Osei',    role: 'Board Secretary',                       bio: 'Daniel manages board documentation and ensures organizational compliance across jurisdictions.' },
-  { name: 'Fatima Al-Rashid', role: 'Board Treasurer',                    bio: "Fatima oversees the foundation's financial integrity and stewardship of donor resources." },
-  { name: 'James Keller',   role: 'Board Member',                         bio: 'James contributes expertise in community health and program evaluation to the board.' },
-  { name: 'Ngozi Adeyemi',  role: 'Board Member',                         bio: "Ngozi brings a background in education policy and youth advocacy to the foundation's governance." },
+  {
+    name: 'D. Giovanny Bikak Mbal',
+    role: 'Chair, Board Member',
+    bio:  "Leads the foundation’s governance and strategic direction across its operations.",
+  },
+  {
+    name: 'Vianney Tanifor',
+    role: 'Board Member',
+    bio:  'Contributes expertise in organizational development and community engagement.',
+  },
+  {
+    name: 'Noa Winner',
+    role: 'Board Member',
+    bio:  "Supports the foundation’s mission through strategic oversight and partnerships.",
+  },
 ]
 
 const executiveTeam = [
-  { name: 'Marcus Thibodeau',  role: 'Executive Director',                        bio: "Marcus leads day-to-day operations and drives the foundation's mission delivery on the ground." },
-  { name: 'Isabelle Mvondo',   role: 'Director of Programs',                      bio: "Isabelle designs and oversees the foundation's youth and community programs in Cameroon." },
-  { name: 'Samuel Eze',        role: 'Director of Operations',                    bio: 'Samuel manages internal systems, logistics, and organizational infrastructure.' },
-  { name: 'Laure Menguele',    role: 'Director of Communications & Partnerships', bio: 'Laure leads external communications and builds partnerships with donors and peer organizations.' },
-  { name: 'Christelle Biya',   role: 'Programs Officer',                          bio: 'Christelle supports program implementation and community engagement in the South West region.' },
-  { name: 'Henri Nkemdirim',   role: 'Finance & Admin Officer',                   bio: 'Henri handles financial reporting, budgeting, and administrative functions for the foundation.' },
+  { name: 'Marcus Thibodeau', role: 'Executive Director',                        bio: "Marcus leads day-to-day operations and drives the foundation’s mission delivery on the ground." },
+  { name: 'Isabelle Mvondo',  role: 'Director of Programs',                      bio: "Isabelle designs and oversees the foundation’s youth and community programs in Cameroon." },
+  { name: 'Samuel Eze',       role: 'Director of Operations',                    bio: 'Samuel manages internal systems, logistics, and organizational infrastructure.' },
+  { name: 'Laure Menguele',   role: 'Director of Communications & Partnerships', bio: 'Laure leads external communications and builds partnerships with donors and peer organizations.' },
+  { name: 'Christelle Biya',  role: 'Programs Officer',                          bio: 'Christelle supports program implementation and community engagement in the South West region.' },
+  { name: 'Henri Nkemdirim',  role: 'Finance & Admin Officer',                   bio: 'Henri handles financial reporting, budgeting, and administrative functions for the foundation.' },
 ]
+
+const historicalLeadership = [
+  { name: 'Gloria Alana Asopjio', role: 'Founding Member' },
+  { name: 'Alissa Kenne Mokem',   role: 'Founding Member' },
+]
+
+const FILTER_OPTIONS = ['All', 'Governance Board', 'Executive Team']
+
+/* ── Sub-components ───────────────────────────────────────────────────── */
 
 function PersonIcon() {
   return (
     <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="32" cy="22" r="12" fill="#9ca3af" />
-      <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="#9ca3af" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="32" cy="22" r="12" fill="#c8c8c8" />
+      <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="#c8c8c8" strokeWidth="4" strokeLinecap="round" />
     </svg>
   )
 }
 
-function PersonCard({ name, role, bio }: { name: string; role: string; bio: string }) {
+function PersonCard({ name, role, bio, showBio = true, showLink = true }: {
+  name: string; role: string; bio?: string; showBio?: boolean; showLink?: boolean
+}) {
   return (
-    <div className="bg-white rounded-xl p-4 transition-shadow duration-200 hover:shadow-lg">
-      <div className="w-full rounded-xl bg-gray-200 flex items-center justify-center" style={{ height: '280px' }}>
+    <div className="bg-white rounded-xl p-4">
+      {/* Photo placeholder */}
+      <div
+        className="w-full rounded-xl flex items-center justify-center"
+        style={{ height: '280px', background: '#e8e8e8' }}
+      >
         <PersonIcon />
       </div>
-      <p className="text-lg font-bold mt-3" style={{ color: NAVY }}>{name}</p>
-      <p className="text-sm text-gray-500 mt-1">{role}</p>
-      <p className="text-sm text-gray-400 mt-2 leading-relaxed">{bio}</p>
-      <a href="#" className="text-sm mt-3 inline-block hover:underline" style={{ color: NAVY }}>View profile →</a>
+
+      {/* Name */}
+      <p className="font-bold mt-3" style={{ color: NAVY, fontSize: '20px' }}>{name}</p>
+
+      {/* Role */}
+      <p className="mt-1" style={{ color: '#4A5568', fontSize: '16px' }}>{role}</p>
+
+      {/* Bio */}
+      {showBio && bio && (
+        <p className="mt-2 leading-relaxed" style={{ color: NAVY, fontSize: '18px' }}>{bio}</p>
+      )}
+
+      {/* View profile */}
+      {showLink && (
+        <a
+          href="#"
+          className="mt-3 inline-block"
+          style={{ color: NAVY, fontSize: '15px' }}
+          onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = GOLD; (e.currentTarget as HTMLAnchorElement).style.textDecoration = 'underline' }}
+          onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = NAVY; (e.currentTarget as HTMLAnchorElement).style.textDecoration = 'none' }}
+        >
+          View profile
+        </a>
+      )}
     </div>
   )
 }
 
-function Section({ title, people }: { title: string; people: typeof governanceBoard }) {
+function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <section className="mb-16">
-      <h2 className="text-2xl font-black uppercase mb-8" style={{ color: NAVY }}>{title}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {people.map(p => <PersonCard key={p.name} {...p} />)}
-      </div>
-    </section>
+    <h2
+      className="font-black uppercase mb-8"
+      style={{ color: NAVY, fontSize: '30px', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}
+    >
+      {children}
+    </h2>
   )
 }
+
+/* Custom dropdown */
+function TeamDropdown({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
+
+  return (
+    <div ref={ref} className="relative inline-block" style={{ minWidth: '200px' }}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="flex items-center justify-between w-full px-4 py-2 rounded-lg text-sm"
+        style={{
+          border: `1px solid #d1d5db`,
+          color: NAVY,
+          background: '#ffffff',
+          fontSize: '15px',
+        }}
+      >
+        <span>{value === 'All' ? 'Team: All' : value}</span>
+        <svg
+          width="12" height="12" viewBox="0 0 12 12" fill="none"
+          style={{ marginLeft: '8px', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}
+        >
+          <path d="M2 4l4 4 4-4" stroke={NAVY} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {open && (
+        <div
+          className="absolute left-0 w-full rounded-lg shadow-lg z-10 overflow-hidden"
+          style={{ top: 'calc(100% + 4px)', background: '#ffffff', border: '1px solid #d1d5db' }}
+        >
+          {FILTER_OPTIONS.map(opt => (
+            <button
+              key={opt}
+              onClick={() => { onChange(opt); setOpen(false) }}
+              className="block w-full text-left px-4 py-2"
+              style={{
+                fontSize: '15px',
+                color: opt === value ? GOLD : NAVY,
+                background: opt === value ? '#f9f7f0' : '#ffffff',
+              }}
+            >
+              {opt === 'All' ? 'All' : opt}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+/* ── Page ─────────────────────────────────────────────────────────────── */
 
 export default function LeadershipPage() {
   const [lang, setLang] = useState<Lang>('en')
   const toggleLang = () => setLang(l => l === 'en' ? 'fr' : 'en')
 
-  const [search, setSearch]     = useState('')
+  const [search,     setSearch]     = useState('')
   const [teamFilter, setTeamFilter] = useState('All')
 
   const filteredBoard = useMemo(() =>
@@ -77,66 +185,114 @@ export default function LeadershipPage() {
       p.role.toLowerCase().includes(search.toLowerCase())
     ), [search])
 
-  const showBoard = (teamFilter === 'All' || teamFilter === 'Governance Board') && filteredBoard.length > 0
-  const showExec  = (teamFilter === 'All' || teamFilter === 'Executive Team')   && filteredExec.length  > 0
-  const noResults = !showBoard && !showExec
+  const filteredHistorical = useMemo(() =>
+    historicalLeadership.filter(p =>
+      p.name.toLowerCase().includes(search.toLowerCase()) ||
+      p.role.toLowerCase().includes(search.toLowerCase())
+    ), [search])
+
+  const showBoard      = (teamFilter === 'All' || teamFilter === 'Governance Board') && filteredBoard.length > 0
+  const showExec       = (teamFilter === 'All' || teamFilter === 'Executive Team')   && filteredExec.length  > 0
+  const showHistorical = teamFilter === 'All' && filteredHistorical.length > 0
+  const noResults      = !showBoard && !showExec && !showHistorical
 
   return (
-    <main style={{ fontFamily: 'Inter, system-ui, sans-serif', background: '#ffffff' }}>
+    <main style={{ background: '#F7F6F3', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
       <div className="px-8 py-16 max-w-7xl mx-auto">
 
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10">
-          <h1 className="text-5xl font-black uppercase leading-tight" style={{ color: NAVY }}>
-            Meet Our Team
+          <h1
+            className="font-black uppercase leading-tight"
+            style={{ color: NAVY, fontSize: '48px', fontFamily: 'Georgia, "Times New Roman", serif' }}
+          >
+            Leadership
           </h1>
-          <p className="text-gray-500 leading-relaxed self-center">
+          <p className="leading-relaxed self-center" style={{ color: NAVY, fontSize: '18px' }}>
             The Gwags Foundation&apos;s leaders are committed to creating lasting change for children and youth in Cameroon.
             Our team brings together expertise in governance, program delivery, operations, and community engagement.
           </p>
         </div>
-        <hr className="border-gray-200 mb-10" />
+        <hr style={{ borderColor: 'rgba(10,17,40,0.12)', marginBottom: '40px' }} />
 
         {/* Search & filter */}
-        <div className="mb-12 space-y-4">
-          <div className="flex gap-3 items-end">
+        <div className="mb-14" style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-end', flex: '0 0 auto', maxWidth: '420px', width: '100%' }}>
             <input
               type="text"
               placeholder="Search by name or role..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="flex-1 border-b border-gray-300 pb-2 text-sm outline-none focus:border-gray-600 bg-transparent placeholder-gray-400"
+              style={{
+                flex: 1,
+                border: 'none',
+                borderBottom: `1.5px solid rgba(10,17,40,0.25)`,
+                paddingBottom: '8px',
+                fontSize: '15px',
+                outline: 'none',
+                background: 'transparent',
+                color: NAVY,
+              }}
             />
             <button
-              className="px-5 py-2 rounded-full text-sm font-medium text-white flex-shrink-0"
-              style={{ backgroundColor: NAVY }}
+              style={{
+                background: NAVY,
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: '6px',
+                padding: '8px 16px',
+                fontSize: '14px',
+                fontWeight: 500,
+                cursor: 'pointer',
+                flexShrink: 0,
+              }}
             >
               Search
             </button>
           </div>
-          <div>
-            <select
-              value={teamFilter}
-              onChange={e => setTeamFilter(e.target.value)}
-              className="border border-gray-300 rounded-lg px-4 py-2 text-sm outline-none focus:border-gray-500 bg-white"
-            >
-              <option value="All">Team: All</option>
-              <option value="Governance Board">Governance Board</option>
-              <option value="Executive Team">Executive Team</option>
-            </select>
-          </div>
+
+          <TeamDropdown value={teamFilter} onChange={setTeamFilter} />
         </div>
 
         {/* No results */}
         {noResults && (
-          <p className="text-center text-gray-400 py-20 text-lg">No results found.</p>
+          <p className="text-center py-20" style={{ color: NAVY, fontSize: '18px' }}>No results found.</p>
         )}
 
-        {/* Sections */}
-        {showBoard && <Section title="Governance Board" people={filteredBoard} />}
-        {showExec  && <Section title="Executive Team"   people={filteredExec}  />}
+        {/* Governance Board */}
+        {showBoard && (
+          <section className="mb-16">
+            <SectionTitle>Governance Board</SectionTitle>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredBoard.map(p => <PersonCard key={p.name} {...p} />)}
+            </div>
+          </section>
+        )}
+
+        {/* Executive Team */}
+        {showExec && (
+          <section className="mb-16">
+            <SectionTitle>Executive Team</SectionTitle>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredExec.map(p => <PersonCard key={p.name} {...p} />)}
+            </div>
+          </section>
+        )}
+
+        {/* Historical Leadership */}
+        {showHistorical && (
+          <section className="mb-16">
+            <SectionTitle>Historical Leadership</SectionTitle>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredHistorical.map(p => (
+                <PersonCard key={p.name} name={p.name} role={p.role} bio="" showBio={false} showLink={false} />
+              ))}
+            </div>
+          </section>
+        )}
+
       </div>
 
       <Footer lang={lang} />
