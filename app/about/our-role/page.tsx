@@ -88,9 +88,11 @@ function ConvictionsSection({ lang }: { lang: Lang }) {
         <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.25 }}>
           {p.heading}
         </h2>
-        <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.85, margin: '0 0 40px 0' }}>
-          {p.intro}
-        </p>
+        {p.intro && (
+          <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.85, margin: '0 0 40px 0' }}>
+            {p.intro}
+          </p>
+        )}
         {p.items.map((item, i) => (
           <div key={i}>
             <h3 style={{ color: '#ffffff', fontSize: '22px', fontWeight: 600, marginTop: i === 0 ? 0 : '40px', marginBottom: '16px', fontFamily: 'inherit' }}>

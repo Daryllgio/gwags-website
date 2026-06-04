@@ -381,8 +381,8 @@ export const t = {
       },
       convictions: {
         eyebrow: 'WHAT DRIVES US',
-        heading: 'The convictions behind everything we build.',
-        intro: 'We do not operate from a strategic plan alone. We operate from a set of convictions that have shaped every decision Gwags has made since its founding. They are not slogans. They are the principles we test ourselves against.',
+        heading: 'The principles that guide everything we do.',
+        intro: '',
         items: [
           {
             heading: 'Impact is systemic.',
@@ -794,8 +794,8 @@ export const t = {
       },
       convictions: {
         eyebrow: 'CE QUI NOUS ANIME',
-        heading: 'Les convictions derrière tout ce que nous construisons.',
-        intro: "Nous n'opérons pas seulement à partir d'un plan stratégique. Nous opérons à partir d'un ensemble de convictions qui ont façonné chaque décision prise par Gwags depuis sa fondation. Ce ne sont pas des slogans. Ce sont les principes à l'aune desquels nous nous évaluons.",
+        heading: 'Les principes qui guident tout ce que nous faisons.',
+        intro: '',
         items: [
           {
             heading: "L'impact est systémique.",
