@@ -230,8 +230,8 @@ export default function LeadershipPage() {
           </h1>
           <p className="leading-relaxed self-center" style={{ color: NAVY, fontSize: '18px' }}>
             {lang === 'fr'
-              ? "Gwags est dirigé par une équipe d'individus engagés à construire une institution qui crée un impact durable. Nos équipes de gouvernance et exécutive rassemblent une expertise dans le leadership organisationnel, la mise en œuvre des programmes, les opérations et l'engagement communautaire. Nos leaders sont guidés par la conviction partagée que la bonne infrastructure institutionnelle est ce qui transforme l'ambition en changement durable."
-              : "Gwags is led by a team of individuals committed to building an institution that creates lasting impact. Our governance and executive teams bring together expertise across organizational leadership, program delivery, operations, and community engagement. Our leaders are guided by a shared belief that the right institutional infrastructure is what turns ambition into lasting change."}
+              ? "Gwags est dirigé par une équipe d'individus engagés à construire une institution qui crée un impact durable. Nos équipes de gouvernance et exécutive rassemblent une expertise dans le leadership organisationnel, la mise en œuvre des programmes, les opérations et l'engagement communautaire. Nos leaders sont guidés par la mission de l'institution de construire l'infrastructure qui permet aux organisations de créer un impact à grande échelle."
+              : "Gwags is led by a team of individuals committed to building an institution that creates lasting impact. Our governance and executive teams bring together expertise across organizational leadership, program delivery, operations, and community engagement. Our leaders are guided by the institution's mission to build the infrastructure that enables organizations to create impact at scale."}
           </p>
         </div>
         <hr style={{ borderColor: 'rgba(10,17,40,0.12)', marginBottom: '40px' }} />
