@@ -195,7 +195,7 @@ export default function LeadershipPage() {
   const noResults      = !showBoard && !showExec && !showHistorical
 
   return (
-    <main style={{ background: '#F7F6F3', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+    <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
       <style>{`
         .view-profile-link {
           position: relative;
