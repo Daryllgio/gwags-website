@@ -1271,7 +1271,8 @@ h1, h2, h3, h4 {
   .ma-card-desc  { font-size: 16px !important; }
 
   /* Leadership */
-  .lp-heading     { font-size: 30px !important; }
+  .lp-heading       { font-size: 30px !important; }
+  .lp-section-title { font-size: 28px !important; }
   .lp-subtitle    { font-size: 16px !important; }
   .lp-container   { padding-top: 36px !important; }
   .lp-person-name { font-size: 20px !important; }

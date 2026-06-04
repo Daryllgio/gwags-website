@@ -94,7 +94,7 @@ function PersonCard({ name, role, bio, showBio = true, showLink = true }: {
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
-      className="font-black uppercase mb-8"
+      className="font-black uppercase mb-8 lp-section-title"
       style={{ color: NAVY, fontSize: '30px', fontFamily: 'Georgia, "Times New Roman", serif' }}
     >
       {children}
