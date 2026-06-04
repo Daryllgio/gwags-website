@@ -229,8 +229,9 @@ export default function LeadershipPage() {
             Leadership
           </h1>
           <p className="leading-relaxed self-center" style={{ color: NAVY, fontSize: '18px' }}>
-            The Gwags Foundation&apos;s leaders are committed to creating lasting change for children and youth in Cameroon.
-            Our team brings together expertise in governance, program delivery, operations, and community engagement.
+            {lang === 'fr'
+              ? "Gwags est dirigé par une équipe d'individus engagés à construire une institution qui crée un impact durable. Nos équipes de gouvernance et exécutive rassemblent une expertise dans le leadership organisationnel, la mise en œuvre des programmes, les opérations et l'engagement communautaire. Nos leaders sont guidés par la conviction partagée que la bonne infrastructure institutionnelle est ce qui transforme l'ambition en changement durable."
+              : "Gwags is led by a team of individuals committed to building an institution that creates lasting impact. Our governance and executive teams bring together expertise across organizational leadership, program delivery, operations, and community engagement. Our leaders are guided by a shared belief that the right institutional infrastructure is what turns ambition into lasting change."}
           </p>
         </div>
         <hr style={{ borderColor: 'rgba(10,17,40,0.12)', marginBottom: '40px' }} />
