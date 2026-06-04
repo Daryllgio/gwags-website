@@ -843,7 +843,7 @@ h1, h2, h3, h4 {
 
 .or-hero {
   background: #D4AF37;
-  padding: 80px 100px 0;
+  padding: 80px 100px 15px;
 }
 
 .or-narrative {
@@ -940,7 +940,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
   .or-hero {
-    padding: 60px 24px 0;
+    padding: 60px 24px 15px;
   }
 
   .or-hero-h1 {
