@@ -40,8 +40,8 @@ function HeroSection({ lang }: { lang: Lang }) {
       </div>
 
       {/* IMAGE: Replace the div below with:
-          <img src="/images/our-role.jpg" alt="Our Role" className="or-hero-img" style={{ display: 'block', width: '100%', height: '650px', objectFit: 'cover', borderRadius: '16px', margin: '48px auto 0' }} /> */}
-      <div className="or-hero-img" style={{ width: '100%', height: '650px', borderRadius: '16px', background: 'rgba(0,0,0,0.15)', margin: '48px auto 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <img src="/images/our-role.jpg" alt="Our Role" className="or-hero-img" style={{ display: 'block', width: '100%', height: '650px', objectFit: 'cover', borderRadius: '16px', margin: '60px auto 0' }} /> */}
+      <div className="or-hero-img" style={{ width: '100%', height: '650px', borderRadius: '16px', background: 'rgba(0,0,0,0.15)', margin: '60px auto 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <span style={{ color: 'rgba(0,0,0,0.3)', fontSize: '13px', letterSpacing: '0.1em' }}>Photo: Our Role</span>
       </div>
     </section>
