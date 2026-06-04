@@ -67,10 +67,10 @@ function PersonCard({ name, role, bio, showBio = true, showLink = true }: {
       </div>
 
       {/* Name */}
-      <p className="mt-3 lp-person-name" style={{ color: NAVY, fontSize: '24px', fontWeight: 600 }}>{name}</p>
+      <p className="mt-3 lp-person-name" style={{ color: NAVY, fontSize: '22px', fontWeight: 600 }}>{name}</p>
 
       {/* Role */}
-      <p className="mt-1 lp-person-role" style={{ color: '#3D3D3D', fontSize: '24px', fontWeight: 200 }}>{role}</p>
+      <p className="mt-1 lp-person-role" style={{ color: '#3D3D3D', fontSize: '22px', fontWeight: 200 }}>{role}</p>
 
       {/* Bio */}
       {showBio && bio && (
@@ -95,7 +95,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
       className="font-black uppercase mb-8 lp-section-title"
-      style={{ color: NAVY, fontSize: '30px', fontFamily: 'Georgia, "Times New Roman", serif' }}
+      style={{ color: NAVY, fontSize: '35px', fontFamily: 'Georgia, "Times New Roman", serif' }}
     >
       {children}
     </h2>
@@ -223,7 +223,7 @@ export default function LeadershipPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10 lp-header">
           <h1
             className="font-black uppercase leading-tight lp-heading"
-            style={{ color: NAVY, fontSize: '48px', fontFamily: 'Georgia, "Times New Roman", serif' }}
+            style={{ color: NAVY, fontSize: '45px', fontFamily: 'Georgia, "Times New Roman", serif' }}
           >
             Leadership
           </h1>
