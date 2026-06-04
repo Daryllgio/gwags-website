@@ -1176,6 +1176,7 @@ h1, h2, h3, h4 {
   .ini-img-ph    { height: 220px !important; }
   .ini-card-body { padding: 18px 18px 22px !important; }
   .ini-card-title { font-size: 18px !important; }
+  .ini-card-desc  { font-size: 17px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 24px 18px 22px !important; }
@@ -1185,6 +1186,13 @@ h1, h2, h3, h4 {
   .ma-img-ph    { height: 220px !important; }
   .ma-card-body { padding: 20px 20px 24px !important; }
   .ma-card-title { font-size: 18px !important; }
+  .ma-card-desc  { font-size: 17px !important; }
+
+  /* Leadership */
+  .lp-person-name { font-size: 22px !important; }
+  .lp-person-role { font-size: 22px !important; }
+  .lp-person-bio  { font-size: 17px !important; }
+  .view-profile-link { font-size: 17px !important; }
 
   /* Get Involved (homepage) */
   .gi-card-box   { padding: 28px 18px 24px !important; }
@@ -1203,6 +1211,7 @@ h1, h2, h3, h4 {
   .ini-img-ph    { height: 220px !important; }
   .ini-card-body { padding: 16px 16px 20px !important; }
   .ini-card-title { font-size: 17px !important; }
+  .ini-card-desc  { font-size: 16px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 24px 16px 20px !important; }
@@ -1212,6 +1221,14 @@ h1, h2, h3, h4 {
   .ma-img-ph    { height: 220px !important; }
   .ma-card-body { padding: 18px 18px 22px !important; }
   .ma-card-title { font-size: 17px !important; }
+  .ma-card-desc  { font-size: 16px !important; }
+
+  /* Leadership */
+  .lp-person-name { font-size: 20px !important; }
+  .lp-person-role { font-size: 20px !important; }
+  .lp-person-bio  { font-size: 16px !important; }
+  .view-profile-link { font-size: 16px !important; }
+  .lp-header      { gap: 16px !important; }
 
   /* Get Involved (homepage) */
   .gi-card-box   { padding: 28px 16px 24px !important; }
@@ -1235,7 +1252,8 @@ h1, h2, h3, h4 {
   /* Initiatives */
   .ini-img-ph    { height: 220px !important; }
   .ini-card-body { padding: 14px 14px 18px !important; }
-  .ini-card-title { font-size: 16px !important; }
+  .ini-card-title { font-size: 17px !important; }
+  .ini-card-desc  { font-size: 16px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 20px 14px 18px !important; }
@@ -1244,7 +1262,15 @@ h1, h2, h3, h4 {
   /* More About */
   .ma-img-ph    { height: 220px !important; }
   .ma-card-body { padding: 14px 16px 20px !important; }
-  .ma-card-title { font-size: 16px !important; }
+  .ma-card-title { font-size: 17px !important; }
+  .ma-card-desc  { font-size: 16px !important; }
+
+  /* Leadership */
+  .lp-person-name { font-size: 20px !important; }
+  .lp-person-role { font-size: 20px !important; }
+  .lp-person-bio  { font-size: 16px !important; }
+  .view-profile-link { font-size: 16px !important; }
+  .lp-header      { gap: 12px !important; }
 
   /* Get Involved (homepage) */
   .gi-card-box   { padding: 24px 14px 20px !important; }

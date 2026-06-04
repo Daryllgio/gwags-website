@@ -28,12 +28,11 @@ const governanceBoard = [
 ]
 
 const executiveTeam = [
-  { name: 'Marcus Thibodeau', role: 'Executive Director',                        bio: "Marcus leads day-to-day operations and drives the foundation’s mission delivery on the ground." },
-  { name: 'Isabelle Mvondo',  role: 'Director of Programs',                      bio: "Isabelle designs and oversees the foundation’s youth and community programs in Cameroon." },
-  { name: 'Samuel Eze',       role: 'Director of Operations',                    bio: 'Samuel manages internal systems, logistics, and organizational infrastructure.' },
-  { name: 'Laure Menguele',   role: 'Director of Communications & Partnerships', bio: 'Laure leads external communications and builds partnerships with donors and peer organizations.' },
-  { name: 'Christelle Biya',  role: 'Programs Officer',                          bio: 'Christelle supports program implementation and community engagement in the South West region.' },
-  { name: 'Henri Nkemdirim',  role: 'Finance & Admin Officer',                   bio: 'Henri handles financial reporting, budgeting, and administrative functions for the foundation.' },
+  { name: ‘Marcus Thibodeau’, role: ‘Executive Director’,                          bio: "Marcus leads day-to-day operations and drives the foundation’s mission delivery on the ground." },
+  { name: ‘Isabelle Mvondo’,  role: ‘Director of Programs’,                        bio: "Isabelle designs and oversees the foundation’s youth and community programs in Cameroon." },
+  { name: ‘Samuel Eze’,       role: ‘Director of Operations’,                      bio: ‘Samuel manages internal systems, logistics, and organizational infrastructure.’ },
+  { name: ‘Laure Menguele’,   role: ‘Director of Communications & Partnerships’,   bio: ‘Laure leads external communications and builds partnerships with donors and peer organizations.’ },
+  { name: ‘Name Placeholder’, role: ‘Director of Resource Mobilization’,           bio: ‘’ },
 ]
 
 const historicalLeadership = [
@@ -68,14 +67,14 @@ function PersonCard({ name, role, bio, showBio = true, showLink = true }: {
       </div>
 
       {/* Name */}
-      <p className="mt-3" style={{ color: NAVY, fontSize: '22px', fontWeight: 700 }}>{name}</p>
+      <p className="mt-3 lp-person-name" style={{ color: NAVY, fontSize: '24px', fontWeight: 600 }}>{name}</p>
 
       {/* Role */}
-      <p className="mt-1" style={{ color: '#1A3060', fontSize: '20px', fontWeight: 400 }}>{role}</p>
+      <p className="mt-1 lp-person-role" style={{ color: '#1A3060', fontSize: '24px', fontWeight: 200 }}>{role}</p>
 
       {/* Bio */}
       {showBio && bio && (
-        <p className="mt-2 leading-relaxed" style={{ color: NAVY, fontSize: '16px', fontWeight: 400 }}>{bio}</p>
+        <p className="mt-2 leading-relaxed lp-person-bio" style={{ color: NAVY, fontSize: '17px', fontWeight: 400 }}>{bio}</p>
       )}
 
       {/* View profile */}
@@ -83,7 +82,7 @@ function PersonCard({ name, role, bio, showBio = true, showLink = true }: {
         <a
           href="#"
           className="mt-3 inline-block view-profile-link"
-          style={{ color: NAVY, fontSize: '15px', textDecoration: 'none' }}
+          style={{ color: NAVY, fontSize: '17px', textDecoration: 'none' }}
         >
           View profile
         </a>
@@ -221,7 +220,7 @@ export default function LeadershipPage() {
       <div className="px-8 py-16 max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10 lp-header">
           <h1
             className="font-black uppercase leading-tight"
             style={{ color: NAVY, fontSize: '48px', fontFamily: 'Georgia, "Times New Roman", serif' }}

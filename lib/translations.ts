@@ -400,10 +400,9 @@ export const t = {
       },
       lookingAhead: {
         eyebrow: 'LOOKING AHEAD',
-        heading: 'What the world looks like if we succeed.',
+        heading: 'What the world looks like when we succeed.',
         paragraphs: [
           'If Gwags achieves what it is setting out to build, the impact space will look fundamentally different. Organizations will no longer face the same structural barriers alone. They will have access to governance support, international networks, funding pathways, and the institutional credibility needed to attract investment and partnerships. The infrastructure that most organizations spend years trying to build independently will already exist within the network they are part of.',
-          'Every initiative we deliver builds operational credibility. Every organization that joins the network strengthens the collective. Every standard we set raises the bar for what affiliated organizations represent.',
           'The measure of our success will be visible in the organizations that scaled because of the support they received; in the communities that benefited because an affiliated organization had the structure and resources needed to operate; and in the initiatives that lasted because an institution was built around them. That is what Gwags is working toward.',
         ],
       },
@@ -813,10 +812,9 @@ export const t = {
       },
       lookingAhead: {
         eyebrow: "REGARDER VERS L'AVENIR",
-        heading: 'À quoi ressemble le monde si nous réussissons.',
+        heading: 'À quoi ressemble le monde quand nous réussissons.',
         paragraphs: [
           "Si Gwags parvient à construire ce qu'il s'est fixé comme objectif, l'espace de l'impact aura un visage fondamentalement différent. Les organisations ne feront plus face seules aux mêmes barrières structurelles. Elles auront accès au soutien en gouvernance, aux réseaux internationaux, aux voies de financement et à la crédibilité institutionnelle nécessaire pour attirer des investissements et des partenariats. L'infrastructure que la plupart des organisations passent des années à construire de manière indépendante existera déjà au sein du réseau dont elles font partie.",
-          "Chaque initiative que nous livrons renforce la crédibilité opérationnelle. Chaque organisation qui rejoint le réseau renforce le collectif. Chaque standard que nous établissons élève le niveau de ce que les organisations affiliées représentent.",
           "La mesure de notre succès sera visible dans les organisations qui ont grandi grâce au soutien reçu; dans les communautés qui ont bénéficié parce qu'une organisation affiliée avait la structure et les ressources nécessaires pour opérer; et dans les initiatives qui ont duré parce qu'une institution a été construite autour d'elles. C'est vers cela que Gwags travaille.",
         ],
       },
