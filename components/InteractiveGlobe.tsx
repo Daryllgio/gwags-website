@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import type * as d3Type from 'd3'
 
 /* ── Constants ── */
-const PRIMARY_URL  = 'https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson'
+const PRIMARY_URL  = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_land.json'
 const FALLBACK_URL = 'https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson'
 const TYPEWRITER_TEXT = 'Gwags and its growing network of organizations, working across different sectors to address the societal challenges communities face.'
 
@@ -268,28 +268,31 @@ export default function InteractiveGlobe() {
         .clipAngle(90)
 
       const pathGen       = d3.geoPath().projection(projection).context(ctx)
-      const graticuleData = d3.geoGraticule()() as d3Type.GeoPermissibleObjects  // computed once
+      const graticuleData = d3.geoGraticule()() as d3Type.GeoPermissibleObjects
+      const sphere        = { type: 'Sphere' as const }
+      const rotateArr: [number, number] = [0, -20]  // reused — avoid per-frame allocation
 
       let currentDrawSize = size
 
       function draw(s: number) {
         ctx.clearRect(0, 0, s, s)
-        projection.rotate([rotationRef.current, -20])
+        rotateArr[0] = rotationRef.current
+        projection.rotate(rotateArr)
 
         /* Ocean fill */
         ctx.beginPath()
-        pathGen({ type: 'Sphere' })
+        pathGen(sphere)
         ctx.fillStyle = 'rgba(248,247,243,0.04)'
         ctx.fill()
 
-        /* Graticule – single cached object */
+        /* Graticule */
         ctx.beginPath()
         pathGen(graticuleData)
         ctx.strokeStyle = 'rgba(10,17,40,0.15)'
         ctx.lineWidth = 0.5
         ctx.stroke()
 
-        /* All countries batched into ONE path then fill+stroke once */
+        /* All land batched into ONE path → fill + stroke once */
         if (geoDataRef.current) {
           ctx.beginPath()
           for (const feature of geoDataRef.current.features) {
@@ -304,25 +307,23 @@ export default function InteractiveGlobe() {
 
         /* Outer border */
         ctx.beginPath()
-        pathGen({ type: 'Sphere' })
+        pathGen(sphere)
         ctx.strokeStyle = 'rgba(10,17,40,0.2)'
         ctx.lineWidth = 1
         ctx.stroke()
       }
 
-      /* Throttle to ~30 fps; use elapsed time for consistent rotation speed */
-      const DEG_PER_MS = 9 / 1000   // 9°/sec = same visual speed as before
-      let lastFrameTime = 0
+      /* Time-based rotation at native fps — no throttle, no frame skipping.
+         Cap delta at 100ms so tab-refocus doesn't cause a giant jump. */
+      const DEG_PER_MS = 9 / 1000
+      let lastTime = 0
 
       function animate(time: number) {
         if (disposed) return
         animFrameRef.current = requestAnimationFrame(animate)
-
-        const elapsed = time - lastFrameTime
-        if (elapsed < 32) return          // skip: not yet 30fps threshold
-
-        lastFrameTime = time
-        if (autoRotateRef.current) rotationRef.current += elapsed * DEG_PER_MS
+        const delta = lastTime ? Math.min(time - lastTime, 100) : 16
+        lastTime = time
+        if (autoRotateRef.current) rotationRef.current += delta * DEG_PER_MS
         draw(currentDrawSize)
       }
       animFrameRef.current = requestAnimationFrame(animate)
