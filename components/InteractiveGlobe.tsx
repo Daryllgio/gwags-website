@@ -267,11 +267,13 @@ export default function InteractiveGlobe() {
         .translate([size / 2, size / 2])
         .clipAngle(90)
 
-      const pathGen  = d3.geoPath().projection(projection).context(ctx)
-      const graticule = d3.geoGraticule()
+      const pathGen       = d3.geoPath().projection(projection).context(ctx)
+      const graticuleData = d3.geoGraticule()() as d3Type.GeoPermissibleObjects  // computed once
 
-      function draw() {
-        ctx.clearRect(0, 0, size, size)
+      let currentDrawSize = size
+
+      function draw(s: number) {
+        ctx.clearRect(0, 0, s, s)
         projection.rotate([rotationRef.current, -20])
 
         /* Ocean fill */
@@ -280,24 +282,24 @@ export default function InteractiveGlobe() {
         ctx.fillStyle = 'rgba(248,247,243,0.04)'
         ctx.fill()
 
-        /* Graticule */
+        /* Graticule – single cached object */
         ctx.beginPath()
-        pathGen(graticule() as d3Type.GeoPermissibleObjects)
+        pathGen(graticuleData)
         ctx.strokeStyle = 'rgba(10,17,40,0.15)'
         ctx.lineWidth = 0.5
         ctx.stroke()
 
-        /* Countries */
+        /* All countries batched into ONE path then fill+stroke once */
         if (geoDataRef.current) {
+          ctx.beginPath()
           for (const feature of geoDataRef.current.features) {
-            ctx.beginPath()
             pathGen(feature)
-            ctx.fillStyle = 'rgba(10,17,40,0.05)'
-            ctx.fill()
-            ctx.strokeStyle = '#0A1128'
-            ctx.lineWidth = 0.8
-            ctx.stroke()
           }
+          ctx.fillStyle   = 'rgba(10,17,40,0.05)'
+          ctx.strokeStyle = '#0A1128'
+          ctx.lineWidth   = 0.8
+          ctx.fill()
+          ctx.stroke()
         }
 
         /* Outer border */
@@ -308,13 +310,22 @@ export default function InteractiveGlobe() {
         ctx.stroke()
       }
 
-      function animate() {
+      /* Throttle to ~30 fps; use elapsed time for consistent rotation speed */
+      const DEG_PER_MS = 9 / 1000   // 9°/sec = same visual speed as before
+      let lastFrameTime = 0
+
+      function animate(time: number) {
         if (disposed) return
-        if (autoRotateRef.current) rotationRef.current += 0.15
-        draw()
         animFrameRef.current = requestAnimationFrame(animate)
+
+        const elapsed = time - lastFrameTime
+        if (elapsed < 32) return          // skip: not yet 30fps threshold
+
+        lastFrameTime = time
+        if (autoRotateRef.current) rotationRef.current += elapsed * DEG_PER_MS
+        draw(currentDrawSize)
       }
-      animate()
+      animFrameRef.current = requestAnimationFrame(animate)
 
       /* ── Drag / click handling ── */
       let isDragging  = false
@@ -382,12 +393,11 @@ export default function InteractiveGlobe() {
       }
 
       /* Resize */
-      let currentSize = size
       const onResize = () => {
         if (disposed || !canvas) return
         const s = getCanvasSize()
-        if (s === currentSize) return
-        currentSize   = s
+        if (s === currentDrawSize) return
+        currentDrawSize = s
         canvas.width  = s
         canvas.height = s
         canvas.style.width  = s + 'px'
