@@ -905,17 +905,24 @@ h1, h2, h3, h4 {
   .or-ahead-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 
-/* Globe container – responsive height */
+/* Globe container – square, centered */
 .globe-container {
+  width: 400px;
   height: 400px;
-  border-radius: 12px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.or-ahead-globe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @media (max-width: 1024px) {
-  .globe-container { height: 300px; }
+  .globe-container { width: 300px; height: 300px; }
 }
 @media (max-width: 768px) {
-  .globe-container { height: 280px; }
+  .globe-container { width: 280px; height: 280px; }
 }
 
 /* Overlay world map width */
