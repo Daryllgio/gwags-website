@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Lang, t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import InteractiveGlobe from '@/components/InteractiveGlobe'
 
 export default function OurRolePage() {
   const [lang, setLang] = useState<Lang>('en')
@@ -119,18 +120,26 @@ function LookingAheadSection({ lang }: { lang: Lang }) {
   const p = t[lang].ourRole.lookingAhead
   return (
     <section className="or-ahead">
-      <div className="or-ahead-inner">
-        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
-          {p.eyebrow}
-        </p>
-        <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 24px 0', lineHeight: 1.25 }}>
-          {p.heading}
-        </h2>
-        {p.paragraphs.map((para, i) => (
-          <p key={i} className="body-text" style={{ fontSize: '18px', color: '#4A4A4A', lineHeight: 1.85, margin: i < p.paragraphs.length - 1 ? '0 0 20px 0' : '0' }}>
-            {para}
+      <div className="or-ahead-grid">
+        {/* Left column: text */}
+        <div className="or-ahead-text">
+          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
+            {p.eyebrow}
           </p>
-        ))}
+          <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 24px 0', lineHeight: 1.25 }}>
+            {p.heading}
+          </h2>
+          {p.paragraphs.map((para, i) => (
+            <p key={i} className="body-text" style={{ fontSize: '18px', color: '#4A4A4A', lineHeight: 1.85, margin: i < p.paragraphs.length - 1 ? '0 0 20px 0' : '0' }}>
+              {para}
+            </p>
+          ))}
+        </div>
+
+        {/* Right column: globe */}
+        <div className="or-ahead-globe">
+          <InteractiveGlobe />
+        </div>
       </div>
     </section>
   )
