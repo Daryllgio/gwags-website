@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import { Lang, t } from '@/lib/translations'
 
 const NAVY = '#0A1128'
+const GOLD = '#D4AF37'
 
 /* ── People data ─────────────────────────────────────────────────────────── */
 
@@ -18,7 +19,7 @@ const PEOPLE: Record<string, { name: string; role: string; bio: string }> = {
   'vianney-tanifor': {
     name: 'Vianney Tanifor',
     role: 'Board Member',
-    bio: 'Vianney brings expertise in organizational development and community engagement to the Gwags governance board. His experience supports the foundation\'s mission to build credible, well-structured institutions.',
+    bio: "Vianney brings expertise in organizational development and community engagement to the Gwags governance board. His experience supports the foundation's mission to build credible, well-structured institutions.",
   },
   'noa-winner': {
     name: 'Noa Winner',
@@ -28,7 +29,7 @@ const PEOPLE: Record<string, { name: string; role: string; bio: string }> = {
   'placeholder-executive-director': {
     name: '[Name Placeholder]',
     role: 'Executive Director',
-    bio: 'The Executive Director oversees the day-to-day operations of Gwags, working closely with the governance board to implement the institution\'s strategic priorities and ensure program delivery.',
+    bio: "The Executive Director oversees the day-to-day operations of Gwags, working closely with the governance board to implement the institution's strategic priorities and ensure program delivery.",
   },
   'placeholder-director-programs': {
     name: '[Name Placeholder]',
@@ -53,7 +54,7 @@ const PEOPLE: Record<string, { name: string; role: string; bio: string }> = {
   'gloria-alana-asopjio': {
     name: 'Gloria Alana Asopjio',
     role: 'Founding Member',
-    bio: 'Gloria contributed to the early development of Gwags during its founding years, playing a key role in shaping the institution\'s initial direction and community programs in Cameroon.',
+    bio: "Gloria contributed to the early development of Gwags during its founding years, playing a key role in shaping the institution's initial direction and community programs in Cameroon.",
   },
   'alissa-kenne-mokem': {
     name: 'Alissa Kenne Mokem',
@@ -62,13 +63,13 @@ const PEOPLE: Record<string, { name: string; role: string; bio: string }> = {
   },
 }
 
-/* ── Sub-components ─────────────────────────────────────────────────────── */
+/* ── Silhouette (same style as leadership cards) ─────────────────────────── */
 
-function PersonSilhouette() {
+function PersonSilhouette({ size = 80 }: { size?: number }) {
   return (
-    <svg width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="32" cy="22" r="12" fill="rgba(255,255,255,0.12)" />
-      <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="rgba(255,255,255,0.12)" strokeWidth="4" strokeLinecap="round" />
+    <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="22" r="12" fill="#c8c8c8" />
+      <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="#c8c8c8" strokeWidth="4" strokeLinecap="round" />
     </svg>
   )
 }
@@ -88,7 +89,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         <Nav lang={lang} onToggleLang={toggleLang} />
         <div style={{ padding: '80px 40px', textAlign: 'center' }}>
           <p style={{ color: NAVY, fontSize: '20px' }}>Profile not found.</p>
-          <Link href="/about/leadership" style={{ color: '#D4AF37', fontSize: '16px', textDecoration: 'none', marginTop: '16px', display: 'inline-block' }}>
+          <Link href="/about/leadership" style={{ color: GOLD, fontSize: '16px', textDecoration: 'none', marginTop: '16px', display: 'inline-block' }}>
             ← Back to Leadership
           </Link>
         </div>
@@ -100,208 +101,210 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
   return (
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
       <style>{`
-        /* Profile hero heights */
-        .profile-hero { height: 380px; }
-        @media (max-width: 1024px) { .profile-hero { height: 280px; } }
-        @media (max-width: 768px)  { .profile-hero { height: 220px; } }
+        /* ── Photo ── */
+        .pp-photo-wrap {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 40px;
+        }
+        .pp-photo {
+          width: 540px;
+          height: 420px;
+          max-width: 100%;
+          background: #e8e8e8;
+          border-radius: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        @media (max-width: 1024px) {
+          .pp-photo { width: 100%; height: 340px; }
+        }
+        @media (max-width: 768px) {
+          .pp-photo { height: 280px; }
+        }
 
-        /* Name and role sizes */
-        .profile-name { font-size: 52px; }
-        @media (max-width: 1024px) { .profile-name { font-size: 36px !important; } }
-        @media (max-width: 768px)  { .profile-name { font-size: 28px !important; } }
+        /* ── Name ── */
+        .pp-name {
+          font-family: Georgia, "Times New Roman", serif;
+          font-size: 3rem;
+          font-weight: 700;
+          color: ${NAVY};
+          margin: 0 0 6px 0;
+          line-height: 1.1;
+        }
+        @media (max-width: 1024px) { .pp-name { font-size: 2.25rem; } }
+        @media (max-width: 768px)  { .pp-name { font-size: 1.75rem; } }
 
-        .profile-role { font-size: 28px; }
-        @media (max-width: 1024px) { .profile-role { font-size: 22px !important; } }
-        @media (max-width: 768px)  { .profile-role { font-size: 18px !important; } }
+        /* ── Role ── */
+        .pp-role {
+          font-family: Georgia, "Times New Roman", serif;
+          font-size: 3rem;
+          font-weight: 300;
+          color: #555;
+          margin: 0 0 32px 0;
+          line-height: 1.1;
+        }
+        @media (max-width: 1024px) { .pp-role { font-size: 2.25rem; } }
+        @media (max-width: 768px)  { .pp-role { font-size: 1.75rem; } }
 
-        /* Bio size */
-        .profile-bio { font-size: 18px; }
-        @media (max-width: 768px) { .profile-bio { font-size: 16px !important; } }
+        /* ── Bio ── */
+        .pp-bio {
+          font-size: 18px;
+          color: ${NAVY};
+          line-height: 1.85;
+          max-width: 672px;
+          margin: 0 0 64px 0;
+        }
+        @media (max-width: 768px) { .pp-bio { font-size: 16px; } }
 
-        /* Content wrapper left padding */
-        .profile-content { padding-left: 80px; padding-right: 40px; }
-        @media (max-width: 1024px) { .profile-content { padding-left: 48px; padding-right: 28px; } }
-        @media (max-width: 768px)  { .profile-content { padding-left: 24px; padding-right: 24px; } }
+        /* ── Page container ── */
+        .pp-container {
+          max-width: 960px;
+          margin: 0 auto;
+          padding: 64px 60px 0;
+        }
+        @media (max-width: 1024px) { .pp-container { padding: 56px 40px 0; } }
+        @media (max-width: 768px)  { .pp-container { padding: 48px 24px 0; } }
 
-        /* Bio negative margin — desktop: -24px, tablet: -12px, phone: 0 */
-        .profile-bio { margin-left: -24px; }
-        @media (max-width: 1024px) { .profile-bio { margin-left: -12px !important; } }
-        @media (max-width: 768px)  { .profile-bio { margin-left: 0 !important; } }
+        /* ── More-about container ── */
+        .pp-ma-container {
+          max-width: 960px;
+          margin: 0 auto;
+          padding: 56px 60px 80px;
+        }
+        @media (max-width: 1024px) { .pp-ma-container { padding: 48px 40px 72px; } }
+        @media (max-width: 768px)  { .pp-ma-container { padding: 40px 24px 64px; } }
 
-        /* Separator negative margin — desktop: -60px, tablet: -30px, phone: 0 */
-        .profile-separator { margin-left: -60px; }
-        @media (max-width: 1024px) { .profile-separator { margin-left: -30px !important; } }
-        @media (max-width: 768px)  { .profile-separator { margin-left: 0 !important; } }
+        /* ── More-about heading ── */
+        .pp-ma-heading {
+          font-family: Georgia, "Times New Roman", serif;
+          font-size: 2rem;
+          font-weight: 700;
+          color: ${NAVY};
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+          margin: 0 0 48px 0;
+          line-height: 1.2;
+        }
+        @media (max-width: 768px) { .pp-ma-heading { font-size: 1.5rem; margin-bottom: 36px; } }
 
-        /* More about negative margin — desktop: -80px, tablet: -40px, phone: 0 */
-        .profile-more-about { margin-left: -80px; }
-        @media (max-width: 1024px) { .profile-more-about { margin-left: -40px !important; } }
-        @media (max-width: 768px)  { .profile-more-about { margin-left: 0 !important; } }
+        /* ── More-about grid ── */
+        .pp-ma-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 40px;
+        }
+        @media (max-width: 900px)  { .pp-ma-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
+        @media (max-width: 560px)  { .pp-ma-grid { grid-template-columns: 1fr; gap: 32px; } }
 
-        /* More About cards grid */
-        .profile-ma-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        @media (max-width: 1024px) { .profile-ma-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px)  { .profile-ma-grid { grid-template-columns: 1fr; } }
-
-        /* More About card hover */
-        .profile-ma-card { transition: transform 0.25s ease; }
-        .profile-ma-card:hover { transform: translateY(-4px); }
-        @media (hover: none) { .profile-ma-card:hover { transform: none !important; } }
+        /* ── "Learn more" hover: gold + left-to-right underline, desktop only ── */
+        .pp-learn-more {
+          display: inline-block;
+          position: relative;
+          color: ${NAVY};
+          font-size: 15px;
+          text-decoration: none;
+          letter-spacing: 0.01em;
+        }
+        .pp-learn-more::after {
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 0;
+          height: 1.5px;
+          background: ${GOLD};
+          transition: width 0.3s ease;
+        }
+        @media (hover: hover) {
+          .pp-learn-more:hover { color: ${GOLD}; }
+          .pp-learn-more:hover::after { width: 100%; }
+        }
       `}</style>
 
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      {/* Section 1 — Hero image banner
-          ─────────────────────────────────────────────────────────────────────
-          To replace with a real photo, swap the div below for:
+      {/* ── Main content ──────────────────────────────────────────────────── */}
+      <div className="pp-container">
 
-            <div className="profile-hero" style={{ width: '100%', overflow: 'hidden', position: 'relative' }}>
-              <img
-                src="/images/leadership/[slug].jpg"
-                alt="[Person name]"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
-              />
-            </div>
+        {/* 1 — Photo
+            ──────────────────────────────────────────────────────────────────
+            To replace with a real photo, swap the .pp-photo div for:
 
-          Or with Next.js Image (preferred):
-            <div className="profile-hero" style={{ width: '100%', position: 'relative' }}>
-              <Image src="/images/leadership/[slug].jpg" alt="[Person name]" fill style={{ objectFit: 'cover', objectPosition: 'top center' }} />
-            </div>
-          ─────────────────────────────────────────────────────────────────────
-      */}
-      <div
-        className="profile-hero"
-        style={{
-          width: '100%',
-          background: '#0F1E3D',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <PersonSilhouette />
-      </div>
+              <div className="pp-photo" style={{ overflow: 'hidden', position: 'relative', background: 'none' }}>
+                <img
+                  src="/images/leadership/[slug].jpg"
+                  alt="[Person name]"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
+                />
+              </div>
 
-      {/* Content wrapper */}
-      <div className="profile-content">
-
-        {/* Section 2 — Name and role */}
-        <div style={{ marginTop: '32px' }}>
-          <h1
-            className="profile-name"
-            style={{
-              fontFamily: 'Georgia, "Times New Roman", serif',
-              fontWeight: 700,
-              color: NAVY,
-              margin: 0,
-              lineHeight: 1.15,
-            }}
-          >
-            {person.name}
-          </h1>
-          <p
-            className="profile-role"
-            style={{
-              fontFamily: 'Georgia, "Times New Roman", serif',
-              fontWeight: 400,
-              color: '#4A4A4A',
-              margin: '8px 0 0',
-            }}
-          >
-            {person.role}
-          </p>
+            Or with Next.js Image (preferred):
+              <div className="pp-photo" style={{ overflow: 'hidden', position: 'relative', background: 'none' }}>
+                <Image
+                  src="/images/leadership/[slug].jpg"
+                  alt="[Person name]"
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'top center' }}
+                />
+              </div>
+            ──────────────────────────────────────────────────────────────────
+        */}
+        <div className="pp-photo-wrap">
+          <div className="pp-photo">
+            <PersonSilhouette size={80} />
+          </div>
         </div>
 
-        {/* Section 3 — Bio */}
-        <p
-          className="profile-bio"
-          style={{
-            color: '#4A4A4A',
-            lineHeight: 1.85,
-            maxWidth: '700px',
-            marginTop: '24px',
-          }}
-        >
-          {person.bio}
-        </p>
+        {/* 2 — Name & Role */}
+        <h1 className="pp-name">{person.name}</h1>
+        <p  className="pp-role">{person.role}</p>
 
-        {/* Section 4 — Separator */}
-        <hr
-          className="profile-separator"
-          style={{
-            border: 'none',
-            borderTop: '1px solid rgba(10,17,40,0.12)',
-            marginTop: '48px',
-            marginRight: 0,
-          }}
-        />
+        {/* 3 — Bio */}
+        <p className="pp-bio">{person.bio}</p>
 
-        {/* Section 5 — More about the institution */}
-        <div
-          className="profile-more-about"
-          style={{
-            marginTop: '48px',
-            paddingBottom: '80px',
-            paddingLeft: '20px',
-          }}
-        >
-          <p
-            className="eyebrow"
-            style={{
-              color: '#D4AF37',
-              fontSize: '16px',
-              fontWeight: 400,
-              letterSpacing: '0.15em',
-              marginBottom: '36px',
-              fontFamily: 'inherit',
-            }}
-          >
-            {m.heading}
-          </p>
+      </div>
 
-          <div className="profile-ma-grid">
-            {m.cards.map((card, i) => (
-              <Link
-                key={i}
-                href={card.href}
-                className="profile-ma-card"
+      {/* 4 — Full-width divider */}
+      <hr style={{ border: 'none', borderTop: '1px solid rgba(10,17,40,0.12)', margin: 0 }} />
+
+      {/* 5 — More about the foundation */}
+      <div className="pp-ma-container">
+
+        <h2 className="pp-ma-heading">More about the foundation</h2>
+
+        <div className="pp-ma-grid">
+          {m.cards.map((card, i) => (
+            <div key={i}>
+              <div
                 style={{
-                  display: 'block',
-                  textDecoration: 'none',
-                  borderRadius: '8px',
-                  border: '0.5px solid rgba(10,17,40,0.08)',
-                  padding: '28px 28px 32px',
-                  background: '#ffffff',
+                  fontFamily: 'Georgia, "Times New Roman", serif',
+                  fontSize: '18px',
+                  fontWeight: 700,
+                  color: NAVY,
+                  marginBottom: '10px',
+                  lineHeight: 1.3,
                 }}
               >
-                <div
-                  style={{
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '20px',
-                    fontWeight: 600,
-                    color: NAVY,
-                    marginBottom: '10px',
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {card.title}
-                </div>
-                <p
-                  style={{
-                    fontSize: '16px',
-                    color: '#4A4A4A',
-                    lineHeight: 1.7,
-                    margin: '0 0 16px',
-                  }}
-                >
-                  {card.desc}
-                </p>
-                <span style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.02em' }}>
-                  {card.link} →
-                </span>
+                {card.title}
+              </div>
+              <p
+                style={{
+                  fontSize: '16px',
+                  color: '#4A4A4A',
+                  lineHeight: 1.7,
+                  margin: '0 0 14px',
+                }}
+              >
+                {card.desc}
+              </p>
+              <Link href={card.href} className="pp-learn-more">
+                {card.link} →
               </Link>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
       </div>

@@ -87,7 +87,7 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: 
           className="mt-3 inline-block view-profile-link"
           style={{ color: NAVY, fontSize: '17px', textDecoration: 'none' }}
         >
-          View profile
+          View profile →
         </a>
       )}
     </div>
