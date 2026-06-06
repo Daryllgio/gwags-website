@@ -14,7 +14,7 @@ const GOLD = '#D4AF37'
 
 // Controls how far left the profile image sits from the page edge —
 // increase to push right, decrease to push left.
-const PROFILE_IMAGE_LEFT_OFFSET = '80px'
+const PROFILE_IMAGE_LEFT_OFFSET = '40px'
 
 // Controls how far left the More About section and divider line start —
 // this should be further left than the image offset above (smaller value).
