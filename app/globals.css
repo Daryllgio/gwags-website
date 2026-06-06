@@ -193,7 +193,7 @@ h1, h2, h3, h4 {
 @media (max-width: 480px) {
   .hero-h1 { font-size: 28px !important; }
   .hero-body { font-size: 16px !important; }
-  .hero-buttons { flex-direction: column !important; align-items: stretch !important; }
+  .hero-buttons { flex-direction: column !important; align-items: flex-start !important; }
 }
 
 /* ── Stats Ticker ── */
@@ -287,11 +287,11 @@ h1, h2, h3, h4 {
 }
 @media (max-width: 768px) {
   .cta-section { padding: 60px 20px !important; }
-  .cta-h2 { font-size: 22px !important; }
-  .cta-buttons { flex-direction: column !important; align-items: stretch !important; }
+  .cta-h2 { font-size: 23px !important; }
+  .cta-buttons { flex-direction: column !important; align-items: center !important; }
 }
 @media (max-width: 480px) {
-  .cta-h2 { font-size: 21px !important; }
+  .cta-h2 { font-size: 22px !important; }
 }
 
 /* ── Footer ── */
@@ -1169,7 +1169,7 @@ h1, h2, h3, h4 {
   /* MOBILE: h1 size */
   main h1 { font-size: 30px !important; }
   /* MOBILE: h2 size */
-  main h2 { font-size: 22px !important; }
+  main h2 { font-size: 23px !important; }
   /* MOBILE: body text size */
   .body-text { font-size: 16px !important; }
   .hero-body { font-size: 16px !important; }
@@ -1202,7 +1202,7 @@ h1, h2, h3, h4 {
   /* SMALL PHONE: h1 size */
   main h1 { font-size: 26px !important; }
   /* SMALL PHONE: h2 size */
-  main h2 { font-size: 21px !important; }
+  main h2 { font-size: 22px !important; }
   /* SMALL PHONE: body text size */
   .body-text { font-size: 15px !important; }
   .hero-body { font-size: 15px !important; }
@@ -1220,7 +1220,7 @@ h1, h2, h3, h4 {
   .site-section { padding: 36px 25px !important; }
   /* SMALL PHONE: hero adjustments */
   .hero-h1 { font-size: 25px !important; }
-  .hero-buttons { flex-direction: column !important; align-items: stretch !important; }
+  .hero-buttons { flex-direction: column !important; align-items: flex-start !important; }
   /* SMALL PHONE: stats ticker */
   .stats-ticker { grid-template-columns: 1fr !important; }
   .stats-ticker .has-divider { border-right: none !important; border-bottom: 0.5px solid rgba(212,175,55,0.11) !important; }
@@ -1273,7 +1273,7 @@ h1, h2, h3, h4 {
   /* More About */
   .ma-img-ph    { height: 220px !important; }
   .ma-card-body { padding: 20px 20px 24px !important; }
-  .ma-card-title { font-size: 20px !important; }
+  .ma-card-title { font-size: 19px !important; }
   .ma-card-desc  { font-size: 17px !important; }
 
   /* Leadership */
@@ -1312,7 +1312,7 @@ h1, h2, h3, h4 {
   /* More About */
   .ma-img-ph    { height: 220px !important; }
   .ma-card-body { padding: 18px 18px 22px !important; }
-  .ma-card-title { font-size: 19px !important; }
+  .ma-card-title { font-size: 18px !important; }
   .ma-card-desc  { font-size: 16px !important; }
 
   /* Leadership */
@@ -1359,7 +1359,7 @@ h1, h2, h3, h4 {
   /* More About */
   .ma-img-ph    { height: 220px !important; }
   .ma-card-body { padding: 14px 16px 20px !important; }
-  .ma-card-title { font-size: 18px !important; }
+  .ma-card-title { font-size: 17px !important; }
   .ma-card-desc  { font-size: 15px !important; }
 
   /* Leadership */
@@ -1419,10 +1419,7 @@ h1, h2, h3, h4 {
   .wwa-pillar-title { font-size: 15px !important; }
 }
 
-/* WhatWeAre H2 mobile override */
-@media (max-width: 768px) {
-  .wwa-h2 { font-size: 22px !important; }
-}
+/* WhatWeAre H2 — follows main h2 rule, no separate override needed */
 
 /* Stats ticker numbers ("4+", "3", "1") */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -1440,9 +1437,9 @@ h1, h2, h3, h4 {
   .stats-label { font-size: 10px !important; letter-spacing: 0.1em !important; }
 }
 
-/* Hero buttons — stack vertically at mobile (768px), stretch to full width */
+/* Hero buttons — stack vertically at mobile, left-aligned natural width */
 @media (max-width: 768px) {
-  .hero-buttons { flex-direction: column !important; align-items: stretch !important; }
+  .hero-buttons { flex-direction: column !important; align-items: flex-start !important; }
 }
 
 /* Footer text */
@@ -1488,7 +1485,7 @@ h1, h2, h3, h4 {
   .lq-role { font-size: 16px !important; }
 }
 @media (max-width: 768px) {
-  .lq-name { font-size: 16px !important; }
+  .lq-name { font-size: 17px !important; }
   .lq-role { font-size: 15px !important; }
 }
 /* small phone: same as mobile — no change */
