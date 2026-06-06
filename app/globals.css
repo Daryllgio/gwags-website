@@ -1349,12 +1349,12 @@ h1, h2, h3, h4 {
   .ini-img-ph    { height: 220px !important; }
   .ini-card-body { padding: 14px 14px 18px !important; }
   .ini-card-title { font-size: 15px !important; }
-  .ini-card-desc  { font-size: 14px !important; }
+  .ini-card-desc  { font-size: 15px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 20px 14px 18px !important; }
   .wg-card-title { font-size: 15px !important; }
-  .wg-card-desc  { font-size: 14px !important; }
+  .wg-card-desc  { font-size: 15px !important; }
 
   /* More About */
   .ma-img-ph    { height: 220px !important; }
