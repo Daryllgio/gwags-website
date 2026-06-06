@@ -18,7 +18,7 @@ const PROFILE_IMAGE_LEFT_OFFSET = '320px'
 
 // Controls how far left the More About section and divider line start —
 // this should be further left than the image offset above (smaller value).
-const FOUNDATION_SECTION_LEFT_OFFSET = '36px'
+const FOUNDATION_SECTION_LEFT_OFFSET = '265px'
 
 // Controls how wide the bio text column stretches —
 // increase to allow wider text, decrease to keep it narrower.
