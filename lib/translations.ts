@@ -12,7 +12,6 @@ export const t = {
         about: {
           heading: 'About',
           description: 'Learn about our origins, our mission, how we work, and the people behind Gwags.',
-          cta: 'Learn more about us',
           links: [
             { label: 'Our Story', href: '/about/our-story' },
             { label: 'How We Work', href: '/about/how-we-work' },
@@ -425,7 +424,6 @@ export const t = {
         about: {
           heading: 'À propos',
           description: 'En savoir plus sur nos origines, notre mission, notre fonctionnement et les personnes qui font Gwags.',
-          cta: 'En savoir plus sur nous',
           links: [
             { label: 'Notre histoire', href: '/about/our-story' },
             { label: 'Comment nous travaillons', href: '/about/how-we-work' },

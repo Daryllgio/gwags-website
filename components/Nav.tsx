@@ -118,12 +118,9 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
               <div style={{ color: 'rgba(255,255,255,0.92)', fontSize: '16px', fontWeight: 600, letterSpacing: '0.06em', marginBottom: '12px' }}>
                 {d.about.heading}
               </div>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '16px', lineHeight: 1.7, margin: '0 0 20px 0', maxWidth: '340px' }}>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '16px', lineHeight: 1.7, margin: '0', maxWidth: '340px' }}>
                 {d.about.description}
               </p>
-              <Link href="/about/our-story" className="nav-dropdown-cta" onClick={() => setOpenDropdown(null)}>
-                {d.about.cta} →
-              </Link>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 32px' }}>
               {d.about.links.map(link => (

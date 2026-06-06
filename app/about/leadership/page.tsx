@@ -13,31 +13,34 @@ const governanceBoard = [
   {
     name: 'D. Giovanny Bikak Mbal',
     role: 'Chair, Board Member',
-    bio:  "Leads the foundation's governance and strategic direction across its operations.",
+    bio:  "Founder of Gwags and Chair of the Board, Giovanny leads the institution's governance and strategic direction.",
+    href: '/about/leadership/daryll-giovanny-bikak-mbal',
   },
   {
     name: 'Vianney Tanifor',
     role: 'Board Member',
-    bio:  'Contributes expertise in organizational development and community engagement.',
+    bio:  'Vianney brings expertise in organizational development and community engagement to the Gwags governance board.',
+    href: '/about/leadership/vianney-tanifor',
   },
   {
     name: 'Noa Winner',
     role: 'Board Member',
-    bio:  "Supports the foundation's mission through strategic oversight and partnerships.",
+    bio:  "Noa contributes strategic oversight and partnership expertise to the Gwags governance board.",
+    href: '/about/leadership/noa-winner',
   },
 ]
 
 const executiveTeam = [
-  { name: 'Marcus Thibodeau', role: 'Executive Director',                          bio: "Marcus leads day-to-day operations and drives the foundation's mission delivery on the ground." },
-  { name: 'Isabelle Mvondo',  role: 'Director of Programs',                        bio: "Isabelle designs and oversees the foundation's youth and community programs in Cameroon." },
-  { name: 'Samuel Eze',       role: 'Director of Operations',                      bio: 'Samuel manages internal systems, logistics, and organizational infrastructure.' },
-  { name: 'Laure Menguele',   role: 'Director of Communications & Partnerships',   bio: 'Laure leads external communications and builds partnerships with donors and peer organizations.' },
-  { name: 'Name Placeholder', role: 'Director of Resource Mobilization',           bio: '' },
+  { name: '[Name Placeholder]', role: 'Executive Director',                        bio: "The Executive Director oversees the day-to-day operations of Gwags, working closely with the governance board.", href: '/about/leadership/placeholder-executive-director' },
+  { name: '[Name Placeholder]', role: 'Director of Programs',                      bio: "The Director of Programs leads the design, delivery, and evaluation of Gwags's active portfolio of initiatives.", href: '/about/leadership/placeholder-director-programs' },
+  { name: '[Name Placeholder]', role: 'Director of Operations',                    bio: 'The Director of Operations manages the internal processes and organizational infrastructure that enable Gwags to operate effectively.', href: '/about/leadership/placeholder-director-operations' },
+  { name: '[Name Placeholder]', role: 'Director of Communications & Partnerships', bio: "The Director of Communications & Partnerships leads Gwags's external engagement and development of strategic partnerships.", href: '/about/leadership/placeholder-director-communications' },
+  { name: '[Name Placeholder]', role: 'Director of Resource Mobilization',         bio: "The Director of Resource Mobilization leads Gwags's efforts to secure funding and build donor relationships.", href: '/about/leadership/placeholder-director-resource' },
 ]
 
 const historicalLeadership = [
-  { name: 'Gloria Alana Asopjio', role: 'Founding Member' },
-  { name: 'Alissa Kenne Mokem',   role: 'Founding Member' },
+  { name: 'Gloria Alana Asopjio', role: 'Founding Member', href: '/about/leadership/gloria-alana-asopjio' },
+  { name: 'Alissa Kenne Mokem',   role: 'Founding Member', href: '/about/leadership/alissa-kenne-mokem' },
 ]
 
 const FILTER_OPTIONS = ['All', 'Governance Board', 'Executive Team']
@@ -53,8 +56,8 @@ function PersonIcon() {
   )
 }
 
-function PersonCard({ name, role, bio, showBio = true, showLink = true }: {
-  name: string; role: string; bio?: string; showBio?: boolean; showLink?: boolean
+function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: {
+  name: string; role: string; bio?: string; href?: string; showBio?: boolean; showLink?: boolean
 }) {
   return (
     <div>
@@ -78,9 +81,9 @@ function PersonCard({ name, role, bio, showBio = true, showLink = true }: {
       )}
 
       {/* View profile */}
-      {showLink && (
+      {showLink && href && (
         <a
-          href="#"
+          href={href}
           className="mt-3 inline-block view-profile-link"
           style={{ color: NAVY, fontSize: '17px', textDecoration: 'none' }}
         >
@@ -214,6 +217,10 @@ export default function LeadershipPage() {
         .view-profile-link:hover::after {
           width: 100%;
         }
+        @media (hover: none) {
+          .view-profile-link::after { display: none; }
+          .view-profile-link:hover { color: inherit; }
+        }
       `}</style>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
@@ -284,7 +291,7 @@ export default function LeadershipPage() {
           <section className="mb-16">
             <SectionTitle>Governance Board</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredBoard.map(p => <PersonCard key={p.name} {...p} />)}
+              {filteredBoard.map(p => <PersonCard key={p.href} {...p} />)}
             </div>
           </section>
         )}
@@ -294,7 +301,7 @@ export default function LeadershipPage() {
           <section className="mb-16">
             <SectionTitle>Executive Team</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredExec.map(p => <PersonCard key={p.name} {...p} />)}
+              {filteredExec.map(p => <PersonCard key={p.href} {...p} />)}
             </div>
           </section>
         )}
@@ -305,7 +312,7 @@ export default function LeadershipPage() {
             <SectionTitle>Historical Leadership</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredHistorical.map(p => (
-                <PersonCard key={p.name} name={p.name} role={p.role} bio="" showBio={false} showLink={false} />
+                <PersonCard key={p.name} name={p.name} role={p.role} bio="" href={p.href} showBio={false} showLink={true} />
               ))}
             </div>
           </section>
