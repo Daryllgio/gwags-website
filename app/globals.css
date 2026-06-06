@@ -188,7 +188,7 @@ h1, h2, h3, h4 {
   .hero-h1 { font-size: 32px !important; }
 }
 @media (max-width: 768px) {
-  .hero-h1 { font-size: 27px !important; }
+  .hero-h1 { font-size: 28px !important; }
 }
 @media (max-width: 480px) {
   .hero-h1 { font-size: 28px !important; }
@@ -1170,7 +1170,7 @@ h1, h2, h3, h4 {
   .body-text { font-size: 16px !important; }
   .hero-body { font-size: 16px !important; }
   /* MOBILE: eyebrow text size */
-  .eyebrow { font-size: 16px !important; }
+  .eyebrow { font-size: 15px !important; }
   /* MOBILE: How We Work step & card titles */
   .hww-step-title { font-size: 18px !important; }
   .hww-card-title { font-size: 17px !important; }
@@ -1200,10 +1200,10 @@ h1, h2, h3, h4 {
   /* SMALL PHONE: h2 size */
   main h2 { font-size: 23px !important; }
   /* SMALL PHONE: body text size */
-  .body-text { font-size: 16px !important; }
-  .hero-body { font-size: 16px !important; }
+  .body-text { font-size: 15px !important; }
+  .hero-body { font-size: 15px !important; }
   /* SMALL PHONE: eyebrow text size */
-  .eyebrow { font-size: 15px !important; }
+  .eyebrow { font-size: 14px !important; }
   /* SMALL PHONE: How We Work step & card titles */
   .hww-step-title { font-size: 17px !important; }
   .hww-card-title { font-size: 16px !important; }
@@ -1215,7 +1215,7 @@ h1, h2, h3, h4 {
   /* SMALL PHONE: section padding */
   .site-section { padding: 36px 16px !important; }
   /* SMALL PHONE: hero adjustments */
-  .hero-h1 { font-size: 26px !important; }
+  .hero-h1 { font-size: 25px !important; }
   .hero-buttons { flex-direction: column !important; align-items: stretch !important; }
   /* SMALL PHONE: stats ticker */
   .stats-ticker { grid-template-columns: 1fr !important; }
@@ -1269,7 +1269,7 @@ h1, h2, h3, h4 {
   /* More About */
   .ma-img-ph    { height: 220px !important; }
   .ma-card-body { padding: 20px 20px 24px !important; }
-  .ma-card-title { font-size: 18px !important; }
+  .ma-card-title { font-size: 20px !important; }
   .ma-card-desc  { font-size: 17px !important; }
 
   /* Leadership */
@@ -1308,7 +1308,7 @@ h1, h2, h3, h4 {
   /* More About */
   .ma-img-ph    { height: 220px !important; }
   .ma-card-body { padding: 18px 18px 22px !important; }
-  .ma-card-title { font-size: 17px !important; }
+  .ma-card-title { font-size: 19px !important; }
   .ma-card-desc  { font-size: 16px !important; }
 
   /* Leadership */
@@ -1344,19 +1344,19 @@ h1, h2, h3, h4 {
   /* Initiatives */
   .ini-img-ph    { height: 220px !important; }
   .ini-card-body { padding: 14px 14px 18px !important; }
-  .ini-card-title { font-size: 16px !important; }
-  .ini-card-desc  { font-size: 15px !important; }
+  .ini-card-title { font-size: 15px !important; }
+  .ini-card-desc  { font-size: 14px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 20px 14px 18px !important; }
-  .wg-card-title { font-size: 16px !important; }
-  .wg-card-desc  { font-size: 15px !important; }
+  .wg-card-title { font-size: 15px !important; }
+  .wg-card-desc  { font-size: 14px !important; }
 
   /* More About */
   .ma-img-ph    { height: 220px !important; }
   .ma-card-body { padding: 14px 16px 20px !important; }
-  .ma-card-title { font-size: 17px !important; }
-  .ma-card-desc  { font-size: 16px !important; }
+  .ma-card-title { font-size: 18px !important; }
+  .ma-card-desc  { font-size: 15px !important; }
 
   /* Leadership */
   .lp-heading       { font-size: 28px !important; }
@@ -1409,7 +1409,9 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) {
   .wwa-pillar-title { font-size: 16px !important; }
 }
-/* small phone: same 16px — no separate override needed */
+@media (max-width: 480px) {
+  .wwa-pillar-title { font-size: 15px !important; }
+}
 
 /* WhatWeAre H2 mobile override */
 @media (max-width: 768px) {
@@ -1455,7 +1457,7 @@ h1, h2, h3, h4 {
   .footer-logo-ph      { width: 100px !important; height: 28px !important; }
 }
 @media (max-width: 480px) {
-  .footer-tagline      { font-size: 16px !important; }
+  .footer-tagline      { font-size: 15px !important; }
   .footer-col-heading  { font-size: 12px !important; }
   .footer-link         { font-size: 15px !important; }
   .footer-copy         { font-size: 15px !important; }
