@@ -73,7 +73,7 @@ export const t = {
         { title: 'Gwags Scholars Program', desc: 'Providing financial support and professional development opportunities to outstanding Cameroonian university students.', tag: 'EXCELLENCE' },
         { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY' },
         { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH' },
-        { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through essential resources, educational opportunities, and long-term care.', tag: 'YOUTH' },
+        { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.', tag: 'YOUTH' },
       ],
     },
     whyGwags: {
@@ -485,7 +485,7 @@ export const t = {
         { title: 'Programme Gwags Scholars', desc: 'Offrir un soutien financier et des opportunités de développement professionnel aux étudiants universitaires camerounais exceptionnels.', tag: 'EXCELLENCE' },
         { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ' },
         { title: 'Programme de Santé Communautaire', desc: 'Apporter des soins de santé gratuits et l\'éducation médicale aux communautés mal desservies.', tag: 'SANTÉ' },
-        { title: 'Ajong Foretia Orphan Support', desc: 'Soutenir les enfants orphelins à travers des ressources essentielles, des opportunités éducatives et des soins à long terme.', tag: 'JEUNESSE' },
+        { title: 'Ajong Foretia Orphan Support', desc: 'Soutenir les enfants orphelins à travers la fourniture de fournitures de vie essentielles et des opportunités éducatives.', tag: 'JEUNESSE' },
       ],
     },
     whyGwags: {
