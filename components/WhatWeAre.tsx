@@ -16,7 +16,7 @@ export default function WhatWeAre({ lang }: WhatWeAreProps) {
           <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '16px' }}>
             {w.eyebrow}
           </p>
-          <h2 style={{ color: '#0A1128', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px' }}>
+          <h2 className="wwa-h2" style={{ color: '#0A1128', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px' }}>
             {w.h2}
           </h2>
           <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.82, marginBottom: '16px' }}>{w.p1}</p>
@@ -39,7 +39,7 @@ export default function WhatWeAre({ lang }: WhatWeAreProps) {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
                 <div style={{ width: '6px', height: '6px', background: '#D4AF37', borderRadius: '50%', flexShrink: 0 }} />
-                <div className="wwa-pillar-title" style={{ fontSize: '19px', fontWeight: 500, color: '#0A1128' }}>{pillar.title}</div>
+                <div className="wwa-pillar-title" style={{ fontSize: '18px', fontWeight: 500, color: '#0A1128' }}>{pillar.title}</div>
               </div>
               <p className="body-text" style={{ color: '#5A5A5A', fontSize: '18px', lineHeight: 1.7, paddingLeft: '16px' }}>
                 {pillar.desc}

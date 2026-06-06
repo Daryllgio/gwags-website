@@ -67,7 +67,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
 
         <Link href="/" style={{ textDecoration: 'none' }}>
           <div style={{ color: '#D4AF37', fontSize: '20px', fontWeight: 500, letterSpacing: '0.1em', fontFamily: 'Georgia, serif' }}>Gwags</div>
-          <div style={{ color: '#D4AF37', fontSize: '9px', letterSpacing: '0.2em', marginTop: '1px' }}>GLOBAL IMPACT INSTITUTION</div>
+          <div className="nav-logo-subtitle" style={{ color: '#D4AF37', fontSize: '12px', letterSpacing: '0.2em', marginTop: '1px' }}>GLOBAL IMPACT INSTITUTION</div>
         </Link>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }} className="desktop-nav">

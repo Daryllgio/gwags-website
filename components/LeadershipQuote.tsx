@@ -26,10 +26,10 @@ export default function LeadershipQuote({ lang }: LeadershipQuoteProps) {
           <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '16px', letterSpacing: '0.05em' }}>DGB</span>
         </div>
 
-        <div className="lq-name" style={{ color: '#D4AF37', fontSize: '19px', fontWeight: 500, letterSpacing: '0.08em', marginBottom: '6px' }}>
+        <div className="lq-name" style={{ color: '#D4AF37', fontSize: '18px', fontWeight: 500, letterSpacing: '0.08em', marginBottom: '6px' }}>
           {q.name}
         </div>
-        <div className="lq-role" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', letterSpacing: '0.04em' }}>
+        <div className="lq-role" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '17px', letterSpacing: '0.04em' }}>
           {q.role}
         </div>
 

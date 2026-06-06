@@ -42,10 +42,10 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
                 <div style={{ marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
                   <Icon size={28} color="#D4AF37" />
                 </div>
-                <div className="wg-card-title" style={{ fontSize: '19px', fontWeight: 500, color: '#0A1128', marginBottom: '10px' }}>
+                <div className="wg-card-title" style={{ fontSize: '18px', fontWeight: 500, color: '#0A1128', marginBottom: '10px' }}>
                   {item.title}
                 </div>
-                <p className="body-text" style={{ fontSize: '18px', color: '#5A5A5A', lineHeight: 1.68 }}>
+                <p className="body-text wg-card-desc" style={{ fontSize: '17px', color: '#5A5A5A', lineHeight: 1.68 }}>
                   {item.desc}
                 </p>
               </div>

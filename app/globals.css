@@ -187,6 +187,9 @@ h1, h2, h3, h4 {
 @media (max-width: 900px) {
   .hero-h1 { font-size: 32px !important; }
 }
+@media (max-width: 768px) {
+  .hero-h1 { font-size: 27px !important; }
+}
 @media (max-width: 480px) {
   .hero-h1 { font-size: 28px !important; }
   .hero-body { font-size: 16px !important; }
@@ -1255,12 +1258,13 @@ h1, h2, h3, h4 {
   /* Initiatives */
   .ini-img-ph    { height: 220px !important; }
   .ini-card-body { padding: 18px 18px 22px !important; }
-  .ini-card-title { font-size: 18px !important; }
-  .ini-card-desc  { font-size: 17px !important; }
+  .ini-card-title { font-size: 17px !important; }
+  .ini-card-desc  { font-size: 16px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 24px 18px 22px !important; }
-  .wg-card-title { font-size: 18px !important; }
+  .wg-card-title { font-size: 17px !important; }
+  .wg-card-desc  { font-size: 16px !important; }
 
   /* More About */
   .ma-img-ph    { height: 220px !important; }
@@ -1293,12 +1297,13 @@ h1, h2, h3, h4 {
   /* Initiatives */
   .ini-img-ph    { height: 220px !important; }
   .ini-card-body { padding: 16px 16px 20px !important; }
-  .ini-card-title { font-size: 17px !important; }
-  .ini-card-desc  { font-size: 16px !important; }
+  .ini-card-title { font-size: 16px !important; }
+  .ini-card-desc  { font-size: 15px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 24px 16px 20px !important; }
-  .wg-card-title { font-size: 17px !important; }
+  .wg-card-title { font-size: 16px !important; }
+  .wg-card-desc  { font-size: 15px !important; }
 
   /* More About */
   .ma-img-ph    { height: 220px !important; }
@@ -1339,12 +1344,13 @@ h1, h2, h3, h4 {
   /* Initiatives */
   .ini-img-ph    { height: 220px !important; }
   .ini-card-body { padding: 14px 14px 18px !important; }
-  .ini-card-title { font-size: 17px !important; }
-  .ini-card-desc  { font-size: 16px !important; }
+  .ini-card-title { font-size: 16px !important; }
+  .ini-card-desc  { font-size: 15px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 20px 14px 18px !important; }
   .wg-card-title { font-size: 16px !important; }
+  .wg-card-desc  { font-size: 15px !important; }
 
   /* More About */
   .ma-img-ph    { height: 220px !important; }
@@ -1382,18 +1388,32 @@ h1, h2, h3, h4 {
    FIXES FOR PREVIOUSLY UNCOVERED ELEMENTS
    ================================================================ */
 
-/* MORE ABOUT heading now uses className="eyebrow" — no override needed here.
-   Eyebrow class handles all responsive sizes automatically. */
+/* Base eyebrow size — desktop 16px. Responsive overrides below scale it down. */
+.eyebrow { font-size: 16px !important; }
 
-/* WhatWeAre pillar titles ("Institutional development", etc.) */
+/* Nav logo subtitle */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .wwa-pillar-title { font-size: 18px !important; }
+  .nav-logo-subtitle { font-size: 11px !important; }
 }
 @media (max-width: 768px) {
-  .wwa-pillar-title { font-size: 17px !important; }
+  .nav-logo-subtitle { font-size: 10px !important; }
 }
 @media (max-width: 480px) {
+  .nav-logo-subtitle { font-size: 9px !important; }
+}
+
+/* WhatWeAre pillar titles */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .wwa-pillar-title { font-size: 17px !important; }
+}
+@media (max-width: 768px) {
   .wwa-pillar-title { font-size: 16px !important; }
+}
+/* small phone: same 16px — no separate override needed */
+
+/* WhatWeAre H2 mobile override */
+@media (max-width: 768px) {
+  .wwa-h2 { font-size: 25px !important; }
 }
 
 /* Stats ticker numbers ("4+", "3", "1") */
@@ -1421,7 +1441,7 @@ h1, h2, h3, h4 {
 @media (min-width: 768px) and (max-width: 1024px) {
   .footer-tagline      { font-size: 17px !important; }
   .footer-col-heading  { font-size: 14px !important; }
-  .footer-link         { font-size: 17px !important; }
+  .footer-link         { font-size: 16px !important; }
   .footer-copy         { font-size: 16px !important; }
   .footer-privacy-terms { font-size: 16px !important; }
   .footer-logo-ph      { width: 110px !important; height: 32px !important; }
@@ -1429,17 +1449,17 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) {
   .footer-tagline      { font-size: 16px !important; }
   .footer-col-heading  { font-size: 13px !important; }
-  .footer-link         { font-size: 16px !important; }
+  .footer-link         { font-size: 15px !important; }
   .footer-copy         { font-size: 15px !important; }
   .footer-privacy-terms { font-size: 15px !important; }
   .footer-logo-ph      { width: 100px !important; height: 28px !important; }
 }
 @media (max-width: 480px) {
-  .footer-tagline      { font-size: 15px !important; }
+  .footer-tagline      { font-size: 16px !important; }
   .footer-col-heading  { font-size: 12px !important; }
   .footer-link         { font-size: 15px !important; }
-  .footer-copy         { font-size: 14px !important; }
-  .footer-privacy-terms { font-size: 14px !important; }
+  .footer-copy         { font-size: 15px !important; }
+  .footer-privacy-terms { font-size: 15px !important; }
   .footer-logo-ph      { width: 88px !important; height: 24px !important; }
 }
 
@@ -1456,17 +1476,14 @@ h1, h2, h3, h4 {
 
 /* Leadership Quote name and role */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .lq-name { font-size: 18px !important; }
-  .lq-role { font-size: 17px !important; }
-}
-@media (max-width: 768px) {
   .lq-name { font-size: 17px !important; }
   .lq-role { font-size: 16px !important; }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .lq-name { font-size: 16px !important; }
   .lq-role { font-size: 15px !important; }
 }
+/* small phone: same as mobile — no change */
 
 /* Leadership Quote circle — proportional across screen sizes */
 @media (min-width: 768px) and (max-width: 1024px) {
