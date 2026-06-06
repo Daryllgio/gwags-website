@@ -8,6 +8,36 @@ import { Lang, t } from '@/lib/translations'
 const NAVY = '#0A1128'
 const GOLD = '#D4AF37'
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   LAYOUT CONSTANTS — edit these to adjust spacing without touching layout code
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+// Controls how far left the profile image sits from the page edge —
+// increase to push right, decrease to push left.
+const PROFILE_IMAGE_LEFT_OFFSET = '80px'
+
+// Controls how far left the More About section and divider line start —
+// this should be further left than the image offset above (smaller value).
+const FOUNDATION_SECTION_LEFT_OFFSET = '36px'
+
+// Controls how wide the bio text column stretches —
+// increase to allow wider text, decrease to keep it narrower.
+const PROFILE_BIO_MAX_WIDTH = '620px'
+
+// Width of the profile photo placeholder (swap in a real <img> at this width).
+const PHOTO_WIDTH = '540px'
+
+// Height of the profile photo placeholder.
+const PHOTO_HEIGHT = '420px'
+
+// Vertical space between the nav bar bottom and the top of the photo.
+const PAGE_TOP_PADDING = '60px'
+
+// Right-side padding for image/bio column and More About section.
+const PAGE_RIGHT_PADDING = '60px'
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
 /* ── People data ─────────────────────────────────────────────────────────── */
 
 const PEOPLE: Record<string, { name: string; role: string; bio: string }> = {
@@ -59,7 +89,7 @@ const PEOPLE: Record<string, { name: string; role: string; bio: string }> = {
   'alissa-kenne-mokem': {
     name: 'Alissa Kenne Mokem',
     role: 'Founding Member',
-    bio: 'Alissa was part of the founding team that established Gwags in 2021, contributing to the early initiatives that laid the groundwork for the institution\'s growth and formalization.',
+    bio: "Alissa was part of the founding team that established Gwags in 2021, contributing to the early initiatives that laid the groundwork for the institution's growth and formalization.",
   },
 }
 
@@ -99,203 +129,250 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+    /*
+     * .pp-root holds CSS custom properties initialised from the JS constants
+     * above. Media queries in the <style> block below override them at each
+     * breakpoint, so every measurement flows from one source of truth.
+     */
+    <main
+      className="pp-root"
+      style={{
+        background: '#ffffff',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+        /* Inject layout constants as CSS variables so media queries can scale them */
+        ['--img-left' as string]:        PROFILE_IMAGE_LEFT_OFFSET,
+        ['--foundation-left' as string]: FOUNDATION_SECTION_LEFT_OFFSET,
+        ['--bio-max-width' as string]:   PROFILE_BIO_MAX_WIDTH,
+        ['--photo-w' as string]:         PHOTO_WIDTH,
+        ['--photo-h' as string]:         PHOTO_HEIGHT,
+        ['--page-top' as string]:        PAGE_TOP_PADDING,
+        ['--page-right' as string]:      PAGE_RIGHT_PADDING,
+      }}
+    >
       <style>{`
-        /* ── Photo ── */
-        .pp-photo-wrap {
-          display: flex;
-          justify-content: center;
-          margin-bottom: 40px;
-        }
-        .pp-photo {
-          width: 540px;
-          height: 420px;
-          max-width: 100%;
-          background: #e8e8e8;
-          border-radius: 1rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+        /* ── Tablet: scale down all offsets ── */
         @media (max-width: 1024px) {
-          .pp-photo { width: 100%; height: 340px; }
+          .pp-root {
+            --img-left:        48px;   /* reduced from ${PROFILE_IMAGE_LEFT_OFFSET} */
+            --foundation-left: 24px;   /* reduced from ${FOUNDATION_SECTION_LEFT_OFFSET} */
+            --photo-h:         340px;
+            --page-top:        48px;
+            --page-right:      40px;
+          }
+        }
+
+        /* ── Phone: minimal offsets, full-width photo ── */
+        @media (max-width: 768px) {
+          .pp-root {
+            --img-left:        20px;
+            --foundation-left: 16px;
+            --bio-max-width:   calc(100vw - 40px);
+            --photo-w:         calc(100vw - 40px);
+            --photo-h:         280px;
+            --page-top:        36px;
+            --page-right:      20px;
+          }
+        }
+
+        /* ────────────────────────────────────────────────── */
+        /* Image + name + role + bio column                   */
+        /* ────────────────────────────────────────────────── */
+
+        .pp-img-col {
+          margin-left:  var(--img-left);
+          padding-top:  var(--page-top);
+          padding-right: var(--page-right);
+        }
+
+        /* Photo placeholder
+           ─────────────────────────────────────────────────
+           To swap in a real photo, replace the .pp-photo div with:
+
+             <div class="pp-photo" style="background:none;overflow:hidden;position:relative;">
+               <img src="/images/leadership/[slug].jpg" alt="[name]"
+                    style="width:100%;height:100%;object-fit:cover;object-position:top center;" />
+             </div>
+
+           Or with Next.js Image:
+             <div class="pp-photo" style="background:none;overflow:hidden;position:relative;">
+               <Image src="..." alt="..." fill style={{objectFit:'cover',objectPosition:'top center'}} />
+             </div>
+           ─────────────────────────────────────────────────
+        */
+        .pp-photo {
+          width:          var(--photo-w);
+          height:         var(--photo-h);
+          max-width:      100%;
+          background:     #e8e8e8;
+          border-radius:  1rem;           /* rounded-2xl */
+          display:        flex;
+          align-items:    center;
+          justify-content: center;
+          margin-bottom:  36px;
+        }
+
+        .pp-name {
+          font-family:  Georgia, "Times New Roman", serif;
+          font-size:    3rem;             /* text-5xl */
+          font-weight:  700;
+          color:        ${NAVY};
+          margin:       0 0 6px;
+          line-height:  1.1;
+        }
+
+        /* Role: same size as name, thinnest available weight */
+        .pp-role {
+          font-family:  Georgia, "Times New Roman", serif;
+          font-size:    3rem;             /* text-5xl — matches name size */
+          font-weight:  100;              /* font-thin — thinnest weight Georgia supports */
+          color:        #555;             /* slightly muted, still clearly readable */
+          margin:       0 0 28px;
+          line-height:  1.1;
+        }
+
+        .pp-bio {
+          font-size:    18px;
+          color:        ${NAVY};
+          line-height:  1.85;
+          max-width:    var(--bio-max-width);
+          margin:       0 0 48px;
+        }
+
+        @media (max-width: 1024px) {
+          .pp-name { font-size: 2.25rem; }
+          .pp-role { font-size: 2.25rem; }
         }
         @media (max-width: 768px) {
-          .pp-photo { height: 280px; }
+          .pp-name { font-size: 1.75rem; }
+          .pp-role { font-size: 1.75rem; }
+          .pp-bio  { font-size: 16px;    }
         }
 
-        /* ── Name ── */
-        .pp-name {
-          font-family: Georgia, "Times New Roman", serif;
-          font-size: 3rem;
-          font-weight: 700;
-          color: ${NAVY};
-          margin: 0 0 6px 0;
-          line-height: 1.1;
-        }
-        @media (max-width: 1024px) { .pp-name { font-size: 2.25rem; } }
-        @media (max-width: 768px)  { .pp-name { font-size: 1.75rem; } }
+        /* ────────────────────────────────────────────────── */
+        /* Divider                                            */
+        /* ────────────────────────────────────────────────── */
 
-        /* ── Role ── */
-        .pp-role {
-          font-family: Georgia, "Times New Roman", serif;
-          font-size: 3rem;
-          font-weight: 300;
-          color: #555;
-          margin: 0 0 32px 0;
-          line-height: 1.1;
+        .pp-divider {
+          border:        none;
+          border-top:    2px solid rgba(10,17,40,0.12); /* border-t-2, slightly thicker */
+          margin-left:   var(--foundation-left);         /* aligns with More About heading */
+          margin-right:  0;
+          margin-top:    0;
+          margin-bottom: 0;
         }
-        @media (max-width: 1024px) { .pp-role { font-size: 2.25rem; } }
-        @media (max-width: 768px)  { .pp-role { font-size: 1.75rem; } }
 
-        /* ── Bio ── */
-        .pp-bio {
-          font-size: 18px;
-          color: ${NAVY};
-          line-height: 1.85;
-          max-width: 672px;
-          margin: 0 0 64px 0;
+        /* ────────────────────────────────────────────────── */
+        /* More About the Foundation                          */
+        /* ────────────────────────────────────────────────── */
+
+        .pp-foundation-col {
+          margin-left:   var(--foundation-left);
+          padding-top:   56px;
+          padding-bottom: 80px;
+          padding-right: var(--page-right);
         }
-        @media (max-width: 768px) { .pp-bio { font-size: 16px; } }
-
-        /* ── Page container ── */
-        .pp-container {
-          max-width: 960px;
-          margin: 0 auto;
-          padding: 64px 60px 0;
+        @media (max-width: 768px) {
+          .pp-foundation-col { padding-top: 40px; padding-bottom: 64px; }
         }
-        @media (max-width: 1024px) { .pp-container { padding: 56px 40px 0; } }
-        @media (max-width: 768px)  { .pp-container { padding: 48px 24px 0; } }
 
-        /* ── More-about container ── */
-        .pp-ma-container {
-          max-width: 960px;
-          margin: 0 auto;
-          padding: 56px 60px 80px;
-        }
-        @media (max-width: 1024px) { .pp-ma-container { padding: 48px 40px 72px; } }
-        @media (max-width: 768px)  { .pp-ma-container { padding: 40px 24px 64px; } }
-
-        /* ── More-about heading ── */
+        /* Section heading: all-caps, black, large bold — not an eyebrow label */
         .pp-ma-heading {
-          font-family: Georgia, "Times New Roman", serif;
-          font-size: 2rem;
-          font-weight: 700;
-          color: ${NAVY};
+          font-family:    Georgia, "Times New Roman", serif;
+          font-size:      2rem;           /* at least text-3xl */
+          font-weight:    700;
+          color:          ${NAVY};        /* black, not gold */
           text-transform: uppercase;
           letter-spacing: 0.03em;
-          margin: 0 0 48px 0;
-          line-height: 1.2;
+          margin:         0 0 48px;
+          line-height:    1.2;
         }
-        @media (max-width: 768px) { .pp-ma-heading { font-size: 1.5rem; margin-bottom: 36px; } }
+        @media (max-width: 768px) {
+          .pp-ma-heading { font-size: 1.5rem; margin-bottom: 32px; }
+        }
 
-        /* ── More-about grid ── */
+        /* 3-column grid */
         .pp-ma-grid {
-          display: grid;
+          display:               grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 40px;
+          gap:                   40px;
+          max-width:             1000px;
         }
-        @media (max-width: 900px)  { .pp-ma-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
-        @media (max-width: 560px)  { .pp-ma-grid { grid-template-columns: 1fr; gap: 32px; } }
+        @media (max-width: 900px) {
+          .pp-ma-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+        }
+        @media (max-width: 560px) {
+          .pp-ma-grid { grid-template-columns: 1fr; gap: 28px; }
+        }
 
-        /* ── "Learn more" hover: gold + left-to-right underline, desktop only ── */
+        /* "Learn more" — gold color + left-to-right sliding underline on hover.
+           Desktop only: uses @media (hover: hover) so touch devices are unaffected. */
         .pp-learn-more {
-          display: inline-block;
-          position: relative;
-          color: ${NAVY};
-          font-size: 15px;
+          display:         inline-block;
+          position:        relative;
+          color:           ${NAVY};
+          font-size:       15px;
           text-decoration: none;
-          letter-spacing: 0.01em;
         }
         .pp-learn-more::after {
-          content: '';
-          display: block;
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          width: 0;
-          height: 1.5px;
-          background: ${GOLD};
-          transition: width 0.3s ease;
+          content:          '';
+          position:         absolute;
+          bottom:           -2px;
+          left:             0;
+          width:            0;
+          height:           1.5px;
+          background:       ${GOLD};
+          transition:       width 0.3s ease;
         }
         @media (hover: hover) {
-          .pp-learn-more:hover { color: ${GOLD}; }
-          .pp-learn-more:hover::after { width: 100%; }
+          .pp-learn-more:hover          { color: ${GOLD}; }
+          .pp-learn-more:hover::after   { width: 100%; }
         }
       `}</style>
 
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      {/* ── Main content ──────────────────────────────────────────────────── */}
-      <div className="pp-container">
+      {/* ── Image · Name · Role · Bio — all start at PROFILE_IMAGE_LEFT_OFFSET ── */}
+      <div className="pp-img-col">
 
-        {/* 1 — Photo
-            ──────────────────────────────────────────────────────────────────
-            To replace with a real photo, swap the .pp-photo div for:
-
-              <div className="pp-photo" style={{ overflow: 'hidden', position: 'relative', background: 'none' }}>
-                <img
-                  src="/images/leadership/[slug].jpg"
-                  alt="[Person name]"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
-                />
-              </div>
-
-            Or with Next.js Image (preferred):
-              <div className="pp-photo" style={{ overflow: 'hidden', position: 'relative', background: 'none' }}>
-                <Image
-                  src="/images/leadership/[slug].jpg"
-                  alt="[Person name]"
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'top center' }}
-                />
-              </div>
-            ──────────────────────────────────────────────────────────────────
-        */}
-        <div className="pp-photo-wrap">
-          <div className="pp-photo">
-            <PersonSilhouette size={80} />
-          </div>
+        <div className="pp-photo">
+          <PersonSilhouette size={80} />
         </div>
 
-        {/* 2 — Name & Role */}
         <h1 className="pp-name">{person.name}</h1>
         <p  className="pp-role">{person.role}</p>
-
-        {/* 3 — Bio */}
-        <p className="pp-bio">{person.bio}</p>
+        <p  className="pp-bio" >{person.bio}</p>
 
       </div>
 
-      {/* 4 — Full-width divider */}
-      <hr style={{ border: 'none', borderTop: '1px solid rgba(10,17,40,0.12)', margin: 0 }} />
+      {/* ── Divider — starts at FOUNDATION_SECTION_LEFT_OFFSET ── */}
+      <hr className="pp-divider" />
 
-      {/* 5 — More about the foundation */}
-      <div className="pp-ma-container">
+      {/* ── More About — starts at FOUNDATION_SECTION_LEFT_OFFSET ── */}
+      <div className="pp-foundation-col">
 
-        <h2 className="pp-ma-heading">More about the foundation</h2>
+        <h2 className="pp-ma-heading">MORE ABOUT THE FOUNDATION</h2>
 
         <div className="pp-ma-grid">
           {m.cards.map((card, i) => (
             <div key={i}>
               <div
                 style={{
-                  fontFamily: 'Georgia, "Times New Roman", serif',
-                  fontSize: '18px',
-                  fontWeight: 700,
-                  color: NAVY,
+                  fontFamily:   'Georgia, "Times New Roman", serif',
+                  fontSize:     '18px',
+                  fontWeight:   700,
+                  color:        NAVY,
                   marginBottom: '10px',
-                  lineHeight: 1.3,
+                  lineHeight:   1.3,
                 }}
               >
                 {card.title}
               </div>
               <p
                 style={{
-                  fontSize: '16px',
-                  color: '#4A4A4A',
+                  fontSize:   '16px',
+                  color:      '#4A4A4A',
                   lineHeight: 1.7,
-                  margin: '0 0 14px',
+                  margin:     '0 0 14px',
                 }}
               >
                 {card.desc}
