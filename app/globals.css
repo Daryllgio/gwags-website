@@ -287,11 +287,11 @@ h1, h2, h3, h4 {
 }
 @media (max-width: 768px) {
   .cta-section { padding: 60px 20px !important; }
-  .cta-h2 { font-size: 24px !important; }
+  .cta-h2 { font-size: 22px !important; }
   .cta-buttons { flex-direction: column !important; align-items: stretch !important; }
 }
 @media (max-width: 480px) {
-  .cta-h2 { font-size: 22px !important; }
+  .cta-h2 { font-size: 21px !important; }
 }
 
 /* ── Footer ── */
@@ -1119,6 +1119,10 @@ h1, h2, h3, h4 {
   }
 }
 
+/* Base eyebrow size (desktop). Must sit BEFORE the responsive blocks below
+   so the !important overrides in those blocks can win at smaller breakpoints. */
+.eyebrow { font-size: 16px !important; }
+
 /* ================================================================
    COMPREHENSIVE RESPONSIVE SYSTEM
    All eyebrow text: use .eyebrow class
@@ -1165,7 +1169,7 @@ h1, h2, h3, h4 {
   /* MOBILE: h1 size */
   main h1 { font-size: 30px !important; }
   /* MOBILE: h2 size */
-  main h2 { font-size: 24px !important; }
+  main h2 { font-size: 22px !important; }
   /* MOBILE: body text size */
   .body-text { font-size: 16px !important; }
   .hero-body { font-size: 16px !important; }
@@ -1198,7 +1202,7 @@ h1, h2, h3, h4 {
   /* SMALL PHONE: h1 size */
   main h1 { font-size: 26px !important; }
   /* SMALL PHONE: h2 size */
-  main h2 { font-size: 23px !important; }
+  main h2 { font-size: 21px !important; }
   /* SMALL PHONE: body text size */
   .body-text { font-size: 15px !important; }
   .hero-body { font-size: 15px !important; }
@@ -1388,9 +1392,6 @@ h1, h2, h3, h4 {
    FIXES FOR PREVIOUSLY UNCOVERED ELEMENTS
    ================================================================ */
 
-/* Base eyebrow size — desktop 16px. Responsive overrides below scale it down. */
-.eyebrow { font-size: 16px !important; }
-
 /* Nav logo subtitle */
 @media (min-width: 768px) and (max-width: 1024px) {
   .nav-logo-subtitle { font-size: 11px !important; }
@@ -1415,7 +1416,7 @@ h1, h2, h3, h4 {
 
 /* WhatWeAre H2 mobile override */
 @media (max-width: 768px) {
-  .wwa-h2 { font-size: 25px !important; }
+  .wwa-h2 { font-size: 22px !important; }
 }
 
 /* Stats ticker numbers ("4+", "3", "1") */
