@@ -54,8 +54,8 @@ export const t = {
     whatWeAre: {
       eyebrow: 'WHAT WE ARE',
       h2: 'A global institution built to structure and accelerate impact.',
-      p1: 'Gwags operates as a global platform for impact, bringing together organizations and structures aligned by shared standards of excellence, ethics, ambition and transformation.',
-      p2: 'We develop and strengthen ecosystems across education, governance, entrepreneurship, health, culture, sports, innovation, public policy, leadership and community development.',
+      p1: 'Gwags operates as a global institutional platform, bringing together organizations aligned by shared standards and a common commitment to systemic impact across the sectors that shape how societies develop.',
+      p2: 'The institution was built on the recognition that the challenges facing communities are too interconnected to be addressed in isolation. Lasting change requires coordinated action, shared infrastructure, and organizations that are equipped to grow beyond their immediate reach.',
       p3: 'Our conviction is that lasting progress can only emerge through interconnected and systemic approaches to impact.',
       link: 'Our vision and mission',
       pillars: [
@@ -70,19 +70,19 @@ export const t = {
       h2: 'Programs built to create lasting change.',
       body: 'Gwags carries its own portfolio of initiatives, each designed around a specific dimension of societal transformation. These are the building blocks of our broader institutional mission.',
       items: [
-        { title: 'Gwags Scholars Program', desc: 'A flagship program investing in the next generation of Cameroonian leaders through financial support and professional development opportunities.', tag: 'EXCELLENCE' },
+        { title: 'Gwags Scholars Program', desc: 'Investing in the next generation of Cameroonian leaders through financial support and professional development opportunities.', tag: 'EXCELLENCE' },
         { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY' },
         { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH' },
-        { title: 'Ajong Foretia Orphan Support', desc: 'A program dedicated to supporting orphaned children in Cameroon, providing essential resources, educational opportunities, and long-term care to ensure their wellbeing and development.', tag: 'YOUTH' },
+        { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through essential resources, educational opportunities, and long-term care.', tag: 'YOUTH' },
       ],
     },
     whyGwags: {
       eyebrow: 'WHY GWAGS',
       h2: 'What it means to be part of this institution.',
-      body: 'Organizations that align with Gwags gain more than visibility. They gain institutional weight, access to a global network, and the structural support needed to grow with credibility and purpose.',
+      body: 'Organizations affiliated with Gwags gain visibility, institutional weight, access to a global network, and the structural support needed to grow with credibility and purpose.',
       items: [
         { title: 'Credibility', desc: 'Association with Gwags signals alignment with a recognized standard of ethics, excellence and impact.' },
-        { title: 'International network', desc: 'Access to a growing ecosystem of organizations, institutions and leaders across sectors and borders.' },
+        { title: 'International network', desc: 'Access to a growing ecosystem of organizations across sectors and borders.' },
         { title: 'Capacity to scale', desc: 'Strategic guidance and structural support to help ambitious initiatives reach their full potential.' },
         { title: 'Funding pathways', desc: 'Easier access to grants, partnerships and financing opportunities through a credible institutional umbrella.' },
         { title: 'Strategic visibility', desc: 'Gwags amplifies the reach of affiliated organizations through institutional platforms and international positioning.' },
@@ -121,7 +121,7 @@ export const t = {
         },
         {
           title: 'Our network',
-          desc: 'A growing ecosystem of organizations, institutions, and leaders connected by shared standards and a common ambition.',
+          desc: 'A growing ecosystem of organizations connected by shared standards and a common ambition.',
           link: 'Learn more',
           // TODO: Update to /network when network page is created
           href: '/get-involved',
@@ -466,8 +466,8 @@ export const t = {
     whatWeAre: {
       eyebrow: 'QUI NOUS SOMMES',
       h2: 'Une institution mondiale construite pour structurer et accélérer l\'impact.',
-      p1: 'Gwags opère comme une plateforme mondiale d\'impact, réunissant des organisations et des structures alignées sur des standards communs d\'excellence, d\'éthique, d\'ambition et de transformation.',
-      p2: 'Nous développons et renforçons des écosystèmes dans les domaines de l\'éducation, la gouvernance, l\'entrepreneuriat, la santé, la culture, le sport, l\'innovation, les politiques publiques, le leadership et le développement communautaire.',
+      p1: 'Gwags opère comme une plateforme institutionnelle mondiale, rassemblant des organisations alignées sur des standards communs et un engagement partagé envers un impact systémique dans les secteurs qui façonnent le développement des sociétés.',
+      p2: 'L\'institution a été construite sur la reconnaissance que les défis auxquels font face les communautés sont trop interconnectés pour être abordés de manière isolée. Un changement durable nécessite une action coordonnée, une infrastructure partagée et des organisations équipées pour croître au-delà de leur portée immédiate.',
       p3: 'Notre conviction est que le progrès durable ne peut émerger qu\'à travers des approches interconnectées et systémiques de l\'impact.',
       link: 'Notre vision et mission',
       pillars: [
@@ -482,19 +482,19 @@ export const t = {
       h2: 'Des programmes construits pour créer un changement durable.',
       body: 'Gwags porte son propre portefeuille d\'initiatives, chacune conçue autour d\'une dimension spécifique de la transformation sociale.',
       items: [
-        { title: 'Programme Gwags Scholars', desc: 'Un programme phare investissant dans la prochaine génération de leaders camerounais à travers un soutien financier et des opportunités de développement professionnel.', tag: 'EXCELLENCE' },
+        { title: 'Programme Gwags Scholars', desc: 'Investir dans la prochaine génération de leaders camerounais à travers un soutien financier et des opportunités de développement professionnel.', tag: 'EXCELLENCE' },
         { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ' },
         { title: 'Programme de Santé Communautaire', desc: 'Apporter des soins de santé gratuits et l\'éducation médicale aux communautés mal desservies.', tag: 'SANTÉ' },
-        { title: 'Ajong Foretia Orphan Support', desc: 'Un programme dédié au soutien des enfants orphelins au Cameroun, fournissant des ressources essentielles, des opportunités éducatives et des soins à long terme pour assurer leur bien-être et leur développement.', tag: 'JEUNESSE' },
+        { title: 'Ajong Foretia Orphan Support', desc: 'Soutenir les enfants orphelins à travers des ressources essentielles, des opportunités éducatives et des soins à long terme.', tag: 'JEUNESSE' },
       ],
     },
     whyGwags: {
       eyebrow: 'POURQUOI GWAGS',
       h2: 'Ce que signifie faire partie de cette institution.',
-      body: 'Les organisations qui s\'alignent sur Gwags gagnent plus que de la visibilité. Elles gagnent du poids institutionnel, l\'accès à un réseau mondial et le soutien structurel nécessaire pour croître.',
+      body: 'Les organisations affiliées à Gwags gagnent en visibilité, en poids institutionnel, en accès à un réseau mondial et en soutien structurel nécessaire pour croître avec crédibilité et purpose.',
       items: [
         { title: 'Crédibilité', desc: 'L\'association avec Gwags signale un alignement sur un standard reconnu d\'éthique, d\'excellence et d\'impact.' },
-        { title: 'Réseau international', desc: 'Accès à un écosystème croissant d\'organisations, d\'institutions et de leaders à travers les secteurs et les frontières.' },
+        { title: 'Réseau international', desc: 'Accès à un écosystème croissant d\'organisations à travers les secteurs et les frontières.' },
         { title: 'Capacité à grandir', desc: 'Des conseils stratégiques et un soutien structurel pour aider les initiatives ambitieuses à atteindre leur plein potentiel.' },
         { title: 'Voies de financement', desc: 'Accès facilité aux subventions, partenariats et opportunités de financement via un umbrella institutionnel crédible.' },
         { title: 'Visibilité stratégique', desc: 'Gwags amplifie la portée des organisations affiliées via ses plateformes institutionnelles et son positionnement international.' },
@@ -533,7 +533,7 @@ export const t = {
         },
         {
           title: 'Notre réseau',
-          desc: 'Un écosystème croissant d\'organisations, d\'institutions et de leaders connectés par des standards partagés et une ambition commune.',
+          desc: 'Un écosystème croissant d\'organisations connectées par des standards communs et une ambition partagée.',
           link: 'En savoir plus',
           href: '/network',
         },
