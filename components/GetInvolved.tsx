@@ -19,12 +19,14 @@ export default function GetInvolved({ lang }: GetInvolvedProps) {
         <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>
           {g.eyebrow}
         </p>
-        <h2 style={{ color: '#0A1128', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, maxWidth: '500px', marginBottom: '14px' }}>
+        <h2 style={{ color: '#0A1128', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, maxWidth: '500px', marginBottom: g.body ? '14px' : '52px' }}>
           {g.h2}
         </h2>
-        <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.75, maxWidth: '500px', marginBottom: '52px' }}>
-          {g.body}
-        </p>
+        {g.body && (
+          <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.75, maxWidth: '500px', marginBottom: '52px' }}>
+            {g.body}
+          </p>
+        )}
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }} className="getinvolved-grid">
           {g.items.map((item, i) => {

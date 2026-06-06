@@ -130,8 +130,8 @@ export const t = {
     },
     getInvolved: {
       eyebrow: 'GET INVOLVED',
-      h2: 'There is a place for you within the Gwags network.',
-      body: 'Whether you represent a government body, an NGO, a foundation or an initiative seeking to grow, Gwags is designed to be your institutional partner.',
+      h2: 'Three ways to engage with Gwags.',
+      body: '',
       items: [
         { title: 'Organizations', desc: 'Join a network of institutions aligned by shared standards and a common ambition to transform societies.' },
         { title: 'Donors and funders', desc: 'Direct your support toward credible, structured programs with clear governance and measurable outcomes.' },
@@ -541,8 +541,8 @@ export const t = {
     },
     getInvolved: {
       eyebrow: 'S\'IMPLIQUER',
-      h2: 'Il y a une place pour vous au sein du réseau Gwags.',
-      body: 'Que vous représentiez un gouvernement, une ONG, une fondation ou une initiative cherchant à grandir, Gwags est conçu pour être votre partenaire institutionnel.',
+      h2: 'Trois façons de s\'engager avec Gwags.',
+      body: '',
       items: [
         { title: 'Organisations', desc: 'Rejoignez un réseau d\'institutions alignées par des standards communs et une ambition commune de transformer les sociétés.' },
         { title: 'Donateurs et financeurs', desc: 'Dirigez votre soutien vers des programmes crédibles et structurés avec une gouvernance claire et des résultats mesurables.' },
