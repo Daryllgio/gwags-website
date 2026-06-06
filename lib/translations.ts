@@ -42,7 +42,7 @@ export const t = {
       h1Line2: 'that',
       h1Highlight: 'transforms societies',
       h1Line3: 'at scale.',
-      body: 'Gwags is an international institution dedicated to structuring, advancing and coordinating initiatives committed to the sustainable transformation of societies. We do not just lead programs. We build the global ecosystem that enables organizations, leaders and communities to grow.',
+      body: 'Gwags is an international institution dedicated to structuring, advancing and coordinating initiatives committed to the sustainable transformation of societies. We do not just lead programs. We build the global ecosystem that enables organizations to grow.',
       btn1: 'Explore our work',
       btn2: 'Join the network',
     },
@@ -54,13 +54,13 @@ export const t = {
     whatWeAre: {
       eyebrow: 'WHAT WE ARE',
       h2: 'A global institution built to structure and accelerate impact.',
-      p1: 'Gwags operates as a global platform for impact, bringing together actors and structures aligned by shared standards of excellence, ethics, ambition and transformation.',
+      p1: 'Gwags operates as a global platform for impact, bringing together organizations and structures aligned by shared standards of excellence, ethics, ambition and transformation.',
       p2: 'We develop and strengthen ecosystems across education, governance, entrepreneurship, health, culture, sports, innovation, public policy, leadership and community development.',
       p3: 'Our conviction is that lasting progress can only emerge through interconnected and systemic approaches to impact.',
       link: 'Our vision and mission',
       pillars: [
         { title: 'Institutional development', desc: 'We build governance structures and credibility frameworks that help organizations grow with integrity.' },
-        { title: 'Strategic coordination', desc: 'We connect actors across sectors and territories through a shared institutional architecture.' },
+        { title: 'Strategic coordination', desc: 'We connect organizations across sectors and territories through a shared institutional architecture.' },
         { title: 'International collaboration', desc: 'We bring together organizations shaping resilient, inclusive societies around the world.' },
         { title: 'Acceleration at scale', desc: 'We are building an infrastructure designed to amplify impact across generations, communities and territories.' },
       ],
@@ -73,7 +73,7 @@ export const t = {
         { title: 'Gwags Scholars Program', desc: 'A flagship program investing in the next generation of Cameroonian leaders through financial support and professional development opportunities.', tag: 'EXCELLENCE' },
         { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY' },
         { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH' },
-        { title: 'Youth Development', desc: 'Where it all began. Gwags continues to invest in the protection, education and empowerment of vulnerable youth.', tag: 'YOUTH' },
+        { title: 'Ajong Foretia Orphan Support', desc: 'A program dedicated to supporting orphaned children in Cameroon, providing essential resources, educational opportunities, and long-term care to ensure their wellbeing and development.', tag: 'YOUTH' },
       ],
     },
     whyGwags: {
@@ -90,9 +90,9 @@ export const t = {
       ],
     },
     quote: {
-      text: 'The challenges facing our societies are too interconnected for any single organization to solve alone. Gwags exists to build the infrastructure that makes collective action possible so that the people, initiatives and institutions committed to change can do so with the structure, credibility and network they deserve.',
+      text: 'The challenges facing our societies are too interconnected for any single organization to solve alone. Gwags exists to build the infrastructure that makes collective action possible so that the initiatives and institutions committed to change can do so with the structure, credibility and network they deserve.',
       name: 'Daryll Giovanny Bikak Mbal',
-      role: 'Founder and Board Chair',
+      role: 'Chair, Board Member',
       roleOrg: 'Gwags Global Impact Institution',
     },
     ourStory: {
@@ -222,7 +222,7 @@ export const t = {
           { title: 'Gwags Scholars Program', desc: 'A flagship program investing in the next generation of Cameroonian leaders through financial support and professional development opportunities.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
           { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH', href: '/initiatives/health-outreach' },
-          { title: 'Youth Development', desc: 'Where it all began. Gwags continues to invest in the protection, education and empowerment of vulnerable youth.', tag: 'YOUTH', href: '/initiatives/youth-development' },
+          { title: 'Ajong Foretia Orphan Support', desc: 'A program dedicated to supporting orphaned children in Cameroon, providing essential resources, educational opportunities, and long-term care to ensure their wellbeing and development.', tag: 'YOUTH', href: '/initiatives/youth-development' },
         ],
       },
       coordination: {
@@ -454,7 +454,7 @@ export const t = {
       h1Line2: 'qui',
       h1Highlight: 'transforme les sociétés',
       h1Line3: 'à grande échelle.',
-      body: 'Gwags est une institution internationale dédiée à la structuration, à l\'avancement et à la coordination d\'initiatives engagées dans la transformation durable des sociétés. Nous construisons l\'écosystème mondial qui permet aux organisations, aux leaders et aux communautés de grandir.',
+      body: 'Gwags est une institution internationale dédiée à la structuration, à l\'avancement et à la coordination d\'initiatives engagées dans la transformation durable des sociétés. Nous construisons l\'écosystème mondial qui permet aux organisations de grandir.',
       btn1: 'Découvrir nos actions',
       btn2: 'Rejoindre le réseau',
     },
@@ -466,13 +466,13 @@ export const t = {
     whatWeAre: {
       eyebrow: 'QUI NOUS SOMMES',
       h2: 'Une institution mondiale construite pour structurer et accélérer l\'impact.',
-      p1: 'Gwags opère comme une plateforme mondiale d\'impact, réunissant des acteurs et des structures alignés sur des standards communs d\'excellence, d\'éthique, d\'ambition et de transformation.',
+      p1: 'Gwags opère comme une plateforme mondiale d\'impact, réunissant des organisations et des structures alignées sur des standards communs d\'excellence, d\'éthique, d\'ambition et de transformation.',
       p2: 'Nous développons et renforçons des écosystèmes dans les domaines de l\'éducation, la gouvernance, l\'entrepreneuriat, la santé, la culture, le sport, l\'innovation, les politiques publiques, le leadership et le développement communautaire.',
       p3: 'Notre conviction est que le progrès durable ne peut émerger qu\'à travers des approches interconnectées et systémiques de l\'impact.',
       link: 'Notre vision et mission',
       pillars: [
         { title: 'Développement institutionnel', desc: 'Nous construisons des structures de gouvernance et des cadres de crédibilité qui aident les organisations à croître avec intégrité.' },
-        { title: 'Coordination stratégique', desc: 'Nous connectons les acteurs à travers les secteurs et les territoires via une architecture institutionnelle commune.' },
+        { title: 'Coordination stratégique', desc: 'Nous connectons les organisations à travers les secteurs et les territoires via une architecture institutionnelle commune.' },
         { title: 'Collaboration internationale', desc: 'Nous réunissons des organisations qui façonnent des sociétés résilientes et inclusives dans le monde entier.' },
         { title: 'Accélération à grande échelle', desc: 'Nous construisons une infrastructure conçue pour amplifier l\'impact à travers les générations, les communautés et les territoires.' },
       ],
@@ -485,7 +485,7 @@ export const t = {
         { title: 'Programme Gwags Scholars', desc: 'Un programme phare investissant dans la prochaine génération de leaders camerounais à travers un soutien financier et des opportunités de développement professionnel.', tag: 'EXCELLENCE' },
         { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ' },
         { title: 'Programme de Santé Communautaire', desc: 'Apporter des soins de santé gratuits et l\'éducation médicale aux communautés mal desservies.', tag: 'SANTÉ' },
-        { title: 'Développement des Jeunes', desc: 'Là où tout a commencé. Gwags continue d\'investir dans la protection, l\'éducation et l\'autonomisation des jeunes vulnérables.', tag: 'JEUNESSE' },
+        { title: 'Ajong Foretia Orphan Support', desc: 'Un programme dédié au soutien des enfants orphelins au Cameroun, fournissant des ressources essentielles, des opportunités éducatives et des soins à long terme pour assurer leur bien-être et leur développement.', tag: 'JEUNESSE' },
       ],
     },
     whyGwags: {
@@ -502,9 +502,9 @@ export const t = {
       ],
     },
     quote: {
-      text: 'Les défis auxquels nos sociétés font face sont trop interconnectés pour qu\'une seule organisation puisse les résoudre seule. Gwags existe pour construire l\'infrastructure qui rend l\'action collective possible afin que les personnes, les initiatives et les institutions engagées dans le changement puissent le faire avec la structure, la crédibilité et le réseau qu\'elles méritent.',
+      text: 'Les défis auxquels nos sociétés font face sont trop interconnectés pour qu\'une seule organisation puisse les résoudre seule. Gwags existe pour construire l\'infrastructure qui rend l\'action collective possible afin que les initiatives et les institutions engagées dans le changement puissent le faire avec la structure, la crédibilité et le réseau qu\'elles méritent.',
       name: 'Daryll Giovanny Bikak Mbal',
-      role: 'Fondateur et Président du Conseil',
+      role: 'Chair, Board Member',
       roleOrg: 'Gwags Global Impact Institution',
     },
     ourStory: {
@@ -633,7 +633,7 @@ export const t = {
           { title: 'Programme Gwags Scholars', desc: 'Un programme phare investissant dans la prochaine génération de leaders camerounais à travers un soutien financier et des opportunités de développement professionnel.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
           { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Programme de Santé', desc: "Apporter des soins de santé gratuits et l'éducation médicale aux communautés mal desservies.", tag: 'SANTÉ', href: '/initiatives/health-outreach' },
-          { title: 'Développement des Jeunes', desc: "Là où tout a commencé. Gwags continue d'investir dans la protection, l'éducation et l'autonomisation des jeunes vulnérables.", tag: 'JEUNESSE', href: '/initiatives/youth-development' },
+          { title: 'Ajong Foretia Orphan Support', desc: 'Un programme dédié au soutien des enfants orphelins au Cameroun, fournissant des ressources essentielles, des opportunités éducatives et des soins à long terme pour assurer leur bien-être et leur développement.', tag: 'JEUNESSE', href: '/initiatives/youth-development' },
         ],
       },
       coordination: {
