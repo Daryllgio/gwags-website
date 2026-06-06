@@ -10,7 +10,7 @@ export default function Hero({ lang }: HeroProps) {
   const h = t[lang].hero
 
   return (
-    <section className="hero-section" style={{ background: '#0A1128', padding: '88px 28px 96px', position: 'relative', overflow: 'hidden', width: '100%', boxSizing: 'border-box' }}>
+    <section className="hero-section" style={{ background: '#0A1128', padding: '140px 28px', position: 'relative', overflow: 'hidden', width: '100%', boxSizing: 'border-box' }}>
 
       <div className="hero-circle" style={{ position: 'absolute', right: '-100px', top: '-100px', width: '600px', height: '600px', border: '1px solid rgba(212,175,55,0.25)', borderRadius: '50%' }} />
       <div className="hero-circle" style={{ position: 'absolute', right: '-25px', top: '-25px', width: '450px', height: '450px', border: '1px solid rgba(212,175,55,0.20)', borderRadius: '50%' }} />
@@ -21,17 +21,19 @@ export default function Hero({ lang }: HeroProps) {
           {h.eyebrow}
         </p>
 
-        <h1 className="hero-h1" style={{ color: '#fff', fontSize: '42px', fontWeight: 400, lineHeight: 1.18, maxWidth: '580px', marginBottom: '24px', fontFamily: 'Georgia, serif' }}>
+        <h1 className="hero-h1" style={{ color: '#fff', fontSize: '64px', fontWeight: 400, lineHeight: 1.1, maxWidth: '780px', marginBottom: '24px', fontFamily: 'Georgia, serif' }}>
           {h.h1Line1}<br />
           {h.h1Line2} <em style={{ color: '#D4AF37', fontStyle: 'normal' }}>{h.h1Highlight}</em><br />
           {h.h1Line3}
         </h1>
 
-        <p className="hero-body body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.78, maxWidth: '500px', marginBottom: '44px' }}>
-          {h.body}
-        </p>
+        {h.body && (
+          <p className="hero-body body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.78, maxWidth: '500px', marginBottom: '44px' }}>
+            {h.body}
+          </p>
+        )}
 
-        <div className="hero-buttons" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+        <div className="hero-buttons" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginTop: h.body ? '0' : '40px' }}>
           <a
             href="#initiatives"
             className="hero-btn"
