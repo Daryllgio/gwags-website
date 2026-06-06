@@ -133,9 +133,9 @@ export const t = {
       h2: 'Three ways to engage with Gwags.',
       body: '',
       items: [
-        { title: 'Organizations', desc: 'Join a network of institutions aligned by shared standards and a common ambition to transform societies.' },
-        { title: 'Donors and funders', desc: 'Direct your support toward credible, structured programs with clear governance and measurable outcomes.' },
-        { title: 'Partnership', desc: 'For institutions looking to collaborate with Gwags on specific initiatives toward shared goals.' },
+        { title: 'Affiliation', desc: 'Join the Gwags institutional network and access the infrastructure, resources, and collaborative ecosystem needed to amplify your impact.' },
+        { title: 'Funding', desc: 'Direct your support toward programs with defined frameworks and measurable outcomes.' },
+        { title: 'Partnership', desc: 'Work with Gwags to co-develop programs and build toward a common vision.' },
       ],
     },
     getInvolvedPage: {
@@ -544,9 +544,9 @@ export const t = {
       h2: 'Trois façons de s\'engager avec Gwags.',
       body: '',
       items: [
-        { title: 'Organisations', desc: 'Rejoignez un réseau d\'institutions alignées par des standards communs et une ambition commune de transformer les sociétés.' },
-        { title: 'Donateurs et financeurs', desc: 'Dirigez votre soutien vers des programmes crédibles et structurés avec une gouvernance claire et des résultats mesurables.' },
-        { title: 'Partenariat', desc: 'Pour les institutions souhaitant collaborer avec Gwags sur des initiatives spécifiques vers des objectifs communs.' },
+        { title: 'Affiliation', desc: 'Rejoignez le réseau institutionnel de Gwags et accédez à l\'infrastructure, aux ressources et à l\'écosystème collaboratif nécessaires pour amplifier votre impact.' },
+        { title: 'Financement', desc: 'Dirigez votre soutien vers des programmes avec des cadres définis et des résultats mesurables.' },
+        { title: 'Partenariat', desc: 'Travaillez avec Gwags pour co-développer des programmes et construire vers une vision commune.' },
       ],
     },
     getInvolvedPage: {
