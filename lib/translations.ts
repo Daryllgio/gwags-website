@@ -135,7 +135,7 @@ export const t = {
       items: [
         { title: 'Organizations', desc: 'Join a network of institutions aligned by shared standards and a common ambition to transform societies.' },
         { title: 'Donors and funders', desc: 'Direct your support toward credible, structured programs with clear governance and measurable outcomes.' },
-        { title: 'Institutional partners', desc: 'Align with Gwags at the strategic level to co-develop programs, share resources and amplify collective impact.' },
+        { title: 'Partnership', desc: 'For institutions looking to collaborate with Gwags on specific initiatives toward shared goals.' },
       ],
     },
     getInvolvedPage: {
@@ -546,7 +546,7 @@ export const t = {
       items: [
         { title: 'Organisations', desc: 'Rejoignez un réseau d\'institutions alignées par des standards communs et une ambition commune de transformer les sociétés.' },
         { title: 'Donateurs et financeurs', desc: 'Dirigez votre soutien vers des programmes crédibles et structurés avec une gouvernance claire et des résultats mesurables.' },
-        { title: 'Partenaires institutionnels', desc: 'Alignez-vous avec Gwags au niveau stratégique pour co-développer des programmes et amplifier l\'impact collectif.' },
+        { title: 'Partenariat', desc: 'Pour les institutions souhaitant collaborer avec Gwags sur des initiatives spécifiques vers des objectifs communs.' },
       ],
     },
     getInvolvedPage: {
