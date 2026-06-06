@@ -54,9 +54,9 @@ export const t = {
     whatWeAre: {
       eyebrow: 'WHAT WE ARE',
       h2: 'A global institution built to structure and accelerate impact.',
-      p1: 'Gwags operates as a global institutional platform, bringing together organizations aligned by shared standards and a common commitment to systemic impact across the sectors that shape how societies develop.',
+      p1: 'Gwags operates as a global institutional platform, bringing together organizations aligned by shared standards and a common commitment to impact across the sectors that shape how societies develop.',
       p2: 'The institution was built on the recognition that the challenges facing communities are too interconnected to be addressed in isolation. Lasting change requires coordinated action, shared infrastructure, and organizations that are equipped to grow beyond their immediate reach.',
-      p3: 'Our conviction is that lasting progress can only emerge through interconnected and systemic approaches to impact.',
+      p3: '',
       link: 'Our vision and mission',
       pillars: [
         { title: 'Institutional development', desc: 'We build governance structures and credibility frameworks that help organizations grow with integrity.' },
@@ -466,9 +466,9 @@ export const t = {
     whatWeAre: {
       eyebrow: 'QUI NOUS SOMMES',
       h2: 'Une institution mondiale construite pour structurer et accélérer l\'impact.',
-      p1: 'Gwags opère comme une plateforme institutionnelle mondiale, rassemblant des organisations alignées sur des standards communs et un engagement partagé envers un impact systémique dans les secteurs qui façonnent le développement des sociétés.',
+      p1: 'Gwags opère comme une plateforme institutionnelle mondiale, rassemblant des organisations alignées sur des standards communs et un engagement partagé envers un impact dans les secteurs qui façonnent le développement des sociétés.',
       p2: 'L\'institution a été construite sur la reconnaissance que les défis auxquels font face les communautés sont trop interconnectés pour être abordés de manière isolée. Un changement durable nécessite une action coordonnée, une infrastructure partagée et des organisations équipées pour croître au-delà de leur portée immédiate.',
-      p3: 'Notre conviction est que le progrès durable ne peut émerger qu\'à travers des approches interconnectées et systémiques de l\'impact.',
+      p3: '',
       link: 'Notre vision et mission',
       pillars: [
         { title: 'Développement institutionnel', desc: 'Nous construisons des structures de gouvernance et des cadres de crédibilité qui aident les organisations à croître avec intégrité.' },

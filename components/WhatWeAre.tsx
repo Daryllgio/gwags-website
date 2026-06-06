@@ -20,8 +20,8 @@ export default function WhatWeAre({ lang }: WhatWeAreProps) {
             {w.h2}
           </h2>
           <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.82, marginBottom: '16px' }}>{w.p1}</p>
-          <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.82, marginBottom: '16px' }}>{w.p2}</p>
-          <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.82, marginBottom: '28px' }}>{w.p3}</p>
+          <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.82, marginBottom: w.p3 ? '16px' : '28px' }}>{w.p2}</p>
+          {w.p3 && <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.82, marginBottom: '28px' }}>{w.p3}</p>}
           <Link href="/about/our-role#vision-mission" className="wwa-vision-link" style={{ color: '#D4AF37', fontSize: '18px', textDecoration: 'none', borderBottom: '0.5px solid rgba(212,175,55,0.5)', paddingBottom: '2px', letterSpacing: '0.06em' }}>
             {w.link}
           </Link>
