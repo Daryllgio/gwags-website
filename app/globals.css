@@ -193,7 +193,8 @@ h1, h2, h3, h4 {
 @media (max-width: 480px) {
   .hero-h1 { font-size: 28px !important; }
   .hero-body { font-size: 16px !important; }
-  .hero-buttons { flex-direction: column !important; align-items: flex-start !important; }
+  .hero-buttons { flex-direction: column !important; align-items: center !important; }
+  .hero-btn { min-width: 220px !important; text-align: center !important; }
 }
 
 /* ── Stats Ticker ── */
@@ -289,6 +290,7 @@ h1, h2, h3, h4 {
   .cta-section { padding: 60px 20px !important; }
   .cta-h2 { font-size: 23px !important; }
   .cta-buttons { flex-direction: column !important; align-items: center !important; }
+  .cta-buttons a { min-width: 220px !important; text-align: center !important; }
 }
 @media (max-width: 480px) {
   .cta-h2 { font-size: 22px !important; }
@@ -1220,7 +1222,8 @@ h1, h2, h3, h4 {
   .site-section { padding: 36px 25px !important; }
   /* SMALL PHONE: hero adjustments */
   .hero-h1 { font-size: 25px !important; }
-  .hero-buttons { flex-direction: column !important; align-items: flex-start !important; }
+  .hero-buttons { flex-direction: column !important; align-items: center !important; }
+  .hero-btn { min-width: 220px !important; text-align: center !important; }
   /* SMALL PHONE: stats ticker */
   .stats-ticker { grid-template-columns: 1fr !important; }
   .stats-ticker .has-divider { border-right: none !important; border-bottom: 0.5px solid rgba(212,175,55,0.11) !important; }
@@ -1440,9 +1443,10 @@ h1, h2, h3, h4 {
   .stats-label { font-size: 10px !important; letter-spacing: 0.1em !important; }
 }
 
-/* Hero buttons — stack vertically at mobile, left-aligned natural width */
+/* Hero buttons — stack vertically at mobile, centered with consistent min-width */
 @media (max-width: 768px) {
-  .hero-buttons { flex-direction: column !important; align-items: flex-start !important; }
+  .hero-buttons { flex-direction: column !important; align-items: center !important; }
+  .hero-btn { min-width: 220px !important; text-align: center !important; }
 }
 
 /* Footer text */
