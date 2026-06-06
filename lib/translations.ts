@@ -70,7 +70,7 @@ export const t = {
       h2: 'Programs built to create lasting change.',
       body: 'Gwags carries its own portfolio of initiatives, each designed around a specific dimension of societal transformation. These are the building blocks of our broader institutional mission.',
       items: [
-        { title: 'Gwags Scholars Program', desc: 'Investing in the next generation of Cameroonian leaders through financial support and professional development opportunities.', tag: 'EXCELLENCE' },
+        { title: 'Gwags Scholars Program', desc: 'Providing financial support and professional development opportunities to outstanding Cameroonian university students.', tag: 'EXCELLENCE' },
         { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY' },
         { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH' },
         { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through essential resources, educational opportunities, and long-term care.', tag: 'YOUTH' },
@@ -482,7 +482,7 @@ export const t = {
       h2: 'Des programmes construits pour créer un changement durable.',
       body: 'Gwags porte son propre portefeuille d\'initiatives, chacune conçue autour d\'une dimension spécifique de la transformation sociale.',
       items: [
-        { title: 'Programme Gwags Scholars', desc: 'Investir dans la prochaine génération de leaders camerounais à travers un soutien financier et des opportunités de développement professionnel.', tag: 'EXCELLENCE' },
+        { title: 'Programme Gwags Scholars', desc: 'Offrir un soutien financier et des opportunités de développement professionnel aux étudiants universitaires camerounais exceptionnels.', tag: 'EXCELLENCE' },
         { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ' },
         { title: 'Programme de Santé Communautaire', desc: 'Apporter des soins de santé gratuits et l\'éducation médicale aux communautés mal desservies.', tag: 'SANTÉ' },
         { title: 'Ajong Foretia Orphan Support', desc: 'Soutenir les enfants orphelins à travers des ressources essentielles, des opportunités éducatives et des soins à long terme.', tag: 'JEUNESSE' },
