@@ -106,6 +106,7 @@ export const t = {
     },
     moreAbout: {
       heading: 'MORE ABOUT THE INSTITUTION',
+      h2: 'Learn what Gwags is about.',
       cards: [
         {
           title: 'Our story',
@@ -518,6 +519,7 @@ export const t = {
     },
     moreAbout: {
       heading: 'PLUS SUR L\'INSTITUTION',
+      h2: 'Découvrez ce qu\'est Gwags.',
       cards: [
         {
           title: 'Notre histoire',

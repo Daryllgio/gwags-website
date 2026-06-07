@@ -18,9 +18,12 @@ export default function MoreAbout({ lang }: MoreAboutProps) {
     <section className="more-about-section" style={{ background: '#ffffff', padding: '40px 28px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
-        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', fontWeight: 400, letterSpacing: '0.15em', marginBottom: '48px', fontFamily: 'inherit' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', fontWeight: 400, letterSpacing: '0.15em', marginBottom: '16px', fontFamily: 'inherit' }}>
           {m.heading}
         </p>
+        <h2 style={{ color: '#0A1128', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, "Times New Roman", serif', lineHeight: 1.25, marginBottom: '48px' }}>
+          {m.h2}
+        </h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '28px' }} className="more-about-grid">
           {m.cards.map((card, i) => (
