@@ -344,7 +344,6 @@ export const t = {
       narrativeHeadings: [
         null,
         null,
-        null,
         'A second step, a broader vision',
         'Seeing the bigger picture',
         null,
@@ -755,9 +754,8 @@ export const t = {
       narrativeHeadings: [
         null,
         null,
-        null,
-        'Une deuxième étape, une vision plus large',
-        "Voir l'ensemble du tableau",
+        'Un deuxième pas, une vision plus large',
+        "Voir le tableau d'ensemble",
         null,
         'Construire les fondations',
         'Le tournant',
