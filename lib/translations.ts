@@ -290,8 +290,7 @@ export const t = {
         'What followed was a series of decisive steps. The team incorporated the Gwags Foundation as a nonprofit in both the United States and Cameroon, establishing the legal and institutional foundation needed for sustained operations. New initiatives were launched across education, community development, healthcare, and youth empowerment. What had started as orphanage visits was becoming a multi-sector organization with a growing portfolio of programs and partnerships.',
         "But the more the team built, the clearer something became. Running programs was not enough. The real challenge was not just delivering impact, it was structuring it. Across the world, there are countless organizations doing meaningful work but struggling with the same obstacles. Limited funding, weak governance, no access to networks, and no institutional backbone to help them grow.",
         "That realization marked a defining shift in Gwags's journey. The mission was no longer just about what Gwags could do directly. It was about building the infrastructure that would enable organizations to do more. An institution that could coordinate, support, and strengthen organizations striving to create impact. A platform where credibility, structure, and international reach could be shared, not hoarded.",
-        'Today, Gwags has formally transitioned from a foundation into a Global Impact Institution. It operates across countries and sectors, building an ecosystem designed to accelerate impact at scale. The programs continue to grow. The network of organizations continues to expand. And the infrastructure that will enable organizations to transform their societies is being built, step by step, from the ground up.',
-        'Today, Gwags operates across multiple countries and sectors, building an ecosystem designed to accelerate impact at scale. The programs continue to grow. The network continues to expand. And the infrastructure that will enable generations of organizations and communities to transform their societies is being built, step by step, from the ground up.',
+        'Today, Gwags has formally transitioned from a foundation into a Global Impact Institution. It operates across multiple sectors, building an ecosystem designed to accelerate impact at scale. The programs continue to grow. The network of organizations continues to expand. And the infrastructure that will enable organizations to transform their societies is being built, step by step, from the ground up.',
       ],
       timeline: {
         eyebrow: 'THE TIMELINE',
@@ -351,7 +350,6 @@ export const t = {
         'The shift',
         null,
         'A new chapter',
-        null,
       ],
       closing: {
         h2: 'The story is still being written.',
@@ -700,8 +698,7 @@ export const t = {
         "Ce qui a suivi fut une série d'étapes décisives. L'équipe a incorporé la Fondation Gwags en tant qu'organisation à but non lucratif aux États-Unis et au Cameroun, établissant les bases juridiques et institutionnelles nécessaires à des opérations durables. De nouvelles initiatives ont été lancées dans les domaines de l'éducation, du développement communautaire, de la santé et de l'autonomisation des jeunes. Ce qui avait commencé comme des visites dans un orphelinat devenait une organisation multisectorielle avec un portefeuille croissant de programmes et de partenariats.",
         "Mais plus l'équipe construisait, plus une évidence s'imposait. Gérer des programmes ne suffisait pas. Le véritable défi n'était pas seulement de produire de l'impact, mais de le structurer. À travers le monde, d'innombrables organisations font un travail significatif tout en luttant contre les mêmes obstacles. Un financement limité, une gouvernance faible, aucun accès aux réseaux et aucune structure institutionnelle pour les aider à grandir.",
         "Cette prise de conscience a marqué un tournant décisif dans le parcours de Gwags. La mission ne concernait plus uniquement ce que Gwags pouvait faire directement. Il s'agissait de construire l'infrastructure qui permettrait aux organisations de faire davantage. Une institution capable de coordonner, soutenir et renforcer les organisations qui s'efforcent de créer de l'impact. Une plateforme où la crédibilité, la structure et la portée internationale pourraient être partagées, et non monopolisées.",
-        "Aujourd'hui, Gwags a formellement opéré sa transition d'une fondation vers une Institution d'Impact Mondial. Elle opère à travers des pays et des secteurs, construisant un écosystème conçu pour accélérer l'impact à grande échelle. Les programmes continuent de croître. Le réseau d'organisations continue de s'étendre. Et l'infrastructure qui permettra aux organisations de transformer leurs sociétés se construit, étape par étape, depuis la base.",
-        "Aujourd'hui, Gwags opère dans plusieurs pays et secteurs, construisant un écosystème conçu pour accélérer l'impact à grande échelle. Les programmes continuent de croître. Le réseau continue de s'étendre. Et l'infrastructure qui permettra à des générations d'organisations et de communautés de transformer leurs sociétés se construit, étape par étape, depuis la base.",
+        "Aujourd'hui, Gwags a formellement opéré sa transition d'une fondation vers une Institution d'Impact Mondial. Elle opère à travers de multiples secteurs, construisant un écosystème conçu pour accélérer l'impact à grande échelle. Les programmes continuent de croître. Le réseau d'organisations continue de s'étendre. Et l'infrastructure qui permettra aux organisations de transformer leurs sociétés se construit, étape par étape, depuis la base.",
       ],
       timeline: {
         eyebrow: 'LA CHRONOLOGIE',
@@ -761,7 +758,6 @@ export const t = {
         'Le tournant',
         null,
         'Un nouveau chapitre',
-        null,
       ],
       closing: {
         h2: "L'histoire s'écrit encore.",
