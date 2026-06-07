@@ -92,15 +92,14 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
               <Chevron open={openDropdown === 'work'} />
             </button>
 
-            <Link href="/network" className="nav-link">{n.network}</Link>
             <Link href="/get-involved" className="nav-link">{n.getInvolved}</Link>
           </div>
 
-          {/* Language toggle — always visible */}
+          {/* Language toggle — always visible, separated from last nav item */}
           <button
             className="nav-lang-toggle"
             onClick={onToggleLang}
-            style={{ background: 'none', border: '0.5px solid rgba(212,175,55,0.6)', color: '#D4AF37', fontSize: '17px', padding: '4px 12px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.08em' }}
+            style={{ background: 'none', border: '0.5px solid rgba(212,175,55,0.6)', color: '#D4AF37', fontSize: '17px', padding: '4px 12px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.08em', marginLeft: '32px' }}
           >
             {lang === 'en' ? 'FR' : 'EN'}
           </button>
@@ -205,7 +204,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
           {/* About section — collapsible */}
           <button
             onClick={() => toggleMobileSection('about')}
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: 'rgba(255,255,255,0.5)', fontSize: '10px', letterSpacing: '0.18em', padding: '14px 0 8px', cursor: 'pointer', textTransform: 'uppercase' as const }}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: 'rgba(255,255,255,0.95)', fontSize: '18px', letterSpacing: '0.04em', padding: '14px 0 8px', cursor: 'pointer', borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}
           >
             {d.about.heading}
             <Chevron open={mobileExpanded === 'about'} />
@@ -218,7 +217,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className="nav-mobile-link"
-                  style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '16px', padding: '10px 0 10px 12px', textDecoration: 'none', borderBottom: '0.5px solid rgba(255,255,255,0.04)', minHeight: '44px', alignItems: 'center' }}
+                  style={{ display: 'block', color: 'rgba(255,255,255,0.95)', fontSize: '16px', padding: '10px 0 10px 16px', textDecoration: 'none', borderBottom: '0.5px solid rgba(255,255,255,0.04)', minHeight: '44px' }}
                 >
                   {link.label}
                 </Link>
@@ -229,23 +228,20 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
           {/* Our Work section — collapsible */}
           <button
             onClick={() => toggleMobileSection('work')}
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: 'rgba(255,255,255,0.5)', fontSize: '10px', letterSpacing: '0.18em', padding: '14px 0 8px', cursor: 'pointer', textTransform: 'uppercase' as const }}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: 'rgba(255,255,255,0.95)', fontSize: '18px', letterSpacing: '0.04em', padding: '14px 0 8px', cursor: 'pointer', borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}
           >
             {d.work.heading}
             <Chevron open={mobileExpanded === 'work'} />
           </button>
           {mobileExpanded === 'work' && (
             <div>
-              <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: '10px', letterSpacing: '0.15em', padding: '8px 0 4px 12px' }}>
-                {d.work.initiativesLabel}
-              </div>
               {d.work.links.map(link => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className="nav-mobile-link"
-                  style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '16px', padding: '10px 0 10px 12px', textDecoration: 'none', borderBottom: '0.5px solid rgba(255,255,255,0.04)', minHeight: '44px', alignItems: 'center' }}
+                  style={{ display: 'block', color: 'rgba(255,255,255,0.95)', fontSize: '16px', padding: '10px 0 10px 16px', textDecoration: 'none', borderBottom: '0.5px solid rgba(255,255,255,0.04)', minHeight: '44px' }}
                 >
                   {link.label}
                 </Link>
@@ -253,19 +249,15 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
             </div>
           )}
 
-          <div style={{ height: '0.5px', background: 'rgba(255,255,255,0.1)', margin: '12px 0' }} />
-
-          {[{ label: n.network, href: '/network' }, { label: n.getInvolved, href: '/get-involved' }].map(item => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setMenuOpen(false)}
-              className="nav-mobile-link"
-              style={{ display: 'flex', alignItems: 'center', color: 'rgba(255,255,255,0.92)', fontSize: '16px', padding: '12px 0', textDecoration: 'none', borderBottom: '0.5px solid rgba(255,255,255,0.06)', minHeight: '44px' }}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {/* Get Involved — top-level link */}
+          <Link
+            href="/get-involved"
+            onClick={() => setMenuOpen(false)}
+            className="nav-mobile-link"
+            style={{ display: 'flex', alignItems: 'center', color: 'rgba(255,255,255,0.95)', fontSize: '18px', padding: '14px 0', textDecoration: 'none', borderBottom: '0.5px solid rgba(255,255,255,0.06)', minHeight: '44px' }}
+          >
+            {n.getInvolved}
+          </Link>
 
         </div>
       )}
