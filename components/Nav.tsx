@@ -99,7 +99,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
           <button
             className="nav-lang-toggle"
             onClick={onToggleLang}
-            style={{ background: 'none', border: '0.5px solid rgba(212,175,55,0.6)', color: '#D4AF37', fontSize: '17px', padding: '4px 12px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.08em', marginLeft: '32px' }}
+            style={{ background: 'none', border: '1px solid rgba(212,175,55,0.55)', color: '#D4AF37', fontSize: '17px', padding: '4px 12px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.08em', marginLeft: '32px' }}
           >
             {lang === 'en' ? 'FR' : 'EN'}
           </button>
@@ -204,7 +204,8 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
           {/* About section — collapsible */}
           <button
             onClick={() => toggleMobileSection('about')}
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: 'rgba(255,255,255,0.95)', fontSize: '18px', letterSpacing: '0.04em', padding: '14px 0 8px', cursor: 'pointer', borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}
+            className="nav-mobile-section"
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: 'rgba(255,255,255,0.95)', fontSize: '16px', letterSpacing: '0.04em', padding: '14px 0 8px', cursor: 'pointer', borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}
           >
             {d.about.heading}
             <Chevron open={mobileExpanded === 'about'} />
@@ -228,7 +229,8 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
           {/* Our Work section — collapsible */}
           <button
             onClick={() => toggleMobileSection('work')}
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: 'rgba(255,255,255,0.95)', fontSize: '18px', letterSpacing: '0.04em', padding: '14px 0 8px', cursor: 'pointer', borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}
+            className="nav-mobile-section"
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: 'rgba(255,255,255,0.95)', fontSize: '16px', letterSpacing: '0.04em', padding: '14px 0 8px', cursor: 'pointer', borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}
           >
             {d.work.heading}
             <Chevron open={mobileExpanded === 'work'} />
@@ -254,7 +256,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
             href="/get-involved"
             onClick={() => setMenuOpen(false)}
             className="nav-mobile-link"
-            style={{ display: 'flex', alignItems: 'center', color: 'rgba(255,255,255,0.95)', fontSize: '18px', padding: '14px 0', textDecoration: 'none', borderBottom: '0.5px solid rgba(255,255,255,0.06)', minHeight: '44px' }}
+            style={{ display: 'flex', alignItems: 'center', color: 'rgba(255,255,255,0.95)', fontSize: '16px', padding: '14px 0', textDecoration: 'none', borderBottom: '0.5px solid rgba(255,255,255,0.06)', minHeight: '44px' }}
           >
             {n.getInvolved}
           </Link>

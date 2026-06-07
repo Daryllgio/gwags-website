@@ -1234,8 +1234,9 @@ h1, h2, h3, h4 {
   .nav-dropdown-link { font-size: 16px !important; color: rgba(255,255,255,0.92) !important; }
 }
 @media (max-width: 480px) {
-  .nav-dropdown-link { font-size: 15px !important; }
-  .nav-mobile-link   { font-size: 15px !important; }
+  .nav-dropdown-link   { font-size: 15px !important; }
+  .nav-mobile-link     { font-size: 15px !important; }
+  .nav-mobile-section  { font-size: 15px !important; }
 }
 
 /* ================================================================
