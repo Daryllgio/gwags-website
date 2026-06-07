@@ -1406,13 +1406,13 @@ h1, h2, h3, h4 {
 @media (max-width: 768px)  { .nav-logo-text { font-size: 18px !important; } }
 @media (max-width: 480px)  { .nav-logo-text { font-size: 17px !important; } }
 
-/* ── Language toggle — base size (no inline fontSize on the element) ── */
+/* ── Language toggle — shrinks at 900px to match hamburger breakpoint ── */
 .nav-lang-toggle { font-size: 17px; }
-@media (max-width: 768px) {
-  .nav-lang-toggle { font-size: 16px !important; padding: 3px 8px !important; }
+@media (max-width: 900px) {
+  .nav-lang-toggle { font-size: 14px !important; padding: 3px 8px !important; }
 }
 @media (max-width: 480px) {
-  .nav-lang-toggle { font-size: 15px !important; padding: 3px 8px !important; }
+  .nav-lang-toggle { font-size: 13px !important; padding: 2px 7px !important; }
 }
 
 /* ── Nav items: tablet same as desktop (17px), mobile/phone handled by mobile menu ── */
