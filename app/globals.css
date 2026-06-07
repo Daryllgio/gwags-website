@@ -626,6 +626,13 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) { .tl2-event { margin-bottom: 30px !important; } }
 @media (max-width: 480px) { .tl2-event { margin-bottom: 28px !important; } }
 
+/* Inter-event spacing: +10px between events within the same year.
+   Uses :not(:last-child) so the last event's margin (which sets the year gap) stays unchanged. */
+.tl2-year-group .tl2-event:not(:last-child) { margin-bottom: 55px; }
+@media (max-width: 1023.98px) { .tl2-year-group .tl2-event:not(:last-child) { margin-bottom: 45px !important; } }
+@media (max-width: 768px)     { .tl2-year-group .tl2-event:not(:last-child) { margin-bottom: 40px !important; } }
+@media (max-width: 480px)     { .tl2-year-group .tl2-event:not(:last-child) { margin-bottom: 38px !important; } }
+
 /* ── How We Work Page ── */
 
 /* Split screen */
