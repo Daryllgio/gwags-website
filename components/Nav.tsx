@@ -100,7 +100,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
           <button
             className="nav-lang-toggle"
             onClick={onToggleLang}
-            style={{ background: 'none', border: '0.5px solid rgba(212,175,55,0.6)', color: '#D4AF37', padding: '4px 12px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.08em' }}
+            style={{ background: 'none', border: '0.5px solid rgba(212,175,55,0.6)', color: '#D4AF37', fontSize: '17px', padding: '4px 12px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.08em' }}
           >
             {lang === 'en' ? 'FR' : 'EN'}
           </button>
