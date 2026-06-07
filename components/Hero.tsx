@@ -34,19 +34,12 @@ export default function Hero({ lang }: HeroProps) {
         )}
 
         <div className="hero-buttons" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginTop: h.body ? '0' : '40px' }}>
-          <a
-            href="#initiatives"
+          <Link
+            href="/get-involved"
             className="hero-btn"
             style={{ background: '#D4AF37', color: '#0A1128', fontSize: '14px', fontWeight: 500, padding: '14px 32px', border: 'none', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em', textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
           >
             {h.btn1}
-          </a>
-          <Link
-            href="/get-involved"
-            className="hero-btn"
-            style={{ background: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '14px', padding: '14px 32px', border: '0.5px solid rgba(255,255,255,0.3)', borderRadius: '3px', cursor: 'pointer', textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
-          >
-            {h.btn2}
           </Link>
         </div>
       </div>
