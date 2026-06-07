@@ -470,7 +470,7 @@ h1, h2, h3, h4 {
 }
 
 .tl2-title {
-  font-size: 28px;
+  font-size: 27px;
   font-weight: 600;
   color: #0A1128;
   font-family: Georgia, "Times New Roman", serif;
@@ -1082,7 +1082,7 @@ h1, h2, h3, h4 {
   /* Timeline — tablet */
   .tl2-year-num { font-size: 40px !important; }
   .tl2-year-num.active { font-size: 70px !important; }
-  .tl2-title { font-size: 25px !important; }
+  .tl2-title { font-size: 24px !important; }
   .tl2-body { font-size: 17px !important; }
 }
 
@@ -1190,7 +1190,7 @@ h1, h2, h3, h4 {
   .whatweare-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
   /* MOBILE: Timeline body text */
   .tl2-body { font-size: 16px !important; }
-  .tl2-eyebrow { font-size: 13px !important; }
+  .tl2-eyebrow { font-size: 15px !important; }
   /* MOBILE: Timeline year number */
   .tl2-year-num { font-size: 30px !important; }
   .tl2-year-num.active { font-size: 60px !important; }
@@ -1343,7 +1343,7 @@ h1, h2, h3, h4 {
   .stats-ticker-cell { padding: 16px 20px !important; }
 
   /* Timeline entry title */
-  .tl2-title { font-size: 22px !important; }
+  .tl2-title { font-size: 21px !important; }
 
   /* How We Work step number */
   .hww-step-num { font-size: 28px !important; }
