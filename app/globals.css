@@ -51,7 +51,7 @@ h1, h2, h3, h4 {
   border: none;
   cursor: pointer;
   color: rgba(255,255,255,0.95);
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: 0.04em;
   display: flex;
   align-items: center;
@@ -105,7 +105,7 @@ h1, h2, h3, h4 {
 .nav-dropdown-link {
   display: block;
   color: rgba(255,255,255,0.92);
-  font-size: 18px;
+  font-size: 17px;
   text-decoration: none;
   padding: 9px 0;
   border-bottom: 0.5px solid rgba(255,255,255,0.06);
@@ -119,7 +119,7 @@ h1, h2, h3, h4 {
 }
 .nav-dropdown-cta {
   color: #D4AF37;
-  font-size: 18px;
+  font-size: 17px;
   text-decoration: none;
   letter-spacing: 0.04em;
   display: inline-block;
@@ -133,7 +133,7 @@ h1, h2, h3, h4 {
 .nav-link {
   position: relative;
   color: rgba(255,255,255,0.95);
-  font-size: 18px;
+  font-size: 17px;
   text-decoration: none;
   letter-spacing: 0.04em;
   padding-bottom: 2px;
@@ -1406,18 +1406,26 @@ h1, h2, h3, h4 {
 @media (max-width: 768px)  { .nav-logo-text { font-size: 18px !important; } }
 @media (max-width: 480px)  { .nav-logo-text { font-size: 17px !important; } }
 
-/* ── Nav item tablet (900–1024px desktop nav still visible) ── */
-@media (max-width: 1024px) {
-  .nav-link         { font-size: 17px !important; }
-  .nav-btn-dropdown { font-size: 17px !important; }
-  .nav-dropdown-link { font-size: 17px !important; }
-  .nav-dropdown-cta  { font-size: 17px !important; }
+/* ── Language toggle — base size (no inline fontSize on the element) ── */
+.nav-lang-toggle { font-size: 17px; }
+@media (max-width: 768px) {
+  .nav-lang-toggle { font-size: 16px !important; padding: 3px 8px !important; }
+}
+@media (max-width: 480px) {
+  .nav-lang-toggle { font-size: 15px !important; padding: 3px 8px !important; }
 }
 
-/* ── Language toggle responsive ── */
-@media (max-width: 1024px) { .nav-lang-toggle { font-size: 17px !important; } }
-@media (max-width: 768px)  { .nav-lang-toggle { font-size: 16px !important; } }
-@media (max-width: 480px)  { .nav-lang-toggle { font-size: 15px !important; } }
+/* ── Nav items: tablet same as desktop (17px), mobile/phone handled by mobile menu ── */
+@media (max-width: 768px) {
+  .nav-link          { font-size: 16px !important; }
+  .nav-btn-dropdown  { font-size: 16px !important; }
+  .nav-dropdown-link { font-size: 16px !important; }
+}
+@media (max-width: 480px) {
+  .nav-link          { font-size: 15px !important; }
+  .nav-btn-dropdown  { font-size: 15px !important; }
+  .nav-dropdown-link { font-size: 15px !important; }
+}
 
 /* ── Initiative card icon responsive ── */
 @media (min-width: 768px) and (max-width: 1024px) { .ini-card-icon svg { width: 23px !important; height: 23px !important; } }
