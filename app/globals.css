@@ -390,7 +390,7 @@ h1, h2, h3, h4 {
 /* Year sits in its own row, above all events for that year */
 .tl2-year-header {
   display: flex;
-  padding: 33px 80px 45px;
+  padding: 23px 80px 45px;
 }
 
 .tl2-year-left-col {
@@ -423,7 +423,7 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: flex-start;
   padding: 0 80px;
-  margin-bottom: 35px;
+  margin-bottom: 45px;
   min-height: 420px;
 }
 
@@ -558,7 +558,7 @@ h1, h2, h3, h4 {
 
   .tl2-year-header {
     /* left padding (24px) = gutter for the year marker; the gold line at 35px passes through it */
-    padding: 17px 24px 33px;
+    padding: 7px 24px 33px;
   }
 
   .tl2-year-left-col {
@@ -570,7 +570,7 @@ h1, h2, h3, h4 {
     display: block;
     padding: 0;
     min-height: auto;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
   }
 
   .tl2-left-col {
@@ -623,8 +623,8 @@ h1, h2, h3, h4 {
 }
 
 /* Timeline event margin — mobile and small phone */
-@media (max-width: 768px) { .tl2-event { margin-bottom: 20px !important; } }
-@media (max-width: 480px) { .tl2-event { margin-bottom: 18px !important; } }
+@media (max-width: 768px) { .tl2-event { margin-bottom: 30px !important; } }
+@media (max-width: 480px) { .tl2-event { margin-bottom: 28px !important; } }
 
 /* ── How We Work Page ── */
 
