@@ -90,7 +90,7 @@ export const t = {
       ],
     },
     quote: {
-      text: 'The challenges facing our societies are too interconnected for any single organization to solve alone. Gwags exists to build the infrastructure that makes collective action possible so that the organizations committed to change can do so with the resources, infrastructure and network they deserve.',
+      text: 'The challenges facing our societies are too interconnected for any single organization to solve alone. Gwags exists to build the infrastructure that makes collective action possible so that the organizations committed to change can do so with the resources, support and network they deserve.',
       name: 'Daryll Giovanny Bikak Mbal',
       role: 'Chair, Board Member',
       roleOrg: 'Gwags Global Impact Institution',
@@ -173,7 +173,7 @@ export const t = {
     },
     cta: {
       h2: 'Ready to build something that lasts?',
-      body: 'Gwags is building an international infrastructure for impact. Reach out to explore how we can work together toward a shared vision of transformation.',
+      body: 'Gwags is building an international infrastructure for impact. Reach out to explore how we can work together toward a shared vision of impact.',
       btn1: 'Get in touch',
       btn2: 'Join the network',
     },
@@ -503,7 +503,7 @@ export const t = {
       ],
     },
     quote: {
-      text: 'Les défis auxquels nos sociétés font face sont trop interconnectés pour qu\'une seule organisation puisse les résoudre seule. Gwags existe pour construire l\'infrastructure qui rend l\'action collective possible afin que les organisations engagées dans le changement peuvent le faire avec les ressources, l\'infrastructure et le réseau qu\'elles méritent.',
+      text: 'Les défis auxquels nos sociétés font face sont trop interconnectés pour qu\'une seule organisation puisse les résoudre seule. Gwags existe pour construire l\'infrastructure qui rend l\'action collective possible afin que les organisations engagées dans le changement peuvent le faire avec les ressources, le soutien et le réseau qu\'elles méritent.',
       name: 'Daryll Giovanny Bikak Mbal',
       role: 'Chair, Board Member',
       roleOrg: 'Gwags Global Impact Institution',
@@ -585,7 +585,7 @@ export const t = {
     },
     cta: {
       h2: 'Prêt à construire quelque chose qui dure?',
-      body: 'Gwags construit une infrastructure internationale pour l\'impact. Contactez-nous pour explorer comment nous pouvons travailler ensemble.',
+      body: 'Gwags construit une infrastructure internationale pour l\'impact. Contactez-nous pour explorer comment nous pouvons travailler ensemble vers une vision partagée de l\'impact.',
       btn1: 'Nous contacter',
       btn2: 'Rejoindre le réseau',
     },

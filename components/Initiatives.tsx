@@ -18,7 +18,7 @@ const imagePlaceholders = [
   'Photo: Scholars Program',
   'Photo: Mbal Lekeaka Fund',
   'Photo: Health Outreach',
-  'Photo: Youth Development',
+  'Photo: Ajong Foretia Orphan Support',
 ]
 
 export default function Initiatives({ lang }: InitiativesProps) {
