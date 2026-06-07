@@ -626,6 +626,9 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) { .tl2-event { margin-bottom: 30px !important; } }
 @media (max-width: 480px) { .tl2-event { margin-bottom: 28px !important; } }
 
+/* Desktop events with no photo: remove forced min-height so blank space doesn't inflate the gap */
+.tl2-event.tl2-event-nophoto { min-height: auto; }
+
 /* Inter-event spacing: +10px between events within the same year.
    Uses :not(:last-child) so the last event's margin (which sets the year gap) stays unchanged. */
 .tl2-year-group .tl2-event:not(:last-child) { margin-bottom: 55px; }

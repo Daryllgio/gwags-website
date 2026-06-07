@@ -136,7 +136,7 @@ function TimelineSection({ lang }: { lang: Lang }) {
                   <div
                     key={globalIdx}
                     ref={el => { entryRefs.current[globalIdx] = el }}
-                    className={`tl2-event${isActive ? ' active' : ''}`}
+                    className={`tl2-event${isActive ? ' active' : ''}${!entry.photo ? ' tl2-event-nophoto' : ''}`}
                   >
                     <div className="tl2-left-col">
                       <div className={`tl2-month-text${isActive ? ' active' : ''}`}>{entry.month}</div>
