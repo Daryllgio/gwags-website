@@ -51,7 +51,7 @@ h1, h2, h3, h4 {
   border: none;
   cursor: pointer;
   color: rgba(255,255,255,0.95);
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 0.04em;
   display: flex;
   align-items: center;
@@ -105,7 +105,7 @@ h1, h2, h3, h4 {
 .nav-dropdown-link {
   display: block;
   color: rgba(255,255,255,0.92);
-  font-size: 16px;
+  font-size: 18px;
   text-decoration: none;
   padding: 9px 0;
   border-bottom: 0.5px solid rgba(255,255,255,0.06);
@@ -119,7 +119,7 @@ h1, h2, h3, h4 {
 }
 .nav-dropdown-cta {
   color: #D4AF37;
-  font-size: 16px;
+  font-size: 18px;
   text-decoration: none;
   letter-spacing: 0.04em;
   display: inline-block;
@@ -133,7 +133,7 @@ h1, h2, h3, h4 {
 .nav-link {
   position: relative;
   color: rgba(255,255,255,0.95);
-  font-size: 16px;
+  font-size: 18px;
   text-decoration: none;
   letter-spacing: 0.04em;
   padding-bottom: 2px;
@@ -182,19 +182,19 @@ h1, h2, h3, h4 {
 .hero-buttons  { animation: fadeIn 0.6s ease-out 0.9s both; }
 
 @media (max-width: 1024px) {
-  .hero-h1 { font-size: 48px !important; }
+  .hero-h1 { font-size: 40px !important; }
 }
 @media (max-width: 900px) {
-  .hero-h1 { font-size: 48px !important; }
+  .hero-h1 { font-size: 40px !important; }
 }
 @media (max-width: 768px) {
-  .hero-h1 { font-size: 36px !important; }
+  .hero-h1 { font-size: 30px !important; }
 }
 @media (max-width: 480px) {
-  .hero-h1 { font-size: 30px !important; }
+  .hero-h1 { font-size: 28px !important; }
   .hero-body { font-size: 16px !important; }
   .hero-buttons { flex-direction: column !important; align-items: center !important; }
-  .hero-btn { min-width: 220px !important; text-align: center !important; }
+  .hero-btn { min-width: 240px !important; text-align: center !important; }
 }
 
 /* ── Stats Ticker ── */
@@ -290,7 +290,7 @@ h1, h2, h3, h4 {
   .cta-section { padding: 60px 20px !important; }
   .cta-h2 { font-size: 23px !important; }
   .cta-buttons { flex-direction: column !important; align-items: center !important; }
-  .cta-buttons a { min-width: 220px !important; text-align: center !important; }
+  .cta-buttons a { min-width: 240px !important; text-align: center !important; }
 }
 @media (max-width: 480px) {
   .cta-h2 { font-size: 22px !important; }
@@ -1221,18 +1221,21 @@ h1, h2, h3, h4 {
   /* SMALL PHONE: section padding — 25px horizontal gives ≈325px cards at 375px viewport */
   .site-section { padding: 36px 25px !important; }
   /* SMALL PHONE: hero adjustments */
-  .hero-h1 { font-size: 30px !important; }
+  .hero-h1 { font-size: 28px !important; }
   .hero-buttons { flex-direction: column !important; align-items: center !important; }
-  .hero-btn { min-width: 220px !important; text-align: center !important; }
+  .hero-btn { min-width: 240px !important; text-align: center !important; }
   /* SMALL PHONE: stats ticker */
   .stats-ticker { grid-template-columns: 1fr !important; }
   .stats-ticker .has-divider { border-right: none !important; border-bottom: 0.5px solid rgba(212,175,55,0.11) !important; }
 }
 
 /* ── Mobile Navigation Fix ── */
-/* All mobile menu text must be clearly visible at 16px white */
 @media (max-width: 900px) {
   .nav-dropdown-link { font-size: 16px !important; color: rgba(255,255,255,0.92) !important; }
+}
+@media (max-width: 480px) {
+  .nav-dropdown-link { font-size: 15px !important; }
+  .nav-mobile-link   { font-size: 15px !important; }
 }
 
 /* ================================================================
@@ -1259,8 +1262,8 @@ h1, h2, h3, h4 {
 /* === TABLET (768px – 1024px) === */
 @media (min-width: 768px) and (max-width: 1024px) {
   /* Hero section */
-  .hero-section { padding: 100px 32px !important; }
-  .hero-section .hero-h1 { font-size: 48px !important; }
+  .hero-section { padding: 110px 42px !important; }
+  .hero-section .hero-h1 { font-size: 40px !important; }
 
   /* Initiatives */
   .ini-img-ph    { height: 220px !important; }
@@ -1300,7 +1303,7 @@ h1, h2, h3, h4 {
 /* === MOBILE (max-width: 768px) === */
 @media (max-width: 768px) {
   /* Hero section */
-  .hero-section { padding: 80px 20px !important; }
+  .hero-section { padding: 90px 30px !important; }
 
   /* Initiatives */
   .ini-img-ph    { height: 220px !important; }
@@ -1348,7 +1351,7 @@ h1, h2, h3, h4 {
 /* === SMALL PHONE (max-width: 480px) === */
 @media (max-width: 480px) {
   /* Hero section */
-  .hero-section { padding: 60px 16px !important; }
+  .hero-section { padding: 70px 26px !important; }
 
   /* Initiatives */
   .ini-img-ph    { height: 220px !important; }
@@ -1398,6 +1401,34 @@ h1, h2, h3, h4 {
    FIXES FOR PREVIOUSLY UNCOVERED ELEMENTS
    ================================================================ */
 
+/* ── Nav logo text responsive ── */
+@media (max-width: 1024px) { .nav-logo-text { font-size: 19px !important; } }
+@media (max-width: 768px)  { .nav-logo-text { font-size: 18px !important; } }
+@media (max-width: 480px)  { .nav-logo-text { font-size: 17px !important; } }
+
+/* ── Nav item tablet (900–1024px desktop nav still visible) ── */
+@media (max-width: 1024px) {
+  .nav-link         { font-size: 17px !important; }
+  .nav-btn-dropdown { font-size: 17px !important; }
+  .nav-dropdown-link { font-size: 17px !important; }
+  .nav-dropdown-cta  { font-size: 17px !important; }
+}
+
+/* ── Language toggle responsive ── */
+@media (max-width: 1024px) { .nav-lang-toggle { font-size: 17px !important; } }
+@media (max-width: 768px)  { .nav-lang-toggle { font-size: 16px !important; } }
+@media (max-width: 480px)  { .nav-lang-toggle { font-size: 15px !important; } }
+
+/* ── Initiative card icon responsive ── */
+@media (min-width: 768px) and (max-width: 1024px) { .ini-card-icon svg { width: 23px !important; height: 23px !important; } }
+@media (max-width: 768px) { .ini-card-icon svg { width: 22px !important; height: 22px !important; } }
+@media (max-width: 480px) { .ini-card-icon svg { width: 21px !important; height: 21px !important; } }
+
+/* ── Why Gwags card icon responsive ── */
+@media (min-width: 768px) and (max-width: 1024px) { .wg-card-icon svg { width: 27px !important; height: 27px !important; } }
+@media (max-width: 768px) { .wg-card-icon svg { width: 26px !important; height: 26px !important; } }
+@media (max-width: 480px) { .wg-card-icon svg { width: 25px !important; height: 25px !important; } }
+
 /* More About section — small phone: match 25px horizontal padding of site-section */
 @media (max-width: 480px) {
   .more-about-section { padding-left: 25px !important; padding-right: 25px !important; }
@@ -1446,7 +1477,7 @@ h1, h2, h3, h4 {
 /* Hero buttons — stack vertically at mobile, centered with consistent min-width */
 @media (max-width: 768px) {
   .hero-buttons { flex-direction: column !important; align-items: center !important; }
-  .hero-btn { min-width: 220px !important; text-align: center !important; }
+  .hero-btn { min-width: 240px !important; text-align: center !important; }
 }
 
 /* Footer text */
@@ -1492,10 +1523,9 @@ h1, h2, h3, h4 {
   .lq-role { font-size: 16px !important; }
 }
 @media (max-width: 768px) {
-  .lq-name { font-size: 17px !important; }
+  .lq-name { font-size: 16px !important; }
   .lq-role { font-size: 15px !important; }
 }
-/* small phone: same as mobile — no change */
 
 /* Leadership Quote circle — proportional across screen sizes */
 @media (min-width: 768px) and (max-width: 1024px) {

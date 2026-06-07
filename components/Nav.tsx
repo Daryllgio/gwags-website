@@ -66,48 +66,56 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 28px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
         <Link href="/" style={{ textDecoration: 'none' }}>
-          <div style={{ color: '#D4AF37', fontSize: '20px', fontWeight: 500, letterSpacing: '0.1em', fontFamily: 'Georgia, serif' }}>Gwags</div>
+          <div className="nav-logo-text" style={{ color: '#D4AF37', fontSize: '20px', fontWeight: 500, letterSpacing: '0.1em', fontFamily: 'Georgia, serif' }}>Gwags</div>
           <div className="nav-logo-subtitle" style={{ color: '#D4AF37', fontSize: '12px', letterSpacing: '0.2em', marginTop: '1px' }}>GLOBAL IMPACT INSTITUTION</div>
         </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }} className="desktop-nav">
-          <button
-            className="nav-btn-dropdown"
-            onClick={() => toggleDropdown('about')}
-            aria-expanded={openDropdown === 'about'}
-          >
-            {n.about}
-            <Chevron open={openDropdown === 'about'} />
-          </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
 
-          <button
-            className="nav-btn-dropdown"
-            onClick={() => toggleDropdown('work')}
-            aria-expanded={openDropdown === 'work'}
-          >
-            {n.initiatives}
-            <Chevron open={openDropdown === 'work'} />
-          </button>
+          {/* Desktop nav links — hidden below 900px */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }} className="desktop-nav">
+            <button
+              className="nav-btn-dropdown"
+              onClick={() => toggleDropdown('about')}
+              aria-expanded={openDropdown === 'about'}
+            >
+              {n.about}
+              <Chevron open={openDropdown === 'about'} />
+            </button>
 
-          <Link href="/network" className="nav-link">{n.network}</Link>
-          <Link href="/get-involved" className="nav-link">{n.getInvolved}</Link>
+            <button
+              className="nav-btn-dropdown"
+              onClick={() => toggleDropdown('work')}
+              aria-expanded={openDropdown === 'work'}
+            >
+              {n.initiatives}
+              <Chevron open={openDropdown === 'work'} />
+            </button>
 
+            <Link href="/network" className="nav-link">{n.network}</Link>
+            <Link href="/get-involved" className="nav-link">{n.getInvolved}</Link>
+          </div>
+
+          {/* Language toggle — always visible */}
           <button
+            className="nav-lang-toggle"
             onClick={onToggleLang}
-            style={{ background: 'none', border: '0.5px solid rgba(212,175,55,0.6)', color: '#D4AF37', fontSize: '11px', padding: '4px 12px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.08em' }}
+            style={{ background: 'none', border: '0.5px solid rgba(212,175,55,0.6)', color: '#D4AF37', fontSize: '18px', padding: '4px 12px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.08em' }}
           >
             {lang === 'en' ? 'FR' : 'EN'}
           </button>
-        </div>
 
-        <button
-          className="mobile-menu-btn"
-          onClick={() => { setMenuOpen(!menuOpen); setMobileExpanded(null) }}
-          style={{ display: 'none', background: 'none', border: 'none', color: '#D4AF37', fontSize: '24px', cursor: 'pointer', minHeight: '44px', minWidth: '44px' }}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? '✕' : '☰'}
-        </button>
+          {/* Hamburger — hidden above 900px */}
+          <button
+            className="mobile-menu-btn"
+            onClick={() => { setMenuOpen(!menuOpen); setMobileExpanded(null) }}
+            style={{ display: 'none', background: 'none', border: 'none', color: '#D4AF37', fontSize: '24px', cursor: 'pointer', minHeight: '44px', minWidth: '44px' }}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? '✕' : '☰'}
+          </button>
+
+        </div>
       </div>
 
       {/* About dropdown */}
@@ -209,6 +217,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
+                  className="nav-mobile-link"
                   style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '16px', padding: '10px 0 10px 12px', textDecoration: 'none', borderBottom: '0.5px solid rgba(255,255,255,0.04)', minHeight: '44px', alignItems: 'center' }}
                 >
                   {link.label}
@@ -235,6 +244,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
+                  className="nav-mobile-link"
                   style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '16px', padding: '10px 0 10px 12px', textDecoration: 'none', borderBottom: '0.5px solid rgba(255,255,255,0.04)', minHeight: '44px', alignItems: 'center' }}
                 >
                   {link.label}
@@ -250,7 +260,8 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
               key={item.href}
               href={item.href}
               onClick={() => setMenuOpen(false)}
-              style={{ display: 'flex', alignItems: 'center', color: 'rgba(255,255,255,0.92)', fontSize: '15px', padding: '12px 0', textDecoration: 'none', borderBottom: '0.5px solid rgba(255,255,255,0.06)', minHeight: '44px' }}
+              className="nav-mobile-link"
+              style={{ display: 'flex', alignItems: 'center', color: 'rgba(255,255,255,0.92)', fontSize: '16px', padding: '12px 0', textDecoration: 'none', borderBottom: '0.5px solid rgba(255,255,255,0.06)', minHeight: '44px' }}
             >
               {item.label}
             </Link>

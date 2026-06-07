@@ -39,7 +39,7 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
                   textAlign: 'center',
                 }}
               >
-                <div style={{ marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
+                <div className="wg-card-icon" style={{ marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
                   <Icon size={28} color="#D4AF37" />
                 </div>
                 <div className="wg-card-title" style={{ fontSize: '18px', fontWeight: 500, color: '#0A1128', marginBottom: '10px' }}>
