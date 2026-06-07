@@ -309,19 +309,19 @@ export const t = {
           {
             year: '2025', month: 'MAY',
             title: 'Incorporation in the United States and Cameroon',
-            body: 'Gwags formalized its structure by incorporating as a nonprofit organization in both the United States and Cameroon. The 501(c)(3) application process began, establishing the legal and institutional foundation for sustained international operations. What had been an informal student initiative became a legally recognized institution with the capacity to operate, partner, and grow on an international level.',
+            body: 'Gwags formalized its structure by incorporating as a nonprofit organization in both the United States and Cameroon. The 501(c)(3) application process began, establishing the legal and institutional foundation for sustained international operations.',
             photo: '',
           },
           {
             year: '2026', month: 'JANUARY',
             title: 'Launch of the Gwags Scholars Program',
-            body: 'Gwags launched the Gwags Scholars Program, a flagship initiative designed to support outstanding university students across Cameroon. The program offers financial support and professional development opportunities, investing in the next generation of Cameroonian leaders.',
+            body: 'Gwags launched the Gwags Scholars Program, an initiative designed to support outstanding university students across Cameroon. The program offers financial support and professional development opportunities, investing in the next generation of Cameroonian leaders.',
             photo: 'Photo: scholars program',
           },
           {
             year: '2026', month: 'JULY',
             title: 'Launch of the Mbal Lekeaka Fund',
-            body: 'Gwags established the Mbal Lekeaka Fund, a grant program designed to support community-led initiatives in Cameroon. The fund addresses a critical gap faced by many locally driven initiatives that struggle to scale or sustain their activities due to limited access to financial resources.',
+            body: 'Gwags established the Mbal Lekeaka Fund, a grant program designed to support community-led initiatives. The fund addresses a critical gap faced by many locally driven initiatives that struggle to scale or sustain their activities due to limited access to financial resources.',
             photo: 'Photo: community initiative',
           },
           {
@@ -713,19 +713,19 @@ export const t = {
           {
             year: '2025', month: 'MAI',
             title: 'Incorporation aux États-Unis et au Cameroun',
-            body: "Gwags a formalisé sa structure en s'incorporant en tant qu'organisation à but non lucratif aux États-Unis et au Cameroun. Le processus de demande 501(c)(3) a commencé, établissant les bases juridiques et institutionnelles pour des opérations internationales durables. Ce qui avait été une initiative étudiante informelle est devenu une institution légalement reconnue avec la capacité d'opérer, de s'associer et de croître à l'échelle internationale.",
+            body: "Gwags a formalisé sa structure en s'incorporant en tant qu'organisation à but non lucratif aux États-Unis et au Cameroun. Le processus de demande 501(c)(3) a commencé, établissant les bases juridiques et institutionnelles pour des opérations internationales durables.",
             photo: '',
           },
           {
             year: '2026', month: 'JANVIER',
             title: 'Lancement du Programme Gwags Scholars',
-            body: "Gwags a lancé le Programme Gwags Scholars, une initiative phare conçue pour soutenir les étudiants universitaires exceptionnels à travers le Cameroun. Le programme offre un soutien financier et des opportunités de développement professionnel, investissant dans la prochaine génération de leaders camerounais.",
+            body: "Gwags a lancé le Programme Gwags Scholars, une initiative conçue pour soutenir les étudiants universitaires exceptionnels à travers le Cameroun. Le programme offre un soutien financier et des opportunités de développement professionnel, investissant dans la prochaine génération de leaders camerounais.",
             photo: 'Photo: programme Scholars',
           },
           {
             year: '2026', month: 'JUILLET',
             title: 'Lancement du Fonds Mbal Lekeaka',
-            body: "Gwags a établi le Fonds Mbal Lekeaka, un programme de subventions conçu pour soutenir les initiatives communautaires au Cameroun. Le fonds répond à un manque critique auquel font face de nombreuses initiatives locales qui peinent à se développer ou à maintenir leurs activités en raison d'un accès limité aux ressources financières.",
+            body: "Gwags a établi le Fonds Mbal Lekeaka, un programme de subventions conçu pour soutenir les initiatives communautaires. Le fonds répond à un manque critique auquel font face de nombreuses initiatives locales qui peinent à se développer ou à maintenir leurs activités en raison d'un accès limité aux ressources financières.",
             photo: 'Photo: initiative communautaire',
           },
           {
