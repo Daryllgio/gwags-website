@@ -390,7 +390,7 @@ h1, h2, h3, h4 {
 /* Year sits in its own row, above all events for that year */
 .tl2-year-header {
   display: flex;
-  padding: 58px 80px 60px;
+  padding: 43px 80px 60px;
 }
 
 .tl2-year-left-col {
@@ -558,7 +558,7 @@ h1, h2, h3, h4 {
 
   .tl2-year-header {
     /* left padding (24px) = gutter for the year marker; the gold line at 35px passes through it */
-    padding: 42px 24px 48px;
+    padding: 27px 24px 48px;
   }
 
   .tl2-year-left-col {
