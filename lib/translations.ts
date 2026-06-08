@@ -248,7 +248,7 @@ export const t = {
       workingWith: {
         eyebrow: 'PARTNERING WITH GWAGS',
         h2: 'What to expect as a partner.',
-        intro: 'Through partnership, Gwags collaborates with organizations outside its network on shared goals. Partnerships do not involve governance integration or structural obligations. They are built around specific projects and initiatives where both organizations contribute toward a shared outcome.',
+        intro: 'Through partnership, Gwags collaborates with organizations outside its network to co-develop initiatives and work toward a shared outcome.',
         cards: [
           {
             title: 'Shared objectives',
@@ -648,7 +648,7 @@ export const t = {
       workingWith: {
         eyebrow: 'PARTENARIAT AVEC GWAGS',
         h2: 'Ce à quoi s\'attendre en tant que partenaire.',
-        intro: "Par le biais du partenariat, Gwags collabore avec des organisations en dehors de son réseau sur des objectifs communs. Les partenariats n'impliquent pas d'intégration de gouvernance ni d'obligations structurelles. Ils sont construits autour de projets et d'initiatives spécifiques où les deux organisations contribuent à un résultat commun.",
+        intro: "Par le biais du partenariat, Gwags collabore avec des organisations en dehors de son réseau pour co-développer des initiatives et travailler vers un résultat commun.",
         cards: [
           {
             title: 'Objectifs partagés',
