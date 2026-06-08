@@ -219,6 +219,7 @@ export const t = {
       },
       initiatives: {
         eyebrow: 'OUR INITIATIVES',
+        h2: 'Our commitment in action.',
         items: [
           { title: 'Gwags Scholars Program', desc: 'A flagship program investing in the next generation of Cameroonian leaders through financial support and professional development opportunities.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
           { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY', href: '/initiatives/mbal-lekeaka-fund' },
@@ -619,6 +620,7 @@ export const t = {
       },
       initiatives: {
         eyebrow: 'NOS INITIATIVES',
+        h2: 'Notre engagement en action.',
         items: [
           { title: 'Programme Gwags Scholars', desc: 'Un programme phare investissant dans la prochaine génération de leaders camerounais à travers un soutien financier et des opportunités de développement professionnel.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
           { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ', href: '/initiatives/mbal-lekeaka-fund' },
