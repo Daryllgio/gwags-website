@@ -212,7 +212,7 @@ export const t = {
           label: 'INSTITUTIONAL SUPPORT',
           heading: 'We strengthen the organizations around us.',
           body: [
-            'Across the world, organizations doing meaningful work face the same structural barriers that prevent them from growing beyond their immediate reach. Without the right governance frameworks, funding pathways, and institutional credibility, even the most promising organizations struggle to scale.',
+            'Across the world, organizations doing meaningful work face the same structural barriers that prevent them from growing beyond their immediate reach, leaving significant potential for impact unrealized.',
             'Through affiliation, strategic coordination, shared resources, and institutional standards, Gwags provides organizations with the resources, credibility, and structure they need to scale sustainably. Organizations retain their identity. What changes is the institutional weight behind them, and the network they become part of.',
           ],
         },
@@ -616,7 +616,7 @@ export const t = {
           label: 'SOUTIEN INSTITUTIONNEL',
           heading: 'Nous renforçons les organisations qui nous entourent.',
           body: [
-            "À travers le monde, des organisations faisant un travail significatif font face aux mêmes barrières structurelles qui les empêchent de croître au-delà de leur portée immédiate. Sans les bons cadres de gouvernance, les voies de financement et la crédibilité institutionnelle, même les organisations les plus prometteuses peinent à se développer.",
+            "À travers le monde, des organisations faisant un travail significatif font face aux mêmes barrières structurelles qui les empêchent de croître au-delà de leur portée immédiate, laissant un potentiel d'impact significatif inexploité.",
             "À travers l'affiliation, la coordination stratégique, le partage de ressources et les standards institutionnels, Gwags fournit aux organisations les ressources, la crédibilité et la structure dont elles ont besoin pour se développer durablement. Les organisations conservent leur identité. Ce qui change, c'est le poids institutionnel derrière elles, et le réseau dont elles font partie.",
           ],
         },
