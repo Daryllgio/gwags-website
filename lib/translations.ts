@@ -266,7 +266,7 @@ export const t = {
       },
       cta: {
         h2: 'Interested in working with us?',
-        body: 'Whether you lead an organization, manage a fund, or represent an institution, Gwags is built to be your partner in impact.',
+        body: 'Explore how your organization can engage with Gwags through affiliation or partnership.',
         btn1: 'Get in touch',
         btn2: 'Join the network',
       },
@@ -666,7 +666,7 @@ export const t = {
       },
       cta: {
         h2: 'Intéressé par un partenariat?',
-        body: "Que vous dirigiez une organisation, gériez un fonds ou représentiez une institution, Gwags est conçu pour être votre partenaire dans l'impact.",
+        body: "Découvrez comment votre organisation peut s'engager avec Gwags à travers l'affiliation ou le partenariat.",
         btn1: 'Nous contacter',
         btn2: 'Rejoindre le réseau',
       },
