@@ -845,7 +845,7 @@ h1, h2, h3, h4 {
 
   .hww-hero-text { padding: 60px 20px !important; }
   .hww-hero-h1 { font-size: 28px !important; }
-  .hww-init-strip { padding: 48px 28px !important; }
+  .hww-init-strip { padding: 48px 20px !important; }
   .hww-coordination-section { padding: 60px 20px !important; }
   .hww-working-with-section { padding: 60px 20px !important; }
 
@@ -1170,7 +1170,7 @@ h1, h2, h3, h4 {
   .getinvolved-grid { gap: 14px !important; }
   /* TABLET: How We Work sections reduce padding */
   .hww-hero-text { padding: 60px 40px 60px 60px !important; }
-  .hww-init-strip { padding: 60px 32px !important; }
+  .hww-init-strip { padding: 48px 60px !important; }
   .hww-coordination-section { padding: 60px 60px !important; }
   .hww-working-with-section { padding: 60px 60px !important; }
   /* TABLET: Our Role */
@@ -1234,7 +1234,6 @@ h1, h2, h3, h4 {
   .or-conviction-title { font-size: 18px !important; }
   /* SMALL PHONE: section padding — 25px horizontal gives ≈325px cards at 375px viewport */
   .site-section { padding: 36px 25px !important; }
-  .hww-init-strip { padding: 36px 25px !important; }
   /* SMALL PHONE: hero adjustments */
   .hero-h1 { font-size: 28px !important; }
   .hero-buttons { flex-direction: column !important; align-items: center !important; }

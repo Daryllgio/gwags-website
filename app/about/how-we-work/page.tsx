@@ -108,11 +108,11 @@ const initiativeImagePlaceholders = [
 function InitiativeStrip({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.initiatives
   return (
-    <section className="hww-init-strip" style={{ background: '#ffffff', padding: '80px 28px' }}>
-      <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
+    <section className="hww-init-strip" style={{ background: '#ffffff', padding: '60px 80px' }}>
+      <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
         {p.eyebrow}
       </p>
-      <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 52px 0', lineHeight: 1.25 }}>
+      <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 40px 0', lineHeight: 1.25 }}>
         {p.h2}
       </h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }} className="initiatives-grid">
@@ -133,13 +133,13 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
                 </span>
               </div>
               <div className="ini-card-body" style={{ padding: '24px 24px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <div className="ini-card-icon" style={{ marginBottom: '16px' }}>
+                <div style={{ marginBottom: '16px' }}>
                   <Icon size={24} color="#D4AF37" />
                 </div>
-                <div className="ini-card-title" style={{ color: '#0A1128', fontSize: '18px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35 }}>
+                <div className="ini-card-title" style={{ color: '#0A1128', fontSize: '19px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35 }}>
                   {item.title}
                 </div>
-                <p className="body-text ini-card-desc" style={{ color: '#4A4A4A', fontSize: '17px', lineHeight: 1.68, flex: 1, margin: 0 }}>
+                <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.68, flex: 1, margin: 0 }}>
                   {item.desc}
                 </p>
               </div>
