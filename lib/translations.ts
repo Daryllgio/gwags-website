@@ -252,7 +252,7 @@ export const t = {
         cards: [
           {
             title: 'Shared objectives',
-            body: 'Gwags partners with organizations to deliver projects and initiatives where goals align. Each partnership is built around clear objectives, defined roles, and measurable outcomes.',
+            body: 'Gwags partners with organizations to deliver initiatives where goals align. Each partnership is built around clear objectives, defined roles, and measurable outcomes.',
           },
           {
             title: 'Collaboration, not dependency',
@@ -652,7 +652,7 @@ export const t = {
         cards: [
           {
             title: 'Objectifs partagés',
-            body: "Gwags s'associe avec des organisations pour réaliser des projets et des initiatives dont les objectifs convergent. Chaque partenariat est construit autour d'objectifs clairs, de rôles définis et de résultats mesurables.",
+            body: "Gwags s'associe avec des organisations pour réaliser des initiatives dont les objectifs convergent. Chaque partenariat est construit autour d'objectifs clairs, de rôles définis et de résultats mesurables.",
           },
           {
             title: 'Collaboration, pas dépendance',
