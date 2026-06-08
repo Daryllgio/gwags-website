@@ -212,8 +212,8 @@ export const t = {
           label: 'INSTITUTIONAL SUPPORT',
           heading: 'We strengthen the organizations around us.',
           body: [
-            'Across the world, organizations doing meaningful work face the same structural barriers. Limited funding. Weak governance. No access to international networks. No institutional credibility to attract serious investment. And no strategic support to grow beyond their immediate reach. These are gaps in infrastructure, and they are exactly what Gwags is designed to address.',
-            'Through affiliation, strategic coordination, shared resources, and institutional standards, Gwags provides organizations with the credibility, structure, and reach they need to scale sustainably. Organizations retain their identity and autonomy. What changes is the institutional weight behind them, and the network they become part of.',
+            'Across the world, organizations doing meaningful work face the same structural barriers that prevent them from growing beyond their immediate reach. Without the right governance frameworks, funding pathways, and institutional credibility, even the most promising organizations struggle to scale.',
+            'Through affiliation, strategic coordination, shared resources, and institutional standards, Gwags provides organizations with the resources, credibility, and structure they need to scale sustainably. Organizations retain their identity. What changes is the institutional weight behind them, and the network they become part of.',
           ],
         },
       },
@@ -616,8 +616,8 @@ export const t = {
           label: 'SOUTIEN INSTITUTIONNEL',
           heading: 'Nous renforçons les organisations qui nous entourent.',
           body: [
-            "À travers le monde, des organisations faisant un travail significatif font face aux mêmes barrières structurelles. Un financement limité. Une gouvernance faible. Aucun accès aux réseaux internationaux. Aucune crédibilité institutionnelle pour attirer des investissements sérieux. Et aucun soutien stratégique pour croître au-delà de leur portée immédiate. Ce sont des lacunes d'infrastructure, et c'est exactement ce que Gwags est conçu pour combler.",
-            "À travers l'affiliation, la coordination stratégique, le partage de ressources et les standards institutionnels, Gwags fournit aux organisations la crédibilité, la structure et la portée dont elles ont besoin pour se développer durablement. Les organisations conservent leur identité et leur autonomie. Ce qui change, c'est le poids institutionnel derrière elles, et le réseau dont elles font partie.",
+            "À travers le monde, des organisations faisant un travail significatif font face aux mêmes barrières structurelles qui les empêchent de croître au-delà de leur portée immédiate. Sans les bons cadres de gouvernance, les voies de financement et la crédibilité institutionnelle, même les organisations les plus prometteuses peinent à se développer.",
+            "À travers l'affiliation, la coordination stratégique, le partage de ressources et les standards institutionnels, Gwags fournit aux organisations les ressources, la crédibilité et la structure dont elles ont besoin pour se développer durablement. Les organisations conservent leur identité. Ce qui change, c'est le poids institutionnel derrière elles, et le réseau dont elles font partie.",
           ],
         },
       },
