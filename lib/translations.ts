@@ -204,8 +204,8 @@ export const t = {
           label: 'DIRECT ACTION',
           heading: 'We build our own initiatives.',
           body: [
-            'Gwags designs and delivers programs that address needs on the ground. The current portfolio spans education, health, community development, and youth empowerment. Each initiative was created to fill a gap identified firsthand through years of direct engagement with the communities we serve. They are core to who we are as an institution and they shape every aspect of how we operate.',
-            'Running these initiatives provides something that many institutional platforms lack: direct operational experience. We understand the challenges of implementation because we face them ourselves. That understanding makes the support we offer to affiliated organizations more grounded and credible.',
+            'Gwags designs and delivers programs that address needs on the ground. The current portfolio spans education, health, community development, and youth empowerment. Each initiative was created to fill a gap identified through direct engagement with the communities we serve.',
+            'Running these initiatives provides us with direct operational experience. We understand the challenges of implementation because we face them ourselves. That understanding makes the support we offer to affiliated organizations more grounded and credible.',
           ],
         },
         right: {
@@ -608,8 +608,8 @@ export const t = {
           label: 'ACTION DIRECTE',
           heading: 'Nous construisons nos propres initiatives.',
           body: [
-            "Gwags conçoit et met en oeuvre des programmes qui répondent aux besoins sur le terrain. Le portefeuille actuel couvre l'éducation, la santé, le développement communautaire et l'autonomisation des jeunes. Chaque initiative a été créée pour combler un manque identifié de première main à travers des années d'engagement direct avec les communautés que nous servons. Elles sont au coeur de ce que nous sommes en tant qu'institution et façonnent chaque aspect de notre fonctionnement.",
-            "Gérer ces initiatives apporte quelque chose que de nombreuses plateformes institutionnelles n'ont pas: une expérience opérationnelle directe. Nous comprenons les défis de la mise en oeuvre parce que nous les affrontons nous-mêmes. Cette compréhension rend le soutien que nous offrons aux organisations affiliées plus ancré et plus crédible.",
+            "Gwags conçoit et met en oeuvre des programmes qui répondent aux besoins sur le terrain. Le portefeuille actuel couvre l'éducation, la santé, le développement communautaire et l'autonomisation des jeunes. Chaque initiative a été créée pour combler un manque identifié à travers un engagement direct avec les communautés que nous servons.",
+            "Gérer ces initiatives nous fournit une expérience opérationnelle directe. Nous comprenons les défis de la mise en oeuvre parce que nous les affrontons nous-mêmes. Cette compréhension rend le soutien que nous offrons aux organisations affiliées plus ancré et plus crédible.",
           ],
         },
         right: {
