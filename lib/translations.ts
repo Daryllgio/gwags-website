@@ -197,7 +197,7 @@ export const t = {
       hero: {
         eyebrow: 'HOW WE WORK',
         h1: 'Two roles. One mission.',
-        body: 'Gwags operates on two parallel tracks that reinforce each other. We build and run initiatives across different sectors including education, health, and community development. And we serve as an institutional infrastructure that coordinates, supports, and strengthens other organizations committed to creating impact.',
+        body: 'Gwags operates on two parallel tracks. We build and run initiatives across different sectors including education, health, and community development. And we serve as an institutional infrastructure that structures and supports other organizations committed to creating impact.',
       },
       split: {
         left: {
@@ -601,7 +601,7 @@ export const t = {
       hero: {
         eyebrow: 'COMMENT NOUS TRAVAILLONS',
         h1: 'Deux rôles. Une mission.',
-        body: "Gwags opère sur deux voies parallèles qui se renforcent mutuellement. Nous construisons et gérons des initiatives dans différents secteurs, notamment l'éducation, la santé et le développement communautaire. Et nous servons d'infrastructure institutionnelle qui coordonne, soutient et renforce d'autres organisations engagées à créer de l'impact.",
+        body: "Gwags opère sur deux voies parallèles. Nous construisons et gérons des initiatives dans différents secteurs, notamment l'éducation, la santé et le développement communautaire. Et nous servons d'infrastructure institutionnelle qui structure et soutient d'autres organisations engagées à créer de l'impact.",
       },
       split: {
         left: {
