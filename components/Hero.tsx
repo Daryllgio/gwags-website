@@ -37,7 +37,7 @@ export default function Hero({ lang }: HeroProps) {
           <Link
             href="/get-involved"
             className="hero-btn"
-            style={{ background: '#D4AF37', color: '#0A1128', fontSize: '14px', fontWeight: 500, padding: '14px 32px', border: 'none', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em', textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
+            style={{ background: '#D4AF37', color: '#0A1128', fontSize: '15px', fontWeight: 500, padding: '14px 32px', border: 'none', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em', textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
           >
             {h.btn1}
           </Link>

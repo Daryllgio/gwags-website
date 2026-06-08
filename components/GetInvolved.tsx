@@ -19,7 +19,7 @@ export default function GetInvolved({ lang }: GetInvolvedProps) {
         <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>
           {g.eyebrow}
         </p>
-        <h2 style={{ color: '#0A1128', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, maxWidth: '500px', marginBottom: g.body ? '14px' : '52px' }}>
+        <h2 className="gi-section-h2" style={{ color: '#0A1128', fontSize: '28px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, maxWidth: '500px', marginBottom: g.body ? '14px' : '52px' }}>
           {g.h2}
         </h2>
         {g.body && (
