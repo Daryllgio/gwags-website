@@ -275,6 +275,7 @@ h1, h2, h3, h4 {
 }
 @media (max-width: 1024px) {
   .more-about-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .getinvolved-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
 /* ── Get Involved ── */
@@ -713,7 +714,7 @@ h1, h2, h3, h4 {
 
 .hww-step-num {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 35px;
+  font-size: 33px;
   color: #D4AF37;
   line-height: 1;
   text-align: right;
@@ -743,7 +744,7 @@ h1, h2, h3, h4 {
    First grid value (25px) = how far the number is pushed right; font-size = digit size. */
 @media (min-width: 769px) and (max-width: 1024px) {
   .hww-step { grid-template-columns: 25px 2px 1fr; }
-  .hww-step-num { font-size: 30px; }
+  .hww-step-num { font-size: 28px; }
 }
 
 /* Working with Gwags cards */
@@ -1225,7 +1226,7 @@ h1, h2, h3, h4 {
   /* SMALL PHONE: eyebrow text size */
   .eyebrow { font-size: 14px !important; }
   /* SMALL PHONE: How We Work step & card titles */
-  .hww-step-title { font-size: 15px !important; }
+  .hww-step-title { font-size: 16px !important; }
   .hww-card-title { font-size: 15px !important; }
   /* SMALL PHONE: Our Role */
   .or-hero { padding-bottom: 28px !important; }
@@ -1360,7 +1361,7 @@ h1, h2, h3, h4 {
   .tl2-title { font-size: 21px !important; }
 
   /* How We Work step number */
-  .hww-step-num { font-size: 26px !important; }
+  .hww-step-num { font-size: 24px !important; }
 }
 
 /* === SMALL PHONE (max-width: 480px) === */
@@ -1409,7 +1410,7 @@ h1, h2, h3, h4 {
 
   /* How We Work step number + indent (10px, independent of the mobile value) */
   .hww-step { grid-template-columns: 10px 2px 1fr; gap: 0 12px; }
-  .hww-step-num { font-size: 24px !important; }
+  .hww-step-num { font-size: 22px !important; }
 }
 
 /* ================================================================
@@ -1573,8 +1574,9 @@ h1, h2, h3, h4 {
 @media (max-width: 480px) { .gi-section-h2 { font-size: 25px !important; } }
 
 /* HWW step body text — 1px smaller than body-text at each breakpoint */
-@media (min-width: 768px) and (max-width: 1024px) { .hww-step-body { font-size: 16px !important; } }
-@media (max-width: 768px) { .hww-step-body { font-size: 15px !important; } }
+@media (min-width: 768px) and (max-width: 1024px) { .hww-step-body { font-size: 17px !important; } }
+@media (max-width: 768px) { .hww-step-body { font-size: 16px !important; } }
+@media (max-width: 480px) { .hww-step-body { font-size: 15px !important; } }
 
 /* HWW partnering card body text — 1px smaller than body-text at each breakpoint */
 @media (min-width: 768px) and (max-width: 1024px) { .hww-card-desc { font-size: 16px !important; } }
@@ -1592,4 +1594,9 @@ h1, h2, h3, h4 {
   .or-cta-btn-outline { font-size: 14px !important; }
   .cta-buttons a { font-size: 14px !important; }
 }
+
+/* Get Involved icon responsive */
+@media (min-width: 768px) and (max-width: 1024px) { .gi-card-icon svg { width: 27px !important; height: 27px !important; } }
+@media (max-width: 768px) { .gi-card-icon svg { width: 26px !important; height: 26px !important; } }
+@media (max-width: 480px) { .gi-card-icon svg { width: 25px !important; height: 25px !important; } }
 

@@ -175,7 +175,7 @@ function CoordinationSection({ lang }: { lang: Lang }) {
               <h3 className="hww-step-title" style={{ color: '#0A1128', fontSize: '18px', fontWeight: 600, margin: '0 0 12px 0', fontFamily: 'Georgia, serif' }}>
                 {step.title}
               </h3>
-              <p className="body-text hww-step-body" style={{ color: '#4A4A4A', fontSize: '17px', lineHeight: 1.8, margin: 0 }}>
+              <p className="body-text hww-step-body" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.8, margin: 0 }}>
                 {step.body}
               </p>
             </div>

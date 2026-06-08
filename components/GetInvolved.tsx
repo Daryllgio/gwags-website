@@ -19,7 +19,7 @@ export default function GetInvolved({ lang }: GetInvolvedProps) {
         <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>
           {g.eyebrow}
         </p>
-        <h2 className="gi-section-h2" style={{ color: '#0A1128', fontSize: '28px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, maxWidth: '500px', marginBottom: g.body ? '14px' : '52px' }}>
+        <h2 style={{ color: '#0A1128', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, maxWidth: '500px', marginBottom: g.body ? '14px' : '52px' }}>
           {g.h2}
         </h2>
         {g.body && (
@@ -48,7 +48,7 @@ export default function GetInvolved({ lang }: GetInvolvedProps) {
                     height: '100%',
                   }}
                 >
-                  <div style={{ marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
+                  <div className="gi-card-icon" style={{ marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
                     <Icon size={28} color="#D4AF37" />
                   </div>
                   <div className="gi-card-title" style={{ color: '#0A1128', fontSize: '18px', fontWeight: 500, marginBottom: '10px' }}>
