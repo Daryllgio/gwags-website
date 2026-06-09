@@ -1303,8 +1303,8 @@ h1, h2, h3, h4 {
   .lp-heading       { font-size: 32px !important; }
   .lp-section-title { font-size: 25px !important; }
   .lp-subtitle      { font-size: 17px !important; }
-  .lp-person-name   { font-size: 21px !important; }
-  .lp-person-role   { font-size: 21px !important; }
+  .lp-person-name   { font-size: 22px !important; }
+  .lp-person-role   { font-size: 22px !important; }
   .lp-person-bio  { font-size: 17px !important; }
   .view-profile-link { font-size: 17px !important; }
 
@@ -1344,8 +1344,8 @@ h1, h2, h3, h4 {
   .lp-section-title { font-size: 24px !important; }
   .lp-subtitle      { font-size: 16px !important; }
   .lp-container   { padding-top: 48px !important; }
-  .lp-person-name { font-size: 20px !important; }
-  .lp-person-role { font-size: 20px !important; }
+  .lp-person-name { font-size: 21px !important; }
+  .lp-person-role { font-size: 21px !important; }
   .lp-person-bio  { font-size: 16px !important; }
   .view-profile-link { font-size: 16px !important; }
   .lp-header      { gap: 16px !important; }
@@ -1394,8 +1394,8 @@ h1, h2, h3, h4 {
   .lp-section-title { font-size: 23px !important; }
   .lp-subtitle    { font-size: 15px !important; }
   .lp-container   { padding-top: 36px !important; }
-  .lp-person-name { font-size: 19px !important; }
-  .lp-person-role { font-size: 19px !important; }
+  .lp-person-name { font-size: 20px !important; }
+  .lp-person-role { font-size: 20px !important; }
   .lp-person-bio  { font-size: 15px !important; }
   .view-profile-link { font-size: 15px !important; }
   .lp-header      { gap: 14px !important; }
