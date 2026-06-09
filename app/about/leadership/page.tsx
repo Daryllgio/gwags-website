@@ -97,8 +97,8 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
-      className="font-medium uppercase mb-8 lp-section-title"
-      style={{ color: NAVY, fontSize: '30px', fontFamily: 'Georgia, "Times New Roman", serif' }}
+      className="font-semibold uppercase mb-8 lp-section-title"
+      style={{ color: NAVY, fontSize: '28px', fontFamily: 'Georgia, "Times New Roman", serif' }}
     >
       {children}
     </h2>
@@ -229,7 +229,7 @@ export default function LeadershipPage() {
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10 lp-header">
           <h1
-            className="font-medium uppercase leading-tight lp-heading"
+            className="font-semibold uppercase leading-tight lp-heading"
             style={{ color: NAVY, fontSize: '40px', fontFamily: 'Georgia, "Times New Roman", serif' }}
           >
             Leadership
