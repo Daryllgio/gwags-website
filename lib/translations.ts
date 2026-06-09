@@ -365,7 +365,7 @@ export const t = {
         mission: {
           label: 'OUR MISSION',
           main: 'To accelerate and amplify global impact by building the institutional infrastructure needed by organizations committed to addressing societal challenges.',
-          expansion: 'Gwags pursues this mission on two fronts: through its own portfolio of initiatives across sectors including education, health, and community development; and institutionally, by structuring and supporting the organizations within its network.',
+          expansion: 'Gwags pursues this mission on two fronts: through its portfolio of initiatives across different sectors including education and health; and institutionally by structuring and supporting the organizations within its network.',
         },
       },
       convictions: {
@@ -766,7 +766,7 @@ export const t = {
         mission: {
           label: 'NOTRE MISSION',
           main: "Accélérer et amplifier l'impact mondial en construisant l'infrastructure institutionnelle dont ont besoin les organisations engagées à relever les défis sociétaux.",
-          expansion: "Gwags poursuit cette mission sur deux fronts: à travers son propre portefeuille d'initiatives dans des secteurs incluant l'éducation, la santé et le développement communautaire; et institutionnellement, en structurant et soutenant les organisations au sein de son réseau.",
+          expansion: "Gwags poursuit cette mission sur deux fronts: à travers son portefeuille d'initiatives dans différents secteurs incluant l'éducation et la santé; et institutionnellement en structurant et soutenant les organisations au sein de son réseau.",
         },
       },
       convictions: {
