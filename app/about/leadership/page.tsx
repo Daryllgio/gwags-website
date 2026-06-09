@@ -70,10 +70,10 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: 
       </div>
 
       {/* Name */}
-      <p className="mt-3 lp-person-name" style={{ color: NAVY, fontSize: '22px', fontWeight: 600 }}>{name}</p>
+      <p className="mt-3 lp-person-name" style={{ color: NAVY, fontSize: '21px', fontWeight: 600 }}>{name}</p>
 
       {/* Role */}
-      <p className="lp-person-role" style={{ color: '#6B6B6B', fontSize: '22px', fontWeight: 400, marginTop: '1px' }}>{role}</p>
+      <p className="lp-person-role" style={{ color: '#6B6B6B', fontSize: '21px', fontWeight: 400, marginTop: '1px' }}>{role}</p>
 
       {/* Bio */}
       {showBio && bio && (
