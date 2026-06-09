@@ -1,33 +1,11 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type * as d3Type from 'd3'
 
 /* ── Constants ── */
 const PRIMARY_URL  = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_land.json'
 const FALLBACK_URL = 'https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson'
-const TYPEWRITER_TEXT = 'Gwags and its growing network of organizations, working across different sectors to address the societal challenges communities face.'
-
-/* ── SDG data ── */
-const SDG_DATA = [
-  { num: 1,  name: 'No Poverty',             color: '#E5243B' },
-  { num: 2,  name: 'Zero Hunger',             color: '#DDA63A' },
-  { num: 3,  name: 'Good Health',             color: '#4C9F38' },
-  { num: 4,  name: 'Quality Education',       color: '#C5192D' },
-  { num: 5,  name: 'Gender Equality',         color: '#FF3A21' },
-  { num: 6,  name: 'Clean Water',             color: '#26BDE2' },
-  { num: 7,  name: 'Affordable Energy',       color: '#FCC30B' },
-  { num: 8,  name: 'Decent Work',             color: '#A21942' },
-  { num: 9,  name: 'Industry & Innovation',   color: '#FD6925' },
-  { num: 10, name: 'Reduced Inequalities',    color: '#DD1367' },
-  { num: 11, name: 'Sustainable Cities',      color: '#FD9D24' },
-  { num: 12, name: 'Responsible Consumption', color: '#BF8B2E' },
-  { num: 13, name: 'Climate Action',          color: '#3F7E44' },
-  { num: 14, name: 'Life Below Water',        color: '#0A97D9' },
-  { num: 15, name: 'Life on Land',            color: '#56C02B' },
-  { num: 16, name: 'Peace & Justice',         color: '#00689D' },
-  { num: 17, name: 'Partnerships',            color: '#19486A' },
-]
 
 /* ── Canvas size helper ── */
 function getCanvasSize(): number {
@@ -37,144 +15,9 @@ function getCanvasSize(): number {
   return 400
 }
 
-/* ── Flat world map for overlay (SVG) ── */
 interface GeoData {
   type: string
   features: d3Type.GeoPermissibleObjects[]
-}
-
-function FlatWorldMap({ geoData }: { geoData: GeoData }) {
-  const [paths,  setPaths]  = useState<string[]>([])
-  const [gPath,  setGPath]  = useState('')
-  const W = 1000, H = 500
-
-  useEffect(() => {
-    import('d3').then(d3 => {
-      const projection = d3.geoEquirectangular().fitSize([W, H], { type: 'Sphere' })
-      const pathGen    = d3.geoPath().projection(projection)
-      const graticule  = d3.geoGraticule()
-      setGPath(pathGen(graticule() as d3Type.GeoPermissibleObjects) ?? '')
-      setPaths(geoData.features.map(f => pathGen(f) ?? ''))
-    })
-  }, [geoData])
-
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block' }}>
-      <path d={gPath} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={0.3} />
-      {paths.map((d, i) => (
-        <path key={i} d={d} fill="rgba(255,255,255,0.15)" stroke="white" strokeWidth={0.5} />
-      ))}
-    </svg>
-  )
-}
-
-/* ── SDG grid ── */
-function SDGGrid() {
-  return (
-    <div className="sdg-grid">
-      {SDG_DATA.map(sdg => (
-        <div
-          key={sdg.num}
-          className="sdg-square"
-          style={{
-            background: sdg.color, borderRadius: '8px',
-            display: 'flex', flexDirection: 'column',
-            alignItems: 'center', justifyContent: 'center',
-            padding: '4px 2px',
-          }}
-        >
-          <span style={{ color: 'white', fontWeight: 700, fontSize: '18px', lineHeight: 1.2 }}>{sdg.num}</span>
-          <span style={{ color: 'white', fontSize: '10px', textAlign: 'center', lineHeight: 1.2, marginTop: '2px' }}>{sdg.name}</span>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-/* ── Overlay ── */
-interface OverlayProps {
-  geoData: GeoData
-  onClose: () => void
-  closing: boolean
-  typewriterText: string
-}
-
-function GlobeOverlay({ geoData, onClose, closing, typewriterText }: OverlayProps) {
-  const [mapVisible, setMapVisible] = useState(false)
-  const [sdgVisible, setSdgVisible] = useState(false)
-
-  useEffect(() => {
-    const t1 = setTimeout(() => setMapVisible(true), 30)
-    const t2 = setTimeout(() => setSdgVisible(true), 300)
-    return () => { clearTimeout(t1); clearTimeout(t2) }
-  }, [])
-
-  return (
-    <div
-      style={{
-        position: 'fixed', top: 0, left: 0,
-        width: '100vw', height: '100vh',
-        background: 'rgba(0,0,0,0.93)',
-        zIndex: 9999, overflowY: 'auto',
-        display: 'flex', flexDirection: 'column', alignItems: 'center',
-        padding: '40px 20px',
-        opacity: closing ? 0 : 1,
-        transition: closing ? 'opacity 0.3s ease' : 'none',
-        animation: closing ? 'none' : 'globeFadeIn 0.3s ease forwards',
-      }}
-      onClick={onClose}
-    >
-      <style>{`
-        @keyframes globeFadeIn { from { opacity: 0 } to { opacity: 1 } }
-        @keyframes caretBlink  { 0%,100% { opacity: 1 } 50% { opacity: 0 } }
-      `}</style>
-
-      <button
-        onClick={(e) => { e.stopPropagation(); onClose() }}
-        style={{
-          position: 'fixed', top: '24px', right: '32px',
-          color: 'white', fontSize: '32px', lineHeight: 1,
-          cursor: 'pointer', background: 'none', border: 'none',
-          zIndex: 1,
-        }}
-        aria-label="Close"
-      >×</button>
-
-      {/* Stop click from bubbling for inner content */}
-      <div
-        onClick={(e) => e.stopPropagation()}
-        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
-      >
-        {/* Flat map */}
-        <div
-          className="overlay-map"
-          style={{ opacity: mapVisible ? 1 : 0, transition: 'opacity 0.4s ease' }}
-        >
-          <FlatWorldMap geoData={geoData} />
-        </div>
-
-        {/* SDG grid */}
-        <div style={{ opacity: sdgVisible ? 1 : 0, transition: 'opacity 0.3s ease' }}>
-          <SDGGrid />
-        </div>
-
-        {/* Typewriter */}
-        <p
-          className="typewriter-text"
-          style={{
-            color: 'white', textAlign: 'center',
-            maxWidth: '700px', margin: '40px auto 0',
-            lineHeight: 1.75,
-          }}
-        >
-          {typewriterText}
-          {typewriterText.length < TYPEWRITER_TEXT.length && (
-            <span style={{ animation: 'caretBlink 0.7s infinite', marginLeft: '1px' }}>|</span>
-          )}
-        </p>
-      </div>
-    </div>
-  )
 }
 
 /* ── Main component ── */
@@ -186,26 +29,8 @@ export default function InteractiveGlobe() {
   const autoRotateRef  = useRef<boolean>(true)
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout>>()
 
-  const [loading,    setLoading]    = useState(true)
-  const [loadError,  setLoadError]  = useState(false)
-  const [overlayOpen, setOverlayOpen] = useState(false)
-  const [closing,     setClosing]     = useState(false)
-  const [typewriterText, setTypewriterText] = useState('')
-
-  const openOverlay = useCallback(() => {
-    autoRotateRef.current = false
-    setOverlayOpen(true)
-  }, [])
-
-  const closeOverlay = useCallback(() => {
-    setClosing(true)
-    setTimeout(() => {
-      setOverlayOpen(false)
-      setClosing(false)
-      setTypewriterText('')
-      autoRotateRef.current = true
-    }, 300)
-  }, [])
+  const [loading,   setLoading]   = useState(true)
+  const [loadError, setLoadError] = useState(false)
 
   /* ── GeoJSON fetch with fallback ── */
   useEffect(() => {
@@ -270,7 +95,7 @@ export default function InteractiveGlobe() {
       const pathGen       = d3.geoPath().projection(projection).context(ctx)
       const graticuleData = d3.geoGraticule()() as d3Type.GeoPermissibleObjects
       const sphere        = { type: 'Sphere' as const }
-      const rotateArr: [number, number] = [0, -20]  // reused — avoid per-frame allocation
+      const rotateArr: [number, number] = [0, -20]
 
       let currentDrawSize = size
 
@@ -315,7 +140,7 @@ export default function InteractiveGlobe() {
 
       /* Time-based rotation at native fps — no throttle, no frame skipping.
          Cap delta at 100ms so tab-refocus doesn't cause a giant jump. */
-      const DEG_PER_MS = 9 / 1000
+      const DEG_PER_MS = 13.5 / 1000
       let lastTime = 0
 
       function animate(time: number) {
@@ -328,18 +153,15 @@ export default function InteractiveGlobe() {
       }
       animFrameRef.current = requestAnimationFrame(animate)
 
-      /* ── Drag / click handling ── */
-      let isDragging  = false
-      let startX = 0, startY = 0
+      /* ── Drag handling ── */
+      let isDragging = false
+      let startX = 0
       let startRot = 0
-      let movedDist = 0
 
       const onPointerDown = (e: PointerEvent) => {
         isDragging  = true
         startX      = e.clientX
-        startY      = e.clientY
         startRot    = rotationRef.current
-        movedDist   = 0
         clearTimeout(resumeTimerRef.current)
         autoRotateRef.current = false
         canvas.style.cursor = 'grabbing'
@@ -349,8 +171,6 @@ export default function InteractiveGlobe() {
       const onPointerMove = (e: PointerEvent) => {
         if (!isDragging) return
         const dx = e.clientX - startX
-        const dy = e.clientY - startY
-        movedDist = Math.sqrt(dx * dx + dy * dy)
         rotationRef.current = startRot + dx * 0.5
       }
 
@@ -358,22 +178,16 @@ export default function InteractiveGlobe() {
         if (!isDragging) return
         isDragging = false
         canvas.style.cursor = 'grab'
-        if (movedDist < 5) {
-          openOverlay()
-          return
-        }
         resumeTimerRef.current = setTimeout(() => {
           autoRotateRef.current = true
-        }, 1500)
+        }, 500)
       }
 
       /* Touch events */
       const onTouchStart = (e: TouchEvent) => {
         isDragging = true
         startX   = e.touches[0].clientX
-        startY   = e.touches[0].clientY
         startRot = rotationRef.current
-        movedDist = 0
         clearTimeout(resumeTimerRef.current)
         autoRotateRef.current = false
       }
@@ -381,16 +195,13 @@ export default function InteractiveGlobe() {
       const onTouchMove = (e: TouchEvent) => {
         if (!isDragging) return
         const dx = e.touches[0].clientX - startX
-        const dy = e.touches[0].clientY - startY
-        movedDist = Math.sqrt(dx * dx + dy * dy)
         rotationRef.current = startRot + dx * 0.5
       }
 
       const onTouchEnd = () => {
         if (!isDragging) return
         isDragging = false
-        if (movedDist < 5) { openOverlay(); return }
-        resumeTimerRef.current = setTimeout(() => { autoRotateRef.current = true }, 1500)
+        resumeTimerRef.current = setTimeout(() => { autoRotateRef.current = true }, 500)
       }
 
       /* Resize */
@@ -433,33 +244,7 @@ export default function InteractiveGlobe() {
       clearTimeout(resumeTimerRef.current)
       innerCleanup?.()
     }
-  }, [loading, openOverlay])
-
-  /* ── Typewriter ── */
-  useEffect(() => {
-    if (!overlayOpen) return
-    let i = 0
-    let iv: ReturnType<typeof setInterval>
-    const t = setTimeout(() => {
-      iv = setInterval(() => {
-        i++
-        if (i <= TYPEWRITER_TEXT.length) {
-          setTypewriterText(TYPEWRITER_TEXT.slice(0, i))
-        } else {
-          clearInterval(iv)
-        }
-      }, 40)
-    }, 800)
-    return () => { clearTimeout(t); clearInterval(iv) }
-  }, [overlayOpen])
-
-  /* ── Escape key ── */
-  useEffect(() => {
-    if (!overlayOpen) return
-    const fn = (e: KeyboardEvent) => { if (e.key === 'Escape') closeOverlay() }
-    window.addEventListener('keydown', fn)
-    return () => window.removeEventListener('keydown', fn)
-  }, [overlayOpen, closeOverlay])
+  }, [loading])
 
   /* ── Render ── */
   if (loadError) {
@@ -471,23 +256,12 @@ export default function InteractiveGlobe() {
   }
 
   return (
-    <>
-      <div className="globe-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        {loading ? (
-          <span style={{ color: '#0A1128', fontSize: '14px', opacity: 0.4 }}>Loading...</span>
-        ) : (
-          <canvas ref={canvasRef} />
-        )}
-      </div>
-
-      {overlayOpen && geoDataRef.current && (
-        <GlobeOverlay
-          geoData={geoDataRef.current}
-          onClose={closeOverlay}
-          closing={closing}
-          typewriterText={typewriterText}
-        />
+    <div className="globe-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      {loading ? (
+        <span style={{ color: '#0A1128', fontSize: '14px', opacity: 0.4 }}>Loading...</span>
+      ) : (
+        <canvas ref={canvasRef} />
       )}
-    </>
+    </div>
   )
 }
