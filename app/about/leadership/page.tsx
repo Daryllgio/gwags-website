@@ -73,7 +73,7 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: 
       <p className="mt-3 lp-person-name" style={{ color: NAVY, fontSize: '22px', fontWeight: 600 }}>{name}</p>
 
       {/* Role */}
-      <p className="mt-1 lp-person-role" style={{ color: '#6B6B6B', fontSize: '22px', fontWeight: 400 }}>{role}</p>
+      <p className="lp-person-role" style={{ color: '#6B6B6B', fontSize: '22px', fontWeight: 400, marginTop: '2px' }}>{role}</p>
 
       {/* Bio */}
       {showBio && bio && (
@@ -85,7 +85,7 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: 
         <a
           href={href}
           className="mt-3 inline-block view-profile-link"
-          style={{ color: NAVY, fontSize: '17px', textDecoration: 'none' }}
+          style={{ color: NAVY, fontSize: '17px', fontWeight: 500, textDecoration: 'none' }}
         >
           View profile
         </a>
@@ -97,8 +97,8 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
-      className="font-bold uppercase mb-8 lp-section-title"
-      style={{ color: NAVY, fontSize: '22px', fontFamily: 'Georgia, "Times New Roman", serif' }}
+      className="font-medium uppercase mb-8 lp-section-title"
+      style={{ color: NAVY, fontSize: '30px', fontFamily: 'Georgia, "Times New Roman", serif' }}
     >
       {children}
     </h2>
@@ -229,7 +229,7 @@ export default function LeadershipPage() {
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10 lp-header">
           <h1
-            className="font-bold uppercase leading-tight lp-heading"
+            className="font-medium uppercase leading-tight lp-heading"
             style={{ color: NAVY, fontSize: '40px', fontFamily: 'Georgia, "Times New Roman", serif' }}
           >
             Leadership
@@ -270,7 +270,7 @@ export default function LeadershipPage() {
                 border: 'none',
                 borderRadius: '6px',
                 padding: '8px 16px',
-                fontSize: '16px',
+                fontSize: '15px',
                 fontWeight: 500,
                 cursor: 'pointer',
                 flexShrink: 0,
