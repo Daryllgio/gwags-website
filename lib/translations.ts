@@ -359,7 +359,7 @@ export const t = {
       visionMission: {
         vision: {
           label: 'OUR VISION',
-          main: 'To build the most impactful international infrastructure dedicated to accelerating, structuring, and coordinating the initiatives and organizations transforming societies sustainably.',
+          main: 'To build the most impactful international infrastructure dedicated to structuring and supporting the organizations transforming societies sustainably.',
           expansion: 'It is a vision for the ecosystem Gwags is building. One where organizations committed to impact do not struggle alone for resources, credibility, or direction, and where the infrastructure to support their growth already exists.',
         },
         mission: {
@@ -760,7 +760,7 @@ export const t = {
       visionMission: {
         vision: {
           label: 'NOTRE VISION',
-          main: "Construire l'infrastructure internationale la plus impactante dédiée à accélérer, structurer et coordonner les initiatives et organisations qui transforment les sociétés de manière durable.",
+          main: "Construire l'infrastructure internationale la plus impactante dédiée à structurer et soutenir les organisations qui transforment les sociétés de manière durable.",
           expansion: "C'est une vision pour l'écosystème que Gwags construit. Un monde où les organisations engagées dans l'impact ne luttent pas seules pour les ressources, la crédibilité ou la direction, et où l'infrastructure pour soutenir leur croissance existe déjà.",
         },
         mission: {
