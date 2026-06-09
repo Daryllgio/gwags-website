@@ -1054,7 +1054,7 @@ h1, h2, h3, h4 {
   }
   /* MOBILE: Our Role */
   .or-vm-main { font-size: 17px !important; }
-  .or-conviction-title { font-size: 18px !important; }
+  .or-conviction-title { font-size: 17px !important; }
 
   .or-narrative {
     padding: 60px 24px;
@@ -1178,7 +1178,7 @@ h1, h2, h3, h4 {
   .or-hero { padding-bottom: 48px !important; }
   .or-hero-img { height: 500px !important; margin-top: 48px !important; }
   .or-vm-main { font-size: 18px !important; }
-  .or-conviction-title { font-size: 20px !important; }
+  .or-conviction-title { font-size: 18px !important; }
 }
 
 /* === MOBILE BREAKPOINT (480px - 768px) === */
@@ -1231,8 +1231,8 @@ h1, h2, h3, h4 {
   /* SMALL PHONE: Our Role */
   .or-hero { padding-bottom: 28px !important; }
   .or-hero-img { margin-top: 28px !important; }
-  .or-vm-main { font-size: 17px !important; }
-  .or-conviction-title { font-size: 18px !important; }
+  .or-vm-main { font-size: 16px !important; }
+  .or-conviction-title { font-size: 16px !important; }
   /* SMALL PHONE: section padding — 25px horizontal gives ≈325px cards at 375px viewport */
   .site-section { padding: 36px 25px !important; }
   /* SMALL PHONE: hero adjustments */

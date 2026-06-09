@@ -375,7 +375,7 @@ export const t = {
         items: [
           {
             heading: 'Impact is systemic.',
-            body: 'The problems that affect communities rarely exist in isolation. Health, education, economic opportunity, and reduced inequalities are deeply interconnected. Progress in one area without attention to the others produces limited and often temporary results. That is why Gwags works across sectors, both through its own initiatives and through the organizations within its network, each addressing different dimensions of the same interconnected challenges.',
+            body: 'The problems that affect our societies rarely exist in isolation. Progress in one area without attention to the others produces limited and often temporary results. That is why Gwags works across sectors, both through its own initiatives and through the organizations within its network, each addressing different dimensions of the same interconnected challenges.',
           },
           {
             heading: 'Structure is what separates intention from impact.',
@@ -776,7 +776,7 @@ export const t = {
         items: [
           {
             heading: "L'impact est systémique.",
-            body: "Les problèmes qui affectent les communautés existent rarement de manière isolée. La santé, l'éducation, les opportunités économiques et la réduction des inégalités sont profondément interconnectées. Les progrès dans un domaine sans attention aux autres produisent des résultats limités et souvent temporaires. C'est pourquoi Gwags travaille dans plusieurs secteurs, à la fois à travers ses propres initiatives et à travers les organisations au sein de son réseau, chacune abordant différentes dimensions des mêmes défis interconnectés.",
+            body: "Les problèmes qui affectent nos sociétés existent rarement de manière isolée. Les progrès dans un domaine sans attention aux autres produisent des résultats limités et souvent temporaires. C'est pourquoi Gwags travaille dans plusieurs secteurs, à la fois à travers ses propres initiatives et à travers les organisations au sein de son réseau, chacune abordant différentes dimensions des mêmes défis interconnectés.",
           },
           {
             heading: "La structure est ce qui sépare l'intention de l'impact.",
