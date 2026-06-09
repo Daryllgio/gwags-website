@@ -364,8 +364,8 @@ export const t = {
         },
         mission: {
           label: 'OUR MISSION',
-          main: 'To accelerate and amplify global impact by building the institutional infrastructure needed by organizations committed to human development, social innovation, and the sustainable transformation of communities.',
-          expansion: 'Gwags pursues this mission on two fronts: directly, through its own portfolio of initiatives across education, health, and community development; and institutionally, by coordinating, supporting, and strengthening the organizations within its network.',
+          main: 'To accelerate and amplify global impact by building the institutional infrastructure needed by organizations committed to addressing the challenges their societies face.',
+          expansion: 'Gwags pursues this mission on two fronts: through its own portfolio of initiatives across sectors including education, health, and community development; and institutionally, by structuring and supporting the organizations within its network.',
         },
       },
       convictions: {
@@ -765,8 +765,8 @@ export const t = {
         },
         mission: {
           label: 'NOTRE MISSION',
-          main: "Accélérer et amplifier l'impact mondial en construisant l'infrastructure institutionnelle dont ont besoin les organisations engagées dans le développement humain, l'innovation sociale et la transformation durable des communautés.",
-          expansion: "Gwags poursuit cette mission sur deux fronts: directement, à travers son propre portefeuille d'initiatives dans l'éducation, la santé et le développement communautaire; et institutionnellement, en coordonnant, soutenant et renforçant les organisations au sein de son réseau.",
+          main: "Accélérer et amplifier l'impact mondial en construisant l'infrastructure institutionnelle dont ont besoin les organisations engagées à relever les défis auxquels leurs sociétés font face.",
+          expansion: "Gwags poursuit cette mission sur deux fronts: à travers son propre portefeuille d'initiatives dans des secteurs incluant l'éducation, la santé et le développement communautaire; et institutionnellement, en structurant et soutenant les organisations au sein de son réseau.",
         },
       },
       convictions: {
