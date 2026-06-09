@@ -73,7 +73,7 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: 
       <p className="mt-3 lp-person-name" style={{ color: NAVY, fontSize: '22px', fontWeight: 600 }}>{name}</p>
 
       {/* Role */}
-      <p className="mt-1 lp-person-role" style={{ color: '#3D3D3D', fontSize: '22px', fontWeight: 200 }}>{role}</p>
+      <p className="mt-1 lp-person-role" style={{ color: '#6B6B6B', fontSize: '22px', fontWeight: 400 }}>{role}</p>
 
       {/* Bio */}
       {showBio && bio && (
@@ -87,7 +87,7 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: 
           className="mt-3 inline-block view-profile-link"
           style={{ color: NAVY, fontSize: '17px', textDecoration: 'none' }}
         >
-          View profile →
+          View profile
         </a>
       )}
     </div>
@@ -97,8 +97,8 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
-      className="font-black uppercase mb-8 lp-section-title"
-      style={{ color: NAVY, fontSize: '30px', fontFamily: 'Georgia, "Times New Roman", serif' }}
+      className="font-bold uppercase mb-8 lp-section-title"
+      style={{ color: NAVY, fontSize: '22px', fontFamily: 'Georgia, "Times New Roman", serif' }}
     >
       {children}
     </h2>
@@ -122,12 +122,12 @@ function TeamDropdown({ value, onChange }: { value: string; onChange: (v: string
     <div ref={ref} className="relative inline-block" style={{ minWidth: '200px' }}>
       <button
         onClick={() => setOpen(o => !o)}
-        className="flex items-center justify-between w-full px-4 py-2 rounded-lg text-sm"
+        className="lp-dropdown-trigger flex items-center justify-between w-full px-4 py-2 rounded-lg"
         style={{
           border: `1px solid #d1d5db`,
           color: NAVY,
           background: '#ffffff',
-          fontSize: '15px',
+          fontSize: '16px',
         }}
       >
         <span>{value}</span>
@@ -148,9 +148,9 @@ function TeamDropdown({ value, onChange }: { value: string; onChange: (v: string
             <button
               key={opt}
               onClick={() => { onChange(opt); setOpen(false) }}
-              className="block w-full text-left px-4 py-2"
+              className="lp-dropdown-option block w-full text-left px-4 py-2"
               style={{
-                fontSize: '15px',
+                fontSize: '16px',
                 color: opt === value ? GOLD : NAVY,
                 background: opt === value ? '#f9f7f0' : '#ffffff',
               }}
@@ -229,7 +229,7 @@ export default function LeadershipPage() {
         {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10 lp-header">
           <h1
-            className="font-black uppercase leading-tight lp-heading"
+            className="font-bold uppercase leading-tight lp-heading"
             style={{ color: NAVY, fontSize: '40px', fontFamily: 'Georgia, "Times New Roman", serif' }}
           >
             Leadership
@@ -250,25 +250,27 @@ export default function LeadershipPage() {
               placeholder="Search by name or role..."
               value={search}
               onChange={e => setSearch(e.target.value)}
+              className="lp-search-input"
               style={{
                 flex: 1,
                 border: 'none',
                 borderBottom: `1.5px solid rgba(10,17,40,0.25)`,
                 paddingBottom: '8px',
-                fontSize: '15px',
+                fontSize: '16px',
                 outline: 'none',
                 background: 'transparent',
                 color: NAVY,
               }}
             />
             <button
+              className="lp-search-btn"
               style={{
                 background: NAVY,
                 color: '#ffffff',
                 border: 'none',
                 borderRadius: '6px',
                 padding: '8px 16px',
-                fontSize: '14px',
+                fontSize: '16px',
                 fontWeight: 500,
                 cursor: 'pointer',
                 flexShrink: 0,
@@ -301,7 +303,7 @@ export default function LeadershipPage() {
           <section className="mb-16">
             <SectionTitle>Executive Team</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredExec.map(p => <PersonCard key={p.href} {...p} />)}
+              {filteredExec.map(p => <PersonCard key={p.href} {...p} showLink={false} />)}
             </div>
           </section>
         )}
@@ -312,7 +314,7 @@ export default function LeadershipPage() {
             <SectionTitle>Historical Leadership</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredHistorical.map(p => (
-                <PersonCard key={p.name} name={p.name} role={p.role} bio="" href={p.href} showBio={false} showLink={true} />
+                <PersonCard key={p.name} name={p.name} role={p.role} bio="" href={p.href} showBio={false} showLink={false} />
               ))}
             </div>
           </section>
