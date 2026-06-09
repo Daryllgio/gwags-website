@@ -32,7 +32,7 @@ function HeroSection({ lang }: { lang: Lang }) {
         <p className="eyebrow" style={{ color: '#0A1128', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 24px 0' }}>
           {p.eyebrow}
         </p>
-        <h1 className="or-hero-h1" style={{ color: '#0A1128', fontSize: '46px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.18, margin: '0 0 28px 0' }}>
+        <h1 className="or-hero-h1" style={{ color: '#0A1128', fontSize: '42px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.18, margin: '0 0 28px 0' }}>
           {p.h1}
         </h1>
         <p className="body-text" style={{ color: '#0A1128', fontSize: '18px', lineHeight: 1.8, maxWidth: '600px', margin: 0 }}>

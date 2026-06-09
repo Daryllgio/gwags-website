@@ -1044,7 +1044,7 @@ h1, h2, h3, h4 {
   }
 
   .or-hero-h1 {
-    font-size: 28px !important;
+    font-size: 30px !important;
   }
 
   .or-hero-img {
@@ -1231,6 +1231,7 @@ h1, h2, h3, h4 {
   /* SMALL PHONE: Our Role */
   .or-hero { padding-bottom: 28px !important; }
   .or-hero-img { margin-top: 28px !important; }
+  .or-hero-h1 { font-size: 28px !important; }
   .or-vm-main { font-size: 16px !important; }
   .or-conviction-title { font-size: 16px !important; }
   /* SMALL PHONE: section padding — 25px horizontal gives ≈325px cards at 375px viewport */
