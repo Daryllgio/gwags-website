@@ -391,7 +391,7 @@ export const t = {
         eyebrow: 'LOOKING AHEAD',
         heading: 'What the world looks like when we succeed.',
         paragraphs: [
-          'When Gwags achieves what it is setting out to build, the landscape will look fundamentally different. Organizations will no longer face the same structural barriers alone. They will have access to governance support, international networks, funding pathways, and the institutional credibility needed to attract investment and partnerships. The infrastructure that most organizations spend years trying to build independently will already exist within the network they are part of.',
+          'Organizations will no longer face the same structural barriers alone. They will have access to governance support, international networks, funding pathways, and the institutional credibility needed to attract investment and partnerships. The infrastructure that most organizations spend years trying to build independently will already exist within the network they are part of.',
           'The measure of our success will be visible in the organizations that scaled because of the support they received; in the communities that benefited because an affiliated organization had the structure and resources needed to operate; and in the initiatives that lasted because an institution was built around them. That is what Gwags is working toward.',
         ],
       },
@@ -792,7 +792,7 @@ export const t = {
         eyebrow: "REGARDER VERS L'AVENIR",
         heading: 'À quoi ressemble le monde quand nous réussissons.',
         paragraphs: [
-          "Quand Gwags atteindra ce qu'il s'est fixé comme objectif, le paysage sera fondamentalement différent. Les organisations ne feront plus face seules aux mêmes barrières structurelles. Elles auront accès au soutien en gouvernance, aux réseaux internationaux, aux voies de financement et à la crédibilité institutionnelle nécessaire pour attirer des investissements et des partenariats. L'infrastructure que la plupart des organisations passent des années à construire de manière indépendante existera déjà au sein du réseau dont elles font partie.",
+          "Les organisations ne feront plus face seules aux mêmes barrières structurelles. Elles auront accès au soutien en gouvernance, aux réseaux internationaux, aux voies de financement et à la crédibilité institutionnelle nécessaire pour attirer des investissements et des partenariats. L'infrastructure que la plupart des organisations passent des années à construire de manière indépendante existera déjà au sein du réseau dont elles font partie.",
           "La mesure de notre succès sera visible dans les organisations qui ont grandi grâce au soutien reçu; dans les communautés qui ont bénéficié parce qu'une organisation affiliée avait la structure et les ressources nécessaires pour opérer; et dans les initiatives qui ont duré parce qu'une institution a été construite autour d'elles. C'est vers cela que Gwags travaille.",
         ],
       },
