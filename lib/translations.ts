@@ -383,7 +383,7 @@ export const t = {
           },
           {
             heading: 'Credibility is earned through action, not positioning.',
-            body: 'Gwags holds itself to the same standards it sets for the organizations within its network. Transparent governance, measurable outcomes, and clear communication about operations are non-negotiable. Our credibility is built through the quality of our programs, the integrity of our partnerships, and the consistency of our follow-through. That is what makes affiliation with Gwags meaningful.',
+            body: 'Gwags holds itself to the same standards it sets for the organizations within its network. Transparent governance, measurable outcomes, and clear communication about operations are expected at every level. Our credibility is built through the quality of our programs and the consistency of our follow-through. That is what makes affiliation with Gwags meaningful.',
           },
         ],
       },
@@ -784,7 +784,7 @@ export const t = {
           },
           {
             heading: "La crédibilité se gagne par l'action, pas par le positionnement.",
-            body: "Gwags s'impose les mêmes standards qu'il exige des organisations au sein de son réseau. Une gouvernance transparente, des résultats mesurables et une communication claire sur les opérations sont non négociables. Notre crédibilité se construit à travers la qualité de nos programmes, l'intégrité de nos partenariats et la constance de notre suivi. C'est ce qui rend l'affiliation avec Gwags significative.",
+            body: "Gwags s'impose les mêmes standards qu'il exige des organisations au sein de son réseau. Une gouvernance transparente, des résultats mesurables et une communication claire sur les opérations sont attendus à tous les niveaux. Notre crédibilité se construit à travers la qualité de nos programmes et la constance de notre suivi. C'est ce qui rend l'affiliation avec Gwags significative.",
           },
         ],
       },
