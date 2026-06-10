@@ -1783,8 +1783,8 @@ h1, h2, h3, h4 {
   .pp-role           { font-size: 30px; }
   .pp-bio            { font-size: 17px; }
   .pp-connect        { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .pp-divider        { margin-left: 30px; margin-right: 30px; }
-  .pp-foundation-col { margin-left: 0; padding-left: 30px; padding-right: 30px; }
+  .pp-divider        { margin-left: 60px; margin-right: 60px; }
+  .pp-foundation-col { margin-left: 0; padding-left: 60px; padding-right: 60px; }
   .pp-ma-heading     { font-size: 33px !important; }
   .pp-ma-grid        { grid-template-columns: repeat(2, 1fr); gap: 28px; }
 }
@@ -1802,8 +1802,8 @@ h1, h2, h3, h4 {
   .pp-card-title     { font-size: 18px; }
   .pp-card-desc      { font-size: 16px; }
   .pp-learn-more     { font-size: 16px; }
-  .pp-divider        { margin-left: 50px; margin-right: 50px; }
-  .pp-foundation-col { margin-left: 50px; padding-top: 40px; padding-bottom: 64px; padding-right: 50px; }
+  .pp-divider        { margin-left: 20px; margin-right: 20px; }
+  .pp-foundation-col { margin-left: 20px; padding-top: 40px; padding-bottom: 64px; padding-right: 20px; }
   .pp-ma-heading     { font-size: 28px !important; margin-bottom: 32px; }
   .pp-ma-grid        { grid-template-columns: 1fr; gap: 28px; }
 }
