@@ -246,6 +246,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           color:       ${NAVY};
           margin:      0 0 6px;
           line-height: 1.1;
+          max-width:   85%;
         }
 
         .pp-role {
@@ -255,6 +256,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           color:       #555;
           margin:      0;
           line-height: 1.1;
+          max-width:   85%;
         }
 
         /* ── LinkedIn Connect ── */
@@ -319,6 +321,8 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
             align-items:    flex-start;
             margin-bottom:  0;
           }
+          .pp-name { max-width: none; }
+          .pp-role { max-width: none; }
           .pp-connect {
             flex-direction: column;
             align-items:    flex-start;
