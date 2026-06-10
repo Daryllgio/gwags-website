@@ -296,11 +296,49 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         /* ────────────────────────────────────────────────── */
 
         .pp-bio {
-          font-size:  18px;
-          color:      ${NAVY};
+          font-size:   18px;
+          color:       ${NAVY};
           line-height: 1.85;
-          max-width:  var(--bio-max-width);
-          margin:     0 0 48px;
+          max-width:   var(--bio-max-width);
+          margin:      0 0 48px;
+        }
+
+        .pp-card-title {
+          font-size:    19px;
+          font-weight:  600;
+          font-family:  Georgia, "Times New Roman", serif;
+          color:        ${NAVY};
+          margin-bottom: 10px;
+          line-height:  1.3;
+        }
+
+        .pp-card-desc {
+          font-size:   17px;
+          color:       #4A4A4A;
+          line-height: 1.7;
+          margin:      0 0 14px;
+        }
+
+        .pp-learn-more {
+          display:         inline-block;
+          position:        relative;
+          color:           ${NAVY};
+          font-size:       17px;
+          text-decoration: none;
+        }
+        .pp-learn-more::after {
+          content:    '';
+          position:   absolute;
+          bottom:     -2px;
+          left:       0;
+          width:      0;
+          height:     1.5px;
+          background: ${GOLD};
+          transition: width 0.3s ease;
+        }
+        @media (hover: hover) {
+          .pp-learn-more:hover        { color: ${GOLD}; }
+          .pp-learn-more:hover::after { width: 100%; }
         }
 
         @media (max-width: 1024px) {
@@ -309,17 +347,17 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           .pp-bio  { font-size: 17px; }
         }
         @media (max-width: 768px) {
-          .pp-name { font-size: 28px; }
-          .pp-role { font-size: 28px; }
-          .pp-bio  { font-size: 16px; }
+          .pp-name       { font-size: 28px; }
+          .pp-role       { font-size: 28px; }
+          .pp-bio        { font-size: 16px; }
           .pp-card-title { font-size: 18px; }
           .pp-card-desc  { font-size: 16px; }
           .pp-learn-more { font-size: 16px; }
         }
         @media (max-width: 480px) {
-          .pp-name { font-size: 26px; }
-          .pp-role { font-size: 26px; }
-          .pp-bio  { font-size: 15px; }
+          .pp-name       { font-size: 26px; }
+          .pp-role       { font-size: 26px; }
+          .pp-bio        { font-size: 15px; }
           .pp-card-title { font-size: 17px; }
           .pp-card-desc  { font-size: 15px; }
           .pp-learn-more { font-size: 15px; }
@@ -390,27 +428,6 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           .pp-ma-grid { grid-template-columns: 1fr; gap: 28px; }
         }
 
-        .pp-learn-more {
-          display:         inline-block;
-          position:        relative;
-          color:           ${NAVY};
-          font-size:       17px;
-          text-decoration: none;
-        }
-        .pp-learn-more::after {
-          content:    '';
-          position:   absolute;
-          bottom:     -2px;
-          left:       0;
-          width:      0;
-          height:     1.5px;
-          background: ${GOLD};
-          transition: width 0.3s ease;
-        }
-        @media (hover: hover) {
-          .pp-learn-more:hover        { color: ${GOLD}; }
-          .pp-learn-more:hover::after { width: 100%; }
-        }
       `}</style>
 
       <Nav lang={lang} onToggleLang={toggleLang} />
@@ -455,28 +472,10 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         <div className="pp-ma-grid">
           {m.cards.map((card, i) => (
             <div key={i}>
-              <div
-                className="pp-card-title"
-                style={{
-                  fontFamily:   'Georgia, "Times New Roman", serif',
-                  fontSize:     '19px',
-                  fontWeight:   600,
-                  color:        NAVY,
-                  marginBottom: '10px',
-                  lineHeight:   1.3,
-                }}
-              >
+              <div className="pp-card-title">
                 {card.title}
               </div>
-              <p
-                className="pp-card-desc"
-                style={{
-                  fontSize:   '17px',
-                  color:      '#4A4A4A',
-                  lineHeight: 1.7,
-                  margin:     '0 0 14px',
-                }}
-              >
+              <p className="pp-card-desc">
                 {card.desc}
               </p>
               <Link href={card.href} className="pp-learn-more">
