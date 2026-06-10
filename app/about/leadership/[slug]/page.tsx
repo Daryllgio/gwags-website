@@ -180,7 +180,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         }
         @media (max-width: 1024px) {
           .pp-img-col {
-            margin-left:   20px;
+            margin-left:   50px;
             padding-top:   48px;
             padding-right: 40px;
           }
@@ -215,7 +215,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           margin:          0 0 36px 0;
         }
         @media (max-width: 1024px) {
-          .pp-photo { width: 370px; height: 380px; }
+          .pp-photo { width: 390px; height: 320px; }
         }
         @media (max-width: 768px) {
           .pp-photo {
@@ -283,6 +283,21 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           color:           ${NAVY};
           flex-shrink:     0;
           transition:      border-color 0.2s ease, color 0.2s ease;
+        }
+        .pp-connect-in {
+          font-size:   16px;
+          font-weight: 700;
+          line-height: 1;
+          user-select: none;
+        }
+        @media (max-width: 1024px) {
+          .pp-connect-in { font-size: 15px; }
+        }
+        @media (max-width: 768px) {
+          .pp-connect-in { font-size: 14px; }
+        }
+        @media (max-width: 480px) {
+          .pp-connect-in { font-size: 13px; }
         }
         @media (hover: hover) {
           .pp-connect:hover .pp-connect-label  { color: ${GOLD}; }
@@ -492,7 +507,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           >
             <span className="pp-connect-label">Connect</span>
             <div className="pp-connect-circle">
-              <span style={{ fontSize: '20px', fontWeight: 700, lineHeight: 1, userSelect: 'none' }}>in</span>
+              <span className="pp-connect-in">in</span>
             </div>
           </a>
         </div>
