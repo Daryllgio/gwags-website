@@ -4,7 +4,6 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { Lang, t } from '@/lib/translations'
-import { IconBrandLinkedin } from '@tabler/icons-react'
 
 const NAVY = '#0A1128'
 const GOLD = '#D4AF37'
@@ -177,6 +176,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           margin-left:   320px;
           padding-top:   60px;
           padding-right: 60px;
+          max-width:     680px;
         }
         @media (max-width: 1024px) {
           .pp-img-col {
@@ -207,19 +207,21 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           width:           340px;
           height:          420px;
           max-width:       100%;
-          background:      #0F1E3D;
+          background:      #e8e8e8;
           border-radius:   12px;
           display:         flex;
           align-items:     center;
           justify-content: center;
           margin:          0 0 36px 0;
         }
+        @media (max-width: 1024px) {
+          .pp-photo { width: 370px; height: 380px; }
+        }
         @media (max-width: 768px) {
           .pp-photo {
-            width:      100%;
-            height:     280px;
-            margin:     0 0 36px 0;
-            background: #e8e8e8;
+            width:  100%;
+            height: 280px;
+            margin: 0 0 36px 0;
           }
         }
 
@@ -230,8 +232,9 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         .pp-header-block {
           display:         flex;
           flex-direction:  row;
-          justify-content: space-between;
+          justify-content: flex-start;
           align-items:     flex-start;
+          gap:             16px;
           margin-bottom:   28px;
         }
 
@@ -261,8 +264,6 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           align-items:     center;
           text-decoration: none;
           flex-shrink:     0;
-          margin-left:     24px;
-          padding-top:     8px;
         }
         .pp-connect-label {
           color:       ${NAVY};
@@ -491,7 +492,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           >
             <span className="pp-connect-label">Connect</span>
             <div className="pp-connect-circle">
-              <IconBrandLinkedin size={18} />
+              <span style={{ fontSize: '20px', fontWeight: 700, lineHeight: 1, userSelect: 'none' }}>in</span>
             </div>
           </a>
         </div>
