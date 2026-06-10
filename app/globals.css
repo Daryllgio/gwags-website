@@ -1613,7 +1613,7 @@ h1, h2, h3, h4 {
 }
 
 .pp-photo {
-  width:           400px;
+  width:           450px;
   height:          420px;
   max-width:       100%;
   background:      #e8e8e8;
@@ -1626,7 +1626,7 @@ h1, h2, h3, h4 {
 
 .pp-header-block {
   display:               grid;
-  grid-template-columns: 400px auto;
+  grid-template-columns: 450px auto;
   align-items:           start;
   margin-bottom:         28px;
 }
