@@ -1653,9 +1653,9 @@ h1, h2, h3, h4 {
 
 .pp-connect {
   display:         flex;
-  flex-direction:  row;
-  gap:             12px;
-  align-items:     center;
+  flex-direction:  column;
+  gap:             8px;
+  align-items:     flex-start;
   text-decoration: none;
   flex-shrink:     0;
 }
@@ -1678,7 +1678,7 @@ h1, h2, h3, h4 {
   justify-content: center;
   color:           #0A1128;
   flex-shrink:     0;
-  transition:      border-color 0.2s ease, color 0.2s ease;
+  transition:      width 0.2s ease, height 0.2s ease;
 }
 
 .pp-connect-in {
@@ -1689,8 +1689,7 @@ h1, h2, h3, h4 {
 }
 
 @media (hover: hover) {
-  .pp-connect:hover .pp-connect-label  { color: #D4AF37; }
-  .pp-connect:hover .pp-connect-circle { border-color: #D4AF37; color: #D4AF37; }
+  .pp-connect:hover .pp-connect-circle { width: 34px; height: 34px; }
 }
 
 .pp-bio {

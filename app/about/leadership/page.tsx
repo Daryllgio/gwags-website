@@ -211,15 +211,12 @@ export default function LeadershipPage() {
           width: 0%;
           transition: width 0.3s ease;
         }
-        .view-profile-link:hover {
-          color: #D4AF37 !important;
-        }
-        .view-profile-link:hover::after {
-          width: 100%;
+        @media (hover: hover) {
+          .view-profile-link:hover { color: #D4AF37 !important; }
+          .view-profile-link:hover::after { width: 100%; }
         }
         @media (hover: none) {
           .view-profile-link::after { display: none; }
-          .view-profile-link:hover { color: inherit; }
         }
       `}</style>
       <Nav lang={lang} onToggleLang={toggleLang} />
