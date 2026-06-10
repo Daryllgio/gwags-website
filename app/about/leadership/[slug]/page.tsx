@@ -230,12 +230,13 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         /* ────────────────────────────────────────────────── */
 
         .pp-header-block {
-          display:         flex;
-          flex-direction:  row;
-          justify-content: flex-start;
-          align-items:     flex-start;
-          gap:             80px;
-          margin-bottom:   28px;
+          display:               grid;
+          grid-template-columns: 340px auto;
+          align-items:           start;
+          margin-bottom:         28px;
+        }
+        @media (max-width: 1024px) {
+          .pp-header-block { grid-template-columns: 400px auto; }
         }
 
         .pp-name {
@@ -313,6 +314,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         /* ── Phone: full column stack ── */
         @media (max-width: 768px) {
           .pp-header-block {
+            display:        flex;
             flex-direction: column;
             align-items:    flex-start;
             margin-bottom:  0;
@@ -338,6 +340,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           line-height: 1.85;
           max-width:   495px;
           margin:      0 0 48px;
+          text-align:  justify;
         }
         @media (max-width: 768px) {
           .pp-bio { max-width: calc(100vw - 40px); }

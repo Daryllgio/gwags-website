@@ -77,7 +77,7 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: 
 
       {/* Bio */}
       {showBio && bio && (
-        <p className="mt-2 leading-relaxed lp-person-bio" style={{ color: NAVY, fontSize: '17px', fontWeight: 400 }}>{bio}</p>
+        <p className="mt-2 leading-relaxed lp-person-bio" style={{ color: NAVY, fontSize: '17px', fontWeight: 400, textAlign: 'justify' }}>{bio}</p>
       )}
 
       {/* View profile */}
