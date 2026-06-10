@@ -338,7 +338,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           font-size:   18px;
           color:       ${NAVY};
           line-height: 1.85;
-          max-width:   495px;
+          max-width:   500px;
           margin:      0 0 48px;
         }
         @media (max-width: 768px) {
