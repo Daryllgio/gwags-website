@@ -425,7 +425,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           .pp-divider { margin-left: 20px; margin-right: 40px; }
         }
         @media (max-width: 768px) {
-          .pp-divider { margin-left: 50px; margin-right: 50px; }
+          .pp-divider { margin-left: 0; margin-right: 0; }
         }
 
         /* ────────────────────────────────────────────────── */
@@ -446,7 +446,8 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         }
         @media (max-width: 768px) {
           .pp-foundation-col {
-            margin-left:    50px;
+            margin-left:    0;
+            padding-left:   50px;
             padding-top:    40px;
             padding-bottom: 64px;
             padding-right:  50px;
