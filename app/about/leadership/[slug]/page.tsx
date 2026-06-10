@@ -274,6 +274,16 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           .pp-connect:hover .pp-connect-circle { border-color: ${GOLD}; color: ${GOLD}; }
         }
 
+        /* ── iPad: connect stacks vertically but stays right of name/role ── */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .pp-connect {
+            flex-direction: column;
+            align-items:    flex-start;
+            gap:            8px;
+          }
+        }
+
+        /* ── Phone: full column stack ── */
         @media (max-width: 768px) {
           .pp-header-block {
             flex-direction: column;
@@ -449,7 +459,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
             rel="noopener noreferrer"
             className="pp-connect"
           >
-            <span className="pp-connect-label">Connect:</span>
+            <span className="pp-connect-label">Connect</span>
             <div className="pp-connect-circle">
               <IconBrandLinkedin size={18} />
             </div>
