@@ -422,10 +422,10 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           margin-bottom: 0;
         }
         @media (max-width: 1024px) {
-          .pp-divider { margin-left: 20px; margin-right: 40px; }
+          .pp-divider { margin-left: 30px; margin-right: 30px; }
         }
         @media (max-width: 768px) {
-          .pp-divider { margin-left: 0; margin-right: 0; }
+          .pp-divider { margin-left: 50px; margin-right: 50px; }
         }
 
         /* ────────────────────────────────────────────────── */
@@ -440,14 +440,15 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         }
         @media (max-width: 1024px) {
           .pp-foundation-col {
-            margin-left:   20px;
-            padding-right: 40px;
+            margin-left:   0;
+            padding-left:  30px;
+            padding-right: 30px;
           }
         }
         @media (max-width: 768px) {
           .pp-foundation-col {
-            margin-left:    0;
-            padding-left:   50px;
+            margin-left:    50px;
+            padding-left:   0;
             padding-top:    40px;
             padding-bottom: 64px;
             padding-right:  50px;
