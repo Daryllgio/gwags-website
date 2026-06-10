@@ -342,12 +342,12 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         }
 
         @media (max-width: 1024px) {
-          .pp-name { font-size: 30px; }
+          .pp-name { font-size: 30px !important; }
           .pp-role { font-size: 30px; }
           .pp-bio  { font-size: 17px; }
         }
         @media (max-width: 768px) {
-          .pp-name       { font-size: 28px; }
+          .pp-name       { font-size: 28px !important; }
           .pp-role       { font-size: 28px; }
           .pp-bio        { font-size: 16px; }
           .pp-card-title { font-size: 18px; }
@@ -355,7 +355,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           .pp-learn-more { font-size: 16px; }
         }
         @media (max-width: 480px) {
-          .pp-name       { font-size: 26px; }
+          .pp-name       { font-size: 26px !important; }
           .pp-role       { font-size: 26px; }
           .pp-bio        { font-size: 15px; }
           .pp-card-title { font-size: 17px; }
@@ -396,7 +396,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
 
         .pp-ma-heading {
           font-family:    Georgia, "Times New Roman", serif;
-          font-size:      45px;
+          font-size:      45px !important;
           font-weight:    200;
           color:          ${NAVY};
           letter-spacing: 0.03em;
@@ -404,13 +404,13 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           line-height:    1.2;
         }
         @media (max-width: 1024px) {
-          .pp-ma-heading { font-size: 33px; }
+          .pp-ma-heading { font-size: 33px !important; }
         }
         @media (max-width: 768px) {
-          .pp-ma-heading { font-size: 29px; margin-bottom: 32px; }
+          .pp-ma-heading { font-size: 29px !important; margin-bottom: 32px; }
         }
         @media (max-width: 480px) {
-          .pp-ma-heading { font-size: 27px; }
+          .pp-ma-heading { font-size: 27px !important; }
         }
 
         /* 3-column grid */
