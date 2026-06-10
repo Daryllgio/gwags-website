@@ -153,9 +153,9 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         /* ── Tablet: scale down all offsets ── */
         @media (max-width: 1024px) {
           .pp-root {
-            --img-left:        48px;   /* reduced from ${PROFILE_IMAGE_LEFT_OFFSET} */
-            --foundation-left: 24px;   /* reduced from ${FOUNDATION_SECTION_LEFT_OFFSET} */
-            --photo-h:         340px;
+            --img-left:        20px;
+            --foundation-left: 20px;
+            --photo-h:         310px;
             --page-top:        48px;
             --page-right:      40px;
           }
@@ -164,11 +164,11 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         /* ── Phone: minimal offsets, full-width photo ── */
         @media (max-width: 768px) {
           .pp-root {
-            --img-left:        20px;
-            --foundation-left: 16px;
+            --img-left:        0px;
+            --foundation-left: 0px;
             --bio-max-width:   calc(100vw - 40px);
             --photo-w:         calc(100vw - 40px);
-            --photo-h:         280px;
+            --photo-h:         250px;
             --page-top:        36px;
             --page-right:      20px;
           }
@@ -213,19 +213,18 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
 
         .pp-name {
           font-family:  Georgia, "Times New Roman", serif;
-          font-size:    3rem;             /* text-5xl */
-          font-weight:  700;
+          font-size:    45px;
+          font-weight:  200;
           color:        ${NAVY};
           margin:       0 0 6px;
           line-height:  1.1;
         }
 
-        /* Role: same size as name, thinnest available weight */
         .pp-role {
           font-family:  Georgia, "Times New Roman", serif;
-          font-size:    3rem;             /* text-5xl — matches name size */
-          font-weight:  100;              /* font-thin — thinnest weight Georgia supports */
-          color:        #555;             /* slightly muted, still clearly readable */
+          font-size:    45px;
+          font-weight:  200;
+          color:        #555;
           margin:       0 0 28px;
           line-height:  1.1;
         }
@@ -239,13 +238,25 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         }
 
         @media (max-width: 1024px) {
-          .pp-name { font-size: 2.25rem; }
-          .pp-role { font-size: 2.25rem; }
+          .pp-name { font-size: 33px; }
+          .pp-role { font-size: 33px; }
+          .pp-bio  { font-size: 17px; }
         }
         @media (max-width: 768px) {
-          .pp-name { font-size: 1.75rem; }
-          .pp-role { font-size: 1.75rem; }
-          .pp-bio  { font-size: 16px;    }
+          .pp-name { font-size: 28px; }
+          .pp-role { font-size: 28px; }
+          .pp-bio  { font-size: 16px; }
+          .pp-card-title { font-size: 18px; }
+          .pp-card-desc  { font-size: 16px; }
+          .pp-learn-more { font-size: 16px; }
+        }
+        @media (max-width: 480px) {
+          .pp-name { font-size: 26px; }
+          .pp-role { font-size: 26px; }
+          .pp-bio  { font-size: 15px; }
+          .pp-card-title { font-size: 17px; }
+          .pp-card-desc  { font-size: 15px; }
+          .pp-learn-more { font-size: 15px; }
         }
 
         /* ────────────────────────────────────────────────── */
@@ -255,8 +266,8 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         .pp-divider {
           border:        none;
           border-top:    2px solid rgba(10,17,40,0.12); /* border-t-2, slightly thicker */
-          margin-left:   var(--foundation-left);         /* aligns with More About heading */
-          margin-right:  0;
+          margin-left:   var(--foundation-left);
+          margin-right:  var(--page-right);
           margin-top:    0;
           margin-bottom: 0;
         }
@@ -275,19 +286,24 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           .pp-foundation-col { padding-top: 40px; padding-bottom: 64px; }
         }
 
-        /* Section heading: all-caps, black, large bold — not an eyebrow label */
         .pp-ma-heading {
           font-family:    Georgia, "Times New Roman", serif;
-          font-size:      2rem;           /* at least text-3xl */
-          font-weight:    700;
-          color:          ${NAVY};        /* black, not gold */
+          font-size:      45px;
+          font-weight:    200;
+          color:          ${NAVY};
           text-transform: uppercase;
           letter-spacing: 0.03em;
           margin:         0 0 48px;
           line-height:    1.2;
         }
+        @media (max-width: 1024px) {
+          .pp-ma-heading { font-size: 33px; }
+        }
         @media (max-width: 768px) {
-          .pp-ma-heading { font-size: 1.5rem; margin-bottom: 32px; }
+          .pp-ma-heading { font-size: 28px; margin-bottom: 32px; }
+        }
+        @media (max-width: 480px) {
+          .pp-ma-heading { font-size: 26px; }
         }
 
         /* 3-column grid */
@@ -310,7 +326,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           display:         inline-block;
           position:        relative;
           color:           ${NAVY};
-          font-size:       15px;
+          font-size:       17px;
           text-decoration: none;
         }
         .pp-learn-more::after {
@@ -356,10 +372,11 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           {m.cards.map((card, i) => (
             <div key={i}>
               <div
+                className="pp-card-title"
                 style={{
                   fontFamily:   'Georgia, "Times New Roman", serif',
-                  fontSize:     '18px',
-                  fontWeight:   700,
+                  fontSize:     '19px',
+                  fontWeight:   600,
                   color:        NAVY,
                   marginBottom: '10px',
                   lineHeight:   1.3,
@@ -368,8 +385,9 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
                 {card.title}
               </div>
               <p
+                className="pp-card-desc"
                 style={{
-                  fontSize:   '16px',
+                  fontSize:   '17px',
                   color:      '#4A4A4A',
                   lineHeight: 1.7,
                   margin:     '0 0 14px',
@@ -378,7 +396,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
                 {card.desc}
               </p>
               <Link href={card.href} className="pp-learn-more">
-                {card.link} →
+                {card.link}
               </Link>
             </div>
           ))}
