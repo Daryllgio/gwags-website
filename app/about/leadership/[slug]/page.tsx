@@ -407,10 +407,10 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           .pp-ma-heading { font-size: 33px !important; }
         }
         @media (max-width: 768px) {
-          .pp-ma-heading { font-size: 29px !important; margin-bottom: 32px; }
+          .pp-ma-heading { font-size: 28px !important; margin-bottom: 32px; }
         }
         @media (max-width: 480px) {
-          .pp-ma-heading { font-size: 27px !important; }
+          .pp-ma-heading { font-size: 26px !important; }
         }
 
         /* 3-column grid */
