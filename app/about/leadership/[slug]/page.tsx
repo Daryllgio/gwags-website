@@ -234,7 +234,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           flex-direction:  row;
           justify-content: flex-start;
           align-items:     flex-start;
-          gap:             70px;
+          gap:             80px;
           margin-bottom:   28px;
         }
 
@@ -336,7 +336,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           font-size:   18px;
           color:       ${NAVY};
           line-height: 1.85;
-          max-width:   490px;
+          max-width:   500px;
           margin:      0 0 48px;
         }
         @media (max-width: 768px) {
