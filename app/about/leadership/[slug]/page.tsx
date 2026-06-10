@@ -180,7 +180,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         }
         @media (max-width: 1024px) {
           .pp-img-col {
-            margin-left:   150px;
+            margin-left:   170px;
             padding-top:   48px;
             padding-right: 0px;
           }
@@ -234,7 +234,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           flex-direction:  row;
           justify-content: flex-start;
           align-items:     flex-start;
-          gap:             25px;
+          gap:             65px;
           margin-bottom:   28px;
         }
 
@@ -273,8 +273,8 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           transition:  color 0.2s ease;
         }
         .pp-connect-circle {
-          width:           36px;
-          height:          36px;
+          width:           25px;
+          height:          25px;
           border-radius:   50%;
           border:          1.5px solid ${NAVY};
           display:         flex;
@@ -336,7 +336,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           font-size:   18px;
           color:       ${NAVY};
           line-height: 1.85;
-          max-width:   550px;
+          max-width:   510px;
           margin:      0 0 48px;
         }
         @media (max-width: 768px) {
