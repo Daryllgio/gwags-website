@@ -180,7 +180,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         }
         @media (max-width: 1024px) {
           .pp-img-col {
-            margin-left:   170px;
+            margin-left:   160px;
             padding-top:   48px;
             padding-right: 0px;
           }
@@ -215,7 +215,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           margin:          0 0 36px 0;
         }
         @media (max-width: 1024px) {
-          .pp-photo { width: 400px; height: 320px; }
+          .pp-photo { width: 410px; height: 320px; }
         }
         @media (max-width: 768px) {
           .pp-photo {
@@ -342,7 +342,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           font-size:   18px;
           color:       ${NAVY};
           line-height: 1.85;
-          max-width:   450px;
+          max-width:   460px;
           margin:      0 0 48px;
         }
         @media (max-width: 768px) {
@@ -425,7 +425,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           .pp-divider { margin-left: 20px; margin-right: 40px; }
         }
         @media (max-width: 768px) {
-          .pp-divider { margin-left: 20px; margin-right: 20px; }
+          .pp-divider { margin-left: 30px; margin-right: 30px; }
         }
 
         /* ────────────────────────────────────────────────── */
@@ -446,10 +446,10 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         }
         @media (max-width: 768px) {
           .pp-foundation-col {
-            margin-left:    20px;
+            margin-left:    30px;
             padding-top:    40px;
             padding-bottom: 64px;
-            padding-right:  20px;
+            padding-right:  30px;
           }
         }
 
