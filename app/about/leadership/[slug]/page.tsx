@@ -202,9 +202,10 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         }
         @media (max-width: 768px) {
           .pp-photo {
-            width:  260px;
-            height: 320px;
-            margin: 0 auto 36px;
+            width:      100%;
+            height:     280px;
+            margin:     0 0 36px 0;
+            background: #e8e8e8;
           }
         }
 
@@ -222,7 +223,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
 
         .pp-name {
           font-family: Georgia, "Times New Roman", serif;
-          font-size:   45px;
+          font-size:   37px;
           font-weight: 200;
           color:       ${NAVY};
           margin:      0 0 6px;
@@ -303,8 +304,8 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         }
 
         @media (max-width: 1024px) {
-          .pp-name { font-size: 33px; }
-          .pp-role { font-size: 33px; }
+          .pp-name { font-size: 30px; }
+          .pp-role { font-size: 30px; }
           .pp-bio  { font-size: 17px; }
         }
         @media (max-width: 768px) {
@@ -369,10 +370,10 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           .pp-ma-heading { font-size: 33px; }
         }
         @media (max-width: 768px) {
-          .pp-ma-heading { font-size: 28px; margin-bottom: 32px; }
+          .pp-ma-heading { font-size: 27px; margin-bottom: 32px; }
         }
         @media (max-width: 480px) {
-          .pp-ma-heading { font-size: 26px; }
+          .pp-ma-heading { font-size: 25px; }
         }
 
         /* 3-column grid */
