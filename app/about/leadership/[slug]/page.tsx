@@ -15,19 +15,19 @@ const PEOPLE: Record<string, { name: string; role: string; bio: string; linkedin
     name: 'D. Giovanny Bikak Mbal',
     role: 'Chair, Board Member',
     bio: "Founder of Gwags and Chair of the Board, Giovanny leads the institution's governance and strategic direction. He established Gwags in 2021 with a vision to build the institutional infrastructure needed by organizations committed to creating lasting impact.",
-    linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
+    linkedin: 'https://www.linkedin.com/in/giovannybikakmbal/',
   },
   'vianney-tanifor': {
     name: 'Vianney Tanifor',
     role: 'Board Member',
     bio: "Vianney brings expertise in organizational development and community engagement to the Gwags governance board. His experience supports the foundation's mission to build credible, well-structured institutions.",
-    linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
+    linkedin: 'https://www.linkedin.com/in/vianney-tanifor-9a76b0280/',
   },
   'noa-winner': {
     name: 'Noa Winner',
     role: 'Board Member',
     bio: "Noa contributes strategic oversight and partnership expertise to the Gwags governance board, supporting the institution's long-term institutional and operational direction.",
-    linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
+    linkedin: 'https://www.linkedin.com/in/winnernoa/',
   },
   'placeholder-executive-director': {
     name: '[Name Placeholder]',
