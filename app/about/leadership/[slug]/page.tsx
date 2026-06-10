@@ -174,9 +174,23 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         /* ────────────────────────────────────────────────── */
 
         .pp-img-col {
-          margin-left:   var(--img-left);
-          padding-top:   var(--page-top);
-          padding-right: var(--page-right);
+          margin-left:   320px;
+          padding-top:   60px;
+          padding-right: 60px;
+        }
+        @media (max-width: 1024px) {
+          .pp-img-col {
+            margin-left:   20px;
+            padding-top:   48px;
+            padding-right: 40px;
+          }
+        }
+        @media (max-width: 768px) {
+          .pp-img-col {
+            margin-left:   20px;
+            padding-top:   36px;
+            padding-right: 20px;
+          }
         }
 
         /* Photo placeholder
@@ -309,8 +323,11 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           font-size:   18px;
           color:       ${NAVY};
           line-height: 1.85;
-          max-width:   var(--bio-max-width);
+          max-width:   620px;
           margin:      0 0 48px;
+        }
+        @media (max-width: 768px) {
+          .pp-bio { max-width: calc(100vw - 40px); }
         }
 
         .pp-card-title {
@@ -380,10 +397,16 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         .pp-divider {
           border:        none;
           border-top:    2px solid rgba(10,17,40,0.12);
-          margin-left:   var(--foundation-left);
-          margin-right:  var(--page-right);
+          margin-left:   200px;
+          margin-right:  60px;
           margin-top:    0;
           margin-bottom: 0;
+        }
+        @media (max-width: 1024px) {
+          .pp-divider { margin-left: 20px; margin-right: 40px; }
+        }
+        @media (max-width: 768px) {
+          .pp-divider { margin-left: 20px; margin-right: 20px; }
         }
 
         /* ────────────────────────────────────────────────── */
@@ -391,16 +414,23 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         /* ────────────────────────────────────────────────── */
 
         .pp-foundation-col {
-          margin-left:    var(--foundation-left);
+          margin-left:    200px;
           padding-top:    56px;
           padding-bottom: 80px;
-          padding-right:  var(--page-right);
+          padding-right:  60px;
+        }
+        @media (max-width: 1024px) {
+          .pp-foundation-col {
+            margin-left:   20px;
+            padding-right: 40px;
+          }
         }
         @media (max-width: 768px) {
           .pp-foundation-col {
+            margin-left:    20px;
             padding-top:    40px;
             padding-bottom: 64px;
-            padding-left:   0px;
+            padding-right:  20px;
           }
         }
 
