@@ -340,7 +340,6 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           line-height: 1.85;
           max-width:   495px;
           margin:      0 0 48px;
-          text-align:  justify;
         }
         @media (max-width: 768px) {
           .pp-bio { max-width: calc(100vw - 40px); }
