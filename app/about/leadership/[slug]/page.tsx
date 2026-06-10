@@ -399,7 +399,6 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           font-size:      45px;
           font-weight:    200;
           color:          ${NAVY};
-          text-transform: uppercase;
           letter-spacing: 0.03em;
           margin:         0 0 48px;
           line-height:    1.2;
@@ -467,7 +466,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
       {/* ── More About ── */}
       <div className="pp-foundation-col">
 
-        <h2 className="pp-ma-heading">MORE ABOUT THE FOUNDATION</h2>
+        <h2 className="pp-ma-heading">More About the Foundation</h2>
 
         <div className="pp-ma-grid">
           {m.cards.map((card, i) => (
