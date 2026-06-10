@@ -1613,9 +1613,9 @@ h1, h2, h3, h4 {
 }
 
 .pp-photo {
-  width:           450px;
+  width:           480px;
   height:          420px;
-  max-width:       100%;
+  max-width:       490px;
   background:      #e8e8e8;
   border-radius:   12px;
   display:         flex;
@@ -1626,7 +1626,7 @@ h1, h2, h3, h4 {
 
 .pp-header-block {
   display:               grid;
-  grid-template-columns: 450px auto;
+  grid-template-columns: 480px auto;
   align-items:           start;
   margin-bottom:         28px;
 }
