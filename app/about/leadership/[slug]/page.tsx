@@ -139,17 +139,20 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
       style={{
         background: '#ffffff',
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-        /* Inject layout constants as CSS variables so media queries can scale them */
-        ['--img-left' as string]:        PROFILE_IMAGE_LEFT_OFFSET,
-        ['--foundation-left' as string]: FOUNDATION_SECTION_LEFT_OFFSET,
-        ['--bio-max-width' as string]:   PROFILE_BIO_MAX_WIDTH,
-        ['--photo-w' as string]:         PHOTO_WIDTH,
-        ['--photo-h' as string]:         PHOTO_HEIGHT,
-        ['--page-top' as string]:        PAGE_TOP_PADDING,
-        ['--page-right' as string]:      PAGE_RIGHT_PADDING,
       }}
     >
       <style>{`
+        /* ── Desktop defaults ── */
+        .pp-root {
+          --img-left:        ${PROFILE_IMAGE_LEFT_OFFSET};
+          --foundation-left: ${FOUNDATION_SECTION_LEFT_OFFSET};
+          --bio-max-width:   ${PROFILE_BIO_MAX_WIDTH};
+          --photo-w:         ${PHOTO_WIDTH};
+          --photo-h:         ${PHOTO_HEIGHT};
+          --page-top:        ${PAGE_TOP_PADDING};
+          --page-right:      ${PAGE_RIGHT_PADDING};
+        }
+
         /* ── Tablet: scale down all offsets ── */
         @media (max-width: 1024px) {
           .pp-root {
