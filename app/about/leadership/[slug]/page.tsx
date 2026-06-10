@@ -24,7 +24,7 @@ const PEOPLE: Record<string, { name: string; role: string; bio: string; linkedin
     linkedin: 'https://www.linkedin.com/in/vianney-tanifor-9a76b0280/',
   },
   'noa-winner': {
-    name: 'Noa Winner',
+    name: 'Winner Noa',
     role: 'Board Member',
     bio: "Noa contributes strategic oversight and partnership expertise to the Gwags governance board, supporting the institution's long-term institutional and operational direction.",
     linkedin: 'https://www.linkedin.com/in/winnernoa/',

@@ -23,7 +23,7 @@ const governanceBoard = [
     href: '/about/leadership/vianney-tanifor',
   },
   {
-    name: 'Noa Winner',
+    name: 'Winner Noa',
     role: 'Board Member',
     bio:  "Noa contributes strategic oversight and partnership expertise to the Gwags governance board.",
     href: '/about/leadership/noa-winner',
