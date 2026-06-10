@@ -1686,10 +1686,12 @@ h1, h2, h3, h4 {
   font-weight: 700;
   line-height: 1;
   user-select: none;
+  transition:  font-size 0.2s ease;
 }
 
 @media (hover: hover) {
-  .pp-connect:hover .pp-connect-circle { width: 34px; height: 34px; }
+  .pp-connect:hover .pp-connect-circle { width: 32px; height: 32px; }
+  .pp-connect:hover .pp-connect-in     { font-size: 18px; }
 }
 
 .pp-bio {
