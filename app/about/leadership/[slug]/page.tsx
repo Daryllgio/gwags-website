@@ -180,9 +180,9 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         }
         @media (max-width: 1024px) {
           .pp-img-col {
-            margin-left:   50px;
+            margin-left:   150px;
             padding-top:   48px;
-            padding-right: 40px;
+            padding-right: 0px;
           }
         }
         @media (max-width: 768px) {
@@ -215,7 +215,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           margin:          0 0 36px 0;
         }
         @media (max-width: 1024px) {
-          .pp-photo { width: 390px; height: 320px; }
+          .pp-photo { width: 400px; height: 320px; }
         }
         @media (max-width: 768px) {
           .pp-photo {
@@ -234,7 +234,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           flex-direction:  row;
           justify-content: flex-start;
           align-items:     flex-start;
-          gap:             16px;
+          gap:             25px;
           margin-bottom:   28px;
         }
 
@@ -290,14 +290,11 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           line-height: 1;
           user-select: none;
         }
-        @media (max-width: 1024px) {
+        @media (max-width: 768px) {
           .pp-connect-in { font-size: 15px; }
         }
-        @media (max-width: 768px) {
-          .pp-connect-in { font-size: 14px; }
-        }
         @media (max-width: 480px) {
-          .pp-connect-in { font-size: 13px; }
+          .pp-connect-in { font-size: 14px; }
         }
         @media (hover: hover) {
           .pp-connect:hover .pp-connect-label  { color: ${GOLD}; }
@@ -339,7 +336,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
           font-size:   18px;
           color:       ${NAVY};
           line-height: 1.85;
-          max-width:   620px;
+          max-width:   550px;
           margin:      0 0 48px;
         }
         @media (max-width: 768px) {
