@@ -1,9 +1,14 @@
 'use client'
-import { useRef } from 'react'
+import { useRef, useState, useEffect, Fragment } from 'react'
+import Link from 'next/link'
 import Nav from '@/components/Nav'
-import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import { Lang } from '@/lib/translations'
+
+interface RichBodyItem {
+  label: string
+  text: string
+}
 
 export interface KeyDateItem {
   label: string
@@ -17,7 +22,8 @@ export interface InitiativePageData {
   }
   sections: Array<{
     heading: string
-    body: string
+    body?: string
+    richBody?: RichBodyItem[]
   }>
   keyDates?: {
     heading: string
@@ -27,7 +33,8 @@ export interface InitiativePageData {
   apply?: string
   carousel: {
     heading: string
-    subtitle?: string
+    batchLabel: string
+    batchHref: string
     items: string[]
   }
 }
@@ -39,18 +46,24 @@ interface Props {
 }
 
 export default function InitiativePage({ lang, onToggleLang, data }: Props) {
-  const carouselLight = !data.apply
   return (
     <main>
       <Nav lang={lang} onToggleLang={onToggleLang} />
       <HeroSection hero={data.hero} />
       {data.sections.map((s, i) => (
-        <ContentSection key={i} heading={s.heading} body={s.body} alt={i % 2 !== 0} />
+        <Fragment key={i}>
+          {i > 0 && <Divider />}
+          <ContentSection heading={s.heading} body={s.body} richBody={s.richBody} />
+        </Fragment>
       ))}
-      {data.keyDates && <KeyDatesSection keyDates={data.keyDates} />}
+      {data.keyDates && (
+        <>
+          <Divider />
+          <KeyDatesSection keyDates={data.keyDates} />
+        </>
+      )}
       {data.apply && <ApplySection label={data.apply} />}
-      <CarouselSection carousel={data.carousel} light={carouselLight} />
-      <CTA lang={lang} />
+      <CarouselSection carousel={data.carousel} />
       <Footer lang={lang} />
     </main>
   )
@@ -59,25 +72,47 @@ export default function InitiativePage({ lang, onToggleLang, data }: Props) {
 function HeroSection({ hero }: { hero: InitiativePageData['hero'] }) {
   return (
     <section className="ip-hero">
-      <div className="ip-hero-img-wrap">
-        {/* IMAGE: Replace background with <Image src="..." alt="..." fill style={{ objectFit: 'cover' }} /> */}
-        <div className="ip-hero-img-gradient" />
-        <div className="ip-hero-overlay">
+      <div className="ip-hero-inner">
+        <div className="ip-hero-text">
           <h1 className="ip-hero-name">{hero.name}</h1>
+          <span className="ip-hero-goal-label">The goal</span>
           <p className="ip-hero-goal">{hero.goal}</p>
+        </div>
+        <div className="ip-hero-img-wrap">
+          {/* IMAGE: Replace background with <Image src="..." alt="..." fill style={{ objectFit: 'cover', borderRadius: '12px' }} /> */}
         </div>
       </div>
     </section>
   )
 }
 
-function ContentSection({ heading, body, alt }: { heading: string; body: string; alt: boolean }) {
+function Divider() {
+  return <div className="ip-divider" />
+}
+
+function ContentSection({ heading, body, richBody }: {
+  heading: string
+  body?: string
+  richBody?: RichBodyItem[]
+}) {
   return (
-    <section className={`ip-section ${alt ? 'ip-section-offwhite' : 'ip-section-white'}`}>
+    <section className="ip-section ip-section-white">
       <div className="ip-content-inner">
         <div className="ip-grid">
           <h2 className="ip-section-heading">{heading}</h2>
-          <p className="ip-section-body">{body}</p>
+          <div>
+            {body && <p className="ip-section-body">{body}</p>}
+            {richBody && (
+              <dl className="ip-rich-body">
+                {richBody.map((item, i) => (
+                  <div key={i} className="ip-rich-item">
+                    <dt className="ip-rich-label">{item.label}</dt>
+                    <dd className="ip-rich-text">{item.text}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+          </div>
         </div>
       </div>
     </section>
@@ -116,51 +151,76 @@ function ApplySection({ label }: { label: string }) {
   )
 }
 
-function CarouselSection({ carousel, light }: { carousel: InitiativePageData['carousel']; light: boolean }) {
+function CarouselSection({ carousel }: { carousel: InitiativePageData['carousel'] }) {
   const trackRef = useRef<HTMLDivElement>(null)
+  const [atStart, setAtStart] = useState(true)
+  const [atEnd, setAtEnd] = useState(false)
+
+  useEffect(() => {
+    const el = trackRef.current
+    if (!el) return
+    function check() {
+      if (!el) return
+      const maxScroll = el.scrollWidth - el.clientWidth
+      setAtStart(el.scrollLeft <= 0)
+      setAtEnd(maxScroll <= 1 || el.scrollLeft >= maxScroll - 1)
+    }
+    check()
+    el.addEventListener('scroll', check, { passive: true })
+    const ro = new ResizeObserver(check)
+    ro.observe(el)
+    return () => {
+      el.removeEventListener('scroll', check)
+      ro.disconnect()
+    }
+  }, [])
 
   function scrollLeft() {
-    trackRef.current?.scrollBy({ left: -280, behavior: 'smooth' })
+    trackRef.current?.scrollBy({ left: -260, behavior: 'smooth' })
   }
 
   function scrollRight() {
-    trackRef.current?.scrollBy({ left: 280, behavior: 'smooth' })
+    trackRef.current?.scrollBy({ left: 260, behavior: 'smooth' })
   }
 
   return (
-    <section className={`ip-carousel-section ${light ? 'ip-section-white' : 'ip-section-offwhite'}`}>
+    <section className="ip-carousel-section ip-section-white">
       <div className="ip-carousel-inner">
-        <div className="ip-carousel-head-grid">
-          <div>
-            <h2 className="ip-section-heading">{carousel.heading}</h2>
-            {carousel.subtitle && (
-              <span className="ip-carousel-subtitle">{carousel.subtitle}</span>
-            )}
+        <h2 className="ip-section-heading ip-carousel-heading">{carousel.heading}</h2>
+        <div className="ip-batch-row">
+          <Link href={carousel.batchHref} className="ip-batch-link">
+            {carousel.batchLabel}
+          </Link>
+          <div className="ip-batch-arrows">
+            <button
+              className="ip-chevron-btn"
+              onClick={scrollLeft}
+              aria-label="Scroll left"
+              style={{ opacity: atStart ? 0 : 1, pointerEvents: atStart ? 'none' : 'auto' }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 19 L9 12 L15 5" />
+              </svg>
+            </button>
+            <button
+              className="ip-chevron-btn"
+              onClick={scrollRight}
+              aria-label="Scroll right"
+              style={{ opacity: atEnd ? 0 : 1, pointerEvents: atEnd ? 'none' : 'auto' }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 5 L15 12 L9 19" />
+              </svg>
+            </button>
           </div>
-          <div />
         </div>
-        <div className="ip-carousel-row">
-          <button className="ip-arrow-btn" onClick={scrollLeft} aria-label="Scroll left">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M10 13 L5 8 L10 3" />
-            </svg>
-          </button>
-          <div className="ip-carousel-overflow">
-            <div className="ip-carousel-track" ref={trackRef}>
-              {carousel.items.map((name, i) => (
-                // UPDATE: Link to detail page when built
-                <a key={i} href="#" className="ip-carousel-card">
-                  <div className="ip-carousel-card-img" />
-                  <div className="ip-carousel-card-name">{name}</div>
-                </a>
-              ))}
-            </div>
-          </div>
-          <button className="ip-arrow-btn" onClick={scrollRight} aria-label="Scroll right">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 3 L11 8 L6 13" />
-            </svg>
-          </button>
+        <div className="ip-carousel-track" ref={trackRef}>
+          {carousel.items.map((_, i) => (
+            // UPDATE: Link to detail page when built
+            <a key={i} href="#" className="ip-carousel-card">
+              <div className="ip-carousel-card-img" />
+            </a>
+          ))}
         </div>
       </div>
     </section>
