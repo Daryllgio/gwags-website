@@ -167,7 +167,7 @@ function StatsSection({ stats }: { stats: NonNullable<InitiativePageData['stats'
       <div className="ip-stats-box">
         <h2 className="ip-stats-heading">{stats.heading}</h2>
         <p className="ip-stats-subheading">{stats.subheading}</p>
-        <div className="ip-stats-grid">
+        <div className={`ip-stats-grid ip-stats-grid-${stats.items.length}`}>
           {stats.items.map((item, i) => (
             <div key={i} className="ip-stats-item">
               <span className="ip-stats-value">{item.value}</span>

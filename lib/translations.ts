@@ -484,13 +484,21 @@ export const t = {
       sections: [
         {
           heading: 'Supporting the most vulnerable',
-          body: 'Orphaned children in Cameroon face significant challenges in accessing basic necessities and educational opportunities. Many orphanages operate with limited resources and depend on external support to provide adequate care. Without consistent intervention, children in these environments face gaps in nutrition, education, and developmental support.',
+          body: 'Orphaned children are among the most underserved populations in the world. Many grow up in orphanages operating with limited resources and little external support. Access to basic necessities, education, and developmental opportunities remains inconsistent at best. Without structured and sustained intervention, these children face barriers that compound over time, limiting their ability to learn and build futures beyond their immediate circumstances.',
         },
         {
           heading: 'About the program',
-          body: 'The Ajong Foretia Orphan Support program is the initiative from which Gwags was born. It began in 2021 when four high school students organized their first visit to an orphanage in Douala, Cameroon. Since then, the program has continued to provide direct support to orphaned children through regular visits, essential living supplies, and educational exposure. The program partners with local organizations to deliver activities including technology workshops, creative sessions, and other developmental opportunities.',
+          body: 'The Ajong Foretia Orphan Support program is how Gwags addresses the challenges facing orphaned children. The program operates through organized visits to orphanages, delivering essential living supplies and creating educational and developmental opportunities. Through partnerships with local organizations, the program has provided children with hands-on exposure to technology.\n\nAs the program develops, Gwags is working to deepen the support it provides. This includes increasing the frequency of visits, introducing structured mentorship sessions where professionals teach specific skills over sustained periods, and building a sponsorship model that supports orphans through their education from childhood to graduation.',
         },
       ],
+      stats: {
+        heading: 'Our impact',
+        subheading: 'Measurable results from our orphan support initiatives.',
+        items: [
+          { value: '150+', label: 'orphans supported' },
+          { value: '$6,000+', label: 'in charitable support' },
+        ],
+      },
       carousel: {
         heading: 'Past Visits',
         events: [
@@ -1013,13 +1021,21 @@ export const t = {
       sections: [
         {
           heading: 'Soutenir les plus vulnérables',
-          body: 'Les enfants orphelins au Cameroun font face à des défis importants pour accéder aux biens de première nécessité et aux opportunités éducatives. De nombreux orphelinats fonctionnent avec des ressources limitées et dépendent d\'un soutien extérieur pour assurer des soins adéquats. Sans intervention régulière, les enfants dans ces environnements font face à des lacunes en matière de nutrition, d\'éducation et de soutien au développement.',
+          body: 'Les enfants orphelins font partie des populations les plus mal desservies au monde. Beaucoup grandissent dans des orphelinats fonctionnant avec des ressources limitées et peu de soutien externe. L\'accès aux nécessités de base, à l\'éducation et aux opportunités de développement reste au mieux irrégulier. Sans une intervention structurée et soutenue, ces enfants font face à des obstacles qui s\'accumulent au fil du temps, limitant leur capacité à apprendre et à construire un avenir au-delà de leurs circonstances immédiates.',
         },
         {
           heading: 'À propos du programme',
-          body: 'Le programme Ajong Foretia Orphan Support est l\'initiative dont est né Gwags. Il a débuté en 2021 lorsque quatre lycéens ont organisé leur première visite dans un orphelinat à Douala, au Cameroun. Depuis lors, le programme continue de fournir un soutien direct aux enfants orphelins à travers des visites régulières, des fournitures de vie essentielles et une exposition éducative. Le programme s\'associe à des organisations locales pour offrir des activités incluant des ateliers technologiques, des sessions créatives et d\'autres opportunités de développement.',
+          body: 'Le programme de soutien aux orphelins Ajong Foretia est la manière dont Gwags répond aux défis auxquels font face les enfants orphelins. Le programme opère à travers des visites organisées dans des orphelinats, fournissant des fournitures de vie essentielles et créant des opportunités éducatives et de développement. Grâce à des partenariats avec des organisations locales, le programme a offert aux enfants une exposition pratique à la technologie.\n\nÀ mesure que le programme se développe, Gwags travaille à approfondir le soutien qu\'il fournit. Cela inclut l\'augmentation de la fréquence des visites, l\'introduction de sessions de mentorat structurées où des professionnels enseignent des compétences spécifiques sur des périodes prolongées, et la construction d\'un modèle de parrainage qui soutient les orphelins dans leur éducation de l\'enfance jusqu\'à l\'obtention de leur diplôme.',
         },
       ],
+      stats: {
+        heading: 'Notre impact',
+        subheading: 'Résultats mesurables de nos initiatives de soutien aux orphelins.',
+        items: [
+          { value: '150+', label: 'orphelins soutenus' },
+          { value: '6 000 $+', label: 'en soutien caritatif' },
+        ],
+      },
       carousel: {
         heading: 'Visites Passées',
         events: [
