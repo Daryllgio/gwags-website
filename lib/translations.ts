@@ -472,7 +472,7 @@ export const t = {
       carousel: {
         heading: 'Funded Initiatives',
         events: [
-          { label: 'CAMESA Nguti Health Campaign', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+          { label: 'CAMESA Nguti Health Campaign', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: ['', '', '', '', '', '', '', '', '', ''] },
         ],
       },
     },
@@ -490,12 +490,21 @@ export const t = {
           heading: 'About the program',
           body: 'The Ajong Foretia Orphan Support program is the initiative from which Gwags was born. It began in 2021 when four high school students organized their first visit to an orphanage in Douala, Cameroon. Since then, the program has continued to provide direct support to orphaned children through regular visits, essential living supplies, and educational exposure. The program partners with local organizations to deliver activities including technology workshops, creative sessions, and other developmental opportunities.',
         },
+        {
+          heading: 'What we focus on',
+          richBody: [
+            { label: 'Essential living supplies', text: 'Providing orphaned children with basic necessities including food, clothing, and hygiene products.' },
+            { label: 'Educational exposure', text: 'Introducing children to learning opportunities beyond their immediate environment.' },
+            { label: 'Technology workshops', text: 'Partnering with organizations to deliver hands-on technology and digital skills sessions.' },
+            { label: 'Developmental activities', text: 'Organizing creative, recreational, and skill-building activities designed to support long-term growth.' },
+          ],
+        },
       ],
       carousel: {
         heading: 'Past Visits',
         events: [
-          { label: 'Tech Workshop with Codam Technologies', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
-          { label: 'Visit to Coeur de Jésus Orphanage', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+          { label: 'Tech Workshop with Codam Technologies', href: '/initiatives/ajong-foretia/tech-workshop-codam-technologies', items: ['', '', '', '', '', '', '', '', '', ''] },
+          { label: 'Visit to Coeur de Jésus Orphanage', href: '/initiatives/ajong-foretia/visit-coeur-de-jesus-orphanage', items: ['', '', '', '', '', '', '', '', '', ''] },
         ],
       },
     },
@@ -513,11 +522,20 @@ export const t = {
           heading: 'About the program',
           body: 'The Health Outreach Program is an initiative through which Gwags organizes and supports health campaigns in underserved communities. The program brings together medical professionals, partner organizations, and community leaders to deliver free consultations, screenings, and health education. Each campaign is designed around the specific needs of the target community and delivered through structured field operations.',
         },
+        {
+          heading: 'What we focus on',
+          richBody: [
+            { label: 'Free medical consultations', text: 'Providing access to qualified medical professionals for communities that would otherwise go without.' },
+            { label: 'Health screenings and diagnostics', text: 'Identifying conditions early through structured screening programs during each campaign.' },
+            { label: 'Surgical procedures', text: 'Delivering critical surgical interventions to patients in need during field operations.' },
+            { label: 'Community health education', text: 'Equipping communities with the knowledge to prevent illness and maintain long-term health outcomes.' },
+          ],
+        },
       ],
       carousel: {
         heading: 'Past Campaigns',
         events: [
-          { label: 'Nguti Health Campaign', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+          { label: 'Nguti Health Campaign', href: '/initiatives/health-outreach/nguti-health-campaign', items: ['', '', '', '', '', '', '', '', '', ''] },
         ],
       },
     },
@@ -992,7 +1010,7 @@ export const t = {
       carousel: {
         heading: 'Initiatives Financées',
         events: [
-          { label: 'Campagne de Santé CAMESA Nguti', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+          { label: 'Campagne de Santé CAMESA Nguti', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: ['', '', '', '', '', '', '', '', '', ''] },
         ],
       },
     },
@@ -1010,12 +1028,21 @@ export const t = {
           heading: 'À propos du programme',
           body: 'Le programme Ajong Foretia Orphan Support est l\'initiative dont est né Gwags. Il a débuté en 2021 lorsque quatre lycéens ont organisé leur première visite dans un orphelinat à Douala, au Cameroun. Depuis lors, le programme continue de fournir un soutien direct aux enfants orphelins à travers des visites régulières, des fournitures de vie essentielles et une exposition éducative. Le programme s\'associe à des organisations locales pour offrir des activités incluant des ateliers technologiques, des sessions créatives et d\'autres opportunités de développement.',
         },
+        {
+          heading: 'Ce sur quoi nous nous concentrons',
+          richBody: [
+            { label: 'Fournitures essentielles de vie', text: 'Fournir aux enfants orphelins des produits de première nécessité, notamment la nourriture, les vêtements et les produits d\'hygiène.' },
+            { label: 'Exposition éducative', text: 'Initier les enfants à des opportunités d\'apprentissage au-delà de leur environnement immédiat.' },
+            { label: 'Ateliers technologiques', text: 'Collaborer avec des organisations pour animer des sessions pratiques sur les technologies et les compétences numériques.' },
+            { label: 'Activités de développement', text: 'Organiser des activités créatives, récréatives et de développement des compétences conçues pour soutenir la croissance à long terme.' },
+          ],
+        },
       ],
       carousel: {
         heading: 'Visites Passées',
         events: [
-          { label: 'Atelier Tech avec Codam Technologies', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
-          { label: "Visite à l'Orphelinat Coeur de Jésus", href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+          { label: 'Atelier Tech avec Codam Technologies', href: '/initiatives/ajong-foretia/tech-workshop-codam-technologies', items: ['', '', '', '', '', '', '', '', '', ''] },
+          { label: "Visite à l'Orphelinat Coeur de Jésus", href: '/initiatives/ajong-foretia/visit-coeur-de-jesus-orphanage', items: ['', '', '', '', '', '', '', '', '', ''] },
         ],
       },
     },
@@ -1033,11 +1060,20 @@ export const t = {
           heading: 'À propos du programme',
           body: 'Le Programme de Santé Communautaire est une initiative à travers laquelle Gwags organise et soutient des campagnes de santé dans des communautés mal desservies. Le programme rassemble des professionnels de santé, des organisations partenaires et des leaders communautaires pour offrir des consultations gratuites, des dépistages et une éducation à la santé. Chaque campagne est conçue autour des besoins spécifiques de la communauté cible et délivrée à travers des opérations de terrain structurées.',
         },
+        {
+          heading: 'Ce sur quoi nous nous concentrons',
+          richBody: [
+            { label: 'Consultations médicales gratuites', text: 'Fournir un accès à des professionnels de santé qualifiés pour des communautés qui en seraient autrement privées.' },
+            { label: 'Dépistage et diagnostics de santé', text: 'Identifier précocement les pathologies grâce à des programmes de dépistage structurés lors de chaque campagne.' },
+            { label: 'Interventions chirurgicales', text: 'Prodiguer des soins chirurgicaux essentiels aux patients dans le besoin lors des opérations de terrain.' },
+            { label: 'Éducation sanitaire communautaire', text: 'Donner aux communautés les connaissances nécessaires pour prévenir les maladies et maintenir de bons résultats de santé à long terme.' },
+          ],
+        },
       ],
       carousel: {
         heading: 'Campagnes Passées',
         events: [
-          { label: 'Campagne de Santé de Nguti', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+          { label: 'Campagne de Santé de Nguti', href: '/initiatives/health-outreach/nguti-health-campaign', items: ['', '', '', '', '', '', '', '', '', ''] },
         ],
       },
     },

@@ -3,6 +3,7 @@ import { useRef, useState, useEffect, Fragment } from 'react'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import Lightbox from '@/components/Lightbox'
 import { Lang } from '@/lib/translations'
 
 interface RichBodyItem {
@@ -157,21 +158,43 @@ function ApplySection({ label }: { label: string }) {
 }
 
 function CarouselSection({ carousel }: { carousel: InitiativePageData['carousel'] }) {
+  const [lbEvent, setLbEvent] = useState<number | null>(null)
+  const [lbIndex, setLbIndex] = useState<number | null>(null)
+
+  function openLightbox(eventIdx: number, imgIdx: number) {
+    setLbEvent(eventIdx)
+    setLbIndex(imgIdx)
+  }
+
+  function closeLightbox() {
+    setLbEvent(null)
+    setLbIndex(null)
+  }
+
+  const activeEvent = lbEvent !== null ? carousel.events[lbEvent] : null
+
   return (
     <section className="ip-carousel-section ip-section-white">
       <div className="ip-carousel-inner">
         <h2 className="ip-section-heading ip-carousel-heading">{carousel.heading}</h2>
         {carousel.events.map((event, i) => (
           <div key={i} className={i > 0 ? 'ip-event-track-gap' : undefined}>
-            <EventTrack event={event} />
+            <EventTrack event={event} onImageClick={(idx) => openLightbox(i, idx)} />
           </div>
         ))}
       </div>
+      {activeEvent && (
+        <Lightbox
+          count={activeEvent.items.length}
+          openIndex={lbIndex}
+          onClose={closeLightbox}
+        />
+      )}
     </section>
   )
 }
 
-function EventTrack({ event }: { event: CarouselEvent }) {
+function EventTrack({ event, onImageClick }: { event: CarouselEvent; onImageClick: (i: number) => void }) {
   const trackRef = useRef<HTMLDivElement>(null)
   const [atStart, setAtStart] = useState(true)
   const [atEnd, setAtEnd] = useState(false)
@@ -234,7 +257,7 @@ function EventTrack({ event }: { event: CarouselEvent }) {
       </div>
       <div className="ip-carousel-track" ref={trackRef}>
         {event.items.map((_, i) => (
-          <div key={i} className="ip-carousel-card">
+          <div key={i} className="ip-carousel-card" onClick={() => onImageClick(i)}>
             <div className="ip-carousel-card-img" />
           </div>
         ))}
