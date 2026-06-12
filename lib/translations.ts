@@ -91,7 +91,7 @@ export const t = {
     },
     quote: {
       text: 'The challenges facing our societies are too interconnected for any single organization to solve alone. Gwags exists to build the infrastructure that makes collective action possible so that the organizations committed to change can do so with the resources, support and network they deserve.',
-      name: 'Daryll Giovanny Bikak Mbal',
+      name: 'Giovanny Bikak Mbal',
       role: 'Chair, Board Member',
       roleOrg: 'Gwags Global Impact Institution',
     },
@@ -410,18 +410,18 @@ export const t = {
       sections: [
         {
           heading: 'Access to higher education in Cameroon',
-          body: 'Across Cameroon, thousands of students with strong academic records and genuine potential struggle to continue their university studies. Financial barriers remain one of the primary obstacles preventing students from completing their degrees. Without support, many are forced to defer, drop out, or abandon higher education entirely, regardless of their academic ability.',
+          body: 'In Cameroon, access to higher education remains heavily shaped by financial circumstances. Students with strong academic records are often unable to continue their studies due to a lack of financial support. And for those who do graduate, the transition into the workforce presents its own challenges. Limited access to work experience and professional exposure leaves many graduates without the tools they need to build careers after graduation.',
         },
         {
           heading: 'About the program',
-          body: 'The Gwags Scholars Program is an initiative designed to recognize and support outstanding undergraduate students across Cameroon. The program awards financial support to students who demonstrate strong academic performance and a genuine commitment to their studies. As the program grows, Gwags aims to expand beyond financial support by introducing professional development opportunities for scholars.',
+          body: 'The Gwags Scholars Program is an initiative designed to address both challenges directly. The program provides financial support to outstanding undergraduate students across Cameroon, removing one of the primary barriers to completing their studies. Beyond financial awards, the program prepares scholars for the workforce through internship opportunities and exposure to professional environments.',
         },
         {
           heading: 'What to know before applying',
           richBody: [
             { label: 'Who can apply', text: 'Undergraduate students currently enrolled at a university in Cameroon.' },
-            { label: 'What is required', text: 'A completed application form, an academic transcript, and a written response to a prompt.' },
-            { label: 'Scholarship value', text: 'Each scholarship is valued at 150,000 FCFA per recipient. The program awards 10 scholarships per batch.' },
+            { label: 'What is required', text: 'An academic transcript and a written response to the application prompt.' },
+            { label: 'What scholars receive', text: 'A financial award of 150,000 FCFA and access to internship placements. The program selects 10 scholars per batch.' },
             { label: 'Selection criteria', text: 'Selection is based on academic merit and the quality of the written submission.' },
             { label: 'Language', text: 'Applications are accepted in both English and French.' },
           ],
@@ -439,9 +439,9 @@ export const t = {
       apply: 'Apply now',
       carousel: {
         heading: 'Our Scholars',
-        batchLabel: '2025-2026 Batch',
-        batchHref: '/initiatives/scholars/2025-2026',
-        items: ['Scholar 1', 'Scholar 2', 'Scholar 3', 'Scholar 4', 'Scholar 5', 'Scholar 6', 'Scholar 7', 'Scholar 8', 'Scholar 9', 'Scholar 10'],
+        events: [
+          { label: '2025-2026 Batch', href: '/initiatives/scholars/2025-2026', items: ['', '', '', '', '', '', '', '', '', ''] },
+        ],
       },
     },
     mbalLekeakaPage: {
@@ -471,9 +471,9 @@ export const t = {
       apply: 'Submit a proposal',
       carousel: {
         heading: 'Funded Initiatives',
-        batchLabel: '2025-2026 Batch',
-        batchHref: '#', // UPDATE: Link to batch detail page
-        items: ['Initiative 1', 'Initiative 2', 'Initiative 3'],
+        events: [
+          { label: 'CAMESA Nguti Health Campaign', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+        ],
       },
     },
     ajongForetiasPage: {
@@ -493,9 +493,10 @@ export const t = {
       ],
       carousel: {
         heading: 'Past Visits',
-        batchLabel: '2025-2026',
-        batchHref: '#', // UPDATE: Link to batch detail page
-        items: ['Visit 1', 'Visit 2', 'Visit 3', 'Visit 4'],
+        events: [
+          { label: 'Tech Workshop with Codam Technologies', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+          { label: 'Visit to Coeur de Jésus Orphanage', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+        ],
       },
     },
     healthOutreachPage: {
@@ -515,9 +516,9 @@ export const t = {
       ],
       carousel: {
         heading: 'Past Campaigns',
-        batchLabel: '2025-2026',
-        batchHref: '#', // UPDATE: Link to batch detail page
-        items: ['Campaign 1', 'Campaign 2'],
+        events: [
+          { label: 'Nguti Health Campaign', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+        ],
       },
     },
   },
@@ -611,7 +612,7 @@ export const t = {
     },
     quote: {
       text: 'Les défis auxquels nos sociétés font face sont trop interconnectés pour qu\'une seule organisation puisse les résoudre seule. Gwags existe pour construire l\'infrastructure qui rend l\'action collective possible afin que les organisations engagées dans le changement peuvent le faire avec les ressources, le soutien et le réseau qu\'elles méritent.',
-      name: 'Daryll Giovanny Bikak Mbal',
+      name: 'Giovanny Bikak Mbal',
       role: 'Chair, Board Member',
       roleOrg: 'Gwags Global Impact Institution',
     },
@@ -929,18 +930,18 @@ export const t = {
       sections: [
         {
           heading: 'L\'accès à l\'enseignement supérieur au Cameroun',
-          body: 'À travers le Cameroun, des milliers d\'étudiants dotés de solides dossiers académiques et d\'un réel potentiel peinent à poursuivre leurs études universitaires. Les obstacles financiers demeurent l\'un des principaux freins empêchant les étudiants de compléter leurs diplômes. Sans soutien, beaucoup sont contraints de différer, d\'abandonner ou de renoncer entièrement à l\'enseignement supérieur, quelle que soit leur aptitude académique.',
+          body: 'Au Cameroun, l\'accès à l\'enseignement supérieur reste fortement influencé par les circonstances financières. Des étudiants avec de solides résultats académiques sont souvent incapables de poursuivre leurs études en raison d\'un manque de soutien financier. Et pour ceux qui obtiennent leur diplôme, la transition vers le monde du travail présente ses propres défis. Un accès limité à l\'expérience professionnelle et à l\'exposition professionnelle laisse de nombreux diplômés sans les outils nécessaires pour construire des carrières après l\'obtention de leur diplôme.',
         },
         {
           heading: 'À propos du programme',
-          body: 'Le Programme Gwags Scholars est une initiative conçue pour reconnaître et soutenir des étudiants de premier cycle exceptionnels à travers le Cameroun. Le programme attribue un soutien financier aux étudiants qui font preuve d\'une solide performance académique et d\'un engagement sincère envers leurs études. À mesure que le programme se développe, Gwags vise à aller au-delà du soutien financier en introduisant des opportunités de développement professionnel pour les boursiers.',
+          body: 'Le Programme Gwags Scholars est une initiative conçue pour répondre directement aux deux défis. Le programme fournit un soutien financier aux étudiants universitaires exceptionnels à travers le Cameroun, supprimant l\'un des principaux obstacles à la poursuite de leurs études. Au-delà des bourses, le programme prépare les lauréats au monde du travail à travers des opportunités de stage et une exposition à des environnements professionnels.',
         },
         {
           heading: 'Ce qu\'il faut savoir avant de postuler',
           richBody: [
             { label: 'Qui peut postuler', text: 'Les étudiants de licence actuellement inscrits dans une université au Cameroun.' },
-            { label: 'Ce qui est requis', text: 'Un formulaire de candidature rempli, un relevé de notes académiques et une réponse écrite à une question.' },
-            { label: 'Valeur de la bourse', text: 'Chaque bourse est d\'une valeur de 150 000 FCFA par bénéficiaire. Le programme attribue 10 bourses par session.' },
+            { label: 'Ce qui est requis', text: 'Un relevé de notes académique et une réponse écrite à l\'invite de candidature.' },
+            { label: 'Ce que les lauréats reçoivent', text: 'Une bourse de 150 000 FCFA et un accès à des placements en stage. Le programme sélectionne 10 lauréats par promotion.' },
             { label: 'Critères de sélection', text: 'La sélection est basée sur le mérite académique et la qualité de la soumission écrite.' },
             { label: 'Langue', text: 'Les candidatures sont acceptées en anglais et en français.' },
           ],
@@ -958,9 +959,9 @@ export const t = {
       apply: 'Postuler maintenant',
       carousel: {
         heading: 'Nos Boursiers',
-        batchLabel: 'Promotion 2025-2026',
-        batchHref: '/initiatives/scholars/2025-2026',
-        items: ['Boursier 1', 'Boursier 2', 'Boursier 3', 'Boursier 4', 'Boursier 5', 'Boursier 6', 'Boursier 7', 'Boursier 8', 'Boursier 9', 'Boursier 10'],
+        events: [
+          { label: 'Promotion 2025-2026', href: '/initiatives/scholars/2025-2026', items: ['', '', '', '', '', '', '', '', '', ''] },
+        ],
       },
     },
     mbalLekeakaPage: {
@@ -990,9 +991,9 @@ export const t = {
       apply: 'Soumettre une proposition',
       carousel: {
         heading: 'Initiatives Financées',
-        batchLabel: 'Promotion 2025-2026',
-        batchHref: '#', // UPDATE: Link to batch detail page
-        items: ['Initiative 1', 'Initiative 2', 'Initiative 3'],
+        events: [
+          { label: 'Campagne de Santé CAMESA Nguti', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+        ],
       },
     },
     ajongForetiasPage: {
@@ -1012,9 +1013,10 @@ export const t = {
       ],
       carousel: {
         heading: 'Visites Passées',
-        batchLabel: '2025-2026',
-        batchHref: '#', // UPDATE: Link to batch detail page
-        items: ['Visite 1', 'Visite 2', 'Visite 3', 'Visite 4'],
+        events: [
+          { label: 'Atelier Tech avec Codam Technologies', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+          { label: "Visite à l'Orphelinat Coeur de Jésus", href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+        ],
       },
     },
     healthOutreachPage: {
@@ -1034,9 +1036,9 @@ export const t = {
       ],
       carousel: {
         heading: 'Campagnes Passées',
-        batchLabel: '2025-2026',
-        batchHref: '#', // UPDATE: Link to batch detail page
-        items: ['Campagne 1', 'Campagne 2'],
+        events: [
+          { label: 'Campagne de Santé de Nguti', href: '#', items: ['', '', '', '', ''] }, // UPDATE: Link to detail page
+        ],
       },
     },
   },

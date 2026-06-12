@@ -12,7 +12,7 @@ const GOLD = '#D4AF37'
 
 const PEOPLE: Record<string, { name: string; role: string; bio: string; linkedin: string }> = {
   'daryll-giovanny-bikak-mbal': {
-    name: 'D. Giovanny Bikak Mbal',
+    name: 'Giovanny Bikak Mbal',
     role: 'Chair, Board Member',
     bio: "Founder of Gwags and Chair of the Board, Giovanny leads the institution's governance and strategic direction. He established Gwags in 2021 with a vision to build the institutional infrastructure needed by organizations committed to creating lasting impact.",
     linkedin: 'https://www.linkedin.com/in/giovannybikakmbal/',

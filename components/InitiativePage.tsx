@@ -15,6 +15,12 @@ export interface KeyDateItem {
   date: string
 }
 
+export interface CarouselEvent {
+  label: string
+  href: string
+  items: string[]
+}
+
 export interface InitiativePageData {
   hero: {
     name: string
@@ -33,9 +39,7 @@ export interface InitiativePageData {
   apply?: string
   carousel: {
     heading: string
-    batchLabel: string
-    batchHref: string
-    items: string[]
+    events: CarouselEvent[]
   }
 }
 
@@ -63,6 +67,7 @@ export default function InitiativePage({ lang, onToggleLang, data }: Props) {
         </>
       )}
       {data.apply && <ApplySection label={data.apply} />}
+      <Divider />
       <CarouselSection carousel={data.carousel} />
       <Footer lang={lang} />
     </main>
@@ -152,6 +157,21 @@ function ApplySection({ label }: { label: string }) {
 }
 
 function CarouselSection({ carousel }: { carousel: InitiativePageData['carousel'] }) {
+  return (
+    <section className="ip-carousel-section ip-section-white">
+      <div className="ip-carousel-inner">
+        <h2 className="ip-section-heading ip-carousel-heading">{carousel.heading}</h2>
+        {carousel.events.map((event, i) => (
+          <div key={i} className={i > 0 ? 'ip-event-track-gap' : undefined}>
+            <EventTrack event={event} />
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function EventTrack({ event }: { event: CarouselEvent }) {
   const trackRef = useRef<HTMLDivElement>(null)
   const [atStart, setAtStart] = useState(true)
   const [atEnd, setAtEnd] = useState(false)
@@ -184,45 +204,41 @@ function CarouselSection({ carousel }: { carousel: InitiativePageData['carousel'
   }
 
   return (
-    <section className="ip-carousel-section ip-section-white">
-      <div className="ip-carousel-inner">
-        <h2 className="ip-section-heading ip-carousel-heading">{carousel.heading}</h2>
-        <div className="ip-batch-row">
-          <Link href={carousel.batchHref} className="ip-batch-link">
-            {carousel.batchLabel}
-          </Link>
-          <div className="ip-batch-arrows">
-            <button
-              className="ip-chevron-btn"
-              onClick={scrollLeft}
-              aria-label="Scroll left"
-              style={{ opacity: atStart ? 0 : 1, pointerEvents: atStart ? 'none' : 'auto' }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 19 L9 12 L15 5" />
-              </svg>
-            </button>
-            <button
-              className="ip-chevron-btn"
-              onClick={scrollRight}
-              aria-label="Scroll right"
-              style={{ opacity: atEnd ? 0 : 1, pointerEvents: atEnd ? 'none' : 'auto' }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 5 L15 12 L9 19" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div className="ip-carousel-track" ref={trackRef}>
-          {carousel.items.map((_, i) => (
-            // UPDATE: Link to detail page when built
-            <a key={i} href="#" className="ip-carousel-card">
-              <div className="ip-carousel-card-img" />
-            </a>
-          ))}
+    <>
+      <div className="ip-batch-row">
+        <Link href={event.href} className="ip-batch-link">
+          {event.label}
+        </Link>
+        <div className="ip-batch-arrows">
+          <button
+            className="ip-chevron-btn"
+            onClick={atStart ? undefined : scrollLeft}
+            aria-label="Scroll left"
+            style={{ opacity: atStart ? 0.3 : 1, cursor: atStart ? 'default' : 'pointer' }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 19 L9 12 L15 5" />
+            </svg>
+          </button>
+          <button
+            className="ip-chevron-btn"
+            onClick={atEnd ? undefined : scrollRight}
+            aria-label="Scroll right"
+            style={{ opacity: atEnd ? 0.3 : 1, cursor: atEnd ? 'default' : 'pointer' }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 5 L15 12 L9 19" />
+            </svg>
+          </button>
         </div>
       </div>
-    </section>
+      <div className="ip-carousel-track" ref={trackRef}>
+        {event.items.map((_, i) => (
+          <div key={i} className="ip-carousel-card">
+            <div className="ip-carousel-card-img" />
+          </div>
+        ))}
+      </div>
+    </>
   )
 }

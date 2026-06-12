@@ -21,7 +21,7 @@ export default function LeadershipQuote({ lang }: LeadershipQuoteProps) {
 
         <div style={{ width: '40px', height: '0.5px', background: '#D4AF37', margin: '0 auto 28px' }} />
 
-        {/* IMAGE: Replace this div with <Image src="/images/leadership/giovanny.jpg" alt="Daryll Giovanny Bikak Mbal" width={72} height={72} style={{ borderRadius: '50%', objectFit: 'cover' }} /> */}
+        {/* IMAGE: Replace this div with <Image src="/images/leadership/giovanny.jpg" alt="Giovanny Bikak Mbal" width={72} height={72} style={{ borderRadius: '50%', objectFit: 'cover' }} /> */}
         <div className="lq-circle" style={{ width: '72px', height: '72px', borderRadius: '50%', background: '#0F1E3D', border: '2px solid rgba(212,175,55,0.3)', margin: '0 auto 16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '16px', letterSpacing: '0.05em' }}>DGB</span>
         </div>

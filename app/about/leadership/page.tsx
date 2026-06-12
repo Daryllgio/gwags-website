@@ -11,7 +11,7 @@ const GOLD  = '#D4AF37'
 
 const governanceBoard = [
   {
-    name: 'D. Giovanny Bikak Mbal',
+    name: 'Giovanny Bikak Mbal',
     role: 'Chair, Board Member',
     bio:  "Founder of Gwags and Chair of the Board, Giovanny leads the institution's governance and strategic direction.",
     href: '/about/leadership/daryll-giovanny-bikak-mbal',

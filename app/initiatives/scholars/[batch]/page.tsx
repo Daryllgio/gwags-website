@@ -23,10 +23,10 @@ export default function BatchPage({ params }: { params: { batch: string } }) {
             {Array.from({ length: 10 }, (_, i) => (
               <div key={i} className="ip-winner-card">
                 <div className="ip-winner-img" />
-                <div className="ip-winner-name">Scholar {i + 1}</div>
-                <div className="ip-winner-detail">University placeholder</div>
-                <div className="ip-winner-detail">Year of study</div>
-                <div className="ip-winner-detail">Field of study</div>
+                <p className="ip-winner-name">Scholar {i + 1}</p>
+                <p className="ip-winner-detail"><span className="ip-winner-label">University:</span> Placeholder University</p>
+                <p className="ip-winner-detail"><span className="ip-winner-label">Program:</span> Placeholder Program</p>
+                <p className="ip-winner-detail"><span className="ip-winner-label">Study level:</span> Placeholder Level</p>
               </div>
             ))}
           </div>
