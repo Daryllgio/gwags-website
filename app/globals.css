@@ -1929,6 +1929,10 @@ h1, h2, h3, h4 {
   margin: 0;
 }
 
+.ip-section-body + .ip-section-body {
+  margin-top: 20px;
+}
+
 /* Rich body (What to know before applying) */
 .ip-rich-body {
   margin: 0;
@@ -1988,6 +1992,63 @@ h1, h2, h3, h4 {
 .ip-dates-val {
   font-size: 18px;
   color: #4A4A4A;
+}
+
+/* Impact stats section */
+.ip-stats-wrap {
+  background: #fff;
+  padding: 0 80px 60px;
+}
+
+.ip-stats-box {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #F8F4EC;
+  border-radius: 16px;
+  padding: 68px;
+}
+
+.ip-stats-heading {
+  font-family: Georgia, serif;
+  font-size: 43px;
+  font-weight: 200;
+  color: #3A3A3A;
+  margin: 0 0 10px 0;
+}
+
+.ip-stats-subheading {
+  font-size: 21px;
+  font-weight: 300;
+  color: #5A5A5A;
+  margin: 0 0 32px 0;
+  line-height: 1.6;
+}
+
+.ip-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.ip-stats-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+.ip-stats-value {
+  font-family: Georgia, serif;
+  font-size: 58px;
+  font-weight: 200;
+  color: #3A3A3A;
+  line-height: 1;
+}
+
+.ip-stats-label {
+  font-size: 21px;
+  font-weight: 300;
+  color: #5A5A5A;
 }
 
 /* Apply button section */
@@ -2206,6 +2267,9 @@ h1, h2, h3, h4 {
   .ip-rich-text { font-size: 17px !important; }
   .ip-dates-label { font-size: 17px !important; }
   .ip-dates-val { font-size: 17px !important; }
+  .ip-stats-wrap { padding: 0 40px 60px; }
+  .ip-stats-box { padding: 52px; }
+  .ip-stats-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .ip-apply-section { padding: 48px 40px; }
   .ip-carousel-section { padding: 60px 40px; }
   .ip-batch-hero { padding: 60px 40px 40px; }
@@ -2232,6 +2296,10 @@ h1, h2, h3, h4 {
   .ip-rich-text { font-size: 16px !important; }
   .ip-dates-label { font-size: 16px !important; }
   .ip-dates-val { font-size: 16px !important; }
+  .ip-stats-wrap { padding: 0 24px 48px; }
+  .ip-stats-box { padding: 52px; }
+  .ip-stats-grid { grid-template-columns: 1fr; gap: 24px; }
+  .ip-stats-value { font-size: 46px !important; }
   .ip-apply-section { padding: 40px 24px; }
   .ip-carousel-section { padding: 48px 24px; }
   .ip-batch-arrows { display: none !important; }
@@ -2259,6 +2327,7 @@ h1, h2, h3, h4 {
   .ip-rich-text { font-size: 15px !important; }
   .ip-dates-label { font-size: 15px !important; }
   .ip-dates-val { font-size: 15px !important; }
+  .ip-stats-wrap { padding: 0 20px 36px; }
   .ip-apply-section { padding: 32px 20px; }
   .ip-carousel-section { padding: 36px 20px; }
   .ip-batch-hero { padding: 36px 20px 28px; }

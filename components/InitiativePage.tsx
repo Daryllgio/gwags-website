@@ -22,6 +22,11 @@ export interface CarouselEvent {
   items: string[]
 }
 
+export interface StatItem {
+  value: string
+  label: string
+}
+
 export interface InitiativePageData {
   hero: {
     name: string
@@ -36,6 +41,11 @@ export interface InitiativePageData {
     heading: string
     batch: string
     items: KeyDateItem[]
+  }
+  stats?: {
+    heading: string
+    subheading: string
+    items: StatItem[]
   }
   apply?: string
   carousel: {
@@ -67,8 +77,9 @@ export default function InitiativePage({ lang, onToggleLang, data }: Props) {
           <KeyDatesSection keyDates={data.keyDates} />
         </>
       )}
+      {data.stats && <StatsSection stats={data.stats} />}
       {data.apply && <ApplySection label={data.apply} />}
-      <Divider />
+      {!data.stats && <Divider />}
       <CarouselSection carousel={data.carousel} />
       <Footer lang={lang} />
     </main>
@@ -107,7 +118,9 @@ function ContentSection({ heading, body, richBody }: {
         <div className="ip-grid">
           <h2 className="ip-section-heading">{heading}</h2>
           <div>
-            {body && <p className="ip-section-body">{body}</p>}
+            {body && body.split('\n\n').map((para, i) => (
+              <p key={i} className="ip-section-body">{para}</p>
+            ))}
             {richBody && (
               <dl className="ip-rich-body">
                 {richBody.map((item, i) => (
@@ -142,6 +155,25 @@ function KeyDatesSection({ keyDates }: { keyDates: NonNullable<InitiativePageDat
               </li>
             ))}
           </ul>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function StatsSection({ stats }: { stats: NonNullable<InitiativePageData['stats']> }) {
+  return (
+    <section className="ip-stats-wrap">
+      <div className="ip-stats-box">
+        <h2 className="ip-stats-heading">{stats.heading}</h2>
+        <p className="ip-stats-subheading">{stats.subheading}</p>
+        <div className="ip-stats-grid">
+          {stats.items.map((item, i) => (
+            <div key={i} className="ip-stats-item">
+              <span className="ip-stats-value">{item.value}</span>
+              <span className="ip-stats-label">{item.label}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

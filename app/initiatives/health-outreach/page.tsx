@@ -15,6 +15,7 @@ export default function HealthOutreachPage() {
       data={{
         hero: p.hero,
         sections: p.sections,
+        stats: p.stats,
         carousel: p.carousel,
       }}
     />

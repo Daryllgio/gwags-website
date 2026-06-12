@@ -490,15 +490,6 @@ export const t = {
           heading: 'About the program',
           body: 'The Ajong Foretia Orphan Support program is the initiative from which Gwags was born. It began in 2021 when four high school students organized their first visit to an orphanage in Douala, Cameroon. Since then, the program has continued to provide direct support to orphaned children through regular visits, essential living supplies, and educational exposure. The program partners with local organizations to deliver activities including technology workshops, creative sessions, and other developmental opportunities.',
         },
-        {
-          heading: 'What we focus on',
-          richBody: [
-            { label: 'Essential living supplies', text: 'Providing orphaned children with basic necessities including food, clothing, and hygiene products.' },
-            { label: 'Educational exposure', text: 'Introducing children to learning opportunities beyond their immediate environment.' },
-            { label: 'Technology workshops', text: 'Partnering with organizations to deliver hands-on technology and digital skills sessions.' },
-            { label: 'Developmental activities', text: 'Organizing creative, recreational, and skill-building activities designed to support long-term growth.' },
-          ],
-        },
       ],
       carousel: {
         heading: 'Past Visits',
@@ -516,22 +507,22 @@ export const t = {
       sections: [
         {
           heading: 'Healthcare in underserved communities',
-          body: 'In many parts of Cameroon, access to basic healthcare remains a significant challenge. Communities in rural and underserved areas often lack access to medical professionals, diagnostic equipment, and health education. The result is that treatable conditions go undiagnosed, preventable diseases spread, and communities bear the burden of a healthcare infrastructure that does not reach them.',
+          body: 'Access to basic healthcare remains one of the most persistent challenges facing underserved communities around the world. In many regions, populations lack access to qualified medical professionals, diagnostic infrastructure, and preventive health education. Treatable conditions go undiagnosed. Preventable diseases continue to spread. And the communities that need healthcare the most are often the furthest from it.',
         },
         {
           heading: 'About the program',
-          body: 'The Health Outreach Program is an initiative through which Gwags organizes and supports health campaigns in underserved communities. The program brings together medical professionals, partner organizations, and community leaders to deliver free consultations, screenings, and health education. Each campaign is designed around the specific needs of the target community and delivered through structured field operations.',
-        },
-        {
-          heading: 'What we focus on',
-          richBody: [
-            { label: 'Free medical consultations', text: 'Providing access to qualified medical professionals for communities that would otherwise go without.' },
-            { label: 'Health screenings and diagnostics', text: 'Identifying conditions early through structured screening programs during each campaign.' },
-            { label: 'Surgical procedures', text: 'Delivering critical surgical interventions to patients in need during field operations.' },
-            { label: 'Community health education', text: 'Equipping communities with the knowledge to prevent illness and maintain long-term health outcomes.' },
-          ],
+          body: 'The Health Outreach Program is how Gwags addresses the healthcare gap directly. The program organizes and co-delivers health campaigns in underserved communities, bringing together medical professionals and partner organizations to provide free consultations, screenings, surgical procedures, and health education. Each campaign is built around the specific needs of the community it serves and delivered through a structured operational framework designed to maximize reach and impact.\n\nEvery campaign is documented from start to finish. Patient numbers, diagnoses, procedures performed, and education sessions are all recorded. This data is analyzed to measure the reach and effectiveness of each campaign and to inform the planning of future campaigns.',
         },
       ],
+      stats: {
+        heading: 'Our impact',
+        subheading: 'Measurable results from our health outreach campaigns.',
+        items: [
+          { value: '1,500+', label: 'beneficiaries reached' },
+          { value: '120+', label: 'medical professionals deployed' },
+          { value: '1', label: 'campaign conducted' },
+        ],
+      },
       carousel: {
         heading: 'Past Campaigns',
         events: [
@@ -1028,15 +1019,6 @@ export const t = {
           heading: 'À propos du programme',
           body: 'Le programme Ajong Foretia Orphan Support est l\'initiative dont est né Gwags. Il a débuté en 2021 lorsque quatre lycéens ont organisé leur première visite dans un orphelinat à Douala, au Cameroun. Depuis lors, le programme continue de fournir un soutien direct aux enfants orphelins à travers des visites régulières, des fournitures de vie essentielles et une exposition éducative. Le programme s\'associe à des organisations locales pour offrir des activités incluant des ateliers technologiques, des sessions créatives et d\'autres opportunités de développement.',
         },
-        {
-          heading: 'Ce sur quoi nous nous concentrons',
-          richBody: [
-            { label: 'Fournitures essentielles de vie', text: 'Fournir aux enfants orphelins des produits de première nécessité, notamment la nourriture, les vêtements et les produits d\'hygiène.' },
-            { label: 'Exposition éducative', text: 'Initier les enfants à des opportunités d\'apprentissage au-delà de leur environnement immédiat.' },
-            { label: 'Ateliers technologiques', text: 'Collaborer avec des organisations pour animer des sessions pratiques sur les technologies et les compétences numériques.' },
-            { label: 'Activités de développement', text: 'Organiser des activités créatives, récréatives et de développement des compétences conçues pour soutenir la croissance à long terme.' },
-          ],
-        },
       ],
       carousel: {
         heading: 'Visites Passées',
@@ -1054,22 +1036,22 @@ export const t = {
       sections: [
         {
           heading: 'Les soins de santé dans les communautés mal desservies',
-          body: 'Dans de nombreuses régions du Cameroun, l\'accès aux soins de santé de base reste un défi majeur. Les communautés rurales et mal desservies manquent souvent d\'accès aux professionnels de santé, aux équipements de diagnostic et à l\'éducation sanitaire. Il en résulte que des affections traitables restent non diagnostiquées, des maladies évitables se propagent et les communautés supportent le poids d\'une infrastructure de santé qui ne les atteint pas.',
+          body: 'L\'accès aux soins de santé de base reste l\'un des défis les plus persistants auxquels font face les communautés mal desservies à travers le monde. Dans de nombreuses régions, les populations n\'ont pas accès à des professionnels de santé qualifiés, à des infrastructures de diagnostic et à une éducation sanitaire préventive. Des maladies traitables ne sont pas diagnostiquées. Des maladies évitables continuent de se propager. Et les communautés qui ont le plus besoin de soins de santé sont souvent les plus éloignées de ceux-ci.',
         },
         {
           heading: 'À propos du programme',
-          body: 'Le Programme de Santé Communautaire est une initiative à travers laquelle Gwags organise et soutient des campagnes de santé dans des communautés mal desservies. Le programme rassemble des professionnels de santé, des organisations partenaires et des leaders communautaires pour offrir des consultations gratuites, des dépistages et une éducation à la santé. Chaque campagne est conçue autour des besoins spécifiques de la communauté cible et délivrée à travers des opérations de terrain structurées.',
-        },
-        {
-          heading: 'Ce sur quoi nous nous concentrons',
-          richBody: [
-            { label: 'Consultations médicales gratuites', text: 'Fournir un accès à des professionnels de santé qualifiés pour des communautés qui en seraient autrement privées.' },
-            { label: 'Dépistage et diagnostics de santé', text: 'Identifier précocement les pathologies grâce à des programmes de dépistage structurés lors de chaque campagne.' },
-            { label: 'Interventions chirurgicales', text: 'Prodiguer des soins chirurgicaux essentiels aux patients dans le besoin lors des opérations de terrain.' },
-            { label: 'Éducation sanitaire communautaire', text: 'Donner aux communautés les connaissances nécessaires pour prévenir les maladies et maintenir de bons résultats de santé à long terme.' },
-          ],
+          body: 'Le Programme de Sensibilisation Sanitaire est la manière dont Gwags répond directement au déficit de soins de santé. Le programme organise et co-livre des campagnes de santé dans des communautés mal desservies, rassemblant des professionnels de santé et des organisations partenaires pour fournir des consultations gratuites, des dépistages, des interventions chirurgicales et de l\'éducation sanitaire. Chaque campagne est construite autour des besoins spécifiques de la communauté qu\'elle dessert et livrée à travers un cadre opérationnel structuré conçu pour maximiser la portée et l\'impact.\n\nChaque campagne est documentée du début à la fin. Le nombre de patients, les diagnostics, les procédures effectuées et les sessions d\'éducation sont tous enregistrés. Ces données sont analysées pour mesurer la portée et l\'efficacité de chaque campagne et pour orienter la planification des futures campagnes.',
         },
       ],
+      stats: {
+        heading: 'Notre impact',
+        subheading: 'Des résultats mesurables issus de nos campagnes de sensibilisation sanitaire.',
+        items: [
+          { value: '1 500+', label: 'bénéficiaires atteints' },
+          { value: '120+', label: 'professionnels de santé déployés' },
+          { value: '1', label: 'campagne menée' },
+        ],
+      },
       carousel: {
         heading: 'Campagnes Passées',
         events: [
