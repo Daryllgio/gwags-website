@@ -11,7 +11,7 @@ const routes = [
   '/initiatives/scholars',
   '/initiatives/mbal-lekeaka-fund',
   '/initiatives/health-outreach',
-  '/initiatives/youth-development',
+  '/initiatives/ajong-foretia',
 ]
 
 const imagePlaceholders = [

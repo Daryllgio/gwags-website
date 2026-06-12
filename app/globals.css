@@ -1825,3 +1825,302 @@ h1, h2, h3, h4 {
   .pp-ma-heading { font-size: 26px !important; }
 }
 
+/* ── Initiative Pages (shared layout) ── */
+
+.ip-hero {
+  background: #0A1128;
+  padding: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.ip-hero-img-wrap {
+  position: relative;
+  width: 90%;
+  max-width: 1100px;
+  height: 400px;
+  border-radius: 12px;
+  background: #0F1E3D;
+  overflow: hidden;
+}
+
+.ip-hero-img-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65%;
+  background: linear-gradient(to top, rgba(10,17,40,0.82) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.ip-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.ip-hero-name {
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+  max-width: 55%;
+}
+
+.ip-hero-goal {
+  color: rgba(255,255,255,0.92);
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 380px;
+  text-align: right;
+}
+
+.ip-section {
+  padding: 60px 80px;
+}
+
+.ip-section-white { background: #fff; }
+.ip-section-offwhite { background: #F7F6F3; }
+
+.ip-content-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.ip-section-heading {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: #0A1128;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.ip-section-batch {
+  display: block;
+  font-size: 13px;
+  color: #D4AF37;
+  letter-spacing: 0.16em;
+  margin-top: 12px;
+}
+
+.ip-section-body {
+  font-size: 18px;
+  color: #4A4A4A;
+  line-height: 1.85;
+  margin: 0;
+}
+
+.ip-dates-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ip-dates-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 0.5px solid rgba(10,17,40,0.1);
+  gap: 16px;
+}
+
+.ip-dates-row:last-child {
+  border-bottom: none;
+}
+
+.ip-dates-label {
+  font-size: 18px;
+  font-weight: 500;
+  color: #0A1128;
+}
+
+.ip-dates-val {
+  font-size: 18px;
+  color: #4A4A4A;
+}
+
+.ip-apply-section {
+  background: #fff;
+  padding: 48px 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.ip-apply-btn {
+  display: inline-block;
+  background: #D4AF37;
+  color: #0A1128;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 16px 40px;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  font-family: inherit;
+}
+
+.ip-apply-btn:hover {
+  opacity: 0.85;
+}
+
+.ip-carousel-section {
+  padding: 60px 80px;
+}
+
+.ip-carousel-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ip-carousel-head-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+.ip-carousel-subtitle {
+  display: block;
+  font-size: 13px;
+  color: #D4AF37;
+  letter-spacing: 0.16em;
+  margin-top: 12px;
+}
+
+.ip-carousel-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ip-arrow-btn {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(10,17,40,0.2);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #0A1128;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  padding: 0;
+}
+
+.ip-arrow-btn:hover {
+  border-color: rgba(10,17,40,0.5);
+  background: #eeede9;
+}
+
+.ip-carousel-overflow {
+  flex: 1;
+  overflow: hidden;
+}
+
+.ip-carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 4px;
+}
+
+.ip-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.ip-carousel-card {
+  flex-shrink: 0;
+  width: 240px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ip-carousel-card-img {
+  width: 240px;
+  height: 300px;
+  border-radius: 8px;
+  background: #E5E4E0;
+}
+
+.ip-carousel-card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0A1128;
+  margin-top: 12px;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ip-hero { padding: 60px 40px; }
+  .ip-hero-img-wrap { height: 280px; }
+  .ip-hero-name { font-size: 34px !important; }
+  .ip-hero-goal { font-size: 17px !important; max-width: 300px; }
+  .ip-section { padding: 60px 40px; }
+  .ip-section-heading { font-size: 30px !important; }
+  .ip-section-body { font-size: 17px !important; }
+  .ip-dates-label { font-size: 17px !important; }
+  .ip-dates-val { font-size: 17px !important; }
+  .ip-apply-section { padding: 48px 40px; }
+  .ip-carousel-section { padding: 60px 40px; }
+}
+
+@media (max-width: 768px) {
+  .ip-hero { padding: 48px 24px; }
+  .ip-hero-img-wrap { height: 220px; }
+  .ip-hero-name { font-size: 26px !important; }
+  .ip-hero-goal { font-size: 15px !important; max-width: 100%; text-align: left; }
+  .ip-hero-overlay { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .ip-section { padding: 48px 24px; }
+  .ip-grid { grid-template-columns: 1fr; gap: 24px; }
+  .ip-section-heading { font-size: 26px !important; }
+  .ip-section-body { font-size: 16px !important; }
+  .ip-dates-label { font-size: 16px !important; }
+  .ip-dates-val { font-size: 16px !important; }
+  .ip-apply-section { padding: 40px 24px; }
+  .ip-carousel-section { padding: 48px 24px; }
+  .ip-carousel-head-grid { grid-template-columns: 1fr; gap: 16px; margin-bottom: 28px; }
+  .ip-carousel-row { gap: 0; }
+  .ip-arrow-btn { display: none !important; }
+  .ip-carousel-overflow { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .ip-carousel-track { overflow-x: auto; }
+}
+
+@media (max-width: 480px) {
+  .ip-hero { padding: 36px 20px; }
+  .ip-hero-img-wrap { height: 220px; }
+  .ip-hero-name { font-size: 22px !important; }
+  .ip-hero-goal { font-size: 14px !important; }
+  .ip-section { padding: 36px 20px; }
+  .ip-section-heading { font-size: 23px !important; }
+  .ip-section-body { font-size: 15px !important; }
+  .ip-dates-label { font-size: 15px !important; }
+  .ip-dates-val { font-size: 15px !important; }
+  .ip-apply-section { padding: 32px 20px; }
+  .ip-carousel-section { padding: 36px 20px; }
+}
+

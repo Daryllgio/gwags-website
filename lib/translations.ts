@@ -31,7 +31,7 @@ export const t = {
             { label: 'Gwags Scholars Program', href: '/initiatives/scholars' },
             { label: 'Mbal Lekeaka Fund', href: '/initiatives/mbal-lekeaka-fund' },
             { label: 'Health Outreach Program', href: '/initiatives/health-outreach' },
-            { label: 'Youth Development', href: '/initiatives/youth-development' },
+            { label: 'Ajong Foretia Orphan Support', href: '/initiatives/ajong-foretia' },
           ],
         },
       },
@@ -224,7 +224,7 @@ export const t = {
           { title: 'Gwags Scholars Program', desc: 'Providing financial support and professional development opportunities to outstanding Cameroonian university students.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
           { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH', href: '/initiatives/health-outreach' },
-          { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.', tag: 'YOUTH', href: '/initiatives/youth-development' },
+          { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.', tag: 'YOUTH', href: '/initiatives/ajong-foretia' },
         ],
       },
       coordination: {
@@ -402,6 +402,98 @@ export const t = {
         btn2: 'Join the network',
       },
     },
+    scholarsPage: {
+      hero: {
+        name: 'Gwags Scholars Program',
+        goal: 'Providing financial support and professional development opportunities to outstanding Cameroonian university students.',
+      },
+      sections: [
+        {
+          heading: 'About the program',
+          body: 'The Gwags Scholars Program is an initiative designed to recognize and support outstanding undergraduate students across Cameroon. The program awards financial support to students who demonstrate strong academic performance and a genuine commitment to their studies. As the program grows, Gwags aims to expand beyond financial support by introducing professional development opportunities for scholars.',
+        },
+        {
+          heading: 'How it works',
+          body: 'Applicants submit their academic transcripts alongside a written response to a prompt. Selection is based on academic merit and the quality of the written submission. The program currently awards 10 scholarships per batch, each valued at 150,000 FCFA. Applications are accepted in both English and French.',
+        },
+      ],
+      keyDates: {
+        heading: 'Key dates',
+        batch: '2025-2026 BATCH',
+        items: [
+          { label: 'Applications open', date: 'January 16, 2026' },
+          { label: 'Applications close', date: 'July 15, 2026' },
+          { label: 'Results released', date: 'August 2026' },
+        ],
+      },
+      apply: 'Apply now',
+      carousel: {
+        heading: 'Our Scholars',
+        subtitle: '2025-2026 BATCH',
+        items: ['Scholar 1', 'Scholar 2', 'Scholar 3', 'Scholar 4', 'Scholar 5', 'Scholar 6', 'Scholar 7', 'Scholar 8', 'Scholar 9', 'Scholar 10'],
+      },
+    },
+    mbalLekeakaPage: {
+      hero: {
+        name: 'Mbal Lekeaka Fund',
+        goal: 'A grant program designed to support community-led initiatives.',
+      },
+      sections: [
+        {
+          heading: 'About the fund',
+          body: 'The Mbal Lekeaka Fund is a grant program established by Gwags to provide financial support to community-led initiatives. The fund targets organizations and groups working on projects that address real needs in their communities but lack the financial resources to execute or scale their work. Through the fund, Gwags channels resources directly toward initiatives that demonstrate clear objectives and measurable outcomes.',
+        },
+        {
+          heading: 'How it works',
+          body: 'Organizations and community groups submit proposals outlining their initiative, its objectives, expected outcomes, and a detailed budget. Proposals are evaluated based on demonstrated community need, operational feasibility, and alignment with the fund\'s priorities. Selected initiatives receive direct financial support to execute their projects.',
+        },
+      ],
+      apply: 'Submit a proposal',
+      carousel: {
+        heading: 'Funded Initiatives',
+        items: ['Initiative 1', 'Initiative 2', 'Initiative 3'],
+      },
+    },
+    ajongForetiasPage: {
+      hero: {
+        name: 'Ajong Foretia Orphan Support',
+        goal: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.',
+      },
+      sections: [
+        {
+          heading: 'About the program',
+          body: 'The Ajong Foretia Orphan Support program is the initiative from which Gwags was born. It began in 2021 when four high school students organized their first visit to an orphanage in Douala, Cameroon. Since then, the program has continued to provide direct support to orphaned children through regular visits, essential living supplies, and educational exposure. The program remains central to who Gwags is as an institution.',
+        },
+        {
+          heading: 'How it works',
+          body: 'The program operates through organized visits to orphanages. During each visit, the team provides essential living supplies, spends time with the children, and introduces educational activities and opportunities. The program partners with local organizations to deliver technology exposure, creative workshops, and other developmental activities.',
+        },
+      ],
+      carousel: {
+        heading: 'Past Visits',
+        items: ['Visit 1', 'Visit 2', 'Visit 3', 'Visit 4'],
+      },
+    },
+    healthOutreachPage: {
+      hero: {
+        name: 'Health Outreach Program',
+        goal: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.',
+      },
+      sections: [
+        {
+          heading: 'About the program',
+          body: 'The Health Outreach Program is an initiative through which Gwags supports and co-organizes health campaigns in underserved areas. The program brings together medical professionals, partner organizations, and community leaders to deliver free consultations, screenings, surgeries, and health education. Each campaign is designed around the specific needs of the target community and delivered through structured field operations.',
+        },
+        {
+          heading: 'How it works',
+          body: 'Gwags partners with medical organizations and local health authorities to identify communities with critical healthcare gaps. Campaigns are planned in coordination with local health districts and delivered by teams of medical professionals. Services include free medical consultations, surgical procedures, health screenings, and community health education.',
+        },
+      ],
+      carousel: {
+        heading: 'Past Campaigns',
+        items: ['Campaign 1', 'Campaign 2'],
+      },
+    },
   },
   fr: {
     nav: {
@@ -433,7 +525,7 @@ export const t = {
             { label: 'Programme Gwags Scholars', href: '/initiatives/scholars' },
             { label: 'Fonds Mbal Lekeaka', href: '/initiatives/mbal-lekeaka-fund' },
             { label: 'Programme de Santé', href: '/initiatives/health-outreach' },
-            { label: 'Développement des Jeunes', href: '/initiatives/youth-development' },
+            { label: 'Ajong Foretia Orphan Support', href: '/initiatives/ajong-foretia' },
           ],
         },
       },
@@ -625,7 +717,7 @@ export const t = {
           { title: 'Programme Gwags Scholars', desc: 'Offrir un soutien financier et des opportunités de développement professionnel aux étudiants universitaires camerounais exceptionnels.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
           { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Programme de Santé Communautaire', desc: "Apporter des soins de santé gratuits et l'éducation médicale aux communautés mal desservies.", tag: 'SANTÉ', href: '/initiatives/health-outreach' },
-          { title: 'Ajong Foretia Orphan Support', desc: 'Soutenir les enfants orphelins à travers la fourniture de fournitures de vie essentielles et des opportunités éducatives.', tag: 'JEUNESSE', href: '/initiatives/youth-development' },
+          { title: 'Ajong Foretia Orphan Support', desc: 'Soutenir les enfants orphelins à travers la fourniture de fournitures de vie essentielles et des opportunités éducatives.', tag: 'JEUNESSE', href: '/initiatives/ajong-foretia' },
         ],
       },
       coordination: {
@@ -801,6 +893,98 @@ export const t = {
         body: "Gwags construit quelque chose qui dure. Si votre organisation partage cette ambition, il y a une place pour vous au sein de notre réseau.",
         btn1: 'Nous contacter',
         btn2: 'Rejoindre le réseau',
+      },
+    },
+    scholarsPage: {
+      hero: {
+        name: 'Programme Gwags Scholars',
+        goal: 'Offrir un soutien financier et des opportunités de développement professionnel aux étudiants universitaires camerounais exceptionnels.',
+      },
+      sections: [
+        {
+          heading: 'À propos du programme',
+          body: 'Le Programme Gwags Scholars est une initiative conçue pour reconnaître et soutenir des étudiants de premier cycle exceptionnels à travers le Cameroun. Le programme attribue un soutien financier aux étudiants qui font preuve d\'une solide performance académique et d\'un engagement sincère envers leurs études. À mesure que le programme se développe, Gwags vise à aller au-delà du soutien financier en introduisant des opportunités de développement professionnel pour les boursiers.',
+        },
+        {
+          heading: 'Comment ça fonctionne',
+          body: 'Les candidats soumettent leurs relevés de notes académiques accompagnés d\'une réponse écrite à une question. La sélection est basée sur le mérite académique et la qualité de la soumission écrite. Le programme attribue actuellement 10 bourses par session, chacune d\'une valeur de 150 000 FCFA. Les candidatures sont acceptées en anglais et en français.',
+        },
+      ],
+      keyDates: {
+        heading: 'Dates clés',
+        batch: 'PROMOTION 2025-2026',
+        items: [
+          { label: 'Ouverture des candidatures', date: '16 janvier 2026' },
+          { label: 'Clôture des candidatures', date: '15 juillet 2026' },
+          { label: 'Publication des résultats', date: 'Août 2026' },
+        ],
+      },
+      apply: 'Postuler maintenant',
+      carousel: {
+        heading: 'Nos Boursiers',
+        subtitle: 'PROMOTION 2025-2026',
+        items: ['Boursier 1', 'Boursier 2', 'Boursier 3', 'Boursier 4', 'Boursier 5', 'Boursier 6', 'Boursier 7', 'Boursier 8', 'Boursier 9', 'Boursier 10'],
+      },
+    },
+    mbalLekeakaPage: {
+      hero: {
+        name: 'Fonds Mbal Lekeaka',
+        goal: 'Un programme de subventions conçu pour soutenir les initiatives communautaires.',
+      },
+      sections: [
+        {
+          heading: 'À propos du fonds',
+          body: 'Le Fonds Mbal Lekeaka est un programme de subventions établi par Gwags pour fournir un soutien financier aux initiatives communautaires. Le fonds cible les organisations et groupes qui travaillent sur des projets répondant à de véritables besoins dans leurs communautés mais qui manquent des ressources financières pour exécuter ou développer leur travail. À travers le fonds, Gwags canalise des ressources directement vers des initiatives qui démontrent des objectifs clairs et des résultats mesurables.',
+        },
+        {
+          heading: 'Comment ça fonctionne',
+          body: 'Les organisations et groupes communautaires soumettent des propositions décrivant leur initiative, ses objectifs, les résultats attendus et un budget détaillé. Les propositions sont évaluées sur la base du besoin communautaire démontré, de la faisabilité opérationnelle et de l\'alignement avec les priorités du fonds. Les initiatives sélectionnées reçoivent un soutien financier direct pour exécuter leurs projets.',
+        },
+      ],
+      apply: 'Soumettre une proposition',
+      carousel: {
+        heading: 'Initiatives Financées',
+        items: ['Initiative 1', 'Initiative 2', 'Initiative 3'],
+      },
+    },
+    ajongForetiasPage: {
+      hero: {
+        name: 'Ajong Foretia Orphan Support',
+        goal: 'Soutenir les enfants orphelins à travers la fourniture de fournitures de vie essentielles et des opportunités éducatives.',
+      },
+      sections: [
+        {
+          heading: 'À propos du programme',
+          body: 'Le programme Ajong Foretia Orphan Support est l\'initiative dont est né Gwags. Il a débuté en 2021 lorsque quatre lycéens ont organisé leur première visite dans un orphelinat à Douala, au Cameroun. Depuis lors, le programme continue de fournir un soutien direct aux enfants orphelins à travers des visites régulières, des fournitures de vie essentielles et une exposition éducative. Le programme reste au coeur de l\'identité de Gwags en tant qu\'institution.',
+        },
+        {
+          heading: 'Comment ça fonctionne',
+          body: 'Le programme fonctionne à travers des visites organisées dans les orphelinats. Lors de chaque visite, l\'équipe fournit des fournitures de vie essentielles, passe du temps avec les enfants et introduit des activités et opportunités éducatives. Le programme s\'associe à des organisations locales pour offrir une exposition à la technologie, des ateliers créatifs et d\'autres activités de développement.',
+        },
+      ],
+      carousel: {
+        heading: 'Visites Passées',
+        items: ['Visite 1', 'Visite 2', 'Visite 3', 'Visite 4'],
+      },
+    },
+    healthOutreachPage: {
+      hero: {
+        name: 'Programme de Santé Communautaire',
+        goal: 'Apporter des soins de santé gratuits et l\'éducation médicale aux communautés mal desservies grâce à des campagnes structurées.',
+      },
+      sections: [
+        {
+          heading: 'À propos du programme',
+          body: 'Le Programme de Santé Communautaire est une initiative à travers laquelle Gwags soutient et co-organise des campagnes de santé dans des zones mal desservies. Le programme rassemble des professionnels de santé, des organisations partenaires et des leaders communautaires pour offrir des consultations gratuites, des dépistages, des chirurgies et une éducation à la santé. Chaque campagne est conçue autour des besoins spécifiques de la communauté cible et délivrée à travers des opérations de terrain structurées.',
+        },
+        {
+          heading: 'Comment ça fonctionne',
+          body: 'Gwags s\'associe à des organisations médicales et aux autorités sanitaires locales pour identifier les communautés présentant des lacunes critiques en matière de soins de santé. Les campagnes sont planifiées en coordination avec les districts sanitaires locaux et délivrées par des équipes de professionnels de santé. Les services comprennent des consultations médicales gratuites, des interventions chirurgicales, des dépistages de santé et une éducation sanitaire communautaire.',
+        },
+      ],
+      carousel: {
+        heading: 'Campagnes Passées',
+        items: ['Campagne 1', 'Campagne 2'],
       },
     },
   },
