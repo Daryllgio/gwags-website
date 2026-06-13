@@ -472,7 +472,7 @@ export const t = {
       carousel: {
         heading: 'Funded Initiatives',
         events: [
-          { label: 'CAMESA Nguti Health Campaign', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: ['', '', '', '', '', '', '', '', '', ''] },
+          { label: 'CAMESA Nguti Health Campaign', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: ['', '', '', '', '', ''] },
         ],
       },
     },
@@ -496,14 +496,14 @@ export const t = {
         subheading: 'Measurable results from our orphan support initiatives.',
         items: [
           { value: '150+', label: 'orphans supported' },
-          { value: '$6,000+', label: 'in charitable support' },
+          { value: '$4,000+', label: 'in total charitable support' },
         ],
       },
       carousel: {
         heading: 'Past Visits',
         events: [
-          { label: 'Tech Workshop with Codam Technologies', href: '/initiatives/ajong-foretia/tech-workshop-codam-technologies', items: ['', '', '', '', '', '', '', '', '', ''] },
-          { label: 'Visit to Coeur de Jésus Orphanage', href: '/initiatives/ajong-foretia/visit-coeur-de-jesus-orphanage', items: ['', '', '', '', '', '', '', '', '', ''] },
+          { label: 'Tech Workshop with Codam Technologies', href: '/initiatives/ajong-foretia/tech-workshop-codam-technologies', items: ['', '', '', '', '', ''] },
+          { label: 'Visit to Coeur de Jésus Orphanage', href: '/initiatives/ajong-foretia/visit-coeur-de-jesus-orphanage', items: ['', '', '', '', '', ''] },
         ],
       },
     },
@@ -534,7 +534,7 @@ export const t = {
       carousel: {
         heading: 'Past Campaigns',
         events: [
-          { label: 'Nguti Health Campaign', href: '/initiatives/health-outreach/nguti-health-campaign', items: ['', '', '', '', '', '', '', '', '', ''] },
+          { label: 'Nguti Health Campaign', href: '/initiatives/health-outreach/nguti-health-campaign', items: ['', '', '', '', '', ''] },
         ],
       },
     },
@@ -1009,7 +1009,7 @@ export const t = {
       carousel: {
         heading: 'Initiatives Financées',
         events: [
-          { label: 'Campagne de Santé CAMESA Nguti', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: ['', '', '', '', '', '', '', '', '', ''] },
+          { label: 'Campagne de Santé CAMESA Nguti', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: ['', '', '', '', '', ''] },
         ],
       },
     },
@@ -1033,14 +1033,14 @@ export const t = {
         subheading: 'Résultats mesurables de nos initiatives de soutien aux orphelins.',
         items: [
           { value: '150+', label: 'orphelins soutenus' },
-          { value: '6 000 $+', label: 'en soutien caritatif' },
+          { value: '4 000 $+', label: 'en soutien caritatif total' },
         ],
       },
       carousel: {
         heading: 'Visites Passées',
         events: [
-          { label: 'Atelier Tech avec Codam Technologies', href: '/initiatives/ajong-foretia/tech-workshop-codam-technologies', items: ['', '', '', '', '', '', '', '', '', ''] },
-          { label: "Visite à l'Orphelinat Coeur de Jésus", href: '/initiatives/ajong-foretia/visit-coeur-de-jesus-orphanage', items: ['', '', '', '', '', '', '', '', '', ''] },
+          { label: 'Atelier Tech avec Codam Technologies', href: '/initiatives/ajong-foretia/tech-workshop-codam-technologies', items: ['', '', '', '', '', ''] },
+          { label: "Visite à l'Orphelinat Coeur de Jésus", href: '/initiatives/ajong-foretia/visit-coeur-de-jesus-orphanage', items: ['', '', '', '', '', ''] },
         ],
       },
     },
@@ -1071,7 +1071,7 @@ export const t = {
       carousel: {
         heading: 'Campagnes Passées',
         events: [
-          { label: 'Campagne de Santé de Nguti', href: '/initiatives/health-outreach/nguti-health-campaign', items: ['', '', '', '', '', '', '', '', '', ''] },
+          { label: 'Campagne de Santé de Nguti', href: '/initiatives/health-outreach/nguti-health-campaign', items: ['', '', '', '', '', ''] },
         ],
       },
     },

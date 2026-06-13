@@ -16,7 +16,11 @@ export default function Lightbox({ count, openIndex, onClose }: LightboxProps) {
     if (openIndex !== null) {
       setCurrent(openIndex)
       setFading(false)
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
     }
+    return () => { document.body.style.overflow = '' }
   }, [openIndex])
 
   const navigate = useCallback((dir: 1 | -1) => {
