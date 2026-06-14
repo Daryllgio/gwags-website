@@ -31,7 +31,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           { value: '$1,200+', label: 'in charitable support' },
         ],
       },
-      gallery: { heading: 'Gallery', count: 10 },
+      gallery: { heading: 'Gallery', count: 12 },
     },
     fr: {
       heroTitle: 'Atelier Tech avec Codam Technologies',
@@ -59,7 +59,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           { value: '1 200 $+', label: 'en soutien caritatif' },
         ],
       },
-      gallery: { heading: 'Galerie', count: 10 },
+      gallery: { heading: 'Galerie', count: 12 },
     },
   },
   'visit-coeur-de-jesus-orphanage': {
@@ -88,7 +88,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           { value: '$800+', label: 'in charitable support' },
         ],
       },
-      gallery: { heading: 'Gallery', count: 10 },
+      gallery: { heading: 'Gallery', count: 12 },
     },
     fr: {
       heroTitle: 'Visite à l\'Orphelinat Coeur de Jésus',
@@ -115,7 +115,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           { value: '800 $+', label: 'en soutien caritatif' },
         ],
       },
-      gallery: { heading: 'Galerie', count: 10 },
+      gallery: { heading: 'Galerie', count: 12 },
     },
   },
 }

@@ -30,7 +30,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           { value: '120+', label: 'medical professionals deployed' },
         ],
       },
-      gallery: { heading: 'Gallery', count: 15 },
+      gallery: { heading: 'Gallery', count: 12 },
     },
     fr: {
       heroTitle: 'Campagne de Santé de Nguti',
@@ -57,7 +57,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           { value: '120+', label: 'professionnels de santé déployés' },
         ],
       },
-      gallery: { heading: 'Galerie', count: 15 },
+      gallery: { heading: 'Galerie', count: 12 },
     },
   },
 }
