@@ -1,11 +1,10 @@
 'use client'
-import { useState } from 'react'
+import { useLang } from '@/lib/useLang'
 import { Lang, t } from '@/lib/translations'
 import InitiativePage from '@/components/InitiativePage'
 
 export default function HealthOutreachPage() {
-  const [lang, setLang] = useState<Lang>('en')
-  const toggleLang = () => setLang(l => l === 'en' ? 'fr' : 'en')
+  const [lang, toggleLang] = useLang()
   const p = t[lang].healthOutreachPage
 
   return (

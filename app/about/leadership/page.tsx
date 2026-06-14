@@ -1,5 +1,6 @@
 'use client'
 import { useState, useMemo, useRef, useEffect } from 'react'
+import { useLang } from '@/lib/useLang'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { Lang } from '@/lib/translations'
@@ -167,8 +168,7 @@ function TeamDropdown({ value, onChange }: { value: string; onChange: (v: string
 /* ── Page ─────────────────────────────────────────────────────────────── */
 
 export default function LeadershipPage() {
-  const [lang, setLang] = useState<Lang>('en')
-  const toggleLang = () => setLang(l => l === 'en' ? 'fr' : 'en')
+  const [lang, toggleLang] = useLang()
 
   const [search,     setSearch]     = useState('')
   const [teamFilter, setTeamFilter] = useState('All')

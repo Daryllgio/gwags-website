@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useLang } from '@/lib/useLang'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -87,8 +87,7 @@ function PersonSilhouette({ size = 80 }: { size?: number }) {
 /* ── Page ────────────────────────────────────────────────────────────────── */
 
 export default function ProfilePage({ params }: { params: { slug: string } }) {
-  const [lang, setLang] = useState<Lang>('en')
-  const toggleLang = () => setLang(l => l === 'en' ? 'fr' : 'en')
+  const [lang, toggleLang] = useLang()
 
   const person = PEOPLE[params.slug]
   const m = t[lang].moreAbout

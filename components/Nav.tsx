@@ -125,7 +125,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
               <div style={{ color: 'rgba(255,255,255,0.92)', fontSize: '16px', fontWeight: 600, letterSpacing: '0.06em', marginBottom: '12px' }}>
                 {d.about.heading}
               </div>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '16px', lineHeight: 1.7, margin: '0', maxWidth: '340px' }}>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '16px', lineHeight: 1.7, margin: '0', maxWidth: '310px' }}>
                 {d.about.description}
               </p>
             </div>

@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useLang } from '@/lib/useLang'
 import { Lang } from '@/lib/translations'
 import EventDetailPage, { EventDetailData } from '@/components/EventDetailPage'
 
@@ -47,8 +47,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
 }
 
 export default function MbalEventPage({ params }: { params: { slug: string } }) {
-  const [lang, setLang] = useState<Lang>('en')
-  const toggleLang = () => setLang(l => l === 'en' ? 'fr' : 'en')
+  const [lang, toggleLang] = useLang()
   const page = content[params.slug]
   if (!page) return null
   return <EventDetailPage lang={lang} onToggleLang={toggleLang} data={page[lang]} />

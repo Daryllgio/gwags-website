@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useLang } from '@/lib/useLang'
 import { Lang } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
@@ -13,11 +13,7 @@ import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 
 export default function Home() {
-  const [lang, setLang] = useState<Lang>('en')
-
-  const toggleLang = () => {
-    setLang((prev) => (prev === 'en' ? 'fr' : 'en'))
-  }
+  const [lang, toggleLang] = useLang()
 
   return (
     <main>

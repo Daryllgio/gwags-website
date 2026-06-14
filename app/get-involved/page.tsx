@@ -1,13 +1,12 @@
 'use client'
-import { useState } from 'react'
+import { useLang } from '@/lib/useLang'
 import Link from 'next/link'
 import { Lang, t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 
 export default function GetInvolvedPage() {
-  const [lang, setLang] = useState<Lang>('en')
-  const toggleLang = () => setLang(l => l === 'en' ? 'fr' : 'en')
+  const [lang, toggleLang] = useLang()
   const p = t[lang].getInvolvedPage
 
   return (
