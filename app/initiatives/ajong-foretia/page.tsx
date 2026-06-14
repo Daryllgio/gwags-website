@@ -1,6 +1,6 @@
 'use client'
 import { useLang } from '@/lib/useLang'
-import { Lang, t } from '@/lib/translations'
+import { t } from '@/lib/translations'
 import InitiativePage from '@/components/InitiativePage'
 
 export default function AjongForetiasPage() {

@@ -3,7 +3,7 @@ import { useState, useMemo, useRef, useEffect } from 'react'
 import { useLang } from '@/lib/useLang'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-import { Lang } from '@/lib/translations'
+
 
 const NAVY  = '#0A1128'
 const GOLD  = '#D4AF37'

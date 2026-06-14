@@ -1,7 +1,7 @@
 'use client'
 import { useLang } from '@/lib/useLang'
 import Link from 'next/link'
-import { Lang, t } from '@/lib/translations'
+import { t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 

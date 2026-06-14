@@ -1,6 +1,6 @@
 'use client'
 import { useLang } from '@/lib/useLang'
-import { Lang } from '@/lib/translations'
+
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
 import WhatWeAre from '@/components/WhatWeAre'

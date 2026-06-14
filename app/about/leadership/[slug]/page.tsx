@@ -3,7 +3,7 @@ import { useLang } from '@/lib/useLang'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-import { Lang, t } from '@/lib/translations'
+import { t } from '@/lib/translations'
 
 const NAVY = '#0A1128'
 const GOLD = '#D4AF37'
