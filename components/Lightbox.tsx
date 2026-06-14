@@ -11,16 +11,30 @@ export default function Lightbox({ count, openIndex, onClose }: LightboxProps) {
   const [current, setCurrent] = useState(0)
   const [fading, setFading] = useState(false)
   const touchStartX = useRef(0)
+  const scrollYRef = useRef(0)
 
   useEffect(() => {
     if (openIndex !== null) {
       setCurrent(openIndex)
       setFading(false)
+      scrollYRef.current = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollYRef.current}px`
+      document.body.style.width = '100%'
       document.body.style.overflow = 'hidden'
     } else {
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      document.body.style.overflow = ''
+      window.scrollTo(0, scrollYRef.current)
+    }
+    return () => {
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
       document.body.style.overflow = ''
     }
-    return () => { document.body.style.overflow = '' }
   }, [openIndex])
 
   const navigate = useCallback((dir: 1 | -1) => {
@@ -58,8 +72,12 @@ export default function Lightbox({ count, openIndex, onClose }: LightboxProps) {
     if (Math.abs(delta) > 50) navigate(delta > 0 ? 1 : -1)
   }
 
+  function handleOverlayTouchMove(e: React.TouchEvent) {
+    e.preventDefault()
+  }
+
   return (
-    <div className="lb-overlay" onClick={onClose}>
+    <div className="lb-overlay" onClick={onClose} onTouchMove={handleOverlayTouchMove}>
       <button className="lb-close" onClick={onClose} aria-label="Close">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M18 6 L6 18 M6 6 L18 18" />

@@ -22,7 +22,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           ],
         },
       ],
-      gallery: { heading: 'Gallery', count: 15 },
+      gallery: { heading: 'Gallery', count: 10 },
     },
     fr: {
       heroTitle: 'Campagne de Santé CAMESA Nguti',
@@ -41,7 +41,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           ],
         },
       ],
-      gallery: { heading: 'Galerie', count: 15 },
+      gallery: { heading: 'Galerie', count: 10 },
     },
   },
 }

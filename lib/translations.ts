@@ -496,7 +496,7 @@ export const t = {
         subheading: 'Measurable results from our orphan support initiatives.',
         items: [
           { value: '84', label: 'orphans supported' },
-          { value: '$2,500+', label: 'in charitable support' },
+          { value: '$2,000+', label: 'in charitable support' },
         ],
       },
       carousel: {
@@ -1033,7 +1033,7 @@ export const t = {
         subheading: 'Résultats mesurables de nos initiatives de soutien aux orphelins.',
         items: [
           { value: '84', label: 'orphelins soutenus' },
-          { value: '2 500 $+', label: 'en soutien caritatif' },
+          { value: '2 000 $+', label: 'en soutien caritatif' },
         ],
       },
       carousel: {
