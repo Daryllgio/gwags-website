@@ -121,9 +121,12 @@ export default function EventDetailPage({ lang, onToggleLang, data }: Props) {
   return (
     <main>
       <Nav lang={lang} onToggleLang={onToggleLang} />
-      <div className="ed-hero-img-wrap">
-        {data.heroTitle && <h1 className="ed-hero-title">{data.heroTitle}</h1>}
-      </div>
+      <section className="ed-hero">
+        <div className="ed-hero-inner">
+          {data.heroTitle && <h1 className="ed-hero-title">{data.heroTitle}</h1>}
+          <div className="ed-hero-img-wrap" />
+        </div>
+      </section>
       {data.sections.map((s, i) => (
         <Fragment key={i}>
           {i > 0 && <Divider />}

@@ -6,6 +6,7 @@ import EventDetailPage, { EventDetailData } from '@/components/EventDetailPage'
 const content: Record<string, Record<Lang, EventDetailData>> = {
   'camesa-nguti-health-campaign': {
     en: {
+      heroTitle: 'CAMESA Nguti Health Campaign',
       sections: [
         {
           heading: 'About the campaign',
@@ -24,6 +25,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
       gallery: { heading: 'Gallery', count: 15 },
     },
     fr: {
+      heroTitle: 'Campagne de Santé CAMESA Nguti',
       sections: [
         {
           heading: 'À propos de la campagne',
