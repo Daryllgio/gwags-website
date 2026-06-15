@@ -11,7 +11,7 @@ export const t = {
       dropdowns: {
         about: {
           heading: 'About',
-          description: 'Learn about our origins, our mission, how we work, and the people behind Gwags.',
+          description: 'Learn about our origins, our mission,\nhow we work, and the people behind Gwags.',
           links: [
             { label: 'Our Story', href: '/about/our-story' },
             { label: 'How We Work', href: '/about/how-we-work' },

@@ -290,8 +290,8 @@ h1, h2, h3, h4 {
 }
 
 .footer-social-link {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: 1.5px solid rgba(255,255,255,0.6);
   display: flex;
@@ -299,12 +299,17 @@ h1, h2, h3, h4 {
   justify-content: center;
   color: rgba(255,255,255,0.92);
   text-decoration: none;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  transition: width 0.2s ease, height 0.2s ease;
   flex-shrink: 0;
 }
 
+.footer-social-link svg {
+  transition: transform 0.2s ease;
+}
+
 @media (hover: hover) {
-  .footer-social-link:hover { color: #D4AF37; border-color: #D4AF37; }
+  .footer-social-link:hover { width: 32px; height: 32px; }
+  .footer-social-link:hover svg { transform: scale(1.125); }
 }
 @media (max-width: 900px) {
   .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
