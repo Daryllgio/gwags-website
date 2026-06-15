@@ -308,7 +308,7 @@ h1, h2, h3, h4 {
 }
 
 @media (hover: hover) {
-  .footer-social-link:hover { width: 32px; height: 32px; }
+  .footer-social-link:hover { width: 33px; height: 33px; }
   .footer-social-link:hover svg { transform: scale(1.125); }
 }
 @media (max-width: 900px) {
@@ -1695,7 +1695,7 @@ h1, h2, h3, h4 {
 }
 
 @media (hover: hover) {
-  .pp-connect:hover .pp-connect-circle { width: 32px; height: 32px; }
+  .pp-connect:hover .pp-connect-circle { width: 33px; height: 33px; }
   .pp-connect:hover .pp-connect-in     { font-size: 18px; }
 }
 
