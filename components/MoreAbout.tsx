@@ -16,7 +16,7 @@ export default function MoreAbout({ lang }: MoreAboutProps) {
 
   return (
     <section className="more-about-section" style={{ background: '#ffffff', padding: '40px 28px' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1169px', margin: '0 auto' }}>
 
         <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', fontWeight: 400, letterSpacing: '0.15em', marginBottom: '16px', fontFamily: 'inherit' }}>
           {m.heading}
@@ -36,13 +36,13 @@ export default function MoreAbout({ lang }: MoreAboutProps) {
                 textDecoration: 'none',
                 borderRadius: '8px',
                 overflow: 'hidden',
-                border: '0.5px solid rgba(10,17,40,0.08)',
+                border: '1px solid rgba(10,17,40,0.12)',
               }}
             >
               {/* To replace with a real image: swap this div for
                   <img src="/images/about/[name].jpg" alt="..." style={{ width: '100%', height: '260px', objectFit: 'cover' }} />
                   or use Next.js <Image> with fill and a relative-positioned wrapper */}
-              <div className="ma-img-ph" style={{ height: '230px', width: '100%', background: '#F7F6F3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="ma-img-ph" style={{ height: '210px', width: '100%', background: '#F7F6F3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '13px', letterSpacing: '0.1em' }}>
                   {imagePlaceholders[i]}
                 </span>

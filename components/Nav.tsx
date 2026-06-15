@@ -63,7 +63,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
     <nav ref={navRef} style={{ background: '#0A1128', position: 'sticky', top: 0, zIndex: 50, width: '100%' }}>
 
       {/* Main bar */}
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 28px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className="nav-bar-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '15px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
         <Link href="/" style={{ textDecoration: 'none' }}>
           <div className="nav-logo-text" style={{ color: '#D4AF37', fontSize: '20px', fontWeight: 500, letterSpacing: '0.1em', fontFamily: 'Georgia, serif' }}>Gwags</div>

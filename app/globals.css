@@ -152,6 +152,17 @@ h1, h2, h3, h4 {
   .mobile-menu-btn { display: block !important; }
 }
 
+/* ── Nav bar vertical padding (proportional to screen size) ── */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .nav-bar-inner { padding-top: 12px !important; padding-bottom: 12px !important; }
+}
+@media (max-width: 768px) {
+  .nav-bar-inner { padding-top: 10px !important; padding-bottom: 10px !important; }
+}
+@media (max-width: 480px) {
+  .nav-bar-inner { padding-top: 8px !important; padding-bottom: 8px !important; }
+}
+
 /* ── Hero animations ── */
 @keyframes circleEntrance {
   from { opacity: 0; transform: scale(0.5); }
@@ -257,6 +268,12 @@ h1, h2, h3, h4 {
 }
 
 /* ── Get Involved ── */
+.gi-card-box {
+  transition: transform 0.3s ease;
+}
+@media (hover: hover) {
+  .gi-card-box:hover { transform: translateY(-4px); }
+}
 @media (max-width: 768px) {
   .getinvolved-grid { grid-template-columns: 1fr !important; }
 }
@@ -299,12 +316,12 @@ h1, h2, h3, h4 {
   justify-content: center;
   color: rgba(255,255,255,0.92);
   text-decoration: none;
-  transition: width 0.2s ease, height 0.2s ease;
+  transition: width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   flex-shrink: 0;
 }
 
 .footer-social-link svg {
-  transition: transform 0.2s ease;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @media (hover: hover) {
@@ -1169,11 +1186,11 @@ h1, h2, h3, h4 {
   /* TABLET: section padding */
   .site-section { padding: 60px 32px !important; }
   /* TABLET: four-column grids become 2x2 */
-  .initiatives-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .initiatives-grid { grid-template-columns: repeat(2, 1fr) !important; margin: 0 10px !important; }
   /* TABLET: three-column grids stay, adjusted gap for consistent 470px card width */
-  .whygwags-grid { gap: 20px !important; }
-  .more-about-grid { gap: 28px !important; }
-  .getinvolved-grid { gap: 14px !important; }
+  .whygwags-grid { gap: 20px !important; margin: 0 10px !important; }
+  .more-about-grid { gap: 28px !important; margin: 0 10px !important; }
+  .getinvolved-grid { gap: 14px !important; margin: 0 10px !important; }
   /* TABLET: How We Work sections reduce padding */
   .hww-hero-text { padding: 60px 40px 60px 60px !important; }
   .hww-init-strip { padding: 60px 32px !important; }
@@ -1288,7 +1305,7 @@ h1, h2, h3, h4 {
   .hero-section .hero-h1 { font-size: 40px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 220px !important; }
+  .ini-img-ph    { height: 195px !important; }
   .ini-card-body { padding: 18px 18px 22px !important; }
   .ini-card-title { font-size: 17px !important; }
   .ini-card-desc  { font-size: 16px !important; }
@@ -1299,7 +1316,7 @@ h1, h2, h3, h4 {
   .wg-card-desc  { font-size: 16px !important; }
 
   /* More About */
-  .ma-img-ph    { height: 220px !important; }
+  .ma-img-ph    { height: 195px !important; }
   .ma-card-body { padding: 20px 20px 24px !important; }
   .ma-card-title { font-size: 19px !important; }
   .ma-card-desc  { font-size: 17px !important; }
@@ -1328,7 +1345,7 @@ h1, h2, h3, h4 {
   .hero-section { padding: 90px 30px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 220px !important; }
+  .ini-img-ph    { height: 195px !important; }
   .ini-card-body { padding: 16px 16px 20px !important; }
   .ini-card-title { font-size: 16px !important; }
   .ini-card-desc  { font-size: 15px !important; }
@@ -1339,7 +1356,7 @@ h1, h2, h3, h4 {
   .wg-card-desc  { font-size: 15px !important; }
 
   /* More About */
-  .ma-img-ph    { height: 220px !important; }
+  .ma-img-ph    { height: 195px !important; }
   .ma-card-body { padding: 18px 18px 22px !important; }
   .ma-card-title { font-size: 18px !important; }
   .ma-card-desc  { font-size: 16px !important; }
@@ -1378,7 +1395,7 @@ h1, h2, h3, h4 {
   .hero-section { padding: 70px 26px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 220px !important; }
+  .ini-img-ph    { height: 195px !important; }
   .ini-card-body { padding: 14px 14px 18px !important; }
   .ini-card-title { font-size: 15px !important; }
   .ini-card-desc  { font-size: 15px !important; }
@@ -1389,7 +1406,7 @@ h1, h2, h3, h4 {
   .wg-card-desc  { font-size: 15px !important; }
 
   /* More About */
-  .ma-img-ph    { height: 220px !important; }
+  .ma-img-ph    { height: 195px !important; }
   .ma-card-body { padding: 14px 16px 20px !important; }
   .ma-card-title { font-size: 17px !important; }
   .ma-card-desc  { font-size: 15px !important; }
@@ -1683,7 +1700,7 @@ h1, h2, h3, h4 {
   justify-content: center;
   color:           #0A1128;
   flex-shrink:     0;
-  transition:      width 0.2s ease, height 0.2s ease;
+  transition:      width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .pp-connect-in {

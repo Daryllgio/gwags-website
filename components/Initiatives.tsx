@@ -58,7 +58,7 @@ export default function Initiatives({ lang }: InitiativesProps) {
                 {/* To replace with a real image: swap this div for
                     <img src="/images/initiatives/[name].jpg" alt="..." style={{ width: '100%', height: '250px', objectFit: 'cover' }} />
                     or use Next.js <Image> with fill and a relative-positioned wrapper */}
-                <div className="ini-img-ph" style={{ height: '250px', width: '100%', background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <div className="ini-img-ph" style={{ height: '220px', width: '100%', background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', letterSpacing: '0.1em' }}>
                     {imagePlaceholders[i]}
                   </span>
