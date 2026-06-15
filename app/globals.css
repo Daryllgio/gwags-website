@@ -1300,7 +1300,7 @@ h1, h2, h3, h4 {
   .hero-section .hero-h1 { font-size: 40px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 195px !important; }
+  .ini-img-ph    { height: 200px !important; }
   .ini-card-body { padding: 18px 18px 22px !important; }
   .ini-card-title { font-size: 17px !important; }
   .ini-card-desc  { font-size: 16px !important; }
@@ -1311,7 +1311,7 @@ h1, h2, h3, h4 {
   .wg-card-desc  { font-size: 16px !important; }
 
   /* More About */
-  .ma-img-ph    { height: 195px !important; }
+  .ma-img-ph    { height: 200px !important; }
   .ma-card-body { padding: 20px 20px 24px !important; }
   .ma-card-title { font-size: 19px !important; }
   .ma-card-desc  { font-size: 17px !important; }
@@ -1340,7 +1340,7 @@ h1, h2, h3, h4 {
   .hero-section { padding: 90px 30px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 195px !important; }
+  .ini-img-ph    { height: 200px !important; }
   .ini-card-body { padding: 16px 16px 20px !important; }
   .ini-card-title { font-size: 16px !important; }
   .ini-card-desc  { font-size: 15px !important; }
@@ -1351,7 +1351,7 @@ h1, h2, h3, h4 {
   .wg-card-desc  { font-size: 15px !important; }
 
   /* More About */
-  .ma-img-ph    { height: 195px !important; }
+  .ma-img-ph    { height: 200px !important; }
   .ma-card-body { padding: 18px 18px 22px !important; }
   .ma-card-title { font-size: 18px !important; }
   .ma-card-desc  { font-size: 16px !important; }
@@ -1390,7 +1390,7 @@ h1, h2, h3, h4 {
   .hero-section { padding: 70px 26px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 195px !important; }
+  .ini-img-ph    { height: 200px !important; }
   .ini-card-body { padding: 14px 14px 18px !important; }
   .ini-card-title { font-size: 15px !important; }
   .ini-card-desc  { font-size: 15px !important; }
@@ -1401,7 +1401,7 @@ h1, h2, h3, h4 {
   .wg-card-desc  { font-size: 15px !important; }
 
   /* More About */
-  .ma-img-ph    { height: 195px !important; }
+  .ma-img-ph    { height: 200px !important; }
   .ma-card-body { padding: 14px 16px 20px !important; }
   .ma-card-title { font-size: 17px !important; }
   .ma-card-desc  { font-size: 15px !important; }
@@ -2551,13 +2551,21 @@ h1, h2, h3, h4 {
 
 /* ── RESPONSIVE FIXES ── */
 
-/* Change 1 + 2: Phone cards — single column, max-width 400px, centered; 768px (iPad Mini) gets tablet 2-col */
-@media (max-width: 767px) {
-  .initiatives-grid { grid-template-columns: 1fr !important; max-width: 400px !important; margin: 0 auto !important; }
-  .whygwags-grid { grid-template-columns: 1fr !important; max-width: 400px !important; margin: 0 auto !important; }
-  .more-about-grid { grid-template-columns: 1fr !important; max-width: 400px !important; margin: 0 auto !important; }
-  .getinvolved-grid { grid-template-columns: 1fr !important; max-width: 400px !important; margin: 0 auto !important; }
+/* Change 1: 480-767px — 1-col, max-width 360px centered; below 480px — 350px centered */
+@media (min-width: 480px) and (max-width: 767px) {
+  .initiatives-grid { grid-template-columns: 1fr !important; max-width: 350px !important; margin: 0 auto !important; }
+  .whygwags-grid { grid-template-columns: 1fr !important; max-width: 350px !important; margin: 0 auto !important; }
+  .more-about-grid { grid-template-columns: 1fr !important; max-width: 350px !important; margin: 0 auto !important; }
+  .getinvolved-grid { grid-template-columns: 1fr !important; max-width: 350px !important; margin: 0 auto !important; }
 }
+@media (max-width: 479px) {
+  .initiatives-grid { grid-template-columns: 1fr !important; max-width: 350px !important; margin: 0 auto !important; }
+  .whygwags-grid { grid-template-columns: 1fr !important; max-width: 350px !important; margin: 0 auto !important; }
+  .more-about-grid { grid-template-columns: 1fr !important; max-width: 350px !important; margin: 0 auto !important; }
+  .getinvolved-grid { grid-template-columns: 1fr !important; max-width: 350px !important; margin: 0 auto !important; }
+}
+
+/* Change 2: iPad Mini (768px) uses tablet layout — card grid single-column rules already use max-width: 767px */
 
 /* Change 3: iPhone SE (375px and below) — body text -1px from small phone values */
 @media (max-width: 375px) {
@@ -2577,8 +2585,8 @@ h1, h2, h3, h4 {
   .getinvolved-grid { margin: 0 12px; }
 }
 
-/* Change 5: Landscape phone (568px–812px, height < 500px) — 2-column, overrides single-column rule */
-@media (min-width: 568px) and (max-width: 812px) and (max-height: 500px) {
+/* Change 5: Landscape phone (540px–812px, orientation: landscape) — 2-column */
+@media (min-width: 540px) and (max-width: 812px) and (orientation: landscape) {
   .initiatives-grid { grid-template-columns: repeat(2, 1fr) !important; max-width: none !important; margin: 0 10px !important; }
   .whygwags-grid { grid-template-columns: repeat(2, 1fr) !important; max-width: none !important; margin: 0 10px !important; }
   .more-about-grid { grid-template-columns: repeat(2, 1fr) !important; max-width: none !important; margin: 0 10px !important; }
