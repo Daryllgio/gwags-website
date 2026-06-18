@@ -344,7 +344,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   {divider}
 
                   {/* "About us" — main heading, 1px bigger than items */}
-                  <div className="mob-heading" style={{ color: '#fff', fontWeight: 600, padding: '20px 20px 0' }}>
+                  <div className="mob-heading" style={{ color: '#fff', fontWeight: 800, padding: '20px 20px 0' }}>
                     {d.about.heading}
                   </div>
 
@@ -354,7 +354,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </p>
 
                   {/* "About the Gwags GII" — sub-heading, same size as items, bold */}
-                  <div className="mob-item" style={{ color: '#fff', fontWeight: 600, padding: '0 20px', marginBottom: '10px' }}>
+                  <div className="mob-item" style={{ color: '#fff', fontWeight: 800, padding: '0 20px', marginBottom: '10px' }}>
                     {d.about.subHeading}
                   </div>
 
@@ -388,7 +388,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   {divider}
 
                   {/* "Our Work" — main heading, 1px bigger than items */}
-                  <div className="mob-heading" style={{ color: '#fff', fontWeight: 600, padding: '20px 20px 0' }}>
+                  <div className="mob-heading" style={{ color: '#fff', fontWeight: 800, padding: '20px 20px 0' }}>
                     {d.work.heading}
                   </div>
 
@@ -398,7 +398,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </p>
 
                   {/* "Our Initiatives" — sub-heading, same size as items, bold */}
-                  <div className="mob-item" style={{ color: '#fff', fontWeight: 600, padding: '0 20px', marginBottom: '10px' }}>
+                  <div className="mob-item" style={{ color: '#fff', fontWeight: 800, padding: '0 20px', marginBottom: '10px' }}>
                     {d.work.initiativesLabel}
                   </div>
 
@@ -419,7 +419,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   <div style={{ height: '15px' }} />
 
                   {/* "Our Network" — sub-heading, same size as items, bold */}
-                  <div className="mob-item" style={{ color: '#fff', fontWeight: 600, padding: '0 20px', marginBottom: '10px' }}>
+                  <div className="mob-item" style={{ color: '#fff', fontWeight: 800, padding: '0 20px', marginBottom: '10px' }}>
                     {d.work.networkLabel}
                   </div>
 
