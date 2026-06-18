@@ -147,9 +147,10 @@ h1, h2, h3, h4 {
   .nav-link:hover::after { width: 100%; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .desktop-nav { display: none !important; }
-  .mobile-menu-btn { display: block !important; }
+  .mobile-menu-btn { display: flex !important; }
+  .nav-lang-toggle { margin-left: 0 !important; }
 }
 
 /* ── Nav bar vertical padding (proportional to screen size) ── */
@@ -1300,7 +1301,7 @@ h1, h2, h3, h4 {
   .hero-section .hero-h1 { font-size: 40px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 200px !important; }
+  .ini-img-ph    { height: 205px !important; }
   .ini-card-body { padding: 18px 18px 22px !important; }
   .ini-card-title { font-size: 17px !important; }
   .ini-card-desc  { font-size: 16px !important; }
@@ -1311,7 +1312,7 @@ h1, h2, h3, h4 {
   .wg-card-desc  { font-size: 16px !important; }
 
   /* More About */
-  .ma-img-ph    { height: 200px !important; }
+  .ma-img-ph    { height: 205px !important; }
   .ma-card-body { padding: 20px 20px 24px !important; }
   .ma-card-title { font-size: 19px !important; }
   .ma-card-desc  { font-size: 17px !important; }
@@ -1340,7 +1341,7 @@ h1, h2, h3, h4 {
   .hero-section { padding: 90px 30px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 200px !important; }
+  .ini-img-ph    { height: 205px !important; }
   .ini-card-body { padding: 16px 16px 20px !important; }
   .ini-card-title { font-size: 16px !important; }
   .ini-card-desc  { font-size: 15px !important; }
@@ -1351,7 +1352,7 @@ h1, h2, h3, h4 {
   .wg-card-desc  { font-size: 15px !important; }
 
   /* More About */
-  .ma-img-ph    { height: 200px !important; }
+  .ma-img-ph    { height: 205px !important; }
   .ma-card-body { padding: 18px 18px 22px !important; }
   .ma-card-title { font-size: 18px !important; }
   .ma-card-desc  { font-size: 16px !important; }
@@ -1390,7 +1391,7 @@ h1, h2, h3, h4 {
   .hero-section { padding: 70px 26px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 200px !important; }
+  .ini-img-ph    { height: 205px !important; }
   .ini-card-body { padding: 14px 14px 18px !important; }
   .ini-card-title { font-size: 15px !important; }
   .ini-card-desc  { font-size: 15px !important; }
@@ -1401,7 +1402,7 @@ h1, h2, h3, h4 {
   .wg-card-desc  { font-size: 15px !important; }
 
   /* More About */
-  .ma-img-ph    { height: 200px !important; }
+  .ma-img-ph    { height: 205px !important; }
   .ma-card-body { padding: 14px 16px 20px !important; }
   .ma-card-title { font-size: 17px !important; }
   .ma-card-desc  { font-size: 15px !important; }
@@ -1442,9 +1443,9 @@ h1, h2, h3, h4 {
 @media (max-width: 768px)  { .nav-logo-text { font-size: 18px !important; } }
 @media (max-width: 480px)  { .nav-logo-text { font-size: 17px !important; } }
 
-/* ── Language toggle — shrinks at 900px to match hamburger breakpoint ── */
-.nav-lang-toggle { font-size: 17px; }
-@media (max-width: 900px) {
+/* ── Language toggle — shrinks at 1024px to match hamburger breakpoint ── */
+.nav-lang-toggle { font-size: 16px; }
+@media (max-width: 1024px) {
   .nav-lang-toggle { font-size: 15px !important; padding: 3px 8px !important; }
 }
 @media (max-width: 480px) {
@@ -2591,5 +2592,31 @@ h1, h2, h3, h4 {
   .whygwags-grid { grid-template-columns: repeat(2, 1fr) !important; max-width: none !important; margin: 0 10px !important; }
   .more-about-grid { grid-template-columns: repeat(2, 1fr) !important; max-width: none !important; margin: 0 10px !important; }
   .getinvolved-grid { grid-template-columns: repeat(2, 1fr) !important; max-width: none !important; margin: 0 10px !important; }
+}
+
+/* All card sections tablet: 2 cols capped at 400px each, grid centered */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .initiatives-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 820px !important;
+    margin: 0 auto !important;
+    justify-content: center !important;
+  }
+  .initiative-card { max-width: 400px; }
+
+  .whygwags-grid {
+    max-width: 820px !important;
+    margin: 0 auto !important;
+  }
+
+  .more-about-grid {
+    max-width: 828px !important;
+    margin: 0 auto !important;
+  }
+
+  .getinvolved-grid {
+    max-width: 814px !important;
+    margin: 0 auto !important;
+  }
 }
 
