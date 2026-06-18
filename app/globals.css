@@ -565,8 +565,8 @@ h1, h2, h3, h4 {
    A continuous gold vertical line runs down the left, passing behind the year and
    month markers (their #F7F6F3 backgrounds mask the line). The title/body/image are
    indented to the right of the line so they never touch it.
-   Breakpoint 1023.98px ▸ vertical below 1024px, horizontal desktop at 1024px and wider. */
-@media (max-width: 1023.98px) {
+   Breakpoint 1024px ▸ vertical at 1024px and below, horizontal desktop above 1024px. */
+@media (max-width: 1024px) {
   .tl2-header {
     padding: 60px 24px 48px;
   }
@@ -658,7 +658,7 @@ h1, h2, h3, h4 {
 /* Inter-event spacing: +10px between events within the same year.
    Uses :not(:last-child) so the last event's margin (which sets the year gap) stays unchanged. */
 .tl2-year-group .tl2-event:not(:last-child) { margin-bottom: 55px; }
-@media (max-width: 1023.98px) { .tl2-year-group .tl2-event:not(:last-child) { margin-bottom: 45px !important; } }
+@media (max-width: 1024px) { .tl2-year-group .tl2-event:not(:last-child) { margin-bottom: 45px !important; } }
 @media (max-width: 768px)     { .tl2-year-group .tl2-event:not(:last-child) { margin-bottom: 40px !important; } }
 @media (max-width: 480px)     { .tl2-year-group .tl2-event:not(:last-child) { margin-bottom: 38px !important; } }
 
@@ -1122,6 +1122,8 @@ h1, h2, h3, h4 {
   .tl2-year-num.active { font-size: 70px !important; }
   .tl2-title { font-size: 24px !important; }
   .tl2-body { font-size: 17px !important; }
+  .tl2-content { max-width: 45% !important; }
+  .tl2-image-col { max-width: 45% !important; }
 }
 
 /* Our Story — small phone (≤480px). Higher specificity (.os-hero-section .os-hero-h1)
@@ -1158,6 +1160,7 @@ h1, h2, h3, h4 {
     padding-right: 24px;
   }
 }
+
 
 /* Base eyebrow size (desktop). Must sit BEFORE the responsive blocks below
    so the !important overrides in those blocks can win at smaller breakpoints. */
@@ -1261,6 +1264,17 @@ h1, h2, h3, h4 {
   /* SMALL PHONE: stats ticker */
   .stats-ticker { grid-template-columns: 1fr !important; }
   .stats-ticker .has-divider { border-right: none !important; border-bottom: 0.5px solid rgba(212,175,55,0.11) !important; }
+}
+
+/* Our Story — mid-range phones (376px–540px): must follow comprehensive blocks to win cascade */
+@media (min-width: 376px) and (max-width: 540px) {
+  .tl2-image-ph.active { height: 300px !important; }
+}
+
+/* Our Story — narrow phones (≤375px): must follow comprehensive blocks to win cascade */
+@media (max-width: 375px) {
+  .tl2-year-num.active { font-size: 50px !important; }
+  .tl2-image-ph.active { height: 270px !important; }
 }
 
 /* ── Mobile Navigation Fix ── */
