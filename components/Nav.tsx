@@ -349,7 +349,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </div>
 
                   {/* Description — 1px smaller than items */}
-                  <p className="mob-desc" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '30px' }}>
+                  <p className="mob-desc" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '35px' }}>
                     {d.about.description.replace(/\n/g, ' ')}
                   </p>
 
@@ -393,7 +393,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </div>
 
                   {/* Description — 1px smaller than items */}
-                  <p className="mob-desc" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '30px' }}>
+                  <p className="mob-desc" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '35px' }}>
                     {d.work.description}
                   </p>
 
@@ -416,7 +416,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   ))}
 
                   {/* 30px large gap between Initiatives block and Network block (15px last-link margin + 15px spacer) */}
-                  <div style={{ height: '15px' }} />
+                  <div style={{ height: '20px' }} />
 
                   {/* "Our Network" — sub-heading, same size as items, bold */}
                   <div className="mob-item" style={{ color: '#fff', fontWeight: 800, padding: '0 20px', marginBottom: '10px' }}>
