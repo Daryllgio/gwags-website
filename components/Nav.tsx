@@ -78,7 +78,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
   }
 
   function toggleMenu() {
-    menuOpen ? closeMenuFn() : openMenuFn()
+    if (menuOpen) { closeMenuFn() } else { openMenuFn() }
   }
 
   useEffect(() => {
