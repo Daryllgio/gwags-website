@@ -1273,6 +1273,21 @@ h1, h2, h3, h4 {
   .nav-mobile-section  { font-size: 15px !important; }
 }
 
+/* ── Mobile overlay menu — responsive font sizes (matches desktop nav per breakpoint) ── */
+.mob-heading { font-size: 18px; }
+.mob-item    { font-size: 17px; }
+.mob-desc    { font-size: 16px; max-width: 320px; }
+@media (max-width: 768px) {
+  .mob-heading { font-size: 17px !important; }
+  .mob-item    { font-size: 16px !important; }
+  .mob-desc    { font-size: 15px !important; }
+}
+@media (max-width: 480px) {
+  .mob-heading { font-size: 16px !important; }
+  .mob-item    { font-size: 15px !important; }
+  .mob-desc    { font-size: 14px !important; }
+}
+
 /* ================================================================
    CARD AND ELEMENT SIZING
    Every box, card, image placeholder, and card title has a class.

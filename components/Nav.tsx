@@ -95,6 +95,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
     setOpenDropdown(prev => prev === name ? null : name)
   }
 
+  // Divider — only used after Back button in submenus
   const divider = (
     <div style={{ margin: '0 20px', height: '1px', background: 'rgba(255,255,255,0.15)', flexShrink: 0 }} />
   )
@@ -264,12 +265,15 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
         </div>
       </div>
 
-      {/* Mobile fullscreen overlay — below 1024px only */}
+      {/* Mobile fullscreen overlay — starts at bottom edge of header */}
       {menuOpen && (
         <div
           style={{
             position: 'fixed',
-            inset: 0,
+            top: headerHeight,
+            right: 0,
+            bottom: 0,
+            left: 0,
             zIndex: 48,
             background: '#0A1128',
             overflow: 'hidden',
@@ -288,140 +292,151 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
             }}
           >
 
-            {/* Panel 1: Main menu */}
-            <div style={{ width: '50%', height: '100%', overflowY: 'auto', display: 'flex', flexDirection: 'column', paddingTop: headerHeight }}>
+            {/* ── Panel 1: Main menu ── */}
+            <div style={{ width: '50%', height: '100%', overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
 
-              {/* About row */}
               <button
                 onClick={() => setActivePanel('about')}
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: '#fff', fontSize: '20px', fontWeight: 600, padding: '20px', cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left' }}
+                className="mob-item"
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: '#fff', fontWeight: 600, padding: '20px', cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left' }}
               >
                 <span>{n.about}</span>
                 {rightChevron}
               </button>
               {divider}
 
-              {/* Our Work row */}
               <button
                 onClick={() => setActivePanel('work')}
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: '#fff', fontSize: '20px', fontWeight: 600, padding: '20px', cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left' }}
+                className="mob-item"
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: '#fff', fontWeight: 600, padding: '20px', cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left' }}
               >
                 <span>{n.initiatives}</span>
                 {rightChevron}
               </button>
               {divider}
 
-              {/* Get Involved — direct link, no chevron */}
               <Link
                 href="/get-involved"
                 onClick={closeMenuFn}
-                style={{ display: 'flex', alignItems: 'center', color: '#fff', fontSize: '20px', fontWeight: 600, padding: '20px', textDecoration: 'none' }}
+                className="mob-item"
+                style={{ display: 'flex', alignItems: 'center', color: '#fff', fontWeight: 600, padding: '20px', textDecoration: 'none' }}
               >
                 {n.getInvolved}
               </Link>
 
             </div>
 
-            {/* Panel 2: Submenu (About or Our Work) */}
-            <div style={{ width: '50%', height: '100%', overflowY: 'auto', display: 'flex', flexDirection: 'column', paddingTop: headerHeight }}>
+            {/* ── Panel 2: Submenus ── */}
+            <div style={{ width: '50%', height: '100%', overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
 
+              {/* ── About us submenu ── */}
               {activePanel === 'about' && (
                 <>
-                  {/* Back */}
+                  {/* Back — underlined text, divider below */}
                   <button
                     onClick={() => setActivePanel('main')}
-                    style={{ display: 'flex', alignItems: 'center', background: 'none', border: 'none', color: '#fff', fontSize: '20px', fontWeight: 400, padding: '20px', cursor: 'pointer', fontFamily: 'inherit' }}
+                    className="mob-item"
+                    style={{ display: 'flex', alignItems: 'center', background: 'none', border: 'none', color: '#fff', fontWeight: 400, padding: '20px', cursor: 'pointer', fontFamily: 'inherit' }}
                   >
                     {backArrow}
-                    Back
+                    <span style={{ textDecoration: 'underline' }}>Back</span>
                   </button>
                   {divider}
 
-                  {/* Heading */}
-                  <div style={{ color: '#fff', fontSize: '20px', fontWeight: 600, padding: '20px 20px 0' }}>
+                  {/* "About us" — main heading, 1px bigger than items */}
+                  <div className="mob-heading" style={{ color: '#fff', fontWeight: 600, padding: '20px 20px 0' }}>
                     {d.about.heading}
                   </div>
 
-                  {/* Description */}
-                  <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '19px', lineHeight: 1.6, margin: '0', padding: '12px 20px 24px' }}>
+                  {/* Description — 1px smaller than items */}
+                  <p className="mob-desc" style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, margin: '0', padding: '10px 20px 20px', maxWidth: '320px' }}>
                     {d.about.description.replace(/\n/g, ' ')}
                   </p>
 
-                  {/* Links */}
+                  {/* "About the Gwags GII" — sub-heading, same size as items, bold */}
+                  <div className="mob-item" style={{ color: '#fff', fontWeight: 600, padding: '0 20px', marginBottom: '16px' }}>
+                    {d.about.subHeading}
+                  </div>
+
+                  {/* Links — 400 weight, 16px spacing between */}
                   {d.about.links.map(link => (
-                    <div key={link.href}>
-                      {divider}
-                      <Link
-                        href={link.href}
-                        onClick={closeMenuFn}
-                        style={{ display: 'block', color: '#fff', fontSize: '20px', fontWeight: 400, padding: '20px', textDecoration: 'none' }}
-                      >
-                        {link.label}
-                      </Link>
-                    </div>
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeMenuFn}
+                      className="mob-item"
+                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '16px', textDecoration: 'none' }}
+                    >
+                      {link.label}
+                    </Link>
                   ))}
                 </>
               )}
 
+              {/* ── Our Work submenu ── */}
               {activePanel === 'work' && (
                 <>
-                  {/* Back */}
+                  {/* Back — underlined text, divider below */}
                   <button
                     onClick={() => setActivePanel('main')}
-                    style={{ display: 'flex', alignItems: 'center', background: 'none', border: 'none', color: '#fff', fontSize: '20px', fontWeight: 400, padding: '20px', cursor: 'pointer', fontFamily: 'inherit' }}
+                    className="mob-item"
+                    style={{ display: 'flex', alignItems: 'center', background: 'none', border: 'none', color: '#fff', fontWeight: 400, padding: '20px', cursor: 'pointer', fontFamily: 'inherit' }}
                   >
                     {backArrow}
-                    Back
+                    <span style={{ textDecoration: 'underline' }}>Back</span>
                   </button>
                   {divider}
 
-                  {/* Heading */}
-                  <div style={{ color: '#fff', fontSize: '20px', fontWeight: 600, padding: '20px 20px 0' }}>
+                  {/* "Our Work" — main heading, 1px bigger than items */}
+                  <div className="mob-heading" style={{ color: '#fff', fontWeight: 600, padding: '20px 20px 0' }}>
                     {d.work.heading}
                   </div>
 
-                  {/* Description */}
-                  <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '19px', lineHeight: 1.6, margin: '0', padding: '12px 20px 24px' }}>
+                  {/* Description — 1px smaller than items */}
+                  <p className="mob-desc" style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, margin: '0', padding: '10px 20px 20px', maxWidth: '320px' }}>
                     {d.work.description}
                   </p>
 
-                  {/* Our Initiatives sub-heading */}
-                  <div style={{ color: '#fff', fontSize: '20px', fontWeight: 600, padding: '0 20px' }}>
+                  {/* "Our Initiatives" — sub-heading, same size as items, bold */}
+                  <div className="mob-item" style={{ color: '#fff', fontWeight: 600, padding: '0 20px', marginBottom: '16px' }}>
                     {d.work.initiativesLabel}
                   </div>
 
                   {/* Initiative links */}
                   {d.work.links.map(link => (
-                    <div key={link.href}>
-                      {divider}
-                      <Link
-                        href={link.href}
-                        onClick={closeMenuFn}
-                        style={{ display: 'block', color: '#fff', fontSize: '20px', fontWeight: 400, padding: '20px', textDecoration: 'none' }}
-                      >
-                        {link.label}
-                      </Link>
-                    </div>
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeMenuFn}
+                      className="mob-item"
+                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '16px', textDecoration: 'none' }}
+                    >
+                      {link.label}
+                    </Link>
                   ))}
 
                   {/* Spacing before network section */}
-                  <div style={{ height: '24px' }} />
+                  <div style={{ height: '8px' }} />
 
-                  {/* Our Network sub-heading */}
-                  <div style={{ color: '#fff', fontSize: '20px', fontWeight: 600, padding: '0 20px' }}>
+                  {/* "Our Network" — sub-heading, same size as items, bold */}
+                  <div className="mob-item" style={{ color: '#fff', fontWeight: 600, padding: '0 20px', marginBottom: '16px' }}>
                     {d.work.networkLabel}
                   </div>
 
-                  {/* Network link */}
-                  {divider}
+                  {/* Network description — same size as other descriptions */}
+                  <p className="mob-desc" style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, margin: '0', padding: '0 20px', marginBottom: '16px', maxWidth: '320px' }}>
+                    {d.work.networkDescription}
+                  </p>
+
+                  {/* "Learn more" — bold, underlined, mob-desc size, links to /network */}
                   <Link
                     href="/network" // UPDATE: Add network page URL
                     onClick={closeMenuFn}
-                    style={{ display: 'block', color: '#fff', fontSize: '20px', fontWeight: 400, padding: '20px', textDecoration: 'none' }}
+                    className="mob-desc"
+                    style={{ display: 'inline-block', color: '#fff', fontWeight: 600, textDecoration: 'underline', padding: '0 20px', marginBottom: '32px' }}
                   >
-                    Our Network
+                    {d.work.networkCta}
                   </Link>
-                  {divider}
                 </>
               )}
 

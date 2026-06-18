@@ -3,14 +3,15 @@ export type Lang = 'en' | 'fr'
 export const t = {
   en: {
     nav: {
-      about: 'About',
+      about: 'About us',
       initiatives: 'Our Work',
       network: 'Network',
       getInvolved: 'Get Involved',
       contact: 'Contact',
       dropdowns: {
         about: {
-          heading: 'About',
+          heading: 'About us',
+          subHeading: 'About the Gwags Global Impact Institution',
           description: 'Learn about our origins, our mission,\nhow we work, and the people behind Gwags.',
           links: [
             { label: 'Our Story', href: '/about/our-story' },
@@ -541,14 +542,15 @@ export const t = {
   },
   fr: {
     nav: {
-      about: 'À propos',
+      about: 'À propos de nous',
       initiatives: 'Nos Actions',
       network: 'Réseau',
       getInvolved: 'S\'impliquer',
       contact: 'Contact',
       dropdowns: {
         about: {
-          heading: 'À propos',
+          heading: 'À propos de nous',
+          subHeading: 'À propos de l\'institution Gwags Global Impact',
           description: 'En savoir plus sur nos origines, notre mission, notre fonctionnement et les personnes qui font Gwags.',
           links: [
             { label: 'Notre histoire', href: '/about/our-story' },
