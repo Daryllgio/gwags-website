@@ -1277,6 +1277,9 @@ h1, h2, h3, h4 {
 .mob-heading { font-size: 18px; }
 .mob-item    { font-size: 17px; }
 .mob-desc    { font-size: 16px; max-width: 320px; }
+@media (min-width: 768px) {
+  .mob-desc { max-width: 400px !important; }
+}
 @media (max-width: 768px) {
   .mob-heading { font-size: 17px !important; }
   .mob-item    { font-size: 16px !important; }
