@@ -365,7 +365,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                       href={link.href}
                       onClick={closeMenuFn}
                       className="mob-item"
-                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '15px', textDecoration: 'none' }}
+                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '20px', textDecoration: 'none' }}
                     >
                       {link.label}
                     </Link>
@@ -409,14 +409,14 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                       href={link.href}
                       onClick={closeMenuFn}
                       className="mob-item"
-                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '15px', textDecoration: 'none' }}
+                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '20px', textDecoration: 'none' }}
                     >
                       {link.label}
                     </Link>
                   ))}
 
                   {/* 30px large gap between Initiatives block and Network block (15px last-link margin + 15px spacer) */}
-                  <div style={{ height: '20px' }} />
+                  <div style={{ height: '15px' }} />
 
                   {/* "Our Network" — sub-heading, same size as items, bold */}
                   <div className="mob-item" style={{ color: '#fff', fontWeight: 800, padding: '0 20px', marginBottom: '10px' }}>
@@ -424,7 +424,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </div>
 
                   {/* Network description — same size as other descriptions */}
-                  <p className="mob-desc" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '0 20px', marginBottom: '15px' }}>
+                  <p className="mob-desc" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '0 20px', marginBottom: '20px' }}>
                     {d.work.networkDescription}
                   </p>
 
