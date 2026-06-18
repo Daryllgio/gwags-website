@@ -344,7 +344,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   {divider}
 
                   {/* "About us" — main heading, 1px bigger than items */}
-                  <div className="mob-heading" style={{ color: '#fff', fontWeight: 800, padding: '19px 20px 0' }}>
+                  <div className="mob-heading" style={{ color: '#fff', fontWeight: 800, padding: '20px 20px 0' }}>
                     {d.about.heading}
                   </div>
 
@@ -388,7 +388,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   {divider}
 
                   {/* "Our Work" — main heading, 1px bigger than items */}
-                  <div className="mob-heading" style={{ color: '#fff', fontWeight: 800, padding: '19px 20px 0' }}>
+                  <div className="mob-heading" style={{ color: '#fff', fontWeight: 800, padding: '20px 20px 0' }}>
                     {d.work.heading}
                   </div>
 
