@@ -349,23 +349,23 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </div>
 
                   {/* Description — 1px smaller than items */}
-                  <p className="mob-desc" style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, margin: '0', padding: '10px 20px 20px', maxWidth: '320px' }}>
+                  <p className="mob-desc" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '30px' }}>
                     {d.about.description.replace(/\n/g, ' ')}
                   </p>
 
                   {/* "About the Gwags GII" — sub-heading, same size as items, bold */}
-                  <div className="mob-item" style={{ color: '#fff', fontWeight: 600, padding: '0 20px', marginBottom: '16px' }}>
+                  <div className="mob-item" style={{ color: '#fff', fontWeight: 600, padding: '0 20px', marginBottom: '10px' }}>
                     {d.about.subHeading}
                   </div>
 
-                  {/* Links — 400 weight, 16px spacing between */}
+                  {/* Links — 400 weight, 15px spacing between */}
                   {d.about.links.map(link => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={closeMenuFn}
                       className="mob-item"
-                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '16px', textDecoration: 'none' }}
+                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '15px', textDecoration: 'none' }}
                     >
                       {link.label}
                     </Link>
@@ -393,38 +393,38 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </div>
 
                   {/* Description — 1px smaller than items */}
-                  <p className="mob-desc" style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, margin: '0', padding: '10px 20px 20px', maxWidth: '320px' }}>
+                  <p className="mob-desc" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '30px' }}>
                     {d.work.description}
                   </p>
 
                   {/* "Our Initiatives" — sub-heading, same size as items, bold */}
-                  <div className="mob-item" style={{ color: '#fff', fontWeight: 600, padding: '0 20px', marginBottom: '16px' }}>
+                  <div className="mob-item" style={{ color: '#fff', fontWeight: 600, padding: '0 20px', marginBottom: '10px' }}>
                     {d.work.initiativesLabel}
                   </div>
 
-                  {/* Initiative links */}
+                  {/* Initiative links — 15px spacing between */}
                   {d.work.links.map(link => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={closeMenuFn}
                       className="mob-item"
-                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '16px', textDecoration: 'none' }}
+                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '15px', textDecoration: 'none' }}
                     >
                       {link.label}
                     </Link>
                   ))}
 
-                  {/* Spacing before network section */}
-                  <div style={{ height: '8px' }} />
+                  {/* 30px large gap between Initiatives block and Network block (15px last-link margin + 15px spacer) */}
+                  <div style={{ height: '15px' }} />
 
                   {/* "Our Network" — sub-heading, same size as items, bold */}
-                  <div className="mob-item" style={{ color: '#fff', fontWeight: 600, padding: '0 20px', marginBottom: '16px' }}>
+                  <div className="mob-item" style={{ color: '#fff', fontWeight: 600, padding: '0 20px', marginBottom: '10px' }}>
                     {d.work.networkLabel}
                   </div>
 
                   {/* Network description — same size as other descriptions */}
-                  <p className="mob-desc" style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, margin: '0', padding: '0 20px', marginBottom: '16px', maxWidth: '320px' }}>
+                  <p className="mob-desc" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '0 20px', marginBottom: '15px' }}>
                     {d.work.networkDescription}
                   </p>
 
