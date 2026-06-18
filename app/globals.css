@@ -1122,6 +1122,12 @@ h1, h2, h3, h4 {
   .tl2-year-num.active { font-size: 70px !important; }
   .tl2-title { font-size: 24px !important; }
   .tl2-body { font-size: 17px !important; }
+  .tl2-content { max-width: 50% !important; }
+  .tl2-image-col { max-width: 50% !important; }
+}
+
+/* Our Story — timeline content width at exactly 1024px */
+@media (min-width: 1024px) and (max-width: 1024px) {
   .tl2-content { max-width: 45% !important; }
   .tl2-image-col { max-width: 45% !important; }
 }
@@ -1268,7 +1274,7 @@ h1, h2, h3, h4 {
 
 /* Our Story — mid-range phones (376px–540px): must follow comprehensive blocks to win cascade */
 @media (min-width: 376px) and (max-width: 540px) {
-  .tl2-image-ph.active { height: 300px !important; }
+  .tl2-image-ph.active { height: 285px !important; }
 }
 
 /* Our Story — narrow phones (≤375px): must follow comprehensive blocks to win cascade */
