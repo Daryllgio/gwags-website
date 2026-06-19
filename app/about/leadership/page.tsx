@@ -243,27 +243,6 @@ export default function LeadershipPage() {
 
   return (
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
-      <style>{`
-        .view-profile-link {
-          position: relative;
-          display: inline-block;
-        }
-        .view-profile-link::after {
-          content: "";
-          display: block;
-          height: 1.5px;
-          background: #D4AF37;
-          width: 0%;
-          transition: width 0.3s ease;
-        }
-        @media (hover: hover) {
-          .view-profile-link:hover { color: #D4AF37 !important; }
-          .view-profile-link:hover::after { width: 100%; }
-        }
-        @media (hover: none) {
-          .view-profile-link::after { display: none; }
-        }
-      `}</style>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
       <div className="px-8 py-16 max-w-7xl mx-auto lp-container">
