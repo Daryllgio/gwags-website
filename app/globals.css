@@ -1441,7 +1441,7 @@ h1, h2, h3, h4 {
   .lp-person-role { font-size: 20px !important; }
   .lp-person-bio  { font-size: 16px !important; }
   .view-profile-link { font-size: 16px !important; }
-  .lp-person-img  { height: 245px !important; }
+  .lp-person-img  { height: 240px !important; }
   .lp-header      { gap: 16px !important; }
   .lp-search-input, .lp-dropdown-trigger, .lp-dropdown-option { font-size: 15px !important; }
   .lp-search-btn { font-size: 14px !important; }
@@ -1492,7 +1492,7 @@ h1, h2, h3, h4 {
   .lp-person-role { font-size: 19px !important; }
   .lp-person-bio  { font-size: 15px !important; }
   .view-profile-link { font-size: 15px !important; }
-  .lp-person-img  { height: 245px !important; }
+  .lp-person-img  { height: 240px !important; }
   .lp-header      { gap: 14px !important; }
 
   /* Get Involved (homepage) */
