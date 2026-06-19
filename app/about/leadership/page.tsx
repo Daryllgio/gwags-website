@@ -32,17 +32,45 @@ const governanceBoard = [
 ]
 
 const executiveTeam = [
-  { name: '[Name Placeholder]', role: 'Executive Director',                        bio: "The Executive Director oversees the day-to-day operations of Gwags, working closely with the governance board.", href: '/about/leadership/placeholder-executive-director' },
-  { name: '[Name Placeholder]', role: 'Director of Programs',                      bio: "The Director of Programs leads the design, delivery, and evaluation of Gwags's active portfolio of initiatives.", href: '/about/leadership/placeholder-director-programs' },
-  { name: '[Name Placeholder]', role: 'Director of Operations',                    bio: 'The Director of Operations manages the internal processes and organizational infrastructure that enable Gwags to operate effectively.', href: '/about/leadership/placeholder-director-operations' },
-  { name: '[Name Placeholder]', role: 'Director of Communications & Partnerships', bio: "The Director of Communications & Partnerships leads Gwags's external engagement and development of strategic partnerships.", href: '/about/leadership/placeholder-director-communications' },
-  { name: '[Name Placeholder]', role: 'Director of Resource Mobilization',         bio: "The Director of Resource Mobilization leads Gwags's efforts to secure funding and build donor relationships.", href: '/about/leadership/placeholder-director-resource' },
+  { name: '[Name Placeholder]', role: 'Director of Operations',                    bio: 'The Director of Operations manages the internal processes and organizational infrastructure that enable Gwags to operate effectively.',        linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */ },
+  { name: '[Name Placeholder]', role: 'Director of Communications & Partnerships', bio: "The Director of Communications & Partnerships leads Gwags's external engagement and development of strategic partnerships.",                   linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */ },
+  { name: '[Name Placeholder]', role: 'Director of Resource Mobilization',         bio: "The Director of Resource Mobilization leads Gwags's efforts to secure funding and build donor relationships.",                                  linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */ },
 ]
 
-const historicalLeadership = [
-  { name: 'Gloria Alana Asopjio', role: 'Founding Member', href: '/about/leadership/gloria-alana-asopjio' },
-  { name: 'Alissa Kenne Mokem',   role: 'Founding Member', href: '/about/leadership/alissa-kenne-mokem' },
-]
+const historicalLeadershipData = {
+  en: [
+    {
+      name: 'Gloria Alana Asopjio',
+      role: 'Founding Member',
+      bio: "Gloria contributed to the early development of Gwags during its founding years, playing a key role in shaping the institution's initial direction and community programs.",
+      href: '/about/leadership/gloria-alana-asopjio',
+      linkedinUrl: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
+    },
+    {
+      name: 'Alissa Kenne Mokem',
+      role: 'Founding Member',
+      bio: "Alissa was part of the founding team that established Gwags, contributing to the early initiatives that laid the groundwork for the institution's growth.",
+      href: '/about/leadership/alissa-kenne-mokem',
+      linkedinUrl: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
+    },
+  ],
+  fr: [
+    {
+      name: 'Gloria Alana Asopjio',
+      role: 'Membre fondatrice',
+      bio: "Gloria a contribué au développement initial de Gwags pendant ses années fondatrices, jouant un rôle clé dans la définition de la direction initiale et des programmes communautaires de l'institution.",
+      href: '/about/leadership/gloria-alana-asopjio',
+      linkedinUrl: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
+    },
+    {
+      name: 'Alissa Kenne Mokem',
+      role: 'Membre fondatrice',
+      bio: "Alissa faisait partie de l'équipe fondatrice qui a établi Gwags, contribuant aux premières initiatives qui ont posé les bases de la croissance de l'institution.",
+      href: '/about/leadership/alissa-kenne-mokem',
+      linkedinUrl: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
+    },
+  ],
+}
 
 const FILTER_OPTIONS = ['All', 'Governance Board', 'Executive Team']
 
@@ -57,15 +85,15 @@ function PersonIcon() {
   )
 }
 
-function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: {
-  name: string; role: string; bio?: string; href?: string; showBio?: boolean; showLink?: boolean
+function PersonCard({ name, role, bio, href, showBio = true, showLink = true, linkedinUrl }: {
+  name: string; role: string; bio?: string; href?: string; showBio?: boolean; showLink?: boolean; linkedinUrl?: string
 }) {
   return (
     <div>
       {/* Photo placeholder */}
       <div
-        className="w-full rounded-xl flex items-center justify-center"
-        style={{ height: '280px', background: '#e8e8e8' }}
+        className="lp-person-img w-full rounded-xl flex items-center justify-center"
+        style={{ background: '#e8e8e8' }}
       >
         <PersonIcon />
       </div>
@@ -79,6 +107,21 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true }: 
       {/* Bio */}
       {showBio && bio && (
         <p className="mt-2 leading-relaxed lp-person-bio" style={{ color: NAVY, fontSize: '17px', fontWeight: 400 }}>{bio}</p>
+      )}
+
+      {/* LinkedIn Connect */}
+      {linkedinUrl && (
+        <a
+          href={linkedinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pp-connect"
+          style={{ marginTop: '12px' }}
+        >
+          <div className="pp-connect-circle">
+            <span className="pp-connect-in">in</span>
+          </div>
+        </a>
       )}
 
       {/* View profile */}
@@ -185,11 +228,13 @@ export default function LeadershipPage() {
       p.role.toLowerCase().includes(search.toLowerCase())
     ), [search])
 
+  const historicalLeadership = historicalLeadershipData[lang]
+
   const filteredHistorical = useMemo(() =>
     historicalLeadership.filter(p =>
       p.name.toLowerCase().includes(search.toLowerCase()) ||
       p.role.toLowerCase().includes(search.toLowerCase())
-    ), [search])
+    ), [search, historicalLeadership])
 
   const showBoard      = (teamFilter === 'All' || teamFilter === 'Governance Board') && filteredBoard.length > 0
   const showExec       = (teamFilter === 'All' || teamFilter === 'Executive Team')   && filteredExec.length  > 0
@@ -300,7 +345,7 @@ export default function LeadershipPage() {
           <section className="mb-16">
             <SectionTitle>Executive Team</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredExec.map(p => <PersonCard key={p.href} {...p} showLink={false} />)}
+              {filteredExec.map((p, i) => <PersonCard key={i} {...p} showLink={false} />)}
             </div>
           </section>
         )}
@@ -311,7 +356,7 @@ export default function LeadershipPage() {
             <SectionTitle>Historical Leadership</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredHistorical.map(p => (
-                <PersonCard key={p.name} name={p.name} role={p.role} bio="" href={p.href} showBio={false} showLink={false} />
+                <PersonCard key={p.name} name={p.name} role={p.role} bio={p.bio} href={p.href} showLink={false} linkedinUrl={p.linkedinUrl} />
               ))}
             </div>
           </section>
