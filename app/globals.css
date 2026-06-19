@@ -672,12 +672,12 @@ h1, h2, h3, h4 {
 
 .hww-split-left {
   background: #0A1128;
-  padding: 80px 60px;
+  padding: 80px 80px;
 }
 
 .hww-split-right {
   background: #ffffff;
-  padding: 80px 60px;
+  padding: 80px 80px;
 }
 
 /* Initiative strip */
@@ -692,7 +692,7 @@ h1, h2, h3, h4 {
 
 /* Text stays in a constrained, padded column; the image bleeds to the section edges. */
 .hww-hero-text {
-  padding: 80px 60px 80px 100px;
+  padding: 80px 80px 80px 80px;
 }
 
 /* Image fills its half completely (top, bottom, and out to the right viewport edge). */
@@ -858,6 +858,7 @@ h1, h2, h3, h4 {
   .hww-split-right {
     padding: 60px 20px;
   }
+  .hww-split-right { padding-bottom: 20px; }
 
   .hww-init-grid {
     grid-template-columns: 1fr;
@@ -869,7 +870,7 @@ h1, h2, h3, h4 {
 
   .hww-hero-text { padding: 60px 20px !important; }
   .hww-hero-h1 { font-size: 30px !important; }
-  .hww-init-strip { padding: 48px 28px !important; }
+  .hww-init-strip { padding: 17px 28px 48px !important; }
   .hww-coordination-section { padding: 60px 20px !important; }
   .hww-working-with-section { padding: 60px 20px !important; }
 
@@ -880,6 +881,35 @@ h1, h2, h3, h4 {
   /* Coordination steps: shrink the number column + gap so the text isn't squashed.
      First value (13px) = how far the number is pushed right; gap (12px) = space before the text. */
   .hww-step { grid-template-columns: 13px 2px 1fr; gap: 0 12px; }
+}
+
+/* ── How We Work: hero image at 851px–1024px side-by-side layout — reduce by 15px ──
+   Side-by-side (2-col) starts at 851px. Base was 420px → 405px. */
+@media (min-width: 851px) and (max-width: 1024px) {
+  .hww-hero-img { min-height: 405px !important; }
+}
+
+/* ── How We Work: hero image at 768px vertical layout — match Our Story (500px) ──
+   At 768px the hero stacks (vertical), but max-width:768px gives 280px while Our Story
+   shows 500px at that width. This rule wins the cascade and aligns them. */
+@media (min-width: 768px) and (max-width: 850px) {
+  .hww-hero-img { min-height: 500px !important; }
+}
+
+/* ── How We Work: Partnering cards 2-col at tablet/mid-size (540px–1024px) ──
+   Must come after max-width:768px block to win cascade at 540–768px. */
+@media (min-width: 540px) and (max-width: 1024px) {
+  .hww-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ── How We Work: Partnering cards phone layout (below 540px) ── */
+@media (max-width: 539px) {
+  .hww-cards-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 350px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
 
 /* ── Our Role Page ── */
@@ -1202,10 +1232,12 @@ h1, h2, h3, h4 {
   .more-about-grid { gap: 28px !important; margin: 0 20px !important; }
   .getinvolved-grid { gap: 14px !important; margin: 0 20px !important; }
   /* TABLET: How We Work sections reduce padding */
-  .hww-hero-text { padding: 60px 40px 60px 60px !important; }
-  .hww-init-strip { padding: 60px 32px !important; }
+  .hww-hero-text { padding: 60px 60px !important; }
+  .hww-init-strip { padding: 60px 60px !important; }
   .hww-coordination-section { padding: 60px 60px !important; }
   .hww-working-with-section { padding: 60px 60px !important; }
+  /* TABLET: Split sections match all other sections at 60px horizontal */
+  .hww-split-left, .hww-split-right { padding: 60px 60px !important; }
   /* TABLET: Our Role */
   .or-hero { padding-bottom: 48px !important; }
   .or-hero-img { height: 500px !important; margin-top: 48px !important; }
@@ -1310,6 +1342,10 @@ h1, h2, h3, h4 {
   .mob-item    { font-size: 15px !important; }
   .mob-desc    { font-size: 14px !important; }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .mob-large-gap  { margin-bottom: 40px !important; }
+  .mob-block-spacer { height: 20px !important; }
+}
 
 /* ================================================================
    CARD AND ELEMENT SIZING
@@ -1363,6 +1399,7 @@ h1, h2, h3, h4 {
   .lp-person-role   { font-size: 22px !important; }
   .lp-person-bio  { font-size: 17px !important; }
   .view-profile-link { font-size: 17px !important; }
+  .lp-person-img  { height: 260px !important; }
 
   /* Get Involved (homepage) */
   .gi-card-box   { padding: 28px 18px 24px !important; }
@@ -1404,6 +1441,7 @@ h1, h2, h3, h4 {
   .lp-person-role { font-size: 20px !important; }
   .lp-person-bio  { font-size: 16px !important; }
   .view-profile-link { font-size: 16px !important; }
+  .lp-person-img  { height: 245px !important; }
   .lp-header      { gap: 16px !important; }
   .lp-search-input, .lp-dropdown-trigger, .lp-dropdown-option { font-size: 15px !important; }
   .lp-search-btn { font-size: 14px !important; }
@@ -1454,6 +1492,7 @@ h1, h2, h3, h4 {
   .lp-person-role { font-size: 19px !important; }
   .lp-person-bio  { font-size: 15px !important; }
   .view-profile-link { font-size: 15px !important; }
+  .lp-person-img  { height: 245px !important; }
   .lp-header      { gap: 14px !important; }
 
   /* Get Involved (homepage) */
@@ -1706,6 +1745,9 @@ h1, h2, h3, h4 {
   line-height: 1.1;
   max-width:   85%;
 }
+
+/* ── Leadership page: profile card image height ── */
+.lp-person-img { height: 280px; }
 
 .pp-connect {
   display:         flex;
@@ -2656,5 +2698,44 @@ h1, h2, h3, h4 {
     max-width: 814px !important;
     margin: 0 auto !important;
   }
+}
+
+/* ── How We Work — page-specific breakpoints ── */
+
+/* CHANGE 1: Galaxy Fold 5 (≤344px) — reduce init card image height on HWW page */
+@media (max-width: 344px) {
+  .hww-init-strip .ini-img-ph { height: 195px !important; }
+}
+
+/* CHANGE 2: Nest Hub Max / large tablet (1025px–1280px) — 2-col initiative cards on HWW page.
+   Card max-width = 400px (iPad Pro 1024px value) + 50px = 450px.
+   Grid max-width = 2×450px + 20px gap = 920px, centered. */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .hww-init-strip .initiatives-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 860px !important;
+    margin: 0 auto !important;
+  }
+  .hww-init-strip .initiative-card { max-width: 420px !important; }
+}
+
+/* ── How We Work: hero section height at 851px–1024px (side-by-side layout) ──
+   Reducing text column vertical padding by 8px each side ≈ 15px shorter section/image. */
+@media (min-width: 851px) and (max-width: 1024px) {
+  .hww-hero-text { padding: 29px 60px !important; }
+}
+
+/* ── How We Work: gap between Institutional Support and Our Initiatives ── */
+
+/* CHANGE 1: iPad Mini & iPad Air (768px–1023px) — reduce gap by 15px (120px → 105px).
+   Must come after comprehensive tablet block to win cascade. */
+@media (min-width: 768px) and (max-width: 850px) {
+  .hww-init-strip { padding: 0px 60px 60px !important; }
+}
+
+/* CHANGE 2: Surface Duo (481px–540px) — increase gap by 5px (37px → 42px).
+   Must come after max-width:768px block to win cascade. */
+@media (min-width: 481px) and (max-width: 540px) {
+  .hww-init-strip { padding-top: 22px !important; }
 }
 
