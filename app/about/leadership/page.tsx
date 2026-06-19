@@ -89,7 +89,7 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true, li
   name: string; role: string; bio?: string; href?: string; showBio?: boolean; showLink?: boolean; linkedinUrl?: string
 }) {
   return (
-    <div>
+    <div className="lp-person-card">
       {/* Photo placeholder */}
       <div
         className="lp-person-img w-full rounded-xl flex items-center justify-center"

@@ -1749,6 +1749,18 @@ h1, h2, h3, h4 {
 /* ── Leadership page: profile card image height ── */
 .lp-person-img { height: 280px; }
 
+@media (min-width: 480px) and (max-width: 600px) {
+  .lp-person-card { max-width: 350px !important; margin: 0 auto !important; }
+}
+
+@media (min-width: 850px) and (max-width: 1023px) {
+  .lp-person-card { max-width: 388px !important; }
+}
+
+@media (min-width: 1281px) {
+  .lp-person-card { max-width: 360px !important; }
+}
+
 .view-profile-link {
   position: relative;
   display: inline-block;
