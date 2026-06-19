@@ -2684,6 +2684,7 @@ h1, h2, h3, h4 {
   .whygwags-grid { margin: 0 12px; }
   .more-about-grid { margin: 0 12px; }
   .getinvolved-grid { margin: 0 12px; }
+  .lp-person-img { height: 260px !important; }
 }
 
 /* Change 5: Landscape phone (540px–812px, orientation: landscape) — 2-column */
