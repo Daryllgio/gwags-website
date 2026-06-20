@@ -18,16 +18,16 @@ const governanceBoard = [
     href: '/about/leadership/daryll-giovanny-bikak-mbal',
   },
   {
-    name: 'Vianney Tanifor',
-    role: 'Board Member',
-    bio:  'Vianney brings expertise in organizational development and community engagement to the Gwags governance board.',
-    href: '/about/leadership/vianney-tanifor',
-  },
-  {
     name: 'Winner Noa',
     role: 'Board Member',
     bio:  "Noa contributes strategic oversight and partnership expertise to the Gwags governance board.",
     href: '/about/leadership/noa-winner',
+  },
+  {
+    name: 'Vianney Tanifor',
+    role: 'Board Member',
+    bio:  'Vianney brings expertise in organizational development and community engagement to the Gwags governance board.',
+    href: '/about/leadership/vianney-tanifor',
   },
 ]
 

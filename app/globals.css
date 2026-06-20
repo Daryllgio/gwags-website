@@ -1783,9 +1783,9 @@ h1, h2, h3, h4 {
 
 .pp-connect {
   display:         flex;
-  flex-direction:  row;
+  flex-direction:  column;
   gap:             8px;
-  align-items:     center;
+  align-items:     flex-start;
   text-decoration: none;
   flex-shrink:     0;
 }
@@ -1914,7 +1914,7 @@ h1, h2, h3, h4 {
   .pp-name           { font-size: 30px !important; }
   .pp-role           { font-size: 30px; }
   .pp-bio            { font-size: 17px; }
-  .pp-connect        { flex-direction: row; align-items: center; gap: 8px; }
+  .pp-connect        { flex-direction: column; align-items: flex-start; gap: 8px; }
   .pp-connect-label  { font-size: 17px; }
   .pp-divider        { margin-left: 60px; margin-right: 60px; }
   .pp-foundation-col { margin-left: 0; padding-left: 60px; padding-right: 60px; }
@@ -1930,7 +1930,7 @@ h1, h2, h3, h4 {
   .pp-name           { font-size: 28px !important; max-width: none; }
   .pp-role           { font-size: 28px; max-width: none; }
   .pp-bio            { font-size: 16px; max-width: calc(100vw - 40px); }
-  .pp-connect        { flex-direction: row; align-items: center; gap: 8px; margin-left: 0; margin-top: 16px; margin-bottom: 28px; padding-top: 0; }
+  .pp-connect        { flex-direction: column; align-items: flex-start; gap: 8px; margin-left: 0; margin-top: 16px; margin-bottom: 28px; padding-top: 0; }
   .pp-connect-label  { font-size: 16px; }
   .pp-connect-in     { font-size: 15px; }
   .pp-card-title     { font-size: 18px; }
