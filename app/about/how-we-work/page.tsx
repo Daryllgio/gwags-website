@@ -4,16 +4,6 @@ import Link from 'next/link'
 import { Lang, t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-import {
-  IconSchool,
-  IconSeedling,
-  IconMedicalCross,
-  IconHeart,
-} from '@tabler/icons-react'
-
-// Same icon set as the homepage Initiatives cards
-const initiativeIcons = [IconSchool, IconSeedling, IconMedicalCross, IconHeart]
-
 export default function HowWeWorkPage() {
   const [lang, toggleLang] = useLang()
 
@@ -115,26 +105,19 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
         {p.h2}
       </h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }} className="initiatives-grid">
-        {p.items.map((item, i) => {
-          const Icon = initiativeIcons[i]
-          return (
+        {p.items.map((item, i) => (
             <Link
               key={i}
               href={item.href}
               className="initiative-card"
               style={{ display: 'flex', flexDirection: 'column', background: '#F7F6F3', border: '0.5px solid rgba(10,17,40,0.08)', borderRadius: '8px', textDecoration: 'none', cursor: 'pointer', overflow: 'hidden' }}
             >
-              {/* IMAGE: Replace this placeholder with
-                  <img src="/images/initiatives/[name].jpg" alt="..." style={{ width: '100%', height: '250px', objectFit: 'cover' }} /> */}
               <div className="ini-img-ph" style={{ height: '250px', width: '100%', background: '#E6E3DC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <span style={{ color: 'rgba(10,17,40,0.35)', fontSize: '12px', letterSpacing: '0.1em' }}>
                   {initiativeImagePlaceholders[i]}
                 </span>
               </div>
               <div className="ini-card-body" style={{ padding: '24px 24px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <div className="ini-card-icon" style={{ marginBottom: '16px' }}>
-                  <Icon size={24} color="#D4AF37" />
-                </div>
                 <div className="ini-card-title" style={{ color: '#0A1128', fontSize: '18px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35 }}>
                   {item.title}
                 </div>
@@ -143,8 +126,7 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
                 </p>
               </div>
             </Link>
-          )
-        })}
+          ))}
       </div>
     </section>
   )

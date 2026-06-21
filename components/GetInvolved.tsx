@@ -1,12 +1,9 @@
 import Link from 'next/link'
 import { Lang, t } from '@/lib/translations'
-import { IconBuildingCommunity, IconHeartHandshake, IconBriefcase } from '@tabler/icons-react'
 
 interface GetInvolvedProps {
   lang: Lang
 }
-
-const icons = [IconBuildingCommunity, IconHeartHandshake, IconBriefcase]
 
 export default function GetInvolved({ lang }: GetInvolvedProps) {
   const g = t[lang].getInvolved
@@ -29,9 +26,7 @@ export default function GetInvolved({ lang }: GetInvolvedProps) {
         )}
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }} className="getinvolved-grid">
-          {g.items.map((item, i) => {
-            const Icon = icons[i]
-            return (
+          {g.items.map((item, i) => (
               <Link
                 key={i}
                 href="/get-involved"
@@ -48,9 +43,6 @@ export default function GetInvolved({ lang }: GetInvolvedProps) {
                     height: '100%',
                   }}
                 >
-                  <div className="gi-card-icon" style={{ marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
-                    <Icon size={28} color="#D4AF37" />
-                  </div>
                   <div className="gi-card-title" style={{ color: '#0A1128', fontSize: '18px', fontWeight: 500, marginBottom: '10px' }}>
                     {item.title}
                   </div>
@@ -59,8 +51,7 @@ export default function GetInvolved({ lang }: GetInvolvedProps) {
                   </p>
                 </div>
               </Link>
-            )
-          })}
+            ))}
         </div>
 
       </div>

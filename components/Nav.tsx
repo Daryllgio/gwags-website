@@ -40,6 +40,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
   const [openDropdown, setOpenDropdown] = useState<'about' | 'work' | null>(null)
   const navRef = useRef<HTMLElement>(null)
   const headerBarRef = useRef<HTMLDivElement>(null)
+  const scrollPosRef = useRef(0)
   const [headerHeight, setHeaderHeight] = useState(64)
   const n = t[lang].nav
   const d = n.dropdowns
@@ -56,8 +57,25 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (menuOpen) {
+      scrollPosRef.current = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollPosRef.current}px`
+      document.body.style.width = '100%'
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      document.body.style.overflow = ''
+      window.scrollTo(0, scrollPosRef.current)
+    }
+    return () => {
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      document.body.style.overflow = ''
+    }
   }, [menuOpen])
 
   function openMenuFn() {
@@ -193,10 +211,10 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
         <div className="nav-dropdown-inner">
           <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '32px 28px 36px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'start' }}>
             <div>
-              <div style={{ color: 'rgba(255,255,255,0.92)', fontSize: '16px', fontWeight: 600, letterSpacing: '0.06em', marginBottom: '12px' }}>
+              <div style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', fontWeight: 600, letterSpacing: '0.06em', marginBottom: '12px' }}>
                 {d.about.heading}
               </div>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '16px', lineHeight: 1.7, margin: '0', whiteSpace: 'pre-line' }}>
+              <p style={{ color: '#fff', fontSize: '17px', lineHeight: 1.7, margin: '0', whiteSpace: 'pre-line' }}>
                 {d.about.description}
               </p>
             </div>
@@ -225,16 +243,13 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
               <div style={{ color: '#fff', fontSize: '18px', fontWeight: 600, marginBottom: '12px' }}>
                 {d.work.heading}
               </div>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '15px', lineHeight: 1.6, margin: '0 0 20px 0' }}>
+              <p style={{ color: '#fff', fontSize: '17px', lineHeight: 1.6, margin: '0' }}>
                 {d.work.description}
               </p>
-              <Link href="/our-work" className="nav-dropdown-cta" onClick={() => setOpenDropdown(null)}>
-                {d.work.cta} →
-              </Link>
             </div>
 
             <div>
-              <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', letterSpacing: '0.15em', marginBottom: '16px' }}>
+              <div style={{ color: '#fff', fontSize: '18px', fontWeight: 600, marginBottom: '16px' }}>
                 {d.work.initiativesLabel}
               </div>
               {d.work.links.map(link => (
@@ -250,14 +265,14 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
             </div>
 
             <div>
-              <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', letterSpacing: '0.15em', marginBottom: '16px' }}>
+              <div style={{ color: '#fff', fontSize: '18px', fontWeight: 600, marginBottom: '16px' }}>
                 {d.work.networkLabel}
               </div>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', lineHeight: 1.6, margin: '0 0 20px 0' }}>
+              <p style={{ color: '#fff', fontSize: '17px', lineHeight: 1.6, margin: '0 0 20px 0' }}>
                 {d.work.networkDescription}
               </p>
               <Link href="/network" className="nav-dropdown-cta" onClick={() => setOpenDropdown(null)}>
-                {d.work.networkCta} →
+                {d.work.networkCta}
               </Link>
             </div>
 
@@ -349,12 +364,12 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </div>
 
                   {/* Description — 1px smaller than items */}
-                  <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '35px' }}>
+                  <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '45px' }}>
                     {d.about.description.replace(/\n/g, ' ')}
                   </p>
 
                   {/* "About the Gwags GII" — sub-heading, same size as items, bold */}
-                  <div className="mob-item" style={{ color: '#fff', fontWeight: 800, padding: '0 20px', marginBottom: '10px' }}>
+                  <div className="mob-item mob-sub-heading" style={{ color: '#fff', fontWeight: 800, padding: '0 20px', marginBottom: '20px' }}>
                     {d.about.subHeading}
                   </div>
 
@@ -364,8 +379,8 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                       key={link.href}
                       href={link.href}
                       onClick={closeMenuFn}
-                      className="mob-item"
-                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '20px', textDecoration: 'none' }}
+                      className="mob-item mob-nav-link"
+                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '25px', textDecoration: 'none' }}
                     >
                       {link.label}
                     </Link>
@@ -393,12 +408,12 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </div>
 
                   {/* Description — 1px smaller than items */}
-                  <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '35px' }}>
+                  <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '45px' }}>
                     {d.work.description}
                   </p>
 
                   {/* "Our Initiatives" — sub-heading, same size as items, bold */}
-                  <div className="mob-item" style={{ color: '#fff', fontWeight: 800, padding: '0 20px', marginBottom: '10px' }}>
+                  <div className="mob-item mob-sub-heading" style={{ color: '#fff', fontWeight: 800, padding: '0 20px', marginBottom: '20px' }}>
                     {d.work.initiativesLabel}
                   </div>
 
@@ -408,18 +423,18 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                       key={link.href}
                       href={link.href}
                       onClick={closeMenuFn}
-                      className="mob-item"
-                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '20px', textDecoration: 'none' }}
+                      className="mob-item mob-nav-link"
+                      style={{ display: 'block', color: '#fff', fontWeight: 400, padding: '0 20px', marginBottom: '25px', textDecoration: 'none' }}
                     >
                       {link.label}
                     </Link>
                   ))}
 
                   {/* 30px large gap between Initiatives block and Network block (15px last-link margin + 15px spacer) */}
-                  <div className="mob-block-spacer" style={{ height: '15px' }} />
+                  <div className="mob-block-spacer" style={{ height: '25px' }} />
 
                   {/* "Our Network" — sub-heading, same size as items, bold */}
-                  <div className="mob-item" style={{ color: '#fff', fontWeight: 800, padding: '0 20px', marginBottom: '10px' }}>
+                  <div className="mob-item mob-sub-heading" style={{ color: '#fff', fontWeight: 800, padding: '0 20px', marginBottom: '20px' }}>
                     {d.work.networkLabel}
                   </div>
 

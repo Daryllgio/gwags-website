@@ -1,11 +1,8 @@
 import { Lang, t } from '@/lib/translations'
-import { IconCertificate, IconNetwork, IconRocket, IconCoins, IconEye, IconShield } from '@tabler/icons-react'
 
 interface WhyGwagsProps {
   lang: Lang
 }
-
-const icons = [IconCertificate, IconNetwork, IconRocket, IconCoins, IconEye, IconShield]
 
 export default function WhyGwags({ lang }: WhyGwagsProps) {
   const w = t[lang].whyGwags
@@ -24,9 +21,7 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }} className="whygwags-grid">
-          {w.items.map((item, i) => {
-            const Icon = icons[i]
-            return (
+          {w.items.map((item, i) => (
               <div
                 key={i}
                 className="wg-card"
@@ -39,9 +34,6 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
                   textAlign: 'center',
                 }}
               >
-                <div className="wg-card-icon" style={{ marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
-                  <Icon size={28} color="#D4AF37" />
-                </div>
                 <div className="wg-card-title" style={{ fontSize: '18px', fontWeight: 500, color: '#0A1128', marginBottom: '10px' }}>
                   {item.title}
                 </div>
@@ -49,8 +41,7 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
                   {item.desc}
                 </p>
               </div>
-            )
-          })}
+            ))}
         </div>
       </div>
 

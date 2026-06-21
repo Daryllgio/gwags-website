@@ -1,11 +1,8 @@
 import { Lang, t } from '@/lib/translations'
-import { IconSchool, IconSeedling, IconMedicalCross, IconHeart } from '@tabler/icons-react'
 
 interface InitiativesProps {
   lang: Lang
 }
-
-const icons = [IconSchool, IconSeedling, IconMedicalCross, IconHeart]
 
 const routes = [
   '/initiatives/scholars',
@@ -37,9 +34,7 @@ export default function Initiatives({ lang }: InitiativesProps) {
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }} className="initiatives-grid">
-          {ini.items.map((item, i) => {
-            const Icon = icons[i]
-            return (
+          {ini.items.map((item, i) => (
               <a
                 key={i}
                 href={routes[i]}
@@ -55,9 +50,6 @@ export default function Initiatives({ lang }: InitiativesProps) {
                   overflow: 'hidden',
                 }}
               >
-                {/* To replace with a real image: swap this div for
-                    <img src="/images/initiatives/[name].jpg" alt="..." style={{ width: '100%', height: '250px', objectFit: 'cover' }} />
-                    or use Next.js <Image> with fill and a relative-positioned wrapper */}
                 <div className="ini-img-ph" style={{ height: '220px', width: '100%', background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', letterSpacing: '0.1em' }}>
                     {imagePlaceholders[i]}
@@ -65,9 +57,6 @@ export default function Initiatives({ lang }: InitiativesProps) {
                 </div>
 
                 <div className="ini-card-body" style={{ padding: '24px 24px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <div className="ini-card-icon" style={{ marginBottom: '16px' }}>
-                    <Icon size={24} color="#D4AF37" />
-                  </div>
                   <div className="ini-card-title" style={{ color: '#fff', fontSize: '18px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35 }}>
                     {item.title}
                   </div>
@@ -76,8 +65,7 @@ export default function Initiatives({ lang }: InitiativesProps) {
                   </p>
                 </div>
               </a>
-            )
-          })}
+            ))}
         </div>
 
     </section>

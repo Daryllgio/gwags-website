@@ -27,8 +27,8 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         heading: 'Our impact',
         subheading: 'Impact numbers from the Tech Workshop with Codam Technologies.',
         items: [
-          { value: '36', label: 'children supported' },
-          { value: '$1,200+', label: 'in charitable support' },
+          { value: '110', label: 'children supported' },
+          { value: '$8,000+', label: 'in charitable support' },
         ],
       },
       gallery: { heading: 'Gallery', count: 12 },
@@ -55,8 +55,8 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         heading: 'Notre impact',
         subheading: 'Chiffres d\'impact de l\'Atelier Tech avec Codam Technologies.',
         items: [
-          { value: '36', label: 'enfants soutenus' },
-          { value: '1 200 $+', label: 'en soutien caritatif' },
+          { value: '110', label: 'enfants soutenus' },
+          { value: '8 000 $+', label: 'en soutien caritatif' },
         ],
       },
       gallery: { heading: 'Galerie', count: 12 },
@@ -84,8 +84,8 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         heading: 'Our impact',
         subheading: 'Impact numbers from the visit to Coeur de Jésus Orphanage.',
         items: [
-          { value: '48', label: 'children supported' },
-          { value: '$800+', label: 'in charitable support' },
+          { value: '77', label: 'children supported' },
+          { value: '$7,000+', label: 'in charitable support' },
         ],
       },
       gallery: { heading: 'Gallery', count: 12 },
@@ -111,8 +111,8 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         heading: 'Notre impact',
         subheading: 'Chiffres d\'impact de la visite à l\'Orphelinat Coeur de Jésus.',
         items: [
-          { value: '48', label: 'enfants soutenus' },
-          { value: '800 $+', label: 'en soutien caritatif' },
+          { value: '77', label: 'enfants soutenus' },
+          { value: '7 000 $+', label: 'en soutien caritatif' },
         ],
       },
       gallery: { heading: 'Galerie', count: 12 },

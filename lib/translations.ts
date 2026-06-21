@@ -23,7 +23,6 @@ export const t = {
         work: {
           heading: 'Our Work',
           description: 'Gwags builds its own initiatives and strengthens the organizations around us.',
-          cta: 'Explore our work',
           initiativesLabel: 'Our Initiatives',
           networkLabel: 'Our Network',
           networkDescription: 'A growing ecosystem of organizations aligned by shared standards and a common ambition to create lasting impact.',
@@ -406,7 +405,7 @@ export const t = {
     scholarsPage: {
       hero: {
         name: 'Gwags Scholars Program',
-        goal: 'Providing financial support and professional development opportunities to outstanding Cameroonian university students.',
+        goal: 'To identify and invest in outstanding Cameroonian university students by providing financial support and professional development opportunities that prepare them for the transition into the workforce.',
       },
       sections: [
         {
@@ -430,25 +429,25 @@ export const t = {
       ],
       keyDates: {
         heading: 'Key dates',
-        batch: '2026-2027 Batch',
+        batch: '2027 Batch',
         items: [
-          { label: 'Applications open', date: 'September 2026' },
-          { label: 'Applications close', date: 'January 2027' },
-          { label: 'Results released', date: 'March 2027' },
+          { label: 'Applications open', date: 'January 2027' },
+          { label: 'Applications close', date: 'March 2027' },
+          { label: 'Results released', date: 'May 2027' },
         ],
       },
       apply: 'Apply now',
       carousel: {
         heading: 'Our Scholars',
         events: [
-          { label: '2025-2026 Batch', href: '/initiatives/scholars/2025-2026', items: ['', '', '', '', '', '', '', '', '', ''] },
+          { label: '2026 Batch', href: '/initiatives/scholars/2026', items: ['', '', '', '', '', '', '', '', '', ''] },
         ],
       },
     },
     mbalLekeakaPage: {
       hero: {
         name: 'Mbal Lekeaka Fund',
-        goal: 'A grant program designed to support community-led initiatives.',
+        goal: 'To provide direct financial support to community-led initiatives that address real needs on the ground but lack the resources to execute, scale, or sustain their work.',
       },
       sections: [
         {
@@ -480,7 +479,7 @@ export const t = {
     ajongForetiasPage: {
       hero: {
         name: 'Ajong Foretia Orphan Support',
-        goal: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.',
+        goal: 'To provide sustained support to orphaned children through initiatives that deliver essential living supplies, educational opportunities, and practical skills training.',
       },
       sections: [
         {
@@ -496,8 +495,8 @@ export const t = {
         heading: 'Our impact',
         subheading: 'Measurable results from our orphan support initiatives.',
         items: [
-          { value: '84', label: 'orphans supported' },
-          { value: '$2,000+', label: 'in charitable support' },
+          { value: '187', label: 'orphans supported' },
+          { value: '$15,000+', label: 'in charitable support' },
         ],
       },
       carousel: {
@@ -511,7 +510,7 @@ export const t = {
     healthOutreachPage: {
       hero: {
         name: 'Health Outreach Program',
-        goal: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.',
+        goal: 'To bring free healthcare services and medical education to underserved communities through structured field campaigns.',
       },
       sections: [
         {
@@ -562,7 +561,6 @@ export const t = {
         work: {
           heading: 'Nos Actions',
           description: 'Gwags construit ses propres initiatives et renforce les organisations qui nous entourent.',
-          cta: 'Découvrir nos actions',
           initiativesLabel: 'Nos Initiatives',
           networkLabel: 'Notre Réseau',
           networkDescription: 'Un écosystème croissant d\'organisations alignées par des standards partagés et une ambition commune de créer un impact durable.',
@@ -944,7 +942,7 @@ export const t = {
     scholarsPage: {
       hero: {
         name: 'Programme Gwags Scholars',
-        goal: 'Offrir un soutien financier et des opportunités de développement professionnel aux étudiants universitaires camerounais exceptionnels.',
+        goal: 'Identifier et investir dans les étudiants universitaires camerounais exceptionnels en fournissant un soutien financier et des opportunités de développement professionnel qui les préparent à la transition vers le monde du travail.',
       },
       sections: [
         {
@@ -968,25 +966,25 @@ export const t = {
       ],
       keyDates: {
         heading: 'Dates clés',
-        batch: 'Promotion 2026-2027',
+        batch: 'Promotion 2027',
         items: [
-          { label: 'Ouverture des candidatures', date: 'Septembre 2026' },
-          { label: 'Clôture des candidatures', date: 'Janvier 2027' },
-          { label: 'Publication des résultats', date: 'Mars 2027' },
+          { label: 'Ouverture des candidatures', date: 'Janvier 2027' },
+          { label: 'Clôture des candidatures', date: 'Mars 2027' },
+          { label: 'Publication des résultats', date: 'Mai 2027' },
         ],
       },
       apply: 'Postuler maintenant',
       carousel: {
         heading: 'Nos Boursiers',
         events: [
-          { label: 'Promotion 2025-2026', href: '/initiatives/scholars/2025-2026', items: ['', '', '', '', '', '', '', '', '', ''] },
+          { label: 'Promotion 2026', href: '/initiatives/scholars/2026', items: ['', '', '', '', '', '', '', '', '', ''] },
         ],
       },
     },
     mbalLekeakaPage: {
       hero: {
         name: 'Fonds Mbal Lekeaka',
-        goal: 'Un programme de subventions conçu pour soutenir les initiatives communautaires.',
+        goal: 'Fournir un soutien financier direct aux initiatives communautaires qui répondent à des besoins réels sur le terrain mais qui manquent de ressources pour exécuter, développer ou pérenniser leur travail.',
       },
       sections: [
         {
@@ -1018,7 +1016,7 @@ export const t = {
     ajongForetiasPage: {
       hero: {
         name: 'Ajong Foretia Orphan Support',
-        goal: 'Soutenir les enfants orphelins à travers la fourniture de fournitures de vie essentielles et des opportunités éducatives.',
+        goal: 'Fournir un soutien durable aux enfants orphelins à travers des initiatives qui offrent des fournitures de vie essentielles, des opportunités éducatives et une formation pratique en compétences.',
       },
       sections: [
         {
@@ -1034,8 +1032,8 @@ export const t = {
         heading: 'Notre impact',
         subheading: 'Résultats mesurables de nos initiatives de soutien aux orphelins.',
         items: [
-          { value: '84', label: 'orphelins soutenus' },
-          { value: '2 000 $+', label: 'en soutien caritatif' },
+          { value: '187', label: 'orphelins soutenus' },
+          { value: '15 000 $+', label: 'en soutien caritatif' },
         ],
       },
       carousel: {
@@ -1049,7 +1047,7 @@ export const t = {
     healthOutreachPage: {
       hero: {
         name: 'Programme de Santé Communautaire',
-        goal: 'Apporter des soins de santé gratuits et l\'éducation médicale aux communautés mal desservies grâce à des campagnes structurées.',
+        goal: 'Apporter des services de santé gratuits et une éducation médicale aux communautés mal desservies à travers des campagnes de terrain structurées.',
       },
       sections: [
         {
