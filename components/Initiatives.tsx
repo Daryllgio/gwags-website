@@ -35,36 +35,24 @@ export default function Initiatives({ lang }: InitiativesProps) {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }} className="initiatives-grid">
           {ini.items.map((item, i) => (
-              <a
-                key={i}
-                href={routes[i]}
-                className="initiative-card"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  background: '#070E20',
-                  border: '0.5px solid rgba(212,175,55,0.18)',
-                  borderRadius: '8px',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  overflow: 'hidden',
-                }}
-              >
-                <div className="ini-img-ph" style={{ height: '220px', width: '100%', background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', letterSpacing: '0.1em' }}>
-                    {imagePlaceholders[i]}
-                  </span>
-                </div>
-
-                <div className="ini-card-body" style={{ padding: '24px 24px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <div className="ini-card-title" style={{ color: '#fff', fontSize: '18px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35 }}>
-                    {item.title}
+              <div key={i} className="initiative-card" style={{ display: 'flex', flexDirection: 'column' }}>
+                <a href={routes[i]} style={{ display: 'block', textDecoration: 'none' }}>
+                  <div className="ini-img-ph" style={{ height: '210px', width: '100%', background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '4px' }}>
+                    <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', letterSpacing: '0.1em' }}>
+                      {imagePlaceholders[i]}
+                    </span>
                   </div>
+                </a>
+
+                <div className="ini-card-body" style={{ padding: '14px 0 20px 0', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <a href={routes[i]} className="ini-card-title ini-card-title-link" style={{ color: '#fff', fontSize: '18px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35, display: 'block', textDecoration: 'none' }}>
+                    <span className="ini-title-underline">{item.title}</span>
+                  </a>
                   <p className="body-text ini-card-desc" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '17px', lineHeight: 1.68, flex: 1 }}>
                     {item.desc}
                   </p>
                 </div>
-              </a>
+              </div>
             ))}
         </div>
 

@@ -135,7 +135,7 @@ export const t = {
       body: '',
       items: [
         { title: 'Affiliation', desc: 'Join the Gwags institutional network and access the infrastructure, resources, and collaborative ecosystem needed to amplify your impact.' },
-        { title: 'Funding', desc: 'Direct your support toward programs with defined frameworks and measurable outcomes.' },
+        { title: 'Funding', desc: 'Direct your support toward programs with defined frameworks, measurable outcomes, and clear accountability.' },
         { title: 'Partnership', desc: 'Work with Gwags to co-develop programs, share resources and expertise, and build toward a common vision.' },
       ],
     },
@@ -672,7 +672,7 @@ export const t = {
       body: '',
       items: [
         { title: 'Affiliation', desc: 'Rejoignez le réseau institutionnel de Gwags et accédez à l\'infrastructure, aux ressources et à l\'écosystème collaboratif nécessaires pour amplifier votre impact.' },
-        { title: 'Financement', desc: 'Dirigez votre soutien vers des programmes avec des cadres définis et des résultats mesurables.' },
+        { title: 'Financement', desc: 'Dirigez votre soutien vers des programmes avec des cadres définis, des résultats mesurables et une responsabilité claire.' },
         { title: 'Partenariat', desc: 'Travaillez avec Gwags pour co-développer des programmes, partager des ressources et une expertise, et construire vers une vision commune.' },
       ],
     },

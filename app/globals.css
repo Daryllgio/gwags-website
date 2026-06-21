@@ -212,11 +212,25 @@ h1, h2, h3, h4 {
 }
 
 /* ── Initiatives ── */
-.initiative-card {
-  transition: transform 0.3s ease, border-color 0.3s ease;
+.ini-card-title-link {
+  text-decoration: none;
+}
+.ini-card-title-link .ini-title-underline {
+  display: inline;
+  position: relative;
+}
+.ini-card-title-link .ini-title-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: currentColor;
+  transition: width 0.3s ease;
 }
 @media (hover: hover) {
-  .initiative-card:hover { transform: translateY(-6px); border-color: rgba(212,175,55,0.8) !important; }
+  .ini-card-title-link:hover .ini-title-underline::after { width: 100%; }
 }
 
 @media (max-width: 1024px) {
@@ -257,26 +271,14 @@ h1, h2, h3, h4 {
 }
 
 /* ── More About Institution ── */
-.more-about-card {
-  transition: transform 0.3s ease;
-}
-@media (hover: hover) {
-  .more-about-card:hover { transform: translateY(-4px); }
-}
 @media (max-width: 1024px) {
   .more-about-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .getinvolved-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
 /* ── Get Involved ── */
-.gi-card-box {
-  transition: transform 0.3s ease;
-}
-@media (hover: hover) {
-  .gi-card-box:hover { transform: translateY(-4px); }
-}
 @media (max-width: 767px) {
-  .getinvolved-grid { grid-template-columns: 1fr !important; }
+  .getinvolved-grid { grid-template-columns: 1fr !important; gap: 25px !important; }
 }
 
 /* ── CTA Section ── */
@@ -1382,8 +1384,8 @@ h1, h2, h3, h4 {
   .hero-section .hero-h1 { font-size: 40px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 205px !important; }
-  .ini-card-body { padding: 18px 18px 22px !important; }
+  .ini-img-ph    { height: 195px !important; }
+  .ini-card-body { padding: 14px 0 20px 0 !important; }
   .ini-card-title { font-size: 17px !important; }
   .ini-card-desc  { font-size: 16px !important; }
 
@@ -1394,7 +1396,7 @@ h1, h2, h3, h4 {
 
   /* More About */
   .ma-img-ph    { height: 205px !important; }
-  .ma-card-body { padding: 20px 20px 24px !important; }
+  .ma-card-body { padding: 16px 0 24px 0 !important; }
   .ma-card-title { font-size: 19px !important; }
   .ma-card-desc  { font-size: 17px !important; }
 
@@ -1409,7 +1411,7 @@ h1, h2, h3, h4 {
   .lp-person-img  { height: 260px !important; }
 
   /* Get Involved (homepage) */
-  .gi-card-box   { padding: 28px 18px 24px !important; }
+  .gi-card-box   { padding: 0 0 20px 0 !important; }
   .gi-card-title { font-size: 17px !important; }
   .gi-card-desc  { font-size: 16px !important; }
 
@@ -1423,8 +1425,8 @@ h1, h2, h3, h4 {
   .hero-section { padding: 90px 30px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 205px !important; }
-  .ini-card-body { padding: 16px 16px 20px !important; }
+  .ini-img-ph    { height: 195px !important; }
+  .ini-card-body { padding: 14px 0 20px 0 !important; }
   .ini-card-title { font-size: 16px !important; }
   .ini-card-desc  { font-size: 15px !important; }
 
@@ -1435,7 +1437,7 @@ h1, h2, h3, h4 {
 
   /* More About */
   .ma-img-ph    { height: 205px !important; }
-  .ma-card-body { padding: 18px 18px 22px !important; }
+  .ma-card-body { padding: 16px 0 24px 0 !important; }
   .ma-card-title { font-size: 18px !important; }
   .ma-card-desc  { font-size: 16px !important; }
 
@@ -1454,8 +1456,8 @@ h1, h2, h3, h4 {
   .lp-search-btn { font-size: 14px !important; }
 
   /* Get Involved (homepage) */
-  .gi-card-box   { padding: 28px 16px 24px !important; }
-  .gi-card-title { font-size: 16px !important; }
+  .gi-card-box   { padding: 0 0 14px 0 !important; }
+  .gi-card-title { font-size: 16px !important; margin-bottom: 8px !important; }
   .gi-card-desc  { font-size: 15px !important; }
 
   /* Stats ticker */
@@ -1474,8 +1476,8 @@ h1, h2, h3, h4 {
   .hero-section { padding: 70px 26px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 205px !important; }
-  .ini-card-body { padding: 14px 14px 18px !important; }
+  .ini-img-ph    { height: 195px !important; }
+  .ini-card-body { padding: 14px 0 20px 0 !important; }
   .ini-card-title { font-size: 15px !important; }
   .ini-card-desc  { font-size: 15px !important; }
 
@@ -1486,7 +1488,7 @@ h1, h2, h3, h4 {
 
   /* More About */
   .ma-img-ph    { height: 205px !important; }
-  .ma-card-body { padding: 14px 16px 20px !important; }
+  .ma-card-body { padding: 16px 0 24px 0 !important; }
   .ma-card-title { font-size: 17px !important; }
   .ma-card-desc  { font-size: 15px !important; }
 
@@ -1503,8 +1505,8 @@ h1, h2, h3, h4 {
   .lp-header      { gap: 14px !important; }
 
   /* Get Involved (homepage) */
-  .gi-card-box   { padding: 24px 14px 20px !important; }
-  .gi-card-title { font-size: 15px !important; }
+  .gi-card-box   { padding: 0 0 14px 0 !important; }
+  .gi-card-title { font-size: 15px !important; margin-bottom: 8px !important; }
   .gi-card-desc  { font-size: 15px !important; }
 
   /* Stats ticker */
@@ -1855,12 +1857,42 @@ h1, h2, h3, h4 {
   margin:      0 0 14px;
 }
 
+/* ── Card Learn More link (initiative, more-about, get-involved, how-we-work cards) ── */
+@keyframes card-underline-retract {
+  0%   { width: 100%; }
+  40%  { width: 0; }
+  100% { width: 100%; }
+}
+.card-learn-more {
+  display: inline-block;
+  position: relative;
+  font-weight: 500;
+  text-decoration: none;
+}
+.card-learn-more::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.8px;
+  background: currentColor;
+}
+@media (hover: hover) {
+  .card-learn-more:hover::after {
+    animation: card-underline-retract 0.5s ease forwards;
+  }
+}
+@media (max-width: 767px) { .card-learn-more { font-size: 15px !important; margin-top: 8px !important; } }
+@media (max-width: 480px) { .card-learn-more { font-size: 15px !important; margin-top: 8px !important; } }
+@media (max-width: 767px) { .gi-hp-h2 { margin-bottom: 30px !important; } }
+
 .pp-learn-more {
   display:         inline-block;
   position:        relative;
   color:           #0A1128;
   font-size:       17px;
-  font-weight:     400;
+  font-weight:     500;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -1871,7 +1903,7 @@ h1, h2, h3, h4 {
   bottom:     -2px;
   left:       0;
   width:      0;
-  height:     1.5px;
+  height:     1.8px;
   background: #D4AF37;
   transition: width 0.3s ease;
 }
