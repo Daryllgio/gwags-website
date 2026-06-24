@@ -2837,7 +2837,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 410px) {
   .ed-gallery-img { width: 300px !important; height: 230px !important; }
-  .ini-img-ph { height: 195px !important; }
+  .ini-img-ph { height: 205px !important; }
   .ma-img-ph  { height: 205px !important; }
 }
 
