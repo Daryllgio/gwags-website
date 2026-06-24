@@ -2835,10 +2835,15 @@ h1, h2, h3, h4 {
   .ed-gallery-img { width: 350px !important; height: 270px !important; }
 }
 
-@media (max-width: 410px) {
+@media (max-width: 345px) {
   .ed-gallery-img { width: 300px !important; height: 230px !important; }
   .ini-img-ph { height: 205px !important; }
   .ma-img-ph  { height: 205px !important; }
+}
+
+@media (min-width: 346px) and (max-width: 410px) {
+  .ini-img-ph { height: 210px !important; }
+  .ma-img-ph  { height: 210px !important; }
 }
 
 /* ── RESPONSIVE FIXES ── */
