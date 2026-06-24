@@ -1387,7 +1387,7 @@ h1, h2, h3, h4 {
   .hero-section .hero-h1 { font-size: 40px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 205px !important; }
+  .ini-img-ph    { height: 215px !important; }
   .ini-card-body { padding: 14px 0 20px 0 !important; }
   .ini-card-title { font-size: 18px !important; }
   .ini-card-desc  { font-size: 16px !important; }
@@ -1428,7 +1428,7 @@ h1, h2, h3, h4 {
   .hero-section { padding: 90px 30px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 205px !important; }
+  .ini-img-ph    { height: 215px !important; }
   .ini-card-body { padding: 14px 0 20px 0 !important; }
   .ini-card-title { font-size: 17px !important; }
   .ini-card-desc  { font-size: 15px !important; }
@@ -1479,7 +1479,7 @@ h1, h2, h3, h4 {
   .hero-section { padding: 70px 26px !important; }
 
   /* Initiatives */
-  .ini-img-ph    { height: 205px !important; }
+  .ini-img-ph    { height: 215px !important; }
   .ini-card-body { padding: 14px 0 20px 0 !important; }
   .ini-card-title { font-size: 16px !important; }
   .ini-card-desc  { font-size: 15px !important; }
@@ -2973,7 +2973,7 @@ h1, h2, h3, h4 {
 
 /* ── Homepage card image heights: 811px–1023px (+10px from tablet base) ── */
 @media (min-width: 811px) and (max-width: 1023px) {
-  .ini-img-ph { height: 215px !important; }
+  .ini-img-ph { height: 220px !important; }
   .ma-img-ph  { height: 220px !important; }
 }
 
