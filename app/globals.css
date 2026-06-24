@@ -2841,10 +2841,6 @@ h1, h2, h3, h4 {
   .ma-img-ph  { height: 205px !important; }
 }
 
-@media (min-width: 346px) and (max-width: 410px) {
-  .ini-img-ph { height: 210px !important; }
-  .ma-img-ph  { height: 210px !important; }
-}
 
 /* ── RESPONSIVE FIXES ── */
 
