@@ -37,7 +37,7 @@ export default function Initiatives({ lang }: InitiativesProps) {
           {ini.items.map((item, i) => (
               <div key={i} className="initiative-card" style={{ display: 'flex', flexDirection: 'column' }}>
                 <a href={routes[i]} style={{ display: 'block', textDecoration: 'none' }}>
-                  <div className="ini-img-ph" style={{ height: '210px', width: '100%', background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '4px' }}>
+                  <div className="ini-img-ph" style={{ height: '220px', width: '100%', background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '4px' }}>
                     <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', letterSpacing: '0.1em' }}>
                       {imagePlaceholders[i]}
                     </span>

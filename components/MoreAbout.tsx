@@ -31,7 +31,7 @@ export default function MoreAbout({ lang }: MoreAboutProps) {
               {/* To replace with a real image: swap this div for
                   <img src="/images/about/[name].jpg" alt="..." style={{ width: '100%', height: '260px', objectFit: 'cover' }} />
                   or use Next.js <Image> with fill and a relative-positioned wrapper */}
-              <div className="ma-img-ph" style={{ height: '210px', width: '100%', background: '#F7F6F3', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '4px' }}>
+              <div className="ma-img-ph" style={{ height: '220px', width: '100%', background: '#F7F6F3', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '4px' }}>
                 <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '13px', letterSpacing: '0.1em' }}>
                   {imagePlaceholders[i]}
                 </span>

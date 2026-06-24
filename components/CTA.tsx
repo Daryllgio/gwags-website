@@ -26,7 +26,7 @@ export default function CTA({ lang }: CTAProps) {
           </Link>
           <Link
             href="/get-involved"
-            style={{ background: 'none', color: 'rgba(255,255,255,0.92)', fontSize: '15px', padding: '13px 24px', border: '2.5px solid rgba(255,255,255,0.85)', borderRadius: '3px', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}
+            style={{ background: 'none', color: 'rgba(255,255,255,0.92)', fontSize: '15px', padding: '13px 24px', border: '1px solid rgba(255,255,255,0.85)', borderRadius: '3px', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}
           >
             {c.btn2}
           </Link>

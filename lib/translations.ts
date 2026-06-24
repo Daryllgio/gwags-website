@@ -81,12 +81,11 @@ export const t = {
       h2: 'What it means to be part of this institution.',
       body: 'Organizations affiliated with Gwags gain visibility, institutional weight, access to a global network, and the structural support needed to grow with credibility and purpose.',
       items: [
-        { title: 'Credibility', desc: 'Association with Gwags signals alignment with a recognized standard of ethics, excellence and impact.' },
         { title: 'International network', desc: 'Access to a growing ecosystem of organizations across sectors and borders.' },
-        { title: 'Capacity to scale', desc: 'Strategic guidance and structural support to help ambitious organizations reach their full potential.' },
-        { title: 'Funding pathways', desc: 'Easier access to grants, partnerships and financing opportunities through our institutional umbrella.' },
-        { title: 'Strategic visibility', desc: 'Greater visibility and reach through institutional platforms and international positioning.' },
-        { title: 'Governance standards', desc: 'A framework of institutional best practices that strengthens accountability, transparency and long-term resilience.' },
+        { title: 'Capacity to scale', desc: 'Strategic guidance and structural support to help organizations strengthen and scale their operations.' },
+        { title: 'Funding pathways', desc: 'Easier access to grants and funding opportunities through our institutional umbrella.' },
+        { title: 'Strategic visibility', desc: 'Growing visibility and reach through the Gwags institutional network and international positioning.' },
+        { title: 'Governance standards', desc: 'A framework that formalizes how affiliated organizations are structured, managed, and governed.' },
       ],
     },
     quote: {
@@ -619,12 +618,11 @@ export const t = {
       h2: 'Ce que signifie faire partie de cette institution.',
       body: 'Les organisations affiliées à Gwags gagnent en visibilité, en poids institutionnel, en accès à un réseau mondial et en soutien structurel nécessaire pour croître avec crédibilité et purpose.',
       items: [
-        { title: 'Crédibilité', desc: 'L\'association avec Gwags signale un alignement sur un standard reconnu d\'éthique, d\'excellence et d\'impact.' },
         { title: 'Réseau international', desc: 'Accès à un écosystème croissant d\'organisations à travers les secteurs et les frontières.' },
-        { title: 'Capacité à grandir', desc: 'Des conseils stratégiques et un soutien structurel pour aider les organisations ambitieuses à atteindre leur plein potentiel.' },
-        { title: 'Voies de financement', desc: 'Un accès plus facile aux subventions, partenariats et opportunités de financement à travers notre cadre institutionnel.' },
-        { title: 'Visibilité stratégique', desc: 'Une plus grande visibilité et portée à travers des plateformes institutionnelles et un positionnement international.' },
-        { title: 'Standards de gouvernance', desc: 'Un cadre de meilleures pratiques institutionnelles qui renforce la responsabilité, la transparence et la résilience.' },
+        { title: 'Capacité à grandir', desc: 'Des conseils stratégiques et un soutien structurel pour aider les organisations à renforcer et développer leurs opérations.' },
+        { title: 'Voies de financement', desc: 'Un accès plus facile aux subventions et opportunités de financement à travers notre cadre institutionnel.' },
+        { title: 'Visibilité stratégique', desc: 'Une visibilité et une portée croissantes à travers le réseau institutionnel Gwags et un positionnement international.' },
+        { title: 'Standards de gouvernance', desc: 'Un cadre qui formalise la manière dont les organisations affiliées sont structurées, gérées et gouvernées.' },
       ],
     },
     quote: {
