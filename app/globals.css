@@ -2974,7 +2974,7 @@ h1, h2, h3, h4 {
 /* ── Homepage card image heights: 811px–1023px (+10px from tablet base) ── */
 @media (min-width: 811px) and (max-width: 1023px) {
   .ini-img-ph { height: 215px !important; }
-  .ma-img-ph  { height: 225px !important; }
+  .ma-img-ph  { height: 220px !important; }
 }
 
 /* ── Homepage card image heights: 1024px–1270px (+15px from desktop base) ── */
