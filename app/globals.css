@@ -1322,7 +1322,7 @@ h1, h2, h3, h4 {
 /* Our Story — narrow phones (≤375px): must follow comprehensive blocks to win cascade */
 @media (max-width: 375px) {
   .tl2-year-num.active { font-size: 50px !important; }
-  .tl2-image-ph.active { height: 270px !important; }
+  .tl2-image-ph.active { height: 260px !important; }
 }
 
 /* ── Mobile Navigation Fix ── */
