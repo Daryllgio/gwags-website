@@ -3055,7 +3055,7 @@ h1, h2, h3, h4 {
 
 /* ── CHANGE 4: More About image height 1024px–1200px (+10px from 235px, then +10px again) ── */
 /* ── Get Involved (homepage) top padding per breakpoint ── */
-@media (min-width: 768px) and (max-width: 1024px) { .gi-hp-section { padding-top: 45px !important; } }
+@media (min-width: 768px) and (max-width: 1024px) { .gi-hp-section { padding-top: 50px !important; } }
 @media (max-width: 767px) { .gi-hp-section { padding-top: 25px !important; } }
 @media (max-width: 480px) { .gi-hp-section { padding-top: 25px !important; } }
 
