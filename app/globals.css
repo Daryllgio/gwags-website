@@ -3075,7 +3075,7 @@ h1, h2, h3, h4 {
 @media (min-width: 768px) and (max-width: 819px)   { .os-photo-banner { height: 400px !important; } }
 @media (min-width: 820px) and (max-width: 849px)   { .os-photo-banner { height: 430px !important; } }
 @media (min-width: 850px) and (max-width: 900px)   { .os-photo-banner { height: 450px !important; } }
-@media (min-width: 901px) and (max-width: 1023px)  { .os-photo-banner { height: 430px !important; } }
+@media (min-width: 901px) and (max-width: 1023px)  { .os-photo-banner { height: 480px !important; } }
 @media (min-width: 1024px) and (max-width: 1200px) { .os-photo-banner { height: 480px !important; } }
 @media (min-width: 1201px) and (max-width: 1349px) { .os-photo-banner { height: 570px !important; } }
 @media (min-width: 1350px)                         { .os-photo-banner { height: 800px !important; } }
