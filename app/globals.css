@@ -3077,5 +3077,5 @@ h1, h2, h3, h4 {
 @media (min-width: 850px) and (max-width: 900px)   { .os-photo-banner { height: 470px !important; } }
 @media (min-width: 901px) and (max-width: 1023px)  { .os-photo-banner { height: 500px !important; } }
 @media (min-width: 1024px) and (max-width: 1200px) { .os-photo-banner { height: 600px !important; } }
-@media (min-width: 1201px) and (max-width: 1349px) { .os-photo-banner { height: 650px !important; } }
+@media (min-width: 1201px) and (max-width: 1349px) { .os-photo-banner { height: 700px !important; } }
 @media (min-width: 1350px)                         { .os-photo-banner { height: 800px !important; } }
