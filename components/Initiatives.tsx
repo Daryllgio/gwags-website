@@ -23,6 +23,7 @@ export default function Initiatives({ lang }: InitiativesProps) {
 
   return (
     <section id="initiatives" className="site-section ini-section" style={{ background: '#050F22', padding: '55px 80px' }}>
+      <div style={{ maxWidth: '1169px', margin: '0 auto' }}>
         <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>
           {ini.eyebrow}
         </p>
@@ -55,7 +56,7 @@ export default function Initiatives({ lang }: InitiativesProps) {
               </div>
             ))}
         </div>
-
+      </div>
     </section>
   )
 }

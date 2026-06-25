@@ -98,6 +98,7 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.initiatives
   return (
     <section className="hww-init-strip" style={{ background: '#ffffff', padding: '55px 80px' }}>
+      <div style={{ maxWidth: '1169px', margin: '0 auto' }}>
       <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
         {p.eyebrow}
       </p>
@@ -124,6 +125,7 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
               </div>
             </div>
           ))}
+      </div>
       </div>
     </section>
   )

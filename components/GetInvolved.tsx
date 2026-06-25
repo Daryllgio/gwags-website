@@ -10,7 +10,7 @@ export default function GetInvolved({ lang }: GetInvolvedProps) {
 
   // ADJUST: Change top padding here to control gap between More About and Get Involved
   return (
-    <section style={{ background: '#ffffff', padding: '10px 28px 80px' }}>
+    <section className="gi-hp-section" style={{ background: '#ffffff', padding: '55px 28px 80px' }}>
       <div style={{ maxWidth: '1170px', margin: '0 auto' }}>
 
         <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>

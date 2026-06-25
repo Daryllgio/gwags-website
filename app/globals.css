@@ -1394,7 +1394,7 @@ h1, h2, h3, h4 {
 
   /* Why Gwags */
   .wg-card       { padding: 24px 18px 22px !important; }
-  .wg-card-title { font-size: 18px !important; }
+  .wg-card-title { font-size: 17px !important; }
   .wg-card-desc  { font-size: 16px !important; }
 
   /* More About */
@@ -1640,16 +1640,29 @@ h1, h2, h3, h4 {
   .footer-logo-ph      { width: 88px !important; height: 24px !important; }
 }
 
-/* "Our vision and mission" link */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .wwa-vision-link { font-size: 17px !important; }
+/* "Our vision and mission" link — matches card-learn-more style */
+.wwa-vision-link {
+  display: inline-block;
+  position: relative;
+  font-weight: 500;
+  font-size: 17px;
+  color: #0A1128;
+  text-decoration: none;
 }
-@media (max-width: 767px) {
-  .wwa-vision-link { font-size: 16px !important; }
+.wwa-vision-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.8px;
+  background: currentColor;
 }
-@media (max-width: 480px) {
-  .wwa-vision-link { font-size: 15px !important; }
+@media (hover: hover) {
+  .wwa-vision-link:hover::after { animation: card-underline-retract 0.5s ease forwards; }
 }
+@media (max-width: 767px) { .wwa-vision-link { font-size: 15px !important; } }
+@media (max-width: 480px) { .wwa-vision-link { font-size: 15px !important; } }
 
 /* Leadership Quote name and role */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -2920,16 +2933,14 @@ h1, h2, h3, h4 {
   .hww-init-strip .ini-img-ph { height: 195px !important; }
 }
 
-/* CHANGE 2: Nest Hub Max / large tablet (1025px–1280px) — 2-col initiative cards on HWW page.
-   Card max-width = 400px (iPad Pro 1024px value) + 50px = 450px.
-   Grid max-width = 2×450px + 20px gap = 920px, centered. */
-@media (min-width: 1025px) and (max-width: 1280px) {
+/* HWW initiatives: 2-col at 1025–1300px matching homepage clamp */
+@media (min-width: 1025px) and (max-width: 1300px) {
   .hww-init-strip .initiatives-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    max-width: 860px !important;
+    max-width: clamp(790px, calc(100vw - 350px), 840px) !important;
     margin: 0 auto !important;
   }
-  .hww-init-strip .initiative-card { max-width: 420px !important; }
+  .hww-init-strip .initiative-card { max-width: none !important; }
 }
 
 /* ── How We Work: hero section height at 851px–1024px (side-by-side layout) ──
@@ -2978,15 +2989,22 @@ h1, h2, h3, h4 {
   .ma-img-ph  { height: 225px !important; }
 }
 
-/* ── Homepage card image heights: 1024px–1270px (+15px from desktop base) ── */
-@media (min-width: 1024px) and (max-width: 1270px) {
+/* ── Homepage card image heights: 1024px–1200px ── */
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .ini-img-ph { height: 230px !important; }
+  .ma-img-ph  { height: 260px !important; }
+}
+
+/* ── Homepage card image heights: 1201px–1270px ── */
+@media (min-width: 1201px) and (max-width: 1270px) {
   .ini-img-ph { height: 235px !important; }
   .ma-img-ph  { height: 235px !important; }
 }
 
-/* ── More About card image height: desktop above 1270px (+10px from base 220px) ── */
+/* ── Homepage card image heights: above 1270px ── */
 @media (min-width: 1271px) {
-  .ma-img-ph { height: 230px !important; }
+  .ini-img-ph { height: 235px !important; }
+  .ma-img-ph  { height: 235px !important; }
 }
 
 /* ── How We Work: match homepage initiatives layout at 1025px–1280px (4 columns) ── */
@@ -3036,7 +3054,17 @@ h1, h2, h3, h4 {
 }
 
 /* ── CHANGE 4: More About image height 1024px–1200px (+10px from 235px, then +10px again) ── */
-@media (min-width: 1024px) and (max-width: 1200px) {
-  .ma-img-ph { height: 255px !important; }
+/* ── Get Involved (homepage) top padding per breakpoint ── */
+@media (min-width: 768px) and (max-width: 1024px) { .gi-hp-section { padding-top: 45px !important; } }
+@media (max-width: 767px) { .gi-hp-section { padding-top: 25px !important; } }
+@media (max-width: 480px) { .gi-hp-section { padding-top: 25px !important; } }
+
+/* ── Initiatives: 2-col layout at 1025–1300px, cards 385px→410px ── */
+@media (min-width: 1025px) and (max-width: 1300px) {
+  .initiatives-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: clamp(790px, calc(100vw - 350px), 840px) !important;
+    margin: 0 auto !important;
+  }
 }
 
