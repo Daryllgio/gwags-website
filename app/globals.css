@@ -3070,8 +3070,7 @@ h1, h2, h3, h4 {
 
 /* ── Our Story photo banner: match Our Role hero dimensions ── */
 @media (max-width: 349px)                          { .os-photo-banner { height: 220px !important; } }
-@media (min-width: 350px) and (max-width: 480px)   { .os-photo-banner { height: 260px !important; } }
-@media (min-width: 481px) and (max-width: 539px)   { .os-photo-banner { height: 260px !important; } }
+@media (min-width: 350px) and (max-width: 539px)   { .os-photo-banner { height: 260px !important; } }
 @media (min-width: 540px) and (max-width: 767px)   { .os-photo-banner { height: 280px !important; } }
 @media (min-width: 768px) and (max-width: 819px)   { .os-photo-banner { height: 360px !important; } }
 @media (min-width: 820px) and (max-width: 849px)   { .os-photo-banner { height: 375px !important; } }
