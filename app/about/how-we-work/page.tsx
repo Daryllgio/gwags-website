@@ -56,31 +56,35 @@ function SplitSection({ lang }: { lang: Lang }) {
   return (
     <div className="hww-split">
       <div className="hww-split-left">
-        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
-          {p.left.label}
-        </p>
-        <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '28px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.3 }}>
-          {p.left.heading}
-        </h2>
-        {p.left.body.map((para, i) => (
-          <p key={i} className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.85, margin: i < p.left.body.length - 1 ? '0 0 20px 0' : '0' }}>
-            {para}
+        <div className="hww-split-content">
+          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
+            {p.left.label}
           </p>
-        ))}
+          <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '28px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.3 }}>
+            {p.left.heading}
+          </h2>
+          {p.left.body.map((para, i) => (
+            <p key={i} className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.85, margin: i < p.left.body.length - 1 ? '0 0 20px 0' : '0' }}>
+              {para}
+            </p>
+          ))}
+        </div>
       </div>
 
       <div className="hww-split-right">
-        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
-          {p.right.label}
-        </p>
-        <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '28px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.3 }}>
-          {p.right.heading}
-        </h2>
-        {p.right.body.map((para, i) => (
-          <p key={i} className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.85, margin: i < p.right.body.length - 1 ? '0 0 20px 0' : '0' }}>
-            {para}
+        <div className="hww-split-content">
+          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
+            {p.right.label}
           </p>
-        ))}
+          <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '28px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.3 }}>
+            {p.right.heading}
+          </h2>
+          {p.right.body.map((para, i) => (
+            <p key={i} className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.85, margin: i < p.right.body.length - 1 ? '0 0 20px 0' : '0' }}>
+              {para}
+            </p>
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -136,31 +140,33 @@ function CoordinationSection({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.coordination
   return (
     <section className="hww-coordination-section" style={{ background: '#F7F6F3', padding: '80px' }}>
-      <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
-        {p.eyebrow}
-      </p>
-      <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '34px', fontWeight: 400, margin: '0 0 16px 0', lineHeight: 1.25 }}>
-        {p.h2}
-      </h2>
-      <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.75, maxWidth: '650px', margin: '0 0 60px 0' }}>
-        {p.intro}
-      </p>
+      <div style={{ maxWidth: '1170px', margin: '0 auto' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
+          {p.eyebrow}
+        </p>
+        <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '34px', fontWeight: 400, margin: '0 0 16px 0', lineHeight: 1.25 }}>
+          {p.h2}
+        </h2>
+        <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.75, maxWidth: '650px', margin: '0 0 60px 0' }}>
+          {p.intro}
+        </p>
 
-      <div className="hww-steps">
-        {p.steps.map((step, i) => (
-          <div key={i} className="hww-step">
-            <div className="hww-step-num">{i + 1}</div>
-            <div className="hww-step-line" />
-            <div className="hww-step-content">
-              <h3 className="hww-step-title" style={{ color: '#0A1128', fontSize: '18px', fontWeight: 600, margin: '0 0 12px 0', fontFamily: 'Georgia, serif' }}>
-                {step.title}
-              </h3>
-              <p className="body-text hww-step-body" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.8, margin: 0 }}>
-                {step.body}
-              </p>
+        <div className="hww-steps">
+          {p.steps.map((step, i) => (
+            <div key={i} className="hww-step">
+              <div className="hww-step-num">{i + 1}</div>
+              <div className="hww-step-line" />
+              <div className="hww-step-content">
+                <h3 className="hww-step-title" style={{ color: '#0A1128', fontSize: '18px', fontWeight: 600, margin: '0 0 12px 0', fontFamily: 'Georgia, serif' }}>
+                  {step.title}
+                </h3>
+                <p className="body-text hww-step-body" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.8, margin: 0 }}>
+                  {step.body}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -171,26 +177,28 @@ function WorkingWithSection({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.workingWith
   return (
     <section className="hww-working-with-section" style={{ background: '#0A1128', padding: '80px' }}>
-      <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
-        {p.eyebrow}
-      </p>
-      <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '34px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.25 }}>
-        {p.h2}
-      </h2>
-      <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.75, maxWidth: '720px', margin: '0 0 48px 0' }}>
-        {p.intro}
-      </p>
-      <div className="hww-cards-grid">
-        {p.cards.map((card, i) => (
-          <div key={i} className="hww-card">
-            <h3 className="hww-card-title" style={{ color: '#ffffff', fontSize: '18px', fontWeight: 600, margin: '0 0 12px 0' }}>
-              {card.title}
-            </h3>
-            <p className="body-text hww-card-desc" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '17px', lineHeight: 1.75, margin: 0 }}>
-              {card.body}
-            </p>
-          </div>
-        ))}
+      <div style={{ maxWidth: '1170px', margin: '0 auto' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
+          {p.eyebrow}
+        </p>
+        <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '34px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.25 }}>
+          {p.h2}
+        </h2>
+        <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.75, maxWidth: '720px', margin: '0 0 48px 0' }}>
+          {p.intro}
+        </p>
+        <div className="hww-cards-grid">
+          {p.cards.map((card, i) => (
+            <div key={i} className="hww-card">
+              <h3 className="hww-card-title" style={{ color: '#ffffff', fontSize: '18px', fontWeight: 600, margin: '0 0 12px 0' }}>
+                {card.title}
+              </h3>
+              <p className="body-text hww-card-desc" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '17px', lineHeight: 1.75, margin: 0 }}>
+                {card.body}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

@@ -304,8 +304,8 @@ export const t = {
           },
           {
             year: '2025', month: 'MAY',
-            title: 'Incorporation in the United States and Cameroon',
-            body: 'Gwags formalized its structure by incorporating as a nonprofit organization in both the United States and Cameroon. The 501(c)(3) application process began, establishing the legal and institutional foundation for sustained international operations.',
+            title: 'Creation and Incorporation of the Gwags Foundation',
+            body: 'Gwags formalized its structure by creating and incorporating the Gwags Foundation as a nonprofit organization in both the United States and Cameroon, establishing the legal and institutional foundation for sustained international operations.',
             photo: '',
           },
           {
@@ -840,8 +840,8 @@ export const t = {
           },
           {
             year: '2025', month: 'MAI',
-            title: 'Incorporation aux États-Unis et au Cameroun',
-            body: "Gwags a formalisé sa structure en s'incorporant en tant qu'organisation à but non lucratif aux États-Unis et au Cameroun. Le processus de demande 501(c)(3) a commencé, établissant les bases juridiques et institutionnelles pour des opérations internationales durables.",
+            title: 'Création et Incorporation de la Gwags Foundation',
+            body: "Gwags a formalisé sa structure en créant et en incorporant la Gwags Foundation en tant qu'organisation à but non lucratif aux États-Unis et au Cameroun, établissant les bases juridiques et institutionnelles pour des opérations internationales durables.",
             photo: '',
           },
           {
