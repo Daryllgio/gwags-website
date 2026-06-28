@@ -67,7 +67,7 @@ export default function GetInvolvedPage() {
         <hr style={{ borderColor: 'rgba(10,17,40,0.12)', margin: '0 0 60px 0' }} />
 
         {/* SECTION 2: Partner + Support */}
-        <div className="gi-two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', marginBottom: '60px' }}>
+        <div className="gi-two-col" style={{ marginBottom: '60px' }}>
           <div>
             <p className="eyebrow" style={EYEBROW_STYLE}>{p.partner.eyebrow}</p>
             <p className="body-text" style={{ color: '#4A4A4A', fontSize: '17px', lineHeight: 1.85, marginBottom: '28px' }}>
@@ -111,7 +111,7 @@ export default function GetInvolvedPage() {
         <hr style={{ borderColor: 'rgba(10,17,40,0.08)', margin: '0 0 60px 0' }} />
 
         {/* SECTION 3: Contact + Follow */}
-        <div className="gi-two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>
+        <div className="gi-two-col">
           <div>
             <p className="eyebrow" style={EYEBROW_STYLE}>{p.contact.eyebrow}</p>
             <p className="body-text" style={{ color: '#4A4A4A', fontSize: '17px', lineHeight: 1.85, marginBottom: '28px' }}>
