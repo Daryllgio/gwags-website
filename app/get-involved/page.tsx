@@ -1,116 +1,147 @@
 'use client'
-import { useLang } from '@/lib/useLang'
+import { useState } from 'react'
 import Link from 'next/link'
+import { useLang } from '@/lib/useLang'
 import { t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import DonationOverlay from '@/components/DonationOverlay'
+
+const NAVY = '#0A1128'
+
+function InstagramIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function LinkedInIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect x="2" y="9" width="4" height="12" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  )
+}
+
+function HeartIcon() {
+  return (
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+    </svg>
+  )
+}
+
+const EYEBROW_STYLE: React.CSSProperties = {
+  color: NAVY,
+  fontSize: '13px',
+  letterSpacing: '0.22em',
+  fontWeight: 600,
+  marginBottom: '20px',
+}
 
 export default function GetInvolvedPage() {
   const [lang, toggleLang] = useLang()
+  const [donateOpen, setDonateOpen] = useState(false)
   const p = t[lang].getInvolvedPage
 
   return (
-    <main>
+    <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      {/* Hero */}
-      <section className="gi-hero">
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>
-            {p.hero.eyebrow}
-          </p>
-          <h1 className="gi-hero-h1" style={{ color: '#fff', fontSize: '42px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '24px', maxWidth: '600px' }}>
-            {p.hero.h1}
+      <div className="gi-page-container">
+        {/* SECTION 1: Hero */}
+        <div className="gi-page-hero" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '120px', marginBottom: '40px', alignItems: 'start' }}>
+          <h1 style={{ color: NAVY, fontSize: '37px', fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 600, lineHeight: 1.1, margin: 0 }}>
+            {p.hero.heading}
           </h1>
-          <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.8, maxWidth: '550px', margin: 0 }}>
-            {p.hero.body}
+          <p style={{ color: NAVY, fontSize: '18px', lineHeight: 1.75, margin: 0, alignSelf: 'center' }}>
+            {p.hero.desc}
           </p>
         </div>
-      </section>
+        <hr style={{ borderColor: 'rgba(10,17,40,0.12)', margin: '0 0 60px 0' }} />
 
-      {/* Partner with us */}
-      <section style={{ background: '#F7F6F3', padding: '80px 28px' }} className="gi-section">
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>
-            {p.partner.eyebrow}
-          </p>
-          <h2 style={{ color: '#0A1128', fontSize: '30px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.3, marginBottom: '24px', maxWidth: '700px' }}>
-            {p.partner.heading}
-          </h2>
-          <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.85, maxWidth: '700px', marginBottom: '28px' }}>
-            {p.partner.body}
-          </p>
-          {/* TODO: Link to partner interest form when ready */}
-          <a href="#contact" style={{ color: '#D4AF37', fontSize: '15px', fontWeight: 500, textDecoration: 'underline', textDecorationColor: 'rgba(212,175,55,0.5)', textUnderlineOffset: '3px', cursor: 'pointer' }}>
-            {p.partner.cta}
-          </a>
-        </div>
-      </section>
+        {/* SECTION 2: Partner + Support */}
+        <div className="gi-two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', marginBottom: '60px' }}>
+          <div>
+            <p className="eyebrow" style={EYEBROW_STYLE}>{p.partner.eyebrow}</p>
+            <p className="body-text" style={{ color: '#4A4A4A', fontSize: '17px', lineHeight: 1.85, marginBottom: '28px' }}>
+              {p.partner.text}
+            </p>
+            <Link href="/partner" className="gi-link gi-cta-link" style={{ color: '#4A4A4A' }}>
+              {p.partner.cta}
+            </Link>
+          </div>
 
-      {/* Support our work */}
-      <section style={{ background: '#ffffff', padding: '80px 28px' }} className="gi-section">
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>
-            {p.support.eyebrow}
-          </p>
-          <h2 style={{ color: '#0A1128', fontSize: '30px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.3, marginBottom: '24px', maxWidth: '700px' }}>
-            {p.support.heading}
-          </h2>
-          <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.85, maxWidth: '700px', marginBottom: '28px' }}>
-            {p.support.body}
-          </p>
-          {/* TODO: Link to donation/support form when ready */}
-          <a href="#contact" style={{ color: '#D4AF37', fontSize: '15px', fontWeight: 500, textDecoration: 'underline', textDecorationColor: 'rgba(212,175,55,0.5)', textUnderlineOffset: '3px', cursor: 'pointer' }}>
-            {p.support.cta}
-          </a>
+          <div>
+            <p className="eyebrow" style={EYEBROW_STYLE}>{p.support.eyebrow}</p>
+            <p className="body-text" style={{ color: '#4A4A4A', fontSize: '17px', lineHeight: 1.85, marginBottom: '28px' }}>
+              {p.support.text}
+            </p>
+            <button
+              onClick={() => setDonateOpen(true)}
+              className="donate-btn"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: NAVY,
+                color: '#ffffff',
+                fontWeight: 600,
+                fontSize: '15px',
+                padding: '14px 32px',
+                borderRadius: '6px',
+                border: 'none',
+                cursor: 'pointer',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              <span className="donate-heart"><HeartIcon /></span>
+              {p.support.donate}
+            </button>
+          </div>
         </div>
-      </section>
 
-      {/* Contact */}
-      <section id="contact" style={{ background: '#F7F6F3', padding: '80px 28px' }} className="gi-section">
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>
-            {p.contact.eyebrow}
-          </p>
-          <h2 style={{ color: '#0A1128', fontSize: '30px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.3, marginBottom: '24px', maxWidth: '700px' }}>
-            {p.contact.heading}
-          </h2>
-          <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.85, maxWidth: '700px', marginBottom: '28px' }}>
-            {p.contact.body}
-          </p>
-          {/* Update the email in translations.ts (getInvolvedPage.contact.email) when the real address is ready */}
-          <a
-            href={`mailto:${p.contact.email}`}
-            className="gi-contact-email"
-            style={{ color: '#D4AF37', fontSize: '20px', fontWeight: 500, textDecoration: 'none', display: 'block', marginBottom: '16px' }}
-          >
-            {p.contact.email}
-          </a>
-          <p style={{ color: '#4A4A4A', fontSize: '15px', margin: 0 }}>
-            {p.contact.responseTime}
-          </p>
-        </div>
-      </section>
+        <hr style={{ borderColor: 'rgba(10,17,40,0.08)', margin: '0 0 60px 0' }} />
 
-      {/* Gold CTA */}
-      <section style={{ background: '#D4AF37', padding: '80px 28px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <h2 style={{ color: '#0A1128', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px' }}>
-            {p.cta.h2}
-          </h2>
-          <p className="body-text" style={{ color: 'rgba(10,17,40,0.75)', fontSize: '18px', lineHeight: 1.75, marginBottom: '36px' }}>
-            {p.cta.body}
-          </p>
-          <Link
-            href="/"
-            style={{ display: 'inline-block', background: '#0A1128', color: '#ffffff', fontSize: '14px', fontWeight: 500, padding: '14px 32px', borderRadius: '3px', textDecoration: 'none', letterSpacing: '0.06em' }}
-          >
-            {p.cta.btn}
-          </Link>
+        {/* SECTION 3: Contact + Follow */}
+        <div className="gi-two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>
+          <div>
+            <p className="eyebrow" style={EYEBROW_STYLE}>{p.contact.eyebrow}</p>
+            <p className="body-text" style={{ color: '#4A4A4A', fontSize: '17px', lineHeight: 1.85, marginBottom: '28px' }}>
+              {p.contact.text}
+            </p>
+            <Link href="/contact" className="gi-link gi-cta-link" style={{ color: '#4A4A4A' }}>
+              {p.contact.cta}
+            </Link>
+          </div>
+
+          <div>
+            <p className="eyebrow" style={EYEBROW_STYLE}>{p.follow.eyebrow}</p>
+            <p className="body-text" style={{ color: '#4A4A4A', fontSize: '17px', lineHeight: 1.85, marginBottom: '28px' }}>
+              {p.follow.text}
+            </p>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <a href="https://www.instagram.com/gwags_foundation/" target="_blank" rel="noopener noreferrer" className="gi-social-link" aria-label="Instagram">
+                <InstagramIcon />
+              </a>
+              <a href="https://www.linkedin.com/company/gwags-foundation/" target="_blank" rel="noopener noreferrer" className="gi-social-link" aria-label="LinkedIn">
+                <LinkedInIcon />
+              </a>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
 
       <Footer lang={lang} />
+
+      {donateOpen && <DonationOverlay lang={lang} onClose={() => setDonateOpen(false)} />}
     </main>
   )
 }
