@@ -70,7 +70,7 @@ export default function GetInvolvedPage() {
         <div className="gi-two-col" style={{ marginBottom: '60px' }}>
           <div>
             <p className="eyebrow" style={EYEBROW_STYLE}>{p.partner.eyebrow}</p>
-            <p className="body-text" style={{ color: '#4A4A4A', fontSize: '17px', lineHeight: 1.85, marginBottom: '28px' }}>
+            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85, marginBottom: '28px' }}>
               {p.partner.text}
             </p>
             <Link href="/partner" className="gi-link gi-cta-link" style={{ color: '#4A4A4A' }}>
@@ -80,7 +80,7 @@ export default function GetInvolvedPage() {
 
           <div>
             <p className="eyebrow" style={EYEBROW_STYLE}>{p.support.eyebrow}</p>
-            <p className="body-text" style={{ color: '#4A4A4A', fontSize: '17px', lineHeight: 1.85, marginBottom: '28px' }}>
+            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85, marginBottom: '28px' }}>
               {p.support.text}
             </p>
             <button
@@ -114,7 +114,7 @@ export default function GetInvolvedPage() {
         <div className="gi-two-col">
           <div>
             <p className="eyebrow" style={EYEBROW_STYLE}>{p.contact.eyebrow}</p>
-            <p className="body-text" style={{ color: '#4A4A4A', fontSize: '17px', lineHeight: 1.85, marginBottom: '28px' }}>
+            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85, marginBottom: '28px' }}>
               {p.contact.text}
             </p>
             <Link href="/contact" className="gi-link gi-cta-link" style={{ color: '#4A4A4A' }}>
@@ -124,7 +124,7 @@ export default function GetInvolvedPage() {
 
           <div>
             <p className="eyebrow" style={EYEBROW_STYLE}>{p.follow.eyebrow}</p>
-            <p className="body-text" style={{ color: '#4A4A4A', fontSize: '17px', lineHeight: 1.85, marginBottom: '28px' }}>
+            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85, marginBottom: '28px' }}>
               {p.follow.text}
             </p>
             <div style={{ display: 'flex', gap: '12px' }}>
