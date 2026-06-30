@@ -11,7 +11,7 @@ const NAVY = '#0A1128'
 
 function InstagramIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
@@ -21,7 +21,7 @@ function InstagramIcon() {
 
 function LinkedInIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
       <rect x="2" y="9" width="4" height="12" />
       <circle cx="4" cy="4" r="2" />
@@ -39,9 +39,6 @@ function HeartIcon() {
 
 const EYEBROW_STYLE: React.CSSProperties = {
   color: NAVY,
-  fontSize: '13px',
-  letterSpacing: '0.22em',
-  fontWeight: 600,
   marginBottom: '20px',
 }
 
@@ -57,7 +54,7 @@ export default function GetInvolvedPage() {
       <div className="gi-page-container">
         {/* SECTION 1: Hero */}
         <div className="gi-page-hero" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '150px', marginBottom: '40px', alignItems: 'start' }}>
-          <h1 style={{ color: NAVY, fontSize: '37px', fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 600, lineHeight: 1.1, margin: 0 }}>
+          <h1 style={{ color: NAVY, fontSize: '37px', fontFamily: 'inherit', fontWeight: 600, lineHeight: 1.1, margin: 0, textTransform: 'uppercase' }}>
             {p.hero.heading}
           </h1>
           <p style={{ color: NAVY, fontSize: '18px', lineHeight: 1.75, margin: 0, alignSelf: 'center' }}>
@@ -69,17 +66,17 @@ export default function GetInvolvedPage() {
         {/* SECTION 2: Partner + Support */}
         <div className="gi-two-col" style={{ marginBottom: '60px' }}>
           <div>
-            <p className="eyebrow" style={EYEBROW_STYLE}>{p.partner.eyebrow}</p>
+            <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.partner.eyebrow}</p>
             <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85, marginBottom: '28px' }}>
               {p.partner.text}
             </p>
-            <Link href="/partner" className="gi-link gi-cta-link" style={{ color: '#4A4A4A' }}>
+            <Link href="/partner" className="gi-link gi-cta-link" style={{ color: NAVY }}>
               {p.partner.cta}
             </Link>
           </div>
 
           <div>
-            <p className="eyebrow" style={EYEBROW_STYLE}>{p.support.eyebrow}</p>
+            <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.support.eyebrow}</p>
             <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85, marginBottom: '28px' }}>
               {p.support.text}
             </p>
@@ -113,17 +110,17 @@ export default function GetInvolvedPage() {
         {/* SECTION 3: Contact + Follow */}
         <div className="gi-two-col">
           <div>
-            <p className="eyebrow" style={EYEBROW_STYLE}>{p.contact.eyebrow}</p>
+            <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.contact.eyebrow}</p>
             <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85, marginBottom: '28px' }}>
               {p.contact.text}
             </p>
-            <Link href="/contact" className="gi-link gi-cta-link" style={{ color: '#4A4A4A' }}>
+            <Link href="/contact" className="gi-link gi-cta-link" style={{ color: NAVY }}>
               {p.contact.cta}
             </Link>
           </div>
 
           <div>
-            <p className="eyebrow" style={EYEBROW_STYLE}>{p.follow.eyebrow}</p>
+            <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.follow.eyebrow}</p>
             <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85, marginBottom: '28px' }}>
               {p.follow.text}
             </p>

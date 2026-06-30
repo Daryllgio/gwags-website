@@ -28,7 +28,7 @@ function HeroSection({ lang }: { lang: Lang }) {
     <section className="hww-hero-section" style={{ background: '#0A1128' }}>
       <div className="hww-hero-grid">
         <div className="hww-hero-text">
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 24px 0' }}>
+          <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 24px 0' }}>
             {p.eyebrow}
           </p>
           <h1 className="hww-hero-h1" style={{ color: '#ffffff', fontSize: '42px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.18, margin: '0 0 28px 0' }}>
@@ -57,7 +57,7 @@ function SplitSection({ lang }: { lang: Lang }) {
     <div className="hww-split">
       <div className="hww-split-left">
         <div className="hww-split-content">
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
+          <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
             {p.left.label}
           </p>
           <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '28px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.3 }}>
@@ -73,7 +73,7 @@ function SplitSection({ lang }: { lang: Lang }) {
 
       <div className="hww-split-right">
         <div className="hww-split-content">
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
+          <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
             {p.right.label}
           </p>
           <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '28px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.3 }}>
@@ -103,7 +103,7 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
   return (
     <section className="hww-init-strip" style={{ background: '#ffffff', padding: '55px 80px' }}>
       <div style={{ maxWidth: '1169px', margin: '0 auto' }}>
-      <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
+      <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
         {p.eyebrow}
       </p>
       <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '34px', fontWeight: 400, margin: '0 0 40px 0', lineHeight: 1.25 }}>
@@ -141,7 +141,7 @@ function CoordinationSection({ lang }: { lang: Lang }) {
   return (
     <section className="hww-coordination-section" style={{ background: '#F7F6F3', padding: '80px' }}>
       <div style={{ maxWidth: '1170px', margin: '0 auto' }}>
-        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
           {p.eyebrow}
         </p>
         <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '34px', fontWeight: 400, margin: '0 0 16px 0', lineHeight: 1.25 }}>
@@ -178,7 +178,7 @@ function WorkingWithSection({ lang }: { lang: Lang }) {
   return (
     <section className="hww-working-with-section" style={{ background: '#0A1128', padding: '80px' }}>
       <div style={{ maxWidth: '1170px', margin: '0 auto' }}>
-        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
           {p.eyebrow}
         </p>
         <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '34px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.25 }}>
@@ -216,7 +216,7 @@ function CTASection({ lang }: { lang: Lang }) {
         {p.body}
       </p>
       <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-        <Link href="/get-involved" className="hww-cta-btn-dark">{p.btn1}</Link>
+        <Link href="/partner" className="hww-cta-btn-dark">{p.btn1}</Link>
         <Link href="/get-involved" className="hww-cta-btn-outline">{p.btn2}</Link>
       </div>
     </section>

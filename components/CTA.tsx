@@ -19,7 +19,7 @@ export default function CTA({ lang }: CTAProps) {
         </p>
         <div className="cta-buttons" style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link
-            href="/get-involved"
+            href="/partner"
             style={{ background: '#D4AF37', color: '#0A1128', fontSize: '15px', fontWeight: 500, padding: '13px 24px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em', textDecoration: 'none', display: 'inline-block' }}
           >
             {c.btn1}

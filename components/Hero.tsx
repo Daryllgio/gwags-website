@@ -17,7 +17,7 @@ export default function Hero({ lang }: HeroProps) {
       <div className="hero-circle" style={{ position: 'absolute', right: '60px', top: '60px', width: '280px', height: '280px', border: '1px solid rgba(212,175,55,0.15)', borderRadius: '50%' }} />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        <p className="hero-eyebrow eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.25em', marginBottom: '24px' }}>
+        <p className="hero-eyebrow eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.25em', marginBottom: '24px' }}>
           {h.eyebrow}
         </p>
 

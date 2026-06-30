@@ -29,7 +29,7 @@ function HeroSection({ lang }: { lang: Lang }) {
     <section className="or-hero">
       <div className="or-hero-inner">
         <div style={{ maxWidth: '760px' }}>
-          <p className="eyebrow" style={{ color: '#0A1128', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 24px 0' }}>
+          <p className="eyebrow" style={{ color: '#0A1128', letterSpacing: '0.22em', margin: '0 0 24px 0' }}>
             {p.eyebrow}
           </p>
           <h1 className="or-hero-h1" style={{ color: '#0A1128', fontSize: '40px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.18, margin: '0 0 28px 0' }}>
@@ -57,7 +57,7 @@ function VisionMissionSection({ lang }: { lang: Lang }) {
     <section id="vision-mission" className="or-vm-section">
       <div className="or-vm-grid">
         <div className="or-vm-block">
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.2em', margin: '0 0 12px 0' }}>
+          <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.2em', margin: '0 0 12px 0' }}>
             {p.vision.label}
           </p>
           <p className="or-vm-main" style={{ fontSize: '19px', color: '#0A1128', fontFamily: 'Georgia, serif', fontWeight: 500, lineHeight: 1.6, margin: '0 0 16px 0' }}>
@@ -69,7 +69,7 @@ function VisionMissionSection({ lang }: { lang: Lang }) {
         </div>
 
         <div className="or-vm-block">
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.2em', margin: '0 0 12px 0' }}>
+          <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.2em', margin: '0 0 12px 0' }}>
             {p.mission.label}
           </p>
           <p className="or-vm-main" style={{ fontSize: '19px', color: '#0A1128', fontFamily: 'Georgia, serif', fontWeight: 500, lineHeight: 1.6, margin: '0 0 16px 0' }}>
@@ -90,7 +90,7 @@ function ConvictionsSection({ lang }: { lang: Lang }) {
   return (
     <section className="or-convictions">
       <div className="or-convictions-inner">
-        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
           {p.eyebrow}
         </p>
         <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '34px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.25 }}>
@@ -124,7 +124,7 @@ function LookingAheadSection({ lang }: { lang: Lang }) {
       <div className="or-ahead-grid">
         {/* Left column: text */}
         <div className="or-ahead-text">
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '16px', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
+          <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
             {p.eyebrow}
           </p>
           <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 24px 0', lineHeight: 1.25 }}>
@@ -158,7 +158,7 @@ function CTASection({ lang }: { lang: Lang }) {
         {p.body}
       </p>
       <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-        <Link href="/get-involved" className="or-cta-btn-dark">{p.btn1}</Link>
+        <Link href="/partner" className="or-cta-btn-dark">{p.btn1}</Link>
         <Link href="/get-involved" className="or-cta-btn-outline">{p.btn2}</Link>
       </div>
     </section>

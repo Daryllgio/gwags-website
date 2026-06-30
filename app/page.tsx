@@ -8,7 +8,6 @@ import Initiatives from '@/components/Initiatives'
 import WhyGwags from '@/components/WhyGwags'
 import LeadershipQuote from '@/components/LeadershipQuote'
 import MoreAbout from '@/components/MoreAbout'
-import GetInvolved from '@/components/GetInvolved'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 
@@ -24,7 +23,6 @@ export default function Home() {
       <WhyGwags lang={lang} />
       <LeadershipQuote lang={lang} />
       <MoreAbout lang={lang} />
-      <GetInvolved lang={lang} />
       <CTA lang={lang} />
       <Footer lang={lang} />
     </main>

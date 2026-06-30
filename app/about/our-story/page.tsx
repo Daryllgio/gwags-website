@@ -28,7 +28,7 @@ function HeroSection({ lang }: { lang: Lang }) {
   return (
     <section className="os-hero-section" style={{ background: '#ffffff', padding: '100px 28px 92px', textAlign: 'center' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.25em', marginBottom: '24px' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.25em', marginBottom: '24px' }}>
           {p.hero.eyebrow}
         </p>
         <h1 className="os-hero-h1" style={{ color: '#0A1128', fontSize: '42px', fontWeight: 400, lineHeight: 1.18, fontFamily: 'Georgia, serif', margin: 0 }}>

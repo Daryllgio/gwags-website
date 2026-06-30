@@ -317,17 +317,12 @@ h1, h2, h3, h4 {
   justify-content: center;
   color: rgba(255,255,255,0.92);
   text-decoration: none;
-  transition: width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   flex-shrink: 0;
 }
 
-.footer-social-link svg {
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
 @media (hover: hover) {
-  .footer-social-link:hover { width: 33px; height: 33px; }
-  .footer-social-link:hover svg { transform: scale(1.125); }
+  .footer-social-link:hover { transform: scale(1.1); }
 }
 @media (max-width: 900px) {
   .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
@@ -388,57 +383,110 @@ h1, h2, h3, h4 {
   .gi-body-text { font-size: 15px !important; }
 }
 
-/* Social links on get-involved page — same as footer but dark on white bg */
+/* Social links on get-involved page — matches pp-connect-circle on profile pages */
 .gi-social-link {
   width: 30px; height: 30px;
   border-radius: 50%;
-  border: 1.5px solid rgba(10,17,40,0.35);
+  border: 1.5px solid #0A1128;
   display: flex; align-items: center; justify-content: center;
-  color: rgba(10,17,40,0.75);
+  color: #0A1128;
   text-decoration: none;
-  transition: width 0.35s cubic-bezier(0.34,1.56,0.64,1), height 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   flex-shrink: 0;
 }
-.gi-social-link svg { transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1); }
 @media (hover: hover) {
-  .gi-social-link:hover { width: 33px; height: 33px; border-color: rgba(10,17,40,0.6); }
-  .gi-social-link:hover svg { transform: scale(1.125); }
+  .gi-social-link:hover { transform: scale(1.1); }
 }
 
-/* Donate button — heart pounds, wave launches from heart on same beat */
+/* Donate button — heart pounds, ripple radiates outward from heart center */
 @keyframes heart-beat {
-  0%, 100% { transform: scale(1); }
-  15% { transform: scale(1.4); }
-  28% { transform: scale(1); }
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.25); }
+  100% { transform: scale(1); }
 }
-@keyframes wave-from-heart {
-  /* held invisible until heart starts pounding */
-  0%, 13% { transform: translateX(0); opacity: 0; width: 24px; }
-  /* launches from heart position exactly as heart peaks */
-  15% { transform: translateX(0); opacity: 1; width: 24px; }
-  /* sweeps to button right edge */
-  80% { transform: translateX(220px); opacity: 0.5; width: 24px; }
-  /* fades out */
-  95%, 100% { transform: translateX(240px); opacity: 0; width: 24px; }
+@keyframes ripple-from-heart {
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  40%  { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  50%  { transform: translate(-50%, -50%) scale(3); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(40); opacity: 0; }
+}
+@keyframes bell-ring {
+  0%, 100% { transform: rotate(0deg); }
+  10%      { transform: rotate(-14deg); }
+  20%      { transform: rotate(14deg); }
+  30%      { transform: rotate(-10deg); }
+  40%      { transform: rotate(10deg); }
+  50%      { transform: rotate(0deg); }
 }
 .donate-btn { isolation: isolate; }
 .donate-btn::before {
   content: '';
   position: absolute;
-  top: 0; bottom: 0;
-  left: 32px; /* aligns with heart icon (button left-padding) */
-  width: 24px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  left: 41px; /* heart center: left-padding(32px) + half icon width(9.5px) */
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transform: translate(-50%, -50%) scale(0);
   pointer-events: none;
-  animation: wave-from-heart 2.4s ease-in-out infinite;
+  animation: ripple-from-heart 1.6s ease-out infinite;
 }
-.donate-heart { animation: heart-beat 2.4s ease-in-out infinite; display: flex; }
+.donate-heart { animation: heart-beat 1.6s ease-in-out infinite; display: flex; }
+
+/* Donation step transition — fade + subtle 25px shift (one panel at a time) */
+@keyframes donate-step-fade-in {
+  from { opacity: 0; transform: translateX(25px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.donate-step { animation: donate-step-fade-in 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* Remove number input spinners */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type=number] { -moz-appearance: textfield; }
+
+/* Force white background on autofilled inputs (donation overlay, contact, partner) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #0A1128 !important;
+  background-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Donate email link — matches card-learn-more exactly */
+.donate-email-link {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+}
+.donate-email-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 1.8px;
+  background: currentColor;
+}
+@media (hover: hover) {
+  .donate-email-link:hover::after {
+    animation: card-underline-retract 0.5s ease forwards;
+  }
+}
 
 /* Donation overlay card responsive */
+@media (max-width: 768px) {
+  .donation-photo { height: 196px !important; }
+}
 @media (max-width: 640px) {
   .donation-card { grid-template-columns: 1fr !important; }
   .donation-card > div:first-child { border-radius: 12px 12px 0 0 !important; }
   .donation-card > div:last-child { border-radius: 0 0 12px 12px !important; }
+  .donation-photo { height: 178px !important; }
 }
 
 /* ── Forms (contact + partner pages) ── */
@@ -1351,6 +1399,7 @@ h1, h2, h3, h4 {
 /* Base eyebrow size (desktop). Must sit BEFORE the responsive blocks below
    so the !important overrides in those blocks can win at smaller breakpoints. */
 .eyebrow { font-size: 16px !important; }
+.gi-eyebrow { font-size: 19px; font-weight: 700; letter-spacing: normal; }
 
 /* ================================================================
    COMPREHENSIVE RESPONSIVE SYSTEM
@@ -1370,6 +1419,7 @@ h1, h2, h3, h4 {
   .hero-body { font-size: 17px !important; }
   /* TABLET: eyebrow text size */
   .eyebrow { font-size: 16px !important; }
+  .gi-eyebrow { font-size: 18px !important; }
   /* TABLET: How We Work step & card titles */
   .hww-step-title { font-size: 17px !important; }
   .hww-card-title { font-size: 17px !important; }
@@ -1407,6 +1457,7 @@ h1, h2, h3, h4 {
   .hero-body { font-size: 16px !important; }
   /* MOBILE: eyebrow text size */
   .eyebrow { font-size: 15px !important; }
+  .gi-eyebrow { font-size: 17px !important; }
   /* MOBILE: How We Work step & card titles */
   .hww-step-title { font-size: 16px !important; }
   .hww-card-title { font-size: 16px !important; }
@@ -1435,6 +1486,7 @@ h1, h2, h3, h4 {
   .hero-body { font-size: 15px !important; }
   /* SMALL PHONE: eyebrow text size */
   .eyebrow { font-size: 14px !important; }
+  .gi-eyebrow { font-size: 16px !important; }
   /* SMALL PHONE: How We Work step & card titles */
   .hww-step-title { font-size: 16px !important; }
   .hww-card-title { font-size: 15px !important; }
@@ -2203,12 +2255,13 @@ h1, h2, h3, h4 {
 
 .ip-hero-name {
   color: #fff;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 40px;
   font-weight: 700;
   line-height: 1.15;
   margin: 0 0 20px 0;
   max-width: 575px;
+  text-transform: uppercase;
 }
 
 .ip-hero-goal-label {

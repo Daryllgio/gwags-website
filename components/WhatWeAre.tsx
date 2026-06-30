@@ -13,7 +13,7 @@ export default function WhatWeAre({ lang }: WhatWeAreProps) {
       <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'start' }} className="whatweare-grid">
 
         <div>
-          <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '16px' }}>
+          <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', marginBottom: '16px' }}>
             {w.eyebrow}
           </p>
           <h2 className="wwa-h2" style={{ color: '#0A1128', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px' }}>

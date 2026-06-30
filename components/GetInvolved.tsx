@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Lang, t } from '@/lib/translations'
 
 interface GetInvolvedProps {
@@ -13,7 +12,7 @@ export default function GetInvolved({ lang }: GetInvolvedProps) {
     <section className="gi-hp-section" style={{ background: '#ffffff', padding: '55px 28px 80px' }}>
       <div style={{ maxWidth: '1170px', margin: '0 auto' }}>
 
-        <p className="eyebrow" style={{ color: '#D4AF37', fontSize: '15px', letterSpacing: '0.22em', marginBottom: '14px' }}>
+        <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', marginBottom: '14px' }}>
           {g.eyebrow}
         </p>
         <h2 className="gi-hp-h2" style={{ color: '#0A1128', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, maxWidth: '500px', marginBottom: g.body ? '14px' : '35px' }}>
@@ -34,9 +33,6 @@ export default function GetInvolved({ lang }: GetInvolvedProps) {
                 <p className="body-text gi-card-desc" style={{ color: '#5A5A5A', fontSize: '17px', lineHeight: 1.65 }}>
                   {item.desc}
                 </p>
-                <Link href="/get-involved" className="card-learn-more" style={{ color: '#0A1128', marginTop: '12px' }}>
-                  Learn more
-                </Link>
               </div>
             ))}
         </div>
