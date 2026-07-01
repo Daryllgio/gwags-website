@@ -994,8 +994,8 @@ export const t = {
           },
           {
             year: '2025', month: 'MAI',
-            title: 'Création et Incorporation de la Gwags Foundation',
-            body: "Gwags a formalisé sa structure en créant et en incorporant la Gwags Foundation en tant qu'organisation à but non lucratif aux États-Unis et au Cameroun, établissant les bases juridiques et institutionnelles pour des opérations internationales durables.",
+            title: 'Création et Incorporation de la Fondation Gwags',
+            body: "Gwags a formalisé sa structure en créant et en incorporant la Fondation Gwags en tant qu'organisation à but non lucratif aux États-Unis et au Cameroun, établissant les bases juridiques et institutionnelles pour des opérations internationales durables.",
             photo: '',
           },
           {

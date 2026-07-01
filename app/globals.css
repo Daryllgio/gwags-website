@@ -1511,13 +1511,23 @@ input:-webkit-autofill:active {
 
 /* Our Story — mid-range phones (376px–540px): must follow comprehensive blocks to win cascade */
 @media (min-width: 376px) and (max-width: 540px) {
-  .tl2-image-ph.active { height: 285px !important; }
+  .tl2-image-ph.active { height: clamp(265px, calc(242.06px + 6.10vw), 275px) !important; }
+}
+
+/* Our Story — large phones (541px–767px): gradual growth 290px→320px */
+@media (min-width: 541px) and (max-width: 767px) {
+  .tl2-image-ph.active { height: clamp(290px, calc(218.19px + 13.27vw), 320px) !important; }
+}
+
+/* Our Story — tablet (768px–1024px): gradual growth 320px→340px */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .tl2-image-ph.active { height: clamp(320px, calc(260px + 7.8125vw), 340px) !important; }
 }
 
 /* Our Story — narrow phones (≤375px): must follow comprehensive blocks to win cascade */
 @media (max-width: 375px) {
   .tl2-year-num.active { font-size: 50px !important; }
-  .tl2-image-ph.active { height: 260px !important; }
+  .tl2-image-ph.active { height: 250px !important; }
 }
 
 /* ── Mobile Navigation Fix ── */

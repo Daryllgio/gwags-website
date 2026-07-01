@@ -60,14 +60,14 @@ const historicalLeadershipData = {
     {
       name: 'Gloria Alana Asopjio',
       role: 'Membre fondatrice',
-      bio: "Gloria a été l'une des membres fondatrices de la Gwags Foundation, dirigeant la coordination de la sensibilisation et l'approvisionnement en ressources pour les premiers programmes de la fondation.",
+      bio: "Gloria a été l'une des membres fondatrices de la Fondation Gwags, dirigeant la coordination de la sensibilisation et l'approvisionnement en ressources pour les premiers programmes de la fondation.",
       href: '/about/leadership/gloria-alana-asopjio',
       linkedinUrl: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
     },
     {
       name: 'Alissa Kenne Mokem',
       role: 'Membre fondatrice',
-      bio: "Alissa a été l'une des membres fondatrices de la Gwags Foundation, gérant les opérations financières de la fondation.",
+      bio: "Alissa a été l'une des membres fondatrices de la Fondation Gwags, gérant les opérations financières de la fondation.",
       href: '/about/leadership/alissa-kenne-mokem',
       linkedinUrl: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
     },
