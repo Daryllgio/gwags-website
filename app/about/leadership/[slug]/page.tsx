@@ -10,10 +10,11 @@ const GOLD = '#D4AF37'
 
 /* ── People data ─────────────────────────────────────────────────────────── */
 
-const PEOPLE: Record<string, { name: string; role: string; bio: string; bioFr?: string; linkedin: string }> = {
+const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio: string; bioFr?: string; linkedin: string }> = {
   'daryll-giovanny-bikak-mbal': {
     name: 'Giovanny Bikak Mbal',
     role: 'Chair, Board Member',
+    roleFr: 'Président du Conseil d\'administration',
     bio: "As Chair, Giovanny shapes and approves the institution's strategies, advocates for the institution's issues, and sets the organization's overall direction. He also serves as Interim Executive Director.",
     bioFr: "En tant que Président, Giovanny façonne et approuve les stratégies de l'institution, défend les causes de l'institution et définit l'orientation générale de l'organisation. Il occupe également le poste de Directeur Exécutif par intérim.",
     linkedin: 'https://www.linkedin.com/in/giovannybikakmbal/',
@@ -129,7 +130,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         <div className="pp-header-block">
           <div>
             <h1 className="pp-name">{person.name}</h1>
-            <p  className="pp-role">{person.role}</p>
+            <p  className="pp-role">{lang === 'fr' && person.roleFr ? person.roleFr : person.role}</p>
           </div>
           <a
             href={person.linkedin}

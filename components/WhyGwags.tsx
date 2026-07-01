@@ -12,16 +12,18 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
 
   const cardStyle: React.CSSProperties = {
     background: '#fff',
-    border: '0.5px solid rgba(10,17,40,0.1)',
     borderTop: '2px solid #D4AF37',
+    borderRight: '1px solid rgba(10,17,40,0.2)',
+    borderBottom: '1px solid rgba(10,17,40,0.2)',
+    borderLeft: '1px solid rgba(10,17,40,0.2)',
     borderRadius: '0 0 6px 6px',
     padding: '32px 24px 28px',
     textAlign: 'center',
   }
 
   return (
-    <section className="site-section" style={{ background: '#F7F6F3', padding: '80px 28px' }}>
-      <div style={{ maxWidth: '1170px', margin: '0 auto' }}>
+    <section className="site-section" style={{ background: '#ffffff', padding: '80px 28px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', marginBottom: '14px' }}>
           {w.eyebrow}
         </p>

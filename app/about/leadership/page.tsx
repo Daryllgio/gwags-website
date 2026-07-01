@@ -14,6 +14,7 @@ const governanceBoard = [
   {
     name: 'Giovanny Bikak Mbal',
     role: 'Chair, Board Member',
+    roleFr: 'Président du Conseil d\'administration',
     bio:  "As Chair, Giovanny shapes and approves the institution's strategies, advocates for the institution's issues, and sets the organization's overall direction. He also serves as Interim Executive Director.",
     bioFr: "En tant que Président, Giovanny façonne et approuve les stratégies de l'institution, défend les causes de l'institution et définit l'orientation générale de l'organisation. Il occupe également le poste de Directeur Exécutif par intérim.",
     href: '/about/leadership/daryll-giovanny-bikak-mbal',
@@ -315,7 +316,7 @@ export default function LeadershipPage() {
           <section className="mb-16">
             <SectionTitle>Governance Board</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredBoard.map(p => <PersonCard key={p.href} {...p} bio={lang === 'fr' && (p as { bioFr?: string }).bioFr ? (p as { bioFr?: string }).bioFr! : p.bio} />)}
+              {filteredBoard.map(p => <PersonCard key={p.href} {...p} role={lang === 'fr' && (p as { roleFr?: string }).roleFr ? (p as { roleFr?: string }).roleFr! : p.role} bio={lang === 'fr' && (p as { bioFr?: string }).bioFr ? (p as { bioFr?: string }).bioFr! : p.bio} />)}
             </div>
           </section>
         )}
