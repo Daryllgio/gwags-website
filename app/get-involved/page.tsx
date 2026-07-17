@@ -39,7 +39,6 @@ function HeartIcon() {
 
 const EYEBROW_STYLE: React.CSSProperties = {
   color: NAVY,
-  marginBottom: '20px',
 }
 
 export default function GetInvolvedPage() {
@@ -53,21 +52,21 @@ export default function GetInvolvedPage() {
 
       <div className="gi-page-container">
         {/* SECTION 1: Hero */}
-        <div className="gi-page-hero" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '150px', marginBottom: '40px', alignItems: 'start' }}>
-          <h1 style={{ color: NAVY, fontSize: '37px', fontFamily: 'var(--font-heading-serif), Georgia, serif', fontWeight: 600, lineHeight: 1.1, margin: 0, textTransform: 'uppercase' }}>
+        <div className="gi-page-hero" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '150px', alignItems: 'start' }}>
+          <h1 className="gi-hero-h1" style={{ color: NAVY, fontSize: '37px', fontFamily: 'var(--font-heading-serif), Georgia, serif', fontWeight: 600, lineHeight: 1.1, margin: 0, textTransform: 'uppercase' }}>
             {p.hero.heading}
           </h1>
-          <p style={{ color: NAVY, fontSize: '18px', lineHeight: 1.75, margin: 0, alignSelf: 'center' }}>
+          <p className="gi-hero-desc" style={{ color: NAVY, fontSize: '18px', lineHeight: 1.75, margin: 0, alignSelf: 'center' }}>
             {p.hero.desc}
           </p>
         </div>
-        <hr style={{ borderColor: 'rgba(10,17,40,0.12)', margin: '0 0 60px 0' }} />
+        <hr className="gi-divider" style={{ borderColor: 'rgba(10,17,40,0.12)' }} />
 
         {/* SECTION 2: Partner + Support */}
-        <div className="gi-two-col" style={{ marginBottom: '60px' }}>
+        <div className="gi-two-col gi-two-col-gap">
           <div>
             <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.partner.eyebrow}</p>
-            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85, marginBottom: '28px' }}>
+            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85 }}>
               {p.partner.text}
             </p>
             <Link href="/partner" className="gi-link gi-cta-link" style={{ color: NAVY }}>
@@ -77,7 +76,7 @@ export default function GetInvolvedPage() {
 
           <div>
             <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.support.eyebrow}</p>
-            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85, marginBottom: '28px' }}>
+            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85 }}>
               {p.support.text}
             </p>
             <button
@@ -105,13 +104,13 @@ export default function GetInvolvedPage() {
           </div>
         </div>
 
-        <hr style={{ borderColor: 'rgba(10,17,40,0.08)', margin: '0 0 60px 0' }} />
+        <hr className="gi-divider" style={{ borderColor: 'rgba(10,17,40,0.08)' }} />
 
         {/* SECTION 3: Contact + Follow */}
         <div className="gi-two-col">
           <div>
             <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.contact.eyebrow}</p>
-            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85, marginBottom: '28px' }}>
+            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85 }}>
               {p.contact.text}
             </p>
             <Link href="/contact" className="gi-link gi-cta-link" style={{ color: NAVY }}>
@@ -121,7 +120,7 @@ export default function GetInvolvedPage() {
 
           <div>
             <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.follow.eyebrow}</p>
-            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85, marginBottom: '28px' }}>
+            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85 }}>
               {p.follow.text}
             </p>
             <div style={{ display: 'flex', gap: '12px' }}>

@@ -4,6 +4,7 @@ import { useLang } from '@/lib/useLang'
 import { t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import SearchableDropdown from '@/components/SearchableDropdown'
 import { COUNTRIES } from '@/lib/countries'
 
 const NAVY = '#0A1128'
@@ -15,21 +16,31 @@ export default function ContactPage() {
 
   const [form, setForm] = useState({
     firstName: '', lastName: '', email: '', phone: '',
-    country: '', message: '', website: '',
+    country: '', city: '', message: '', website: '',
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [emailError, setEmailError] = useState(false)
+  const [countryError, setCountryError] = useState(false)
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(prev => ({ ...prev, [k]: e.target.value }))
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    let hasError = false
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{3,}$/.test(form.email.trim())) {
       setEmailError(true)
-      return
+      hasError = true
+    } else {
+      setEmailError(false)
     }
-    setEmailError(false)
+    if (!form.country) {
+      setCountryError(true)
+      hasError = true
+    } else {
+      setCountryError(false)
+    }
+    if (hasError) return
     setStatus('loading')
     try {
       const res = await fetch('/api/contact', {
@@ -39,7 +50,7 @@ export default function ContactPage() {
       })
       if (!res.ok) throw new Error()
       setStatus('success')
-      setForm({ firstName: '', lastName: '', email: '', phone: '', country: '', message: '', website: '' })
+      setForm({ firstName: '', lastName: '', email: '', phone: '', country: '', city: '', message: '', website: '' })
     } catch {
       setStatus('error')
     }
@@ -49,7 +60,7 @@ export default function ContactPage() {
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      <div style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 28px' }}>
+      <div className="form-page-container" style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 28px' }}>
         <h1 style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '12px' }}>
           {p.heading}
         </h1>
@@ -106,13 +117,22 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Country */}
-            <div className="form-field">
-              <label className="form-label">{p.labels.country} <span>*</span></label>
-              <select required className="form-input form-select" value={form.country} onChange={set('country')}>
-                <option value="" disabled>—</option>
-                {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
-              </select>
+            {/* Country + City */}
+            <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div className="form-field">
+                <label className="form-label">{p.labels.country} <span>*</span></label>
+                <SearchableDropdown
+                  options={COUNTRIES}
+                  value={form.country}
+                  onChange={v => { setForm(prev => ({ ...prev, country: v })); setCountryError(false) }}
+                  error={countryError}
+                />
+                {countryError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>Please select a country.</p>}
+              </div>
+              <div className="form-field">
+                <label className="form-label">{p.labels.city} <span>*</span></label>
+                <input required className="form-input" type="text" value={form.city} onChange={set('city')} />
+              </div>
             </div>
 
             {/* Message */}

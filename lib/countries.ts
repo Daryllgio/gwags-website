@@ -22,8 +22,16 @@ export const COUNTRIES = [
 ]
 
 export const SECTORS = [
-  'Education','Health','Community Development','Youth Empowerment','Technology','Agriculture',
-  'Environment & Climate','Governance & Public Policy','Arts & Culture','Sports','Human Rights',
+  'Education','Health','Community Development','Youth Empowerment','Technology & IT','Agriculture',
+  'Environment & Climate','Governance & Public Policy','Arts & Culture','Sports & Recreation','Human Rights',
   'Gender Equality','Economic Development','Social Innovation','Infrastructure','Water & Sanitation',
-  'Humanitarian Aid','Research & Academia','Media & Communications','Other',
+  'Humanitarian Aid','Research & Academia','Media & Communications','Finance & Banking','Insurance',
+  'Legal & Justice','Energy & Utilities','Housing & Urban Development','Food Security & Nutrition',
+  'Disability & Inclusion','Migration & Refugees','Peace & Conflict Resolution','Tourism & Hospitality',
+  'Manufacturing','Transportation & Logistics','Telecommunications','Retail & Commerce','Real Estate',
+  'Construction','Mining & Natural Resources','Pharmaceuticals & Biotechnology','Automotive',
+  'Aerospace & Defense','Consulting & Professional Services','Advertising & Marketing','Fashion & Textiles',
+  'Entertainment & Media','Hospitality & Food Services','Cybersecurity','Blockchain & Web3',
+  'Artificial Intelligence','E-commerce','Supply Chain & Procurement','Nonprofit Management',
+  'Religious & Faith-Based','Other',
 ]

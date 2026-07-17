@@ -561,12 +561,24 @@ function DonateForm({ lang }: { lang: Lang }) {
   )
 }
 
-function ExitReminder({ onClose, onConfirmClose, onBack }: { onClose: () => void; onConfirmClose: () => void; onBack: () => void }) {
+function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHeader = false }: {
+  onClose: () => void
+  onConfirmClose: () => void
+  onBack: () => void
+  theme?: 'dark' | 'light'
+  hideHeader?: boolean
+}) {
   const [reminderEmail, setReminderEmail] = useState('')
   const [emailError, setEmailError] = useState(false)
   const [reminderStatus, setReminderStatus] = useState<'idle' | 'sent'>('idle')
   const [exitTermsAccepted, setExitTermsAccepted] = useState(false)
   const [exitTermsError, setExitTermsError] = useState(false)
+
+  const isDark = theme === 'dark'
+  const textColor = isDark ? '#ffffff' : NAVY
+  const mutedBorder = isDark ? 'rgba(255,255,255,0.5)' : ORIGINAL_BORDER
+  const fieldBg = isDark ? 'transparent' : '#ffffff'
+  const errColor = isDark ? '#ff6b6b' : ERR_RED
 
   const handleRemindMe = async () => {
     if (!reminderEmail.trim()) setEmailError(true)
@@ -585,46 +597,48 @@ function ExitReminder({ onClose, onConfirmClose, onBack }: { onClose: () => void
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <div style={{ marginBottom: '24px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '28px 1fr 28px', alignItems: 'center' }}>
-          <div>
-            <button
-              type="button"
-              onClick={onBack}
-              style={{
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                padding: 0,
-                color: '#ffffff',
-                fontSize: '22px',
-                lineHeight: 1,
-                display: 'flex',
-                alignItems: 'center',
-                fontFamily: 'inherit',
-              }}
-              aria-label="Back"
-            >
-              ‹
-            </button>
+      {!hideHeader && (
+        <div style={{ marginBottom: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '28px 1fr 28px', alignItems: 'center' }}>
+            <div>
+              <button
+                type="button"
+                onClick={onBack}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: 0,
+                  color: textColor,
+                  fontSize: '22px',
+                  lineHeight: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  fontFamily: 'inherit',
+                }}
+                aria-label="Back"
+              >
+                ‹
+              </button>
+            </div>
+            <h3 style={{ color: textColor, fontSize: '16px', fontWeight: 600, margin: 0, fontFamily: 'inherit', textAlign: 'center' }}>
+              Maybe next time?
+            </h3>
+            <div />
           </div>
-          <h3 style={{ color: '#ffffff', fontSize: '16px', fontWeight: 600, margin: 0, fontFamily: 'inherit', textAlign: 'center' }}>
-            Maybe next time?
-          </h3>
-          <div />
+          <hr style={{ borderColor: isDark ? 'rgba(255,255,255,0.2)' : 'rgba(10,17,40,0.12)', margin: '10px 0 0', borderStyle: 'solid', borderWidth: '0 0 1px' }} />
         </div>
-        <hr style={{ borderColor: 'rgba(255,255,255,0.2)', margin: '10px 0 0', borderStyle: 'solid', borderWidth: '0 0 1px' }} />
-      </div>
+      )}
 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', textAlign: 'center' }}>
         <BellIcon />
-        <p style={{ color: '#ffffff', fontSize: '16px', lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
+        <p style={{ color: textColor, fontSize: '16px', lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
           Please leave your email address below, and we&apos;ll send you a gentle reminder later.
         </p>
         {reminderStatus !== 'sent' && (
           <>
             <div style={{ width: '100%', textAlign: 'left' }}>
-              <label style={{ display: 'block', color: '#ffffff', fontSize: '14px', fontWeight: 600, marginBottom: '6px' }}>
+              <label style={{ display: 'block', color: textColor, fontSize: '14px', fontWeight: 600, marginBottom: '6px' }}>
                 Email *
               </label>
               <input
@@ -635,10 +649,10 @@ function ExitReminder({ onClose, onConfirmClose, onBack }: { onClose: () => void
                 style={{
                   width: '100%',
                   padding: '11px 14px',
-                  border: `1.5px solid ${emailError ? '#ff6b6b' : '#ffffff'}`,
+                  border: `1.5px solid ${emailError ? errColor : mutedBorder}`,
                   borderRadius: '6px',
-                  background: 'transparent',
-                  color: '#ffffff',
+                  background: fieldBg,
+                  color: textColor,
                   fontSize: '15px',
                   boxSizing: 'border-box',
                   fontFamily: 'inherit',
@@ -646,7 +660,7 @@ function ExitReminder({ onClose, onConfirmClose, onBack }: { onClose: () => void
                 }}
               />
               {emailError && (
-                <p style={{ color: '#ff6b6b', fontSize: '13px', margin: '4px 0 0' }}>Email is required.</p>
+                <p style={{ color: errColor, fontSize: '13px', margin: '4px 0 0' }}>Email is required.</p>
               )}
             </div>
             <div style={{ width: '100%', textAlign: 'left' }}>
@@ -656,18 +670,18 @@ function ExitReminder({ onClose, onConfirmClose, onBack }: { onClose: () => void
                     id="exit-terms-accept"
                     checked={exitTermsAccepted}
                     onChange={checked => { setExitTermsAccepted(checked); if (checked) setExitTermsError(false) }}
-                    uncheckedBorderColor="rgba(255,255,255,0.5)"
-                    uncheckedBg="transparent"
+                    uncheckedBorderColor={mutedBorder}
+                    uncheckedBg={fieldBg}
                   />
                 </div>
-                <label htmlFor="exit-terms-accept" style={{ fontSize: '15px', color: '#ffffff', cursor: 'pointer', lineHeight: 1.5 }}>
+                <label htmlFor="exit-terms-accept" style={{ fontSize: '15px', color: textColor, cursor: 'pointer', lineHeight: 1.5 }}>
                   I accept the{' '}
-                  <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: '#ffffff', textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>Terms of Use</a>
+                  <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: textColor, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>Terms of Use</a>
                   {' '}and{' '}
-                  <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: '#ffffff', textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>Privacy Policy</a>
+                  <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: textColor, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>Privacy Policy</a>
                 </label>
               </div>
-              {exitTermsError && <p style={{ color: '#ff6b6b', fontSize: '13px', margin: '4px 0 0' }}>Please accept the Terms of Use and Privacy Policy.</p>}
+              {exitTermsError && <p style={{ color: errColor, fontSize: '13px', margin: '4px 0 0' }}>Please accept the Terms of Use and Privacy Policy.</p>}
             </div>
           </>
         )}
@@ -688,8 +702,8 @@ function ExitReminder({ onClose, onConfirmClose, onBack }: { onClose: () => void
               width: '100%',
               padding: '14px',
               borderRadius: '6px',
-              border: 'none',
-              background: '#ffffff',
+              border: isDark ? 'none' : `1.5px solid ${ORIGINAL_BORDER}`,
+              background: isDark ? '#ffffff' : 'transparent',
               color: NAVY,
               fontWeight: 600,
               fontSize: '15px',
@@ -705,13 +719,54 @@ function ExitReminder({ onClose, onConfirmClose, onBack }: { onClose: () => void
   )
 }
 
+/* Below 1024px the overlay becomes a full-screen white takeover with a fixed
+   top bar, instead of the centered card + dark backdrop used on desktop. */
+function MobileTopBar({ onClose }: { onClose: () => void }) {
+  return (
+    <div style={{
+      flexShrink: 0,
+      height: '56px',
+      background: '#ffffff',
+      borderBottom: '1px solid rgba(10,17,40,0.08)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '0 20px',
+    }}>
+      <span style={{ fontFamily: 'Georgia, serif', color: NAVY, fontSize: '16px', fontWeight: 500, letterSpacing: '0.02em' }}>
+        Gwags Global Impact Institution
+      </span>
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close"
+        style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      >
+        <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
+          <line x1="1" y1="1" x2="13" y2="13" stroke={NAVY} strokeWidth="1.8" strokeLinecap="round"/>
+          <line x1="13" y1="1" x2="1" y2="13" stroke={NAVY} strokeWidth="1.8" strokeLinecap="round"/>
+        </svg>
+      </button>
+    </div>
+  )
+}
+
 export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   const d = t[lang].donationOverlay
   const [exitMode, setExitMode] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = '' }
+  }, [])
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1023px)')
+    setIsMobile(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
   }, [])
 
   const handleX = () => {
@@ -720,6 +775,35 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
     } else {
       setExitMode(true)
     }
+  }
+
+  if (isMobile) {
+    return (
+      <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: '#ffffff', display: 'flex', flexDirection: 'column' }}>
+        <MobileTopBar onClose={handleX} />
+        <div style={{ flex: 1, overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
+          {!exitMode ? (
+            <div key="donate" className="donate-step">
+              <div className="donation-photo" style={{ background: '#E6E3DC', width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
+              </div>
+              <div style={{ padding: '24px 20px 40px' }}>
+                <p style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: '0 0 24px' }}>
+                  {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
+                </p>
+                <Elements stripe={stripePromise}>
+                  <DonateForm lang={lang} />
+                </Elements>
+              </div>
+            </div>
+          ) : (
+            <div key="exit" className="donate-step" style={{ padding: '24px 20px 40px' }}>
+              <ExitReminder onClose={onClose} onConfirmClose={onClose} onBack={() => setExitMode(false)} theme="light" hideHeader />
+            </div>
+          )}
+        </div>
+      </div>
+    )
   }
 
   return (
