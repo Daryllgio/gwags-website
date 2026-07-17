@@ -120,57 +120,61 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
     >
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      {/* ── Photo · Name · Role · Connect · Bio ── */}
-      <div className="pp-img-col">
+      <div className="pp-page-wrap">
 
-        <div className="pp-photo">
-          <PersonSilhouette size={80} />
-        </div>
+        {/* ── Photo · Name · Role · Connect · Bio ── */}
+        <div className="pp-img-col">
 
-        <div className="pp-header-block">
-          <div>
-            <h1 className="pp-name">{person.name}</h1>
-            <p  className="pp-role">{lang === 'fr' && person.roleFr ? person.roleFr : person.role}</p>
+          <div className="pp-photo">
+            <PersonSilhouette size={80} />
           </div>
-          <a
-            href={person.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pp-connect"
-          >
-            <span className="pp-connect-label">Connect</span>
-            <div className="pp-connect-circle">
-              <span className="pp-connect-in">in</span>
+
+          <div className="pp-header-block">
+            <div>
+              <h1 className="pp-name">{person.name}</h1>
+              <p  className="pp-role">{lang === 'fr' && person.roleFr ? person.roleFr : person.role}</p>
             </div>
-          </a>
+            <a
+              href={person.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pp-connect"
+            >
+              <span className="pp-connect-label">Connect</span>
+              <div className="pp-connect-circle">
+                <span className="pp-connect-in">in</span>
+              </div>
+            </a>
+          </div>
+
+          <p className="pp-bio">{lang === 'fr' && person.bioFr ? person.bioFr : person.bio}</p>
+
         </div>
 
-        <p className="pp-bio">{lang === 'fr' && person.bioFr ? person.bioFr : person.bio}</p>
+        {/* ── Divider ── */}
+        <hr className="pp-divider" />
 
-      </div>
+        {/* ── More About ── */}
+        <div className="pp-foundation-col">
 
-      {/* ── Divider ── */}
-      <hr className="pp-divider" />
+          <h2 className="pp-ma-heading">More About the Foundation</h2>
 
-      {/* ── More About ── */}
-      <div className="pp-foundation-col">
-
-        <h2 className="pp-ma-heading">More About the Foundation</h2>
-
-        <div className="pp-ma-grid">
-          {m.cards.map((card, i) => (
-            <div key={i}>
-              <div className="pp-card-title">
-                {card.title}
+          <div className="pp-ma-grid">
+            {m.cards.map((card, i) => (
+              <div key={i}>
+                <div className="pp-card-title">
+                  {card.title}
+                </div>
+                <p className="pp-card-desc">
+                  {card.desc}
+                </p>
+                <Link href={card.href} className="pp-learn-more">
+                  {card.link}
+                </Link>
               </div>
-              <p className="pp-card-desc">
-                {card.desc}
-              </p>
-              <Link href={card.href} className="pp-learn-more">
-                {card.link}
-              </Link>
-            </div>
-          ))}
+            ))}
+          </div>
+
         </div>
 
       </div>

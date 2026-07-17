@@ -955,7 +955,7 @@ export const t = {
         ],
       },
       cta: {
-        h2: 'Intéressé par un partenariat?',
+        h2: 'Souhaitez-vous travailler avec nous ?',
         body: "Découvrez comment votre organisation peut s'engager avec Gwags à travers l'affiliation ou le partenariat.",
         btn1: 'Devenir partenaire',
         btn2: 'Rejoindre le réseau',

@@ -101,14 +101,14 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true, li
       </div>
 
       {/* Name */}
-      <p className="mt-3 lp-person-name" style={{ color: NAVY, fontSize: '22px', fontWeight: 600 }}>{name}</p>
+      <p className="mt-3 lp-person-name" style={{ color: NAVY, fontSize: '20px', fontWeight: 600 }}>{name}</p>
 
       {/* Role */}
-      <p className="lp-person-role" style={{ color: '#6B6B6B', fontSize: '22px', fontWeight: 400, marginTop: '1px' }}>{role}</p>
+      <p className="lp-person-role" style={{ color: '#6B6B6B', fontSize: '20px', fontWeight: 400, marginTop: '1px' }}>{role}</p>
 
       {/* Bio */}
       {showBio && bio && (
-        <p className="mt-2 leading-relaxed lp-person-bio" style={{ color: NAVY, fontSize: '17px', fontWeight: 400 }}>{bio}</p>
+        <p className="mt-2 leading-relaxed lp-person-bio" style={{ color: NAVY, fontSize: '16.5px', fontWeight: 400 }}>{bio}</p>
       )}
 
       {/* LinkedIn Connect */}
@@ -131,7 +131,7 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true, li
         <a
           href={href}
           className="mt-3 inline-block view-profile-link"
-          style={{ color: NAVY, fontSize: '17px', fontWeight: 500, textDecoration: 'none' }}
+          style={{ color: NAVY, fontSize: '15.5px', fontWeight: 500, textDecoration: 'none' }}
         >
           View profile
         </a>
@@ -144,7 +144,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
       className="font-semibold uppercase mb-8 lp-section-title"
-      style={{ color: NAVY, fontSize: '26px', fontFamily: 'inherit' }}
+      style={{ color: NAVY, fontSize: '28px', fontFamily: 'var(--font-heading-serif), Georgia, serif' }}
     >
       {children}
     </h2>
@@ -253,7 +253,7 @@ export default function LeadershipPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10 lp-header">
           <h1
             className="font-semibold uppercase leading-tight lp-heading"
-            style={{ color: NAVY, fontSize: '37px', fontFamily: 'inherit' }}
+            style={{ color: NAVY, fontSize: '37px', fontFamily: 'var(--font-heading-serif), Georgia, serif' }}
           >
             Leadership
           </h1>

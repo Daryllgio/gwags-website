@@ -54,7 +54,8 @@ function HeroSection({ lang }: { lang: Lang }) {
 function SplitSection({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.split
   return (
-    <div className="hww-split">
+    <div className="hww-split-outer">
+      <div className="hww-split">
       <div className="hww-split-left">
         <div className="hww-split-content">
           <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.2em', margin: '0 0 16px 0' }}>
@@ -87,6 +88,7 @@ function SplitSection({ lang }: { lang: Lang }) {
         </div>
       </div>
     </div>
+    </div>
   )
 }
 
@@ -102,7 +104,7 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.initiatives
   return (
     <section className="hww-init-strip" style={{ background: '#ffffff', padding: '55px 80px' }}>
-      <div style={{ maxWidth: '1169px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
       <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
         {p.eyebrow}
       </p>
@@ -140,7 +142,7 @@ function CoordinationSection({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.coordination
   return (
     <section className="hww-coordination-section" style={{ background: '#F7F6F3', padding: '80px' }}>
-      <div style={{ maxWidth: '1170px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
           {p.eyebrow}
         </p>
@@ -177,7 +179,7 @@ function WorkingWithSection({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.workingWith
   return (
     <section className="hww-working-with-section" style={{ background: '#0A1128', padding: '80px' }}>
-      <div style={{ maxWidth: '1170px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
           {p.eyebrow}
         </p>
@@ -215,7 +217,7 @@ function CTASection({ lang }: { lang: Lang }) {
       <p className="body-text" style={{ color: 'rgba(10,17,40,0.65)', fontSize: '18px', maxWidth: '480px', margin: '0 auto 36px', lineHeight: 1.75 }}>
         {p.body}
       </p>
-      <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+      <div className="hww-cta-buttons" style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
         <Link href="/partner" className="hww-cta-btn-dark">{p.btn1}</Link>
         <Link href="/get-involved" className="hww-cta-btn-outline">{p.btn2}</Link>
       </div>

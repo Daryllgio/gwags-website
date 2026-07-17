@@ -54,7 +54,7 @@ export default function GetInvolvedPage() {
       <div className="gi-page-container">
         {/* SECTION 1: Hero */}
         <div className="gi-page-hero" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '150px', marginBottom: '40px', alignItems: 'start' }}>
-          <h1 style={{ color: NAVY, fontSize: '37px', fontFamily: 'inherit', fontWeight: 600, lineHeight: 1.1, margin: 0, textTransform: 'uppercase' }}>
+          <h1 style={{ color: NAVY, fontSize: '37px', fontFamily: 'var(--font-heading-serif), Georgia, serif', fontWeight: 600, lineHeight: 1.1, margin: 0, textTransform: 'uppercase' }}>
             {p.hero.heading}
           </h1>
           <p style={{ color: NAVY, fontSize: '18px', lineHeight: 1.75, margin: 0, alignSelf: 'center' }}>
