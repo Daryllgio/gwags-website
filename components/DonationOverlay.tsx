@@ -1,8 +1,10 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
-import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import type { PaymentRequest as StripePaymentRequest } from '@stripe/stripe-js'
+import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { Lang, t } from '@/lib/translations'
+import DonationFAQ from '@/components/DonationFAQ'
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || 'pk_test_placeholder')
 
@@ -15,6 +17,8 @@ const SELECTED_BORDER = 'rgb(30, 100, 200)'
 const SOLID_BLUE = 'rgb(30, 100, 200)'
 const ORIGINAL_BORDER = 'rgba(10,17,40,0.2)'
 const ERR_RED = '#c0392b'
+const HEART_RED = '#E53E3E'
+const REMINDER_BG = '#2A2A2A'
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
@@ -121,6 +125,15 @@ function InfoIcon() {
   )
 }
 
+/* CHANGE 8: small static red heart shown beside "Monthly" below 1024px */
+function HeartIconRed({ size = 15 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill={HEART_RED} style={{ flexShrink: 0 }} aria-hidden="true">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+    </svg>
+  )
+}
+
 function CustomCheckbox({
   id, checked, onChange,
   uncheckedBorderColor = ORIGINAL_BORDER,
@@ -166,7 +179,7 @@ function CustomCheckbox({
 const capitalizeWords = (val: string) =>
   val.replace(/(^|\s)(\S)/g, (_, sp, ch) => sp + ch.toUpperCase())
 
-function DonateForm({ lang }: { lang: Lang }) {
+function DonateForm({ lang, belowLg = false }: { lang: Lang; belowLg?: boolean }) {
   const d = t[lang].donationOverlay
   const [step, setStep] = useState(1)
   const [frequency, setFrequency] = useState<'once' | 'monthly'>('once')
@@ -178,6 +191,9 @@ function DonateForm({ lang }: { lang: Lang }) {
   const [coverFee, setCoverFee] = useState(false)
   const [tooltipOpen, setTooltipOpen] = useState(false)
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  /* CHANGE 9: Google Pay / Apple Pay via Stripe Payment Request API */
+  const [paymentRequest, setPaymentRequest] = useState<StripePaymentRequest | null>(null)
 
   /* CHANGE 1: validation state */
   const [amountError, setAmountError] = useState(false)
@@ -214,6 +230,53 @@ function DonateForm({ lang }: { lang: Lang }) {
     document.addEventListener('mousedown', handler)
     return () => document.removeEventListener('mousedown', handler)
   }, [tooltipOpen])
+
+  /* CHANGE 9: build a PaymentRequest on step 3; Stripe only surfaces the button
+     if the device/browser supports Google Pay or Apple Pay. */
+  useEffect(() => {
+    if (!stripe || step !== 3 || !baseAmount || baseAmount <= 0) {
+      setPaymentRequest(null)
+      return
+    }
+    const pr = stripe.paymentRequest({
+      country: 'US',
+      currency: 'usd',
+      total: { label: 'Gwags Donation', amount: Math.round(totalAmount * 100) },
+      requestPayerName: true,
+      requestPayerEmail: true,
+    })
+    let active = true
+    pr.canMakePayment().then(result => {
+      if (active) setPaymentRequest(result ? pr : null)
+    })
+    pr.on('paymentmethod', async (ev) => {
+      try {
+        const res = await fetch('/api/donate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ amount: Math.round(totalAmount * 100), frequency }),
+        })
+        const data = await res.json()
+        if (!res.ok) throw new Error(data.error)
+        const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
+          data.clientSecret,
+          { payment_method: ev.paymentMethod.id },
+          { handleActions: false },
+        )
+        if (confirmError) { ev.complete('fail'); setStatus('error'); return }
+        ev.complete('success')
+        if (paymentIntent && paymentIntent.status === 'requires_action') {
+          const { error } = await stripe.confirmCardPayment(data.clientSecret)
+          if (error) { setStatus('error'); return }
+        }
+        setStatus('success')
+      } catch {
+        ev.complete('fail')
+        setStatus('error')
+      }
+    })
+    return () => { active = false }
+  }, [stripe, step, baseAmount, totalAmount, frequency])
 
   /* CHANGE 1: Step 1 — must have a valid amount */
   const handleStep1Next = () => {
@@ -304,7 +367,12 @@ function DonateForm({ lang }: { lang: Lang }) {
                   fontFamily: 'inherit',
                 }}
               >
-                {f === 'once' ? d.giveOnce : d.monthly}
+                {f === 'once' ? d.giveOnce : (
+                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                    {d.monthly}
+                    {belowLg && <HeartIconRed size={15} />}
+                  </span>
+                )}
               </button>
             ))}
           </div>
@@ -437,6 +505,20 @@ function DonateForm({ lang }: { lang: Lang }) {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <StepHeader title="Payment" onBack={() => setStep(2)} />
 
+                {/* CHANGE 9: Google Pay / Apple Pay button (only renders if supported) */}
+                {paymentRequest && (
+                  <div>
+                    <PaymentRequestButtonElement
+                      options={{ paymentRequest, style: { paymentRequestButton: { type: 'donate', theme: 'dark', height: '44px' } } }}
+                    />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '12px 0 2px' }}>
+                      <hr style={{ flex: 1, border: 'none', borderTop: `1px solid ${ORIGINAL_BORDER}`, margin: 0 }} />
+                      <span style={{ fontSize: '12px', color: 'rgba(10,17,40,0.55)', whiteSpace: 'nowrap' }}>Or donate with card</span>
+                      <hr style={{ flex: 1, border: 'none', borderTop: `1px solid ${ORIGINAL_BORDER}`, margin: 0 }} />
+                    </div>
+                  </div>
+                )}
+
                 {/* CHANGE 1: track card completion via onChange */}
                 <div style={{ padding: '11px 14px', borderRadius: '6px', border: `1.5px solid ${ORIGINAL_BORDER}` }}>
                   <CardNumberElement
@@ -561,12 +643,13 @@ function DonateForm({ lang }: { lang: Lang }) {
   )
 }
 
-function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHeader = false }: {
+function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHeader = false, pinButtons = true }: {
   onClose: () => void
   onConfirmClose: () => void
   onBack: () => void
   theme?: 'dark' | 'light'
   hideHeader?: boolean
+  pinButtons?: boolean
 }) {
   const [reminderEmail, setReminderEmail] = useState('')
   const [emailError, setEmailError] = useState(false)
@@ -691,7 +774,9 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
       </div>
 
       {reminderStatus !== 'sent' && (
-        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        /* CHANGE 5: on mobile (pinButtons=false) use an explicit 32px gap above the
+           buttons instead of the auto-collapsed spacing. */
+        <div style={{ marginTop: pinButtons ? 'auto' : '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <button type="button" onClick={handleRemindMe} style={{ ...actionBtnStyle }}>
             Remind me later
           </button>
@@ -719,28 +804,29 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
   )
 }
 
-/* Below 1024px the overlay becomes a full-screen white takeover with a fixed
-   top bar, instead of the centered card + dark backdrop used on desktop. */
-function MobileTopBar({ onClose }: { onClose: () => void }) {
+/* Below 1024px the overlay top bar. CHANGE 2: the logo matches the site nav bar
+   exactly (same classes + base inline styles as Nav.tsx) but rendered in black. */
+function TopBar({ onClose, subtitle }: { onClose: () => void; subtitle: string }) {
   return (
     <div style={{
       flexShrink: 0,
-      height: '56px',
+      minHeight: '56px',
       background: '#ffffff',
       borderBottom: '1px solid rgba(10,17,40,0.08)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: '0 20px',
+      padding: '10px 20px',
     }}>
-      <span style={{ fontFamily: 'Georgia, serif', color: NAVY, fontSize: '16px', fontWeight: 500, letterSpacing: '0.02em' }}>
-        Gwags Global Impact Institution
-      </span>
+      <div>
+        <div className="nav-logo-text" style={{ color: NAVY, fontSize: '20px', fontWeight: 500, letterSpacing: '0.1em', fontFamily: 'Georgia, serif' }}>Gwags</div>
+        <div className="nav-logo-subtitle" style={{ color: NAVY, fontSize: '12px', letterSpacing: '0.2em', marginTop: '1px' }}>{subtitle}</div>
+      </div>
       <button
         type="button"
         onClick={onClose}
         aria-label="Close"
-        style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
       >
         <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
           <line x1="1" y1="1" x2="13" y2="13" stroke={NAVY} strokeWidth="1.8" strokeLinecap="round"/>
@@ -751,10 +837,51 @@ function MobileTopBar({ onClose }: { onClose: () => void }) {
   )
 }
 
+/* Shared stacked content for phone + tablet: top bar, then the donate pane and the
+   exit-reminder pane. Both panes stay mounted (display toggle) so the donation form
+   keeps its step/state when the user goes to the reminder and back (CHANGE 4). */
+function StackedBody({ lang, exitMode, onX, onBack, onClose, includeFaqInline }: {
+  lang: Lang
+  exitMode: boolean
+  onX: () => void
+  onBack: () => void
+  onClose: () => void
+  includeFaqInline: boolean
+}) {
+  const d = t[lang].donationOverlay
+  const n = t[lang].nav
+  return (
+    <>
+      <TopBar onClose={onX} subtitle={n.subtitle} />
+      <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', WebkitOverflowScrolling: 'touch', display: 'flex', flexDirection: 'column' }}>
+        {/* Donate pane */}
+        <div style={{ display: exitMode ? 'none' : 'flex', flexDirection: 'column' }}>
+          <div className="donation-photo" style={{ background: '#E6E3DC', width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
+          </div>
+          <div style={{ padding: '24px 20px 40px' }}>
+            <p style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: '0 0 24px' }}>
+              {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
+            </p>
+            <Elements stripe={stripePromise}>
+              <DonateForm lang={lang} belowLg />
+            </Elements>
+            {includeFaqInline && <DonationFAQ lang={lang} mode="phone" />}
+          </div>
+        </div>
+        {/* Exit-reminder pane — CHANGE 3: dark gray background, white content */}
+        <div style={{ display: exitMode ? 'flex' : 'none', flexDirection: 'column', flex: 1, minHeight: '100%', background: REMINDER_BG, padding: '24px 20px 40px' }}>
+          <ExitReminder theme="dark" hideHeader={false} pinButtons={false} onClose={onClose} onConfirmClose={onClose} onBack={onBack} />
+        </div>
+      </div>
+    </>
+  )
+}
+
 export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   const d = t[lang].donationOverlay
   const [exitMode, setExitMode] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [vp, setVp] = useState<'desktop' | 'tablet' | 'phone'>('desktop')
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -762,50 +889,45 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   }, [])
 
   useEffect(() => {
-    const mq = window.matchMedia('(max-width: 1023px)')
-    setIsMobile(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
+    const phoneMq = window.matchMedia('(max-width: 767px)')
+    const tabletMq = window.matchMedia('(min-width: 768px) and (max-width: 1023px)')
+    const update = () => setVp(phoneMq.matches ? 'phone' : tabletMq.matches ? 'tablet' : 'desktop')
+    update()
+    phoneMq.addEventListener('change', update)
+    tabletMq.addEventListener('change', update)
+    return () => { phoneMq.removeEventListener('change', update); tabletMq.removeEventListener('change', update) }
   }, [])
 
   const handleX = () => {
-    if (exitMode) {
-      onClose()
-    } else {
-      setExitMode(true)
-    }
+    if (exitMode) onClose()
+    else setExitMode(true)
   }
 
-  if (isMobile) {
+  /* ── Phone (<768px): full-screen white takeover ── */
+  if (vp === 'phone') {
     return (
       <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: '#ffffff', display: 'flex', flexDirection: 'column' }}>
-        <MobileTopBar onClose={handleX} />
-        <div style={{ flex: 1, overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
-          {!exitMode ? (
-            <div key="donate" className="donate-step">
-              <div className="donation-photo" style={{ background: '#E6E3DC', width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
-              </div>
-              <div style={{ padding: '24px 20px 40px' }}>
-                <p style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: '0 0 24px' }}>
-                  {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
-                </p>
-                <Elements stripe={stripePromise}>
-                  <DonateForm lang={lang} />
-                </Elements>
-              </div>
-            </div>
-          ) : (
-            <div key="exit" className="donate-step" style={{ padding: '24px 20px 40px' }}>
-              <ExitReminder onClose={onClose} onConfirmClose={onClose} onBack={() => setExitMode(false)} theme="light" hideHeader />
-            </div>
-          )}
+        <StackedBody lang={lang} exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline />
+      </div>
+    )
+  }
+
+  /* ── Tablet (768–1024px): narrow, tall card on a dark overlay (CHANGE 7) ── */
+  if (vp === 'tablet') {
+    return (
+      <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 16px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', width: '90vw', maxWidth: '700px', maxHeight: '92vh' }}>
+          <div style={{ width: '100%', flex: '1 1 auto', minHeight: 0, background: '#ffffff', borderRadius: '12px', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }}>
+            <StackedBody lang={lang} exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline={false} />
+          </div>
+          {/* CHANGE 6: FAQ below the portal, 2×2 */}
+          <DonationFAQ lang={lang} mode="tablet" />
         </div>
       </div>
     )
   }
 
+  /* ── Desktop (≥1024px): centered 2-column card, FAQ row below ── */
   return (
     <div
       style={{
@@ -838,66 +960,71 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
         </svg>
       </button>
 
-      <div
-        style={{
-          background: '#fff',
-          borderRadius: '12px',
-          maxWidth: '900px',
-          width: '100%',
-          minHeight: '530px',
-          maxHeight: '90vh',
-          overflowY: 'auto',
-          position: 'relative',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-        }}
-        className="donation-card"
-      >
-        {/* Left side — CHANGE 5: top +20px, bottom -20px (same total height, content shifted lower) */}
-        <div style={{
-          background: '#ffffff',
-          borderRadius: '12px 0 0 12px',
-          padding: '68px 36px 53px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '24px',
-          borderRight: '1px solid rgba(10,17,40,0.08)',
-        }}>
-          <div className="donation-photo" style={{ background: '#E6E3DC', borderRadius: '8px', height: '220px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
-          </div>
-          <p style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: 0 }}>
-            {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
-          </p>
-        </div>
-
-        {/* Right side */}
-        <div style={{ overflow: 'hidden', borderRadius: '0 12px 12px 0' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', maxHeight: '94vh' }}>
+        <div
+          style={{
+            background: '#fff',
+            borderRadius: '12px',
+            maxWidth: '900px',
+            width: '100%',
+            minHeight: '530px',
+            maxHeight: '82vh',
+            overflowY: 'auto',
+            position: 'relative',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+          }}
+          className="donation-card"
+        >
+          {/* Left side — CHANGE 5: top +20px, bottom -20px (same total height, content shifted lower) */}
           <div style={{
+            background: '#ffffff',
+            borderRadius: '12px 0 0 12px',
+            padding: '68px 36px 53px',
             display: 'flex',
-            transition: 'transform 0.3s ease',
-            transform: exitMode ? 'translateX(-100%)' : 'translateX(0)',
-            height: '100%',
+            flexDirection: 'column',
+            gap: '24px',
+            borderRight: '1px solid rgba(10,17,40,0.08)',
           }}>
-            {/* Panel 1: Donation form */}
-            <div style={{ minWidth: '100%', padding: '48px 36px 20px', display: 'flex', flexDirection: 'column', background: '#ffffff' }}>
-              <Elements stripe={stripePromise}>
-                <DonateForm lang={lang} />
-              </Elements>
+            <div className="donation-photo" style={{ background: '#E6E3DC', borderRadius: '8px', height: '220px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
             </div>
+            <p style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: 0 }}>
+              {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
+            </p>
+          </div>
 
-            {/* Panel 2: Exit reminder */}
+          {/* Right side */}
+          <div style={{ overflow: 'hidden', borderRadius: '0 12px 12px 0' }}>
             <div style={{
-              minWidth: '100%',
-              padding: '48px 36px 20px',
-              background: '#2A2A2A',
               display: 'flex',
-              flexDirection: 'column',
+              transition: 'transform 0.3s ease',
+              transform: exitMode ? 'translateX(-100%)' : 'translateX(0)',
+              height: '100%',
             }}>
-              <ExitReminder onClose={onClose} onConfirmClose={onClose} onBack={() => setExitMode(false)} />
+              {/* Panel 1: Donation form */}
+              <div style={{ minWidth: '100%', padding: '48px 36px 20px', display: 'flex', flexDirection: 'column', background: '#ffffff' }}>
+                <Elements stripe={stripePromise}>
+                  <DonateForm lang={lang} />
+                </Elements>
+              </div>
+
+              {/* Panel 2: Exit reminder */}
+              <div style={{
+                minWidth: '100%',
+                padding: '48px 36px 20px',
+                background: REMINDER_BG,
+                display: 'flex',
+                flexDirection: 'column',
+              }}>
+                <ExitReminder onClose={onClose} onConfirmClose={onClose} onBack={() => setExitMode(false)} />
+              </div>
             </div>
           </div>
         </div>
+
+        {/* CHANGE 6: FAQ row below the portal */}
+        <DonationFAQ lang={lang} mode="desktop" />
       </div>
     </div>
   )

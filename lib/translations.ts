@@ -215,6 +215,30 @@ export const t = {
       manageText: 'Manage your donation',
       sideText: 'Every contribution matters. When you give, you are contributing directly to programs that deliver results and to a network built to make impact sustainable. For customized donations, reach out to us at ',
     },
+    donationFaq: {
+      secure: {
+        q: 'Is my donation secure?',
+        a: "Yes, we use industry-standard SSL technology to keep your information secure. We partner with Stripe, the industry's established payment processor trusted by some of the world's largest companies. Your sensitive financial information never touches our servers. We send all data directly to Stripe's PCI-compliant servers through SSL.",
+      },
+      receipt: {
+        q: 'Will I receive a receipt?',
+        a: 'We will email you a donation receipt. Please retain it for your records.',
+      },
+      cancel: {
+        q: 'Can I cancel my recurring donation?',
+        a: "Of course. You always remain in full control of your recurring donation, and you're free to change or cancel it at any time.",
+      },
+      report: {
+        q: 'Report a problem',
+        placeholder: 'Describe the problem you encountered...',
+        confirm: 'I confirm no personal or payment details are included',
+        submit: 'Report',
+        cancel: 'Cancel',
+        sent: 'Thank you. Your report has been submitted.',
+        textRequired: 'Please describe the problem.',
+        confirmRequired: 'Please confirm no personal or payment details are included.',
+      },
+    },
     cta: {
       h2: 'Ready to build something that lasts?',
       body: 'Gwags is building an international infrastructure for impact. Reach out to explore how we can work together toward a shared vision of impact.',
@@ -861,6 +885,30 @@ export const t = {
       donateMonthly: 'Don mensuel',
       manageText: 'Gérer votre don',
       sideText: 'Chaque contribution compte. Lorsque vous donnez, vous contribuez directement à des programmes qui produisent des résultats et à un réseau conçu pour rendre l\'impact durable. Pour des dons personnalisés, contactez-nous à ',
+    },
+    donationFaq: {
+      secure: {
+        q: 'Mon don est-il sécurisé ?',
+        a: "Oui, nous utilisons la technologie SSL, une norme du secteur, pour protéger vos informations. Nous travaillons avec Stripe, le processeur de paiement de référence auquel font confiance certaines des plus grandes entreprises du monde. Vos informations financières sensibles ne transitent jamais par nos serveurs. Nous envoyons toutes les données directement aux serveurs conformes PCI de Stripe via SSL.",
+      },
+      receipt: {
+        q: 'Vais-je recevoir un reçu ?',
+        a: 'Nous vous enverrons un reçu de don par e-mail. Veuillez le conserver pour vos archives.',
+      },
+      cancel: {
+        q: 'Puis-je annuler mon don récurrent ?',
+        a: "Bien sûr. Vous gardez toujours le contrôle total de votre don récurrent et êtes libre de le modifier ou de l'annuler à tout moment.",
+      },
+      report: {
+        q: 'Signaler un problème',
+        placeholder: 'Décrivez le problème rencontré...',
+        confirm: 'Je confirme qu\'aucune donnée personnelle ou de paiement n\'est incluse',
+        submit: 'Signaler',
+        cancel: 'Annuler',
+        sent: 'Merci. Votre signalement a été envoyé.',
+        textRequired: 'Veuillez décrire le problème.',
+        confirmRequired: 'Veuillez confirmer qu\'aucune donnée personnelle ou de paiement n\'est incluse.',
+      },
     },
     cta: {
       h2: 'Prêt à construire quelque chose qui dure?',
