@@ -9,7 +9,6 @@ const ERR_RED = '#c0392b'
 const MAX_REPORT = 500
 
 type FaqKey = 'secure' | 'receipt' | 'cancel' | 'report'
-const INFO_KEYS: FaqKey[] = ['secure', 'receipt', 'cancel']
 const ALL_KEYS: FaqKey[] = ['secure', 'receipt', 'cancel', 'report']
 
 function ChevronIcon({ open }: { open: boolean }) {

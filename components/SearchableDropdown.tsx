@@ -1,5 +1,5 @@
 'use client'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useId } from 'react'
 
 interface SearchableDropdownProps {
   options: string[]
@@ -16,6 +16,7 @@ export default function SearchableDropdown({ options, value, onChange, placehold
   const [highlight, setHighlight] = useState(0)
   const ref = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const listboxId = useId()
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -78,6 +79,7 @@ export default function SearchableDropdown({ options, value, onChange, placehold
           autoComplete="off"
           role="combobox"
           aria-expanded={open}
+          aria-controls={listboxId}
           aria-autocomplete="list"
         />
       ) : (
@@ -94,7 +96,7 @@ export default function SearchableDropdown({ options, value, onChange, placehold
           {value ? value : <span className="sdd-placeholder">{placeholder}</span>}
         </div>
       )}
-      <div className={`sdd-menu${open ? ' sdd-menu-open' : ''}`} role="listbox">
+      <div id={listboxId} className={`sdd-menu${open ? ' sdd-menu-open' : ''}`} role="listbox">
         {filtered.length === 0 ? (
           <div className="sdd-empty">No matches</div>
         ) : (
