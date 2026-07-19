@@ -234,6 +234,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
   const belowLg = mode !== 'desktop'
   const stepBtnMargin = fill ? 'auto' : (mode === 'tablet' ? '20px' : '8px')
   const isApple = typeof navigator !== 'undefined' && /Mac|iPhone|iPad|iPod/.test(navigator.userAgent || '')
+  const termsFontSize = mode === 'phone' ? '14px' : '15px'
   const [step, setStep] = useState(1)
   const [frequency, setFrequency] = useState<'once' | 'monthly'>('once')
   const [selected, setSelected] = useState<number | null>(null)
@@ -533,7 +534,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
                   onChange={checked => { setTermsAccepted(checked); if (checked) setTermsError(false) }}
                 />
               </div>
-              <label htmlFor="terms-accept" style={{ fontSize: '15px', color: NAVY, cursor: 'pointer', lineHeight: 1.5 }}>
+              <label htmlFor="terms-accept" style={{ fontSize: termsFontSize, color: NAVY, cursor: 'pointer', lineHeight: 1.5 }}>
                 I accept the{' '}
                 <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: NAVY, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>Terms of Use</a>
                 {' '}and{' '}
@@ -719,13 +720,14 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
   )
 }
 
-function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHeader = false, pinButtons = true }: {
+function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHeader = false, pinButtons = true, mode = 'desktop' }: {
   onClose: () => void
   onConfirmClose: () => void
   onBack: () => void
   theme?: 'dark' | 'light'
   hideHeader?: boolean
   pinButtons?: boolean
+  mode?: 'desktop' | 'tablet' | 'phone'
 }) {
   const [reminderEmail, setReminderEmail] = useState('')
   const [emailError, setEmailError] = useState(false)
@@ -733,6 +735,7 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
   const [exitTermsAccepted, setExitTermsAccepted] = useState(false)
   const [exitTermsError, setExitTermsError] = useState(false)
 
+  const termsFontSize = mode === 'phone' ? '14px' : '15px'
   const isDark = theme === 'dark'
   const textColor = isDark ? '#ffffff' : NAVY
   const mutedBorder = isDark ? 'rgba(255,255,255,0.5)' : ORIGINAL_BORDER
@@ -833,7 +836,7 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
                     uncheckedBg={fieldBg}
                   />
                 </div>
-                <label htmlFor="exit-terms-accept" style={{ fontSize: '15px', color: textColor, cursor: 'pointer', lineHeight: 1.5 }}>
+                <label htmlFor="exit-terms-accept" style={{ fontSize: termsFontSize, color: textColor, cursor: 'pointer', lineHeight: 1.5 }}>
                   I accept the{' '}
                   <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: textColor, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>Terms of Use</a>
                   {' '}and{' '}
@@ -939,7 +942,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
   /* CHANGE 5: phone-only gap bump between the intro text and "Choose your amount" */
   const introGap = mode === 'phone' ? '36px' : '24px'
   /* CHANGE 3: phone-only top bar padding bump */
-  const topBarPadding = mode === 'phone' ? '18px 20px' : undefined
+  const topBarPadding = mode === 'phone' ? '15px 15px' : undefined
 
   const introBlock = (
     <div style={{ display: exitMode ? 'none' : 'flex', flexDirection: 'column', flexShrink: 0 }}>
@@ -964,7 +967,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
 
   const exitBlock = (
     <div style={{ display: exitMode ? 'flex' : 'none', flexDirection: 'column', flex: 1, minHeight: '100%', background: REMINDER_BG, padding: '24px 20px 40px' }}>
-      <ExitReminder theme="dark" hideHeader={false} pinButtons={false} onClose={onClose} onConfirmClose={onClose} onBack={onBack} />
+      <ExitReminder theme="dark" hideHeader={false} pinButtons={false} mode={mode} onClose={onClose} onConfirmClose={onClose} onBack={onBack} />
     </div>
   )
 
