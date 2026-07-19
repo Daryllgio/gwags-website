@@ -130,13 +130,22 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
   }
 
   /* ── Phone: vertical accordion ──
-     FIX 9: only the top divider (borderTop on the container) — no per-item dividers.
-     FIX 10: chevron on the LEFT, text on the right.
-     FIX 11: item text reduced 15px → 13.5px.
-     FIX 12: chevron points right when closed, rotates down when open (ChevronIcon, animated). */
+     - only the top divider (borderTop on the container) — no per-item dividers.
+     - chevron on the LEFT, text on the right.
+     - item text reduced 15px → 13.5px.
+     - chevron points right when closed, rotates down when open (ChevronIcon, animated).
+     - CHANGE 6: gap above the divider (24px, was 8px) and below it (24px = 14px
+       container padding + the first button's own 10px top padding, was ~16px) are
+       now equal.
+     - CHANGE 7: answer text indented 24px (chevron 14px + 10px gap) to align with
+       the question text instead of the chevron.
+     - CHANGE 8: per-item padding reduced 16px → 10px, so the gap between two closed
+       items drops from 32px (16+16) to 20px (10+10). */
   if (mode === 'phone') {
+    const itemPad = '10px 0'
+    const answerIndent = 24
     return (
-      <div style={{ marginTop: '8px', borderTop: '1px solid rgba(10,17,40,0.1)' }}>
+      <div style={{ marginTop: '24px', borderTop: '1px solid rgba(10,17,40,0.1)', paddingTop: '14px' }}>
         {ALL_KEYS.map(key => {
           const isOpen = openItem === key
           return (
@@ -147,7 +156,7 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
                 onClick={() => setOpenItem(prev => (prev === key ? null : key))}
                 style={{
                   width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '10px',
-                  background: 'none', border: 'none', padding: '16px 0', cursor: 'pointer',
+                  background: 'none', border: 'none', padding: itemPad, cursor: 'pointer',
                   fontFamily: 'inherit', color: NAVY, fontSize: '13.5px', fontWeight: 500, textAlign: 'left',
                 }}
               >
@@ -155,7 +164,7 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
                 <span>{label(key)}</span>
               </button>
               {isOpen && (
-                <div style={{ padding: '0 0 18px' }}>
+                <div style={{ padding: `0 0 18px ${answerIndent}px` }}>
                   {key === 'report'
                     ? <ReportForm lang={lang} onClose={() => setOpenItem(null)} />
                     : <p style={{ fontSize: '14px', color: '#4A4A4A', lineHeight: 1.65, margin: 0 }}>{f[key].a}</p>}
@@ -204,16 +213,22 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
               >
                 {isReport ? (
                   <>
-                    <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '6px' }}>
+                    {/* CHANGE 9: bolded question heading, X stays on the same row */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', marginBottom: '10px' }}>
+                      <p style={{ fontSize: '13px', fontWeight: 700, color: NAVY, margin: 0 }}>{label(key)}</p>
                       <button type="button" aria-label="Close" onClick={() => setOpenItem(null)}
-                        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex' }}>
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', flexShrink: 0, marginTop: '2px' }}>
                         <XIcon />
                       </button>
                     </div>
                     <ReportForm lang={lang} onClose={() => setOpenItem(null)} />
                   </>
                 ) : (
-                  <p style={{ fontSize: '13px', color: NAVY, lineHeight: 1.6, margin: 0 }}>{f[key].a}</p>
+                  <>
+                    {/* CHANGE 9: bolded question heading above the answer */}
+                    <p style={{ fontSize: '13px', fontWeight: 700, color: NAVY, margin: '0 0 8px' }}>{label(key)}</p>
+                    <p style={{ fontSize: '13px', color: NAVY, lineHeight: 1.6, margin: 0 }}>{f[key].a}</p>
+                  </>
                 )}
               </div>
             )}

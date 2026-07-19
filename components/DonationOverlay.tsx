@@ -135,9 +135,10 @@ function HeartIconRed({ size = 15 }: { size?: number }) {
 }
 
 /* FIX 2: wallet icons for the Apple/Google Pay fallback placeholder button */
-function AppleLogo() {
+/* CHANGE 10: size now configurable — button call site uses a larger size */
+function AppleLogo({ size = 15 }: { size?: number }) {
   return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true" style={{ flexShrink: 0 }}>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true" style={{ flexShrink: 0 }}>
       <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.51 4.09l-.02-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
     </svg>
   )
@@ -153,28 +154,28 @@ function GoogleLogo() {
   )
 }
 
-/* FIX 4: card brand logos (compact inline SVGs, ~40×26) */
+/* FIX 4 / CHANGE 12: card brand logos (compact inline SVGs, ~40×26) — official-ish colors */
 function CardBrands() {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
       <svg width="40" height="26" viewBox="0 0 40 26" aria-label="Visa">
         <rect x="0.5" y="0.5" width="39" height="25" rx="4" fill="#ffffff" stroke="#e6e6e6" />
-        <text x="20" y="17.5" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="700" fontStyle="italic" fontSize="11" fill="#1A1F71">VISA</text>
+        <text x="20" y="17.5" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="800" fontStyle="italic" fontSize="12" fill="#1434CB">VISA</text>
       </svg>
       <svg width="40" height="26" viewBox="0 0 40 26" aria-label="Mastercard">
         <rect x="0.5" y="0.5" width="39" height="25" rx="4" fill="#ffffff" stroke="#e6e6e6" />
-        <circle cx="16" cy="13" r="7" fill="#EB001B" />
-        <circle cx="24" cy="13" r="7" fill="#F79E1B" fillOpacity="0.85" />
+        <circle cx="15" cy="13" r="7.5" fill="#EB001B" />
+        <circle cx="25" cy="13" r="7.5" fill="#F79E1B" />
+        <path d="M20 7.1a7.47 7.47 0 0 1 0 11.8 7.47 7.47 0 0 1 0-11.8z" fill="#FF5F00" />
       </svg>
       <svg width="40" height="26" viewBox="0 0 40 26" aria-label="American Express">
-        <rect x="0.5" y="0.5" width="39" height="25" rx="4" fill="#2E77BC" />
-        <text x="20" y="16.5" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="7.5" fill="#ffffff">AMEX</text>
+        <rect x="0.5" y="0.5" width="39" height="25" rx="4" fill="#006FCF" />
+        <text x="20" y="16.5" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="800" fontSize="7.5" fill="#ffffff" letterSpacing="0.3">AMEX</text>
       </svg>
       <svg width="40" height="26" viewBox="0 0 40 26" aria-label="Discover">
         <rect x="0.5" y="0.5" width="39" height="25" rx="4" fill="#ffffff" stroke="#e6e6e6" />
-        <text x="4" y="16" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="5.6" fill="#231F20">DISC</text>
-        <circle cx="26.5" cy="14" r="4" fill="#F76E11" />
-        <text x="30.5" y="16" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="5.6" fill="#231F20">VER</text>
+        <text x="3" y="16" fontFamily="Arial, sans-serif" fontWeight="700" fontStyle="italic" fontSize="6" fill="#1B1B1B">Discover</text>
+        <circle cx="33.5" cy="15.5" r="4.5" fill="#F76E11" />
       </svg>
     </div>
   )
@@ -225,7 +226,7 @@ function CustomCheckbox({
 const capitalizeWords = (val: string) =>
   val.replace(/(^|\s)(\S)/g, (_, sp, ch) => sp + ch.toUpperCase())
 
-function DonateForm({ lang, mode = 'desktop' }: { lang: Lang; mode?: 'desktop' | 'tablet' | 'phone' }) {
+function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode?: 'desktop' | 'tablet' | 'phone'; onStepChange?: (step: number) => void }) {
   const d = t[lang].donationOverlay
   /* FIX 1/7: desktop fills the fixed-height panel (button pinned to bottom);
      phone/tablet flow naturally so there's no giant empty gap. */
@@ -271,6 +272,12 @@ function DonateForm({ lang, mode = 'desktop' }: { lang: Lang; mode?: 'desktop' |
   useEffect(() => {
     if (step === 2) step2Timestamp.current = Date.now()
   }, [step])
+
+  /* CHANGE 2/4: let the parent (StackedBody) know which step is active, so it can
+     hide the intro image/text and pin the top bar on phone from step 2 onward. */
+  useEffect(() => {
+    onStepChange?.(step)
+  }, [step, onStepChange])
 
   useEffect(() => {
     if (!tooltipOpen) return
@@ -573,7 +580,7 @@ function DonateForm({ lang, mode = 'desktop' }: { lang: Lang; mode?: 'desktop' |
                       fontSize: '15px', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
                     }}
                   >
-                    {isApple ? <AppleLogo /> : <GoogleLogo />}
+                    {isApple ? <AppleLogo size={22} /> : <GoogleLogo />}
                     {isApple ? 'Pay with Apple Pay' : 'Pay with Google Pay'}
                   </button>
                 )}
@@ -875,7 +882,7 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
 
 /* Below 1024px the overlay top bar. CHANGE 2: the logo matches the site nav bar
    exactly (same classes + base inline styles as Nav.tsx) but rendered in black. */
-function TopBar({ onClose, subtitle }: { onClose: () => void; subtitle: string }) {
+function TopBar({ onClose, subtitle, padding = '10px 20px' }: { onClose: () => void; subtitle: string; padding?: string }) {
   return (
     <div style={{
       flexShrink: 0,
@@ -885,7 +892,7 @@ function TopBar({ onClose, subtitle }: { onClose: () => void; subtitle: string }
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: '10px 20px',
+      padding,
     }}>
       <div>
         <div className="nav-logo-text" style={{ color: NAVY, fontSize: '20px', fontWeight: 500, letterSpacing: '0.1em', fontFamily: 'Georgia, serif' }}>Gwags</div>
@@ -908,7 +915,13 @@ function TopBar({ onClose, subtitle }: { onClose: () => void; subtitle: string }
 
 /* Shared stacked content for phone + tablet: top bar, then the donate pane and the
    exit-reminder pane. Both panes stay mounted (display toggle) so the donation form
-   keeps its step/state when the user goes to the reminder and back (CHANGE 4). */
+   keeps its step/state when the user goes to the reminder and back.
+
+   Phone-only behavior (tablet is unchanged):
+   - CHANGE 2: the intro image + text are only shown on Step 1; hidden from Step 2 on.
+   - CHANGE 4: the top bar scrolls away naturally on Step 1, but becomes fixed
+     (pinned above the scroll area) from Step 2 onward / while the exit-reminder
+     screen is showing. */
 function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInline }: {
   lang: Lang
   mode: 'phone' | 'tablet'
@@ -920,30 +933,63 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
 }) {
   const d = t[lang].donationOverlay
   const n = t[lang].nav
+  const [donateStep, setDonateStep] = useState(1)
+
+  const showIntro = mode === 'tablet' || donateStep === 1
+  /* CHANGE 5: phone-only gap bump between the intro text and "Choose your amount" */
+  const introGap = mode === 'phone' ? '36px' : '24px'
+  /* CHANGE 3: phone-only top bar padding bump */
+  const topBarPadding = mode === 'phone' ? '18px 20px' : undefined
+
+  const introBlock = (
+    <div style={{ display: exitMode ? 'none' : 'flex', flexDirection: 'column', flexShrink: 0 }}>
+      {showIntro && (
+        <div className="donation-photo" style={{ background: '#E6E3DC', width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
+        </div>
+      )}
+      <div style={{ padding: '24px 20px 40px' }}>
+        {showIntro && (
+          <p style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: `0 0 ${introGap}` }}>
+            {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
+          </p>
+        )}
+        <Elements stripe={stripePromise}>
+          <DonateForm lang={lang} mode={mode} onStepChange={setDonateStep} />
+        </Elements>
+        {includeFaqInline && <DonationFAQ lang={lang} mode="phone" />}
+      </div>
+    </div>
+  )
+
+  const exitBlock = (
+    <div style={{ display: exitMode ? 'flex' : 'none', flexDirection: 'column', flex: 1, minHeight: '100%', background: REMINDER_BG, padding: '24px 20px 40px' }}>
+      <ExitReminder theme="dark" hideHeader={false} pinButtons={false} onClose={onClose} onConfirmClose={onClose} onBack={onBack} />
+    </div>
+  )
+
+  if (mode === 'tablet') {
+    return (
+      <>
+        <TopBar onClose={onX} subtitle={n.subtitle} />
+        <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', WebkitOverflowScrolling: 'touch', display: 'flex', flexDirection: 'column' }}>
+          {introBlock}
+          {exitBlock}
+        </div>
+      </>
+    )
+  }
+
+  /* Phone: top bar sits before the scroll area (fixed) once past Step 1 / in exit
+     mode, or as the first scrollable child (scrolls away) on Step 1. */
+  const topBarFixed = exitMode || donateStep > 1
   return (
     <>
-      <TopBar onClose={onX} subtitle={n.subtitle} />
+      {topBarFixed && <TopBar onClose={onX} subtitle={n.subtitle} padding={topBarPadding} />}
       <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', WebkitOverflowScrolling: 'touch', display: 'flex', flexDirection: 'column' }}>
-        {/* Donate pane — FIX 5: flexShrink 0 so expanding the FAQ below scrolls
-            rather than reflowing/pushing the portal content up */}
-        <div style={{ display: exitMode ? 'none' : 'flex', flexDirection: 'column', flexShrink: 0 }}>
-          <div className="donation-photo" style={{ background: '#E6E3DC', width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
-          </div>
-          <div style={{ padding: '24px 20px 40px' }}>
-            <p style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: '0 0 24px' }}>
-              {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
-            </p>
-            <Elements stripe={stripePromise}>
-              <DonateForm lang={lang} mode={mode} />
-            </Elements>
-            {includeFaqInline && <DonationFAQ lang={lang} mode="phone" />}
-          </div>
-        </div>
-        {/* Exit-reminder pane — CHANGE 3: dark gray background, white content */}
-        <div style={{ display: exitMode ? 'flex' : 'none', flexDirection: 'column', flex: 1, minHeight: '100%', background: REMINDER_BG, padding: '24px 20px 40px' }}>
-          <ExitReminder theme="dark" hideHeader={false} pinButtons={false} onClose={onClose} onConfirmClose={onClose} onBack={onBack} />
-        </div>
+        {!topBarFixed && <TopBar onClose={onX} subtitle={n.subtitle} padding={topBarPadding} />}
+        {introBlock}
+        {exitBlock}
       </div>
     </>
   )
