@@ -134,6 +134,52 @@ function HeartIconRed({ size = 15 }: { size?: number }) {
   )
 }
 
+/* FIX 2: wallet icons for the Apple/Google Pay fallback placeholder button */
+function AppleLogo() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true" style={{ flexShrink: 0 }}>
+      <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.51 4.09l-.02-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+    </svg>
+  )
+}
+function GoogleLogo() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 48 48" aria-hidden="true" style={{ flexShrink: 0 }}>
+      <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+      <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+      <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+      <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+    </svg>
+  )
+}
+
+/* FIX 4: card brand logos (compact inline SVGs, ~40×26) */
+function CardBrands() {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
+      <svg width="40" height="26" viewBox="0 0 40 26" aria-label="Visa">
+        <rect x="0.5" y="0.5" width="39" height="25" rx="4" fill="#ffffff" stroke="#e6e6e6" />
+        <text x="20" y="17.5" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="700" fontStyle="italic" fontSize="11" fill="#1A1F71">VISA</text>
+      </svg>
+      <svg width="40" height="26" viewBox="0 0 40 26" aria-label="Mastercard">
+        <rect x="0.5" y="0.5" width="39" height="25" rx="4" fill="#ffffff" stroke="#e6e6e6" />
+        <circle cx="16" cy="13" r="7" fill="#EB001B" />
+        <circle cx="24" cy="13" r="7" fill="#F79E1B" fillOpacity="0.85" />
+      </svg>
+      <svg width="40" height="26" viewBox="0 0 40 26" aria-label="American Express">
+        <rect x="0.5" y="0.5" width="39" height="25" rx="4" fill="#2E77BC" />
+        <text x="20" y="16.5" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="7.5" fill="#ffffff">AMEX</text>
+      </svg>
+      <svg width="40" height="26" viewBox="0 0 40 26" aria-label="Discover">
+        <rect x="0.5" y="0.5" width="39" height="25" rx="4" fill="#ffffff" stroke="#e6e6e6" />
+        <text x="4" y="16" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="5.6" fill="#231F20">DISC</text>
+        <circle cx="26.5" cy="14" r="4" fill="#F76E11" />
+        <text x="30.5" y="16" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="5.6" fill="#231F20">VER</text>
+      </svg>
+    </div>
+  )
+}
+
 function CustomCheckbox({
   id, checked, onChange,
   uncheckedBorderColor = ORIGINAL_BORDER,
@@ -179,8 +225,14 @@ function CustomCheckbox({
 const capitalizeWords = (val: string) =>
   val.replace(/(^|\s)(\S)/g, (_, sp, ch) => sp + ch.toUpperCase())
 
-function DonateForm({ lang, belowLg = false }: { lang: Lang; belowLg?: boolean }) {
+function DonateForm({ lang, mode = 'desktop' }: { lang: Lang; mode?: 'desktop' | 'tablet' | 'phone' }) {
   const d = t[lang].donationOverlay
+  /* FIX 1/7: desktop fills the fixed-height panel (button pinned to bottom);
+     phone/tablet flow naturally so there's no giant empty gap. */
+  const fill = mode === 'desktop'
+  const belowLg = mode !== 'desktop'
+  const stepBtnMargin = fill ? 'auto' : (mode === 'tablet' ? '20px' : '8px')
+  const isApple = typeof navigator !== 'undefined' && /Mac|iPhone|iPad|iPod/.test(navigator.userAgent || '')
   const [step, setStep] = useState(1)
   const [frequency, setFrequency] = useState<'once' | 'monthly'>('once')
   const [selected, setSelected] = useState<number | null>(null)
@@ -337,13 +389,13 @@ function DonateForm({ lang, belowLg = false }: { lang: Lang; belowLg?: boolean }
   }
 
   return (
-    <div style={{ overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
-      {/* FIX 1: only the active step renders; key retriggers the fade+shift each change */}
-      <div key={step} className="donate-step" style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+    <div style={{ overflow: 'hidden', height: fill ? '100%' : 'auto', display: 'flex', flexDirection: 'column' }}>
+      {/* only the active step renders; key retriggers the fade+shift each change */}
+      <div key={step} className="donate-step" style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
 
         {/* ── Step 1: Amount ── */}
         {step === 1 && (
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px', background: '#ffffff' }}>
+        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '16px', background: '#ffffff' }}>
           <StepHeader title="Choose your amount" />
 
           {/* Toggle */}
@@ -369,8 +421,8 @@ function DonateForm({ lang, belowLg = false }: { lang: Lang; belowLg?: boolean }
               >
                 {f === 'once' ? d.giveOnce : (
                   <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                    {d.monthly}
                     {belowLg && <HeartIconRed size={15} />}
+                    {d.monthly}
                   </span>
                 )}
               </button>
@@ -418,8 +470,8 @@ function DonateForm({ lang, belowLg = false }: { lang: Lang; belowLg?: boolean }
             {amountError && <p style={errStyle}>Please select or enter an amount.</p>}
           </div>
 
-          {/* CHANGE 2: marginTop auto pins button to panel bottom */}
-          <button type="button" onClick={handleStep1Next} style={{ ...actionBtnStyle, marginTop: 'auto' }}>
+          {/* FIX 1/7: desktop pins button to bottom; phone/tablet flow naturally */}
+          <button type="button" onClick={handleStep1Next} style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}>
             {donateLabel}
           </button>
         </div>
@@ -427,7 +479,7 @@ function DonateForm({ lang, belowLg = false }: { lang: Lang; belowLg?: boolean }
 
         {/* ── Step 2: Contact info ── */}
         {step === 2 && (
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '14px', paddingRight: '2px', background: '#ffffff' }}>
+        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '14px', paddingRight: '2px', background: '#ffffff' }}>
           <StepHeader title="Enter your details" onBack={() => setStep(1)} />
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
@@ -487,7 +539,7 @@ function DonateForm({ lang, belowLg = false }: { lang: Lang; belowLg?: boolean }
           <button
             type="button"
             onClick={(e) => { if (!e.isTrusted) return; handleStep2Next() }}
-            style={{ ...actionBtnStyle, marginTop: 'auto' }}
+            style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}
           >
             Continue
           </button>
@@ -496,28 +548,45 @@ function DonateForm({ lang, belowLg = false }: { lang: Lang; belowLg?: boolean }
 
         {/* ── Step 3: Payment ── */}
         {step === 3 && (
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingRight: '2px', background: '#ffffff' }}>
+        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', justifyContent: fill ? 'space-between' : 'flex-start', gap: fill ? undefined : (mode === 'tablet' ? '32px' : '18px'), paddingRight: '2px', background: '#ffffff' }}>
           {status === 'success' ? (
             <p style={{ color: '#2d7a2d', fontSize: '15px', margin: 0 }}>Thank you for your donation.</p>
           ) : (
             <>
-              {/* Top group: header + card inputs */}
+              {/* Top group: header + wallet + separator + card logos + card inputs */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <StepHeader title="Payment" onBack={() => setStep(2)} />
 
-                {/* CHANGE 9: Google Pay / Apple Pay button (only renders if supported) */}
-                {paymentRequest && (
-                  <div>
-                    <PaymentRequestButtonElement
-                      options={{ paymentRequest, style: { paymentRequestButton: { type: 'donate', theme: 'dark', height: '44px' } } }}
-                    />
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '12px 0 2px' }}>
-                      <hr style={{ flex: 1, border: 'none', borderTop: `1px solid ${ORIGINAL_BORDER}`, margin: 0 }} />
-                      <span style={{ fontSize: '12px', color: 'rgba(10,17,40,0.55)', whiteSpace: 'nowrap' }}>Or donate with card</span>
-                      <hr style={{ flex: 1, border: 'none', borderTop: `1px solid ${ORIGINAL_BORDER}`, margin: 0 }} />
-                    </div>
-                  </div>
+                {/* FIX 2: Apple/Google Pay — real Stripe button when supported, else a styled placeholder */}
+                {paymentRequest ? (
+                  <PaymentRequestButtonElement
+                    options={{ paymentRequest, style: { paymentRequestButton: { type: 'donate', theme: 'dark', height: '44px' } } }}
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    aria-label={isApple ? 'Pay with Apple Pay' : 'Pay with Google Pay'}
+                    style={{
+                      width: '100%', height: '44px', borderRadius: '6px', border: 'none',
+                      background: '#1A1A1A', color: '#ffffff', display: 'flex',
+                      alignItems: 'center', justifyContent: 'center', gap: '8px',
+                      fontSize: '15px', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
+                    }}
+                  >
+                    {isApple ? <AppleLogo /> : <GoogleLogo />}
+                    {isApple ? 'Pay with Apple Pay' : 'Pay with Google Pay'}
+                  </button>
                 )}
+
+                {/* FIX 3: "Or donate with other methods" separator */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <hr style={{ flex: 1, border: 'none', borderTop: `1px solid ${ORIGINAL_BORDER}`, margin: 0 }} />
+                  <span style={{ fontSize: '12px', color: 'rgba(10,17,40,0.5)', whiteSpace: 'nowrap' }}>Or donate with other methods</span>
+                  <hr style={{ flex: 1, border: 'none', borderTop: `1px solid ${ORIGINAL_BORDER}`, margin: 0 }} />
+                </div>
+
+                {/* FIX 4: accepted card brand logos */}
+                <CardBrands />
 
                 {/* CHANGE 1: track card completion via onChange */}
                 <div style={{ padding: '11px 14px', borderRadius: '6px', border: `1.5px solid ${ORIGINAL_BORDER}` }}>
@@ -840,8 +909,9 @@ function TopBar({ onClose, subtitle }: { onClose: () => void; subtitle: string }
 /* Shared stacked content for phone + tablet: top bar, then the donate pane and the
    exit-reminder pane. Both panes stay mounted (display toggle) so the donation form
    keeps its step/state when the user goes to the reminder and back (CHANGE 4). */
-function StackedBody({ lang, exitMode, onX, onBack, onClose, includeFaqInline }: {
+function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInline }: {
   lang: Lang
+  mode: 'phone' | 'tablet'
   exitMode: boolean
   onX: () => void
   onBack: () => void
@@ -854,8 +924,9 @@ function StackedBody({ lang, exitMode, onX, onBack, onClose, includeFaqInline }:
     <>
       <TopBar onClose={onX} subtitle={n.subtitle} />
       <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', WebkitOverflowScrolling: 'touch', display: 'flex', flexDirection: 'column' }}>
-        {/* Donate pane */}
-        <div style={{ display: exitMode ? 'none' : 'flex', flexDirection: 'column' }}>
+        {/* Donate pane — FIX 5: flexShrink 0 so expanding the FAQ below scrolls
+            rather than reflowing/pushing the portal content up */}
+        <div style={{ display: exitMode ? 'none' : 'flex', flexDirection: 'column', flexShrink: 0 }}>
           <div className="donation-photo" style={{ background: '#E6E3DC', width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
           </div>
@@ -864,7 +935,7 @@ function StackedBody({ lang, exitMode, onX, onBack, onClose, includeFaqInline }:
               {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
             </p>
             <Elements stripe={stripePromise}>
-              <DonateForm lang={lang} belowLg />
+              <DonateForm lang={lang} mode={mode} />
             </Elements>
             {includeFaqInline && <DonationFAQ lang={lang} mode="phone" />}
           </div>
@@ -907,18 +978,19 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   if (vp === 'phone') {
     return (
       <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: '#ffffff', display: 'flex', flexDirection: 'column' }}>
-        <StackedBody lang={lang} exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline />
+        <StackedBody lang={lang} mode="phone" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline />
       </div>
     )
   }
 
-  /* ── Tablet (768–1024px): narrow, tall card on a dark overlay (CHANGE 7) ── */
+  /* ── Tablet (768–1024px): narrow, tall card on a dark overlay (CHANGE 7).
+       FIX 6: card max-width reduced from 700px to 640px. ── */
   if (vp === 'tablet') {
     return (
       <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 16px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', width: '90vw', maxWidth: '700px', maxHeight: '92vh' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', width: '90vw', maxWidth: '640px', maxHeight: '92vh' }}>
           <div style={{ width: '100%', flex: '1 1 auto', minHeight: 0, background: '#ffffff', borderRadius: '12px', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }}>
-            <StackedBody lang={lang} exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline={false} />
+            <StackedBody lang={lang} mode="tablet" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline={false} />
           </div>
           {/* CHANGE 6: FAQ below the portal, 2×2 */}
           <DonationFAQ lang={lang} mode="tablet" />
@@ -1005,7 +1077,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
               {/* Panel 1: Donation form */}
               <div style={{ minWidth: '100%', padding: '48px 36px 20px', display: 'flex', flexDirection: 'column', background: '#ffffff' }}>
                 <Elements stripe={stripePromise}>
-                  <DonateForm lang={lang} />
+                  <DonateForm lang={lang} mode="desktop" />
                 </Elements>
               </div>
 

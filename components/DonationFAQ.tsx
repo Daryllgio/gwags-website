@@ -129,26 +129,30 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
     setOpenItem(prev => (prev === key ? null : key))
   }
 
-  /* ── Phone: vertical accordion ── */
+  /* ── Phone: vertical accordion ──
+     FIX 9: only the top divider (borderTop on the container) — no per-item dividers.
+     FIX 10: chevron on the LEFT, text on the right.
+     FIX 11: item text reduced 15px → 13.5px.
+     FIX 12: chevron points right when closed, rotates down when open (ChevronIcon, animated). */
   if (mode === 'phone') {
     return (
       <div style={{ marginTop: '8px', borderTop: '1px solid rgba(10,17,40,0.1)' }}>
         {ALL_KEYS.map(key => {
           const isOpen = openItem === key
           return (
-            <div key={key} style={{ borderBottom: '1px solid rgba(10,17,40,0.1)' }}>
+            <div key={key}>
               <button
                 type="button"
                 className="faq-trigger"
                 onClick={() => setOpenItem(prev => (prev === key ? null : key))}
                 style={{
-                  width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                  width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '10px',
                   background: 'none', border: 'none', padding: '16px 0', cursor: 'pointer',
-                  fontFamily: 'inherit', color: NAVY, fontSize: '15px', fontWeight: 500, textAlign: 'left',
+                  fontFamily: 'inherit', color: NAVY, fontSize: '13.5px', fontWeight: 500, textAlign: 'left',
                 }}
               >
-                <span>{label(key)}</span>
                 <span style={{ color: NAVY, display: 'flex' }}><ChevronIcon open={isOpen} /></span>
+                <span>{label(key)}</span>
               </button>
               {isOpen && (
                 <div style={{ padding: '0 0 18px' }}>
