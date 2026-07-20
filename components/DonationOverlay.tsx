@@ -989,7 +989,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
   return (
     <>
       {topBarFixed && <TopBar onClose={onX} subtitle={n.subtitle} padding={topBarPadding} />}
-      <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', WebkitOverflowScrolling: 'touch', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
         {!topBarFixed && <TopBar onClose={onX} subtitle={n.subtitle} padding={topBarPadding} />}
         {introBlock}
         {exitBlock}
@@ -1003,9 +1003,29 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   const [exitMode, setExitMode] = useState(false)
   const [vp, setVp] = useState<'desktop' | 'tablet' | 'phone'>('desktop')
 
+  /* FIX 1: plain `overflow: hidden` doesn't reliably block touch-drag scrolling
+     of the background on iPad/tablet Safari. Pin the body in place instead, and
+     restore the exact scroll position on close — this locks scroll consistently
+     across phone, tablet, and desktop. */
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = '' }
+    const scrollY = window.scrollY
+    const body = document.body
+    const prev = { position: body.style.position, top: body.style.top, left: body.style.left, right: body.style.right, width: body.style.width, overflow: body.style.overflow }
+    body.style.position = 'fixed'
+    body.style.top = `-${scrollY}px`
+    body.style.left = '0'
+    body.style.right = '0'
+    body.style.width = '100%'
+    body.style.overflow = 'hidden'
+    return () => {
+      body.style.position = prev.position
+      body.style.top = prev.top
+      body.style.left = prev.left
+      body.style.right = prev.right
+      body.style.width = prev.width
+      body.style.overflow = prev.overflow
+      window.scrollTo(0, scrollY)
+    }
   }, [])
 
   useEffect(() => {
@@ -1033,11 +1053,11 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   }
 
   /* ── Tablet (768–1024px): narrow, tall card on a dark overlay (CHANGE 7).
-       FIX 6: card max-width reduced from 700px to 640px. ── */
+       Card max-width reduced from 700px to 640px, then to 570px. ── */
   if (vp === 'tablet') {
     return (
       <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 16px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', width: '90vw', maxWidth: '640px', maxHeight: '92vh' }}>
+        <div className="donation-portal-tablet" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', width: '90vw', maxWidth: '450px', maxHeight: '92vh' }}>
           <div style={{ width: '100%', flex: '1 1 auto', minHeight: 0, background: '#ffffff', borderRadius: '12px', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }}>
             <StackedBody lang={lang} mode="tablet" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline={false} />
           </div>

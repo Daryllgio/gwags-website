@@ -157,7 +157,7 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
                 style={{
                   width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '10px',
                   background: 'none', border: 'none', padding: itemPad, cursor: 'pointer',
-                  fontFamily: 'inherit', color: NAVY, fontSize: '13.5px', fontWeight: 500, textAlign: 'left',
+                  fontFamily: 'inherit', color: NAVY, fontSize: '14px', fontWeight: 500, textAlign: 'left',
                 }}
               >
                 <span style={{ color: NAVY, display: 'flex' }}><ChevronIcon open={isOpen} /></span>
@@ -195,7 +195,7 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
               onClick={() => toggle(key)}
               style={{
                 background: 'none', border: 'none', cursor: 'pointer', padding: 0,
-                color: '#ffffff', fontSize: '13px', fontFamily: 'inherit',
+                color: '#ffffff', fontSize: '15px', fontFamily: 'inherit',
                 textDecoration: isOpen ? 'underline' : 'none', textUnderlineOffset: '3px', whiteSpace: 'nowrap',
               }}
             >
@@ -215,7 +215,7 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
                   <>
                     {/* CHANGE 9: bolded question heading, X stays on the same row */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', marginBottom: '10px' }}>
-                      <p style={{ fontSize: '13px', fontWeight: 700, color: NAVY, margin: 0 }}>{label(key)}</p>
+                      <p style={{ fontSize: '15px', fontWeight: 700, color: NAVY, margin: 0 }}>{label(key)}</p>
                       <button type="button" aria-label="Close" onClick={() => setOpenItem(null)}
                         style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', flexShrink: 0, marginTop: '2px' }}>
                         <XIcon />
@@ -226,8 +226,8 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
                 ) : (
                   <>
                     {/* CHANGE 9: bolded question heading above the answer */}
-                    <p style={{ fontSize: '13px', fontWeight: 700, color: NAVY, margin: '0 0 8px' }}>{label(key)}</p>
-                    <p style={{ fontSize: '13px', color: NAVY, lineHeight: 1.6, margin: 0 }}>{f[key].a}</p>
+                    <p style={{ fontSize: '15px', fontWeight: 700, color: NAVY, margin: '0 0 8px' }}>{label(key)}</p>
+                    <p style={{ fontSize: '15px', color: NAVY, lineHeight: 1.6, margin: 0 }}>{f[key].a}</p>
                   </>
                 )}
               </div>

@@ -383,24 +383,24 @@ h1, h2, h3, h4 {
 }
 @media (max-width: 767px) {
   .gi-page-container { padding: 48px 20px !important; }
-  .gi-two-col { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .gi-two-col { grid-template-columns: 1fr !important; gap: 50px !important; }
   .gi-page-hero { grid-template-columns: 1fr !important; gap: 24px !important; }
   .gi-cta-link { font-size: 15px !important; }
   .gi-body-text { font-size: 16px !important; margin-bottom: 14px !important; }
-  .gi-hero-h1 { font-size: 30px !important; }
+  .gi-hero-h1 { font-size: 28px !important; }
   .gi-hero-desc { font-size: 16px !important; }
-  .gi-page-hero { margin-bottom: 42px !important; }
-  .gi-two-col-gap { margin-bottom: 50px !important; }
-  .gi-divider { margin-bottom: 50px !important; }
+  .gi-page-hero { margin-bottom: 45px !important; }
+  .gi-two-col-gap { margin-bottom: 45px !important; }
+  .gi-divider { margin-bottom: 45px !important; }
 }
 @media (max-width: 480px) {
   .gi-page-container { padding: 36px 20px !important; }
   .gi-body-text { font-size: 15px !important; margin-bottom: 12px !important; }
-  .gi-hero-h1 { font-size: 28px !important; }
+  .gi-hero-h1 { font-size: 26px !important; }
   .gi-hero-desc { font-size: 15px !important; }
-  .gi-page-hero { margin-bottom: 38px !important; }
-  .gi-two-col-gap { margin-bottom: 42px !important; }
-  .gi-divider { margin-bottom: 42px !important; }
+  .gi-page-hero { margin-bottom: 45px !important; }
+  .gi-two-col-gap { margin-bottom: 45px !important; }
+  .gi-divider { margin-bottom: 45px !important; }
 }
 
 /* Social links on get-involved page — matches pp-connect-circle on profile pages */
@@ -499,14 +499,37 @@ input:-webkit-autofill:active {
 }
 
 /* Donation overlay card responsive */
-@media (max-width: 768px) {
-  .donation-photo { height: 196px !important; }
-}
 @media (max-width: 640px) {
   .donation-card { grid-template-columns: 1fr !important; }
   .donation-card > div:first-child { border-radius: 12px 12px 0 0 !important; }
   .donation-card > div:last-child { border-radius: 0 0 12px 12px !important; }
-  .donation-photo { height: 178px !important; }
+}
+
+/* Donation portal width (tablet) — wider from 900px up to just before desktop (1024px) */
+@media (min-width: 900px) and (max-width: 1023px) {
+  .donation-portal-tablet { max-width: 500px !important; }
+}
+
+/* Donation portal image height (phone/tablet) — matches the homepage
+   initiative card image height (.ini-img-ph) at the same breakpoints,
+   except Phones (481–767px) which is 20px taller. */
+@media (max-width: 345px) {
+  .donation-photo { height: 190px !important; }
+}
+@media (min-width: 346px) and (max-width: 410px) {
+  .donation-photo { height: 200px !important; }
+}
+@media (min-width: 411px) and (max-width: 480px) {
+  .donation-photo { height: 215px !important; }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .donation-photo { height: 235px !important; }
+}
+@media (min-width: 768px) and (max-width: 810px) {
+  .donation-photo { height: 215px !important; }
+}
+@media (min-width: 811px) and (max-width: 1023px) {
+  .donation-photo { height: 220px !important; }
 }
 
 /* ── Forms (contact + partner pages) ── */
@@ -1751,7 +1774,7 @@ input:-webkit-autofill:active {
   .ma-card-desc  { font-size: 16px !important; }
 
   /* Leadership */
-  .lp-heading       { font-size: 30px !important; }
+  .lp-heading       { font-size: 28px !important; }
   .lp-section-title { font-size: 23px !important; }
   .lp-subtitle      { font-size: 16px !important; }
   .lp-container   { padding-top: 48px !important; }
@@ -1802,7 +1825,7 @@ input:-webkit-autofill:active {
   .ma-card-desc  { font-size: 15px !important; }
 
   /* Leadership */
-  .lp-heading       { font-size: 28px !important; }
+  .lp-heading       { font-size: 26px !important; }
   .lp-section-title { font-size: 22px !important; }
   .lp-subtitle    { font-size: 15px !important; }
   .lp-container   { padding-top: 36px !important; }

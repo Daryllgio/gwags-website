@@ -146,7 +146,7 @@ export const t = {
       },
       partner: {
         eyebrow: 'Partner with us',
-        text: 'Align with Gwags at the institutional level. Gwags partners with organizations that share a commitment to structured, sustainable impact. Partnership means strategic alignment, shared resources, and working toward common objectives.',
+        text: 'We partner with organizations committed to structured, sustainable impact. Partnership means shared resources and alignment toward common goals.',
         cta: 'Express interest',
       },
       support: {
@@ -817,7 +817,7 @@ export const t = {
       },
       partner: {
         eyebrow: 'Devenir partenaire',
-        text: 'S\'aligner avec Gwags au niveau institutionnel. Gwags s\'associe avec des organisations qui partagent un engagement envers un impact structuré et durable. Le partenariat signifie un alignement stratégique, des ressources partagées et un travail vers des objectifs communs.',
+        text: 'Nous nous associons avec des organisations engagées envers un impact structuré et durable. Le partenariat signifie des ressources partagées et un alignement vers des objectifs communs.',
         cta: 'Exprimer son intérêt',
       },
       support: {
