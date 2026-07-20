@@ -398,9 +398,9 @@ h1, h2, h3, h4 {
   .gi-body-text { font-size: 15px !important; margin-bottom: 12px !important; }
   .gi-hero-h1 { font-size: 26px !important; }
   .gi-hero-desc { font-size: 15px !important; }
-  .gi-page-hero { margin-bottom: 45px !important; }
-  .gi-two-col-gap { margin-bottom: 45px !important; }
-  .gi-divider { margin-bottom: 45px !important; }
+  .gi-page-hero { margin-bottom: 40px !important; }
+  .gi-two-col-gap { margin-bottom: 40px !important; }
+  .gi-divider { margin-bottom: 40px !important; }
 }
 
 /* Social links on get-involved page — matches pp-connect-circle on profile pages */
