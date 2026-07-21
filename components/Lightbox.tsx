@@ -69,18 +69,32 @@ export default function Lightbox({ count, openIndex, onClose }: LightboxProps) {
 
   function handleTouchEnd(e: React.TouchEvent) {
     const delta = touchStartX.current - e.changedTouches[0].clientX
-    if (Math.abs(delta) > 50) navigate(delta > 0 ? 1 : -1)
+    if (Math.abs(delta) > 50) {
+      e.preventDefault()
+      navigate(delta > 0 ? 1 : -1)
+    }
   }
 
   function handleOverlayTouchMove(e: React.TouchEvent) {
     e.preventDefault()
   }
 
+  const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 768
+
+  function handleOverlayClick() {
+    if (isMobile()) onClose()
+  }
+
+  function handleImgWrapClick(e: React.MouseEvent) {
+    if (!isMobile()) e.stopPropagation()
+  }
+
   return (
-    <div className="lb-overlay" onClick={onClose} onTouchMove={handleOverlayTouchMove}>
+    <div className="lb-overlay" onClick={handleOverlayClick} onTouchMove={handleOverlayTouchMove}>
       <button className="lb-close" onClick={onClose} aria-label="Close">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M18 6 L6 18 M6 6 L18 18" />
+        <svg viewBox="0 0 14 14" fill="none">
+          <line x1="1" y1="1" x2="13" y2="13" stroke="#000000" strokeWidth="2.2" strokeLinecap="round"/>
+          <line x1="13" y1="1" x2="1" y2="13" stroke="#000000" strokeWidth="2.2" strokeLinecap="round"/>
         </svg>
       </button>
       <button
@@ -95,7 +109,7 @@ export default function Lightbox({ count, openIndex, onClose }: LightboxProps) {
       </button>
       <div
         className="lb-img-wrap"
-        onClick={e => e.stopPropagation()}
+        onClick={handleImgWrapClick}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >

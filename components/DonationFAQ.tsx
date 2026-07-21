@@ -29,6 +29,16 @@ function XIcon({ color = NAVY }: { color?: string }) {
   )
 }
 
+/* CHANGE 1: the "cancel" FAQ answer ends right before "donate@gwags.org" — render
+   the address with the exact same mailto link + styling used on Step 1's sideText
+   (.donate-email-link class, bold, no other new styling introduced). */
+function AnswerText({ answerKey, text }: { answerKey: FaqKey; text: string }) {
+  if (answerKey !== 'cancel') return <>{text}</>
+  return (
+    <>{text}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.</>
+  )
+}
+
 /* The "Report a problem" form — reused inside the desktop/tablet popup and the phone accordion. */
 function ReportForm({ lang, onClose }: { lang: Lang; onClose: () => void }) {
   const r = t[lang].donationFaq.report
@@ -167,7 +177,7 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
                 <div style={{ padding: `0 0 18px ${answerIndent}px` }}>
                   {key === 'report'
                     ? <ReportForm lang={lang} onClose={() => setOpenItem(null)} />
-                    : <p style={{ fontSize: '14px', color: '#4A4A4A', lineHeight: 1.65, margin: 0 }}>{f[key].a}</p>}
+                    : <p style={{ fontSize: '14px', color: '#4A4A4A', lineHeight: 1.65, margin: 0 }}><AnswerText answerKey={key} text={f[key].a} /></p>}
                 </div>
               )}
             </div>
@@ -227,7 +237,7 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
                   <>
                     {/* CHANGE 9: bolded question heading above the answer */}
                     <p style={{ fontSize: '15px', fontWeight: 700, color: NAVY, margin: '0 0 8px' }}>{label(key)}</p>
-                    <p style={{ fontSize: '15px', color: NAVY, lineHeight: 1.6, margin: 0 }}>{f[key].a}</p>
+                    <p style={{ fontSize: '15px', color: NAVY, lineHeight: 1.6, margin: 0 }}><AnswerText answerKey={key} text={f[key].a} /></p>
                   </>
                 )}
               </div>

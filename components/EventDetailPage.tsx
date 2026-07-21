@@ -104,8 +104,10 @@ function GallerySection({ gallery }: { gallery: EventDetailData['gallery'] }) {
 
   return (
     <section className="ed-gallery-section">
-      <div className="ed-gallery-inner">
+      <div className="ip-content-inner">
         <h2 className="ip-section-heading ed-gallery-heading">{gallery.heading}</h2>
+      </div>
+      <div className="ed-gallery-inner">
         <div className="ed-gallery-grid">
           {Array.from({ length: gallery.count }, (_, i) => (
             <div key={i} className="ed-gallery-img" onClick={() => setOpenIndex(i)} />

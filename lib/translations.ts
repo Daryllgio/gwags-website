@@ -226,7 +226,7 @@ export const t = {
       },
       cancel: {
         q: 'Can I cancel my recurring donation?',
-        a: "Of course. You always remain in full control of your recurring donation, and you're free to change or cancel it at any time.",
+        a: "You can manage or cancel your recurring donation at any time using the link in your donation confirmation email. If you can't locate it, contact us at ",
       },
       report: {
         q: 'Report a problem',
@@ -897,7 +897,7 @@ export const t = {
       },
       cancel: {
         q: 'Puis-je annuler mon don récurrent ?',
-        a: "Bien sûr. Vous gardez toujours le contrôle total de votre don récurrent et êtes libre de le modifier ou de l'annuler à tout moment.",
+        a: "Vous pouvez gérer ou annuler votre don récurrent à tout moment à l'aide du lien dans votre email de confirmation de don. Si vous ne le trouvez pas, contactez-nous à ",
       },
       report: {
         q: 'Signaler un problème',

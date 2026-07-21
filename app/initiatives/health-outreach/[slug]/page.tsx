@@ -17,8 +17,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           detailGrid: [
             { label: 'Location', text: 'Nguti Health District, South West Region, Cameroon' },
             { label: 'Delivered by', text: 'CAMESA' },
-            { label: 'Duration', text: 'August 9–16, 2026' },
-            { label: 'Services delivered', text: 'Medical consultations, dental consultations, surgical interventions, ophthalmology consultations, laboratory screenings, health education' },
+            { label: 'Duration', text: '8 days' },
           ],
         },
       ],
@@ -44,8 +43,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           detailGrid: [
             { label: 'Lieu', text: 'District de Santé de Nguti, Région du Sud-Ouest, Cameroun' },
             { label: 'Réalisé par', text: 'CAMESA' },
-            { label: 'Durée', text: '9–16 août 2026' },
-            { label: 'Services fournis', text: 'Consultations médicales, consultations dentaires, interventions chirurgicales, consultations en ophtalmologie, dépistages en laboratoire, éducation sanitaire' },
+            { label: 'Durée', text: '8 jours' },
           ],
         },
       ],
