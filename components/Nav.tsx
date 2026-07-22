@@ -249,9 +249,10 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
             </div>
 
             <div>
-              <div style={{ color: '#fff', fontSize: '18px', fontWeight: 600, marginBottom: '16px' }}>
+              <div style={{ color: '#fff', fontSize: '18px', fontWeight: 600, marginBottom: '10px' }}>
                 {d.work.initiativesLabel}
               </div>
+              <div className="nav-dropdown-initiatives-list">
               {d.work.links.map(link => (
                 <Link
                   key={link.href}
@@ -262,13 +263,14 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   {link.label}
                 </Link>
               ))}
+              </div>
             </div>
 
             <div>
-              <div style={{ color: '#fff', fontSize: '18px', fontWeight: 600, marginBottom: '16px' }}>
+              <div style={{ color: '#fff', fontSize: '18px', fontWeight: 600, marginBottom: '10px' }}>
                 {d.work.networkLabel}
               </div>
-              <p style={{ color: '#fff', fontSize: '17px', lineHeight: 1.6, margin: '0 0 20px 0' }}>
+              <p style={{ color: '#fff', fontSize: '17px', lineHeight: 1.6, margin: '0 0 12px 0' }}>
                 {d.work.networkDescription}
               </p>
               <Link href="/network" className="nav-dropdown-cta" onClick={() => setOpenDropdown(null)}>
@@ -354,7 +356,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                     style={{ display: 'flex', alignItems: 'center', background: 'none', border: 'none', color: '#fff', fontWeight: 400, padding: '20px', cursor: 'pointer', fontFamily: 'inherit' }}
                   >
                     {backArrow}
-                    <span style={{ textDecoration: 'underline' }}>Back</span>
+                    <span className="nav-back-underline">Back</span>
                   </button>
                   {divider}
 
@@ -364,7 +366,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </div>
 
                   {/* Description — 1px smaller than items */}
-                  <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '45px' }}>
+                  <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '40px' }}>
                     {d.about.description.replace(/\n/g, ' ')}
                   </p>
 
@@ -398,7 +400,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                     style={{ display: 'flex', alignItems: 'center', background: 'none', border: 'none', color: '#fff', fontWeight: 400, padding: '20px', cursor: 'pointer', fontFamily: 'inherit' }}
                   >
                     {backArrow}
-                    <span style={{ textDecoration: 'underline' }}>Back</span>
+                    <span className="nav-back-underline">Back</span>
                   </button>
                   {divider}
 
@@ -408,7 +410,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </div>
 
                   {/* Description — 1px smaller than items */}
-                  <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '45px' }}>
+                  <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '40px' }}>
                     {d.work.description}
                   </p>
 
@@ -439,7 +441,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </div>
 
                   {/* Network description — same size as other descriptions */}
-                  <p className="mob-desc" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '0 20px', marginBottom: '20px' }}>
+                  <p className="mob-desc" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '0 20px', marginBottom: '15px' }}>
                     {d.work.networkDescription}
                   </p>
 
@@ -447,10 +449,11 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   <Link
                     href="/network" // UPDATE: Add network page URL
                     onClick={closeMenuFn}
-                    className="mob-desc"
-                    style={{ display: 'inline-block', color: '#fff', fontWeight: 600, textDecoration: 'underline', padding: '0 20px', marginBottom: '32px' }}
+                    style={{ display: 'inline-block', padding: '0 20px', marginBottom: '32px' }}
                   >
-                    {d.work.networkCta}
+                    <span className="mob-item nav-dropdown-cta" style={{ fontWeight: 600 }}>
+                      {d.work.networkCta}
+                    </span>
                   </Link>
                 </>
               )}

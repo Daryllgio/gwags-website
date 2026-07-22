@@ -79,7 +79,7 @@ export default function Lightbox({ count, openIndex, onClose }: LightboxProps) {
     e.preventDefault()
   }
 
-  const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 768
+  const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 1025
 
   function handleOverlayClick() {
     if (isMobile()) onClose()
