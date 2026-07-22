@@ -9,21 +9,32 @@ import { NETWORK_ORGS, localized } from '@/lib/network'
 
 const NAVY = '#0A1128'
 
-function OrgCard({ slug, name, sector, country }: { slug: string; name: string; sector: string; country: string }) {
+function OrgIcon() {
+  return (
+    <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="14" y="24" width="36" height="30" rx="2" stroke="#b8b6b0" strokeWidth="3" />
+      <path d="M10 24 L32 10 L54 24" stroke="#b8b6b0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="26" y="38" width="12" height="16" stroke="#b8b6b0" strokeWidth="3" />
+    </svg>
+  )
+}
+
+function OrgCard({ slug, name, description, sector, country }: { slug: string; name: string; description: string; sector: string; country: string }) {
   const href = `/network/${slug}`
   return (
     <div className="nw-card">
       <Link href={href} style={{ display: 'block', textDecoration: 'none' }}>
         <div className="nw-card-img">
-          <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Logo</span>
+          <OrgIcon />
         </div>
       </Link>
       <div className="nw-card-body">
-        <Link href={href} className="nw-card-title-link ini-card-title-link" style={{ display: 'block' }}>
-          <span className="nw-card-name ini-title-underline" style={{ color: NAVY }}>{name}</span>
-        </Link>
-        <p className="nw-card-sector">{sector}</p>
-        <p className="nw-card-country">{country}</p>
+        <Link href={href} className="nw-card-name">{name}</Link>
+        <p className="nw-card-desc">{description}</p>
+        <p className="nw-card-subtitle">{sector} · {country}</p>
+        <a href={href} className="view-profile-link" style={{ color: NAVY, fontSize: '15.5px', fontWeight: 500 }}>
+          View profile
+        </a>
       </div>
     </div>
   )
@@ -43,24 +54,21 @@ export default function NetworkPage() {
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      <div className="px-8 py-16 max-w-7xl mx-auto lp-container">
+      <div className="nw-page-container">
 
-        {/* Header */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10 lp-header">
-          <h1
-            className="font-semibold uppercase leading-tight lp-heading"
-            style={{ color: NAVY, fontSize: '37px', fontFamily: 'inherit' }}
-          >
+        {/* SECTION 1: Hero */}
+        <div className="gi-page-hero" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '150px', alignItems: 'start' }}>
+          <h1 className="gi-hero-h1" style={{ color: NAVY, fontSize: '37px', fontFamily: 'var(--font-heading-serif), Georgia, serif', fontWeight: 600, lineHeight: 1.1, margin: 0, textTransform: 'uppercase' }}>
             {n.heading}
           </h1>
-          <p className="leading-relaxed self-center lp-subtitle" style={{ color: NAVY, fontSize: '18px' }}>
+          <p className="gi-hero-desc" style={{ color: NAVY, fontSize: '18px', lineHeight: 1.75, margin: 0, alignSelf: 'center' }}>
             {n.description}
           </p>
         </div>
-        <hr style={{ borderColor: 'rgba(10,17,40,0.12)', marginBottom: '40px' }} />
+        <hr className="gi-divider" style={{ borderColor: 'rgba(10,17,40,0.12)' }} />
 
-        {/* Search */}
-        <div className="mb-14" style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+        {/* SECTION 2: Search */}
+        <div className="mb-14" style={{ display: 'flex', gap: '16px', alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: '56px' }}>
           <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-end', flex: '0 0 auto', maxWidth: '420px', width: '100%' }}>
             <input
               type="text"
@@ -98,7 +106,7 @@ export default function NetworkPage() {
           </div>
         </div>
 
-        {/* Organization cards */}
+        {/* SECTION 3: Organization cards */}
         {filtered.length === 0 ? (
           <p className="text-center py-20" style={{ color: NAVY, fontSize: '18px' }}>{n.noResults}</p>
         ) : (
@@ -108,6 +116,7 @@ export default function NetworkPage() {
                 key={org.slug}
                 slug={org.slug}
                 name={org.name}
+                description={localized(org.description, lang)}
                 sector={localized(org.sector, lang)}
                 country={localized(org.country, lang)}
               />
@@ -115,10 +124,11 @@ export default function NetworkPage() {
           </div>
         )}
 
-        {/* Bottom CTA */}
-        <div className="nw-cta">
-          <span className="nw-cta-text">{n.cta.text}</span>
-          <Link href="/partner" className="card-learn-more" style={{ color: NAVY }}>
+        {/* SECTION 4: CTA */}
+        <div className="nw-cta-section">
+          <h2 className="nw-cta-heading">{n.cta.text}</h2>
+          <p className="nw-cta-subtext">{n.cta.subtext}</p>
+          <Link href="/partner" className="form-submit-btn" style={{ textDecoration: 'none', fontWeight: 500, background: '#D4AF37', color: '#0A1128' }}>
             {n.cta.link}
           </Link>
         </div>

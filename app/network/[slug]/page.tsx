@@ -9,6 +9,16 @@ import { getOrg, localized } from '@/lib/network'
 const NAVY = '#0A1128'
 const GOLD = '#D4AF37'
 
+function OrgIcon() {
+  return (
+    <svg width="72" height="72" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="14" y="24" width="36" height="30" rx="2" stroke="#b8b6b0" strokeWidth="3" />
+      <path d="M10 24 L32 10 L54 24" stroke="#b8b6b0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="26" y="38" width="12" height="16" stroke="#b8b6b0" strokeWidth="3" />
+    </svg>
+  )
+}
+
 function InstagramIcon() {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -51,14 +61,15 @@ export default function OrgDetailPage({ params }: { params: { slug: string } }) 
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      {/* Hero — name above logo placeholder, white on navy */}
-      <section className="ip-hero">
-        <div className="ip-hero-inner">
-          <div className="ip-hero-text">
-            <h1 className="ip-hero-name">{org.name}</h1>
+      {/* Hero — image, name, sector/location subtitle (Leadership-profile-style treatment) */}
+      <section className="nw-detail-hero">
+        <div className="nw-detail-hero-inner">
+          <div className="nw-detail-img">
+            <OrgIcon />
           </div>
-          <div className="ip-hero-img-wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '13px', letterSpacing: '0.14em' }}>Logo</span>
+          <div>
+            <h1 className="nw-detail-name">{org.name}</h1>
+            <p className="nw-detail-subtitle">{localized(org.sector, lang)} · {localized(org.country, lang)}</p>
           </div>
         </div>
       </section>

@@ -614,6 +614,7 @@ export const t = {
       noResults: 'No results found.',
       cta: {
         text: 'Interested in joining the network?',
+        subtext: "If your organization shares our commitment to structured, sustainable impact, we'd like to hear from you. Tell us about your work and how it aligns with the Gwags network.",
         link: 'Express interest',
       },
       detail: {
@@ -1285,6 +1286,7 @@ export const t = {
       noResults: 'Aucun résultat trouvé.',
       cta: {
         text: 'Envie de rejoindre le réseau ?',
+        subtext: "Si votre organisation partage notre engagement envers un impact structuré et durable, nous aimerions échanger avec vous. Parlez-nous de votre travail et de son lien avec le réseau Gwags.",
         link: "Manifester son intérêt",
       },
       detail: {
