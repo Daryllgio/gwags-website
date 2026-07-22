@@ -366,7 +366,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </div>
 
                   {/* Description — 1px smaller than items */}
-                  <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '40px' }}>
+                  <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '35px' }}>
                     {d.about.description.replace(/\n/g, ' ')}
                   </p>
 
@@ -410,7 +410,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   </div>
 
                   {/* Description — 1px smaller than items */}
-                  <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '40px' }}>
+                  <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '35px' }}>
                     {d.work.description}
                   </p>
 
@@ -433,7 +433,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                   ))}
 
                   {/* 30px large gap between Initiatives block and Network block (15px last-link margin + 15px spacer) */}
-                  <div className="mob-block-spacer" style={{ height: '25px' }} />
+                  <div className="mob-block-spacer" style={{ height: '10px' }} />
 
                   {/* "Our Network" — sub-heading, same size as items, bold */}
                   <div className="mob-item mob-sub-heading" style={{ color: '#fff', fontWeight: 800, padding: '0 20px', marginBottom: '20px' }}>
