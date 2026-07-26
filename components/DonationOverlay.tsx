@@ -6,7 +6,26 @@ import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, Payment
 import { Lang, t } from '@/lib/translations'
 import DonationFAQ from '@/components/DonationFAQ'
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || 'pk_test_placeholder')
+const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+if (!stripePublishableKey) {
+  // eslint-disable-next-line no-console
+  console.error('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is not set — the donation form will not load.')
+}
+
+/* Locale-aware Stripe.js instance, one per site language, so Stripe's own
+   dynamic text (card error messages, etc.) matches the donor's selected
+   language. The site's `Lang` values ('en' | 'fr') map directly onto
+   Stripe's supported locale codes. Cached by language rather than created
+   fresh on every render/overlay-open, per Stripe's own guidance to avoid
+   calling loadStripe() more than once per set of options. */
+const stripePromiseCache: Partial<Record<Lang, ReturnType<typeof loadStripe>>> = {}
+function getStripePromise(lang: Lang) {
+  if (!stripePublishableKey) return Promise.resolve(null)
+  if (!stripePromiseCache[lang]) {
+    stripePromiseCache[lang] = loadStripe(stripePublishableKey, { locale: lang })
+  }
+  return stripePromiseCache[lang]!
+}
 
 const ONCE_AMOUNTS = [1000, 500, 100, 50, 25, 5]
 const MONTHLY_AMOUNTS = [200, 100, 50, 30, 10, 5]
@@ -245,6 +264,15 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
   const [coverFee, setCoverFee] = useState(false)
   const [tooltipOpen, setTooltipOpen] = useState(false)
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  /* "Manage your donation" — Stripe Customer Portal lookup by email, shown as
+     an alternate view within Step 1's panel (same fixed dimensions, so it can't
+     overflow the desktop layout's pinned-button sizing). */
+  const [manageMode, setManageMode] = useState(false)
+  const [manageEmail, setManageEmail] = useState('')
+  const [manageStatus, setManageStatus] = useState<'idle' | 'loading'>('idle')
+  const [manageError, setManageError] = useState<string | null>(null)
 
   /* CHANGE 9: Google Pay / Apple Pay via Stripe Payment Request API */
   const [paymentRequest, setPaymentRequest] = useState<StripePaymentRequest | null>(null)
@@ -311,32 +339,43 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
     })
     pr.on('paymentmethod', async (ev) => {
       try {
-        const res = await fetch('/api/donate', {
+        const endpoint = frequency === 'monthly' ? '/api/create-subscription' : '/api/create-payment-intent'
+        const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ amount: Math.round(totalAmount * 100), frequency }),
+          body: JSON.stringify({ amount: totalAmount, name: `${firstName} ${lastName}`.trim(), email, lang }),
         })
         const data = await res.json()
-        if (!res.ok) throw new Error(data.error)
+        if (!res.ok || !data.clientSecret) throw new Error(data.error || d.paymentStartError)
         const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
           data.clientSecret,
           { payment_method: ev.paymentMethod.id },
           { handleActions: false },
         )
-        if (confirmError) { ev.complete('fail'); setStatus('error'); return }
+        if (confirmError) {
+          ev.complete('fail')
+          setErrorMessage(confirmError.message || d.walletPaymentError)
+          setStatus('error')
+          return
+        }
         ev.complete('success')
         if (paymentIntent && paymentIntent.status === 'requires_action') {
           const { error } = await stripe.confirmCardPayment(data.clientSecret)
-          if (error) { setStatus('error'); return }
+          if (error) {
+            setErrorMessage(error.message || d.walletPaymentError)
+            setStatus('error')
+            return
+          }
         }
         setStatus('success')
-      } catch {
+      } catch (err) {
         ev.complete('fail')
+        setErrorMessage(err instanceof Error ? err.message : d.genericError)
         setStatus('error')
       }
     })
     return () => { active = false }
-  }, [stripe, step, baseAmount, totalAmount, frequency])
+  }, [stripe, step, baseAmount, totalAmount, frequency, firstName, lastName, email, lang])
 
   /* CHANGE 1: Step 1 — must have a valid amount */
   const handleStep1Next = () => {
@@ -372,37 +411,96 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
       return
     }
     setCardError(false)
+    setErrorMessage(null)
     setStatus('loading')
     try {
-      const res = await fetch('/api/donate', {
+      const endpoint = frequency === 'monthly' ? '/api/create-subscription' : '/api/create-payment-intent'
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: Math.round(totalAmount * 100), frequency }),
+        body: JSON.stringify({ amount: totalAmount, name: `${firstName} ${lastName}`.trim(), email, lang }),
       })
       const data = await res.json()
-      if (!res.ok) throw new Error(data.error)
+      if (!res.ok || !data.clientSecret) throw new Error(data.error || d.paymentStartError)
       const cardEl = elements.getElement(CardNumberElement)
-      if (!cardEl) throw new Error('No card element')
+      if (!cardEl) throw new Error(d.cardNotReadyError)
       const result = await stripe.confirmCardPayment(data.clientSecret, {
         payment_method: {
           card: cardEl,
-          billing_details: { name: `${firstName} ${lastName}`, email },
+          billing_details: { name: `${firstName} ${lastName}`.trim(), email },
         },
       })
-      if (result.error) throw new Error(result.error.message)
+      if (result.error) throw new Error(result.error.message || d.cardChargeError)
       setStatus('success')
-    } catch {
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : d.genericError)
       setStatus('error')
+    }
+  }
+
+  /* "Manage your donation" — looks up the donor's Stripe Customer by email and
+     redirects to their Stripe-hosted Billing Portal session. */
+  const handleManageSubmit = async () => {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(manageEmail.trim())) {
+      setManageError(d.manageEmailInvalid)
+      return
+    }
+    setManageError(null)
+    setManageStatus('loading')
+    try {
+      const res = await fetch('/api/create-portal-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: manageEmail.trim(), lang }),
+      })
+      const data = await res.json()
+      if (!res.ok || !data.url) {
+        setManageError(data.error || d.genericError)
+        setManageStatus('idle')
+        return
+      }
+      window.location.href = data.url
+    } catch {
+      setManageError(d.genericError)
+      setManageStatus('idle')
     }
   }
 
   return (
     <div style={{ overflow: 'hidden', height: fill ? '100%' : 'auto', display: 'flex', flexDirection: 'column' }}>
       {/* only the active step renders; key retriggers the fade+shift each change */}
-      <div key={step} className="donate-step" style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+      <div key={manageMode ? 'manage' : step} className="donate-step" style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+
+        {/* ── Manage your donation: alternate view, same panel dimensions as the steps ── */}
+        {manageMode && (
+        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '16px', background: '#ffffff' }}>
+          <StepHeader title={d.manageText} onBack={() => { setManageMode(false); setManageError(null) }} />
+          <p style={{ color: NAVY, fontSize: '14px', lineHeight: 1.6, margin: 0 }}>
+            {d.manageDescription}
+          </p>
+          <div>
+            <label style={labelStyle}>{d.manageEmailLabel}</label>
+            <input
+              type="email"
+              value={manageEmail}
+              onChange={e => { setManageEmail(e.target.value); setManageError(null) }}
+              style={{ ...inputStyle, border: `1.5px solid ${manageError ? ERR_RED : ORIGINAL_BORDER}` }}
+            />
+            {manageError && <p style={errStyle}>{manageError}</p>}
+          </div>
+          <button
+            type="button"
+            onClick={handleManageSubmit}
+            disabled={manageStatus === 'loading'}
+            style={{ ...actionBtnStyle, marginTop: stepBtnMargin, opacity: manageStatus === 'loading' ? 0.7 : 1, cursor: manageStatus === 'loading' ? 'not-allowed' : 'pointer' }}
+          >
+            {manageStatus === 'loading' ? '...' : d.manageSubmit}
+          </button>
+        </div>
+        )}
 
         {/* ── Step 1: Amount ── */}
-        {step === 1 && (
+        {!manageMode && step === 1 && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '16px', background: '#ffffff' }}>
           <StepHeader title="Choose your amount" />
 
@@ -478,6 +576,18 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
             {amountError && <p style={errStyle}>Please select or enter an amount.</p>}
           </div>
 
+          {/* Already a donor? Look up their Stripe Customer Portal by email. */}
+          <div style={{ textAlign: 'center' }}>
+            <button
+              type="button"
+              onClick={() => setManageMode(true)}
+              className="donate-email-link"
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: NAVY, fontSize: '13px', fontWeight: 500, fontFamily: 'inherit', display: 'inline-block' }}
+            >
+              {d.manageText}
+            </button>
+          </div>
+
           {/* FIX 1/7: desktop pins button to bottom; phone/tablet flow naturally */}
           <button type="button" onClick={handleStep1Next} style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}>
             {donateLabel}
@@ -486,7 +596,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
         )}
 
         {/* ── Step 2: Contact info ── */}
-        {step === 2 && (
+        {!manageMode && step === 2 && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '14px', paddingRight: '2px', background: '#ffffff' }}>
           <StepHeader title="Enter your details" onBack={() => setStep(1)} />
 
@@ -555,10 +665,12 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
         )}
 
         {/* ── Step 3: Payment ── */}
-        {step === 3 && (
+        {!manageMode && step === 3 && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', justifyContent: fill ? 'space-between' : 'flex-start', gap: fill ? undefined : (mode === 'tablet' ? '32px' : '18px'), paddingRight: '2px', background: '#ffffff' }}>
           {status === 'success' ? (
-            <p style={{ color: '#2d7a2d', fontSize: '15px', margin: 0 }}>Thank you for your donation.</p>
+            <p style={{ color: '#2d7a2d', fontSize: '15px', margin: 0 }}>
+              {frequency === 'monthly' ? d.thankYouMonthly : d.thankYouOnce}
+            </p>
           ) : (
             <>
               {/* Top group: header + wallet + separator + card logos + card inputs */}
@@ -698,7 +810,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
                 </div>
 
                 {status === 'error' && (
-                  <p style={{ color: ERR_RED, fontSize: '14px', margin: 0 }}>Something went wrong. Please try again.</p>
+                  <p style={{ color: ERR_RED, fontSize: '14px', margin: 0 }}>{errorMessage || d.genericError}</p>
                 )}
 
                 <button
@@ -957,7 +1069,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
             {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
           </p>
         )}
-        <Elements stripe={stripePromise}>
+        <Elements key={lang} stripe={getStripePromise(lang)}>
           <DonateForm lang={lang} mode={mode} onStepChange={setDonateStep} />
         </Elements>
         {includeFaqInline && <DonationFAQ lang={lang} mode="phone" />}
@@ -1145,7 +1257,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
             }}>
               {/* Panel 1: Donation form */}
               <div style={{ minWidth: '100%', padding: '48px 36px 20px', display: 'flex', flexDirection: 'column', background: '#ffffff' }}>
-                <Elements stripe={stripePromise}>
+                <Elements key={lang} stripe={getStripePromise(lang)}>
                   <DonateForm lang={lang} mode="desktop" />
                 </Elements>
               </div>
