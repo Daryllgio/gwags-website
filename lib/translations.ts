@@ -358,7 +358,7 @@ export const t = {
         eyebrow: 'OUR STORY',
         h1: 'How it all started.',
       },
-      photoBanner: 'HERO PHOTO',
+      photoBanner: '/images/ajong-foretia/coeur-de-jesus/DSC_1208.JPG',
       narrative: [
         'In December 2021, four high school students in Douala, Cameroon, had to undertake a community service project as part of their academic program. In order to fulfill this requirement, they organized a visit to the Coeur de Jésus orphanage, where they spent time with the children, provided essential supplies, and witnessed firsthand the conditions these children were navigating daily.',
         'The experience left a lasting impression. They encountered children with limited resources and few opportunities, but with undeniable potential. The gaps were obvious, but so was the possibility of what consistent, structured support could unlock over time. The team subsequently organized more orphanage visits.',
@@ -1056,7 +1056,7 @@ export const t = {
         eyebrow: 'NOTRE HISTOIRE',
         h1: 'Comment tout a commencé.',
       },
-      photoBanner: 'PHOTO PRINCIPALE',
+      photoBanner: '/images/ajong-foretia/coeur-de-jesus/DSC_1208.JPG',
       narrative: [
         "En décembre 2021, quatre lycéens à Douala, au Cameroun, devaient réaliser un projet de service communautaire dans le cadre de leur programme scolaire. Pour répondre à cette exigence, ils ont organisé une visite à l'orphelinat Coeur de Jésus, où ils ont passé du temps avec les enfants, fourni des fournitures essentielles et constaté de première main les conditions que ces enfants affrontaient au quotidien.",
         "L'expérience a laissé une impression durable. Ils ont rencontré des enfants disposant de ressources limitées et de peu d'opportunités, mais dotés d'un potentiel indéniable. Les lacunes étaient évidentes, mais la possibilité de ce qu'un soutien constant et structuré pourrait débloquer au fil du temps l'était tout autant. L'équipe a par la suite organisé davantage de visites dans des orphelinats.",
