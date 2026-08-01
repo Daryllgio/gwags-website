@@ -561,7 +561,7 @@ export const t = {
       hero: {
         name: 'Ajong Foretia Orphan Support',
         goal: 'To provide sustained support to orphaned children through initiatives that deliver essential living supplies, educational opportunities, and practical skills training.',
-        image: '/images/ajong-foretia/codam-tech/654179078_18124924684505595_2190489630294524424_n.jpg',
+        image: '/images/ajong-foretia/coeur-de-jesus/DSC_1215.JPG',
       },
       sections: [
         {
@@ -1259,7 +1259,7 @@ export const t = {
       hero: {
         name: 'Soutien aux Orphelins Ajong Foretia',
         goal: 'Fournir un soutien durable aux enfants orphelins à travers des initiatives qui offrent des fournitures de vie essentielles, des opportunités éducatives et une formation pratique en compétences.',
-        image: '/images/ajong-foretia/codam-tech/654179078_18124924684505595_2190489630294524424_n.jpg',
+        image: '/images/ajong-foretia/coeur-de-jesus/DSC_1215.JPG',
       },
       sections: [
         {
