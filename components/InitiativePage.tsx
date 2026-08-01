@@ -1,6 +1,7 @@
 'use client'
 import { useRef, useState, useEffect, Fragment } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Lightbox from '@/components/Lightbox'
@@ -31,6 +32,7 @@ export interface InitiativePageData {
   hero: {
     name: string
     goal: string
+    image?: string
   }
   sections: Array<{
     heading: string
@@ -96,7 +98,9 @@ function HeroSection({ hero }: { hero: InitiativePageData['hero'] }) {
           <p className="ip-hero-goal">{hero.goal}</p>
         </div>
         <div className="ip-hero-img-wrap">
-          {/* IMAGE: Replace background with <Image src="..." alt="..." fill style={{ objectFit: 'cover', borderRadius: '12px' }} /> */}
+          {hero.image && (
+            <Image src={hero.image} alt={hero.name} fill priority style={{ objectFit: 'cover' }} />
+          )}
         </div>
       </div>
     </section>
@@ -218,6 +222,7 @@ function CarouselSection({ carousel }: { carousel: InitiativePageData['carousel'
       {activeEvent && (
         <Lightbox
           count={activeEvent.items.length}
+          images={activeEvent.items}
           openIndex={lbIndex}
           onClose={closeLightbox}
         />
@@ -288,9 +293,11 @@ function EventTrack({ event, onImageClick }: { event: CarouselEvent; onImageClic
         </div>
       </div>
       <div className="ip-carousel-track" ref={trackRef}>
-        {event.items.map((_, i) => (
+        {event.items.map((src, i) => (
           <div key={i} className="ip-carousel-card" onClick={() => onImageClick(i)}>
-            <div className="ip-carousel-card-img" />
+            <div className="ip-carousel-card-img">
+              {src && <Image src={src} alt={event.label} fill style={{ objectFit: 'cover' }} />}
+            </div>
           </div>
         ))}
       </div>

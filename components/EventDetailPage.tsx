@@ -1,5 +1,6 @@
 'use client'
 import { useState, Fragment } from 'react'
+import Image from 'next/image'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Lightbox from '@/components/Lightbox'
@@ -25,11 +26,13 @@ interface StatsData {
 
 export interface EventDetailData {
   heroTitle?: string
+  heroImage?: string
   sections: EventSection[]
   stats?: StatsData
   gallery: {
     heading: string
     count: number
+    images?: string[]
   }
 }
 
@@ -101,6 +104,7 @@ function StatsSection({ stats }: { stats: StatsData }) {
 
 function GallerySection({ gallery }: { gallery: EventDetailData['gallery'] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const count = gallery.images?.length ?? gallery.count
 
   return (
     <section className="ed-gallery-section">
@@ -109,12 +113,16 @@ function GallerySection({ gallery }: { gallery: EventDetailData['gallery'] }) {
       </div>
       <div className="ed-gallery-inner">
         <div className="ed-gallery-grid">
-          {Array.from({ length: gallery.count }, (_, i) => (
-            <div key={i} className="ed-gallery-img" onClick={() => setOpenIndex(i)} />
+          {Array.from({ length: count }, (_, i) => (
+            <div key={i} className="ed-gallery-img" onClick={() => setOpenIndex(i)}>
+              {gallery.images?.[i] && (
+                <Image src={gallery.images[i]} alt={`${gallery.heading} ${i + 1}`} fill style={{ objectFit: 'cover' }} />
+              )}
+            </div>
           ))}
         </div>
       </div>
-      <Lightbox count={gallery.count} openIndex={openIndex} onClose={() => setOpenIndex(null)} />
+      <Lightbox count={count} images={gallery.images} openIndex={openIndex} onClose={() => setOpenIndex(null)} />
     </section>
   )
 }
@@ -126,7 +134,11 @@ export default function EventDetailPage({ lang, onToggleLang, data }: Props) {
       <section className="ed-hero">
         <div className="ed-hero-inner">
           {data.heroTitle && <h1 className="ed-hero-title">{data.heroTitle}</h1>}
-          <div className="ed-hero-img-wrap" />
+          <div className="ed-hero-img-wrap">
+            {data.heroImage && (
+              <Image src={data.heroImage} alt={data.heroTitle || ''} fill priority style={{ objectFit: 'cover' }} />
+            )}
+          </div>
         </div>
       </section>
       {data.sections.map((s, i) => (

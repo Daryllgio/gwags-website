@@ -7,6 +7,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
   'tech-workshop-codam-technologies': {
     en: {
       heroTitle: 'Tech Workshop with Codam Technologies',
+      heroImage: '/images/ajong-foretia/codam-tech/dab967bf-fac1-4c5a-8ee1-49590e269e10.jpg',
       sections: [
         {
           heading: 'About the visit',
@@ -31,10 +32,26 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           { value: '$8,000+', label: 'in charitable support' },
         ],
       },
-      gallery: { heading: 'Gallery', count: 12 },
+      gallery: {
+        heading: 'Gallery',
+        count: 10,
+        images: [
+          '/images/ajong-foretia/codam-tech/654202991_18087992795267535_1459227050299309829_n.jpg',
+          '/images/ajong-foretia/codam-tech/651489550_18037183757564745_7380016685533927990_n.jpg',
+          '/images/ajong-foretia/codam-tech/321054917_2230246700470629_8195286951872702996_n.jpg',
+          '/images/ajong-foretia/codam-tech/652843015_18076696037416044_27141830889101826_n.jpg',
+          '/images/ajong-foretia/codam-tech/IMG_4410.jpg',
+          '/images/ajong-foretia/codam-tech/270a2a81-3939-4aa8-920a-6cac15dc79cc-2.jpg',
+          '/images/ajong-foretia/codam-tech/654179078_18124924684505595_2190489630294524424_n.jpg',
+          '/images/ajong-foretia/codam-tech/dab967bf-fac1-4c5a-8ee1-49590e269e10.jpg',
+          '/images/ajong-foretia/codam-tech/656230819_18146798749464126_3721760958890796803_n.jpg',
+          '/images/ajong-foretia/codam-tech/WhatsApp-Image-2024-05-01-at-10.49.14-PM.jpeg',
+        ],
+      },
     },
     fr: {
       heroTitle: 'Atelier Tech avec Codam Technologies',
+      heroImage: '/images/ajong-foretia/codam-tech/dab967bf-fac1-4c5a-8ee1-49590e269e10.jpg',
       sections: [
         {
           heading: 'À propos de la visite',
@@ -59,12 +76,28 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           { value: '8 000 $+', label: 'en soutien caritatif' },
         ],
       },
-      gallery: { heading: 'Galerie', count: 12 },
+      gallery: {
+        heading: 'Galerie',
+        count: 10,
+        images: [
+          '/images/ajong-foretia/codam-tech/654202991_18087992795267535_1459227050299309829_n.jpg',
+          '/images/ajong-foretia/codam-tech/651489550_18037183757564745_7380016685533927990_n.jpg',
+          '/images/ajong-foretia/codam-tech/321054917_2230246700470629_8195286951872702996_n.jpg',
+          '/images/ajong-foretia/codam-tech/652843015_18076696037416044_27141830889101826_n.jpg',
+          '/images/ajong-foretia/codam-tech/IMG_4410.jpg',
+          '/images/ajong-foretia/codam-tech/270a2a81-3939-4aa8-920a-6cac15dc79cc-2.jpg',
+          '/images/ajong-foretia/codam-tech/654179078_18124924684505595_2190489630294524424_n.jpg',
+          '/images/ajong-foretia/codam-tech/dab967bf-fac1-4c5a-8ee1-49590e269e10.jpg',
+          '/images/ajong-foretia/codam-tech/656230819_18146798749464126_3721760958890796803_n.jpg',
+          '/images/ajong-foretia/codam-tech/WhatsApp-Image-2024-05-01-at-10.49.14-PM.jpeg',
+        ],
+      },
     },
   },
   'visit-coeur-de-jesus-orphanage': {
     en: {
       heroTitle: 'Visit to Coeur de Jésus Orphanage',
+      heroImage: '/images/ajong-foretia/coeur-de-jesus/DSC_1161.JPG',
       sections: [
         {
           heading: 'About the visit',
@@ -88,10 +121,28 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           { value: '$7,000+', label: 'in charitable support' },
         ],
       },
-      gallery: { heading: 'Gallery', count: 12 },
+      gallery: {
+        heading: 'Gallery',
+        count: 12,
+        images: [
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1217.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1185.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1151.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1157.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1153.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1161.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1163.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1164.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1174.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1211.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1208.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1215.JPG',
+        ],
+      },
     },
     fr: {
       heroTitle: 'Visite à l\'Orphelinat Coeur de Jésus',
+      heroImage: '/images/ajong-foretia/coeur-de-jesus/DSC_1161.JPG',
       sections: [
         {
           heading: 'À propos de la visite',
@@ -115,7 +166,24 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           { value: '7 000 $+', label: 'en soutien caritatif' },
         ],
       },
-      gallery: { heading: 'Galerie', count: 12 },
+      gallery: {
+        heading: 'Galerie',
+        count: 12,
+        images: [
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1217.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1185.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1151.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1157.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1153.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1161.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1163.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1164.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1174.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1211.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1208.JPG',
+          '/images/ajong-foretia/coeur-de-jesus/DSC_1215.JPG',
+        ],
+      },
     },
   },
 }

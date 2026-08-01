@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef, Fragment } from 'react'
 import { useLang } from '@/lib/useLang'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Lang, t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -152,8 +153,11 @@ function TimelineSection({ lang }: { lang: Lang }) {
                     <div className="tl2-image-col">
                       {entry.photo ? (
                         <div className={`tl2-image-ph${isActive ? ' active' : ''}`}>
-                          {/* IMAGE: Replace placeholder with <Image src="/images/[slug].jpg" alt="..." fill style={{objectFit:'cover',borderRadius:'8px'}} /> */}
-                          <span className="tl2-image-label">{entry.photo}</span>
+                          {entry.photo.startsWith('/images/') ? (
+                            <Image src={entry.photo} alt={entry.title} fill style={{ objectFit: 'cover' }} />
+                          ) : (
+                            <span className="tl2-image-label">{entry.photo}</span>
+                          )}
                         </div>
                       ) : (
                         <div className="tl2-image-empty" />

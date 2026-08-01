@@ -1,6 +1,7 @@
 'use client'
 import { useLang } from '@/lib/useLang'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Lang, t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -97,7 +98,7 @@ const initiativeImagePlaceholders = [
   'Photo: Scholars Program',
   'Photo: Mbal Lekeaka Fund',
   'Photo: Health Outreach',
-  'Photo: Youth Development',
+  '/images/ajong-foretia/coeur-de-jesus/DSC_1215.JPG',
 ]
 
 function InitiativeStrip({ lang }: { lang: Lang }) {
@@ -115,10 +116,14 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
         {p.items.map((item, i) => (
             <div key={i} className="initiative-card" style={{ display: 'flex', flexDirection: 'column' }}>
               <Link href={item.href} style={{ display: 'block', textDecoration: 'none' }}>
-                <div className="ini-img-ph" style={{ height: '220px', width: '100%', background: '#E6E3DC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '4px' }}>
-                  <span style={{ color: 'rgba(10,17,40,0.35)', fontSize: '12px', letterSpacing: '0.1em' }}>
-                    {initiativeImagePlaceholders[i]}
-                  </span>
+                <div className="ini-img-ph" style={{ height: '220px', width: '100%', background: '#E6E3DC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '4px', position: 'relative', overflow: 'hidden' }}>
+                  {initiativeImagePlaceholders[i].startsWith('/images/') ? (
+                    <Image src={initiativeImagePlaceholders[i]} alt={item.title} fill style={{ objectFit: 'cover' }} />
+                  ) : (
+                    <span style={{ color: 'rgba(10,17,40,0.35)', fontSize: '12px', letterSpacing: '0.1em' }}>
+                      {initiativeImagePlaceholders[i]}
+                    </span>
+                  )}
                 </div>
               </Link>
               <div className="ini-card-body" style={{ padding: '14px 0 20px 0', display: 'flex', flexDirection: 'column', flex: 1 }}>

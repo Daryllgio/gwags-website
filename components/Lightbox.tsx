@@ -1,13 +1,15 @@
 'use client'
 import { useEffect, useState, useRef, useCallback } from 'react'
+import Image from 'next/image'
 
 interface LightboxProps {
   count: number
+  images?: string[]
   openIndex: number | null
   onClose: () => void
 }
 
-export default function Lightbox({ count, openIndex, onClose }: LightboxProps) {
+export default function Lightbox({ count, images, openIndex, onClose }: LightboxProps) {
   const [current, setCurrent] = useState(0)
   const [fading, setFading] = useState(false)
   const touchStartX = useRef(0)
@@ -113,7 +115,11 @@ export default function Lightbox({ count, openIndex, onClose }: LightboxProps) {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="lb-img" style={{ opacity: fading ? 0 : 1 }} />
+        <div className="lb-img" style={{ opacity: fading ? 0 : 1 }}>
+          {images?.[current] && (
+            <Image src={images[current]} alt="" fill style={{ objectFit: 'contain' }} sizes="90vw" />
+          )}
+        </div>
       </div>
       <button
         className="lb-arrow lb-arrow-right"

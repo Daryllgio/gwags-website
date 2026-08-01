@@ -376,13 +376,13 @@ export const t = {
             year: '2021', month: 'DECEMBER',
             title: 'First orphanage visit',
             body: 'Four high school students in Douala, Cameroon, had to undertake a community service project as part of their academic program. They organized a visit to the Coeur de Jésus orphanage, where they spent time with the children, provided essential supplies, and witnessed firsthand the realities these children faced daily.',
-            photo: 'Photo: orphanage visit',
+            photo: '/images/ajong-foretia/coeur-de-jesus/DSC_1171.JPG',
           },
           {
             year: '2022', month: 'DECEMBER',
             title: 'Partnership with Codam Technologies',
             body: 'The team organized a second visit to the Ami de Jésus orphanage, this time partnering with a Cameroonian organization called Codam Technologies to provide hands-on technology exposure to the children. The children were introduced to 3D printing, introductory coding, and digital tools for the first time.',
-            photo: 'Photo: tech workshop with children',
+            photo: '/images/ajong-foretia/codam-tech/654202991_18087992795267535_1459227050299309829_n.jpg',
           },
           {
             year: '2025', month: 'MAY',
@@ -561,6 +561,7 @@ export const t = {
       hero: {
         name: 'Ajong Foretia Orphan Support',
         goal: 'To provide sustained support to orphaned children through initiatives that deliver essential living supplies, educational opportunities, and practical skills training.',
+        image: '/images/ajong-foretia/codam-tech/654179078_18124924684505595_2190489630294524424_n.jpg',
       },
       sections: [
         {
@@ -583,8 +584,20 @@ export const t = {
       carousel: {
         heading: 'Past Visits',
         events: [
-          { label: 'Tech Workshop with Codam Technologies', href: '/initiatives/ajong-foretia/tech-workshop-codam-technologies', items: ['', '', '', '', '', ''] },
-          { label: 'Visit to Coeur de Jésus Orphanage', href: '/initiatives/ajong-foretia/visit-coeur-de-jesus-orphanage', items: ['', '', '', '', '', ''] },
+          { label: 'Tech Workshop with Codam Technologies', href: '/initiatives/ajong-foretia/tech-workshop-codam-technologies', items: [
+            '/images/ajong-foretia/codam-tech/270a2a81-3939-4aa8-920a-6cac15dc79cc-2.jpg',
+            '/images/ajong-foretia/codam-tech/654179078_18124924684505595_2190489630294524424_n.jpg',
+            '/images/ajong-foretia/codam-tech/dab967bf-fac1-4c5a-8ee1-49590e269e10.jpg',
+            '/images/ajong-foretia/codam-tech/IMG_4410.jpg',
+            '/images/ajong-foretia/codam-tech/651489550_18037183757564745_7380016685533927990_n.jpg',
+          ] },
+          { label: 'Visit to Coeur de Jésus Orphanage', href: '/initiatives/ajong-foretia/visit-coeur-de-jesus-orphanage', items: [
+            '/images/ajong-foretia/coeur-de-jesus/DSC_1164.JPG',
+            '/images/ajong-foretia/coeur-de-jesus/DSC_1211.JPG',
+            '/images/ajong-foretia/coeur-de-jesus/DSC_1215.JPG',
+            '/images/ajong-foretia/coeur-de-jesus/DSC_1217.JPG',
+            '/images/ajong-foretia/coeur-de-jesus/DSC_1161.JPG',
+          ] },
         ],
       },
     },
@@ -1061,13 +1074,13 @@ export const t = {
             year: '2021', month: 'DÉCEMBRE',
             title: "Première visite à l'orphelinat",
             body: "Quatre lycéens à Douala, au Cameroun, devaient réaliser un projet de service communautaire dans le cadre de leur programme scolaire. Ils ont organisé une visite à l'orphelinat Coeur de Jésus, où ils ont passé du temps avec les enfants, fourni des fournitures essentielles et constaté de première main les réalités auxquelles ces enfants faisaient face au quotidien.",
-            photo: "Photo: orphelinat",
+            photo: '/images/ajong-foretia/coeur-de-jesus/DSC_1171.JPG',
           },
           {
             year: '2022', month: 'DÉCEMBRE',
             title: 'Partenariat avec Codam Technologies',
             body: "L'équipe a organisé une deuxième visite à l'orphelinat Ami de Jésus, cette fois en partenariat avec une organisation camerounaise appelée Codam Technologies pour offrir aux enfants une exposition pratique à la technologie. Les enfants ont été initiés à l'impression 3D, à l'initiation au codage et aux outils numériques pour la première fois.",
-            photo: 'Photo: atelier technologique',
+            photo: '/images/ajong-foretia/codam-tech/654202991_18087992795267535_1459227050299309829_n.jpg',
           },
           {
             year: '2025', month: 'MAI',
@@ -1246,6 +1259,7 @@ export const t = {
       hero: {
         name: 'Soutien aux Orphelins Ajong Foretia',
         goal: 'Fournir un soutien durable aux enfants orphelins à travers des initiatives qui offrent des fournitures de vie essentielles, des opportunités éducatives et une formation pratique en compétences.',
+        image: '/images/ajong-foretia/codam-tech/654179078_18124924684505595_2190489630294524424_n.jpg',
       },
       sections: [
         {
@@ -1268,8 +1282,20 @@ export const t = {
       carousel: {
         heading: 'Visites Passées',
         events: [
-          { label: 'Atelier Tech avec Codam Technologies', href: '/initiatives/ajong-foretia/tech-workshop-codam-technologies', items: ['', '', '', '', '', ''] },
-          { label: "Visite à l'Orphelinat Coeur de Jésus", href: '/initiatives/ajong-foretia/visit-coeur-de-jesus-orphanage', items: ['', '', '', '', '', ''] },
+          { label: 'Atelier Tech avec Codam Technologies', href: '/initiatives/ajong-foretia/tech-workshop-codam-technologies', items: [
+            '/images/ajong-foretia/codam-tech/270a2a81-3939-4aa8-920a-6cac15dc79cc-2.jpg',
+            '/images/ajong-foretia/codam-tech/654179078_18124924684505595_2190489630294524424_n.jpg',
+            '/images/ajong-foretia/codam-tech/dab967bf-fac1-4c5a-8ee1-49590e269e10.jpg',
+            '/images/ajong-foretia/codam-tech/IMG_4410.jpg',
+            '/images/ajong-foretia/codam-tech/651489550_18037183757564745_7380016685533927990_n.jpg',
+          ] },
+          { label: "Visite à l'Orphelinat Coeur de Jésus", href: '/initiatives/ajong-foretia/visit-coeur-de-jesus-orphanage', items: [
+            '/images/ajong-foretia/coeur-de-jesus/DSC_1164.JPG',
+            '/images/ajong-foretia/coeur-de-jesus/DSC_1211.JPG',
+            '/images/ajong-foretia/coeur-de-jesus/DSC_1215.JPG',
+            '/images/ajong-foretia/coeur-de-jesus/DSC_1217.JPG',
+            '/images/ajong-foretia/coeur-de-jesus/DSC_1161.JPG',
+          ] },
         ],
       },
     },
