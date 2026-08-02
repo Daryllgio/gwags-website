@@ -702,7 +702,7 @@ export const t = {
   },
   fr: {
     nav: {
-      subtitle: 'INSTITUTION D\'IMPACT MONDIAL',
+      subtitle: 'INSTITUTION D\'IMPACT GLOBAL',
       about: 'À propos de nous',
       initiatives: 'Nos Actions',
       network: 'Réseau',
@@ -737,7 +737,7 @@ export const t = {
       },
     },
     hero: {
-      eyebrow: 'INSTITUTION D\'IMPACT MONDIAL',
+      eyebrow: 'INSTITUTION D\'IMPACT GLOBAL',
       h1Line1: 'Construire l\'infrastructure',
       h1Line2: 'qui',
       h1Highlight: 'transforme les sociétés',
@@ -749,12 +749,12 @@ export const t = {
     stats: {
       s1n: '4+', s1l: 'INITIATIVES ACTIVES',
       s2n: '3',  s2l: 'PAYS ACTIFS',
-      s3n: '1',  s3l: 'RÉSEAU MONDIAL',
+      s3n: '1',  s3l: 'RÉSEAU GLOBAL',
     },
     whatWeAre: {
       eyebrow: 'QUI NOUS SOMMES',
-      h2: 'Une institution mondiale construite pour structurer et accélérer l\'impact.',
-      p1: 'Gwags opère comme une plateforme institutionnelle mondiale, rassemblant des organisations alignées sur des standards communs et un engagement partagé envers un impact dans les secteurs qui façonnent le développement des sociétés.',
+      h2: 'Une institution globale construite pour structurer et accélérer l\'impact.',
+      p1: 'Gwags opère comme une plateforme institutionnelle globale, rassemblant des organisations alignées sur des standards communs et un engagement partagé envers un impact dans les secteurs qui façonnent le développement des sociétés.',
       p2: 'L\'institution a été construite sur la reconnaissance que les défis auxquels font face les communautés sont trop interconnectés pour être abordés de manière isolée. Un changement durable nécessite une action coordonnée, une infrastructure partagée et des organisations équipées pour croître au-delà de leur portée immédiate.',
       p3: '',
       link: 'Notre vision et mission',
@@ -779,7 +779,7 @@ export const t = {
     whyGwags: {
       eyebrow: 'POURQUOI GWAGS',
       h2: 'Ce que signifie faire partie de cette institution.',
-      body: 'Les organisations affiliées à Gwags gagnent en visibilité, en poids institutionnel, en accès à un réseau mondial et en soutien structurel nécessaire pour croître avec crédibilité et purpose.',
+      body: 'Les organisations affiliées à Gwags gagnent en visibilité, en poids institutionnel, en accès à un réseau global et en soutien structurel nécessaire pour croître avec crédibilité et purpose.',
       items: [
         { title: 'Réseau international', desc: 'Accès à un écosystème croissant d\'organisations à travers les secteurs et les frontières.' },
         { title: 'Capacité à grandir', desc: 'Des conseils stratégiques et un soutien structurel pour aider les organisations à renforcer et développer leurs opérations.' },
@@ -796,11 +796,11 @@ export const t = {
     },
     ourStory: {
       eyebrow: 'NOTRE HISTOIRE',
-      h2: 'D\'une initiative étudiante à une institution mondiale.',
+      h2: 'D\'une initiative étudiante à une institution globale.',
       items: [
         { era: 'LE DÉBUT', title: 'Né d\'une conviction', desc: 'Gwags a débuté comme une initiative étudiante pour soutenir les jeunes orphelins et défavorisés au Cameroun.' },
         { era: 'L\'ÉVOLUTION', title: 'Faire grandir la mission', desc: 'À mesure que les défis devenaient plus clairs, la réponse aussi. Gwags a élargi sa portée et formalisé sa structure à l\'international.' },
-        { era: 'MAINTENANT ET AU-DELÀ', title: 'Une institution mondiale', desc: 'Gwags est aujourd\'hui une institution à vocation mondiale, active dans plusieurs pays et secteurs.' },
+        { era: 'MAINTENANT ET AU-DELÀ', title: 'Une institution globale', desc: 'Gwags est aujourd\'hui une institution à vocation globale, active dans plusieurs pays et secteurs.' },
       ],
     },
     moreAbout: {
@@ -809,7 +809,7 @@ export const t = {
       cards: [
         {
           title: 'Notre histoire',
-          desc: 'Découvrez les origines de Gwags et le parcours d\'une initiative étudiante à une institution d\'impact mondiale.',
+          desc: 'Découvrez les origines de Gwags et le parcours d\'une initiative étudiante à une institution d\'impact globale.',
           link: 'En savoir plus',
           href: '/about/our-story',
         },
@@ -957,7 +957,7 @@ export const t = {
       btn2: 'Rejoindre le réseau',
     },
     footer: {
-      tagline: 'Un réseau mondial. Une vision commune. Un impact durable.',
+      tagline: 'Un réseau global. Une vision commune. Un impact durable.',
       col1: { heading: 'INSTITUTION', links: [
         { label: 'Notre histoire', href: '/about/our-story' },
         { label: 'Comment nous travaillons', href: '/about/how-we-work' },
@@ -1143,7 +1143,7 @@ export const t = {
         },
         mission: {
           label: 'NOTRE MISSION',
-          main: "Accélérer et amplifier l'impact mondial en construisant l'infrastructure institutionnelle dont ont besoin les organisations engagées à relever les défis sociétaux.",
+          main: "Accélérer et amplifier l'impact global en construisant l'infrastructure institutionnelle dont ont besoin les organisations engagées à relever les défis sociétaux.",
           expansion: "Gwags poursuit cette mission sur deux fronts: à travers son portefeuille d'initiatives dans différents secteurs incluant l'éducation et la santé; et institutionnellement en structurant et soutenant les organisations au sein de son réseau.",
         },
       },
