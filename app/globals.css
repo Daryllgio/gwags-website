@@ -3493,16 +3493,6 @@ input:-webkit-autofill:active {
 @media (max-width: 767px) { .gi-hp-section { padding-top: 25px !important; } }
 @media (max-width: 480px) { .gi-hp-section { padding-top: 25px !important; } }
 
-/* ── Our Initiatives (homepage): consistent 48px side padding, all widths ≥768px.
-   Scoped to #initiatives (unique to the homepage section) so it can't affect the
-   /about/how-we-work page, which reuses the same .ini-section/.initiatives-grid classes. */
-@media (min-width: 768px) {
-  #initiatives {
-    padding-left: 48px !important;
-    padding-right: 48px !important;
-  }
-}
-
 /* ── Our Initiatives (homepage) grid: single continuous rule, 768px–1400px+.
    Replaces the old flat-breakpoint max-width rules (820px at 768-1024px,
    clamp(790,...,840) at 1025-1300px, unconstrained 1200px parent above 1300px)

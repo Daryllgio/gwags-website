@@ -23,8 +23,8 @@ export default function Initiatives({ lang }: InitiativesProps) {
   const ini = t[lang].initiatives
 
   return (
-    <section id="initiatives" className="site-section ini-section" style={{ background: '#050F22', padding: '60px 80px' }}>
-      <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
+    <section id="initiatives" className="site-section ini-section" style={{ background: '#050F22', padding: '60px 28px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', marginBottom: '14px' }}>
           {ini.eyebrow}
         </p>
