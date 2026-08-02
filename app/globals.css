@@ -1693,12 +1693,12 @@ input:-webkit-autofill:active {
 
 /* Our Story — mid-range phones (376px–540px): must follow comprehensive blocks to win cascade */
 @media (min-width: 376px) and (max-width: 540px) {
-  .tl2-image-ph.active { height: clamp(265px, calc(242.06px + 6.10vw), 275px) !important; }
+  .tl2-image-ph.active { height: clamp(275px, calc(252.06px + 6.10vw), 285px) !important; }
 }
 
-/* Our Story — large phones (541px–767px): gradual growth 290px→320px */
+/* Our Story — large phones (541px–767px): gradual growth 300px→330px */
 @media (min-width: 541px) and (max-width: 767px) {
-  .tl2-image-ph.active { height: clamp(290px, calc(218.19px + 13.27vw), 320px) !important; }
+  .tl2-image-ph.active { height: clamp(300px, calc(228.19px + 13.27vw), 330px) !important; }
 }
 
 /* Our Story — tablet (768px–1024px): gradual growth 320px→340px */
