@@ -35,7 +35,7 @@ export default function Initiatives({ lang }: InitiativesProps) {
           {ini.body}
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }} className="initiatives-grid">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }} className="initiatives-grid">
           {ini.items.map((item, i) => (
               <div key={i} className="initiative-card" style={{ display: 'flex', flexDirection: 'column' }}>
                 <a href={routes[i]} style={{ display: 'block', textDecoration: 'none' }}>
