@@ -15,7 +15,7 @@ export default function MoreAbout({ lang }: MoreAboutProps) {
   const m = t[lang].moreAbout
 
   return (
-    <section className="more-about-section" style={{ background: '#ffffff', padding: '60px 28px' }}>
+    <section className="more-about-section" style={{ background: '#ffffff', padding: '70px 28px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
         <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.15em', marginBottom: '16px', fontFamily: 'inherit' }}>
