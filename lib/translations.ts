@@ -968,7 +968,7 @@ export const t = {
         { label: 'Soutenir notre travail', href: '/get-involved' },
         { label: 'Contact', href: '/get-involved' },
       ]},
-      copy: "2026 Gwags Institution d'Impact Mondial",
+      copy: "2026 Gwags Institution d'Impact Global",
       privacy: 'Confidentialité',
       terms: 'Conditions',
     },
@@ -1064,7 +1064,7 @@ export const t = {
         "Ce qui a suivi fut une série d'étapes décisives. L'équipe a incorporé la Fondation Gwags en tant qu'organisation à but non lucratif aux États-Unis et au Cameroun, établissant les bases juridiques et institutionnelles nécessaires à des opérations durables. De nouvelles initiatives ont été lancées dans les domaines de l'éducation, du développement communautaire, de la santé et de l'autonomisation des jeunes. Ce qui avait commencé comme des visites dans un orphelinat devenait une organisation multisectorielle avec un portefeuille croissant de programmes et de partenariats.",
         "Mais plus l'équipe construisait, plus une évidence s'imposait. Gérer des programmes ne suffisait pas. Le véritable défi n'était pas seulement de produire de l'impact, mais de le structurer. À travers le monde, d'innombrables organisations font un travail significatif tout en luttant contre les mêmes obstacles. Un financement limité, une gouvernance faible, aucun accès aux réseaux et aucune structure institutionnelle pour les aider à grandir.",
         "Cette prise de conscience a marqué un tournant décisif dans le parcours de Gwags. La mission ne concernait plus uniquement ce que Gwags pouvait faire directement. Il s'agissait de construire l'infrastructure qui permettrait aux organisations de faire davantage. Une institution capable de coordonner, soutenir et renforcer les organisations qui s'efforcent de créer de l'impact. Une plateforme où la crédibilité, la structure et la portée internationale pourraient être partagées, et non monopolisées.",
-        "Aujourd'hui, Gwags a formellement opéré sa transition d'une fondation vers une Institution d'Impact Mondial. Elle opère à travers de multiples secteurs, construisant un écosystème conçu pour accélérer l'impact à grande échelle. Les programmes continuent de croître. Le réseau d'organisations continue de s'étendre. Et l'infrastructure qui permettra aux organisations de transformer leurs sociétés se construit, étape par étape, depuis la base.",
+        "Aujourd'hui, Gwags a formellement opéré sa transition d'une fondation vers une Institution d'Impact Global. Elle opère à travers de multiples secteurs, construisant un écosystème conçu pour accélérer l'impact à grande échelle. Les programmes continuent de croître. Le réseau d'organisations continue de s'étendre. Et l'infrastructure qui permettra aux organisations de transformer leurs sociétés se construit, étape par étape, depuis la base.",
       ],
       timeline: {
         eyebrow: 'LA CHRONOLOGIE',
@@ -1108,8 +1108,8 @@ export const t = {
           },
           {
             year: '2026', month: 'SEPTEMBRE',
-            title: "Transition vers Institution d'Impact Mondial",
-            body: "Gwags a formellement évolué au-delà du modèle de fondation, se repositionnant en tant qu'Institution d'Impact Mondial dédiée à la structuration, la coordination et l'accélération des initiatives engagées dans la transformation durable des sociétés à grande échelle.",
+            title: "Transition vers Institution d'Impact Global",
+            body: "Gwags a formellement évolué au-delà du modèle de fondation, se repositionnant en tant qu'Institution d'Impact Global dédiée à la structuration, la coordination et l'accélération des initiatives engagées dans la transformation durable des sociétés à grande échelle.",
             photo: '/images/general/WhatsApp_Image_2026-06-23_at_10_07_06.jpeg',
           },
         ],
