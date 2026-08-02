@@ -335,6 +335,12 @@ main > footer {
   .cta-buttons { flex-direction: column !important; align-items: center !important; }
   .cta-buttons a { min-width: 240px !important; text-align: center !important; }
 }
+
+/* All site CTAs: desktop is standardized at 70px 28px; mobile gets a smaller
+   50px 28px so it doesn't carry the full desktop padding on small screens. */
+@media (max-width: 767px) {
+  .cta-section, .hww-cta, .or-cta, .os-closing { padding: 50px 28px !important; }
+}
 @media (max-width: 480px) {
   .cta-h2 { font-size: 22px !important; }
 }
@@ -3657,7 +3663,7 @@ input:-webkit-autofill:active {
   .nw-card-name { font-size: 18px; }
   .nw-card-subtitle { font-size: 15px; }
   .nw-card-desc { font-size: 15px; }
-  .nw-cta-section { padding: 70px 28px; margin-top: 56px; margin-bottom: -4px; }
+  .nw-cta-section { padding: 50px 28px; margin-top: 56px; margin-bottom: -4px; }
   .nw-cta-heading { font-size: 23px; }
   .nw-cta-subtext { font-size: 15px; }
   .nw-detail-hero { padding: 48px 24px 16px; }
