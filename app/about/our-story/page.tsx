@@ -183,7 +183,7 @@ function ClosingSection({ lang }: { lang: Lang }) {
   return (
     <section className="os-closing" style={{ background: '#0F1E3D', padding: '70px 28px', textAlign: 'center' }}>
       <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <h2 style={{ color: '#fff', fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px', marginTop: 0 }}>
+        <h2 style={{ color: '#fff', fontSize: '30px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px', marginTop: 0 }}>
           {p.closing.h2}
         </h2>
         <p className="body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.78, marginBottom: '40px', marginTop: 0 }}>

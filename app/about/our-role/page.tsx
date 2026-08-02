@@ -93,7 +93,7 @@ function ConvictionsSection({ lang }: { lang: Lang }) {
         <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
           {p.eyebrow}
         </p>
-        <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '34px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.25 }}>
+        <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '30px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.25 }}>
           {p.heading}
         </h2>
         {p.intro && (
@@ -127,7 +127,7 @@ function LookingAheadSection({ lang }: { lang: Lang }) {
           <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
             {p.eyebrow}
           </p>
-          <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '32px', fontWeight: 400, margin: '0 0 24px 0', lineHeight: 1.25 }}>
+          <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '30px', fontWeight: 400, margin: '0 0 24px 0', lineHeight: 1.25 }}>
             {p.heading}
           </h2>
           {p.paragraphs.map((para, i) => (
@@ -151,7 +151,7 @@ function CTASection({ lang }: { lang: Lang }) {
   const p = t[lang].ourRole.cta
   return (
     <section className="or-cta">
-      <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '34px', fontWeight: 400, margin: '0 0 16px 0', lineHeight: 1.3 }}>
+      <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '30px', fontWeight: 400, margin: '0 0 16px 0', lineHeight: 1.3 }}>
         {p.h2}
       </h2>
       <p className="body-text" style={{ color: 'rgba(10,17,40,0.65)', fontSize: '18px', maxWidth: '480px', margin: '0 auto 36px', lineHeight: 1.75 }}>

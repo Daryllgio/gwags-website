@@ -144,7 +144,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
       className="font-semibold uppercase mb-8 lp-section-title"
-      style={{ color: NAVY, fontSize: '28px', fontFamily: 'var(--font-heading-serif), Georgia, serif' }}
+      style={{ color: NAVY, fontSize: '30px', fontFamily: 'var(--font-heading-serif), Georgia, serif' }}
     >
       {children}
     </h2>

@@ -21,7 +21,7 @@ export default function MoreAbout({ lang }: MoreAboutProps) {
         <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.15em', marginBottom: '16px', fontFamily: 'inherit' }}>
           {m.heading}
         </p>
-        <h2 style={{ color: '#0A1128', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, "Times New Roman", serif', lineHeight: 1.25, marginBottom: '48px' }}>
+        <h2 style={{ color: '#0A1128', fontSize: '30px', fontWeight: 400, fontFamily: 'Georgia, "Times New Roman", serif', lineHeight: 1.25, marginBottom: '48px' }}>
           {m.h2}
         </h2>
 
