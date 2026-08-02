@@ -1947,12 +1947,6 @@ input:-webkit-autofill:active {
   .more-about-section { padding-left: 25px !important; padding-right: 25px !important; }
 }
 
-/* More About section — mobile: padding-top was 40px, looked squashed next to
-   other homepage sections (CTA 80-90px, Why Gwags 36-48px). Bump to 60px. */
-@media (max-width: 767px) {
-  .more-about-section { padding-top: 60px !important; }
-}
-
 /* Nav logo subtitle */
 @media (min-width: 768px) and (max-width: 1024px) {
   .nav-logo-subtitle { font-size: 11px !important; }
