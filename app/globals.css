@@ -1517,7 +1517,7 @@ input:-webkit-autofill:active {
 /* ── Our Story Page ── */
 @media (max-width: 767px) {
   .os-hero-section { padding: 60px 20px 48px !important; }
-  .os-hero-h1 { font-size: 32px !important; }
+  .os-hero-h1 { font-size: 30px !important; }
   .os-photo-banner { height: 280px !important; }
   .os-narrative { padding: 48px 20px !important; }
   .os-narrative-h3 { font-size: 23px !important; }
@@ -1527,6 +1527,7 @@ input:-webkit-autofill:active {
 
 /* Our Story — tablet (769–1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
+  .os-hero-h1 { font-size: 35px !important; }
   .os-photo-banner { height: 500px !important; }
   .os-narrative-h3 { font-size: 24px !important; }
   .tl2-month-text { font-size: 15px !important; }
@@ -1548,7 +1549,7 @@ input:-webkit-autofill:active {
 /* Our Story — small phone (≤480px). Higher specificity (.os-hero-section .os-hero-h1)
    so the Hero H1 override wins over the shared .hero-h1 rules regardless of order. */
 @media (max-width: 480px) {
-  .os-hero-section .os-hero-h1 { font-size: 28px !important; }
+  .os-hero-section .os-hero-h1 { font-size: 25px !important; }
   .os-narrative-h3 { font-size: 21px !important; }
   .tl2-month-text { font-size: 15px !important; }
   /* Timeline — small phone */
@@ -1712,6 +1713,7 @@ input:-webkit-autofill:active {
   .tl2-image-ph.active { height: 250px !important; }
   .tl2-body { font-size: 14px !important; }
   .narrative-drop-cap::first-letter { font-size: 40px !important; }
+  .os-hero-section .os-hero-h1 { font-size: 20px !important; }
 }
 
 /* ── Mobile Navigation Fix ── */
