@@ -1605,8 +1605,6 @@ input:-webkit-autofill:active {
   .hww-card-title { font-size: 17px !important; }
   /* TABLET: section padding */
   .site-section { padding: 60px 32px !important; }
-  /* TABLET: four-column grids become 2x2 */
-  .initiatives-grid { grid-template-columns: repeat(2, 1fr) !important; margin: 0 20px !important; }
   /* TABLET: three-column grids stay, adjusted gap for consistent 470px card width */
   .whygwags-grid { gap: 20px !important; margin: 0 20px !important; }
   .more-about-grid { gap: 28px !important; margin: 0 20px !important; }
@@ -3307,14 +3305,6 @@ input:-webkit-autofill:active {
 
 /* All card sections tablet: 2 cols capped at 400px each, grid centered */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .initiatives-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    max-width: 820px !important;
-    margin: 0 auto !important;
-    justify-content: center !important;
-  }
-  .initiative-card { max-width: 400px; }
-
   .whygwags-grid {
     max-width: 820px !important;
     margin: 0 auto !important;
@@ -3336,6 +3326,18 @@ input:-webkit-autofill:active {
 /* CHANGE 1: Galaxy Fold 5 (≤344px) — reduce init card image height on HWW page */
 @media (max-width: 344px) {
   .hww-init-strip .ini-img-ph { height: 195px !important; }
+}
+
+/* HWW initiatives: 2-col at 768–1024px capped at 400px per card (preserved from the
+   shared .initiatives-grid rule removed from the homepage's tablet block) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hww-init-strip .initiatives-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 820px !important;
+    margin: 0 auto !important;
+    justify-content: center !important;
+  }
+  .hww-init-strip .initiative-card { max-width: 400px !important; }
 }
 
 /* HWW initiatives: 2-col at 1025–1300px matching homepage clamp */
@@ -3464,13 +3466,34 @@ input:-webkit-autofill:active {
 @media (max-width: 767px) { .gi-hp-section { padding-top: 25px !important; } }
 @media (max-width: 480px) { .gi-hp-section { padding-top: 25px !important; } }
 
-/* ── Initiatives: 2-col layout at 1025–1300px, cards 385px→410px ── */
-@media (min-width: 1025px) and (max-width: 1300px) {
-  .initiatives-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    max-width: clamp(790px, calc(100vw - 350px), 840px) !important;
+/* ── Our Initiatives (homepage): consistent 48px side padding, all widths ≥768px.
+   Scoped to #initiatives (unique to the homepage section) so it can't affect the
+   /about/how-we-work page, which reuses the same .ini-section/.initiatives-grid classes. */
+@media (min-width: 768px) {
+  #initiatives {
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+  }
+}
+
+/* ── Our Initiatives (homepage) grid: single continuous rule, 768px–1400px+.
+   Replaces the old flat-breakpoint max-width rules (820px at 768-1024px,
+   clamp(790,...,840) at 1025-1300px, unconstrained 1200px parent above 1300px)
+   with linear scaling: 650px at 768px viewport → 1300px at 1400px viewport,
+   flat at 1300px beyond that. minmax(0, 1fr) lets columns shrink to fit instead
+   of overflowing on intrinsic content width. */
+@media (min-width: 768px) {
+  #initiatives .initiatives-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 28px !important;
+    max-width: clamp(650px, calc(650px + (1300 - 650) * ((100vw - 768px) / (1400 - 768))), 1300px) !important;
     margin: 0 auto !important;
   }
+}
+
+/* Card width now tracks the grid automatically; only cap the upper bound. */
+#initiatives .initiative-card {
+  max-width: 600px !important;
 }
 
 /* ── Our Story photo banner: smooth height growth across breakpoints ── */
