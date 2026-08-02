@@ -1160,7 +1160,7 @@ input:-webkit-autofill:active {
 /* CTA gold section */
 .hww-cta {
   background: #D4AF37;
-  padding: 72px 28px;
+  padding: 70px 28px;
   text-align: center;
 }
 
@@ -1425,7 +1425,7 @@ input:-webkit-autofill:active {
 
 .or-cta {
   background: #D4AF37;
-  padding: 72px 28px;
+  padding: 70px 28px;
   text-align: center;
 }
 
@@ -3568,7 +3568,7 @@ input:-webkit-autofill:active {
 /* Bottom CTA */
 .nw-cta-section {
   margin-top: 72px;
-  padding: 72px 28px;
+  padding: 70px 28px;
   border-top: 1px solid rgba(10,17,40,0.12);
   text-align: center;
 }
@@ -3657,7 +3657,7 @@ input:-webkit-autofill:active {
   .nw-card-name { font-size: 18px; }
   .nw-card-subtitle { font-size: 15px; }
   .nw-card-desc { font-size: 15px; }
-  .nw-cta-section { padding: 72px 28px; margin-top: 56px; margin-bottom: -4px; }
+  .nw-cta-section { padding: 70px 28px; margin-top: 56px; margin-bottom: -4px; }
   .nw-cta-heading { font-size: 23px; }
   .nw-cta-subtext { font-size: 15px; }
   .nw-detail-hero { padding: 48px 24px 16px; }
