@@ -11,7 +11,7 @@ export default function CTA({ lang }: CTAProps) {
   return (
     <section className="cta-section" style={{ background: '#0F1E3D', padding: '70px 28px', textAlign: 'center' }}>
       <div style={{ maxWidth: '650px', margin: '0 auto' }}>
-        <h2 className="cta-h2" style={{ color: '#fff', fontSize: '30px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px' }}>
+        <h2 className="cta-h2" style={{ color: '#fff', fontSize: '28px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px' }}>
           {c.h2}
         </h2>
         <p className="body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.78, marginBottom: '40px' }}>
