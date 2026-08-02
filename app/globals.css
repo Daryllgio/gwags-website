@@ -3402,16 +3402,24 @@ input:-webkit-autofill:active {
   .ma-img-ph  { height: 260px !important; }
 }
 
-/* ── Homepage card image heights: 1201px–1270px ── */
+/* ── Homepage card image heights: 1201px–1270px (.ma-img-ph) ── */
 @media (min-width: 1201px) and (max-width: 1270px) {
-  .ini-img-ph { height: 235px !important; }
   .ma-img-ph  { height: 235px !important; }
 }
 
-/* ── Homepage card image heights: above 1270px ── */
+/* ── Homepage card image heights: above 1270px (.ma-img-ph) ── */
 @media (min-width: 1271px) {
-  .ini-img-ph { height: 235px !important; }
   .ma-img-ph  { height: 235px !important; }
+}
+
+/* ── Initiative card image heights: 1201px–1249px ── */
+@media (min-width: 1201px) and (max-width: 1249px) {
+  .ini-img-ph { height: 235px !important; }
+}
+
+/* ── Initiative card image heights: 1250px and above ── */
+@media (min-width: 1250px) {
+  .ini-img-ph { height: 250px !important; }
 }
 
 /* ── How We Work: match homepage initiatives layout at 1025px–1280px (4 columns) ── */
