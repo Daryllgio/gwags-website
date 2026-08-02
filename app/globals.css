@@ -325,7 +325,7 @@ main > footer {
 
 /* ── CTA Section ── */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .cta-h2 { font-size: 26px !important; }
+  .cta-h2 { font-size: 28px !important; }
 }
 @media (max-width: 767px) {
   .cta-h2 { font-size: 24px !important; }
@@ -735,7 +735,7 @@ input:-webkit-autofill:active {
 
 .tl2-h2 {
   color: #0A1128;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 400;
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.25;
@@ -1598,7 +1598,7 @@ input:-webkit-autofill:active {
   /* TABLET: h1 size */
   main h1 { font-size: 36px !important; }
   /* TABLET: h2 size */
-  main h2 { font-size: 26px !important; }
+  main h2 { font-size: 28px !important; }
   /* TABLET: body text size */
   .body-text { font-size: 17px !important; }
   .hero-body { font-size: 17px !important; }
@@ -1793,7 +1793,7 @@ input:-webkit-autofill:active {
 
   /* Leadership */
   .lp-heading       { font-size: 32px !important; }
-  .lp-section-title { font-size: 26px !important; }
+  .lp-section-title { font-size: 28px !important; }
   .lp-subtitle      { font-size: 17px !important; }
   .lp-person-name   { font-size: 20px !important; }
   .lp-person-role   { font-size: 20px !important; }
@@ -2356,7 +2356,7 @@ input:-webkit-autofill:active {
 
 .pp-ma-heading {
   font-family:    Georgia, "Times New Roman", serif;
-  font-size:      28px !important;
+  font-size:      30px !important;
   font-weight:    200;
   color:          #0A1128;
   letter-spacing: 0.03em;
@@ -2390,7 +2390,7 @@ input:-webkit-autofill:active {
   .pp-connect-label  { font-size: 17px; }
   .pp-divider        { margin-left: 60px; margin-right: 60px; }
   .pp-foundation-col { margin-left: 0; padding-left: 60px; padding-right: 60px; }
-  .pp-ma-heading     { font-size: 26px !important; }
+  .pp-ma-heading     { font-size: 28px !important; }
   .pp-ma-grid        { grid-template-columns: repeat(2, 1fr); gap: 40px; }
 }
 
@@ -2545,7 +2545,7 @@ input:-webkit-autofill:active {
 
 .ip-section-heading {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 300;
   color: #0A1128;
   line-height: 1.2;
@@ -2648,7 +2648,7 @@ input:-webkit-autofill:active {
 
 .ip-stats-heading {
   font-family: Georgia, serif;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 200;
   color: #3A3A3A;
   margin: 0 0 10px 0;
@@ -2907,7 +2907,7 @@ input:-webkit-autofill:active {
   .ip-hero-goal { font-size: 17px !important; text-align: left !important; max-width: 550px !important; }
   .ip-section { padding: 60px 40px; }
   .ip-divider { margin: 0 40px; }
-  .ip-section-heading { font-size: 26px !important; }
+  .ip-section-heading { font-size: 28px !important; }
   .ip-section-body { font-size: 17px !important; }
   .ip-rich-label { font-size: 17px !important; }
   .ip-rich-text { font-size: 17px !important; }
@@ -2916,7 +2916,7 @@ input:-webkit-autofill:active {
   .ip-batch-link { font-size: 18px !important; }
   .ip-stats-wrap { padding: 0 25px 45px; }
   .ip-stats-box { padding: 37px; }
-  .ip-stats-heading { font-size: 26px !important; }
+  .ip-stats-heading { font-size: 28px !important; }
   .ip-stats-subheading { font-size: 19px !important; }
   .ip-stats-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 24px; }
   .ip-stats-grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
@@ -3600,7 +3600,7 @@ input:-webkit-autofill:active {
 }
 .nw-cta-heading {
   font-family: Georgia, serif;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 400;
   line-height: 1.25;
   color: #0A1128;
@@ -3670,7 +3670,7 @@ input:-webkit-autofill:active {
   .nw-card-subtitle { font-size: 16px; }
   .nw-card-desc { font-size: 16.5px; }
   .nw-cta-section { padding: 60px 28px; }
-  .nw-cta-heading { font-size: 26px; }
+  .nw-cta-heading { font-size: 28px; }
   .nw-cta-subtext { font-size: 16px; }
   .nw-detail-hero { padding: 56px 40px 20px; }
   .nw-detail-img { width: 280px; }

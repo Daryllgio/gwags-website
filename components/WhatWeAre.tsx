@@ -16,7 +16,7 @@ export default function WhatWeAre({ lang }: WhatWeAreProps) {
           <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', marginBottom: '16px' }}>
             {w.eyebrow}
           </p>
-          <h2 className="wwa-h2" style={{ color: '#0A1128', fontSize: '28px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px' }}>
+          <h2 className="wwa-h2" style={{ color: '#0A1128', fontSize: '30px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px' }}>
             {w.h2}
           </h2>
           <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.82, marginBottom: '16px' }}>{w.p1}</p>
