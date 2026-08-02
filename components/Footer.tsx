@@ -35,10 +35,6 @@ export default function Footer({ lang }: FooterProps) {
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '48px', marginBottom: '48px' }} className="footer-grid">
 
           <div>
-            {/* LOGO: Replace this div with <Image src="/images/gwags-logo.svg" alt="Gwags" /> when your logo file is ready */}
-            <div className="footer-logo-ph" style={{ width: '120px', height: '36px', background: 'rgba(212,175,55,0.1)', border: '1px dashed rgba(212,175,55,0.4)', borderRadius: '3px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
-              <span style={{ color: 'rgba(212,175,55,0.5)', fontSize: '10px', letterSpacing: '0.15em' }}>LOGO</span>
-            </div>
             <p className="footer-tagline" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.82, maxWidth: '320px', marginBottom: '0' }}>
               {f.tagline}
             </p>
