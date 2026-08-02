@@ -36,7 +36,7 @@ export default function Footer({ lang }: FooterProps) {
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '48px', marginBottom: '48px' }} className="footer-grid">
 
           <div>
-            <Image src="/images/logo/Gwags_Secondary.jpeg" alt="Gwags" width={48} height={48} className="footer-logo" style={{ marginBottom: '12px' }} />
+            <Image src="/images/logo/Gwags Secondary.png" alt="Gwags" width={45} height={56} className="footer-logo" style={{ marginBottom: '12px' }} />
             <p className="footer-tagline" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.82, maxWidth: '320px', marginBottom: '0' }}>
               {f.tagline}
             </p>
