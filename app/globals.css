@@ -901,7 +901,7 @@ input:-webkit-autofill:active {
 
 .tl2-image-ph.active {
   width: 440px;
-  height: 340px;
+  height: 350px;
 }
 
 .tl2-image-label {
@@ -1701,16 +1701,16 @@ input:-webkit-autofill:active {
   .tl2-image-ph.active { height: clamp(300px, calc(228.19px + 13.27vw), 330px) !important; }
 }
 
-/* Our Story — tablet (768px–1024px): gradual growth 320px→340px */
+/* Our Story — tablet (768px–1024px): gradual growth 330px→350px */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .tl2-image-ph.active { height: clamp(320px, calc(260px + 7.8125vw), 340px) !important; }
+  .tl2-image-ph.active { height: clamp(330px, calc(270px + 7.8125vw), 350px) !important; }
 }
 
 /* Our Story — narrow phones (≤375px): must follow comprehensive blocks to win cascade */
 @media (max-width: 375px) {
   .tl2-year-num.active { font-size: 50px !important; }
   .tl2-year-num { font-size: 25px !important; }
-  .tl2-image-ph.active { height: 250px !important; }
+  .tl2-image-ph.active { height: 260px !important; }
   .tl2-body { font-size: 14px !important; }
   .narrative-drop-cap::first-letter { font-size: 40px !important; }
   .os-hero-section .os-hero-h1 { font-size: 25px !important; }
