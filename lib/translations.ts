@@ -968,7 +968,7 @@ export const t = {
         { label: 'Soutenir notre travail', href: '/get-involved' },
         { label: 'Contact', href: '/get-involved' },
       ]},
-      copy: '2026 Gwags Global Impact Institution',
+      copy: "2026 Gwags Institution d'Impact Mondial",
       privacy: 'Confidentialité',
       terms: 'Conditions',
     },
