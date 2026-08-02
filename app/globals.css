@@ -235,10 +235,10 @@ main > footer {
   .hero-h1 { font-size: 35px !important; }
 }
 @media (max-width: 767px) {
-  .hero-h1 { font-size: 30px !important; }
+  .hero-h1 { font-size: 33px !important; }
 }
 @media (max-width: 480px) {
-  .hero-h1 { font-size: 25px !important; }
+  .hero-h1 { font-size: 30px !important; }
   .hero-body { font-size: 16px !important; }
   .hero-buttons { flex-direction: column !important; align-items: center !important; }
   .hero-btn { min-width: 240px !important; text-align: center !important; }
@@ -1517,7 +1517,7 @@ input:-webkit-autofill:active {
 /* ── Our Story Page ── */
 @media (max-width: 767px) {
   .os-hero-section { padding: 60px 20px 48px !important; }
-  .os-hero-h1 { font-size: 30px !important; }
+  .os-hero-h1 { font-size: 33px !important; }
   .os-photo-banner { height: 280px !important; }
   .os-narrative { padding: 48px 20px !important; }
   .os-narrative-h3 { font-size: 23px !important; }
@@ -1549,7 +1549,7 @@ input:-webkit-autofill:active {
 /* Our Story — small phone (≤480px). Higher specificity (.os-hero-section .os-hero-h1)
    so the Hero H1 override wins over the shared .hero-h1 rules regardless of order. */
 @media (max-width: 480px) {
-  .os-hero-section .os-hero-h1 { font-size: 25px !important; }
+  .os-hero-section .os-hero-h1 { font-size: 30px !important; }
   .os-narrative-h3 { font-size: 21px !important; }
   .tl2-month-text { font-size: 15px !important; }
   /* Timeline — small phone */
@@ -1683,7 +1683,7 @@ input:-webkit-autofill:active {
   /* SMALL PHONE: section padding — 25px horizontal gives ≈325px cards at 375px viewport */
   .site-section { padding: 36px 25px !important; }
   /* SMALL PHONE: hero adjustments */
-  .hero-h1 { font-size: 25px !important; }
+  .hero-h1 { font-size: 30px !important; }
   .hero-buttons { flex-direction: column !important; align-items: center !important; }
   .hero-btn { min-width: 240px !important; text-align: center !important; }
   /* SMALL PHONE: stats ticker */
@@ -1713,7 +1713,7 @@ input:-webkit-autofill:active {
   .tl2-image-ph.active { height: 250px !important; }
   .tl2-body { font-size: 14px !important; }
   .narrative-drop-cap::first-letter { font-size: 40px !important; }
-  .os-hero-section .os-hero-h1 { font-size: 20px !important; }
+  .os-hero-section .os-hero-h1 { font-size: 28px !important; }
 }
 
 /* ── Mobile Navigation Fix ── */
@@ -3298,7 +3298,7 @@ input:-webkit-autofill:active {
   .wg-card-desc { font-size: 14px !important; }
   .ma-card-desc { font-size: 14px !important; }
   .gi-card-desc { font-size: 14px !important; }
-  .hero-h1 { font-size: 20px !important; }
+  .hero-h1 { font-size: 28px !important; }
   main h2 { font-size: 20px !important; }
   .eyebrow { font-size: 13px !important; }
   .ip-section-heading { font-size: 20px !important; }
