@@ -8,7 +8,7 @@ export default function LeadershipQuote({ lang }: LeadershipQuoteProps) {
   const q = t[lang].quote
 
   return (
-    <section className="leadership-quote-section" style={{ background: '#0A1128', padding: '80px 28px' }}>
+    <section className="leadership-quote-section" style={{ background: '#0A1128', padding: '70px 28px' }}>
       <div style={{ maxWidth: '780px', margin: '0 auto', textAlign: 'center' }}>
 
         <div style={{ color: '#D4AF37', fontSize: '64px', fontFamily: 'Georgia, serif', lineHeight: 0.8, marginBottom: '12px', opacity: 0.5 }}>

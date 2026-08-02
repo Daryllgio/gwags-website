@@ -9,7 +9,7 @@ export default function WhatWeAre({ lang }: WhatWeAreProps) {
   const w = t[lang].whatWeAre
 
   return (
-    <section className="site-section" style={{ background: '#fff', padding: '80px 28px' }}>
+    <section className="site-section" style={{ background: '#fff', padding: '70px 28px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'start' }} className="whatweare-grid">
 
         <div>

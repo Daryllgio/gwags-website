@@ -22,7 +22,7 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
   }
 
   return (
-    <section className="site-section" style={{ background: '#ffffff', padding: '80px 28px' }}>
+    <section className="site-section" style={{ background: '#ffffff', padding: '70px 28px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', marginBottom: '14px' }}>
           {w.eyebrow}
