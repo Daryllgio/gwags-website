@@ -3412,14 +3412,14 @@ input:-webkit-autofill:active {
   .ma-img-ph  { height: 235px !important; }
 }
 
-/* ── Initiative card image heights: 1201px–1249px ── */
-@media (min-width: 1201px) and (max-width: 1249px) {
-  .ini-img-ph { height: 235px !important; }
+/* ── Initiative card image heights: 1201px–1350px ── */
+@media (min-width: 1201px) and (max-width: 1350px) {
+  .ini-img-ph { height: 240px !important; }
 }
 
-/* ── Initiative card image heights: 1250px and above ── */
-@media (min-width: 1250px) {
-  .ini-img-ph { height: 250px !important; }
+/* ── Initiative card image heights: 1351px and above ── */
+@media (min-width: 1351px) {
+  .ini-img-ph { height: 260px !important; }
 }
 
 /* ── How We Work: match homepage initiatives layout at 1025px–1280px (4 columns) ── */
