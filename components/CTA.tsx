@@ -9,7 +9,7 @@ export default function CTA({ lang }: CTAProps) {
   const c = t[lang].cta
 
   return (
-    <section className="cta-section" style={{ background: '#0F1E3D', padding: '96px 28px', textAlign: 'center' }}>
+    <section className="cta-section" style={{ background: '#0F1E3D', padding: '72px 28px', textAlign: 'center' }}>
       <div style={{ maxWidth: '600px', margin: '0 auto' }}>
         <h2 className="cta-h2" style={{ color: '#fff', fontSize: '34px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.25, marginBottom: '20px' }}>
           {c.h2}
