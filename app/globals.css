@@ -3479,21 +3479,21 @@ input:-webkit-autofill:active {
 /* ── Our Initiatives (homepage) grid: single continuous rule, 768px–1400px+.
    Replaces the old flat-breakpoint max-width rules (820px at 768-1024px,
    clamp(790,...,840) at 1025-1300px, unconstrained 1200px parent above 1300px)
-   with linear scaling: 650px at 768px viewport → 1300px at 1400px viewport,
-   flat at 1300px beyond that. minmax(0, 1fr) lets columns shrink to fit instead
+   with linear scaling: 650px at 768px viewport → 1000px at 1400px viewport,
+   flat at 1000px beyond that. minmax(0, 1fr) lets columns shrink to fit instead
    of overflowing on intrinsic content width. */
 @media (min-width: 768px) {
   #initiatives .initiatives-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 28px !important;
-    max-width: clamp(650px, calc(650px + (1300 - 650) * ((100vw - 768px) / (1400 - 768))), 1300px) !important;
+    max-width: clamp(650px, calc(650px + (1000 - 650) * ((100vw - 768px) / (1400 - 768))), 1000px) !important;
     margin: 0 auto !important;
   }
 }
 
 /* Card width now tracks the grid automatically; only cap the upper bound. */
 #initiatives .initiative-card {
-  max-width: 600px !important;
+  max-width: 500px !important;
 }
 
 /* ── Our Story photo banner: smooth height growth across breakpoints ── */
