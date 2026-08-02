@@ -3526,7 +3526,7 @@ input:-webkit-autofill:active {
 @media (min-width: 540px) and (max-width: 767px)   { .os-photo-banner { height: 340px !important; } }
 @media (min-width: 768px) and (max-width: 1023px)  { .os-photo-banner { height: clamp(445px, calc(50.98vw + 53.47px), 575px) !important; } }
 @media (min-width: 1024px) and (max-width: 1200px) { .os-photo-banner { height: clamp(575px, calc(85.23vw - 297.73px), 725px) !important; } }
-@media (min-width: 1201px) and (max-width: 1349px) { .os-photo-banner { height: clamp(725px, calc(60.81vw - 5.34px), 815px) !important; } }
+@media (min-width: 1201px) and (max-width: 1349px) { .os-photo-banner { height: 810px !important; } }
 @media (min-width: 1350px)                         { .os-photo-banner { height: 820px !important; } }
 
 /* ══════════════════════════════════════════════════════════════
