@@ -1713,7 +1713,7 @@ input:-webkit-autofill:active {
   .tl2-image-ph.active { height: 250px !important; }
   .tl2-body { font-size: 14px !important; }
   .narrative-drop-cap::first-letter { font-size: 40px !important; }
-  .os-hero-section .os-hero-h1 { font-size: 28px !important; }
+  .os-hero-section .os-hero-h1 { font-size: 25px !important; }
 }
 
 /* ── Mobile Navigation Fix ── */
