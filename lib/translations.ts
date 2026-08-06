@@ -711,7 +711,7 @@ export const t = {
       dropdowns: {
         about: {
           heading: 'À propos de nous',
-          subHeading: 'À propos de l\'institution Gwags Global Impact',
+          subHeading: "À propos de Gwags Institution d'Impact Global",
           description: 'En savoir plus sur nos origines, notre mission, notre fonctionnement et les personnes qui font Gwags.',
           links: [
             { label: 'Notre histoire', href: '/about/our-story' },
@@ -792,7 +792,7 @@ export const t = {
       text: 'Les défis auxquels nos sociétés font face sont trop interconnectés pour qu\'une seule organisation puisse les résoudre seule. Gwags existe pour construire l\'infrastructure qui rend l\'action collective possible afin que les organisations engagées dans le changement peuvent le faire avec les ressources, le soutien et le réseau qu\'elles méritent.',
       name: 'Giovanny Bikak Mbal',
       role: 'Président du Conseil d\'administration',
-      roleOrg: 'Gwags Global Impact Institution',
+      roleOrg: "Gwags Institution d'Impact Global",
     },
     ourStory: {
       eyebrow: 'NOTRE HISTOIRE',
@@ -1360,7 +1360,7 @@ export const t = {
       title: "Conditions d'utilisation",
       updated: 'Dernière mise à jour : juillet 2026',
       sections: [
-        { heading: '1. Introduction', body: ["Les présentes conditions d'utilisation (« Conditions ») constituent un accord entre vous (l'« utilisateur ») et Gwags Global Impact Institution (« Gwags », « nous », « notre », « nos ») régissant votre utilisation de ce site web. En accédant au site ou en l'utilisant, vous acceptez d'être lié par ces Conditions. Si vous n'êtes pas d'accord, veuillez ne pas utiliser le site."] },
+        { heading: '1. Introduction', body: ["Les présentes conditions d'utilisation (« Conditions ») constituent un accord entre vous (l'« utilisateur ») et Gwags Institution d'Impact Global (« Gwags », « nous », « notre », « nos ») régissant votre utilisation de ce site web. En accédant au site ou en l'utilisant, vous acceptez d'être lié par ces Conditions. Si vous n'êtes pas d'accord, veuillez ne pas utiliser le site."] },
         { heading: '2. Éligibilité', body: ["Vous devez être âgé d'au moins 18 ans ou avoir atteint l'âge de la majorité dans votre juridiction pour utiliser ce site. Si vous utilisez le site au nom d'une organisation, vous déclarez être autorisé à accepter ces Conditions au nom de cette organisation."] },
         { heading: '3. Utilisation du site', body: ["Nous vous accordons une licence limitée, non exclusive et non transférable pour accéder au site à des fins personnelles et non commerciales. Vous ne pouvez pas : détourner le site, perturber son fonctionnement, télécharger du contenu nuisible ou malveillant, enfreindre des droits de propriété intellectuelle, utiliser le site à des fins illégales ou tenter d'accéder sans autorisation à une quelconque partie du site."] },
         { heading: '4. Propriété intellectuelle', body: ["Tout le contenu du site, y compris les textes, graphiques, logos et images, est la propriété de Gwags ou de ses concédants de licence et est protégé par les lois sur la propriété intellectuelle. Vous ne pouvez pas reproduire, distribuer ou créer des œuvres dérivées de ce contenu sans notre consentement écrit préalable."] },
@@ -1370,7 +1370,7 @@ export const t = {
         { heading: '8. Exclusion de garanties', body: ["Le site et son contenu sont fournis « tels quels » et « selon disponibilité », sans garantie d'aucune sorte, expresse ou implicite. Gwags ne garantit pas que le site sera exempt d'erreurs, sécurisé ou ininterrompu."] },
         { heading: '9. Limitation de responsabilité', body: ["Dans toute la mesure permise par la loi, Gwags ne pourra être tenu responsable de tout dommage indirect, accessoire ou consécutif résultant de votre utilisation du site."] },
         { heading: '10. Modifications des présentes Conditions', body: ["Gwags peut mettre à jour ces Conditions à tout moment. Votre utilisation continue du site après la publication des modifications constitue une acceptation des Conditions mises à jour."] },
-        { heading: '11. Droit applicable', body: ["Les présentes Conditions sont régies par les lois des juridictions dans lesquelles Gwags Global Impact Institution est constituée (les États-Unis et le Cameroun), sans égard aux principes de conflit de lois."] },
+        { heading: '11. Droit applicable', body: ["Les présentes Conditions sont régies par les lois des juridictions dans lesquelles Gwags Institution d'Impact Global est constituée (les États-Unis et le Cameroun), sans égard aux principes de conflit de lois."] },
         { heading: '12. Contact', body: ['Pour toute question concernant ces Conditions, contactez-nous à contact@gwags.org.'] },
       ],
     },
@@ -1378,7 +1378,7 @@ export const t = {
       title: 'Politique de confidentialité',
       updated: 'Dernière mise à jour : juillet 2026',
       sections: [
-        { heading: '1. Introduction', body: ["Gwags Global Impact Institution (« Gwags », « nous », « notre », « nos ») s'engage à protéger votre vie privée. La présente politique explique quelles données personnelles nous collectons, comment nous les utilisons et vos droits concernant vos données."] },
+        { heading: '1. Introduction', body: ["Gwags Institution d'Impact Global (« Gwags », « nous », « notre », « nos ») s'engage à protéger votre vie privée. La présente politique explique quelles données personnelles nous collectons, comment nous les utilisons et vos droits concernant vos données."] },
         { heading: '2. Données que nous collectons', body: [
           { term: 'Données que vous fournissez', desc: "Lorsque vous soumettez un formulaire de contact, un formulaire de partenariat ou effectuez un don, nous collectons des informations telles que votre nom, votre adresse e-mail, votre numéro de téléphone, votre pays, les détails de votre organisation et tout message que vous incluez." },
           { term: 'Données de paiement', desc: "Lorsque vous faites un don, les informations de paiement sont collectées et traitées directement par Stripe, notre processeur de paiement. Nous ne stockons pas les détails complets de votre carte." },
