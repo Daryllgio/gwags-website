@@ -73,14 +73,14 @@ export default function Footer({ lang }: FooterProps) {
         </div>
 
         <div style={{ borderTop: '0.5px solid rgba(255,255,255,0.06)', paddingTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
-          <span className="footer-copy" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px' }}>
+          <span className="footer-copy" style={{ color: '#ffffff', fontSize: '16px' }}>
             {f.copy}
           </span>
           <div style={{ display: 'flex', gap: '20px' }}>
             {/* TODO: Create this page */}
-            <Link href="/privacy" className="footer-privacy-terms" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', textDecoration: 'none' }}>{f.privacy}</Link>
+            <Link href="/privacy" className="footer-privacy-terms" style={{ color: '#ffffff', fontSize: '16px', textDecoration: 'none' }}>{f.privacy}</Link>
             {/* TODO: Create this page */}
-            <Link href="/terms" className="footer-privacy-terms" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', textDecoration: 'none' }}>{f.terms}</Link>
+            <Link href="/terms" className="footer-privacy-terms" style={{ color: '#ffffff', fontSize: '16px', textDecoration: 'none' }}>{f.terms}</Link>
           </div>
         </div>
 
