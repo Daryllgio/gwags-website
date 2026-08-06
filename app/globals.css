@@ -235,7 +235,7 @@ main > footer {
   .hero-h1 { font-size: 35px !important; }
 }
 @media (max-width: 767px) {
-  .hero-h1 { font-size: 33px !important; }
+  .hero-h1 { font-size: 32px !important; }
 }
 @media (max-width: 480px) {
   .hero-h1 { font-size: 30px !important; }
@@ -1616,6 +1616,7 @@ input:-webkit-autofill:active {
   .more-about-grid { gap: 28px !important; margin: 0 20px !important; }
   .getinvolved-grid { row-gap: 30px !important; column-gap: 15px !important; margin: 0 20px !important; }
   /* TABLET: How We Work sections reduce padding */
+  .hww-hero-h1 { font-size: 35px !important; }
   .hww-hero-text { padding: 60px 60px !important; }
   .hww-init-strip { padding: 60px 32px !important; }
   .hww-coordination-section { padding: 60px 60px !important; }
@@ -3299,6 +3300,7 @@ input:-webkit-autofill:active {
   .ma-card-desc { font-size: 14px !important; }
   .gi-card-desc { font-size: 14px !important; }
   .hero-h1 { font-size: 25px !important; }
+  .hww-hero-h1 { font-size: 25px !important; }
   main h2 { font-size: 20px !important; }
   .eyebrow { font-size: 13px !important; }
   .ip-section-heading { font-size: 20px !important; }
