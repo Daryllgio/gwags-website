@@ -104,15 +104,15 @@ const initiativeImagePlaceholders = [
 function InitiativeStrip({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.initiatives
   return (
-    <section className="hww-init-strip" style={{ background: '#ffffff', padding: '55px 80px' }}>
+    <section className="hww-init-strip" style={{ background: '#ffffff', padding: '60px 28px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
       <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 16px 0' }}>
         {p.eyebrow}
       </p>
-      <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '30px', fontWeight: 400, margin: '0 0 40px 0', lineHeight: 1.25 }}>
+      <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '30px', fontWeight: 400, margin: '0 0 14px 0', lineHeight: 1.25, maxWidth: '500px' }}>
         {p.h2}
       </h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }} className="initiatives-grid">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }} className="initiatives-grid">
         {p.items.map((item, i) => (
             <div key={i} className="initiative-card" style={{ display: 'flex', flexDirection: 'column' }}>
               <Link href={item.href} style={{ display: 'block', textDecoration: 'none' }}>

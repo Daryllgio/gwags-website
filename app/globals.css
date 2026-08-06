@@ -1250,7 +1250,7 @@ input:-webkit-autofill:active {
 
   .hww-hero-text { padding: 60px 20px !important; }
   .hww-hero-h1 { font-size: 30px !important; }
-  .hww-init-strip { padding: 17px 28px 48px !important; }
+  .hww-init-strip { padding: 48px 28px !important; }
   .hww-coordination-section { padding: 60px 20px !important; }
   .hww-working-with-section { padding: 60px 20px !important; }
 
@@ -1617,7 +1617,7 @@ input:-webkit-autofill:active {
   .getinvolved-grid { row-gap: 30px !important; column-gap: 15px !important; margin: 0 20px !important; }
   /* TABLET: How We Work sections reduce padding */
   .hww-hero-text { padding: 60px 60px !important; }
-  .hww-init-strip { padding: 60px 60px !important; }
+  .hww-init-strip { padding: 60px 32px !important; }
   .hww-coordination-section { padding: 60px 60px !important; }
   .hww-working-with-section { padding: 60px 60px !important; }
   /* TABLET: Split sections match all other sections at 60px horizontal */
@@ -3345,33 +3345,19 @@ input:-webkit-autofill:active {
   }
 }
 
-/* ── How We Work — page-specific breakpoints ── */
-
-/* CHANGE 1: Galaxy Fold 5 (≤344px) — reduce init card image height on HWW page */
-@media (max-width: 344px) {
-  .hww-init-strip .ini-img-ph { height: 195px !important; }
-}
-
-/* HWW initiatives: 2-col at 768–1024px capped at 400px per card (preserved from the
-   shared .initiatives-grid rule removed from the homepage's tablet block) */
-@media (min-width: 768px) and (max-width: 1024px) {
+/* ── How We Work — page-specific breakpoints ──
+   Grid/card sizing now matches the homepage's #initiatives system exactly
+   (same clamp formula, gap, and card cap) instead of the old flat/legacy values. */
+@media (min-width: 768px) {
   .hww-init-strip .initiatives-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    max-width: 820px !important;
-    margin: 0 auto !important;
-    justify-content: center !important;
-  }
-  .hww-init-strip .initiative-card { max-width: 400px !important; }
-}
-
-/* HWW initiatives: 2-col at 1025–1300px matching homepage clamp */
-@media (min-width: 1025px) and (max-width: 1300px) {
-  .hww-init-strip .initiatives-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    max-width: clamp(790px, calc(100vw - 350px), 840px) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 28px !important;
+    max-width: clamp(650px, calc(650px + (900 - 650) * ((100vw - 768px) / (1400 - 768))), 900px) !important;
     margin: 0 auto !important;
   }
-  .hww-init-strip .initiative-card { max-width: none !important; }
+}
+.hww-init-strip .initiative-card {
+  max-width: 500px !important;
 }
 
 /* ── How We Work: hero section height at 851px–1024px (side-by-side layout) ──
@@ -3380,19 +3366,9 @@ input:-webkit-autofill:active {
   .hww-hero-text { padding: 29px 60px !important; }
 }
 
-/* ── How We Work: gap between Institutional Support and Our Initiatives ── */
-
-/* CHANGE 1: iPad Mini & iPad Air (768px–1023px) — reduce gap by 15px (120px → 105px).
-   Must come after comprehensive tablet block to win cascade. */
-@media (min-width: 768px) and (max-width: 850px) {
-  .hww-init-strip { padding: 0px 60px 60px !important; }
-}
-
-/* CHANGE 2: Surface Duo (481px–540px) — increase gap by 5px (37px → 42px).
-   Must come after max-width:768px block to win cascade. */
-@media (min-width: 481px) and (max-width: 540px) {
-  .hww-init-strip { padding-top: 22px !important; }
-}
+/* ── How We Work: gap between Institutional Support and Our Initiatives ──
+   Sub-range padding overrides removed so .hww-init-strip padding matches the
+   homepage's #initiatives section uniformly at every breakpoint. */
 
 /* ── Why Gwags: tablet 3+2 centered layout (768px–1024px) ── */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -3444,16 +3420,6 @@ input:-webkit-autofill:active {
 /* ── Initiative card image heights: 1351px and above ── */
 @media (min-width: 1351px) {
   .ini-img-ph { height: 260px !important; }
-}
-
-/* ── How We Work: match homepage initiatives layout at 1025px–1280px (4 columns) ── */
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .hww-init-strip .initiatives-grid {
-    grid-template-columns: repeat(4, 1fr) !important;
-    max-width: none !important;
-    margin: 0 12px !important;
-  }
-  .hww-init-strip .initiative-card { max-width: none !important; }
 }
 
 /* ── FIX 1: Why Gwags 3+2 centered on desktop (above 1024px) ── */
