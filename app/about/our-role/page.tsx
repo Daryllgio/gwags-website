@@ -93,20 +93,20 @@ function ConvictionsSection({ lang }: { lang: Lang }) {
         <p className="eyebrow" style={{ color: '#D4AF37', letterSpacing: '0.22em', margin: '0 0 14px 0' }}>
           {p.eyebrow}
         </p>
-        <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '30px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.25 }}>
+        <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '30px', fontWeight: 400, margin: '0 0 20px 0', lineHeight: 1.25 }}>
           {p.heading}
         </h2>
         {p.intro && (
-          <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.85, margin: '0 0 40px 0' }}>
+          <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.85, margin: '0 0 40px 0' }}>
             {p.intro}
           </p>
         )}
         {p.items.map((item, i) => (
           <div key={i}>
-            <h3 className="or-conviction-title" style={{ color: '#0A1128', fontSize: '19px', fontWeight: 600, marginTop: i === 0 ? '32px' : '40px', marginBottom: '16px', fontFamily: 'inherit' }}>
+            <h3 className="or-conviction-title" style={{ color: '#ffffff', fontSize: '19px', fontWeight: 600, marginTop: i === 0 ? '32px' : '40px', marginBottom: '16px', fontFamily: 'inherit' }}>
               {item.heading}
             </h3>
-            <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.85, margin: 0 }}>
+            <p className="body-text" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '18px', lineHeight: 1.85, margin: 0 }}>
               {item.body}
             </p>
           </div>
