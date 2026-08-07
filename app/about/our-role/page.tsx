@@ -151,10 +151,10 @@ function CTASection({ lang }: { lang: Lang }) {
   const p = t[lang].ourRole.cta
   return (
     <section className="or-cta">
-      <h2 style={{ color: '#0A1128', fontFamily: 'Georgia, serif', fontSize: '30px', fontWeight: 400, margin: '0 0 16px 0', lineHeight: 1.3 }}>
+      <h2 style={{ color: '#ffffff', fontFamily: 'Georgia, serif', fontSize: '30px', fontWeight: 400, margin: '0 0 16px 0', lineHeight: 1.3 }}>
         {p.h2}
       </h2>
-      <p className="body-text" style={{ color: 'rgba(10,17,40,0.65)', fontSize: '18px', maxWidth: '480px', margin: '0 auto 36px', lineHeight: 1.75 }}>
+      <p className="body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', maxWidth: '480px', margin: '0 auto 36px', lineHeight: 1.75 }}>
         {p.body}
       </p>
       <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>

@@ -1433,14 +1433,14 @@ input:-webkit-autofill:active {
 }
 
 .or-cta {
-  background: #D4AF37;
+  background: #0F1E3D;
   padding: 70px 28px;
   text-align: center;
 }
 
 .or-cta-btn-dark {
-  background: #0A1128;
-  color: #ffffff;
+  background: #D4AF37;
+  color: #0A1128;
   font-size: 15px;
   font-weight: 500;
   padding: 14px 32px;
@@ -1460,10 +1460,10 @@ input:-webkit-autofill:active {
 
 .or-cta-btn-outline {
   background: none;
-  color: #0A1128;
+  color: rgba(255,255,255,0.92);
   font-size: 15px;
   padding: 14px 32px;
-  border: 1.5px solid rgba(10,17,40,0.4);
+  border: 1.5px solid rgba(255,255,255,0.85);
   border-radius: 3px;
   cursor: pointer;
   transition: border-color 0.2s ease;
@@ -1473,7 +1473,7 @@ input:-webkit-autofill:active {
 }
 
 @media (hover: hover) {
-  .or-cta-btn-outline:hover { border-color: #0A1128; }
+  .or-cta-btn-outline:hover { border-color: #ffffff; }
 }
 
 @media (max-width: 767px) {
