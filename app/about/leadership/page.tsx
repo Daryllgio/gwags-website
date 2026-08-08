@@ -146,7 +146,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
       className="font-semibold uppercase mb-8 lp-section-title"
-      style={{ color: NAVY, fontSize: '30px', fontFamily: 'var(--font-heading-serif), Georgia, serif' }}
+      style={{ color: NAVY, fontSize: '28px', fontFamily: 'var(--font-heading-serif), Georgia, serif' }}
     >
       {children}
     </h2>
@@ -263,7 +263,7 @@ export default function LeadershipPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-10 lp-header">
           <h1
             className="font-semibold uppercase leading-tight lp-heading"
-            style={{ color: NAVY, fontSize: '37px', fontFamily: 'var(--font-heading-serif), Georgia, serif' }}
+            style={{ color: NAVY, fontSize: '35px', fontFamily: 'var(--font-heading-serif), Georgia, serif' }}
           >
             {lang === 'fr' ? 'Gouvernance' : 'Leadership'}
           </h1>
@@ -318,7 +318,7 @@ export default function LeadershipPage() {
 
         {/* No results */}
         {noResults && (
-          <p className="text-center py-20" style={{ color: NAVY, fontSize: '18px' }}>No results found.</p>
+          <p className="text-center py-20 lp-no-results" style={{ color: NAVY, fontSize: '18px' }}>No results found.</p>
         )}
 
         {/* Governance Board */}
