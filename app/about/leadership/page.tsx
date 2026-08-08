@@ -22,14 +22,14 @@ const governanceBoard = [
   {
     name: 'Winner Noa',
     role: 'Board Member',
-    roleFr: 'Membre du Conseil',
+    roleFr: "Membre du Conseil d'Administration",
     bio:  "Noa contributes strategic oversight and partnership expertise to the Gwags governance board.",
     href: '/about/leadership/noa-winner',
   },
   {
     name: 'Vianney Tanifor',
     role: 'Board Member',
-    roleFr: 'Membre du Conseil',
+    roleFr: "Membre du Conseil d'Administration",
     bio:  'Vianney brings expertise in organizational development and community engagement to the Gwags governance board.',
     href: '/about/leadership/vianney-tanifor',
   },
@@ -89,8 +89,8 @@ function PersonIcon() {
   )
 }
 
-function PersonCard({ name, role, bio, href, showBio = true, showLink = true, linkedinUrl }: {
-  name: string; role: string; bio?: string; href?: string; showBio?: boolean; showLink?: boolean; linkedinUrl?: string
+function PersonCard({ name, role, bio, href, showBio = true, showLink = true, linkedinUrl, lang = 'en' }: {
+  name: string; role: string; bio?: string; href?: string; showBio?: boolean; showLink?: boolean; linkedinUrl?: string; lang?: 'en' | 'fr'
 }) {
   return (
     <div className="lp-person-card">
@@ -135,7 +135,7 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true, li
           className="mt-3 inline-block view-profile-link"
           style={{ color: NAVY, fontSize: '15.5px', fontWeight: 500, textDecoration: 'none' }}
         >
-          View profile
+          {lang === 'fr' ? 'Voir le profil' : 'View profile'}
         </a>
       )}
     </div>
@@ -156,6 +156,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 /* Custom dropdown */
 function translateFilterLabel(opt: string, lang: 'en' | 'fr') {
   if (lang !== 'fr') return opt
+  if (opt === 'All') return 'Tous'
   if (opt === 'Governance Board') return "Conseil d'Administration"
   if (opt === 'Executive Team') return 'Comité Exécutif'
   return opt
@@ -264,7 +265,7 @@ export default function LeadershipPage() {
             className="font-semibold uppercase leading-tight lp-heading"
             style={{ color: NAVY, fontSize: '37px', fontFamily: 'var(--font-heading-serif), Georgia, serif' }}
           >
-            {lang === 'fr' ? 'Direction' : 'Leadership'}
+            {lang === 'fr' ? 'Gouvernance' : 'Leadership'}
           </h1>
           <p className="leading-relaxed self-center lp-subtitle" style={{ color: NAVY, fontSize: '18px' }}>
             {lang === 'fr'
@@ -279,7 +280,7 @@ export default function LeadershipPage() {
           <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-end', flex: '0 0 auto', maxWidth: '420px', width: '100%' }}>
             <input
               type="text"
-              placeholder="Search by name or role..."
+              placeholder={lang === 'fr' ? 'Rechercher par nom ou par poste…' : 'Search by name or role...'}
               value={search}
               onChange={e => setSearch(e.target.value)}
               className="lp-search-input"
@@ -308,7 +309,7 @@ export default function LeadershipPage() {
                 flexShrink: 0,
               }}
             >
-              Search
+              {lang === 'fr' ? 'Rechercher' : 'Search'}
             </button>
           </div>
 
@@ -325,7 +326,7 @@ export default function LeadershipPage() {
           <section className="mb-16">
             <SectionTitle>{lang === 'fr' ? "Conseil d'Administration" : 'Governance Board'}</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredBoard.map(p => <PersonCard key={p.href} {...p} role={lang === 'fr' && (p as { roleFr?: string }).roleFr ? (p as { roleFr?: string }).roleFr! : p.role} bio={lang === 'fr' && (p as { bioFr?: string }).bioFr ? (p as { bioFr?: string }).bioFr! : p.bio} />)}
+              {filteredBoard.map(p => <PersonCard key={p.href} {...p} role={lang === 'fr' && (p as { roleFr?: string }).roleFr ? (p as { roleFr?: string }).roleFr! : p.role} bio={lang === 'fr' && (p as { bioFr?: string }).bioFr ? (p as { bioFr?: string }).bioFr! : p.bio} lang={lang} />)}
             </div>
           </section>
         )}

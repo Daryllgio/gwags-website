@@ -22,14 +22,14 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
   'vianney-tanifor': {
     name: 'Vianney Tanifor',
     role: 'Board Member',
-    roleFr: 'Membre du Conseil',
+    roleFr: "Membre du Conseil d'Administration",
     bio: "Vianney brings expertise in organizational development and community engagement to the Gwags governance board. His experience supports the foundation's mission to build credible, well-structured institutions.",
     linkedin: 'https://www.linkedin.com/in/vianney-tanifor-9a76b0280/',
   },
   'noa-winner': {
     name: 'Winner Noa',
     role: 'Board Member',
-    roleFr: 'Membre du Conseil',
+    roleFr: "Membre du Conseil d'Administration",
     bio: "Noa contributes strategic oversight and partnership expertise to the Gwags governance board, supporting the institution's long-term institutional and operational direction.",
     linkedin: 'https://www.linkedin.com/in/winnernoa/',
   },

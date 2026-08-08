@@ -717,7 +717,7 @@ export const t = {
             { label: 'Notre histoire', href: '/about/our-story' },
             { label: 'Comment nous travaillons', href: '/about/how-we-work' },
             { label: 'Notre rôle', href: '/about/our-role' },
-            { label: 'Direction', href: '/about/leadership' },
+            { label: 'Gouvernance', href: '/about/leadership' },
           ],
         },
         work: {
