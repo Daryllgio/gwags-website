@@ -22,21 +22,23 @@ const governanceBoard = [
   {
     name: 'Winner Noa',
     role: 'Board Member',
+    roleFr: 'Membre du Conseil',
     bio:  "Noa contributes strategic oversight and partnership expertise to the Gwags governance board.",
     href: '/about/leadership/noa-winner',
   },
   {
     name: 'Vianney Tanifor',
     role: 'Board Member',
+    roleFr: 'Membre du Conseil',
     bio:  'Vianney brings expertise in organizational development and community engagement to the Gwags governance board.',
     href: '/about/leadership/vianney-tanifor',
   },
 ]
 
 const executiveTeam = [
-  { name: '[Name Placeholder]', role: 'Director of Operations',                    bio: "[Name] manages the internal processes and daily operations that enable the organization's mission.",        bioFr: "[Nom] gère les processus internes et les opérations quotidiennes qui soutiennent la mission de l'organisation.", linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */ },
-  { name: '[Name Placeholder]', role: 'Director of Communications', bio: "[Name] oversees Gwags's communications strategy and public presence across all platforms.",                   bioFr: "[Nom] supervise la stratégie de communication de Gwags et sa présence publique sur toutes les plateformes.", linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */ },
-  { name: '[Name Placeholder]', role: 'Director of Development',         bio: "[Name] leads Gwags's fundraising strategy, including grant acquisition and institutional funding.",                   bioFr: "[Nom] dirige la stratégie de collecte de fonds de Gwags, incluant l'acquisition de subventions et le financement institutionnel.", linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */ },
+  { name: '[Name Placeholder]', role: 'Director of Operations',      roleFr: 'Directeur des Opérations',      bio: "[Name] manages the internal processes and daily operations that enable the organization's mission.",        bioFr: "[Nom] gère les processus internes et les opérations quotidiennes qui soutiennent la mission de l'organisation.", linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */ },
+  { name: '[Name Placeholder]', role: 'Director of Communications',  roleFr: 'Directeur de la Communication', bio: "[Name] oversees Gwags's communications strategy and public presence across all platforms.",                   bioFr: "[Nom] supervise la stratégie de communication de Gwags et sa présence publique sur toutes les plateformes.", linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */ },
+  { name: '[Name Placeholder]', role: 'Director of Development',     roleFr: 'Directeur du Développement',    bio: "[Name] leads Gwags's fundraising strategy, including grant acquisition and institutional funding.",                   bioFr: "[Nom] dirige la stratégie de collecte de fonds de Gwags, incluant l'acquisition de subventions et le financement institutionnel.", linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */ },
 ]
 
 const historicalLeadershipData = {
@@ -152,7 +154,14 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 /* Custom dropdown */
-function TeamDropdown({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+function translateFilterLabel(opt: string, lang: 'en' | 'fr') {
+  if (lang !== 'fr') return opt
+  if (opt === 'Governance Board') return "Conseil d'Administration"
+  if (opt === 'Executive Team') return 'Comité Exécutif'
+  return opt
+}
+
+function TeamDropdown({ value, onChange, lang }: { value: string; onChange: (v: string) => void; lang: 'en' | 'fr' }) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -176,7 +185,7 @@ function TeamDropdown({ value, onChange }: { value: string; onChange: (v: string
           fontSize: '16px',
         }}
       >
-        <span>{value}</span>
+        <span>{translateFilterLabel(value, lang)}</span>
         <svg
           width="12" height="12" viewBox="0 0 12 12" fill="none"
           style={{ marginLeft: '8px', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}
@@ -201,7 +210,7 @@ function TeamDropdown({ value, onChange }: { value: string; onChange: (v: string
                 background: opt === value ? '#f9f7f0' : '#ffffff',
               }}
             >
-              {opt === 'All' ? 'All' : opt}
+              {translateFilterLabel(opt, lang)}
             </button>
           ))}
         </div>
@@ -255,7 +264,7 @@ export default function LeadershipPage() {
             className="font-semibold uppercase leading-tight lp-heading"
             style={{ color: NAVY, fontSize: '37px', fontFamily: 'var(--font-heading-serif), Georgia, serif' }}
           >
-            Leadership
+            {lang === 'fr' ? 'Direction' : 'Leadership'}
           </h1>
           <p className="leading-relaxed self-center lp-subtitle" style={{ color: NAVY, fontSize: '18px' }}>
             {lang === 'fr'
@@ -303,7 +312,7 @@ export default function LeadershipPage() {
             </button>
           </div>
 
-          <TeamDropdown value={teamFilter} onChange={setTeamFilter} />
+          <TeamDropdown value={teamFilter} onChange={setTeamFilter} lang={lang} />
         </div>
 
         {/* No results */}
@@ -314,7 +323,7 @@ export default function LeadershipPage() {
         {/* Governance Board */}
         {showBoard && (
           <section className="mb-16">
-            <SectionTitle>Governance Board</SectionTitle>
+            <SectionTitle>{lang === 'fr' ? "Conseil d'Administration" : 'Governance Board'}</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredBoard.map(p => <PersonCard key={p.href} {...p} role={lang === 'fr' && (p as { roleFr?: string }).roleFr ? (p as { roleFr?: string }).roleFr! : p.role} bio={lang === 'fr' && (p as { bioFr?: string }).bioFr ? (p as { bioFr?: string }).bioFr! : p.bio} />)}
             </div>
@@ -324,9 +333,9 @@ export default function LeadershipPage() {
         {/* Executive Team */}
         {showExec && (
           <section className="mb-16">
-            <SectionTitle>Executive Team</SectionTitle>
+            <SectionTitle>{lang === 'fr' ? 'Comité Exécutif' : 'Executive Team'}</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredExec.map((p, i) => <PersonCard key={i} {...p} showLink={false} bio={lang === 'fr' && (p as { bioFr?: string }).bioFr ? (p as { bioFr?: string }).bioFr! : p.bio} />)}
+              {filteredExec.map((p, i) => <PersonCard key={i} {...p} showLink={false} role={lang === 'fr' && (p as { roleFr?: string }).roleFr ? (p as { roleFr?: string }).roleFr! : p.role} bio={lang === 'fr' && (p as { bioFr?: string }).bioFr ? (p as { bioFr?: string }).bioFr! : p.bio} />)}
             </div>
           </section>
         )}
@@ -334,7 +343,7 @@ export default function LeadershipPage() {
         {/* Historical Leadership */}
         {showHistorical && (
           <section className="mb-16">
-            <SectionTitle>Historical Leadership</SectionTitle>
+            <SectionTitle>{lang === 'fr' ? 'Anciens Dirigeants' : 'Historical Leadership'}</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredHistorical.map(p => (
                 <PersonCard key={p.name} name={p.name} role={p.role} bio={p.bio} href={p.href} showLink={false} linkedinUrl={p.linkedinUrl} />

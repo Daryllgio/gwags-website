@@ -22,12 +22,14 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
   'vianney-tanifor': {
     name: 'Vianney Tanifor',
     role: 'Board Member',
+    roleFr: 'Membre du Conseil',
     bio: "Vianney brings expertise in organizational development and community engagement to the Gwags governance board. His experience supports the foundation's mission to build credible, well-structured institutions.",
     linkedin: 'https://www.linkedin.com/in/vianney-tanifor-9a76b0280/',
   },
   'noa-winner': {
     name: 'Winner Noa',
     role: 'Board Member',
+    roleFr: 'Membre du Conseil',
     bio: "Noa contributes strategic oversight and partnership expertise to the Gwags governance board, supporting the institution's long-term institutional and operational direction.",
     linkedin: 'https://www.linkedin.com/in/winnernoa/',
   },
@@ -46,18 +48,21 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
   'placeholder-director-operations': {
     name: '[Name Placeholder]',
     role: 'Director of Operations',
+    roleFr: 'Directeur des Opérations',
     bio: 'The Director of Operations manages the internal processes and organizational infrastructure that enable Gwags to operate effectively across its programs and partnerships.',
     linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
   },
   'placeholder-director-communications': {
     name: '[Name Placeholder]',
     role: 'Director of Communications',
+    roleFr: 'Directeur de la Communication',
     bio: "The Director of Communications leads Gwags's external engagement, institutional communications, and the development of strategic partnerships.",
     linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
   },
   'placeholder-director-resource': {
     name: '[Name Placeholder]',
     role: 'Director of Development',
+    roleFr: 'Directeur du Développement',
     bio: "The Director of Development leads Gwags's efforts to secure funding, build donor relationships, and develop the financial pathways needed to sustain and grow the institution's work.",
     linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
   },
