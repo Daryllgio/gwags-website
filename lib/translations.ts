@@ -706,7 +706,7 @@ export const t = {
       about: 'À propos de nous',
       initiatives: 'Nos Actions',
       network: 'Réseau',
-      getInvolved: 'S\'impliquer',
+      getInvolved: 'S\'engager',
       contact: 'Contact',
       dropdowns: {
         about: {
