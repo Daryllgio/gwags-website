@@ -214,7 +214,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
               <div style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', fontWeight: 600, letterSpacing: '0.06em', marginBottom: '12px' }}>
                 {d.about.heading}
               </div>
-              <p style={{ color: '#fff', fontSize: '17px', lineHeight: 1.7, margin: '0', whiteSpace: 'pre-line' }}>
+              <p style={{ color: '#fff', fontSize: '17px', lineHeight: 1.7, margin: '0' }}>
                 {d.about.description}
               </p>
             </div>
@@ -367,7 +367,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
 
                   {/* Description — 1px smaller than items */}
                   <p className="mob-desc mob-large-gap" style={{ color: '#fff', lineHeight: 1.6, margin: '0', padding: '10px 20px 0', marginBottom: '40px' }}>
-                    {d.about.description.replace(/\n/g, ' ')}
+                    {d.about.description}
                   </p>
 
                   {/* "About the Gwags GII" — sub-heading, same size as items, bold */}
