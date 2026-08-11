@@ -2384,11 +2384,6 @@ input:-webkit-autofill:active {
   max-width:             1000px;
 }
 
-/* Profile: large tablet and desktop (1025px and up) */
-@media (min-width: 1025px) {
-  .pp-img-col { max-width: 670px; }
-}
-
 /* Profile: Nest Hub Max / large tablet (1025px–1280px) */
 @media (min-width: 1025px) and (max-width: 1280px) {
   .pp-img-col        { margin-left: 245px !important; }
