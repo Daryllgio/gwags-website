@@ -2140,7 +2140,7 @@ input:-webkit-autofill:active {
 }
 
 .pp-img-col {
-  margin-left:   280px;
+  margin-left:   275px;
   padding-top:   60px;
   padding-right: 60px;
   max-width:     680px;
@@ -2385,7 +2385,7 @@ input:-webkit-autofill:active {
 
 /* Profile: Nest Hub Max / large tablet (1025px–1280px) */
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .pp-img-col        { margin-left: 250px !important; }
+  .pp-img-col        { margin-left: 245px !important; }
 }
 
 /* Profile: iPad (768px–1024px) — includes iPad Mini at exactly 768px */
