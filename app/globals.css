@@ -2261,8 +2261,8 @@ input:-webkit-autofill:active {
 }
 
 @media (hover: hover) {
-  .pp-connect:hover .pp-connect-circle { width: 33px; height: 33px; }
-  .pp-connect:hover .pp-connect-in     { font-size: 18px; }
+  .pp-connect-circle:hover              { width: 33px; height: 33px; }
+  .pp-connect-circle:hover .pp-connect-in { font-size: 18px; }
 }
 
 .pp-bio {
