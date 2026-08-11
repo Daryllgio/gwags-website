@@ -162,7 +162,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         {/* ── More About ── */}
         <div className="pp-foundation-col">
 
-          <h2 className="pp-ma-heading">More About the Foundation</h2>
+          <h2 className="pp-ma-heading">{m.heading}</h2>
 
           <div className="pp-ma-grid">
             {m.cards.map((card, i) => (

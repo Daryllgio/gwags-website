@@ -828,7 +828,7 @@ export const t = {
       ],
     },
     getInvolved: {
-      eyebrow: 'S\'IMPLIQUER',
+      eyebrow: 'S\'ENGAGER',
       h2: 'Trois façons de s\'engager avec Gwags.',
       body: '',
       items: [
@@ -839,7 +839,7 @@ export const t = {
     },
     getInvolvedPage: {
       hero: {
-        heading: 'S\'IMPLIQUER',
+        heading: 'S\'ENGAGER',
         desc: 'Il y a une place pour vous. Gwags travaille avec des organisations et des bailleurs de fonds engagés à construire quelque chose qui dure. Que ce soit par l\'affiliation, le partenariat ou le financement, il y a un chemin pour vous.',
       },
       partner: {
@@ -963,7 +963,7 @@ export const t = {
         { label: 'Comment nous travaillons', href: '/about/how-we-work' },
         { label: 'Notre rôle', href: '/about/our-role' },
       ]},
-      col2: { heading: 'S\'IMPLIQUER', links: [
+      col2: { heading: 'S\'ENGAGER', links: [
         { label: 'Devenir partenaire', href: '/get-involved' },
         { label: 'Soutenir notre travail', href: '/get-involved' },
         { label: 'Contact', href: '/get-involved' },
@@ -1126,7 +1126,7 @@ export const t = {
       closing: {
         h2: "L'histoire s'écrit encore.",
         body: "Gwags est une institution en mouvement. Si vous souhaitez faire partie de ce qui vient ensuite, il y a une place pour vous dans ce réseau.",
-        btn: "S'impliquer",
+        btn: "S'engager",
       },
     },
     ourRole: {
