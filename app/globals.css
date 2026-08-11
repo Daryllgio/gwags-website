@@ -3323,6 +3323,8 @@ input:-webkit-autofill:active {
   .lp-search-btn    { font-size: 13px !important; }
   .lp-no-results    { font-size: 14px !important; }
   .pp-ma-heading { font-size: 20px !important; }
+  .pp-card-desc  { font-size: 14px !important; }
+  .pp-learn-more { font-size: 14px !important; }
   .cta-h2 { font-size: 20px !important; }
 }
 
