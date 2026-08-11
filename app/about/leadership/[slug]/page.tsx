@@ -140,7 +140,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
               <p  className="pp-role">{lang === 'fr' && person.roleFr ? person.roleFr : person.role}</p>
             </div>
             <div className="pp-connect">
-              <span className="pp-connect-label">Connect</span>
+              <span className="pp-connect-label">{lang === 'fr' ? 'Suivre' : 'Connect'}</span>
               <a
                 href={person.linkedin}
                 target="_blank"
