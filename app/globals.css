@@ -2249,6 +2249,7 @@ input:-webkit-autofill:active {
   justify-content: center;
   color:           #0A1128;
   flex-shrink:     0;
+  text-decoration: none;
   transition:      width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
