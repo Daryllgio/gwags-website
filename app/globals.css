@@ -2883,6 +2883,8 @@ input:-webkit-autofill:active {
   border-radius: 8px;
   background: #e8e8e8;
   margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
 }
 
 .ip-winner-name {
