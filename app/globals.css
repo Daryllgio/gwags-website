@@ -2815,14 +2815,14 @@ input:-webkit-autofill:active {
 
 .ip-carousel-card {
   flex-shrink: 0;
-  width: 310px;
+  width: 320px;
   text-decoration: none;
   cursor: pointer;
 }
 
 .ip-carousel-card-img {
-  width: 310px;
-  height: 235px;
+  width: 320px;
+  aspect-ratio: 4 / 5;
   border-radius: 8px;
   background: #E5E4E0;
   position: relative;
@@ -2879,7 +2879,7 @@ input:-webkit-autofill:active {
 
 .ip-winner-img {
   width: 100%;
-  height: 250px;
+  aspect-ratio: 4 / 5;
   border-radius: 8px;
   background: #e8e8e8;
   margin-bottom: 14px;
@@ -2937,8 +2937,8 @@ input:-webkit-autofill:active {
   .ip-stats-label { font-size: 19px !important; }
   .ip-apply-section { padding: 48px 40px; }
   .ip-carousel-section { padding: 60px 40px; }
-  .ip-carousel-card { width: 300px !important; }
-  .ip-carousel-card-img { width: 300px !important; height: 230px !important; }
+  .ip-carousel-card { width: 310px !important; }
+  .ip-carousel-card-img { width: 310px !important; }
   .ip-batch-hero { padding: 60px 40px 40px; }
   .ip-batch-title { font-size: 28px !important; }
   .ip-batch-subtitle { font-size: 21px !important; }
@@ -2946,7 +2946,6 @@ input:-webkit-autofill:active {
   .ip-batch-grid { gap: 32px; }
   .ip-winner-card { flex-basis: calc((100% - 32px) / 2); }
   .ip-winner-img { max-width: 400px; }
-  .ip-winner-img { width: 100%; height: 250px; }
   .ip-winner-name { font-size: 17px !important; }
   .ip-winner-detail { font-size: 16px !important; }
 }
@@ -2983,8 +2982,8 @@ input:-webkit-autofill:active {
   .ip-apply-btn { font-size: 15px !important; }
   .ip-apply-section { padding: 40px 24px; }
   .ip-carousel-section { padding: 48px 24px; }
-  .ip-carousel-card { width: 290px; }
-  .ip-carousel-card-img { width: 290px; height: 220px; }
+  .ip-carousel-card { width: 300px; }
+  .ip-carousel-card-img { width: 300px; }
   .ip-batch-arrows { display: none !important; }
   .ip-batch-hero { padding: 48px 24px 32px; }
   .ip-batch-title { font-size: 24px !important; }
@@ -2992,7 +2991,6 @@ input:-webkit-autofill:active {
   .ip-batch-grid-section { padding: 0 24px 48px; }
   .ip-batch-grid { gap: 32px; max-width: 350px; margin: 0 auto; }
   .ip-winner-card { flex-basis: 100%; }
-  .ip-winner-img { width: 100%; height: 230px; }
   .ip-winner-name { font-size: 16px !important; }
   .ip-winner-detail { font-size: 15px !important; }
 }
@@ -3031,8 +3029,8 @@ input:-webkit-autofill:active {
 }
 
 @media (min-width: 411px) and (max-width: 480px) {
-  .ip-carousel-card { width: 280px; }
-  .ip-carousel-card-img { width: 280px; height: 215px; }
+  .ip-carousel-card { width: 290px; }
+  .ip-carousel-card-img { width: 290px; }
 }
 
 /* ── Initiative/Event hero image: smooth clamp() heights (matches Our Role hero) ── */
@@ -3047,9 +3045,8 @@ input:-webkit-autofill:active {
 
 @media (max-width: 410px) {
   .ip-batch-grid { max-width: 310px !important; }
-  .ip-winner-img { height: 210px !important; }
-  .ip-carousel-card { width: 270px !important; }
-  .ip-carousel-card-img { width: 270px !important; height: 205px !important; }
+  .ip-carousel-card { width: 280px !important; }
+  .ip-carousel-card-img { width: 280px !important; }
 }
 
 /* ── Our Role hero image: smooth clamp() heights ── */
