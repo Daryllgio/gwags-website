@@ -2822,7 +2822,7 @@ input:-webkit-autofill:active {
 
 .ip-carousel-card-img {
   width: 320px;
-  aspect-ratio: 320 / 345;
+  aspect-ratio: 320 / 340;
   border-radius: 8px;
   background: #E5E4E0;
   position: relative;
