@@ -21,6 +21,7 @@ export interface CarouselEvent {
   label: string
   href: string
   items: string[]
+  imagePosition?: string
 }
 
 export interface StatItem {
@@ -296,7 +297,7 @@ function EventTrack({ event, onImageClick }: { event: CarouselEvent; onImageClic
         {event.items.map((src, i) => (
           <div key={i} className="ip-carousel-card" onClick={() => onImageClick(i)}>
             <div className="ip-carousel-card-img">
-              {src && <Image src={src} alt={event.label} fill style={{ objectFit: 'cover' }} />}
+              {src && <Image src={src} alt={event.label} fill style={{ objectFit: 'cover', objectPosition: event.imagePosition ?? 'center' }} />}
             </div>
           </div>
         ))}

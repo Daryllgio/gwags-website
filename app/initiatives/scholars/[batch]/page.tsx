@@ -34,7 +34,7 @@ export default function BatchPage({ params }: { params: { batch: string } }) {
             {batch.scholars.map((scholar, i) => (
               <div key={i} className="ip-winner-card">
                 <div className="ip-winner-img">
-                  <Image src={scholar.image} alt={scholar.name} fill style={{ objectFit: 'cover' }} />
+                  <Image src={scholar.image} alt={scholar.name} fill style={{ objectFit: 'cover', objectPosition: 'top' }} />
                 </div>
                 <p className="ip-winner-name">{scholar.name}</p>
                 <p className="ip-winner-detail"><span className="ip-winner-label">{batch.universityLabel}:</span> {scholar.university}</p>
