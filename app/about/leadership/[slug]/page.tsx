@@ -11,7 +11,7 @@ const GOLD = '#D4AF37'
 
 /* ── People data ─────────────────────────────────────────────────────────── */
 
-const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio: string; bioFr?: string; linkedin: string; image?: string }> = {
+const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio: string; bioFr?: string; linkedin?: string; image?: string }> = {
   'daryll-giovanny-bikak-mbal': {
     name: 'Giovanny Bikak Mbal',
     role: 'Chair, Board Member',
@@ -58,7 +58,6 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     role: 'Director of Communications',
     roleFr: 'Directeur de la Communication',
     bio: "The Director of Communications leads Gwags's external engagement, institutional communications, and the development of strategic partnerships.",
-    linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
     image: '/images/leadership/ornella-ebolo.jpg',
   },
   'placeholder-director-resource': {
@@ -145,17 +144,19 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
               <h1 className="pp-name">{person.name}</h1>
               <p  className="pp-role">{lang === 'fr' && person.roleFr ? person.roleFr : person.role}</p>
             </div>
-            <div className="pp-connect">
-              <span className="pp-connect-label">{lang === 'fr' ? 'Suivre' : 'Connect'}</span>
-              <a
-                href={person.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pp-connect-circle"
-              >
-                <span className="pp-connect-in">in</span>
-              </a>
-            </div>
+            {person.linkedin && (
+              <div className="pp-connect">
+                <span className="pp-connect-label">{lang === 'fr' ? 'Suivre' : 'Connect'}</span>
+                <a
+                  href={person.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pp-connect-circle"
+                >
+                  <span className="pp-connect-in">in</span>
+                </a>
+              </div>
+            )}
           </div>
 
           <p className="pp-bio">{lang === 'fr' && person.bioFr ? person.bioFr : person.bio}</p>
