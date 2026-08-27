@@ -1,5 +1,6 @@
 'use client'
 import { useState, useMemo, useRef, useEffect } from 'react'
+import Image from 'next/image'
 import { useLang } from '@/lib/useLang'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -37,7 +38,7 @@ const governanceBoard = [
 
 const executiveTeam = [
   { name: '[Name Placeholder]', role: 'Director of Operations',      roleFr: 'Directeur des Opérations',      bio: "[Name] manages the internal processes and daily operations that enable the organization's mission.",        bioFr: "[Nom] gère les processus internes et les opérations quotidiennes qui soutiennent la mission de l'organisation.", linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */ },
-  { name: '[Name Placeholder]', role: 'Director of Communications',  roleFr: 'Directeur de la Communication', bio: "[Name] oversees Gwags's communications strategy and public presence across all platforms.",                   bioFr: "[Nom] supervise la stratégie de communication de Gwags et sa présence publique sur toutes les plateformes.", linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */ },
+  { name: 'Ornella Ebolo', role: 'Director of Communications',  roleFr: 'Directeur de la Communication', bio: "[Name] oversees Gwags's communications strategy and public presence across all platforms.",                   bioFr: "[Nom] supervise la stratégie de communication de Gwags et sa présence publique sur toutes les plateformes.", linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */, image: '/images/leadership/ornella-ebolo.jpg' },
   { name: '[Name Placeholder]', role: 'Director of Development',     roleFr: 'Directeur du Développement',    bio: "[Name] leads Gwags's fundraising strategy, including grant acquisition and institutional funding.",                   bioFr: "[Nom] dirige la stratégie de collecte de fonds de Gwags, incluant l'acquisition de subventions et le financement institutionnel.", linkedinUrl: 'https://linkedin.com/in/placeholder' /* UPDATE: Replace with actual LinkedIn URL */ },
 ]
 
@@ -89,17 +90,21 @@ function PersonIcon() {
   )
 }
 
-function PersonCard({ name, role, bio, href, showBio = true, showLink = true, linkedinUrl, lang = 'en' }: {
-  name: string; role: string; bio?: string; href?: string; showBio?: boolean; showLink?: boolean; linkedinUrl?: string; lang?: 'en' | 'fr'
+function PersonCard({ name, role, bio, href, showBio = true, showLink = true, linkedinUrl, lang = 'en', image }: {
+  name: string; role: string; bio?: string; href?: string; showBio?: boolean; showLink?: boolean; linkedinUrl?: string; lang?: 'en' | 'fr'; image?: string
 }) {
   return (
     <div className="lp-person-card">
-      {/* Photo placeholder */}
+      {/* Photo */}
       <div
         className="lp-person-img w-full rounded-xl flex items-center justify-center"
-        style={{ background: '#e8e8e8' }}
+        style={{ background: '#e8e8e8', position: 'relative', overflow: 'hidden' }}
       >
-        <PersonIcon />
+        {image ? (
+          <Image src={image} alt={name} fill style={{ objectFit: 'cover', objectPosition: 'top' }} />
+        ) : (
+          <PersonIcon />
+        )}
       </div>
 
       {/* Name */}

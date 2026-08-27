@@ -1,6 +1,7 @@
 'use client'
 import { useLang } from '@/lib/useLang'
 import Link from 'next/link'
+import Image from 'next/image'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { t } from '@/lib/translations'
@@ -10,7 +11,7 @@ const GOLD = '#D4AF37'
 
 /* ── People data ─────────────────────────────────────────────────────────── */
 
-const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio: string; bioFr?: string; linkedin: string }> = {
+const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio: string; bioFr?: string; linkedin: string; image?: string }> = {
   'daryll-giovanny-bikak-mbal': {
     name: 'Giovanny Bikak Mbal',
     role: 'Chair, Board Member',
@@ -53,11 +54,12 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
   },
   'placeholder-director-communications': {
-    name: '[Name Placeholder]',
+    name: 'Ornella Ebolo',
     role: 'Director of Communications',
     roleFr: 'Directeur de la Communication',
     bio: "The Director of Communications leads Gwags's external engagement, institutional communications, and the development of strategic partnerships.",
     linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
+    image: '/images/leadership/ornella-ebolo.jpg',
   },
   'placeholder-director-resource': {
     name: '[Name Placeholder]',
@@ -130,8 +132,12 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
         {/* ── Photo · Name · Role · Connect · Bio ── */}
         <div className="pp-img-col">
 
-          <div className="pp-photo">
-            <PersonSilhouette size={80} />
+          <div className="pp-photo" style={{ position: 'relative', overflow: 'hidden' }}>
+            {person.image ? (
+              <Image src={person.image} alt={person.name} fill style={{ objectFit: 'cover', objectPosition: 'top' }} />
+            ) : (
+              <PersonSilhouette size={80} />
+            )}
           </div>
 
           <div className="pp-header-block">
