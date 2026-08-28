@@ -33,6 +33,7 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     roleFr: "Membre du Conseil d'Administration",
     bio: "Noa contributes strategic oversight and partnership expertise to the Gwags governance board, supporting the institution's long-term institutional and operational direction.",
     linkedin: 'https://www.linkedin.com/in/winnernoa/',
+    image: '/images/leadership/winner-noa.jpg',
   },
   'placeholder-executive-director': {
     name: '[Name Placeholder]',

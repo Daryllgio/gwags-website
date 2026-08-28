@@ -26,6 +26,7 @@ const governanceBoard = [
     roleFr: "Membre du Conseil d'Administration",
     bio:  "Noa contributes strategic oversight and partnership expertise to the Gwags governance board.",
     href: '/about/leadership/noa-winner',
+    image: '/images/leadership/winner-noa.jpg',
   },
   {
     name: 'Vianney Tanifor',
