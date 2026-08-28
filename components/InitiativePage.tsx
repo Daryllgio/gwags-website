@@ -275,20 +275,20 @@ function EventTrack({ event, onImageClick }: { event: CarouselEvent; onImageClic
             className="ip-chevron-btn"
             onClick={atStart ? undefined : scrollLeft}
             aria-label="Scroll left"
-            style={{ opacity: atStart ? 0.3 : 1, cursor: atStart ? 'default' : 'pointer' }}
+            style={{ cursor: atStart ? 'default' : 'pointer' }}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M15 19 L9 12 L15 5" />
+              <path d="M15 19 L9 12 L15 5 M9 12 L20 12" />
             </svg>
           </button>
           <button
             className="ip-chevron-btn"
             onClick={atEnd ? undefined : scrollRight}
             aria-label="Scroll right"
-            style={{ opacity: atEnd ? 0.3 : 1, cursor: atEnd ? 'default' : 'pointer' }}
+            style={{ cursor: atEnd ? 'default' : 'pointer' }}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 5 L15 12 L9 19" />
+              <path d="M9 5 L15 12 L9 19 M15 12 L4 12" />
             </svg>
           </button>
         </div>

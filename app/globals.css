@@ -2797,6 +2797,11 @@ input:-webkit-autofill:active {
   height: 28px;
 }
 
+.ip-chevron-btn:active {
+  outline: 2px dashed currentColor;
+  outline-offset: 2px;
+}
+
 /* Carousel track — full width, no flanking arrows */
 .ip-carousel-track {
   display: flex;
@@ -3103,6 +3108,11 @@ input:-webkit-autofill:active {
   align-items: center;
   justify-content: center;
   z-index: 1;
+}
+
+.lb-arrow:active {
+  outline: 2px dashed currentColor;
+  outline-offset: 2px;
 }
 
 .lb-arrow-left { left: 24px; }

@@ -103,10 +103,10 @@ export default function Lightbox({ count, images, openIndex, onClose }: Lightbox
         className="lb-arrow lb-arrow-left"
         onClick={e => { e.stopPropagation(); navigate(-1) }}
         aria-label="Previous"
-        style={{ opacity: atStart ? 0.3 : 1, cursor: atStart ? 'default' : 'pointer' }}
+        style={{ cursor: atStart ? 'default' : 'pointer' }}
       >
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M15 19 L9 12 L15 5" />
+          <path d="M15 19 L9 12 L15 5 M9 12 L20 12" />
         </svg>
       </button>
       <div
@@ -125,10 +125,10 @@ export default function Lightbox({ count, images, openIndex, onClose }: Lightbox
         className="lb-arrow lb-arrow-right"
         onClick={e => { e.stopPropagation(); navigate(1) }}
         aria-label="Next"
-        style={{ opacity: atEnd ? 0.3 : 1, cursor: atEnd ? 'default' : 'pointer' }}
+        style={{ cursor: atEnd ? 'default' : 'pointer' }}
       >
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9 5 L15 12 L9 19" />
+          <path d="M9 5 L15 12 L9 19 M15 12 L4 12" />
         </svg>
       </button>
       <span className="lb-counter">{current + 1} / {count}</span>
