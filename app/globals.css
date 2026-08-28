@@ -1478,7 +1478,7 @@ input:-webkit-autofill:active {
 
 @media (max-width: 767px) {
   .or-hero {
-    padding: 60px 24px 56px;
+    padding: 48px 24px 48px;
   }
 
   .or-hero-h1 {
@@ -1676,7 +1676,7 @@ input:-webkit-autofill:active {
   .hww-step-title { font-size: 16px !important; }
   .hww-card-title { font-size: 15px !important; }
   /* SMALL PHONE: Our Role */
-  .or-hero { padding-bottom: 48px !important; }
+  .or-hero { padding: 36px 20px 36px !important; }
   .or-hero-img { margin-top: 28px !important; }
   .or-hero-h1 { font-size: 28px !important; }
   .or-vm-main { font-size: 16px !important; }
