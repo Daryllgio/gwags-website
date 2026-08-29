@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import Image from 'next/image'
+import { useArrowPress } from '@/lib/useArrowPress'
 
 interface LightboxProps {
   count: number
@@ -60,10 +61,11 @@ export default function Lightbox({ count, images, openIndex, onClose }: Lightbox
     return () => window.removeEventListener('keydown', onKey)
   }, [openIndex, navigate, onClose])
 
-  if (openIndex === null) return null
-
   const atStart = current === 0
   const atEnd = current === count - 1
+  const { pressed, setPressed, leftRef, rightRef } = useArrowPress(atStart, atEnd)
+
+  if (openIndex === null) return null
 
   function handleTouchStart(e: React.TouchEvent) {
     touchStartX.current = e.touches[0].clientX
@@ -100,13 +102,14 @@ export default function Lightbox({ count, images, openIndex, onClose }: Lightbox
         </svg>
       </button>
       <button
-        className="lb-arrow lb-arrow-left"
-        onClick={e => { e.stopPropagation(); navigate(-1) }}
+        ref={leftRef}
+        className={`lb-arrow lb-arrow-left${pressed === 'left' ? ' lb-arrow-pressed' : ''}`}
+        onClick={e => { e.stopPropagation(); if (!atStart) { navigate(-1); setPressed('left') } }}
         aria-label="Previous"
-        style={{ cursor: atStart ? 'default' : 'pointer' }}
+        style={{ opacity: atStart ? 0.3 : 1, cursor: atStart ? 'default' : 'pointer' }}
       >
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M15 19 L9 12 L15 5 M9 12 L20 12" />
+          <path d="M12.5 19 L6.5 12 L12.5 5 M6.5 12 L17.5 12" />
         </svg>
       </button>
       <div
@@ -122,13 +125,14 @@ export default function Lightbox({ count, images, openIndex, onClose }: Lightbox
         </div>
       </div>
       <button
-        className="lb-arrow lb-arrow-right"
-        onClick={e => { e.stopPropagation(); navigate(1) }}
+        ref={rightRef}
+        className={`lb-arrow lb-arrow-right${pressed === 'right' ? ' lb-arrow-pressed' : ''}`}
+        onClick={e => { e.stopPropagation(); if (!atEnd) { navigate(1); setPressed('right') } }}
         aria-label="Next"
-        style={{ cursor: atEnd ? 'default' : 'pointer' }}
+        style={{ opacity: atEnd ? 0.3 : 1, cursor: atEnd ? 'default' : 'pointer' }}
       >
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9 5 L15 12 L9 19 M15 12 L4 12" />
+          <path d="M11.5 5 L17.5 12 L11.5 19 M17.5 12 L6.5 12" />
         </svg>
       </button>
       <span className="lb-counter">{current + 1} / {count}</span>

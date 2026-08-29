@@ -2797,7 +2797,7 @@ input:-webkit-autofill:active {
   height: 28px;
 }
 
-.ip-chevron-btn:active {
+.ip-chevron-btn-pressed {
   outline: 2px dashed currentColor;
   outline-offset: 2px;
 }
@@ -3129,7 +3129,7 @@ input:-webkit-autofill:active {
   z-index: 1;
 }
 
-.lb-arrow:active {
+.lb-arrow-pressed {
   outline: 2px dashed currentColor;
   outline-offset: 2px;
 }

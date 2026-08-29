@@ -6,6 +6,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Lightbox from '@/components/Lightbox'
 import { Lang } from '@/lib/translations'
+import { useArrowPress } from '@/lib/useArrowPress'
 
 interface RichBodyItem {
   label: string
@@ -240,6 +241,7 @@ function EventTrack({ event, onImageClick }: { event: CarouselEvent; onImageClic
   const trackRef = useRef<HTMLDivElement>(null)
   const [atStart, setAtStart] = useState(true)
   const [atEnd, setAtEnd] = useState(false)
+  const { pressed, setPressed, leftRef, rightRef } = useArrowPress(atStart, atEnd)
 
   useEffect(() => {
     const el = trackRef.current
@@ -276,23 +278,25 @@ function EventTrack({ event, onImageClick }: { event: CarouselEvent; onImageClic
         </Link>
         <div className="ip-batch-arrows">
           <button
-            className="ip-chevron-btn"
-            onClick={atStart ? undefined : scrollLeft}
+            ref={leftRef}
+            className={`ip-chevron-btn${pressed === 'left' ? ' ip-chevron-btn-pressed' : ''}`}
+            onClick={atStart ? undefined : () => { scrollLeft(); setPressed('left') }}
             aria-label="Scroll left"
-            style={{ cursor: atStart ? 'default' : 'pointer' }}
+            style={{ opacity: atStart ? 0.3 : 1, cursor: atStart ? 'default' : 'pointer' }}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M15 19 L9 12 L15 5 M9 12 L20 12" />
+              <path d="M12.5 19 L6.5 12 L12.5 5 M6.5 12 L17.5 12" />
             </svg>
           </button>
           <button
-            className="ip-chevron-btn"
-            onClick={atEnd ? undefined : scrollRight}
+            ref={rightRef}
+            className={`ip-chevron-btn${pressed === 'right' ? ' ip-chevron-btn-pressed' : ''}`}
+            onClick={atEnd ? undefined : () => { scrollRight(); setPressed('right') }}
             aria-label="Scroll right"
-            style={{ cursor: atEnd ? 'default' : 'pointer' }}
+            style={{ opacity: atEnd ? 0.3 : 1, cursor: atEnd ? 'default' : 'pointer' }}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 5 L15 12 L9 19 M15 12 L4 12" />
+              <path d="M11.5 5 L17.5 12 L11.5 19 M17.5 12 L6.5 12" />
             </svg>
           </button>
         </div>
