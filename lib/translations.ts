@@ -406,7 +406,7 @@ export const t = {
             year: '2026', month: 'AUGUST',
             title: 'First Health Outreach Campaign',
             body: "In partnership with the Cameroon English Speaking Medical Students' Association (CAMESA), Gwags supported a week-long health outreach campaign in the Nguti Health District, located in Cameroon's South West Region. The campaign deployed 120 medical personnel to provide free consultations, surgeries, screenings, and health education to over 1,500 people across the district.",
-            photo: 'Photo: health campaign team',
+            photo: '/images/health-outreach/nguti-health-campaign/2T8A0741.jpg',
           },
           {
             year: '2026', month: 'SEPTEMBER',
@@ -636,6 +636,7 @@ export const t = {
       hero: {
         name: 'Health Outreach Program',
         goal: 'To bring free healthcare services and medical education to underserved communities through structured field campaigns.',
+        image: '/images/health-outreach/nguti-health-campaign/2T8A0659_copy.jpg',
       },
       sections: [
         {
@@ -1135,7 +1136,7 @@ export const t = {
             year: '2026', month: 'AOÛT',
             title: 'Première Campagne de Santé Communautaire',
             body: "En partenariat avec la Cameroon English Speaking Medical Students' Association (CAMESA), Gwags a soutenu une campagne de sensibilisation sanitaire d'une semaine dans le district de santé de Nguti, situé dans la région du Sud-Ouest du Cameroun. La campagne a déployé 120 personnels médicaux pour fournir des consultations gratuites, des chirurgies, des dépistages et une éducation sanitaire à plus de 1 500 personnes à travers le district.",
-            photo: 'Photo: campagne de santé',
+            photo: '/images/health-outreach/nguti-health-campaign/2T8A0741.jpg',
           },
           {
             year: '2026', month: 'SEPTEMBRE',
@@ -1365,6 +1366,7 @@ export const t = {
       hero: {
         name: 'Programme de Santé Communautaire',
         goal: 'Apporter des services de santé gratuits et une éducation médicale aux communautés mal desservies à travers des campagnes de terrain structurées.',
+        image: '/images/health-outreach/nguti-health-campaign/2T8A0659_copy.jpg',
       },
       sections: [
         {

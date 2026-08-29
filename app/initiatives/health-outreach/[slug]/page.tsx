@@ -7,6 +7,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
   'nguti-health-campaign': {
     en: {
       heroTitle: 'Nguti Health Campaign',
+      heroImage: '/images/health-outreach/nguti-health-campaign/2T8A1050_copy.jpg',
       sections: [
         {
           heading: 'About the campaign',
@@ -29,10 +30,28 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           { value: '120+', label: 'medical professionals deployed' },
         ],
       },
-      gallery: { heading: 'Gallery', count: 12 },
+      gallery: {
+        heading: 'Gallery',
+        count: 12,
+        images: [
+          '/images/health-outreach/nguti-health-campaign/2T8A0574.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0491.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0729_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0763_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0368_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0860_1__copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0596_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0636.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A1032_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0406_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0624.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0982_copy.jpg',
+        ],
+      },
     },
     fr: {
       heroTitle: 'Campagne de Santé de Nguti',
+      heroImage: '/images/health-outreach/nguti-health-campaign/2T8A1050_copy.jpg',
       sections: [
         {
           heading: 'À propos de la campagne',
@@ -55,7 +74,24 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           { value: '120+', label: 'professionnels de santé déployés' },
         ],
       },
-      gallery: { heading: 'Galerie', count: 12 },
+      gallery: {
+        heading: 'Galerie',
+        count: 12,
+        images: [
+          '/images/health-outreach/nguti-health-campaign/2T8A0574.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0491.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0729_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0763_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0368_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0860_1__copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0596_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0636.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A1032_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0406_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0624.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0982_copy.jpg',
+        ],
+      },
     },
   },
 }
