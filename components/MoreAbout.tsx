@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Lang, t } from '@/lib/translations'
 
 interface MoreAboutProps {
@@ -9,6 +10,12 @@ const imagePlaceholders = [
   'Photo: Our Story',
   'Photo: How We Work',
   'Photo: Our Network',
+]
+
+const cardImages: (string | undefined)[] = [
+  '/images/about/our-story.jpg',
+  undefined,
+  undefined,
 ]
 
 export default function MoreAbout({ lang }: MoreAboutProps) {
@@ -28,13 +35,14 @@ export default function MoreAbout({ lang }: MoreAboutProps) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '28px' }} className="more-about-grid">
           {m.cards.map((card, i) => (
             <div key={i} className="more-about-card">
-              {/* To replace with a real image: swap this div for
-                  <img src="/images/about/[name].jpg" alt="..." style={{ width: '100%', height: '260px', objectFit: 'cover' }} />
-                  or use Next.js <Image> with fill and a relative-positioned wrapper */}
-              <div className="ma-img-ph" style={{ height: '220px', width: '100%', background: '#F7F6F3', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '4px' }}>
-                <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '13px', letterSpacing: '0.1em' }}>
-                  {imagePlaceholders[i]}
-                </span>
+              <div className="ma-img-ph" style={{ height: '220px', width: '100%', background: '#F7F6F3', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '4px', position: 'relative', overflow: 'hidden' }}>
+                {cardImages[i] ? (
+                  <Image src={cardImages[i] as string} alt={card.title} fill style={{ objectFit: 'cover' }} />
+                ) : (
+                  <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '13px', letterSpacing: '0.1em' }}>
+                    {imagePlaceholders[i]}
+                  </span>
+                )}
               </div>
 
               <div className="ma-card-body" style={{ padding: '16px 0 24px 0' }}>
