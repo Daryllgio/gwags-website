@@ -584,7 +584,7 @@ export const t = {
       carousel: {
         heading: 'Funded Initiatives',
         events: [
-          { label: 'CAMESA Nguti Health Campaign', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: ['', '', '', '', '', ''] },
+          { label: 'CAMESA Nguti Health Campaign', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: ['', '', '', '', ''] },
         ],
       },
     },
@@ -660,7 +660,7 @@ export const t = {
       carousel: {
         heading: 'Past Campaigns',
         events: [
-          { label: 'Nguti Health Campaign', href: '/initiatives/health-outreach/nguti-health-campaign', items: ['', '', '', '', '', ''] },
+          { label: 'Nguti Health Campaign', href: '/initiatives/health-outreach/nguti-health-campaign', items: ['', '', '', '', ''] },
         ],
       },
     },
@@ -1314,7 +1314,7 @@ export const t = {
       carousel: {
         heading: 'Initiatives Financées',
         events: [
-          { label: 'Campagne de Santé CAMESA Nguti', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: ['', '', '', '', '', ''] },
+          { label: 'Campagne de Santé CAMESA Nguti', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: ['', '', '', '', ''] },
         ],
       },
     },
@@ -1390,7 +1390,7 @@ export const t = {
       carousel: {
         heading: 'Campagnes Passées',
         events: [
-          { label: 'Campagne de Santé de Nguti', href: '/initiatives/health-outreach/nguti-health-campaign', items: ['', '', '', '', '', ''] },
+          { label: 'Campagne de Santé de Nguti', href: '/initiatives/health-outreach/nguti-health-campaign', items: ['', '', '', '', ''] },
         ],
       },
     },
