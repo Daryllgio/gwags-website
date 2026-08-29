@@ -2820,18 +2820,29 @@ input:-webkit-autofill:active {
 
 .ip-carousel-card {
   flex-shrink: 0;
-  width: 320px;
+  width: 310px;
   text-decoration: none;
   cursor: pointer;
 }
 
 .ip-carousel-card-img {
-  width: 320px;
-  aspect-ratio: 320 / 340;
+  width: 310px;
+  height: 235px;
   border-radius: 8px;
   background: #E5E4E0;
   position: relative;
   overflow: hidden;
+}
+
+/* Scholars carousel only — do not apply these to .ip-carousel-card / .ip-carousel-card-img directly */
+.ip-carousel-card-scholars {
+  width: 320px;
+}
+
+.ip-carousel-card-img-scholars {
+  width: 320px;
+  height: auto;
+  aspect-ratio: 320 / 340;
 }
 
 /* ── Batch detail page ── */
@@ -2942,8 +2953,10 @@ input:-webkit-autofill:active {
   .ip-stats-label { font-size: 19px !important; }
   .ip-apply-section { padding: 48px 40px; }
   .ip-carousel-section { padding: 60px 40px; }
-  .ip-carousel-card { width: 310px !important; }
-  .ip-carousel-card-img { width: 310px !important; }
+  .ip-carousel-card { width: 300px !important; }
+  .ip-carousel-card-img { width: 300px !important; height: 230px !important; }
+  .ip-carousel-card-scholars { width: 310px !important; }
+  .ip-carousel-card-img-scholars { width: 310px !important; height: auto !important; }
   .ip-batch-hero { padding: 60px 40px 40px; }
   .ip-batch-title { font-size: 28px !important; }
   .ip-batch-subtitle { font-size: 21px !important; }
@@ -2987,8 +3000,10 @@ input:-webkit-autofill:active {
   .ip-apply-btn { font-size: 15px !important; }
   .ip-apply-section { padding: 40px 24px; }
   .ip-carousel-section { padding: 48px 24px; }
-  .ip-carousel-card { width: 300px; }
-  .ip-carousel-card-img { width: 300px; }
+  .ip-carousel-card { width: 290px; }
+  .ip-carousel-card-img { width: 290px; height: 220px; }
+  .ip-carousel-card-scholars { width: 300px; }
+  .ip-carousel-card-img-scholars { width: 300px; height: auto; }
   .ip-batch-arrows { display: none !important; }
   .ip-batch-hero { padding: 48px 24px 32px; }
   .ip-batch-title { font-size: 24px !important; }
@@ -3034,8 +3049,10 @@ input:-webkit-autofill:active {
 }
 
 @media (min-width: 411px) and (max-width: 480px) {
-  .ip-carousel-card { width: 290px; }
-  .ip-carousel-card-img { width: 290px; }
+  .ip-carousel-card { width: 280px; }
+  .ip-carousel-card-img { width: 280px; height: 215px; }
+  .ip-carousel-card-scholars { width: 290px; }
+  .ip-carousel-card-img-scholars { width: 290px; height: auto; }
 }
 
 /* ── Initiative/Event hero image: smooth clamp() heights (matches Our Role hero) ── */
@@ -3050,8 +3067,10 @@ input:-webkit-autofill:active {
 
 @media (max-width: 410px) {
   .ip-batch-grid { max-width: 310px !important; }
-  .ip-carousel-card { width: 280px !important; }
-  .ip-carousel-card-img { width: 280px !important; }
+  .ip-carousel-card { width: 270px !important; }
+  .ip-carousel-card-img { width: 270px !important; height: 205px !important; }
+  .ip-carousel-card-scholars { width: 280px !important; }
+  .ip-carousel-card-img-scholars { width: 280px !important; height: auto !important; }
 }
 
 /* ── Our Role hero image: smooth clamp() heights ── */

@@ -22,6 +22,10 @@ export interface CarouselEvent {
   href: string
   items: string[]
   imagePosition?: string
+  /** Opt-in style variant for this event's carousel cards, e.g. 'scholars'.
+   *  Appends `ip-carousel-card-{variant}` / `ip-carousel-card-img-{variant}`
+   *  so per-event sizing never leaks into the shared default classes. */
+  cardVariant?: string
 }
 
 export interface StatItem {
@@ -295,8 +299,12 @@ function EventTrack({ event, onImageClick }: { event: CarouselEvent; onImageClic
       </div>
       <div className="ip-carousel-track" ref={trackRef}>
         {event.items.map((src, i) => (
-          <div key={i} className="ip-carousel-card" onClick={() => onImageClick(i)}>
-            <div className="ip-carousel-card-img">
+          <div
+            key={i}
+            className={`ip-carousel-card${event.cardVariant ? ` ip-carousel-card-${event.cardVariant}` : ''}`}
+            onClick={() => onImageClick(i)}
+          >
+            <div className={`ip-carousel-card-img${event.cardVariant ? ` ip-carousel-card-img-${event.cardVariant}` : ''}`}>
               {src && <Image src={src} alt={event.label} fill style={{ objectFit: 'cover', objectPosition: event.imagePosition ?? 'center' }} />}
             </div>
           </div>

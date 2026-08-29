@@ -521,7 +521,7 @@ export const t = {
       carousel: {
         heading: 'Our Scholars',
         events: [
-          { label: '2026 Batch', href: '/initiatives/scholars/2026', imagePosition: 'top', items: [
+          { label: '2026 Batch', href: '/initiatives/scholars/2026', imagePosition: 'top', cardVariant: 'scholars', items: [
             '/images/scholars/scholar-01.jpg',
             '/images/scholars/scholar-02.jpg',
             '/images/scholars/scholar-03.jpg',
@@ -1250,7 +1250,7 @@ export const t = {
       carousel: {
         heading: 'Nos Boursiers',
         events: [
-          { label: 'Promotion 2026', href: '/initiatives/scholars/2026', imagePosition: 'top', items: [
+          { label: 'Promotion 2026', href: '/initiatives/scholars/2026', imagePosition: 'top', cardVariant: 'scholars', items: [
             '/images/scholars/scholar-01.jpg',
             '/images/scholars/scholar-02.jpg',
             '/images/scholars/scholar-03.jpg',
