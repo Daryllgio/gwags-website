@@ -39,12 +39,8 @@ function HeroSection({ lang }: { lang: Lang }) {
             {p.body}
           </p>
         </div>
-        {/* IMAGE: Replace the inner placeholder div with
-            <img src="/images/how-we-work-hero.jpg" alt="How We Work" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} /> */}
         <div className="hww-hero-img" style={{ position: 'relative', width: '100%' }}>
-          <div className="hww-hero-img-ph" style={{ position: 'absolute', inset: 0, background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px', letterSpacing: '0.12em' }}>Photo: How We Work</span>
-          </div>
+          <Image src="/images/general/IMG_4469.jpg" alt="How We Work" fill style={{ objectFit: 'cover', objectPosition: 'top' }} />
         </div>
       </div>
     </section>
