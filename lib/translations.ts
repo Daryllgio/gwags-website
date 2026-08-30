@@ -487,6 +487,7 @@ export const t = {
       hero: {
         name: 'Gwags Scholars Program',
         goal: 'To identify and invest in outstanding Cameroonian university students by providing financial support and professional development opportunities that prepare them for the transition into the workforce.',
+        image: '/images/scholars/program-cover.jpg',
       },
       sections: [
         {
@@ -1223,6 +1224,7 @@ export const t = {
       hero: {
         name: 'Programme Gwags Scholars',
         goal: 'Identifier et investir dans les étudiants universitaires camerounais exceptionnels en fournissant un soutien financier et des opportunités de développement professionnel qui les préparent à la transition vers le monde du travail.',
+        image: '/images/scholars/program-cover.jpg',
       },
       sections: [
         {
