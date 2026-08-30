@@ -95,9 +95,9 @@ function SplitSection({ lang }: { lang: Lang }) {
 
 /* ── Initiative Strip (cards match the homepage Initiatives design) ── */
 const initiativeImagePlaceholders = [
-  'Photo: Scholars Program',
+  '/images/scholars/program-cover.jpg',
   'Photo: Mbal Lekeaka Fund',
-  'Photo: Health Outreach',
+  '/images/health-outreach/nguti-health-campaign/2T8A0972_copy.jpg',
   '/images/ajong-foretia/coeur-de-jesus/DSC_1215.JPG',
 ]
 
