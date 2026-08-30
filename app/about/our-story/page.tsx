@@ -157,7 +157,7 @@ function TimelineSection({ lang }: { lang: Lang }) {
                       {entry.photo ? (
                         <div className={`tl2-image-ph${isActive ? ' active' : ''}`}>
                           {entry.photo.startsWith('/images/') ? (
-                            <Image src={entry.photo} alt={entry.title} fill style={{ objectFit: 'cover' }} />
+                            <Image src={entry.photo} alt={entry.title} fill style={{ objectFit: 'cover', transform: entry.photoZoom ? `scale(${entry.photoZoom})` : undefined }} />
                           ) : (
                             <span className="tl2-image-label">{entry.photo}</span>
                           )}

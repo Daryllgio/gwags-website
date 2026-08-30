@@ -377,12 +377,14 @@ export const t = {
             title: 'First orphanage visit',
             body: 'Four high school students in Douala, Cameroon, had to undertake a community service project as part of their academic program. They organized a visit to the Coeur de Jésus orphanage, where they spent time with the children, provided essential supplies, and witnessed firsthand the realities these children faced daily.',
             photo: '/images/ajong-foretia/coeur-de-jesus/DSC_1171.JPG',
+            photoZoom: 0.9,
           },
           {
             year: '2022', month: 'DECEMBER',
             title: 'Partnership with Codam Technologies',
             body: 'The team organized a second visit to the Ami de Jésus orphanage, this time partnering with a Cameroonian organization called Codam Technologies to provide hands-on technology exposure to the children. The children were introduced to 3D printing, introductory coding, and digital tools for the first time.',
             photo: '/images/ajong-foretia/codam-tech/654202991_18087992795267535_1459227050299309829_n.jpg',
+            photoZoom: 0.9,
           },
           {
             year: '2025', month: 'MAY',
@@ -1114,12 +1116,14 @@ export const t = {
             title: "Première visite à l'orphelinat",
             body: "Quatre lycéens à Douala, au Cameroun, devaient réaliser un projet de service communautaire dans le cadre de leur programme scolaire. Ils ont organisé une visite à l'orphelinat Coeur de Jésus, où ils ont passé du temps avec les enfants, fourni des fournitures essentielles et constaté de première main les réalités auxquelles ces enfants faisaient face au quotidien.",
             photo: '/images/ajong-foretia/coeur-de-jesus/DSC_1171.JPG',
+            photoZoom: 0.9,
           },
           {
             year: '2022', month: 'DÉCEMBRE',
             title: 'Partenariat avec Codam Technologies',
             body: "L'équipe a organisé une deuxième visite à l'orphelinat Ami de Jésus, cette fois en partenariat avec une organisation camerounaise appelée Codam Technologies pour offrir aux enfants une exposition pratique à la technologie. Les enfants ont été initiés à l'impression 3D, à l'initiation au codage et aux outils numériques pour la première fois.",
             photo: '/images/ajong-foretia/codam-tech/654202991_18087992795267535_1459227050299309829_n.jpg',
+            photoZoom: 0.9,
           },
           {
             year: '2025', month: 'MAI',
