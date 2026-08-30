@@ -1277,13 +1277,13 @@ input:-webkit-autofill:active {
    its height), so a single object-position can't fit everywhere -- each
    value below is calibrated to minimize head/feet cropping for its
    specific box size (computed from the actual rendered dimensions). */
-.hww-hero-photo { object-position: center 78%; } /* default: tablet (851px+) and desktop */
-@media (max-width: 349px)                          { .hww-hero-photo { object-position: center 82%; } }
-@media (min-width: 350px) and (max-width: 410px)   { .hww-hero-photo { object-position: center 80%; } }
-@media (min-width: 411px) and (max-width: 480px)   { .hww-hero-photo { object-position: center 78%; } }
-@media (min-width: 481px) and (max-width: 539px)   { .hww-hero-photo { object-position: center 76%; } }
-@media (min-width: 540px) and (max-width: 767px)   { .hww-hero-photo { object-position: center 74%; } }
-@media (min-width: 768px) and (max-width: 850px)   { .hww-hero-photo { object-position: center 78%; } }
+.hww-hero-photo { object-position: center 73%; } /* default: tablet (851px+) and desktop */
+@media (max-width: 349px)                          { .hww-hero-photo { object-position: center 77%; } }
+@media (min-width: 350px) and (max-width: 410px)   { .hww-hero-photo { object-position: center 75%; } }
+@media (min-width: 411px) and (max-width: 480px)   { .hww-hero-photo { object-position: center 73%; } }
+@media (min-width: 481px) and (max-width: 539px)   { .hww-hero-photo { object-position: center 71%; } }
+@media (min-width: 540px) and (max-width: 767px)   { .hww-hero-photo { object-position: center 69%; } }
+@media (min-width: 768px) and (max-width: 850px)   { .hww-hero-photo { object-position: center 73%; } }
 
 /* ── How We Work: Partnering cards 2-col at tablet/mid-size (540px–1024px) ──
    Must come after max-width:768px block to win cascade at 540–768px. */
