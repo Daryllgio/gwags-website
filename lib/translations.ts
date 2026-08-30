@@ -394,7 +394,7 @@ export const t = {
             year: '2026', month: 'JANUARY',
             title: 'Launch of the Gwags Scholars Program',
             body: 'Gwags launched the Gwags Scholars Program, an initiative designed to support outstanding university students across Cameroon. The program offers financial support and professional development opportunities, investing in the next generation of Cameroonian leaders.',
-            photo: 'Photo: scholars program',
+            photo: '/images/scholars/program-cover.jpg',
           },
           {
             year: '2026', month: 'JULY',
@@ -1131,7 +1131,7 @@ export const t = {
             year: '2026', month: 'JANVIER',
             title: 'Lancement du Programme Gwags Scholars',
             body: "Gwags a lancé le Programme Gwags Scholars, une initiative conçue pour soutenir les étudiants universitaires exceptionnels à travers le Cameroun. Le programme offre un soutien financier et des opportunités de développement professionnel, investissant dans la prochaine génération de leaders camerounais.",
-            photo: 'Photo: programme Scholars',
+            photo: '/images/scholars/program-cover.jpg',
           },
           {
             year: '2026', month: 'JUILLET',
