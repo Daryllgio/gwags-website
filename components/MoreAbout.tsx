@@ -14,7 +14,7 @@ const imagePlaceholders = [
 
 const cardImages: (string | undefined)[] = [
   '/images/about/our-story.jpg',
-  undefined,
+  '/images/about/how-we-work.jpg',
   undefined,
 ]
 
