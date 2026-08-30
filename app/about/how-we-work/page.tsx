@@ -40,7 +40,7 @@ function HeroSection({ lang }: { lang: Lang }) {
           </p>
         </div>
         <div className="hww-hero-img" style={{ position: 'relative', width: '100%' }}>
-          <Image src="/images/general/IMG_4469.jpg" alt="How We Work" fill style={{ objectFit: 'cover', objectPosition: 'center 58%' }} />
+          <Image src="/images/general/IMG_4469.jpg" alt="How We Work" fill style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
         </div>
       </div>
     </section>
