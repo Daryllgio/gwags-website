@@ -42,7 +42,7 @@ function HeroSection({ lang }: { lang: Lang }) {
         </div>
 
         <div className="or-hero-img" style={{ width: '100%', borderRadius: '4px', background: 'rgba(0,0,0,0.15)', margin: '60px auto 0', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-          <Image src="/images/general/IMG_4469.jpg" alt="Our Role" fill style={{ objectFit: 'cover', objectPosition: 'top' }} />
+          <Image src="/images/general/IMG_4469.jpg" alt="Our Role" fill style={{ objectFit: 'cover', objectPosition: 'center 58%' }} />
         </div>
       </div>
     </section>
