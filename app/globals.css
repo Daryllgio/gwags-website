@@ -3253,6 +3253,18 @@ input:-webkit-autofill:active {
   line-height: 1.6;
 }
 
+.ed-detail-heading {
+  margin-bottom: 32px !important;
+}
+
+.ed-detail-grid-compact {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.ed-detail-item-full {
+  grid-column: 1 / -1;
+}
+
 .ed-gallery-section {
   background: #fff;
   padding: 60px 80px 80px;
@@ -3294,12 +3306,14 @@ input:-webkit-autofill:active {
   .ed-gallery-section { padding: 60px 40px; }
   .ed-gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .ed-gallery-img { width: 100%; height: auto; aspect-ratio: 4 / 3; }
+  .ed-detail-grid-compact { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 767px) {
   .ed-hero { padding: 48px 24px; }
   .ed-hero-title { font-size: 26px !important; max-width: 100% !important; }
   .ed-detail-grid { grid-template-columns: 1fr; }
+  .ed-detail-heading { margin-bottom: 24px !important; }
   .ed-detail-label { font-size: 16px !important; }
   .ed-detail-value { font-size: 16px !important; }
   .ed-gallery-section { padding: 48px 24px; }
@@ -3372,6 +3386,8 @@ input:-webkit-autofill:active {
   .pp-card-desc  { font-size: 14px !important; }
   .pp-learn-more { font-size: 14px !important; }
   .cta-h2 { font-size: 20px !important; }
+  .ip-winner-name   { font-size: 15px !important; }
+  .ip-winner-detail { font-size: 14px !important; }
 }
 
 /* Change 4: Large tablet / Nest Hub Max / iPad Pro landscape (1025px–1280px) — slight card reduction */
