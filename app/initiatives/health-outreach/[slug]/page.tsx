@@ -12,14 +12,16 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
       sections: [
         {
           heading: 'About the campaign',
-          body: 'The Nguti Health Campaign is a week-long medical outreach organized in the Nguti Health District, located in the Kupe Manenguba Division of Cameroon\'s South West Region. The campaign brings together over 120 medical professionals to deliver free healthcare services to an underserved population of approximately 1,500 people across seven health areas. Services include medical and dental consultations, surgical interventions, ophthalmology consultations, laboratory screenings, and community health education.\n\nThe campaign is organized and delivered by CAMESA, the Cameroon English Speaking Medical Students\' Association, with funding support provided by Gwags through the Mbal Lekeaka Fund. The Nguti Health District covers a vast and difficult terrain with poorly maintained roads and limited access to medical infrastructure, making it one of the areas where this type of intervention is most needed.',
+          body: 'The Nguti Health Campaign was a week-long medical outreach organized in the Nguti Health District, located in the Kupe Manenguba Division of Cameroon\'s South West Region. Delivered in partnership with several organizations, including the Ministry of Public Health of Cameroon and the Cameroon English Speaking Medical Students\' Association (CAMESA), the campaign brought together over 120 medical professionals to deliver free healthcare services to an underserved population of approximately 1,500 people across seven health areas.\n\nGwags supported the campaign through the Mbal Lekeaka Fund, its grant program channeling resources into community-led initiatives. The Nguti Health District\'s remote location and limited medical infrastructure make it one of the areas where this type of intervention is needed most.',
         },
         {
           heading: 'Campaign details',
+          detailGridFullWidth: true,
           detailGrid: [
             { label: 'Location', text: 'Nguti Health District, South West Region, Cameroon' },
             { label: 'Delivered by', text: 'CAMESA' },
             { label: 'Duration', text: '8 days' },
+            { label: 'Services', text: 'Medical and dental consultations, surgical interventions, ophthalmology consultations, laboratory screenings, and community health education', fullWidth: true },
           ],
         },
       ],
@@ -52,14 +54,16 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
       sections: [
         {
           heading: 'À propos de la campagne',
-          body: 'La Campagne de Santé de Nguti est une mission médicale d\'une semaine organisée dans le District de Santé de Nguti, situé dans le Département de la Kupe Manenguba, Région du Sud-Ouest du Cameroun. La campagne rassemble plus de 120 professionnels de santé pour fournir des services de santé gratuits à une population mal desservie d\'environ 1 500 personnes à travers sept zones de santé. Les services comprennent des consultations médicales et dentaires, des interventions chirurgicales, des consultations en ophtalmologie, des dépistages en laboratoire et de l\'éducation sanitaire communautaire.\n\nLa campagne est organisée et livrée par CAMESA, l\'Association des Étudiants en Médecine Anglophones du Cameroun, avec un soutien financier fourni par Gwags à travers le Fonds Mbal Lekeaka. Le District de Santé de Nguti couvre un terrain vaste et difficile avec des routes mal entretenues et un accès limité aux infrastructures médicales, ce qui en fait l\'une des zones où ce type d\'intervention est le plus nécessaire.',
+          body: 'La Campagne de Santé de Nguti était une mission médicale d\'une semaine organisée dans le District de Santé de Nguti, situé dans le Département de la Kupe Manenguba, Région du Sud-Ouest du Cameroun. Réalisée en partenariat avec plusieurs organisations, dont le Ministère de la Santé Publique du Cameroun et la Cameroon English Speaking Medical Students\' Association (CAMESA), la campagne a rassemblé plus de 120 professionnels de santé pour fournir des services de santé gratuits à une population mal desservie d\'environ 1 500 personnes à travers sept zones de santé.\n\nGwags a soutenu la campagne à travers le Fonds Mbal Lekeaka, son programme de subventions qui canalise des ressources vers des initiatives communautaires. L\'emplacement isolé du District de Santé de Nguti et son infrastructure médicale limitée en font l\'une des zones où ce type d\'intervention est le plus nécessaire.',
         },
         {
           heading: 'Détails de la campagne',
+          detailGridFullWidth: true,
           detailGrid: [
             { label: 'Lieu', text: 'District de Santé de Nguti, Région du Sud-Ouest, Cameroun' },
             { label: 'Réalisé par', text: 'CAMESA' },
             { label: 'Durée', text: '8 jours' },
+            { label: 'Services', text: 'Consultations médicales et dentaires, interventions chirurgicales, consultations en ophtalmologie, dépistages en laboratoire et éducation sanitaire communautaire', fullWidth: true },
           ],
         },
       ],

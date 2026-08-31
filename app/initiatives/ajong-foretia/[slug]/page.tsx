@@ -105,11 +105,12 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         },
         {
           heading: 'Visit details',
+          detailGridFullWidth: true,
           detailGrid: [
             { label: 'Location', text: 'Douala, Cameroon' },
             { label: 'Orphanage', text: 'Coeur de Jésus' },
             { label: 'Year', text: '2021' },
-            { label: 'Activities', text: 'Essential living supplies distribution, group enrichment activities, team-building exercises, supervised recreation' },
+            { label: 'Activities', text: 'Essential living supplies distribution, group enrichment activities, team-building exercises, supervised recreation', fullWidth: true },
           ],
         },
       ],
@@ -150,11 +151,12 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         },
         {
           heading: 'Détails de la visite',
+          detailGridFullWidth: true,
           detailGrid: [
             { label: 'Lieu', text: 'Douala, Cameroun' },
             { label: 'Orphelinat', text: 'Coeur de Jésus' },
             { label: 'Année', text: '2021' },
-            { label: 'Activités', text: 'Distribution de fournitures de vie essentielles, activités d\'enrichissement en groupe, exercices de renforcement d\'équipe, loisirs supervisés' },
+            { label: 'Activités', text: 'Distribution de fournitures de vie essentielles, activités d\'enrichissement en groupe, exercices de renforcement d\'équipe, loisirs supervisés', fullWidth: true },
           ],
         },
       ],

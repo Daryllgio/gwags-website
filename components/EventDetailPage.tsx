@@ -9,6 +9,7 @@ import { Lang } from '@/lib/translations'
 interface RichBodyItem {
   label: string
   text: string
+  fullWidth?: boolean
 }
 
 export interface EventSection {
@@ -16,6 +17,7 @@ export interface EventSection {
   body?: string
   richBody?: RichBodyItem[]
   detailGrid?: RichBodyItem[]
+  detailGridFullWidth?: boolean
 }
 
 interface StatsData {
@@ -47,7 +49,24 @@ function Divider() {
   return <div className="ip-divider" />
 }
 
-function ContentSection({ heading, body, richBody, detailGrid }: EventSection) {
+function ContentSection({ heading, body, richBody, detailGrid, detailGridFullWidth }: EventSection) {
+  if (detailGrid && detailGridFullWidth) {
+    return (
+      <section className="ip-section ip-section-white">
+        <div className="ip-content-inner">
+          <h2 className="ip-section-heading ed-detail-heading">{heading}</h2>
+          <div className="ed-detail-grid ed-detail-grid-compact">
+            {detailGrid.map((item, i) => (
+              <div key={i} className={`ed-detail-item${item.fullWidth ? ' ed-detail-item-full' : ''}`}>
+                <span className="ed-detail-label">{item.label}</span>
+                <span className="ed-detail-value">{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
   return (
     <section className="ip-section ip-section-white">
       <div className="ip-content-inner">
@@ -145,7 +164,7 @@ export default function EventDetailPage({ lang, onToggleLang, data }: Props) {
       {data.sections.map((s, i) => (
         <Fragment key={i}>
           {i > 0 && <Divider />}
-          <ContentSection heading={s.heading} body={s.body} richBody={s.richBody} detailGrid={s.detailGrid} />
+          <ContentSection heading={s.heading} body={s.body} richBody={s.richBody} detailGrid={s.detailGrid} detailGridFullWidth={s.detailGridFullWidth} />
           {i === 0 && data.stats && <StatsSection stats={data.stats} />}
         </Fragment>
       ))}
