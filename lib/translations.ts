@@ -522,7 +522,7 @@ export const t = {
       carousel: {
         heading: 'Our Scholars',
         events: [
-          { label: '2026 Batch', href: '/initiatives/scholars/2026', imagePosition: 'top', cardVariant: 'scholars', items: [
+          { label: '2026 Cohort', href: '/initiatives/scholars/2026', imagePosition: 'top', cardVariant: 'scholars', items: [
             '/images/scholars/scholar-01.jpg',
             '/images/scholars/scholar-02.jpg',
             '/images/scholars/scholar-03.jpg',
@@ -540,7 +540,7 @@ export const t = {
     scholarsBatches: {
       '2026': {
         title: 'The Gwags Scholars',
-        batchLabel: '2026 Batch',
+        batchLabel: '2026 Cohort',
         universityLabel: 'University',
         programLabel: 'Program',
         scholars: [
