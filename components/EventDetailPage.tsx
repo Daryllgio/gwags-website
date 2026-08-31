@@ -17,7 +17,7 @@ export interface EventSection {
   body?: string
   richBody?: RichBodyItem[]
   detailGrid?: RichBodyItem[]
-  detailGridFullWidth?: boolean
+  detailGridCompact?: boolean
 }
 
 interface StatsData {
@@ -49,24 +49,7 @@ function Divider() {
   return <div className="ip-divider" />
 }
 
-function ContentSection({ heading, body, richBody, detailGrid, detailGridFullWidth }: EventSection) {
-  if (detailGrid && detailGridFullWidth) {
-    return (
-      <section className="ip-section ip-section-white">
-        <div className="ip-content-inner">
-          <h2 className="ip-section-heading ed-detail-heading">{heading}</h2>
-          <div className="ed-detail-grid ed-detail-grid-compact">
-            {detailGrid.map((item, i) => (
-              <div key={i} className={`ed-detail-item${item.fullWidth ? ' ed-detail-item-full' : ''}`}>
-                <span className="ed-detail-label">{item.label}</span>
-                <span className="ed-detail-value">{item.text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
+function ContentSection({ heading, body, richBody, detailGrid, detailGridCompact }: EventSection) {
   return (
     <section className="ip-section ip-section-white">
       <div className="ip-content-inner">
@@ -87,9 +70,9 @@ function ContentSection({ heading, body, richBody, detailGrid, detailGridFullWid
               </dl>
             )}
             {detailGrid && (
-              <div className="ed-detail-grid">
+              <div className={`ed-detail-grid${detailGridCompact ? ' ed-detail-grid-compact' : ''}`}>
                 {detailGrid.map((item, i) => (
-                  <div key={i} className="ed-detail-item">
+                  <div key={i} className={`ed-detail-item${item.fullWidth ? ' ed-detail-item-full' : ''}`}>
                     <span className="ed-detail-label">{item.label}</span>
                     <span className="ed-detail-value">{item.text}</span>
                   </div>
@@ -164,7 +147,7 @@ export default function EventDetailPage({ lang, onToggleLang, data }: Props) {
       {data.sections.map((s, i) => (
         <Fragment key={i}>
           {i > 0 && <Divider />}
-          <ContentSection heading={s.heading} body={s.body} richBody={s.richBody} detailGrid={s.detailGrid} detailGridFullWidth={s.detailGridFullWidth} />
+          <ContentSection heading={s.heading} body={s.body} richBody={s.richBody} detailGrid={s.detailGrid} detailGridCompact={s.detailGridCompact} />
           {i === 0 && data.stats && <StatsSection stats={data.stats} />}
         </Fragment>
       ))}

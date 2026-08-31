@@ -105,7 +105,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         },
         {
           heading: 'Visit details',
-          detailGridFullWidth: true,
+          detailGridCompact: true,
           detailGrid: [
             { label: 'Location', text: 'Douala, Cameroon' },
             { label: 'Orphanage', text: 'Coeur de Jésus' },
@@ -151,7 +151,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         },
         {
           heading: 'Détails de la visite',
-          detailGridFullWidth: true,
+          detailGridCompact: true,
           detailGrid: [
             { label: 'Lieu', text: 'Douala, Cameroun' },
             { label: 'Orphelinat', text: 'Coeur de Jésus' },

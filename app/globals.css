@@ -3253,10 +3253,6 @@ input:-webkit-autofill:active {
   line-height: 1.6;
 }
 
-.ed-detail-heading {
-  margin-bottom: 32px !important;
-}
-
 .ed-detail-grid-compact {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -3313,7 +3309,6 @@ input:-webkit-autofill:active {
   .ed-hero { padding: 48px 24px; }
   .ed-hero-title { font-size: 26px !important; max-width: 100% !important; }
   .ed-detail-grid { grid-template-columns: 1fr; }
-  .ed-detail-heading { margin-bottom: 24px !important; }
   .ed-detail-label { font-size: 16px !important; }
   .ed-detail-value { font-size: 16px !important; }
   .ed-gallery-section { padding: 48px 24px; }

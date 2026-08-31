@@ -16,7 +16,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         },
         {
           heading: 'Campaign details',
-          detailGridFullWidth: true,
+          detailGridCompact: true,
           detailGrid: [
             { label: 'Location', text: 'Nguti Health District, South West Region, Cameroon' },
             { label: 'Delivered by', text: 'CAMESA' },
@@ -58,7 +58,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         },
         {
           heading: 'Détails de la campagne',
-          detailGridFullWidth: true,
+          detailGridCompact: true,
           detailGrid: [
             { label: 'Lieu', text: 'District de Santé de Nguti, Région du Sud-Ouest, Cameroun' },
             { label: 'Réalisé par', text: 'CAMESA' },
