@@ -2991,6 +2991,8 @@ input:-webkit-autofill:active {
 /* Mobile (max 768px) */
 @media (max-width: 767px) {
   .ip-hero { padding: 48px 24px; }
+  /* Match .or-hero-inner (Our Role): no extra width reduction at mobile, just section padding */
+  .ip-hero-inner { width: 100%; }
   .ip-hero-name { font-size: 30px !important; text-align: center; max-width: 100%; margin-bottom: 36px !important; }
   .ip-hero-goal-label { font-size: 14px !important; text-align: center; }
   .ip-hero-goal { font-size: 15px !important; text-align: center; max-width: 100%; }
@@ -3033,6 +3035,7 @@ input:-webkit-autofill:active {
 /* Small phone (max 480px) */
 @media (max-width: 480px) {
   .ip-hero { padding: 36px 20px; }
+  .ip-hero-inner { width: 100%; }
   .ip-hero-name { font-size: 28px !important; text-align: center; max-width: 100%; margin-bottom: 36px !important; }
   .ip-hero-goal-label { font-size: 14px !important; text-align: center; }
   .ip-hero-goal { font-size: 14px !important; text-align: center; max-width: 100%; }
