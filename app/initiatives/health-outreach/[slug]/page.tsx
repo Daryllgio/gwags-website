@@ -8,6 +8,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
     en: {
       heroTitle: 'Nguti Health Campaign',
       heroImage: '/images/health-outreach/nguti-health-campaign/2T8A1050_copy.jpg',
+      heroImagePosition: '50% 85%',
       sections: [
         {
           heading: 'About the campaign',
@@ -40,13 +41,14 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           '/images/health-outreach/nguti-health-campaign/2T8A0636.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0393_copy.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0763_copy.jpg',
-          '/images/health-outreach/nguti-health-campaign/2T8A0982_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0741.jpg',
         ],
       },
     },
     fr: {
       heroTitle: 'Campagne de Santé de Nguti',
       heroImage: '/images/health-outreach/nguti-health-campaign/2T8A1050_copy.jpg',
+      heroImagePosition: '50% 85%',
       sections: [
         {
           heading: 'À propos de la campagne',
@@ -79,7 +81,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           '/images/health-outreach/nguti-health-campaign/2T8A0636.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0393_copy.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0763_copy.jpg',
-          '/images/health-outreach/nguti-health-campaign/2T8A0982_copy.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0741.jpg',
         ],
       },
     },

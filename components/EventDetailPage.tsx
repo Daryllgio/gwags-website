@@ -27,6 +27,7 @@ interface StatsData {
 export interface EventDetailData {
   heroTitle?: string
   heroImage?: string
+  heroImagePosition?: string
   sections: EventSection[]
   stats?: StatsData
   gallery: {
@@ -136,7 +137,7 @@ export default function EventDetailPage({ lang, onToggleLang, data }: Props) {
           {data.heroTitle && <h1 className="ed-hero-title">{data.heroTitle}</h1>}
           <div className="ed-hero-img-wrap">
             {data.heroImage && (
-              <Image src={data.heroImage} alt={data.heroTitle || ''} fill priority style={{ objectFit: 'cover' }} />
+              <Image src={data.heroImage} alt={data.heroTitle || ''} fill priority style={{ objectFit: 'cover', objectPosition: data.heroImagePosition || '50% 50%' }} />
             )}
           </div>
         </div>
