@@ -27,7 +27,6 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     roleFr: "Membre du Conseil d'Administration",
     bio: "Vianney brings expertise in organizational development and community engagement to the Gwags governance board. His experience supports the foundation's mission to build credible, well-structured institutions.",
     linkedin: 'https://www.linkedin.com/in/vianney-tanifor-9a76b0280/',
-    image: '/images/leadership/vianney-tanifor.jpg',
   },
   'noa-winner': {
     name: 'Winner Noa',
