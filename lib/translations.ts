@@ -406,7 +406,7 @@ export const t = {
             year: '2026', month: 'AUGUST',
             title: 'First Health Outreach Campaign',
             body: "In partnership with several organizations including the Ministry of Public Health of Cameroon and the Cameroon English Speaking Medical Students' Association (CAMESA), Gwags supported a week-long health outreach campaign in the Nguti Health District, located in Cameroon's South West Region. The campaign deployed 120 medical personnel to provide free consultations, surgeries, screenings, and health education to over 1,500 people across the district.",
-            photo: '/images/health-outreach/nguti-health-campaign/2T8A1050_copy.jpg',
+            photo: '/images/health-outreach/nguti-health-campaign/2T8A1056.jpg',
           },
           {
             year: '2026', month: 'SEPTEMBER',
@@ -585,7 +585,13 @@ export const t = {
       carousel: {
         heading: 'Funded Initiatives',
         events: [
-          { label: 'CAMESA Nguti Health Campaign', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: ['', '', '', '', ''] },
+          { label: 'CAMESA Nguti Health Campaign', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: [
+            '/images/health-outreach/nguti-health-campaign/2T8A0635.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A1023.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A0447.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A1061.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A0574.jpg',
+          ] },
         ],
       },
     },
@@ -662,11 +668,11 @@ export const t = {
         heading: 'Past Campaigns',
         events: [
           { label: 'Nguti Health Campaign', href: '/initiatives/health-outreach/nguti-health-campaign', items: [
-            '/images/health-outreach/nguti-health-campaign/2T8A1061_copy.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A1061.jpg',
             '/images/health-outreach/nguti-health-campaign/2T8A0574.jpg',
-            '/images/health-outreach/nguti-health-campaign/2T8A1023_copy.jpg',
-            '/images/health-outreach/nguti-health-campaign/2T8A0636.jpg',
-            '/images/health-outreach/nguti-health-campaign/2T8A0393_copy.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A1023.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A0635.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A0447.jpg',
           ] },
         ],
       },
@@ -1143,7 +1149,7 @@ export const t = {
             year: '2026', month: 'AOÛT',
             title: 'Première Campagne de Santé Communautaire',
             body: "En partenariat avec plusieurs organisations, dont le Ministère de la Santé Publique du Cameroun et la Cameroon English Speaking Medical Students' Association (CAMESA), Gwags a soutenu une campagne de sensibilisation sanitaire d'une semaine dans le district de santé de Nguti, situé dans la région du Sud-Ouest du Cameroun. La campagne a déployé 120 personnels médicaux pour fournir des consultations gratuites, des chirurgies, des dépistages et une éducation sanitaire à plus de 1 500 personnes à travers le district.",
-            photo: '/images/health-outreach/nguti-health-campaign/2T8A1050_copy.jpg',
+            photo: '/images/health-outreach/nguti-health-campaign/2T8A1056.jpg',
           },
           {
             year: '2026', month: 'SEPTEMBRE',
@@ -1322,7 +1328,13 @@ export const t = {
       carousel: {
         heading: 'Initiatives Financées',
         events: [
-          { label: 'Campagne de Santé CAMESA Nguti', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: ['', '', '', '', ''] },
+          { label: 'Campagne de Santé CAMESA Nguti', href: '/initiatives/mbal-lekeaka-fund/camesa-nguti-health-campaign', items: [
+            '/images/health-outreach/nguti-health-campaign/2T8A0635.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A1023.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A0447.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A1061.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A0574.jpg',
+          ] },
         ],
       },
     },
@@ -1399,11 +1411,11 @@ export const t = {
         heading: 'Campagnes Passées',
         events: [
           { label: 'Campagne de Santé de Nguti', href: '/initiatives/health-outreach/nguti-health-campaign', items: [
-            '/images/health-outreach/nguti-health-campaign/2T8A1061_copy.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A1061.jpg',
             '/images/health-outreach/nguti-health-campaign/2T8A0574.jpg',
-            '/images/health-outreach/nguti-health-campaign/2T8A1023_copy.jpg',
-            '/images/health-outreach/nguti-health-campaign/2T8A0636.jpg',
-            '/images/health-outreach/nguti-health-campaign/2T8A0393_copy.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A1023.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A0635.jpg',
+            '/images/health-outreach/nguti-health-campaign/2T8A0447.jpg',
           ] },
         ],
       },

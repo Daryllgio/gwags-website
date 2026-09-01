@@ -7,6 +7,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
   'camesa-nguti-health-campaign': {
     en: {
       heroTitle: 'CAMESA Nguti Health Campaign',
+      heroImage: '/images/health-outreach/nguti-health-campaign/2T8A1054.jpg',
       sections: [
         {
           heading: 'About the grant',
@@ -22,10 +23,11 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           ],
         },
       ],
-      gallery: { heading: 'Gallery', count: 12 },
+      galleryLink: { text: 'View Gallery', href: '/initiatives/health-outreach/nguti-health-campaign' },
     },
     fr: {
       heroTitle: 'Campagne de Santé CAMESA Nguti',
+      heroImage: '/images/health-outreach/nguti-health-campaign/2T8A1054.jpg',
       sections: [
         {
           heading: 'À propos de la subvention',
@@ -41,7 +43,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           ],
         },
       ],
-      gallery: { heading: 'Galerie', count: 12 },
+      galleryLink: { text: 'Voir la galerie', href: '/initiatives/health-outreach/nguti-health-campaign' },
     },
   },
 }

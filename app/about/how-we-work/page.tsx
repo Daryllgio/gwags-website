@@ -93,7 +93,7 @@ function SplitSection({ lang }: { lang: Lang }) {
 const initiativeImagePlaceholders = [
   'Photo: Scholars Program',
   'Photo: Mbal Lekeaka Fund',
-  '/images/health-outreach/nguti-health-campaign/2T8A0972_copy.jpg',
+  '/images/health-outreach/nguti-health-campaign/2T8A1050.jpg',
   '/images/ajong-foretia/coeur-de-jesus/DSC_1215.JPG',
 ]
 

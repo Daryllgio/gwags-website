@@ -1,6 +1,7 @@
 'use client'
 import { useState, Fragment } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Lightbox from '@/components/Lightbox'
@@ -32,10 +33,14 @@ export interface EventDetailData {
   heroImagePosition?: string
   sections: EventSection[]
   stats?: StatsData
-  gallery: {
+  gallery?: {
     heading: string
     count: number
     images?: string[]
+  }
+  galleryLink?: {
+    text: string
+    href: string
   }
 }
 
@@ -105,7 +110,7 @@ function StatsSection({ stats }: { stats: StatsData }) {
   )
 }
 
-function GallerySection({ gallery }: { gallery: EventDetailData['gallery'] }) {
+function GallerySection({ gallery }: { gallery: NonNullable<EventDetailData['gallery']> }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const count = gallery.images?.length ?? gallery.count
 
@@ -151,8 +156,22 @@ export default function EventDetailPage({ lang, onToggleLang, data }: Props) {
           {i === 0 && data.stats && <StatsSection stats={data.stats} />}
         </Fragment>
       ))}
-      <Divider />
-      <GallerySection gallery={data.gallery} />
+      {data.gallery && (
+        <>
+          <Divider />
+          <GallerySection gallery={data.gallery} />
+        </>
+      )}
+      {data.galleryLink && (
+        <>
+          <Divider />
+          <section className="ip-section ip-section-white">
+            <div className="ip-content-inner">
+              <Link href={data.galleryLink.href} className="card-learn-more">{data.galleryLink.text}</Link>
+            </div>
+          </section>
+        </>
+      )}
       <Footer lang={lang} />
     </main>
   )
