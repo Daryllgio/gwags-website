@@ -19,6 +19,7 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     bio: "As Chair, Giovanny shapes and approves the institution's strategies, advocates for the institution's issues, and sets the organization's overall direction. He also serves as Interim Executive Director.",
     bioFr: "En tant que Président, Giovanny façonne et approuve les stratégies de l'institution, défend les causes de l'institution et définit l'orientation générale de l'organisation. Il occupe également le poste de Directeur Exécutif par intérim.",
     linkedin: 'https://www.linkedin.com/in/giovannybikakmbal/',
+    image: '/images/leadership/giovanny-bikak-mbal.jpg',
   },
   'vianney-tanifor': {
     name: 'Vianney Tanifor',
