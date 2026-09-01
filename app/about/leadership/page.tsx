@@ -34,6 +34,7 @@ const governanceBoard = [
     roleFr: "Membre du Conseil d'Administration",
     bio:  'Vianney brings expertise in organizational development and community engagement to the Gwags governance board.',
     href: '/about/leadership/vianney-tanifor',
+    image: '/images/leadership/vianney-tanifor.jpg',
   },
 ]
 
