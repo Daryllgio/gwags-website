@@ -61,15 +61,14 @@ export default function OrgDetailPage({ params }: { params: { slug: string } }) 
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      {/* Hero — image, name, sector/location subtitle (Leadership-profile-style treatment) */}
-      <section className="nw-detail-hero">
-        <div className="nw-detail-hero-inner">
-          <div className="nw-detail-img">
-            <OrgIcon />
+      {/* Hero — matches initiative page hero: name on top, full-width image below */}
+      <section className="ip-hero">
+        <div className="ip-hero-inner">
+          <div className="ip-hero-text">
+            <h1 className="ip-hero-name">{org.name}</h1>
           </div>
-          <div>
-            <h1 className="nw-detail-name">{org.name}</h1>
-            <p className="nw-detail-subtitle">{localized(org.sector, lang)} · {localized(org.country, lang)}</p>
+          <div className="ip-hero-img-wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <OrgIcon />
           </div>
         </div>
       </section>
