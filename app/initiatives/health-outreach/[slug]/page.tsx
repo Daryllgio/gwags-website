@@ -7,7 +7,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
   'nguti-health-campaign': {
     en: {
       heroTitle: 'Nguti Health Campaign',
-      heroImage: '/images/health-outreach/nguti-health-campaign/2T8A1056.jpg',
+      heroImage: '/images/health-outreach/nguti-health-campaign/2T8A1064.jpg',
       heroImagePosition: '50% 85%',
       sections: [
         {
@@ -20,7 +20,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           detailGrid: [
             { label: 'Location', text: 'Nguti Health District, South West Region, Cameroon' },
             { label: 'Delivered by', text: 'CAMESA' },
-            { label: 'Duration', text: '8 days' },
+            { label: 'Duration', text: 'One week' },
             { label: 'Services', text: 'Medical and dental consultations, surgical interventions, ophthalmology consultations, laboratory screenings, and community health education', fullWidth: true },
           ],
         },
@@ -35,17 +35,19 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
       },
       gallery: {
         heading: 'Gallery',
-        count: 14,
+        count: 16,
         images: [
           '/images/health-outreach/nguti-health-campaign/2T8A1068.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A1061.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0972.jpg',
-          '/images/health-outreach/nguti-health-campaign/2T8A0929.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0662.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0741.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0872.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0939.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A1049.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0635.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0982.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A1080.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0447.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A1023.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0574.jpg',
@@ -56,7 +58,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
     },
     fr: {
       heroTitle: 'Campagne de Santé de Nguti',
-      heroImage: '/images/health-outreach/nguti-health-campaign/2T8A1056.jpg',
+      heroImage: '/images/health-outreach/nguti-health-campaign/2T8A1064.jpg',
       heroImagePosition: '50% 85%',
       sections: [
         {
@@ -69,7 +71,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           detailGrid: [
             { label: 'Lieu', text: 'District de Santé de Nguti, Région du Sud-Ouest, Cameroun' },
             { label: 'Réalisé par', text: 'CAMESA' },
-            { label: 'Durée', text: '8 jours' },
+            { label: 'Durée', text: 'Une semaine' },
             { label: 'Services', text: 'Consultations médicales et dentaires, interventions chirurgicales, consultations en ophtalmologie, dépistages en laboratoire et éducation sanitaire communautaire', fullWidth: true },
           ],
         },
@@ -84,17 +86,19 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
       },
       gallery: {
         heading: 'Galerie',
-        count: 14,
+        count: 16,
         images: [
           '/images/health-outreach/nguti-health-campaign/2T8A1068.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A1061.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0972.jpg',
-          '/images/health-outreach/nguti-health-campaign/2T8A0929.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0662.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0741.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A0872.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0939.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A1049.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0635.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0982.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A1080.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0447.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A1023.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0574.jpg',
