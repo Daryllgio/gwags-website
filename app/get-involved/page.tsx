@@ -62,8 +62,38 @@ export default function GetInvolvedPage() {
         </div>
         <hr className="gi-divider" style={{ borderColor: 'rgba(10,17,40,0.12)' }} />
 
-        {/* SECTION 2: Partner + Support */}
+        {/* SECTION 2: Contact + Follow */}
         <div className="gi-two-col gi-two-col-gap">
+          <div>
+            <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.contact.eyebrow}</p>
+            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85 }}>
+              {p.contact.text}
+            </p>
+            <Link href="/contact" className="gi-link gi-cta-link" style={{ color: NAVY }}>
+              {p.contact.cta}
+            </Link>
+          </div>
+
+          <div>
+            <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.follow.eyebrow}</p>
+            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85 }}>
+              {p.follow.text}
+            </p>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <a href="https://www.instagram.com/gwags_foundation/" target="_blank" rel="noopener noreferrer" className="gi-social-link" aria-label="Instagram">
+                <InstagramIcon />
+              </a>
+              <a href="https://www.linkedin.com/company/gwags-foundation/" target="_blank" rel="noopener noreferrer" className="gi-social-link" aria-label="LinkedIn">
+                <LinkedInIcon />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <hr className="gi-divider" style={{ borderColor: 'rgba(10,17,40,0.08)' }} />
+
+        {/* SECTION 3: Partner + Support */}
+        <div className="gi-two-col">
           <div>
             <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.partner.eyebrow}</p>
             <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85 }}>
@@ -101,36 +131,6 @@ export default function GetInvolvedPage() {
               <span className="donate-heart"><HeartIcon /></span>
               {p.support.donate}
             </button>
-          </div>
-        </div>
-
-        <hr className="gi-divider" style={{ borderColor: 'rgba(10,17,40,0.08)' }} />
-
-        {/* SECTION 3: Contact + Follow */}
-        <div className="gi-two-col">
-          <div>
-            <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.contact.eyebrow}</p>
-            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85 }}>
-              {p.contact.text}
-            </p>
-            <Link href="/contact" className="gi-link gi-cta-link" style={{ color: NAVY }}>
-              {p.contact.cta}
-            </Link>
-          </div>
-
-          <div>
-            <p className="gi-eyebrow" style={EYEBROW_STYLE}>{p.follow.eyebrow}</p>
-            <p className="body-text gi-body-text" style={{ color: '#4A4A4A', lineHeight: 1.85 }}>
-              {p.follow.text}
-            </p>
-            <div style={{ display: 'flex', gap: '12px' }}>
-              <a href="https://www.instagram.com/gwags_foundation/" target="_blank" rel="noopener noreferrer" className="gi-social-link" aria-label="Instagram">
-                <InstagramIcon />
-              </a>
-              <a href="https://www.linkedin.com/company/gwags-foundation/" target="_blank" rel="noopener noreferrer" className="gi-social-link" aria-label="LinkedIn">
-                <LinkedInIcon />
-              </a>
-            </div>
           </div>
         </div>
       </div>
