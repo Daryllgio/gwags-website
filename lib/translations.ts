@@ -659,7 +659,7 @@ export const t = {
         heading: 'Our impact',
         subheading: 'Measurable results from our health outreach campaigns.',
         items: [
-          { value: '1,500+', label: 'beneficiaries reached' },
+          { value: '1,700+', label: 'beneficiaries reached' },
           { value: '120+', label: 'medical professionals deployed' },
           { value: '1', label: 'campaign conducted' },
         ],
@@ -1402,7 +1402,7 @@ export const t = {
         heading: 'Notre impact',
         subheading: 'Des résultats mesurables issus de nos campagnes de sensibilisation sanitaire.',
         items: [
-          { value: '1 500+', label: 'bénéficiaires atteints' },
+          { value: '1 700+', label: 'bénéficiaires atteints' },
           { value: '120+', label: 'professionnels de santé déployés' },
           { value: '1', label: 'campagne menée' },
         ],
