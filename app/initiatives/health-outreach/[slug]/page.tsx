@@ -29,7 +29,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         heading: 'Our impact',
         subheading: 'Impact numbers from the Nguti Health Campaign.',
         items: [
-          { value: '1,500+', label: 'beneficiaries targeted' },
+          { value: '1,700+', label: 'beneficiaries targeted' },
           { value: '120+', label: 'medical professionals deployed' },
         ],
       },
@@ -80,7 +80,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         heading: 'Notre impact',
         subheading: 'Chiffres d\'impact de la Campagne de Santé de Nguti.',
         items: [
-          { value: '1 500+', label: 'bénéficiaires ciblés' },
+          { value: '1 700+', label: 'bénéficiaires ciblés' },
           { value: '120+', label: 'professionnels de santé déployés' },
         ],
       },
