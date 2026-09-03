@@ -2578,6 +2578,16 @@ input:-webkit-autofill:active {
   margin: 0;
 }
 
+/* Matches .ip-section-heading's font-family/size/weight/color (incl. responsive
+   sizing) for the "View Gallery" link on event detail pages -- other
+   .card-learn-more styling (underline, layout) stays untouched. */
+.ed-gallery-link {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: #0A1128;
+}
+
 .ip-section-batch {
   display: block;
   font-size: 15px;
@@ -2952,6 +2962,7 @@ input:-webkit-autofill:active {
   .ip-section { padding: 60px 40px; }
   .ip-divider { margin: 0 40px; }
   .ip-section-heading { font-size: 28px !important; }
+  .ed-gallery-link { font-size: 28px !important; }
   .ip-section-body { font-size: 17px !important; }
   .ip-rich-label { font-size: 17px !important; }
   .ip-rich-text { font-size: 17px !important; }
@@ -3000,6 +3011,7 @@ input:-webkit-autofill:active {
   .ip-divider { margin: 0 24px; }
   .ip-grid { grid-template-columns: 1fr; gap: 24px; }
   .ip-section-heading { font-size: 24px !important; }
+  .ed-gallery-link { font-size: 24px !important; }
   .ip-section-batch { font-size: 14px !important; }
   .ip-section-body { font-size: 16px !important; }
   .ip-rich-label { font-size: 16px !important; }
@@ -3042,6 +3054,7 @@ input:-webkit-autofill:active {
   .ip-section { padding: 36px 20px; }
   .ip-divider { margin: 0 20px; }
   .ip-section-heading { font-size: 22px !important; }
+  .ed-gallery-link { font-size: 22px !important; }
   .ip-section-batch { font-size: 14px !important; }
   .ip-section-body { font-size: 15px !important; }
   .ip-rich-label { font-size: 15px !important; }
@@ -3364,6 +3377,7 @@ input:-webkit-autofill:active {
   main h2 { font-size: 20px !important; }
   .eyebrow { font-size: 13px !important; }
   .ip-section-heading { font-size: 20px !important; }
+  .ed-gallery-link { font-size: 20px !important; }
   .ip-stats-heading { font-size: 20px !important; }
   .nw-cta-heading { font-size: 20px !important; }
   .tl2-h2 { font-size: 20px !important; }

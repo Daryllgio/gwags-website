@@ -167,7 +167,7 @@ export default function EventDetailPage({ lang, onToggleLang, data }: Props) {
           <Divider />
           <section className="ip-section ip-section-white">
             <div className="ip-content-inner">
-              <Link href={data.galleryLink.href} className="card-learn-more" style={{ fontSize: '30px', color: '#0A1128' }}>{data.galleryLink.text}</Link>
+              <Link href={data.galleryLink.href} className="card-learn-more ed-gallery-link">{data.galleryLink.text}</Link>
             </div>
           </section>
         </>
