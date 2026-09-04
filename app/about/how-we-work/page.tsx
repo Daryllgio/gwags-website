@@ -97,6 +97,10 @@ const initiativeImagePlaceholders = [
   '/images/ajong-foretia/coeur-de-jesus/DSC_1215.JPG',
 ]
 
+const initiativeImagePositions: (string | undefined)[] = [
+  'center 15%',
+]
+
 function InitiativeStrip({ lang }: { lang: Lang }) {
   const p = t[lang].howWeWork.initiatives
   return (
@@ -114,7 +118,7 @@ function InitiativeStrip({ lang }: { lang: Lang }) {
               <Link href={item.href} style={{ display: 'block', textDecoration: 'none' }}>
                 <div className="ini-img-ph" style={{ height: '220px', width: '100%', background: '#E6E3DC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '4px', position: 'relative', overflow: 'hidden' }}>
                   {initiativeImagePlaceholders[i].startsWith('/images/') ? (
-                    <Image src={initiativeImagePlaceholders[i]} alt={item.title} fill style={{ objectFit: 'cover' }} />
+                    <Image src={initiativeImagePlaceholders[i]} alt={item.title} fill style={{ objectFit: 'cover', objectPosition: initiativeImagePositions[i] || 'center' }} />
                   ) : (
                     <span style={{ color: 'rgba(10,17,40,0.35)', fontSize: '12px', letterSpacing: '0.1em' }}>
                       {initiativeImagePlaceholders[i]}

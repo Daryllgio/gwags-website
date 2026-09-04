@@ -49,24 +49,25 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
   },
   'placeholder-director-operations': {
-    name: '[Name Placeholder]',
-    role: 'Director of Operations',
-    roleFr: 'Directeur des Opérations',
-    bio: 'The Director of Operations manages the internal processes and organizational infrastructure that enable Gwags to operate effectively across its programs and partnerships.',
-    linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
+    name: 'Shifu Afayi',
+    role: 'Chief of Programs',
+    roleFr: 'Chef des Programmes',
+    bio: 'Afayi manages the internal processes and organizational infrastructure that enable Gwags to operate effectively across its programs and partnerships.',
+    linkedin: 'https://www.linkedin.com/in/shifu-afayi-h-3708412a3/',
+    image: '/images/leadership/shifu-afayi.jpg',
   },
   'placeholder-director-communications': {
     name: 'Ornella Ebolo',
-    role: 'Director of Communications',
-    roleFr: 'Directeur de la Communication',
-    bio: "The Director of Communications leads Gwags's external engagement, institutional communications, and the development of strategic partnerships.",
+    role: 'Chief of Communications',
+    roleFr: 'Chef de la Communication',
+    bio: "The Chief of Communications leads Gwags's external engagement, institutional communications, and the development of strategic partnerships.",
     image: '/images/leadership/ornella-ebolo.jpg',
   },
   'placeholder-director-resource': {
     name: '[Name Placeholder]',
-    role: 'Director of Development',
-    roleFr: 'Directeur du Développement',
-    bio: "The Director of Development leads Gwags's efforts to secure funding, build donor relationships, and develop the financial pathways needed to sustain and grow the institution's work.",
+    role: 'Chief of Development',
+    roleFr: 'Chef du Développement',
+    bio: "The Chief of Development leads Gwags's efforts to secure funding, build donor relationships, and develop the financial pathways needed to sustain and grow the institution's work.",
     linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
   },
   'gloria-alana-asopjio': {

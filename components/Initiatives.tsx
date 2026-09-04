@@ -19,6 +19,10 @@ const imagePlaceholders = [
   '/images/ajong-foretia/coeur-de-jesus/DSC_1215.JPG',
 ]
 
+const imagePositions: (string | undefined)[] = [
+  'center 15%',
+]
+
 export default function Initiatives({ lang }: InitiativesProps) {
   const ini = t[lang].initiatives
 
@@ -41,7 +45,7 @@ export default function Initiatives({ lang }: InitiativesProps) {
                 <a href={routes[i]} style={{ display: 'block', textDecoration: 'none' }}>
                   <div className="ini-img-ph" style={{ height: '220px', width: '100%', background: '#0F1E3D', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: '4px', position: 'relative', overflow: 'hidden' }}>
                     {imagePlaceholders[i].startsWith('/images/') ? (
-                      <Image src={imagePlaceholders[i]} alt={item.title} fill style={{ objectFit: 'cover' }} />
+                      <Image src={imagePlaceholders[i]} alt={item.title} fill style={{ objectFit: 'cover', objectPosition: imagePositions[i] || 'center' }} />
                     ) : (
                       <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', letterSpacing: '0.1em' }}>
                         {imagePlaceholders[i]}

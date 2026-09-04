@@ -35,7 +35,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
       },
       gallery: {
         heading: 'Gallery',
-        count: 16,
+        count: 17,
         images: [
           '/images/health-outreach/nguti-health-campaign/2T8A1068.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A1061.jpg',
@@ -53,6 +53,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           '/images/health-outreach/nguti-health-campaign/2T8A0574.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0374.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A1056.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A1031.jpg',
         ],
       },
     },
@@ -86,7 +87,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
       },
       gallery: {
         heading: 'Galerie',
-        count: 16,
+        count: 17,
         images: [
           '/images/health-outreach/nguti-health-campaign/2T8A1068.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A1061.jpg',
@@ -104,6 +105,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           '/images/health-outreach/nguti-health-campaign/2T8A0574.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A0374.jpg',
           '/images/health-outreach/nguti-health-campaign/2T8A1056.jpg',
+          '/images/health-outreach/nguti-health-campaign/2T8A1031.jpg',
         ],
       },
     },
