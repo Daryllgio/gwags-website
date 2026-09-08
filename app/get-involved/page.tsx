@@ -1,5 +1,6 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { useLang } from '@/lib/useLang'
 import { t } from '@/lib/translations'
@@ -41,10 +42,17 @@ const EYEBROW_STYLE: React.CSSProperties = {
   color: NAVY,
 }
 
-export default function GetInvolvedPage() {
+function GetInvolvedContent() {
   const [lang, toggleLang] = useLang()
   const [donateOpen, setDonateOpen] = useState(false)
+  const searchParams = useSearchParams()
   const p = t[lang].getInvolvedPage
+
+  useEffect(() => {
+    if (searchParams.get('action') === 'donate') {
+      setDonateOpen(true)
+    }
+  }, [searchParams])
 
   return (
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
@@ -139,5 +147,13 @@ export default function GetInvolvedPage() {
 
       {donateOpen && <DonationOverlay lang={lang} onClose={() => setDonateOpen(false)} />}
     </main>
+  )
+}
+
+export default function GetInvolvedPage() {
+  return (
+    <Suspense fallback={null}>
+      <GetInvolvedContent />
+    </Suspense>
   )
 }

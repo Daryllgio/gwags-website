@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Validate required fields
-    if (!contactName || !orgName || !orgEmail || !website || !country || !city || !sector || !orgDesc || !message) {
+    if (!contactName || !orgName || !orgEmail || !country || !city || !sector || !orgDesc || !message) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
@@ -35,7 +35,7 @@ Contact: ${contactName}
 Organization: ${orgName}
 Email: ${orgEmail}
 Phone: ${orgPhone || 'Not provided'}
-Website: ${website}
+Website: ${website || 'Not provided'}
 Country: ${country}
 City: ${city}
 Sector: ${sector}
@@ -51,7 +51,7 @@ ${message}
 <p><strong>Organization:</strong> ${orgName}</p>
 <p><strong>Email:</strong> ${orgEmail}</p>
 <p><strong>Phone:</strong> ${orgPhone || 'Not provided'}</p>
-<p><strong>Website:</strong> ${website}</p>
+<p><strong>Website:</strong> ${website || 'Not provided'}</p>
 <p><strong>Country:</strong> ${country}</p>
 <p><strong>City:</strong> ${city}</p>
 <p><strong>Sector:</strong> ${sector}</p>

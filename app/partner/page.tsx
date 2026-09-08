@@ -106,8 +106,8 @@ export default function PartnerPage() {
                 <input required className="form-input" type="text" value={form.orgName} onChange={set('orgName')} />
               </div>
               <div className="form-field">
-                <label className="form-label">{p.labels.website} <span>*</span></label>
-                <input required className="form-input" type="url" placeholder="https://" value={form.website} onChange={set('website')} />
+                <label className="form-label">{p.labels.website}</label>
+                <input className="form-input" type="url" placeholder="https://" value={form.website} onChange={set('website')} />
               </div>
             </div>
 

@@ -63,13 +63,6 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     bio: "The Chief of Communications leads Gwags's external engagement, institutional communications, and the development of strategic partnerships.",
     image: '/images/leadership/ornella-ebolo.jpg',
   },
-  'placeholder-director-resource': {
-    name: '[Name Placeholder]',
-    role: 'Chief of Development',
-    roleFr: 'Chef du Développement',
-    bio: "The Chief of Development leads Gwags's efforts to secure funding, build donor relationships, and develop the financial pathways needed to sustain and grow the institution's work.",
-    linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
-  },
   'gloria-alana-asopjio': {
     name: 'Gloria Alana Asopjio',
     role: 'Founding Member',
