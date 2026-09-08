@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect, Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useLang } from '@/lib/useLang'
 import { t } from '@/lib/translations'
@@ -46,6 +46,7 @@ function GetInvolvedContent() {
   const [lang, toggleLang] = useLang()
   const [donateOpen, setDonateOpen] = useState(false)
   const searchParams = useSearchParams()
+  const router = useRouter()
   const actionParam = searchParams.get('action')
   const p = t[lang].getInvolvedPage
 
@@ -54,6 +55,13 @@ function GetInvolvedContent() {
       setDonateOpen(true)
     }
   }, [actionParam])
+
+  const closeDonate = () => {
+    setDonateOpen(false)
+    if (actionParam) {
+      router.replace('/get-involved', { scroll: false })
+    }
+  }
 
   return (
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
@@ -146,7 +154,7 @@ function GetInvolvedContent() {
 
       <Footer lang={lang} />
 
-      {donateOpen && <DonationOverlay lang={lang} onClose={() => setDonateOpen(false)} />}
+      {donateOpen && <DonationOverlay lang={lang} onClose={closeDonate} />}
     </main>
   )
 }
