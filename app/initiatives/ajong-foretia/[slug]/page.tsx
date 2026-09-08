@@ -29,16 +29,13 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         subheading: 'Impact numbers from the Tech Workshop with Codam Technologies.',
         items: [
           { value: '110', label: 'children supported' },
-          { value: '$8,000+', label: 'in charitable support' },
+          { value: '$3,500+', label: 'in charitable support' },
         ],
       },
       gallery: {
         heading: 'Gallery',
         count: 10,
         images: [
-          '/images/ajong-foretia/codam-tech/654202991_18087992795267535_1459227050299309829_n.jpg',
-          '/images/ajong-foretia/codam-tech/651489550_18037183757564745_7380016685533927990_n.jpg',
-          '/images/ajong-foretia/codam-tech/321054917_2230246700470629_8195286951872702996_n.jpg',
           '/images/ajong-foretia/codam-tech/652843015_18076696037416044_27141830889101826_n.jpg',
           '/images/ajong-foretia/codam-tech/IMG_4410.jpg',
           '/images/ajong-foretia/codam-tech/270a2a81-3939-4aa8-920a-6cac15dc79cc-2.jpg',
@@ -46,6 +43,9 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           '/images/ajong-foretia/codam-tech/dab967bf-fac1-4c5a-8ee1-49590e269e10.jpg',
           '/images/ajong-foretia/codam-tech/656230819_18146798749464126_3721760958890796803_n.jpg',
           '/images/ajong-foretia/codam-tech/WhatsApp-Image-2024-05-01-at-10.49.14-PM.jpeg',
+          '/images/ajong-foretia/codam-tech/654202991_18087992795267535_1459227050299309829_n.jpg',
+          '/images/ajong-foretia/codam-tech/651489550_18037183757564745_7380016685533927990_n.jpg',
+          '/images/ajong-foretia/codam-tech/321054917_2230246700470629_8195286951872702996_n.jpg',
         ],
       },
     },
@@ -73,16 +73,13 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         subheading: 'Chiffres d\'impact de l\'Atelier Tech avec Codam Technologies.',
         items: [
           { value: '110', label: 'enfants soutenus' },
-          { value: '8 000 $+', label: 'en soutien caritatif' },
+          { value: '3 500 $+', label: 'en soutien caritatif' },
         ],
       },
       gallery: {
         heading: 'Galerie',
         count: 10,
         images: [
-          '/images/ajong-foretia/codam-tech/654202991_18087992795267535_1459227050299309829_n.jpg',
-          '/images/ajong-foretia/codam-tech/651489550_18037183757564745_7380016685533927990_n.jpg',
-          '/images/ajong-foretia/codam-tech/321054917_2230246700470629_8195286951872702996_n.jpg',
           '/images/ajong-foretia/codam-tech/652843015_18076696037416044_27141830889101826_n.jpg',
           '/images/ajong-foretia/codam-tech/IMG_4410.jpg',
           '/images/ajong-foretia/codam-tech/270a2a81-3939-4aa8-920a-6cac15dc79cc-2.jpg',
@@ -90,6 +87,9 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
           '/images/ajong-foretia/codam-tech/dab967bf-fac1-4c5a-8ee1-49590e269e10.jpg',
           '/images/ajong-foretia/codam-tech/656230819_18146798749464126_3721760958890796803_n.jpg',
           '/images/ajong-foretia/codam-tech/WhatsApp-Image-2024-05-01-at-10.49.14-PM.jpeg',
+          '/images/ajong-foretia/codam-tech/654202991_18087992795267535_1459227050299309829_n.jpg',
+          '/images/ajong-foretia/codam-tech/651489550_18037183757564745_7380016685533927990_n.jpg',
+          '/images/ajong-foretia/codam-tech/321054917_2230246700470629_8195286951872702996_n.jpg',
         ],
       },
     },
@@ -119,7 +119,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         subheading: 'Impact numbers from the visit to Coeur de Jésus Orphanage.',
         items: [
           { value: '77', label: 'children supported' },
-          { value: '$7,000+', label: 'in charitable support' },
+          { value: '$1,500+', label: 'in charitable support' },
         ],
       },
       gallery: {
@@ -165,7 +165,7 @@ const content: Record<string, Record<Lang, EventDetailData>> = {
         subheading: 'Chiffres d\'impact de la visite à l\'Orphelinat Coeur de Jésus.',
         items: [
           { value: '77', label: 'enfants soutenus' },
-          { value: '7 000 $+', label: 'en soutien caritatif' },
+          { value: '1 500 $+', label: 'en soutien caritatif' },
         ],
       },
       gallery: {
