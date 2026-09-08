@@ -34,8 +34,8 @@ const governanceBoard = [
     name: 'Vianney Tanifor',
     role: 'Board Member',
     roleFr: "Membre du Conseil d'Administration",
-    bio:  'Vianney leads the Audit & Finance Committee. He manages the institution\'s financial integrity, budget oversight, and reserve management.',
-    bioFr: "Vianney dirige le Comité d'Audit et des Finances. Il gère l'intégrité financière de l'institution, la supervision budgétaire et la gestion des réserves.",
+    bio:  'Vianney leads the Audit & Finance Committee. He manages the institution\'s financial integrity, budget oversight, reserve management, and internal controls.',
+    bioFr: "Vianney dirige le Comité d'Audit et des Finances. Il gère l'intégrité financière de l'institution, la supervision budgétaire, la gestion des réserves et les contrôles internes.",
     href: '/about/leadership/vianney-tanifor',
   },
 ]
