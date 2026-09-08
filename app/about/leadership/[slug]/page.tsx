@@ -25,14 +25,16 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     name: 'Vianney Tanifor',
     role: 'Board Member',
     roleFr: "Membre du Conseil d'Administration",
-    bio: "Vianney brings expertise in organizational development and community engagement to the Gwags governance board. His experience supports the foundation's mission to build credible, well-structured institutions.",
+    bio: "Vianney leads the Audit & Finance Committee. He manages the institution's financial integrity, budget oversight, and reserve management.",
+    bioFr: "Vianney dirige le Comité d'Audit et des Finances. Il gère l'intégrité financière de l'institution, la supervision budgétaire et la gestion des réserves.",
     linkedin: 'https://www.linkedin.com/in/vianney-tanifor-9a76b0280/',
   },
   'noa-winner': {
     name: 'Winner Noa',
     role: 'Board Member',
     roleFr: "Membre du Conseil d'Administration",
-    bio: "Noa contributes strategic oversight and partnership expertise to the Gwags governance board, supporting the institution's long-term institutional and operational direction.",
+    bio: "Winner leads the Governance, Ethics and Regulatory Committee. He oversees Board composition, director nominations, ethical compliance, and regulatory alignment across all jurisdictions in which Gwags operates.",
+    bioFr: "Winner dirige le Comité de Gouvernance, d'Éthique et de Conformité Réglementaire. Il supervise la composition du Conseil d'administration, les nominations des administrateurs, la conformité éthique et l'alignement réglementaire dans toutes les juridictions où Gwags opère.",
     linkedin: 'https://www.linkedin.com/in/winnernoa/',
     image: '/images/leadership/winner-noa.jpg',
   },
@@ -50,17 +52,18 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
   },
   'placeholder-director-operations': {
     name: 'Shifu Afayi',
-    role: 'Chief of Programs',
-    roleFr: 'Chef des Programmes',
-    bio: 'Afayi manages the internal processes and organizational infrastructure that enable Gwags to operate effectively across its programs and partnerships.',
+    role: 'Chief Program Officer',
+    roleFr: 'Directeur des Programmes',
+    bio: "Afayi leads the design, execution, and evaluation of all Gwags programs, translating the institution's strategy into measurable field impact.",
+    bioFr: "Afayi dirige la conception, l'exécution et l'évaluation de l'ensemble des programmes de Gwags, traduisant la stratégie de l'institution en impact mesurable sur le terrain.",
     linkedin: 'https://www.linkedin.com/in/shifu-afayi-h-3708412a3/',
     image: '/images/leadership/shifu-afayi.jpg',
   },
   'placeholder-director-communications': {
     name: 'Ornella Ebolo',
-    role: 'Chief of Communications',
-    roleFr: 'Chef de la Communication',
-    bio: "The Chief of Communications leads Gwags's external engagement, institutional communications, and the development of strategic partnerships.",
+    role: 'Chief Communications Officer',
+    roleFr: 'Directeur de la Communication',
+    bio: "The Chief Communications Officer leads Gwags's external engagement, institutional communications, and the development of strategic partnerships.",
     image: '/images/leadership/ornella-ebolo.jpg',
   },
   'gloria-alana-asopjio': {
@@ -68,14 +71,13 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     role: 'Founding Member',
     bio: "Gloria was one of the founding members of the Gwags Foundation, leading outreach coordination and the procurement of resources for the foundation's early programs.",
     bioFr: "Gloria a été l'une des membres fondatrices de la Fondation Gwags, dirigeant la coordination de la sensibilisation et l'approvisionnement en ressources pour les premiers programmes de la fondation.",
-    linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
+    linkedin: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
   },
   'alissa-kenne-mokem': {
     name: 'Alissa Kenne Mokem',
     role: 'Founding Member',
     bio: "Alissa was one of the founding members of the Gwags Foundation, managing the foundation's financial operations.",
     bioFr: "Alissa a été l'une des membres fondatrices de la Fondation Gwags, gérant les opérations financières de la fondation.",
-    linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
   },
 }
 
