@@ -46,13 +46,14 @@ function GetInvolvedContent() {
   const [lang, toggleLang] = useLang()
   const [donateOpen, setDonateOpen] = useState(false)
   const searchParams = useSearchParams()
+  const actionParam = searchParams.get('action')
   const p = t[lang].getInvolvedPage
 
   useEffect(() => {
-    if (searchParams.get('action') === 'donate') {
+    if (actionParam === 'donate') {
       setDonateOpen(true)
     }
-  }, [searchParams])
+  }, [actionParam])
 
   return (
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
