@@ -71,7 +71,7 @@ export const t = {
       h2: 'Programs built to create lasting change.',
       body: 'Gwags carries its own portfolio of initiatives, each designed around a specific dimension of societal transformation. These are the building blocks of our broader institutional mission.',
       items: [
-        { title: 'Gwags Scholars Program', desc: 'Providing financial support and professional development opportunities to outstanding Cameroonian university students.', tag: 'EXCELLENCE' },
+        { title: 'Gwags Scholars Program', desc: 'Providing educational funding and professional development opportunities to outstanding Cameroonian students.', tag: 'EXCELLENCE' },
         { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY' },
         { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH' },
         { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.', tag: 'YOUTH' },
@@ -302,7 +302,7 @@ export const t = {
         eyebrow: 'OUR INITIATIVES',
         h2: 'Our commitment in action.',
         items: [
-          { title: 'Gwags Scholars Program', desc: 'Providing financial support and professional development opportunities to outstanding Cameroonian university students.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
+          { title: 'Gwags Scholars Program', desc: 'Providing educational funding and professional development opportunities to outstanding Cameroonian students.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
           { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH', href: '/initiatives/health-outreach' },
           { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.', tag: 'YOUTH', href: '/initiatives/ajong-foretia' },
@@ -486,7 +486,7 @@ export const t = {
     scholarsPage: {
       hero: {
         name: 'Gwags Scholars Program',
-        goal: 'To identify and invest in outstanding Cameroonian university students by providing financial support and professional development opportunities that prepare them for the transition into the workforce.',
+        goal: 'To identify and invest in outstanding Cameroonian students by funding their education and providing professional development opportunities that prepare them for the transition into the workforce.',
         image: '/images/scholars/program-cover.jpg',
       },
       sections: [
@@ -815,7 +815,7 @@ export const t = {
       h2: 'Des programmes construits pour créer un changement durable.',
       body: 'Gwags porte son propre portefeuille d\'initiatives, chacune conçue autour d\'une dimension spécifique de la transformation sociale.',
       items: [
-        { title: 'Programme Gwags Scholars', desc: 'Offrir un soutien financier et des opportunités de développement professionnel aux étudiants universitaires camerounais exceptionnels.', tag: 'EXCELLENCE' },
+        { title: 'Programme Gwags Scholars', desc: 'Offrir un financement éducatif et des opportunités de développement professionnel aux étudiants camerounais exceptionnels.', tag: 'EXCELLENCE' },
         { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ' },
         { title: 'Programme de Santé Communautaire', desc: 'Apporter des soins de santé gratuits et l\'éducation médicale aux communautés mal desservies.', tag: 'SANTÉ' },
         { title: 'Soutien aux Orphelins Ajong Foretia', desc: 'Soutenir les enfants orphelins à travers la fourniture de fournitures de vie essentielles et des opportunités éducatives.', tag: 'JEUNESSE' },
@@ -1045,7 +1045,7 @@ export const t = {
         eyebrow: 'NOS INITIATIVES',
         h2: 'Notre engagement en action.',
         items: [
-          { title: 'Programme Gwags Scholars', desc: 'Offrir un soutien financier et des opportunités de développement professionnel aux étudiants universitaires camerounais exceptionnels.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
+          { title: 'Programme Gwags Scholars', desc: 'Offrir un financement éducatif et des opportunités de développement professionnel aux étudiants camerounais exceptionnels.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
           { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Programme de Santé Communautaire', desc: "Apporter des soins de santé gratuits et l'éducation médicale aux communautés mal desservies.", tag: 'SANTÉ', href: '/initiatives/health-outreach' },
           { title: 'Soutien aux Orphelins Ajong Foretia', desc: 'Soutenir les enfants orphelins à travers la fourniture de fournitures de vie essentielles et des opportunités éducatives.', tag: 'JEUNESSE', href: '/initiatives/ajong-foretia' },
@@ -1229,7 +1229,7 @@ export const t = {
     scholarsPage: {
       hero: {
         name: 'Programme Gwags Scholars',
-        goal: 'Identifier et investir dans les étudiants universitaires camerounais exceptionnels en fournissant un soutien financier et des opportunités de développement professionnel qui les préparent à la transition vers le monde du travail.',
+        goal: 'Identifier et investir dans les étudiants camerounais exceptionnels en finançant leurs études et en offrant des opportunités de développement professionnel qui les préparent à la transition vers le monde du travail.',
         image: '/images/scholars/program-cover.jpg',
       },
       sections: [
