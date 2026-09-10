@@ -3794,21 +3794,36 @@ input:-webkit-autofill:active {
 }
 .legal-body:last-child { margin-bottom: 0; }
 .legal-body strong { color: #0A1128; font-weight: 600; }
+.legal-list {
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+.legal-list:last-child { margin-bottom: 0; }
+.legal-list li {
+  font-size: 18px;
+  color: #4A4A4A;
+  line-height: 1.8;
+  margin-bottom: 6px;
+}
+.legal-list li:last-child { margin-bottom: 0; }
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .legal-title { font-size: 32px; }
   .legal-heading { font-size: 19px; }
   .legal-body { font-size: 17px; }
+  .legal-list li { font-size: 17px; }
 }
 @media (max-width: 767px) {
   .legal-doc { padding: 56px 28px 72px; }
   .legal-title { font-size: 29px; }
   .legal-heading { font-size: 18px; }
   .legal-body { font-size: 16px; }
+  .legal-list li { font-size: 16px; }
 }
 @media (max-width: 480px) {
   .legal-doc { padding: 44px 22px 60px; }
   .legal-title { font-size: 26px; }
   .legal-heading { font-size: 17px; }
   .legal-body { font-size: 15px; }
+  .legal-list li { font-size: 15px; }
 }
