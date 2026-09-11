@@ -53,9 +53,11 @@ export default function Footer({ lang }: FooterProps) {
               {f.col1.heading}
             </h4>
             {f.col1.links.map((link) => (
-              <Link key={link.label} href={link.href} className="footer-link card-learn-more" style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '16px', marginBottom: '12px', textDecoration: 'none' }}>
-                {link.label}
-              </Link>
+              <div key={link.label}>
+                <Link href={link.href} className="footer-link card-learn-more" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '16px', marginBottom: '12px', textDecoration: 'none' }}>
+                  {link.label}
+                </Link>
+              </div>
             ))}
           </div>
 
@@ -64,9 +66,11 @@ export default function Footer({ lang }: FooterProps) {
               {f.col2.heading}
             </h4>
             {f.col2.links.map((link) => (
-              <Link key={link.label} href={link.href} className="footer-link card-learn-more" style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '16px', marginBottom: '12px', textDecoration: 'none' }}>
-                {link.label}
-              </Link>
+              <div key={link.label}>
+                <Link href={link.href} className="footer-link card-learn-more" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '16px', marginBottom: '12px', textDecoration: 'none' }}>
+                  {link.label}
+                </Link>
+              </div>
             ))}
           </div>
 
