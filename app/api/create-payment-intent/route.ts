@@ -20,16 +20,26 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: d.amountTooLowError }, { status: 400 })
     }
 
+    // A Customer is created for every one-time donation (not just subscriptions)
+    // so the card can be saved via `setup_future_usage` and reused without
+    // re-entering details if the donor later upgrades to a monthly gift.
+    const customer = await stripe.customers.create({
+      name: typeof name === 'string' && name.trim() ? name.trim() : undefined,
+      email: typeof email === 'string' && email.trim() ? email.trim() : undefined,
+    })
+
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(amount * 100),
       currency: 'usd',
       description: 'Gwags One-time Donation',
       payment_method_types: ['card'],
+      customer: customer.id,
+      setup_future_usage: 'off_session',
       receipt_email: typeof email === 'string' && email.trim() ? email.trim() : undefined,
       metadata: typeof name === 'string' && name.trim() ? { donor_name: name.trim() } : undefined,
     })
 
-    return NextResponse.json({ clientSecret: paymentIntent.client_secret })
+    return NextResponse.json({ clientSecret: paymentIntent.client_secret, customerId: customer.id })
   } catch (err) {
     console.error('create-payment-intent error:', err)
     const message = err instanceof Stripe.errors.StripeError ? err.message : d.paymentStartError

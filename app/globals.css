@@ -514,6 +514,28 @@ main > footer {
 }
 .donate-step { animation: donate-step-fade-in 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
 
+/* Donate button success animation (post-payment Step 1). Uses @keyframes
+   rather than `transition` because the button is freshly mounted when this
+   step appears (key={step} remount) — a transition has no prior value to
+   animate from, but a keyframe animation always starts at its `from` value. */
+@keyframes donate-success-btn-fill {
+  from { background-color: rgb(30, 100, 200); }
+  to   { background-color: #1E8E3E; }
+}
+.donate-success-btn { animation: donate-success-btn-fill 300ms ease forwards; }
+
+@keyframes donate-success-circle-draw {
+  from { stroke-dashoffset: 57; }
+  to   { stroke-dashoffset: 0; }
+}
+.donate-success-circle { animation: donate-success-circle-draw 500ms ease 250ms forwards; }
+
+@keyframes donate-success-check-draw {
+  from { stroke-dashoffset: 18; }
+  to   { stroke-dashoffset: 0; }
+}
+.donate-success-check { animation: donate-success-check-draw 350ms ease 750ms forwards; }
+
 /* Remove number input spinners */
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }

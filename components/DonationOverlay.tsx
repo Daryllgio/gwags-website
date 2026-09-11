@@ -5,6 +5,8 @@ import type { PaymentRequest as StripePaymentRequest } from '@stripe/stripe-js'
 import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { Lang, t } from '@/lib/translations'
 import DonationFAQ from '@/components/DonationFAQ'
+import SearchableDropdown from '@/components/SearchableDropdown'
+import { COUNTRIES } from '@/lib/countries'
 
 const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 if (!stripePublishableKey) {
@@ -30,6 +32,12 @@ function getStripePromise(lang: Lang) {
 const ONCE_AMOUNTS = [1000, 500, 100, 50, 25, 5]
 const MONTHLY_AMOUNTS = [200, 100, 50, 30, 10, 5]
 
+const REFERRAL_SOURCES = [
+  'friendOrFamily', 'linkedIn', 'searchEngine', 'gwagsEvent',
+  'workplace', 'email', 'partnerOrg', 'other', 'preferNotToSay',
+] as const
+type ReferralSource = typeof REFERRAL_SOURCES[number]
+
 const NAVY = '#0A1128'
 const SELECTED_BG = 'rgba(30, 100, 200, 0.12)'
 const SELECTED_BORDER = 'rgb(30, 100, 200)'
@@ -38,6 +46,8 @@ const ORIGINAL_BORDER = 'rgba(10,17,40,0.2)'
 const ERR_RED = '#c0392b'
 const HEART_RED = '#E53E3E'
 const REMINDER_BG = '#2A2A2A'
+const SUCCESS_GREEN = '#1E8E3E'
+const SUCCESS_GREEN_BG = '#E9F7EF'
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
@@ -76,6 +86,64 @@ const errStyle: React.CSSProperties = {
   color: ERR_RED,
   fontSize: '13px',
   margin: '4px 0 0',
+}
+
+/* Subtle text-link treatment shared by "Skip" (Step: Mailing address) and
+   "Close" (Step: Final thank you) — identical to the "Manage your donation"
+   trigger's existing styling + .donate-email-link underline/hover behavior. */
+const subtleLinkStyle: React.CSSProperties = {
+  background: 'none',
+  border: 'none',
+  cursor: 'pointer',
+  padding: 0,
+  color: NAVY,
+  fontSize: '13px',
+  fontWeight: 500,
+  fontFamily: 'inherit',
+  display: 'inline-block',
+}
+
+const bannerStyle: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+  width: '100%',
+  padding: '14px 16px',
+  borderRadius: '8px',
+  background: SUCCESS_GREEN_BG,
+  color: SUCCESS_GREEN,
+  fontWeight: 600,
+  fontSize: '15px',
+  boxSizing: 'border-box',
+}
+
+const upsellCardStyle: React.CSSProperties = {
+  background: SOLID_BLUE,
+  color: '#ffffff',
+  borderRadius: '10px',
+  padding: '20px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '12px',
+}
+
+const upsellPrimaryBtnStyle: React.CSSProperties = {
+  ...actionBtnStyle,
+  background: '#ffffff',
+  color: SOLID_BLUE,
+}
+
+const upsellSecondaryBtnStyle: React.CSSProperties = {
+  width: '100%',
+  padding: '14px',
+  borderRadius: '6px',
+  border: '1.5px solid rgba(255,255,255,0.6)',
+  background: 'transparent',
+  color: '#ffffff',
+  fontWeight: 600,
+  fontSize: '15px',
+  cursor: 'pointer',
+  fontFamily: 'inherit',
 }
 
 interface OverlayProps {
@@ -148,6 +216,52 @@ function InfoIcon() {
 function HeartIconRed({ size = 15 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill={HEART_RED} style={{ flexShrink: 0 }} aria-hidden="true">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+    </svg>
+  )
+}
+
+/* Post-payment Step: button success animation — a circle draws itself, then a
+   checkmark draws itself inside it. strokeDasharray/strokeDashoffset are set
+   as plain SVG attributes (not `style`) so the CSS keyframes in globals.css
+   (.donate-success-circle / .donate-success-check) can animate them — an
+   inline `style` value would win the cascade and freeze the dash offset. */
+function SuccessDrawIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <circle
+        className="donate-success-circle"
+        cx="12" cy="12" r="9"
+        stroke="#ffffff" strokeWidth="2"
+        strokeDasharray={57} strokeDashoffset={57}
+      />
+      <path
+        className="donate-success-check"
+        d="M7.5 12.5l3 3 6-6.5"
+        stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+        strokeDasharray={18} strokeDashoffset={18}
+      />
+    </svg>
+  )
+}
+
+/* Success banner checkmark (Donation successful / Final thank you) */
+function CheckCircleIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+      <circle cx="12" cy="12" r="10" fill={SUCCESS_GREEN} />
+      <path d="M7.5 12.5l3 3 6-6.5" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+/* Celebratory icon for the Donation successful / Final thank you screens —
+   HeartIconRed's exact path, scaled up, animated via the existing
+   .donate-heart / heart-beat pulse (app/globals.css) already used for the
+   heart icon on the /get-involved donate button. */
+function CelebrateHeartIcon({ size = 56 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill={HEART_RED} aria-hidden="true">
       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
     </svg>
   )
@@ -245,7 +359,26 @@ function CustomCheckbox({
 const capitalizeWords = (val: string) =>
   val.replace(/(^|\s)(\S)/g, (_, sp, ch) => sp + ch.toUpperCase())
 
-function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode?: 'desktop' | 'tablet' | 'phone'; onStepChange?: (step: number) => void }) {
+/* Shared by "Donation successful" (Step: success + monthly upsell) and
+   "Final thank you" — the banner, celebratory heart, thank-you text, and
+   donated amount are identical in both places. */
+function DonationSuccessSummary({ d, amount }: { d: typeof t['en']['donationOverlay']; amount: number }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', textAlign: 'center', width: '100%' }}>
+      <div style={bannerStyle}>
+        <CheckCircleIcon />
+        <span>{d.donationSuccessfulBanner}</span>
+      </div>
+      <span className="donate-heart"><CelebrateHeartIcon size={56} /></span>
+      <p style={{ fontWeight: 700, fontSize: '19px', color: NAVY, margin: 0 }}>{d.thankYouForSupport}</p>
+      <p style={{ fontSize: '15px', color: NAVY, margin: 0 }}>
+        {d.youveMadeADonationPrefix}{amount.toFixed(2)}{d.youveMadeADonationSuffix}
+      </p>
+    </div>
+  )
+}
+
+function DonateForm({ lang, mode = 'desktop', onStepChange, onClose }: { lang: Lang; mode?: 'desktop' | 'tablet' | 'phone'; onStepChange?: (step: number) => void; onClose: () => void }) {
   const d = t[lang].donationOverlay
   /* FIX 1/7: desktop fills the fixed-height panel (button pinned to bottom);
      phone/tablet flow naturally so there's no giant empty gap. */
@@ -285,6 +418,27 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [termsError, setTermsError] = useState(false)
 
+  /* Post-payment steps: optional mailing address (Step: Mailing address) */
+  const [address, setAddress] = useState({ street: '', city: '', state: '', postal: '', country: '' })
+
+  /* Post-payment steps: referral source (Step: How did you hear about us?) */
+  const [referralSelections, setReferralSelections] = useState<Record<ReferralSource, boolean>>(
+    Object.fromEntries(REFERRAL_SOURCES.map(k => [k, false])) as Record<ReferralSource, boolean>
+  )
+  const [referralError, setReferralError] = useState(false)
+
+  /* Captured from handleComplete on success — needed for the metadata update
+     call and, for one-time gifts, the "Yes, I'll give monthly" upgrade call. */
+  const [donationRecord, setDonationRecord] = useState<{ type: 'payment_intent' | 'subscription'; id: string } | null>(null)
+  const [customerId, setCustomerId] = useState<string | null>(null)
+  const [paymentMethodId, setPaymentMethodId] = useState<string | null>(null)
+
+  /* Post-payment steps: "Become a monthly supporter" upsell */
+  const [showUpsellCustomInput, setShowUpsellCustomInput] = useState(false)
+  const [upsellCustomAmount, setUpsellCustomAmount] = useState('')
+  const [upsellStatus, setUpsellStatus] = useState<'idle' | 'loading' | 'error'>('idle')
+  const [upsellError, setUpsellError] = useState<string | null>(null)
+
   const tooltipRef = useRef<HTMLDivElement>(null)
   const step2Timestamp = useRef(0)
   const stripe = useStripe()
@@ -307,6 +461,14 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
   useEffect(() => {
     onStepChange?.(step)
   }, [step, onStepChange])
+
+  /* Post-payment Step: button success animation — transient, auto-advances
+     to the Mailing address step once the draw-in animation finishes (~1.5s). */
+  useEffect(() => {
+    if (step !== 4) return
+    const timer = setTimeout(() => setStep(5), 1500)
+    return () => clearTimeout(timer)
+  }, [step])
 
   useEffect(() => {
     if (!tooltipOpen) return
@@ -431,11 +593,73 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
         },
       })
       if (result.error) throw new Error(result.error.message || d.cardChargeError)
+
       setStatus('success')
+      setCustomerId(typeof data.customerId === 'string' ? data.customerId : null)
+      if (frequency === 'once' && result.paymentIntent) {
+        const pm = result.paymentIntent.payment_method
+        setPaymentMethodId(typeof pm === 'string' ? pm : pm?.id ?? null)
+        setDonationRecord({ type: 'payment_intent', id: result.paymentIntent.id })
+      } else if (frequency === 'monthly' && typeof data.subscriptionId === 'string') {
+        setDonationRecord({ type: 'subscription', id: data.subscriptionId })
+      }
+      setStep(4)
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : d.genericError)
       setStatus('error')
     }
+  }
+
+  /* Post-payment upsell: converts the one-time gift just made into a monthly
+     subscription, reusing the Customer + PaymentMethod already saved via
+     create-payment-intent's setup_future_usage — no card re-entry needed. */
+  const handleUpgradeToMonthly = async () => {
+    if (!stripe || !customerId || !paymentMethodId) return
+    const amount = upsellCustomAmount ? parseFloat(upsellCustomAmount) : baseAmount
+    if (!amount || amount <= 0) return
+    setUpsellStatus('loading')
+    setUpsellError(null)
+    try {
+      const res = await fetch('/api/upgrade-to-monthly', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ customerId, paymentMethodId, amount, lang }),
+      })
+      const data = await res.json()
+      if (!res.ok || !data.clientSecret) throw new Error(data.error || d.paymentStartError)
+      const result = await stripe.confirmCardPayment(data.clientSecret)
+      if (result.error) throw new Error(result.error.message || d.cardChargeError)
+      setStep(8)
+    } catch (err) {
+      setUpsellError(err instanceof Error ? err.message : d.genericError)
+      setUpsellStatus('error')
+    }
+  }
+
+  /* Step: How did you hear about us? — required; on success, fire-and-forget
+     the address + referral data to Stripe metadata, then route one-time
+     donors to the monthly upsell and monthly donors straight to the final
+     thank-you (the upsell doesn't make sense for someone already subscribed). */
+  const handleStep6Next = () => {
+    const anySelected = Object.values(referralSelections).some(Boolean)
+    if (!anySelected) {
+      setReferralError(true)
+      return
+    }
+    setReferralError(false)
+    if (donationRecord) {
+      fetch('/api/update-donation-metadata', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: donationRecord.type,
+          id: donationRecord.id,
+          address,
+          referralSource: (Object.keys(referralSelections) as ReferralSource[]).filter(k => referralSelections[k]),
+        }),
+      }).catch(() => { /* best-effort, same pattern as ExitReminder's handleRemindMe */ })
+    }
+    setStep(frequency === 'monthly' ? 8 : 7)
   }
 
   /* "Manage your donation" — looks up the donor's Stripe Customer by email and
@@ -667,12 +891,6 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
         {/* ── Step 3: Payment ── */}
         {!manageMode && step === 3 && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', justifyContent: fill ? 'space-between' : 'flex-start', gap: fill ? undefined : (mode === 'tablet' ? '32px' : '18px'), paddingRight: '2px', background: '#ffffff' }}>
-          {status === 'success' ? (
-            <p style={{ color: '#2d7a2d', fontSize: '15px', margin: 0 }}>
-              {frequency === 'monthly' ? d.thankYouMonthly : d.thankYouOnce}
-            </p>
-          ) : (
-            <>
               {/* Top group: header + wallet + separator + card logos + card inputs */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <StepHeader title="Payment" onBack={() => setStep(2)} />
@@ -822,8 +1040,177 @@ function DonateForm({ lang, mode = 'desktop', onStepChange }: { lang: Lang; mode
                   {status === 'loading' ? '...' : donateLabel}
                 </button>
               </div>
-            </>
-          )}
+        </div>
+        )}
+
+        {/* ── Post-payment Step: Donate button success animation (transient) ── */}
+        {!manageMode && step === 4 && (
+        <div style={{ flex: fill ? 1 : undefined, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: fill ? undefined : '280px' }}>
+          <button type="button" disabled className="donate-success-btn" style={{ ...actionBtnStyle, cursor: 'default', width: 'auto', padding: '14px 28px' }}>
+            <SuccessDrawIcon />
+          </button>
+        </div>
+        )}
+
+        {/* ── Post-payment Step: Mailing address (optional) ── */}
+        {!manageMode && step === 5 && (
+        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '14px', paddingRight: '2px', background: '#ffffff' }}>
+          <StepHeader title={d.mailingAddressTitle} />
+
+          <div>
+            <label style={labelStyle}>{d.addressStreetLabel}</label>
+            <input
+              type="text"
+              value={address.street}
+              onChange={e => setAddress(p => ({ ...p, street: e.target.value }))}
+              style={inputStyle}
+            />
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+            <div>
+              <label style={labelStyle}>{d.addressCityLabel}</label>
+              <input
+                type="text"
+                value={address.city}
+                onChange={e => setAddress(p => ({ ...p, city: e.target.value }))}
+                style={inputStyle}
+              />
+            </div>
+            <div>
+              <label style={labelStyle}>{d.addressStateLabel}</label>
+              <input
+                type="text"
+                value={address.state}
+                onChange={e => setAddress(p => ({ ...p, state: e.target.value }))}
+                style={inputStyle}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label style={labelStyle}>{d.addressPostalLabel}</label>
+            <input
+              type="text"
+              value={address.postal}
+              onChange={e => setAddress(p => ({ ...p, postal: e.target.value }))}
+              style={inputStyle}
+            />
+          </div>
+
+          <div>
+            <label style={labelStyle}>{d.addressCountryLabel}</label>
+            <SearchableDropdown
+              options={COUNTRIES}
+              value={address.country}
+              onChange={v => setAddress(p => ({ ...p, country: v }))}
+              placeholder={d.addressCountryPlaceholder}
+            />
+          </div>
+
+          <button type="button" onClick={() => setStep(6)} style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}>
+            {d.continueLabel}
+          </button>
+          <div style={{ textAlign: 'center' }}>
+            <button type="button" onClick={() => setStep(6)} className="donate-email-link" style={subtleLinkStyle}>
+              {d.skipLink}
+            </button>
+          </div>
+        </div>
+        )}
+
+        {/* ── Post-payment Step: How did you hear about us? (required) ── */}
+        {!manageMode && step === 6 && (
+        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '14px', paddingRight: '2px', background: '#ffffff' }}>
+          <StepHeader title={d.howDidYouHearTitle} onBack={() => setStep(5)} />
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 12px' }}>
+            {REFERRAL_SOURCES.map(key => (
+              <div key={key} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <CustomCheckbox
+                  id={`referral-${key}`}
+                  checked={referralSelections[key]}
+                  onChange={checked => setReferralSelections(prev => {
+                    const next = { ...prev, [key]: checked }
+                    if (Object.values(next).some(Boolean)) setReferralError(false)
+                    return next
+                  })}
+                  uncheckedBorderColor={referralError ? ERR_RED : ORIGINAL_BORDER}
+                />
+                <label htmlFor={`referral-${key}`} style={{ fontSize: '14px', color: NAVY, cursor: 'pointer' }}>
+                  {d.referralOptions[key]}
+                </label>
+              </div>
+            ))}
+          </div>
+          {referralError && <p style={errStyle}>{d.pleaseSelectOneOption}</p>}
+
+          <button type="button" onClick={handleStep6Next} style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}>
+            {d.nextLabel}
+          </button>
+        </div>
+        )}
+
+        {/* ── Post-payment Step: Donation successful + monthly upsell (one-time donors only) ── */}
+        {!manageMode && step === 7 && (
+        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '20px', paddingRight: '2px', background: '#ffffff' }}>
+          <DonationSuccessSummary d={d} amount={baseAmount} />
+
+          <div style={upsellCardStyle}>
+            <h4 style={{ margin: 0, fontSize: '16px', fontWeight: 700, fontFamily: 'inherit' }}>{d.becomeMonthlySupporterTitle}</h4>
+            <p style={{ margin: 0, fontSize: '14px', lineHeight: 1.6 }}>{d.becomeMonthlySupporterBody}</p>
+
+            {!showUpsellCustomInput ? (
+              <div>
+                <div style={{ fontSize: '22px', fontWeight: 700 }}>${baseAmount.toFixed(2)}{d.usdPerMonthSuffix}</div>
+                <button
+                  type="button"
+                  onClick={() => setShowUpsellCustomInput(true)}
+                  className="donate-email-link"
+                  style={{ ...subtleLinkStyle, color: '#ffffff' }}
+                >
+                  {d.orAnotherAmountLink}
+                </button>
+              </div>
+            ) : (
+              <div style={{ position: 'relative' }}>
+                <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: NAVY, fontSize: '15px', fontWeight: 500 }}>$</span>
+                <input
+                  type="number"
+                  min="1"
+                  value={upsellCustomAmount}
+                  onChange={e => setUpsellCustomAmount(e.target.value)}
+                  style={{ ...inputStyle, paddingLeft: '28px' }}
+                />
+              </div>
+            )}
+
+            {upsellStatus === 'error' && (
+              <p style={{ color: '#ffb4a8', fontSize: '13px', margin: 0 }}>{upsellError || d.genericError}</p>
+            )}
+
+            <button
+              type="button"
+              onClick={handleUpgradeToMonthly}
+              disabled={upsellStatus === 'loading'}
+              style={{ ...upsellPrimaryBtnStyle, opacity: upsellStatus === 'loading' ? 0.7 : 1, cursor: upsellStatus === 'loading' ? 'not-allowed' : 'pointer' }}
+            >
+              {upsellStatus === 'loading' ? '...' : d.yesGiveMonthlyBtn}
+            </button>
+            <button type="button" onClick={() => setStep(8)} style={upsellSecondaryBtnStyle}>
+              {d.notAtThisTimeBtn}
+            </button>
+          </div>
+        </div>
+        )}
+
+        {/* ── Post-payment Step: Final thank you ── */}
+        {!manageMode && step === 8 && (
+        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', justifyContent: fill ? 'center' : 'flex-start', alignItems: 'center', paddingRight: '2px', background: '#ffffff' }}>
+          <DonationSuccessSummary d={d} amount={baseAmount} />
+          <button type="button" onClick={onClose} className="donate-email-link" style={{ ...subtleLinkStyle, marginTop: '24px' }}>
+            {d.closeLink}
+          </button>
         </div>
         )}
 
@@ -1037,7 +1424,7 @@ function TopBar({ onClose, subtitle, padding = '10px 20px' }: { onClose: () => v
    - CHANGE 4: the top bar scrolls away naturally on Step 1, but becomes fixed
      (pinned above the scroll area) from Step 2 onward / while the exit-reminder
      screen is showing. */
-function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInline }: {
+function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInline, onDonateStepChange }: {
   lang: Lang
   mode: 'phone' | 'tablet'
   exitMode: boolean
@@ -1045,6 +1432,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
   onBack: () => void
   onClose: () => void
   includeFaqInline: boolean
+  onDonateStepChange?: (step: number) => void
 }) {
   const d = t[lang].donationOverlay
   const n = t[lang].nav
@@ -1070,7 +1458,8 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
           </p>
         )}
         <Elements key={lang} stripe={getStripePromise(lang)}>
-          <DonateForm lang={lang} mode={mode} onStepChange={setDonateStep} />
+          <DonateForm lang={lang} mode={mode} onClose={onClose}
+            onStepChange={(s) => { setDonateStep(s); onDonateStepChange?.(s) }} />
         </Elements>
         {includeFaqInline && <DonationFAQ lang={lang} mode="phone" />}
       </div>
@@ -1115,6 +1504,16 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   const [exitMode, setExitMode] = useState(false)
   const [vp, setVp] = useState<'desktop' | 'tablet' | 'phone'>('desktop')
 
+  /* Once the donor reaches the post-payment steps (step >= 4), the X button
+     must close the modal directly instead of showing the "Maybe next time?"
+     exit-reminder — that reminder's copy ("we'll send you a gentle reminder")
+     only makes sense for someone abandoning a donation, not someone who just
+     completed one. `step` lives inside DonateForm; this callback (threaded
+     through DonateForm's existing onStepChange prop) lifts just enough of
+     that state up here to make the decision. */
+  const [paymentComplete, setPaymentComplete] = useState(false)
+  const handleDonateStepChange = (step: number) => setPaymentComplete(step >= 4)
+
   /* FIX 1: plain `overflow: hidden` doesn't reliably block touch-drag scrolling
      of the background on iPad/tablet Safari. Pin the body in place instead, and
      restore the exact scroll position on close — this locks scroll consistently
@@ -1151,6 +1550,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   }, [])
 
   const handleX = () => {
+    if (paymentComplete) { onClose(); return }
     if (exitMode) onClose()
     else setExitMode(true)
   }
@@ -1159,7 +1559,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   if (vp === 'phone') {
     return (
       <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: '#ffffff', display: 'flex', flexDirection: 'column' }}>
-        <StackedBody lang={lang} mode="phone" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline />
+        <StackedBody lang={lang} mode="phone" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline onDonateStepChange={handleDonateStepChange} />
       </div>
     )
   }
@@ -1171,7 +1571,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
       <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 16px' }}>
         <div className="donation-portal-tablet" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', width: '90vw', maxWidth: '450px', maxHeight: '92vh' }}>
           <div style={{ width: '100%', flex: '1 1 auto', minHeight: 0, background: '#ffffff', borderRadius: '12px', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }}>
-            <StackedBody lang={lang} mode="tablet" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline={false} />
+            <StackedBody lang={lang} mode="tablet" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline={false} onDonateStepChange={handleDonateStepChange} />
           </div>
           {/* CHANGE 6: FAQ below the portal, 2×2 */}
           <DonationFAQ lang={lang} mode="tablet" />
@@ -1258,7 +1658,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
               {/* Panel 1: Donation form */}
               <div style={{ minWidth: '100%', padding: '48px 36px 20px', display: 'flex', flexDirection: 'column', background: '#ffffff' }}>
                 <Elements key={lang} stripe={getStripePromise(lang)}>
-                  <DonateForm lang={lang} mode="desktop" />
+                  <DonateForm lang={lang} mode="desktop" onClose={onClose} onStepChange={handleDonateStepChange} />
                 </Elements>
               </div>
 
