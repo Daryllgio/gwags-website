@@ -271,8 +271,8 @@ export const t = {
         { label: 'Partner with us', href: '/partner' },
       ]},
       copy: '2026 Gwags Global Impact Institution',
-      privacy: 'Privacy',
-      terms: 'Terms',
+      privacy: 'Privacy Policy',
+      terms: 'Terms of Use',
     },
     howWeWork: {
       hero: {

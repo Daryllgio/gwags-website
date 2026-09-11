@@ -53,7 +53,7 @@ export default function Footer({ lang }: FooterProps) {
               {f.col1.heading}
             </h4>
             {f.col1.links.map((link) => (
-              <Link key={link.label} href={link.href} className="footer-link" style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '16px', marginBottom: '12px', textDecoration: 'none' }}>
+              <Link key={link.label} href={link.href} className="footer-link card-learn-more" style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '16px', marginBottom: '12px', textDecoration: 'none' }}>
                 {link.label}
               </Link>
             ))}
@@ -64,7 +64,7 @@ export default function Footer({ lang }: FooterProps) {
               {f.col2.heading}
             </h4>
             {f.col2.links.map((link) => (
-              <Link key={link.label} href={link.href} className="footer-link" style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '16px', marginBottom: '12px', textDecoration: 'none' }}>
+              <Link key={link.label} href={link.href} className="footer-link card-learn-more" style={{ display: 'block', color: 'rgba(255,255,255,0.92)', fontSize: '16px', marginBottom: '12px', textDecoration: 'none' }}>
                 {link.label}
               </Link>
             ))}
@@ -78,9 +78,9 @@ export default function Footer({ lang }: FooterProps) {
           </span>
           <div style={{ display: 'flex', gap: '20px' }}>
             {/* TODO: Create this page */}
-            <Link href="/privacy" className="footer-privacy-terms" style={{ color: '#ffffff', fontSize: '16px', textDecoration: 'none' }}>{f.privacy}</Link>
+            <Link href="/privacy" className="footer-privacy-terms card-learn-more" style={{ color: '#ffffff', fontSize: '16px', textDecoration: 'none' }}>{f.privacy}</Link>
             {/* TODO: Create this page */}
-            <Link href="/terms" className="footer-privacy-terms" style={{ color: '#ffffff', fontSize: '16px', textDecoration: 'none' }}>{f.terms}</Link>
+            <Link href="/terms" className="footer-privacy-terms card-learn-more" style={{ color: '#ffffff', fontSize: '16px', textDecoration: 'none' }}>{f.terms}</Link>
           </div>
         </div>
 
