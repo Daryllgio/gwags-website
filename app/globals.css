@@ -3766,6 +3766,7 @@ input:-webkit-autofill:active {
   padding: 72px 40px 96px;
 }
 .legal-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 34px;
   font-weight: 700;
   color: #0A1128;
@@ -3780,6 +3781,7 @@ input:-webkit-autofill:active {
 .legal-section { margin-bottom: 34px; }
 .legal-section:last-child { margin-bottom: 0; }
 .legal-heading {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 20px;
   font-weight: 700;
   color: #0A1128;
