@@ -908,7 +908,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                   whiteSpace: 'nowrap',
                   background: '#ffffff',
                   color: NAVY,
-                  fontSize: mode === 'phone' ? '13px' : '15px',
+                  fontSize: mode === 'phone' ? '13px' : '14px',
                   lineHeight: 1.5,
                   padding: '8px 10px',
                   borderRadius: '6px',
