@@ -429,6 +429,10 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [termsError, setTermsError] = useState(false)
 
+  /* Fix 1: the success animation plays in place on the Donate button, on the
+     still-active Payment step — it must NOT trigger a step change itself. */
+  const [successAnimating, setSuccessAnimating] = useState(false)
+
   /* Post-payment steps: referral source (Step: How did you hear about us?) */
   const [referralSelections, setReferralSelections] = useState<Record<ReferralSource, boolean>>(
     Object.fromEntries(REFERRAL_SOURCES.map(k => [k, false])) as Record<ReferralSource, boolean>
@@ -465,31 +469,41 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
   }, [step])
 
   /* CHANGE 2/4: let the parent (StackedBody) know which step is active, so it can
-     hide the intro image/text and pin the top bar on phone from step 2 onward. */
+     hide the intro image/text and pin the top bar on phone from step 2 onward.
+     Fix 1: while the success animation plays in place on the still-active
+     Payment step (step 3), report step 4 synthetically — payment has already
+     succeeded at that point, so the parent's post-payment X-button handling
+     (jump straight to the final thank-you instead of showing the abandonment
+     reminder) must already apply, even though `step` itself hasn't advanced. */
   useEffect(() => {
-    onStepChange?.(step)
-  }, [step, onStepChange])
+    onStepChange?.(successAnimating ? 4 : step)
+  }, [step, successAnimating, onStepChange])
 
-  /* Post-payment Step: button success animation — transient, auto-advances
-     to the "How did you hear about us?" step once the draw-in animation
-     finishes (~1.5s). */
+  /* Fix 1: the success animation plays on the Donate button in place, on the
+     still-active Payment step. Only once it finishes (~1.5s) does the flow
+     advance to the "How did you hear about us?" step, using the normal
+     step-transition animation. */
   useEffect(() => {
-    if (step !== 4) return
-    const timer = setTimeout(() => setStep(5), 1500)
+    if (!successAnimating) return
+    const timer = setTimeout(() => {
+      setSuccessAnimating(false)
+      setStep(4)
+    }, 1500)
     return () => clearTimeout(timer)
-  }, [step])
+  }, [successAnimating])
 
   /* Fix 5: pressing X while on any post-payment step before the final
-     thank-you (4, 5, or 6) should jump straight there instead of showing the
-     "Maybe next time?" reminder or closing outright. DonationOverlay owns
-     the X button but not this component's `step` state, so it signals a
-     jump by incrementing a counter prop — any change (not the value itself)
-     means "jump now". */
+     thank-you (the in-place success animation, referral, or monthly upsell)
+     should jump straight there instead of showing the "Maybe next time?"
+     reminder or closing outright. DonationOverlay owns the X button but not
+     this component's `step` state, so it signals a jump by incrementing a
+     counter prop — any change (not the value itself) means "jump now". */
   const jumpToFinalSignalRef = useRef(jumpToFinalSignal)
   useEffect(() => {
     if (jumpToFinalSignal !== undefined && jumpToFinalSignal !== jumpToFinalSignalRef.current) {
       jumpToFinalSignalRef.current = jumpToFinalSignal
-      setStep(7)
+      setSuccessAnimating(false)
+      setStep(6)
     }
   }, [jumpToFinalSignal])
 
@@ -626,7 +640,10 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
       } else if (frequency === 'monthly' && typeof data.subscriptionId === 'string') {
         setDonationRecord({ type: 'subscription', id: data.subscriptionId })
       }
-      setStep(4)
+      /* Fix 1: stay on the Payment step — the Donate button itself animates
+         in place; advancing to the next step happens in the successAnimating
+         effect above, once the animation finishes. */
+      setSuccessAnimating(true)
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : d.genericError)
       setStatus('error')
@@ -652,7 +669,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
       if (!res.ok || !data.clientSecret) throw new Error(data.error || d.paymentStartError)
       const result = await stripe.confirmCardPayment(data.clientSecret)
       if (result.error) throw new Error(result.error.message || d.cardChargeError)
-      setStep(7)
+      setStep(6)
     } catch (err) {
       setUpsellError(err instanceof Error ? err.message : d.genericError)
       setUpsellStatus('error')
@@ -681,7 +698,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
         }),
       }).catch(() => { /* best-effort, same pattern as ExitReminder's handleRemindMe */ })
     }
-    setStep(frequency === 'monthly' ? 7 : 6)
+    setStep(frequency === 'monthly' ? 6 : 5)
   }
 
   /* "Manage your donation" — looks up the donor's Stripe Customer by email and
@@ -1053,40 +1070,37 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                   <p style={{ color: ERR_RED, fontSize: '14px', margin: 0 }}>{errorMessage || d.genericError}</p>
                 )}
 
+                {/* Fix 1: the success animation plays in place on this button,
+                    still on the Payment step — same dimensions throughout
+                    (no resize), background fills to green via the
+                    .donate-success-btn keyframe, and the label is replaced by
+                    the circle/checkmark draw-in SVG. Only once it finishes
+                    does the flow advance to the next step. */}
                 <button
                   type="button"
                   onClick={handleComplete}
-                  disabled={status === 'loading'}
-                  style={{ ...actionBtnStyle, opacity: status === 'loading' ? 0.7 : 1, cursor: status === 'loading' ? 'not-allowed' : 'pointer' }}
+                  disabled={status === 'loading' || successAnimating}
+                  className={successAnimating ? 'donate-success-btn' : undefined}
+                  style={{
+                    ...actionBtnStyle,
+                    opacity: status === 'loading' ? 0.7 : 1,
+                    cursor: (status === 'loading' || successAnimating) ? 'not-allowed' : 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
                 >
-                  {status === 'loading' ? '...' : donateLabel}
+                  {successAnimating ? <SuccessDrawIcon /> : (status === 'loading' ? '...' : donateLabel)}
                 </button>
               </div>
         </div>
         )}
 
-        {/* ── Post-payment Step: Donate button success animation (transient) ──
-             The button itself is the animation container: same full-width
-             dimensions as every other primary button in the flow (no resize),
-             its background fills to green, and its label is replaced by the
-             circle/checkmark draw-in SVG, centered inside it. */}
-        {!manageMode && step === 4 && (
-        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column' }}>
-          <button
-            type="button"
-            disabled
-            className="donate-success-btn"
-            style={{ ...actionBtnStyle, marginTop: stepBtnMargin, cursor: 'default', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          >
-            <SuccessDrawIcon />
-          </button>
-        </div>
-        )}
-
         {/* ── Post-payment Step: How did you hear about us? (required) ──
-             No back arrow — the previous step is the transient success
-             animation, which is never a valid place to return to. */}
-        {!manageMode && step === 5 && (
+             No back arrow — the previous "step" is the in-place success
+             animation on the Payment view, which is never a valid place to
+             return to. */}
+        {!manageMode && step === 4 && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '14px', paddingRight: '2px', background: '#ffffff' }}>
           <StepHeader title={d.howDidYouHearTitle} />
 
@@ -1120,7 +1134,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
         {/* ── Post-payment Step: Donation successful + monthly upsell (one-time donors only) ──
              The banner is pinned to the top and never centers (Fix 2); the
              heart/thank-you text/amount and upsell card flow naturally below it. */}
-        {!manageMode && step === 6 && (
+        {!manageMode && step === 5 && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '20px', paddingRight: '2px', background: '#ffffff' }}>
           <SuccessBanner d={d} />
           <DonationSuccessSummary d={d} amount={baseAmount} />
@@ -1166,7 +1180,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
             >
               {upsellStatus === 'loading' ? '...' : d.yesGiveMonthlyBtn}
             </button>
-            <button type="button" onClick={() => setStep(7)} style={upsellSecondaryBtnStyle}>
+            <button type="button" onClick={() => setStep(6)} style={upsellSecondaryBtnStyle}>
               {d.notAtThisTimeBtn}
             </button>
           </div>
@@ -1177,7 +1191,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
              Three-part layout: banner pinned top (Fix 2), heart/thank-you
              text/amount vertically centered in the remaining space (Fix 4),
              Close link pinned to the bottom (Fix 3). No back arrow. */}
-        {!manageMode && step === 7 && (
+        {!manageMode && step === 6 && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', paddingRight: '2px', background: '#ffffff', minHeight: fill ? undefined : '360px' }}>
           <SuccessBanner d={d} />
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px 0' }}>
@@ -1416,7 +1430,10 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
   const n = t[lang].nav
   const [donateStep, setDonateStep] = useState(1)
 
-  const showIntro = mode === 'tablet' || donateStep === 1
+  /* Fix 2: on narrow/portrait layouts (this component handles both phone
+     and portrait-tablet), the photo stays visible on every step; only the
+     impact text drops once the user moves past Step 1. */
+  const showText = donateStep === 1
   /* CHANGE 5: phone-only gap bump between the intro text and "Choose your amount" */
   const introGap = mode === 'phone' ? '36px' : '24px'
   /* CHANGE 3: phone-only top bar padding bump */
@@ -1424,13 +1441,14 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
 
   const introBlock = (
     <div style={{ display: exitMode ? 'none' : 'flex', flexDirection: 'column', flexShrink: 0 }}>
-      {showIntro && (
-        <div className="donation-photo" style={{ background: '#E6E3DC', width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-          <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
-        </div>
-      )}
+      <div className="donation-photo" style={{ position: 'relative', background: '#E6E3DC', width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
+        {/* Fix 3: same subtle focus overlay as desktop/landscape-tablet, applied
+            to the photo once the text has dropped, for visual consistency. */}
+        {!showText && <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,17,40,0.35)', pointerEvents: 'none' }} />}
+      </div>
       <div style={{ padding: '24px 20px 40px' }}>
-        {showIntro && (
+        {showText && (
           <p style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: `0 0 ${introGap}` }}>
             {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
           </p>
@@ -1523,7 +1541,10 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
 
   useEffect(() => {
     const phoneMq = window.matchMedia('(max-width: 767px)')
-    const tabletMq = window.matchMedia('(min-width: 768px) and (max-width: 1023px)')
+    /* Fix 2: bumped from 1023px to 1024px — the iPad Pro 12.9" is exactly
+       1024px wide in portrait, and needs to fall into the narrow "tablet"
+       layout (photo-only-past-step-1) rather than slipping into desktop. */
+    const tabletMq = window.matchMedia('(min-width: 768px) and (max-width: 1024px)')
     const update = () => setVp(phoneMq.matches ? 'phone' : tabletMq.matches ? 'tablet' : 'desktop')
     update()
     phoneMq.addEventListener('change', update)
@@ -1532,13 +1553,14 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   }, [])
 
   const handleX = () => {
-    /* Fix 5: mid-flow post-payment steps (animation, referral, monthly
-       upsell) jump straight to the final thank-you step instead of showing
-       the upsell or the pre-payment exit-reminder. Once already on the
-       final thank-you step, X closes the portal outright — the same as
-       clicking "Close" there. */
-    if (donateStep >= 4 && donateStep <= 6) { setJumpToFinalSignal(s => s + 1); return }
-    if (donateStep === 7) { onClose(); return }
+    /* Fix 5: mid-flow post-payment steps (in-place success animation on
+       Payment — reported synthetically as step 4, see DonateForm's
+       onStepChange effect —, referral, monthly upsell) jump straight to the
+       final thank-you step instead of showing the upsell or the pre-payment
+       exit-reminder. Once already on the final thank-you step, X closes the
+       portal outright — the same as clicking "Close" there. */
+    if (donateStep >= 4 && donateStep <= 5) { setJumpToFinalSignal(s => s + 1); return }
+    if (donateStep === 6) { onClose(); return }
     if (exitMode) onClose()
     else setExitMode(true)
   }
@@ -1619,6 +1641,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
         >
           {/* Left side — CHANGE 5: top +20px, bottom -20px (same total height, content shifted lower) */}
           <div style={{
+            position: 'relative',
             background: '#ffffff',
             borderRadius: '12px 0 0 12px',
             padding: '68px 36px 53px',
@@ -1633,6 +1656,13 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
             <p style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: 0 }}>
               {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
             </p>
+            {/* Fix 3: subtle focus overlay once past Step 1 — photo and text
+                remain visible/legible underneath, just visually de-emphasized.
+                Noticeably lighter than the page-level 0.85-opacity backdrop.
+                pointer-events: none so the donate@gwags.org link stays clickable. */}
+            {donateStep > 1 && (
+              <div style={{ position: 'absolute', inset: 0, borderRadius: '12px 0 0 12px', background: 'rgba(10,17,40,0.35)', pointerEvents: 'none' }} />
+            )}
           </div>
 
           {/* Right side */}

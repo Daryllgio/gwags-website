@@ -580,8 +580,10 @@ input:-webkit-autofill:active {
   .donation-card > div:last-child { border-radius: 0 0 12px 12px !important; }
 }
 
-/* Donation portal width (tablet) — wider from 900px up to just before desktop (1024px) */
-@media (min-width: 900px) and (max-width: 1023px) {
+/* Donation portal width (tablet) — wider from 900px up to just before desktop.
+   Upper bound matches the JS tabletMq in DonationOverlay.tsx (1024px, so the
+   iPad Pro 12.9" portrait width is included). */
+@media (min-width: 900px) and (max-width: 1024px) {
   .donation-portal-tablet { max-width: 500px !important; }
 }
 
@@ -603,7 +605,7 @@ input:-webkit-autofill:active {
 @media (min-width: 768px) and (max-width: 810px) {
   .donation-photo { height: 215px !important; }
 }
-@media (min-width: 811px) and (max-width: 1023px) {
+@media (min-width: 811px) and (max-width: 1024px) {
   .donation-photo { height: 220px !important; }
 }
 
