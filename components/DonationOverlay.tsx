@@ -871,28 +871,44 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                   <ErrorCircleIcon />
                 </span>
               )}
-              {/* Fix 2: the field spans the panel's full width inside an
-                  ancestor with overflow:hidden (it clips the step slide-in
-                  animation), so there's no free horizontal space for a
-                  true side-by-side popover on any viewport — it renders
-                  below the field on phone, tablet, and desktop alike.
-                  On desktop/tablet, it also stretches edge-to-edge (right:0,
-                  no maxWidth) instead of shrinking to fit its text — at a
-                  fixed 260px it fell short of the full column width, so the
-                  centered "Manage your donation" link beneath it (which
-                  spans that same full width) had its trailing text peek out
-                  past the tooltip's right edge. Phone is untouched, since a
-                  260px cap already closely matches its narrower column. */}
+              {/* The field spans the panel's full width inside an ancestor
+                  with overflow:hidden (it clips the step slide-in animation),
+                  so there's no free horizontal space for a true side-by-side
+                  popover on any viewport — it renders below the field on
+                  phone, tablet, and desktop alike. The box is content-sized
+                  (no maxWidth on desktop/tablet) and centered via left:50% +
+                  translateX along the same axis the "Manage your monthly
+                  donation." link is centered on below it, so the two stay
+                  concentric and the tooltip fully overlaps the link
+                  regardless of exact text width. No pointer/tail — plain
+                  rounded box, as designed. Centering also applies on phone:
+                  lengthening the trigger text to "Manage your monthly
+                  donation." made it wider than the old left:0-anchored
+                  phone tooltip, so its trailing text started peeking out —
+                  the same class of bug being fixed here, just newly
+                  introduced on phone by that text change. Phone keeps its
+                  own maxWidth/font-size (260px / 13px) untouched — only the
+                  horizontal anchor changed, to restore full coverage.
+                  whiteSpace:'nowrap' is required on every viewport here:
+                  with only 'left' set (no 'right'), the shrink-to-fit width
+                  an absolutely positioned box lays out with is measured
+                  from that left offset to the containing block's right
+                  edge — i.e. roughly the right half of the column at
+                  left:50% — before the translateX(-50%) shifts it back
+                  into view. Without nowrap the text wraps inside that
+                  half-width box instead of laying out at its true
+                  one-line width, undersizing the box and breaking coverage. */}
               {belowMinAmount && (
                 <div style={{
                   position: 'absolute',
                   top: 'calc(100% + 6px)',
-                  left: 0,
-                  right: mode === 'phone' ? undefined : 0,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
                   maxWidth: mode === 'phone' ? '260px' : undefined,
+                  whiteSpace: 'nowrap',
                   background: '#ffffff',
                   color: NAVY,
-                  fontSize: mode === 'phone' ? '13px' : '14px',
+                  fontSize: mode === 'phone' ? '13px' : '15px',
                   lineHeight: 1.5,
                   padding: '8px 10px',
                   borderRadius: '6px',
@@ -915,7 +931,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
               className="donate-email-link"
               style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: NAVY, fontSize: '13px', fontWeight: 500, fontFamily: 'inherit', display: 'inline-block' }}
             >
-              {d.manageText}
+              {d.manageTriggerLink}
             </button>
           </div>
 
