@@ -5,8 +5,6 @@ import type { PaymentRequest as StripePaymentRequest } from '@stripe/stripe-js'
 import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { Lang, t } from '@/lib/translations'
 import DonationFAQ from '@/components/DonationFAQ'
-import SearchableDropdown from '@/components/SearchableDropdown'
-import { COUNTRIES } from '@/lib/countries'
 
 const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 if (!stripePublishableKey) {
@@ -88,9 +86,10 @@ const errStyle: React.CSSProperties = {
   margin: '4px 0 0',
 }
 
-/* Subtle text-link treatment shared by "Skip" (Step: Mailing address) and
-   "Close" (Step: Final thank you) — identical to the "Manage your donation"
-   trigger's existing styling + .donate-email-link underline/hover behavior. */
+/* Subtle text-link treatment shared by "or another amount" (monthly upsell)
+   and "Close" (Step: Final thank you) — identical to the "Manage your
+   donation" trigger's existing styling + .donate-email-link underline/hover
+   behavior. */
 const subtleLinkStyle: React.CSSProperties = {
   background: 'none',
   border: 'none',
@@ -106,8 +105,10 @@ const subtleLinkStyle: React.CSSProperties = {
 const bannerStyle: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'center',
   gap: '10px',
   width: '100%',
+  flexShrink: 0,
   padding: '14px 16px',
   borderRadius: '8px',
   background: SUCCESS_GREEN_BG,
@@ -359,16 +360,26 @@ function CustomCheckbox({
 const capitalizeWords = (val: string) =>
   val.replace(/(^|\s)(\S)/g, (_, sp, ch) => sp + ch.toUpperCase())
 
+/* "Donation successful" banner — shared by the monthly-upsell step and the
+   final thank-you step. Always pinned to the top of its panel and never
+   part of any vertical-centering group (Fix 2: it must never move). */
+function SuccessBanner({ d }: { d: typeof t['en']['donationOverlay'] }) {
+  return (
+    <div style={bannerStyle}>
+      <CheckCircleIcon />
+      <span>{d.donationSuccessfulBanner}</span>
+    </div>
+  )
+}
+
 /* Shared by "Donation successful" (Step: success + monthly upsell) and
-   "Final thank you" — the banner, celebratory heart, thank-you text, and
-   donated amount are identical in both places. */
+   "Final thank you" — the celebratory heart, thank-you text, and donated
+   amount are identical in both places. Does NOT include the banner (see
+   SuccessBanner above), so it can be independently centered within
+   whatever space is available below the banner. */
 function DonationSuccessSummary({ d, amount }: { d: typeof t['en']['donationOverlay']; amount: number }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', textAlign: 'center', width: '100%' }}>
-      <div style={bannerStyle}>
-        <CheckCircleIcon />
-        <span>{d.donationSuccessfulBanner}</span>
-      </div>
       <span className="donate-heart"><CelebrateHeartIcon size={56} /></span>
       <p style={{ fontWeight: 700, fontSize: '19px', color: NAVY, margin: 0 }}>{d.thankYouForSupport}</p>
       <p style={{ fontSize: '15px', color: NAVY, margin: 0 }}>
@@ -378,7 +389,7 @@ function DonationSuccessSummary({ d, amount }: { d: typeof t['en']['donationOver
   )
 }
 
-function DonateForm({ lang, mode = 'desktop', onStepChange, onClose }: { lang: Lang; mode?: 'desktop' | 'tablet' | 'phone'; onStepChange?: (step: number) => void; onClose: () => void }) {
+function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinalSignal }: { lang: Lang; mode?: 'desktop' | 'tablet' | 'phone'; onStepChange?: (step: number) => void; onClose: () => void; jumpToFinalSignal?: number }) {
   const d = t[lang].donationOverlay
   /* FIX 1/7: desktop fills the fixed-height panel (button pinned to bottom);
      phone/tablet flow naturally so there's no giant empty gap. */
@@ -417,9 +428,6 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose }: { lang: L
   const [cardError, setCardError] = useState(false)
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [termsError, setTermsError] = useState(false)
-
-  /* Post-payment steps: optional mailing address (Step: Mailing address) */
-  const [address, setAddress] = useState({ street: '', city: '', state: '', postal: '', country: '' })
 
   /* Post-payment steps: referral source (Step: How did you hear about us?) */
   const [referralSelections, setReferralSelections] = useState<Record<ReferralSource, boolean>>(
@@ -463,12 +471,27 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose }: { lang: L
   }, [step, onStepChange])
 
   /* Post-payment Step: button success animation — transient, auto-advances
-     to the Mailing address step once the draw-in animation finishes (~1.5s). */
+     to the "How did you hear about us?" step once the draw-in animation
+     finishes (~1.5s). */
   useEffect(() => {
     if (step !== 4) return
     const timer = setTimeout(() => setStep(5), 1500)
     return () => clearTimeout(timer)
   }, [step])
+
+  /* Fix 5: pressing X while on any post-payment step before the final
+     thank-you (4, 5, or 6) should jump straight there instead of showing the
+     "Maybe next time?" reminder or closing outright. DonationOverlay owns
+     the X button but not this component's `step` state, so it signals a
+     jump by incrementing a counter prop — any change (not the value itself)
+     means "jump now". */
+  const jumpToFinalSignalRef = useRef(jumpToFinalSignal)
+  useEffect(() => {
+    if (jumpToFinalSignal !== undefined && jumpToFinalSignal !== jumpToFinalSignalRef.current) {
+      jumpToFinalSignalRef.current = jumpToFinalSignal
+      setStep(7)
+    }
+  }, [jumpToFinalSignal])
 
   useEffect(() => {
     if (!tooltipOpen) return
@@ -629,7 +652,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose }: { lang: L
       if (!res.ok || !data.clientSecret) throw new Error(data.error || d.paymentStartError)
       const result = await stripe.confirmCardPayment(data.clientSecret)
       if (result.error) throw new Error(result.error.message || d.cardChargeError)
-      setStep(8)
+      setStep(7)
     } catch (err) {
       setUpsellError(err instanceof Error ? err.message : d.genericError)
       setUpsellStatus('error')
@@ -637,10 +660,10 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose }: { lang: L
   }
 
   /* Step: How did you hear about us? — required; on success, fire-and-forget
-     the address + referral data to Stripe metadata, then route one-time
-     donors to the monthly upsell and monthly donors straight to the final
-     thank-you (the upsell doesn't make sense for someone already subscribed). */
-  const handleStep6Next = () => {
+     the referral data to Stripe metadata, then route one-time donors to the
+     monthly upsell and monthly donors straight to the final thank-you (the
+     upsell doesn't make sense for someone already subscribed). */
+  const handleReferralNext = () => {
     const anySelected = Object.values(referralSelections).some(Boolean)
     if (!anySelected) {
       setReferralError(true)
@@ -654,12 +677,11 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose }: { lang: L
         body: JSON.stringify({
           type: donationRecord.type,
           id: donationRecord.id,
-          address,
           referralSource: (Object.keys(referralSelections) as ReferralSource[]).filter(k => referralSelections[k]),
         }),
       }).catch(() => { /* best-effort, same pattern as ExitReminder's handleRemindMe */ })
     }
-    setStep(frequency === 'monthly' ? 8 : 7)
+    setStep(frequency === 'monthly' ? 7 : 6)
   }
 
   /* "Manage your donation" — looks up the donor's Stripe Customer by email and
@@ -1043,86 +1065,30 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose }: { lang: L
         </div>
         )}
 
-        {/* ── Post-payment Step: Donate button success animation (transient) ── */}
+        {/* ── Post-payment Step: Donate button success animation (transient) ──
+             The button itself is the animation container: same full-width
+             dimensions as every other primary button in the flow (no resize),
+             its background fills to green, and its label is replaced by the
+             circle/checkmark draw-in SVG, centered inside it. */}
         {!manageMode && step === 4 && (
-        <div style={{ flex: fill ? 1 : undefined, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: fill ? undefined : '280px' }}>
-          <button type="button" disabled className="donate-success-btn" style={{ ...actionBtnStyle, cursor: 'default', width: 'auto', padding: '14px 28px' }}>
+        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column' }}>
+          <button
+            type="button"
+            disabled
+            className="donate-success-btn"
+            style={{ ...actionBtnStyle, marginTop: stepBtnMargin, cursor: 'default', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          >
             <SuccessDrawIcon />
           </button>
         </div>
         )}
 
-        {/* ── Post-payment Step: Mailing address (optional) ── */}
+        {/* ── Post-payment Step: How did you hear about us? (required) ──
+             No back arrow — the previous step is the transient success
+             animation, which is never a valid place to return to. */}
         {!manageMode && step === 5 && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '14px', paddingRight: '2px', background: '#ffffff' }}>
-          <StepHeader title={d.mailingAddressTitle} />
-
-          <div>
-            <label style={labelStyle}>{d.addressStreetLabel}</label>
-            <input
-              type="text"
-              value={address.street}
-              onChange={e => setAddress(p => ({ ...p, street: e.target.value }))}
-              style={inputStyle}
-            />
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-            <div>
-              <label style={labelStyle}>{d.addressCityLabel}</label>
-              <input
-                type="text"
-                value={address.city}
-                onChange={e => setAddress(p => ({ ...p, city: e.target.value }))}
-                style={inputStyle}
-              />
-            </div>
-            <div>
-              <label style={labelStyle}>{d.addressStateLabel}</label>
-              <input
-                type="text"
-                value={address.state}
-                onChange={e => setAddress(p => ({ ...p, state: e.target.value }))}
-                style={inputStyle}
-              />
-            </div>
-          </div>
-
-          <div>
-            <label style={labelStyle}>{d.addressPostalLabel}</label>
-            <input
-              type="text"
-              value={address.postal}
-              onChange={e => setAddress(p => ({ ...p, postal: e.target.value }))}
-              style={inputStyle}
-            />
-          </div>
-
-          <div>
-            <label style={labelStyle}>{d.addressCountryLabel}</label>
-            <SearchableDropdown
-              options={COUNTRIES}
-              value={address.country}
-              onChange={v => setAddress(p => ({ ...p, country: v }))}
-              placeholder={d.addressCountryPlaceholder}
-            />
-          </div>
-
-          <button type="button" onClick={() => setStep(6)} style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}>
-            {d.continueLabel}
-          </button>
-          <div style={{ textAlign: 'center' }}>
-            <button type="button" onClick={() => setStep(6)} className="donate-email-link" style={subtleLinkStyle}>
-              {d.skipLink}
-            </button>
-          </div>
-        </div>
-        )}
-
-        {/* ── Post-payment Step: How did you hear about us? (required) ── */}
-        {!manageMode && step === 6 && (
-        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '14px', paddingRight: '2px', background: '#ffffff' }}>
-          <StepHeader title={d.howDidYouHearTitle} onBack={() => setStep(5)} />
+          <StepHeader title={d.howDidYouHearTitle} />
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 12px' }}>
             {REFERRAL_SOURCES.map(key => (
@@ -1145,15 +1111,18 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose }: { lang: L
           </div>
           {referralError && <p style={errStyle}>{d.pleaseSelectOneOption}</p>}
 
-          <button type="button" onClick={handleStep6Next} style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}>
+          <button type="button" onClick={handleReferralNext} style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}>
             {d.nextLabel}
           </button>
         </div>
         )}
 
-        {/* ── Post-payment Step: Donation successful + monthly upsell (one-time donors only) ── */}
-        {!manageMode && step === 7 && (
+        {/* ── Post-payment Step: Donation successful + monthly upsell (one-time donors only) ──
+             The banner is pinned to the top and never centers (Fix 2); the
+             heart/thank-you text/amount and upsell card flow naturally below it. */}
+        {!manageMode && step === 6 && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '20px', paddingRight: '2px', background: '#ffffff' }}>
+          <SuccessBanner d={d} />
           <DonationSuccessSummary d={d} amount={baseAmount} />
 
           <div style={upsellCardStyle}>
@@ -1197,20 +1166,28 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose }: { lang: L
             >
               {upsellStatus === 'loading' ? '...' : d.yesGiveMonthlyBtn}
             </button>
-            <button type="button" onClick={() => setStep(8)} style={upsellSecondaryBtnStyle}>
+            <button type="button" onClick={() => setStep(7)} style={upsellSecondaryBtnStyle}>
               {d.notAtThisTimeBtn}
             </button>
           </div>
         </div>
         )}
 
-        {/* ── Post-payment Step: Final thank you ── */}
-        {!manageMode && step === 8 && (
-        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', justifyContent: fill ? 'center' : 'flex-start', alignItems: 'center', paddingRight: '2px', background: '#ffffff' }}>
-          <DonationSuccessSummary d={d} amount={baseAmount} />
-          <button type="button" onClick={onClose} className="donate-email-link" style={{ ...subtleLinkStyle, marginTop: '24px' }}>
-            {d.closeLink}
-          </button>
+        {/* ── Post-payment Step: Final thank you ──
+             Three-part layout: banner pinned top (Fix 2), heart/thank-you
+             text/amount vertically centered in the remaining space (Fix 4),
+             Close link pinned to the bottom (Fix 3). No back arrow. */}
+        {!manageMode && step === 7 && (
+        <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', paddingRight: '2px', background: '#ffffff', minHeight: fill ? undefined : '360px' }}>
+          <SuccessBanner d={d} />
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px 0' }}>
+            <DonationSuccessSummary d={d} amount={baseAmount} />
+          </div>
+          <div style={{ textAlign: 'center', flexShrink: 0 }}>
+            <button type="button" onClick={onClose} className="donate-email-link" style={{ ...subtleLinkStyle, fontSize: '15px' }}>
+              {d.closeLink}
+            </button>
+          </div>
         </div>
         )}
 
@@ -1424,7 +1401,7 @@ function TopBar({ onClose, subtitle, padding = '10px 20px' }: { onClose: () => v
    - CHANGE 4: the top bar scrolls away naturally on Step 1, but becomes fixed
      (pinned above the scroll area) from Step 2 onward / while the exit-reminder
      screen is showing. */
-function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInline, onDonateStepChange }: {
+function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInline, onDonateStepChange, jumpToFinalSignal }: {
   lang: Lang
   mode: 'phone' | 'tablet'
   exitMode: boolean
@@ -1433,6 +1410,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
   onClose: () => void
   includeFaqInline: boolean
   onDonateStepChange?: (step: number) => void
+  jumpToFinalSignal?: number
 }) {
   const d = t[lang].donationOverlay
   const n = t[lang].nav
@@ -1458,7 +1436,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
           </p>
         )}
         <Elements key={lang} stripe={getStripePromise(lang)}>
-          <DonateForm lang={lang} mode={mode} onClose={onClose}
+          <DonateForm lang={lang} mode={mode} onClose={onClose} jumpToFinalSignal={jumpToFinalSignal}
             onStepChange={(s) => { setDonateStep(s); onDonateStepChange?.(s) }} />
         </Elements>
         {includeFaqInline && <DonationFAQ lang={lang} mode="phone" />}
@@ -1505,14 +1483,18 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   const [vp, setVp] = useState<'desktop' | 'tablet' | 'phone'>('desktop')
 
   /* Once the donor reaches the post-payment steps (step >= 4), the X button
-     must close the modal directly instead of showing the "Maybe next time?"
-     exit-reminder — that reminder's copy ("we'll send you a gentle reminder")
-     only makes sense for someone abandoning a donation, not someone who just
-     completed one. `step` lives inside DonateForm; this callback (threaded
-     through DonateForm's existing onStepChange prop) lifts just enough of
-     that state up here to make the decision. */
-  const [paymentComplete, setPaymentComplete] = useState(false)
-  const handleDonateStepChange = (step: number) => setPaymentComplete(step >= 4)
+     must never show the "Maybe next time?" exit-reminder — that reminder's
+     copy ("we'll send you a gentle reminder") only makes sense for someone
+     abandoning a donation, not someone who just completed one. `step` lives
+     inside DonateForm; this callback (threaded through DonateForm's existing
+     onStepChange prop) lifts it up here so handleX can decide what to do:
+     jump straight to the final thank-you step (4–6) or close outright (7). */
+  const [donateStep, setDonateStep] = useState(1)
+  const handleDonateStepChange = (step: number) => setDonateStep(step)
+
+  /* Fix 5: incrementing this signals DonateForm (via its jumpToFinalSignal
+     prop) to jump straight to the final thank-you step. */
+  const [jumpToFinalSignal, setJumpToFinalSignal] = useState(0)
 
   /* FIX 1: plain `overflow: hidden` doesn't reliably block touch-drag scrolling
      of the background on iPad/tablet Safari. Pin the body in place instead, and
@@ -1550,7 +1532,13 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   }, [])
 
   const handleX = () => {
-    if (paymentComplete) { onClose(); return }
+    /* Fix 5: mid-flow post-payment steps (animation, referral, monthly
+       upsell) jump straight to the final thank-you step instead of showing
+       the upsell or the pre-payment exit-reminder. Once already on the
+       final thank-you step, X closes the portal outright — the same as
+       clicking "Close" there. */
+    if (donateStep >= 4 && donateStep <= 6) { setJumpToFinalSignal(s => s + 1); return }
+    if (donateStep === 7) { onClose(); return }
     if (exitMode) onClose()
     else setExitMode(true)
   }
@@ -1559,7 +1547,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   if (vp === 'phone') {
     return (
       <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: '#ffffff', display: 'flex', flexDirection: 'column' }}>
-        <StackedBody lang={lang} mode="phone" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline onDonateStepChange={handleDonateStepChange} />
+        <StackedBody lang={lang} mode="phone" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline onDonateStepChange={handleDonateStepChange} jumpToFinalSignal={jumpToFinalSignal} />
       </div>
     )
   }
@@ -1571,7 +1559,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
       <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 16px' }}>
         <div className="donation-portal-tablet" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', width: '90vw', maxWidth: '450px', maxHeight: '92vh' }}>
           <div style={{ width: '100%', flex: '1 1 auto', minHeight: 0, background: '#ffffff', borderRadius: '12px', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }}>
-            <StackedBody lang={lang} mode="tablet" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline={false} onDonateStepChange={handleDonateStepChange} />
+            <StackedBody lang={lang} mode="tablet" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline={false} onDonateStepChange={handleDonateStepChange} jumpToFinalSignal={jumpToFinalSignal} />
           </div>
           {/* CHANGE 6: FAQ below the portal, 2×2 */}
           <DonationFAQ lang={lang} mode="tablet" />
@@ -1658,7 +1646,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
               {/* Panel 1: Donation form */}
               <div style={{ minWidth: '100%', padding: '48px 36px 20px', display: 'flex', flexDirection: 'column', background: '#ffffff' }}>
                 <Elements key={lang} stripe={getStripePromise(lang)}>
-                  <DonateForm lang={lang} mode="desktop" onClose={onClose} onStepChange={handleDonateStepChange} />
+                  <DonateForm lang={lang} mode="desktop" onClose={onClose} onStepChange={handleDonateStepChange} jumpToFinalSignal={jumpToFinalSignal} />
                 </Elements>
               </div>
 
