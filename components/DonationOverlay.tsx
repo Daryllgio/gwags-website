@@ -875,22 +875,30 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                   ancestor with overflow:hidden (it clips the step slide-in
                   animation), so there's no free horizontal space for a
                   true side-by-side popover on any viewport — it renders
-                  below the field on phone, tablet, and desktop alike. */}
+                  below the field on phone, tablet, and desktop alike.
+                  On desktop/tablet, it also stretches edge-to-edge (right:0,
+                  no maxWidth) instead of shrinking to fit its text — at a
+                  fixed 260px it fell short of the full column width, so the
+                  centered "Manage your donation" link beneath it (which
+                  spans that same full width) had its trailing text peek out
+                  past the tooltip's right edge. Phone is untouched, since a
+                  260px cap already closely matches its narrower column. */}
               {belowMinAmount && (
                 <div style={{
                   position: 'absolute',
                   top: 'calc(100% + 6px)',
                   left: 0,
+                  right: mode === 'phone' ? undefined : 0,
+                  maxWidth: mode === 'phone' ? '260px' : undefined,
                   background: '#ffffff',
                   color: NAVY,
-                  fontSize: '13px',
+                  fontSize: mode === 'phone' ? '13px' : '14px',
                   lineHeight: 1.5,
                   padding: '8px 10px',
                   borderRadius: '6px',
                   border: '1px solid rgba(0,0,0,0.15)',
                   boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
                   zIndex: 10,
-                  maxWidth: '260px',
                 }}>
                   The minimum donation amount is <strong>$5</strong>
                 </div>
