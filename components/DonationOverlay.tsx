@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import type { PaymentRequest as StripePaymentRequest } from '@stripe/stripe-js'
 import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
@@ -29,6 +29,9 @@ function getStripePromise(lang: Lang) {
 
 const ONCE_AMOUNTS = [1000, 500, 100, 50, 25, 5]
 const MONTHLY_AMOUNTS = [200, 100, 50, 30, 10, 5]
+/* Fix 2: minimum for the custom "$" amount field. Every preset button is
+   already >= this, so only custom entries ever need the check. */
+const MIN_DONATION_AMOUNT = 5
 
 const REFERRAL_SOURCES = [
   'friendOrFamily', 'linkedIn', 'searchEngine', 'gwagsEvent',
@@ -212,6 +215,18 @@ function InfoIcon() {
       <circle cx="7" cy="7" r="6" />
       <line x1="7" y1="6.5" x2="7" y2="10" />
       <circle cx="7" cy="4" r="0.7" fill="rgba(10,17,40,0.65)" stroke="none" />
+    </svg>
+  )
+}
+
+/* Fix 2: small red circular exclamation icon shown inside the custom amount
+   field when the entered value is below the minimum donation. */
+function ErrorCircleIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <circle cx="8" cy="8" r="8" fill={ERR_RED} />
+      <rect x="7.25" y="3.5" width="1.5" height="5.5" rx="0.75" fill="#ffffff" />
+      <circle cx="8" cy="11.2" r="0.9" fill="#ffffff" />
     </svg>
   )
 }
@@ -465,6 +480,10 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
   const baseAmount = custom ? parseFloat(custom) : (selected ?? 0)
   const feeAmount = baseAmount > 0 ? Math.round((baseAmount * 0.029 + 0.30) * 100) / 100 : 0
   const totalAmount = coverFee ? Math.round((baseAmount + feeAmount) * 100) / 100 : baseAmount
+  /* Fix 2: live validation on the custom amount field only — preset buttons
+     are always >= MIN_DONATION_AMOUNT already. Derived directly from
+     `custom` so it updates (and clears) on every keystroke automatically. */
+  const belowMinAmount = custom !== '' && baseAmount > 0 && baseAmount < MIN_DONATION_AMOUNT
 
   /* FIX 2 layer 2: stamp the moment step 2 appears, to reject near-instant autofill clicks */
   useEffect(() => {
@@ -585,6 +604,9 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
       setAmountError(true)
       return
     }
+    /* Fix 2: block progression below the minimum — the inline red field
+       state already communicates why, so no separate error message here. */
+    if (baseAmount < MIN_DONATION_AMOUNT) return
     setAmountError(false)
     setStep(2)
   }
@@ -829,15 +851,50 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
           {/* Custom amount + validation */}
           <div>
             <div style={{ position: 'relative' }}>
-              <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: NAVY, fontSize: '15px', fontWeight: 500 }}>$</span>
+              <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: belowMinAmount ? ERR_RED : NAVY, fontSize: '15px', fontWeight: 500 }}>$</span>
               <input
                 type="number"
                 min="1"
                 placeholder=""
                 value={custom}
                 onChange={e => { setCustom(e.target.value); setSelected(null); setAmountError(false) }}
-                style={{ ...inputStyle, paddingLeft: '28px', border: `1.5px solid ${amountError ? ERR_RED : ORIGINAL_BORDER}` }}
+                style={{
+                  ...inputStyle,
+                  paddingLeft: '28px',
+                  paddingRight: belowMinAmount ? '38px' : undefined,
+                  color: belowMinAmount ? ERR_RED : NAVY,
+                  border: `1.5px solid ${(amountError || belowMinAmount) ? ERR_RED : ORIGINAL_BORDER}`,
+                }}
               />
+              {belowMinAmount && (
+                <span style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', display: 'flex' }}>
+                  <ErrorCircleIcon />
+                </span>
+              )}
+              {/* Fix 2: the field spans the panel's full width inside an
+                  ancestor with overflow:hidden (it clips the step slide-in
+                  animation), so there's no free horizontal space for a
+                  true side-by-side popover on any viewport — it renders
+                  below the field on phone, tablet, and desktop alike. */}
+              {belowMinAmount && (
+                <div style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 6px)',
+                  left: 0,
+                  background: '#ffffff',
+                  color: NAVY,
+                  fontSize: '13px',
+                  lineHeight: 1.5,
+                  padding: '8px 10px',
+                  borderRadius: '6px',
+                  border: '1px solid rgba(0,0,0,0.15)',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                  zIndex: 10,
+                  maxWidth: '260px',
+                }}>
+                  The minimum donation amount is <strong>$5</strong>
+                </div>
+              )}
             </div>
             {amountError && <p style={errStyle}>Please select or enter an amount.</p>}
           </div>
@@ -1433,12 +1490,22 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
   const n = t[lang].nav
   const [donateStep, setDonateStep] = useState(1)
 
-  /* Fix 5: the scroll container keeps whatever scrollTop it had from the
-     previous step, which can land the new step mid-scroll past the photo
-     instead of at the top. Reset it to the top on every step transition. */
+  /* Fix 5 / Fix 1 (follow-up): the scroll container keeps whatever scrollTop
+     it had from the previous step, which can land the new step mid-scroll
+     past the photo instead of at the top.
+     Two things were wrong with the first attempt: (1) `scrollTo({top:0})`
+     inherits `scroll-behavior: smooth` from the site-wide `html` rule (it's
+     an inherited CSS property), so the reset animated toward 0 instead of
+     jumping there — and that animation could get cut short by a subsequent
+     render, leaving the scroll partway down. Setting `scrollTop` directly
+     always jumps instantly, bypassing scroll-behavior entirely. (2) a plain
+     `useEffect` runs after the browser paints, so the old scroll position
+     could flash briefly before the correction landed. `useLayoutEffect`
+     fires synchronously right after the new step's DOM is committed, before
+     paint, so the reset is invisible and can't be interrupted. */
   const scrollRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    scrollRef.current?.scrollTo({ top: 0 })
+  useLayoutEffect(() => {
+    if (scrollRef.current) scrollRef.current.scrollTop = 0
   }, [donateStep])
 
   /* Fix 2: on narrow/portrait layouts (this component handles both phone

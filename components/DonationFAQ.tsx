@@ -152,9 +152,11 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
      - CHANGE 8: per-item padding reduced 16px → 10px, so the gap between two closed
        items drops from 32px (16+16) to 20px (10+10).
      - Fix 7: per-item padding reduced again, 10px → 8px (gap between two closed
-       items now 16px), and item label font-size reduced 14px → 13px. */
+       items now 16px), and item label font-size reduced 14px → 13px.
+     - Fix 3 (round 2): per-item padding reduced again, 8px → 5px (gap between
+       two closed items now 10px), tightened further per follow-up feedback. */
   if (mode === 'phone') {
-    const itemPad = '8px 0'
+    const itemPad = '5px 0'
     const answerIndent = 24
     return (
       <div style={{ marginTop: '24px', borderTop: '1px solid rgba(10,17,40,0.1)', paddingTop: '14px' }}>
