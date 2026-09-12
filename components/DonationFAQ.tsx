@@ -150,9 +150,11 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
      - CHANGE 7: answer text indented 24px (chevron 14px + 10px gap) to align with
        the question text instead of the chevron.
      - CHANGE 8: per-item padding reduced 16px → 10px, so the gap between two closed
-       items drops from 32px (16+16) to 20px (10+10). */
+       items drops from 32px (16+16) to 20px (10+10).
+     - Fix 7: per-item padding reduced again, 10px → 8px (gap between two closed
+       items now 16px), and item label font-size reduced 14px → 13px. */
   if (mode === 'phone') {
-    const itemPad = '10px 0'
+    const itemPad = '8px 0'
     const answerIndent = 24
     return (
       <div style={{ marginTop: '24px', borderTop: '1px solid rgba(10,17,40,0.1)', paddingTop: '14px' }}>
@@ -167,7 +169,7 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
                 style={{
                   width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '10px',
                   background: 'none', border: 'none', padding: itemPad, cursor: 'pointer',
-                  fontFamily: 'inherit', color: NAVY, fontSize: '14px', fontWeight: 500, textAlign: 'left',
+                  fontFamily: 'inherit', color: NAVY, fontSize: '13px', fontWeight: 500, textAlign: 'left',
                 }}
               >
                 <span style={{ color: NAVY, display: 'flex' }}><ChevronIcon open={isOpen} /></span>

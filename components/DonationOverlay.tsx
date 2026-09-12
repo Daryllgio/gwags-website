@@ -46,6 +46,9 @@ const HEART_RED = '#E53E3E'
 const REMINDER_BG = '#2A2A2A'
 const SUCCESS_GREEN = '#1E8E3E'
 const SUCCESS_GREEN_BG = '#E9F7EF'
+/* Fix 3: subtle focus dimming for the left panel past Step 1 — light enough
+   that the photo keeps its color and the text stays clearly readable. */
+const FOCUS_OVERLAY = 'rgba(10,17,40,0.12)'
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
@@ -1430,10 +1433,22 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
   const n = t[lang].nav
   const [donateStep, setDonateStep] = useState(1)
 
+  /* Fix 5: the scroll container keeps whatever scrollTop it had from the
+     previous step, which can land the new step mid-scroll past the photo
+     instead of at the top. Reset it to the top on every step transition. */
+  const scrollRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0 })
+  }, [donateStep])
+
   /* Fix 2: on narrow/portrait layouts (this component handles both phone
      and portrait-tablet), the photo stays visible on every step; only the
      impact text drops once the user moves past Step 1. */
   const showText = donateStep === 1
+  /* Fix 6: on phone only, the final thank-you step (6) drops the photo too,
+     so the "Donation successful" banner sits at the very top with no
+     scrolling needed. Desktop/tablet keep the (dimmed) photo on every step. */
+  const hidePhoto = mode === 'phone' && donateStep === 6
   /* CHANGE 5: phone-only gap bump between the intro text and "Choose your amount" */
   const introGap = mode === 'phone' ? '36px' : '24px'
   /* CHANGE 3: phone-only top bar padding bump */
@@ -1441,12 +1456,14 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
 
   const introBlock = (
     <div style={{ display: exitMode ? 'none' : 'flex', flexDirection: 'column', flexShrink: 0 }}>
+      {!hidePhoto && (
       <div className="donation-photo" style={{ position: 'relative', background: '#E6E3DC', width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
         <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
         {/* Fix 3: same subtle focus overlay as desktop/landscape-tablet, applied
             to the photo once the text has dropped, for visual consistency. */}
-        {!showText && <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,17,40,0.35)', pointerEvents: 'none' }} />}
+        {!showText && <div style={{ position: 'absolute', inset: 0, background: FOCUS_OVERLAY, pointerEvents: 'none' }} />}
       </div>
+      )}
       <div style={{ padding: '24px 20px 40px' }}>
         {showText && (
           <p style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: `0 0 ${introGap}` }}>
@@ -1472,7 +1489,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
     return (
       <>
         <TopBar onClose={onX} subtitle={n.subtitle} />
-        <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', WebkitOverflowScrolling: 'touch', display: 'flex', flexDirection: 'column' }}>
+        <div ref={scrollRef} style={{ flex: 1, minHeight: 0, overflowY: 'auto', WebkitOverflowScrolling: 'touch', display: 'flex', flexDirection: 'column' }}>
           {introBlock}
           {exitBlock}
         </div>
@@ -1486,7 +1503,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
   return (
     <>
       {topBarFixed && <TopBar onClose={onX} subtitle={n.subtitle} padding={topBarPadding} />}
-      <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
+      <div ref={scrollRef} style={{ flex: 1, minHeight: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
         {!topBarFixed && <TopBar onClose={onX} subtitle={n.subtitle} padding={topBarPadding} />}
         {introBlock}
         {exitBlock}
@@ -1661,7 +1678,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
                 Noticeably lighter than the page-level 0.85-opacity backdrop.
                 pointer-events: none so the donate@gwags.org link stays clickable. */}
             {donateStep > 1 && (
-              <div style={{ position: 'absolute', inset: 0, borderRadius: '12px 0 0 12px', background: 'rgba(10,17,40,0.35)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', inset: 0, borderRadius: '12px 0 0 12px', background: FOCUS_OVERLAY, pointerEvents: 'none' }} />
             )}
           </div>
 
