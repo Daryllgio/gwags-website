@@ -395,14 +395,19 @@ function SuccessBanner({ d }: { d: typeof t['en']['donationOverlay'] }) {
    amount are identical in both places. Does NOT include the banner (see
    SuccessBanner above), so it can be independently centered within
    whatever space is available below the banner. */
-function DonationSuccessSummary({ d, amount }: { d: typeof t['en']['donationOverlay']; amount: number }) {
+function DonationSuccessSummary({ d, amount, isMonthlySupporter = false }: { d: typeof t['en']['donationOverlay']; amount: number; isMonthlySupporter?: boolean }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', textAlign: 'center', width: '100%' }}>
       <span className="donate-heart"><CelebrateHeartIcon size={56} /></span>
       <p style={{ fontWeight: 700, fontSize: '19px', color: NAVY, margin: 0 }}>{d.thankYouForSupport}</p>
-      <p style={{ fontSize: '15px', color: NAVY, margin: 0 }}>
-        {d.youveMadeADonationPrefix}{amount.toFixed(2)}{d.youveMadeADonationSuffix}
-      </p>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+        <p style={{ fontSize: '15px', color: NAVY, margin: 0 }}>
+          {d.youveMadeADonationPrefix}{amount.toFixed(2)}{d.youveMadeADonationSuffix}
+        </p>
+        {isMonthlySupporter && (
+          <p style={{ fontSize: '15px', color: NAVY, margin: 0 }}>{d.nowMonthlySupporterText}</p>
+        )}
+      </div>
     </div>
   )
 }
@@ -468,6 +473,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
   const [upsellCustomAmount, setUpsellCustomAmount] = useState('')
   const [upsellStatus, setUpsellStatus] = useState<'idle' | 'loading' | 'error'>('idle')
   const [upsellError, setUpsellError] = useState<string | null>(null)
+  const [upsellSucceeded, setUpsellSucceeded] = useState(false)
 
   const tooltipRef = useRef<HTMLDivElement>(null)
   const step2Timestamp = useRef(0)
@@ -694,6 +700,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
       if (!res.ok || !data.clientSecret) throw new Error(data.error || d.paymentStartError)
       const result = await stripe.confirmCardPayment(data.clientSecret)
       if (result.error) throw new Error(result.error.message || d.cardChargeError)
+      setUpsellSucceeded(true)
       setStep(6)
     } catch (err) {
       setUpsellError(err instanceof Error ? err.message : d.genericError)
@@ -1279,9 +1286,14 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', paddingRight: '2px', background: '#ffffff', minHeight: fill ? undefined : '360px' }}>
           <SuccessBanner d={d} />
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px 0' }}>
-            <DonationSuccessSummary d={d} amount={baseAmount} />
+            <DonationSuccessSummary d={d} amount={baseAmount} isMonthlySupporter={frequency === 'monthly' || upsellSucceeded} />
           </div>
-          <div style={{ textAlign: 'center', flexShrink: 0 }}>
+          {/* paddingBottom gives the .donate-email-link::after underline
+              (rendered 3px below the button, 2px tall) room to paint before
+              this panel's overflow:hidden root clips it — without it, the
+              button's bottom edge sits flush against that clipping boundary
+              and the underline is cut off entirely. */}
+          <div style={{ textAlign: 'center', flexShrink: 0, paddingBottom: '8px' }}>
             <button type="button" onClick={onClose} className="donate-email-link" style={{ ...subtleLinkStyle, fontSize: '15px' }}>
               {d.closeLink}
             </button>
