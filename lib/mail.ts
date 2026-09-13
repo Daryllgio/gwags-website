@@ -17,6 +17,11 @@ export function getFromAddress(): string {
   return process.env.RESEND_FROM_EMAIL || 'GWAGS Website <onboarding@resend.dev>'
 }
 
+export function getFromEmail(): string {
+  const match = getFromAddress().match(/<([^>]+)>/)
+  return match ? match[1] : getFromAddress().trim()
+}
+
 export function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
