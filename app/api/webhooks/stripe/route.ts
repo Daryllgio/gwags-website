@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
-import nodemailer from 'nodemailer'
+import { getResendClient, getFromEmail } from '@/lib/mail'
 
 export const runtime = 'nodejs'
 
@@ -34,18 +34,6 @@ function escapeHtml(str: string): string {
 const formatAmount = (cents: number) => `$${(cents / 100).toFixed(2)}`
 const formatDate = () => new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })
 
-function getTransporter() {
-  return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT) || 587,
-    secure: false,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  })
-}
-
 /* Simple, readable HTML shell matching the site's navy/gold palette —
    not a marketing template, just a clean wrapper around the message body. */
 function emailShell(bodyHtml: string): string {
@@ -65,13 +53,14 @@ function emailShell(bodyHtml: string): string {
 }
 
 async function sendMail(to: string, subject: string, bodyHtml: string, fromName: string) {
-  const transporter = getTransporter()
-  await transporter.sendMail({
-    from: `"${fromName}" <${process.env.SMTP_USER}>`,
+  const resend = getResendClient()
+  const { error } = await resend.emails.send({
+    from: `"${fromName}" <${getFromEmail()}>`,
     to,
     subject,
     html: emailShell(bodyHtml),
   })
+  if (error) throw new Error(error.message)
 }
 
 /* Subscription events only carry a customer ID, not the customer's email/name,

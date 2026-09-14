@@ -1,41 +1,56 @@
 import { NextRequest, NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { getResendClient, getFromAddress, escapeHtml, formatTimestamp } from '@/lib/mail'
+import { getClientIp, isRateLimited } from '@/lib/rateLimit'
+import { cleanText, isValidEmail } from '@/lib/validate'
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json()
-    const { contactName, orgName, orgEmail, orgPhone, website, country, city, sector, orgDesc, message, honeypot } = body
+    if (isRateLimited(getClientIp(req))) {
+      return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 })
+    }
 
-    // Honeypot check
-    if (honeypot) {
+    const body = await req.json()
+
+    // Honeypot — bots that fill this hidden field get a fake success.
+    if (typeof body.honeypot === 'string' && body.honeypot.trim().length > 0) {
       return NextResponse.json({ ok: true })
     }
 
-    // Validate required fields
+    const contactName = cleanText(body.contactName, 100)
+    const orgName = cleanText(body.orgName, 150)
+    const orgEmail = cleanText(body.orgEmail, 200)
+    const orgPhone = cleanText(body.orgPhone, 40)
+    const website = cleanText(body.website, 200)
+    const country = cleanText(body.country, 100)
+    const city = cleanText(body.city, 100)
+    const sector = cleanText(body.sector, 150)
+    const orgDesc = cleanText(body.orgDesc, 300)
+    const message = cleanText(body.message, 1000)
+
     if (!contactName || !orgName || !orgEmail || !country || !city || !sector || !orgDesc || !message) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
+    if (!isValidEmail(orgEmail)) {
+      return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
+    }
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    })
+    const timestamp = formatTimestamp()
+    const phoneDisplay = orgPhone || 'Not provided'
+    const websiteDisplay = website || 'Not provided'
 
-    await transporter.sendMail({
-      from: `"Gwags Website" <${process.env.SMTP_USER}>`,
+    const resend = getResendClient()
+    const { error } = await resend.emails.send({
+      from: getFromAddress(),
       to: process.env.PARTNERSHIPS_EMAIL || process.env.CONTACT_EMAIL || 'contact@gwags.org',
-      subject: `New Partnership Inquiry — ${orgName}`,
-      text: `
+      replyTo: orgEmail,
+      subject: `Partnership Inquiry — ${orgName}`,
+      text: `PARTNERSHIP INQUIRY
+
 Contact: ${contactName}
 Organization: ${orgName}
 Email: ${orgEmail}
-Phone: ${orgPhone || 'Not provided'}
-Website: ${website || 'Not provided'}
+Phone: ${phoneDisplay}
+Website: ${websiteDisplay}
 Country: ${country}
 City: ${city}
 Sector: ${sector}
@@ -45,24 +60,32 @@ ${orgDesc}
 
 Message:
 ${message}
-      `.trim(),
+
+Submitted: ${timestamp}`,
       html: `
-<p><strong>Contact:</strong> ${contactName}</p>
-<p><strong>Organization:</strong> ${orgName}</p>
-<p><strong>Email:</strong> ${orgEmail}</p>
-<p><strong>Phone:</strong> ${orgPhone || 'Not provided'}</p>
-<p><strong>Website:</strong> ${website || 'Not provided'}</p>
-<p><strong>Country:</strong> ${country}</p>
-<p><strong>City:</strong> ${city}</p>
-<p><strong>Sector:</strong> ${sector}</p>
+<h2>Partnership Inquiry</h2>
+<p><strong>Contact:</strong> ${escapeHtml(contactName)}</p>
+<p><strong>Organization:</strong> ${escapeHtml(orgName)}</p>
+<p><strong>Email:</strong> ${escapeHtml(orgEmail)}</p>
+<p><strong>Phone:</strong> ${escapeHtml(phoneDisplay)}</p>
+<p><strong>Website:</strong> ${escapeHtml(websiteDisplay)}</p>
+<p><strong>Country:</strong> ${escapeHtml(country)}</p>
+<p><strong>City:</strong> ${escapeHtml(city)}</p>
+<p><strong>Sector:</strong> ${escapeHtml(sector)}</p>
 <hr />
 <p><strong>Organization Description:</strong></p>
-<p>${orgDesc.replace(/\n/g, '<br>')}</p>
+<p>${escapeHtml(orgDesc).replace(/\n/g, '<br>')}</p>
 <hr />
 <p><strong>Message:</strong></p>
-<p>${message.replace(/\n/g, '<br>')}</p>
-      `,
+<p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
+<hr />
+<p style="color:#888;font-size:12px;">Submitted: ${timestamp}</p>`,
     })
+
+    if (error) {
+      console.error('Partner API Resend error:', error)
+      return NextResponse.json({ error: 'Failed to send message' }, { status: 500 })
+    }
 
     return NextResponse.json({ ok: true })
   } catch (err) {
