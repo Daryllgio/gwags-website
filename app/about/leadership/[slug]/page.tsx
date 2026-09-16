@@ -28,6 +28,7 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     bio: "Vianney leads the Audit & Finance Committee. He manages the institution's financial integrity, budget oversight, reserve management, and internal controls.",
     bioFr: "Vianney dirige le Comité d'Audit et des Finances. Il gère l'intégrité financière de l'institution, la supervision budgétaire, la gestion des réserves et les contrôles internes.",
     linkedin: 'https://www.linkedin.com/in/vianney-tanifor-9a76b0280/',
+    image: '/images/leadership/vianney-tanifor.jpg',
   },
   'noa-winner': {
     name: 'Winner Noa',
