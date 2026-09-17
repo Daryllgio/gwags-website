@@ -14,7 +14,7 @@ export function getResendClient(): Resend {
 }
 
 export function getFromAddress(): string {
-  return process.env.RESEND_FROM_EMAIL || 'GWAGS Website <onboarding@resend.dev>'
+  return process.env.RESEND_FROM_EMAIL || 'Gwags Website <onboarding@resend.dev>'
 }
 
 export function getFromEmail(): string {

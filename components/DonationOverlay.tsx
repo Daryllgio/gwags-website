@@ -158,7 +158,7 @@ interface OverlayProps {
   onClose: () => void
 }
 
-function StepHeader({ title, onBack }: { title: string; onBack?: () => void }) {
+function StepHeader({ title, onBack, backLabel = 'Back' }: { title: string; onBack?: () => void; backLabel?: string }) {
   return (
     <div style={{ marginBottom: '4px' }}>
       <div style={{ display: 'grid', gridTemplateColumns: '28px 1fr 28px', alignItems: 'center' }}>
@@ -179,7 +179,7 @@ function StepHeader({ title, onBack }: { title: string; onBack?: () => void }) {
                 alignItems: 'center',
                 fontFamily: 'inherit',
               }}
-              aria-label="Back"
+              aria-label={backLabel}
             >
               ‹
             </button>
@@ -414,6 +414,7 @@ function DonationSuccessSummary({ d, amount, isMonthlySupporter = false }: { d: 
 
 function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinalSignal }: { lang: Lang; mode?: 'desktop' | 'tablet' | 'phone'; onStepChange?: (step: number) => void; onClose: () => void; jumpToFinalSignal?: number }) {
   const d = t[lang].donationOverlay
+  const c = t[lang].common
   /* FIX 1/7: desktop fills the fixed-height panel (button pinned to bottom);
      phone/tablet flow naturally so there's no giant empty gap. */
   const fill = mode === 'desktop'
@@ -556,7 +557,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
     const pr = stripe.paymentRequest({
       country: 'US',
       currency: 'usd',
-      total: { label: 'Gwags Donation', amount: Math.round(totalAmount * 100) },
+      total: { label: d.paymentRequestLabel, amount: Math.round(totalAmount * 100) },
       requestPayerName: true,
       requestPayerEmail: true,
     })
@@ -769,7 +770,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
         {/* ── Manage your donation: alternate view, same panel dimensions as the steps ── */}
         {manageMode && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '16px', background: '#ffffff' }}>
-          <StepHeader title={d.manageText} onBack={() => { setManageMode(false); setManageError(null) }} />
+          <StepHeader title={d.manageText} onBack={() => { setManageMode(false); setManageError(null) }} backLabel={c.back} />
           <p style={{ color: NAVY, fontSize: '14px', lineHeight: 1.6, margin: 0 }}>
             {d.manageDescription}
           </p>
@@ -797,7 +798,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
         {/* ── Step 1: Amount ── */}
         {!manageMode && step === 1 && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '16px', background: '#ffffff' }}>
-          <StepHeader title="Choose your amount" />
+          <StepHeader title={d.chooseAmountTitle} />
 
           {/* Toggle */}
           <div style={{ display: 'flex', gap: '8px' }}>
@@ -923,11 +924,11 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                   boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
                   zIndex: 10,
                 }}>
-                  The minimum donation amount is <strong>$5</strong>
+                  {d.minDonationNoticePrefix}<strong>{d.minDonationNoticeAmount}</strong>
                 </div>
               )}
             </div>
-            {amountError && <p style={errStyle}>Please select or enter an amount.</p>}
+            {amountError && <p style={errStyle}>{d.amountRequiredError}</p>}
           </div>
 
           {/* Already a donor? Look up their Stripe Customer Portal by email. */}
@@ -952,40 +953,40 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
         {/* ── Step 2: Contact info ── */}
         {!manageMode && step === 2 && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '14px', paddingRight: '2px', background: '#ffffff' }}>
-          <StepHeader title="Enter your details" onBack={() => setStep(1)} />
+          <StepHeader title={d.enterDetailsTitle} onBack={() => setStep(1)} backLabel={c.back} />
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             <div>
-              <label style={labelStyle}>First Name <span>*</span></label>
+              <label style={labelStyle}>{d.firstNameLabel} <span>*</span></label>
               <input
                 type="text"
                 value={firstName}
                 onChange={e => { setFirstName(capitalizeWords(e.target.value)); setStep2Errors(p => ({ ...p, firstName: false })) }}
                 style={{ ...inputStyle, border: `1.5px solid ${step2Errors.firstName ? ERR_RED : ORIGINAL_BORDER}` }}
               />
-              {step2Errors.firstName && <p style={errStyle}>Required</p>}
+              {step2Errors.firstName && <p style={errStyle}>{d.requiredError}</p>}
             </div>
             <div>
-              <label style={labelStyle}>Last Name <span>*</span></label>
+              <label style={labelStyle}>{d.lastNameLabel} <span>*</span></label>
               <input
                 type="text"
                 value={lastName}
                 onChange={e => { setLastName(capitalizeWords(e.target.value)); setStep2Errors(p => ({ ...p, lastName: false })) }}
                 style={{ ...inputStyle, border: `1.5px solid ${step2Errors.lastName ? ERR_RED : ORIGINAL_BORDER}` }}
               />
-              {step2Errors.lastName && <p style={errStyle}>Required</p>}
+              {step2Errors.lastName && <p style={errStyle}>{d.requiredError}</p>}
             </div>
           </div>
 
           <div>
-            <label style={labelStyle}>Email <span>*</span></label>
+            <label style={labelStyle}>{d.emailFieldLabel} <span>*</span></label>
             <input
               type="email"
               value={email}
               onChange={e => { setEmail(e.target.value); setStep2Errors(p => ({ ...p, email: false })) }}
               style={{ ...inputStyle, border: `1.5px solid ${step2Errors.email ? ERR_RED : ORIGINAL_BORDER}` }}
             />
-            {step2Errors.email && <p style={errStyle}>Please enter a valid email address</p>}
+            {step2Errors.email && <p style={errStyle}>{d.emailInvalidShort}</p>}
           </div>
 
           {/* Terms checkbox */}
@@ -999,13 +1000,13 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                 />
               </div>
               <label htmlFor="terms-accept" style={{ fontSize: termsFontSize, color: NAVY, cursor: 'pointer', lineHeight: 1.5 }}>
-                I accept the{' '}
-                <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: NAVY, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>Terms of Use</a>
-                {' '}and{' '}
-                <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: NAVY, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>Privacy Policy</a>
+                {d.acceptTermsPrefix}{' '}
+                <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: NAVY, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>{d.termsLinkLabel}</a>
+                {' '}{d.andConnector}{' '}
+                <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: NAVY, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>{d.privacyLinkLabel}</a>
               </label>
             </div>
-            {termsError && <p style={{ ...errStyle, marginTop: '4px' }}>Please accept the Terms of Use and Privacy Policy.</p>}
+            {termsError && <p style={{ ...errStyle, marginTop: '4px' }}>{d.acceptTermsRequired}</p>}
           </div>
 
           <button
@@ -1013,7 +1014,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
             onClick={(e) => { if (!e.isTrusted) return; handleStep2Next() }}
             style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}
           >
-            Continue
+            {d.continueBtn}
           </button>
         </div>
         )}
@@ -1023,7 +1024,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', justifyContent: fill ? 'space-between' : 'flex-start', gap: fill ? undefined : (mode === 'tablet' ? '32px' : '18px'), paddingRight: '2px', background: '#ffffff' }}>
               {/* Top group: header + wallet + separator + card logos + card inputs */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                <StepHeader title="Payment" onBack={() => setStep(2)} />
+                <StepHeader title={d.paymentTitle} onBack={() => setStep(2)} backLabel={c.back} />
 
                 {/* FIX 2: Apple/Google Pay — real Stripe button when supported, else a styled placeholder */}
                 {paymentRequest ? (
@@ -1033,7 +1034,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                 ) : (
                   <button
                     type="button"
-                    aria-label={isApple ? 'Pay with Apple Pay' : 'Pay with Google Pay'}
+                    aria-label={isApple ? d.payWithApplePay : d.payWithGooglePay}
                     style={{
                       width: '100%', height: '44px', borderRadius: '6px', border: 'none',
                       background: '#1A1A1A', color: '#ffffff', display: 'flex',
@@ -1042,14 +1043,14 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                     }}
                   >
                     {isApple ? <AppleLogo size={22} /> : <GoogleLogo />}
-                    {isApple ? 'Pay with Apple Pay' : 'Pay with Google Pay'}
+                    {isApple ? d.payWithApplePay : d.payWithGooglePay}
                   </button>
                 )}
 
                 {/* FIX 3: "Or donate with other methods" separator */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <hr style={{ flex: 1, border: 'none', borderTop: `1px solid ${ORIGINAL_BORDER}`, margin: 0 }} />
-                  <span style={{ fontSize: '12px', color: 'rgba(10,17,40,0.5)', whiteSpace: 'nowrap' }}>Or donate with other methods</span>
+                  <span style={{ fontSize: '12px', color: 'rgba(10,17,40,0.5)', whiteSpace: 'nowrap' }}>{d.orOtherMethods}</span>
                   <hr style={{ flex: 1, border: 'none', borderTop: `1px solid ${ORIGINAL_BORDER}`, margin: 0 }} />
                 </div>
 
@@ -1060,7 +1061,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                 <div style={{ padding: '11px 14px', borderRadius: '6px', border: `1.5px solid ${ORIGINAL_BORDER}` }}>
                   <CardNumberElement
                     onChange={e => { setCardComplete(p => ({ ...p, number: e.complete })); setCardError(false) }}
-                    options={{ style: { base: { fontSize: '15px', color: NAVY } }, placeholder: 'Card Number' }}
+                    options={{ style: { base: { fontSize: '15px', color: NAVY } }, placeholder: d.cardNumberPlaceholder }}
                   />
                 </div>
 
@@ -1079,7 +1080,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                   </div>
                 </div>
 
-                {cardError && <p style={{ ...errStyle, margin: 0 }}>Please complete your card details.</p>}
+                {cardError && <p style={{ ...errStyle, margin: 0 }}>{d.cardDetailsRequired}</p>}
               </div>
 
               {/* Bottom group: pinned to bottom via space-between */}
@@ -1112,14 +1113,14 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                     </div>
                   </div>
                   <label htmlFor="cover-fee" style={{ fontSize: '14px', color: NAVY, cursor: 'pointer', userSelect: 'none' }}>
-                    Cover the transaction cost
+                    {d.coverFeeLabel}
                   </label>
                   <div ref={tooltipRef} style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                     <button
                       type="button"
                       onClick={() => setTooltipOpen(v => !v)}
                       style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0 2px', display: 'flex', alignItems: 'center' }}
-                      aria-label="Transaction cost info"
+                      aria-label={d.transactionCostInfoLabel}
                     >
                       <InfoIcon />
                     </button>
@@ -1142,7 +1143,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                         zIndex: 10,
                         boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
                       }}>
-                        By adding <strong>${feeAmount.toFixed(2)}</strong>, you help cover the necessary software and processing fees
+                        {d.feeTooltipPrefix}<strong>${feeAmount.toFixed(2)}</strong>{d.feeTooltipSuffix}
                       </div>
                     )}
                   </div>
@@ -1151,7 +1152,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                 <hr style={{ borderColor: 'rgba(10,17,40,0.12)', margin: '0', borderStyle: 'solid', borderWidth: '0 0 1px' }} />
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: '15px', fontWeight: 600, color: NAVY }}>Total</span>
+                  <span style={{ fontSize: '15px', fontWeight: 600, color: NAVY }}>{d.totalLabel}</span>
                   <span style={{ fontSize: '15px', fontWeight: 600, color: NAVY }}>
                     ${totalAmount > 0 ? totalAmount.toFixed(2) : '0.00'}
                   </span>
@@ -1193,7 +1194,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
              return to. */}
         {!manageMode && step === 4 && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '14px', paddingRight: '2px', background: '#ffffff' }}>
-          <StepHeader title={d.howDidYouHearTitle} />
+          <StepHeader title={d.howDidYouHearTitle} backLabel={c.back} />
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 12px' }}>
             {REFERRAL_SOURCES.map(key => (
@@ -1306,7 +1307,8 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
   )
 }
 
-function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHeader = false, pinButtons = true, mode = 'desktop' }: {
+function ExitReminder({ lang, onClose, onConfirmClose, onBack, theme = 'dark', hideHeader = false, pinButtons = true, mode = 'desktop' }: {
+  lang: Lang
   onClose: () => void
   onConfirmClose: () => void
   onBack: () => void
@@ -1315,6 +1317,8 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
   pinButtons?: boolean
   mode?: 'desktop' | 'tablet' | 'phone'
 }) {
+  const d = t[lang].donationOverlay
+  const c = t[lang].common
   const [reminderEmail, setReminderEmail] = useState('')
   const [emailError, setEmailError] = useState(false)
   const [reminderStatus, setReminderStatus] = useState<'idle' | 'sent'>('idle')
@@ -1364,13 +1368,13 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
                   alignItems: 'center',
                   fontFamily: 'inherit',
                 }}
-                aria-label="Back"
+                aria-label={c.back}
               >
                 ‹
               </button>
             </div>
             <h3 style={{ color: textColor, fontSize: '16px', fontWeight: 600, margin: 0, fontFamily: 'inherit', textAlign: 'center' }}>
-              Maybe next time?
+              {d.exitTitle}
             </h3>
             <div />
           </div>
@@ -1381,19 +1385,19 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', textAlign: 'center' }}>
         <BellIcon />
         <p style={{ color: textColor, fontSize: '16px', lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
-          Please leave your email address below, and we&apos;ll send you a gentle reminder later.
+          {d.exitBody}
         </p>
         {reminderStatus !== 'sent' && (
           <>
             <div style={{ width: '100%', textAlign: 'left' }}>
               <label style={{ display: 'block', color: textColor, fontSize: '14px', fontWeight: 600, marginBottom: '6px' }}>
-                Email *
+                {d.exitEmailLabel}
               </label>
               <input
                 type="email"
                 value={reminderEmail}
                 onChange={e => { setReminderEmail(e.target.value); setEmailError(false) }}
-                placeholder="you@example.com"
+                placeholder={d.exampleEmailPlaceholder}
                 style={{
                   width: '100%',
                   padding: '11px 14px',
@@ -1408,7 +1412,7 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
                 }}
               />
               {emailError && (
-                <p style={{ color: errColor, fontSize: '13px', margin: '4px 0 0' }}>Email is required.</p>
+                <p style={{ color: errColor, fontSize: '13px', margin: '4px 0 0' }}>{d.exitEmailRequired}</p>
               )}
             </div>
             <div style={{ width: '100%', textAlign: 'left' }}>
@@ -1423,18 +1427,18 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
                   />
                 </div>
                 <label htmlFor="exit-terms-accept" style={{ fontSize: termsFontSize, color: textColor, cursor: 'pointer', lineHeight: 1.5 }}>
-                  I accept the{' '}
-                  <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: textColor, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>Terms of Use</a>
-                  {' '}and{' '}
-                  <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: textColor, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>Privacy Policy</a>
+                  {d.acceptTermsPrefix}{' '}
+                  <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: textColor, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>{d.termsLinkLabel}</a>
+                  {' '}{d.andConnector}{' '}
+                  <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: textColor, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>{d.privacyLinkLabel}</a>
                 </label>
               </div>
-              {exitTermsError && <p style={{ color: errColor, fontSize: '13px', margin: '4px 0 0' }}>Please accept the Terms of Use and Privacy Policy.</p>}
+              {exitTermsError && <p style={{ color: errColor, fontSize: '13px', margin: '4px 0 0' }}>{d.acceptTermsRequired}</p>}
             </div>
           </>
         )}
         {reminderStatus === 'sent' && (
-          <p style={{ color: '#D4AF37', fontSize: '16px', margin: 0, fontWeight: 600 }}>We&apos;ll remind you!</p>
+          <p style={{ color: '#D4AF37', fontSize: '16px', margin: 0, fontWeight: 600 }}>{d.exitSentMessage}</p>
         )}
       </div>
 
@@ -1443,7 +1447,7 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
            buttons instead of the auto-collapsed spacing. */
         <div style={{ marginTop: pinButtons ? 'auto' : '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <button type="button" onClick={handleRemindMe} style={{ ...actionBtnStyle }}>
-            Remind me later
+            {d.remindMeLaterBtn}
           </button>
           <button
             type="button"
@@ -1461,7 +1465,7 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
               fontFamily: 'inherit',
             }}
           >
-            No thanks
+            {d.noThanksBtn}
           </button>
         </div>
       )}
@@ -1471,7 +1475,7 @@ function ExitReminder({ onClose, onConfirmClose, onBack, theme = 'dark', hideHea
 
 /* Below 1024px the overlay top bar. CHANGE 2: the logo matches the site nav bar
    exactly (same classes + base inline styles as Nav.tsx) but rendered in black. */
-function TopBar({ onClose, subtitle, padding = '10px 20px' }: { onClose: () => void; subtitle: string; padding?: string }) {
+function TopBar({ onClose, subtitle, padding = '10px 20px', closeLabel = 'Close' }: { onClose: () => void; subtitle: string; padding?: string; closeLabel?: string }) {
   return (
     <div style={{
       flexShrink: 0,
@@ -1490,7 +1494,7 @@ function TopBar({ onClose, subtitle, padding = '10px 20px' }: { onClose: () => v
       <button
         type="button"
         onClick={onClose}
-        aria-label="Close"
+        aria-label={closeLabel}
         style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
       >
         <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
@@ -1524,6 +1528,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
 }) {
   const d = t[lang].donationOverlay
   const n = t[lang].nav
+  const c = t[lang].common
   const [donateStep, setDonateStep] = useState(1)
 
   /* Fix 5 / Fix 1 (follow-up): the scroll container keeps whatever scrollTop
@@ -1584,14 +1589,14 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
 
   const exitBlock = (
     <div style={{ display: exitMode ? 'flex' : 'none', flexDirection: 'column', flex: 1, minHeight: '100%', background: REMINDER_BG, padding: '24px 20px 40px' }}>
-      <ExitReminder theme="dark" hideHeader={false} pinButtons={false} mode={mode} onClose={onClose} onConfirmClose={onClose} onBack={onBack} />
+      <ExitReminder lang={lang} theme="dark" hideHeader={false} pinButtons={false} mode={mode} onClose={onClose} onConfirmClose={onClose} onBack={onBack} />
     </div>
   )
 
   if (mode === 'tablet') {
     return (
       <>
-        <TopBar onClose={onX} subtitle={n.subtitle} />
+        <TopBar onClose={onX} subtitle={n.subtitle} closeLabel={c.close} />
         <div ref={scrollRef} style={{ flex: 1, minHeight: 0, overflowY: 'auto', WebkitOverflowScrolling: 'touch', display: 'flex', flexDirection: 'column' }}>
           {introBlock}
           {exitBlock}
@@ -1605,9 +1610,9 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
   const topBarFixed = exitMode || donateStep > 1
   return (
     <>
-      {topBarFixed && <TopBar onClose={onX} subtitle={n.subtitle} padding={topBarPadding} />}
+      {topBarFixed && <TopBar onClose={onX} subtitle={n.subtitle} padding={topBarPadding} closeLabel={c.close} />}
       <div ref={scrollRef} style={{ flex: 1, minHeight: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
-        {!topBarFixed && <TopBar onClose={onX} subtitle={n.subtitle} padding={topBarPadding} />}
+        {!topBarFixed && <TopBar onClose={onX} subtitle={n.subtitle} padding={topBarPadding} closeLabel={c.close} />}
         {introBlock}
         {exitBlock}
       </div>
@@ -1617,6 +1622,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
 
 export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   const d = t[lang].donationOverlay
+  const c = t[lang].common
   const [exitMode, setExitMode] = useState(false)
   const [vp, setVp] = useState<'desktop' | 'tablet' | 'phone'>('desktop')
 
@@ -1735,7 +1741,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
           zIndex: 10001,
           flexShrink: 0,
         }}
-        aria-label="Close"
+        aria-label={c.close}
       >
         <svg width="11" height="11" viewBox="0 0 14 14" fill="none">
           <line x1="1" y1="1" x2="13" y2="13" stroke="#000000" strokeWidth="2.2" strokeLinecap="round"/>
@@ -1808,7 +1814,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
                 display: 'flex',
                 flexDirection: 'column',
               }}>
-                <ExitReminder onClose={onClose} onConfirmClose={onClose} onBack={() => setExitMode(false)} />
+                <ExitReminder lang={lang} onClose={onClose} onConfirmClose={onClose} onBack={() => setExitMode(false)} />
               </div>
             </div>
           </div>

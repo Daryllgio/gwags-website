@@ -114,6 +114,7 @@ function ReportForm({ lang, onClose }: { lang: Lang; onClose: () => void }) {
 
 export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop' | 'tablet' | 'phone' }) {
   const f = t[lang].donationFaq
+  const c = t[lang].common
   const [openItem, setOpenItem] = useState<FaqKey | null>(null)
   const popupRef = useRef<HTMLDivElement>(null)
 
@@ -230,7 +231,7 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
                     {/* CHANGE 9: bolded question heading, X stays on the same row */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', marginBottom: '10px' }}>
                       <p style={{ fontSize: '15px', fontWeight: 700, color: NAVY, margin: 0 }}>{label(key)}</p>
-                      <button type="button" aria-label="Close" onClick={() => setOpenItem(null)}
+                      <button type="button" aria-label={c.close} onClick={() => setOpenItem(null)}
                         style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', flexShrink: 0, marginTop: '2px' }}>
                         <XIcon />
                       </button>

@@ -110,7 +110,7 @@ function StatsSection({ stats }: { stats: StatsData }) {
   )
 }
 
-function GallerySection({ gallery }: { gallery: NonNullable<EventDetailData['gallery']> }) {
+function GallerySection({ gallery, lang }: { gallery: NonNullable<EventDetailData['gallery']>; lang: Lang }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const count = gallery.images?.length ?? gallery.count
 
@@ -130,7 +130,7 @@ function GallerySection({ gallery }: { gallery: NonNullable<EventDetailData['gal
           ))}
         </div>
       </div>
-      <Lightbox count={count} images={gallery.images} openIndex={openIndex} onClose={() => setOpenIndex(null)} />
+      <Lightbox count={count} images={gallery.images} openIndex={openIndex} onClose={() => setOpenIndex(null)} lang={lang} />
     </section>
   )
 }
@@ -159,7 +159,7 @@ export default function EventDetailPage({ lang, onToggleLang, data }: Props) {
       {data.gallery && (
         <>
           <Divider />
-          <GallerySection gallery={data.gallery} />
+          <GallerySection gallery={data.gallery} lang={lang} />
         </>
       )}
       {data.galleryLink && (

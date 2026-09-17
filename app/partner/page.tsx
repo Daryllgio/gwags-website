@@ -5,7 +5,7 @@ import { t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import SearchableDropdown from '@/components/SearchableDropdown'
-import { COUNTRIES, SECTORS } from '@/lib/countries'
+import { COUNTRIES, SECTORS, COUNTRY_LABELS_FR, SECTOR_LABELS_FR } from '@/lib/countries'
 
 const NAVY = '#0A1128'
 const MAX_DESC = 300
@@ -14,6 +14,7 @@ const MAX_MSG = 1000
 export default function PartnerPage() {
   const [lang, toggleLang] = useLang()
   const p = t[lang].partnerPage
+  const c = t[lang].common
 
   const [form, setForm] = useState({
     contactName: '', orgName: '', orgEmail: '', orgPhone: '',
@@ -123,7 +124,7 @@ export default function PartnerPage() {
                   onChange={e => { set('orgEmail')(e); setEmailError(false) }}
                   style={emailError ? { borderColor: '#c0392b' } : undefined}
                 />
-                {emailError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>Please enter a valid email address.</p>}
+                {emailError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.emailInvalid}</p>}
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.orgPhone}</label>
@@ -140,8 +141,11 @@ export default function PartnerPage() {
                   value={form.country}
                   onChange={v => { setForm(prev => ({ ...prev, country: v })); setCountryError(false) }}
                   error={countryError}
+                  labels={lang === 'fr' ? COUNTRY_LABELS_FR : undefined}
+                  placeholder={c.searchPlaceholder}
+                  noMatchesText={c.noMatches}
                 />
-                {countryError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>Please select a country.</p>}
+                {countryError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.countryRequired}</p>}
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.city} <span>*</span></label>
@@ -157,20 +161,23 @@ export default function PartnerPage() {
                 value={form.sector}
                 onChange={v => { setForm(prev => ({ ...prev, sector: v, sectorOther: v === 'Other' ? prev.sectorOther : '' })); setSectorError(false); setSectorOtherError(false) }}
                 error={sectorError}
+                labels={lang === 'fr' ? SECTOR_LABELS_FR : undefined}
+                placeholder={c.searchPlaceholder}
+                noMatchesText={c.noMatches}
               />
-              {sectorError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>Please select a sector.</p>}
+              {sectorError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.sectorRequired}</p>}
               {form.sector === 'Other' && (
                 <div style={{ marginTop: '10px' }}>
                   <input
                     required
                     className="form-input"
                     type="text"
-                    placeholder="Please specify your sector"
+                    placeholder={p.sectorOtherPlaceholder}
                     value={form.sectorOther}
                     onChange={e => { set('sectorOther')(e); setSectorOtherError(false) }}
                     style={sectorOtherError ? { borderColor: '#c0392b' } : undefined}
                   />
-                  {sectorOtherError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>Please specify your sector.</p>}
+                  {sectorOtherError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.sectorOtherRequired}</p>}
                 </div>
               )}
             </div>

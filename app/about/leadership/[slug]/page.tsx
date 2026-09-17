@@ -106,9 +106,9 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
       <main style={{ background: '#ffffff' }}>
         <Nav lang={lang} onToggleLang={toggleLang} />
         <div style={{ padding: '80px 40px', textAlign: 'center' }}>
-          <p style={{ color: NAVY, fontSize: '20px' }}>Profile not found.</p>
+          <p style={{ color: NAVY, fontSize: '20px' }}>{t[lang].common.profileNotFound}</p>
           <Link href="/about/leadership" style={{ color: GOLD, fontSize: '16px', textDecoration: 'none', marginTop: '16px', display: 'inline-block' }}>
-            ← Back to Leadership
+            ← {lang === 'fr' ? 'Retour à la Gouvernance' : 'Back to Leadership'}
           </Link>
         </div>
         <Footer lang={lang} />
