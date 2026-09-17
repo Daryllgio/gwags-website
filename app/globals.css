@@ -2191,7 +2191,6 @@ input:-webkit-autofill:active {
   max-width:       490px;
   background:      #e8e8e8;
   border-radius:   12px;
-  border:          1px solid #000000;
   display:         flex;
   align-items:     center;
   justify-content: center;
@@ -2226,7 +2225,7 @@ input:-webkit-autofill:active {
 }
 
 /* ── Leadership page: profile card image height ── */
-.lp-person-img { height: 280px; border: 1px solid #000000; }
+.lp-person-img { height: 280px; }
 
 @media (min-width: 480px) and (max-width: 600px) {
   .lp-person-card { max-width: 350px !important; margin: 0 auto !important; }
