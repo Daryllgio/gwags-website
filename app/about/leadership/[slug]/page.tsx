@@ -52,13 +52,13 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     linkedin: 'https://linkedin.com/in/placeholder', // UPDATE: Replace with actual LinkedIn URL
   },
   'placeholder-director-operations': {
-    name: 'Shifu Afayi',
+    name: 'Shifu Hammadina',
     role: 'Chief Program Officer',
     roleFr: 'Directeur des Programmes',
-    bio: "Afayi leads the design, execution, and evaluation of all Gwags programs, translating the institution's strategy into measurable field impact.",
-    bioFr: "Afayi dirige la conception, l'exécution et l'évaluation de l'ensemble des programmes de Gwags, traduisant la stratégie de l'institution en impact mesurable sur le terrain.",
+    bio: "Shifu leads the design, execution, and evaluation of all Gwags programs, translating the institution's strategy into measurable field impact.",
+    bioFr: "Shifu dirige la conception, l'exécution et l'évaluation de l'ensemble des programmes de Gwags, traduisant la stratégie de l'institution en impact mesurable sur le terrain.",
     linkedin: 'https://www.linkedin.com/in/shifu-afayi-h-3708412a3/',
-    image: '/images/leadership/shifu-afayi.jpg',
+    image: '/images/leadership/shifu-hammadina.jpg',
   },
   'placeholder-director-communications': {
     name: 'Ornella Ebolo',
