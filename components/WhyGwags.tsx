@@ -8,6 +8,7 @@ interface WhyGwagsProps {
 
 export default function WhyGwags({ lang }: WhyGwagsProps) {
   const w = t[lang].whyGwags
+  const c = t[lang].common
   const [idx, setIdx] = useState(0)
 
   const cardStyle: React.CSSProperties = {
@@ -55,7 +56,7 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
             <button
               onClick={() => setIdx(i => Math.max(0, i - 1))}
               disabled={idx === 0}
-              aria-label="Previous"
+              aria-label={c.previous}
               style={{
                 width: '36px',
                 height: '36px',
@@ -80,7 +81,7 @@ export default function WhyGwags({ lang }: WhyGwagsProps) {
             <button
               onClick={() => setIdx(i => Math.min(w.items.length - 1, i + 1))}
               disabled={idx === w.items.length - 1}
-              aria-label="Next"
+              aria-label={c.next}
               style={{
                 width: '36px',
                 height: '36px',

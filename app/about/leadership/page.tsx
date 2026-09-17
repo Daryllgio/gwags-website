@@ -2,6 +2,7 @@
 import { useState, useMemo, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { useLang } from '@/lib/useLang'
+import { t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 
@@ -325,7 +326,7 @@ export default function LeadershipPage() {
 
         {/* No results */}
         {noResults && (
-          <p className="text-center py-20 lp-no-results" style={{ color: NAVY, fontSize: '18px' }}>No results found.</p>
+          <p className="text-center py-20 lp-no-results" style={{ color: NAVY, fontSize: '18px' }}>{t[lang].common.noResultsFound}</p>
         )}
 
         {/* Governance Board */}

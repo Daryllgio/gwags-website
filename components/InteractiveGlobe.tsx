@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import type * as d3Type from 'd3'
+import { Lang, t } from '@/lib/translations'
 
 /* ── Constants ── */
 const PRIMARY_URL  = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_land.json'
@@ -21,7 +22,8 @@ interface GeoData {
 }
 
 /* ── Main component ── */
-export default function InteractiveGlobe() {
+export default function InteractiveGlobe({ lang }: { lang: Lang }) {
+  const c = t[lang].common
   const canvasRef      = useRef<HTMLCanvasElement>(null)
   const geoDataRef     = useRef<GeoData | null>(null)
   const rotationRef    = useRef<number>(0)
@@ -250,7 +252,7 @@ export default function InteractiveGlobe() {
   if (loadError) {
     return (
       <div className="globe-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <span style={{ color: '#0A1128', fontSize: '14px', opacity: 0.4 }}>Map unavailable</span>
+        <span style={{ color: '#0A1128', fontSize: '14px', opacity: 0.4 }}>{c.mapUnavailable}</span>
       </div>
     )
   }
@@ -258,7 +260,7 @@ export default function InteractiveGlobe() {
   return (
     <div className="globe-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       {loading ? (
-        <span style={{ color: '#0A1128', fontSize: '14px', opacity: 0.4 }}>Loading...</span>
+        <span style={{ color: '#0A1128', fontSize: '14px', opacity: 0.4 }}>{c.loading}</span>
       ) : (
         <canvas ref={canvasRef} />
       )}

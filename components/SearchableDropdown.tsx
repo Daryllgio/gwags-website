@@ -8,15 +8,19 @@ interface SearchableDropdownProps {
   placeholder?: string
   error?: boolean
   id?: string
+  /** Optional map of option value -> localized display label. The value passed to onChange is always the raw option string. */
+  labels?: Record<string, string>
+  noMatchesText?: string
 }
 
-export default function SearchableDropdown({ options, value, onChange, placeholder = 'Type to search…', error = false, id }: SearchableDropdownProps) {
+export default function SearchableDropdown({ options, value, onChange, placeholder = 'Type to search…', error = false, id, labels, noMatchesText = 'No matches' }: SearchableDropdownProps) {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [highlight, setHighlight] = useState(0)
   const ref = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const listboxId = useId()
+  const labelOf = (opt: string) => labels?.[opt] ?? opt
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -37,7 +41,7 @@ export default function SearchableDropdown({ options, value, onChange, placehold
 
   const filtered = query.trim() === ''
     ? options
-    : options.filter(o => o.toLowerCase().includes(query.toLowerCase()))
+    : options.filter(o => labelOf(o).toLowerCase().includes(query.toLowerCase()))
 
   useEffect(() => { setHighlight(0) }, [query, open])
 
@@ -75,7 +79,7 @@ export default function SearchableDropdown({ options, value, onChange, placehold
           value={query}
           onChange={e => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={value || placeholder}
+          placeholder={value ? labelOf(value) : placeholder}
           autoComplete="off"
           role="combobox"
           aria-expanded={open}
@@ -93,12 +97,12 @@ export default function SearchableDropdown({ options, value, onChange, placehold
           aria-haspopup="listbox"
           onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDropdown() } }}
         >
-          {value ? value : <span className="sdd-placeholder">{placeholder}</span>}
+          {value ? labelOf(value) : <span className="sdd-placeholder">{placeholder}</span>}
         </div>
       )}
       <div id={listboxId} className={`sdd-menu${open ? ' sdd-menu-open' : ''}`} role="listbox">
         {filtered.length === 0 ? (
-          <div className="sdd-empty">No matches</div>
+          <div className="sdd-empty">{noMatchesText}</div>
         ) : (
           filtered.map((opt, i) => (
             <div
@@ -109,7 +113,7 @@ export default function SearchableDropdown({ options, value, onChange, placehold
               onMouseDown={e => { e.preventDefault(); handleSelect(opt) }}
               onMouseEnter={() => setHighlight(i)}
             >
-              {opt}
+              {labelOf(opt)}
             </div>
           ))
         )}

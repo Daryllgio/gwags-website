@@ -2,15 +2,18 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { useArrowPress } from '@/lib/useArrowPress'
+import { Lang, t } from '@/lib/translations'
 
 interface LightboxProps {
   count: number
   images?: string[]
   openIndex: number | null
   onClose: () => void
+  lang: Lang
 }
 
-export default function Lightbox({ count, images, openIndex, onClose }: LightboxProps) {
+export default function Lightbox({ count, images, openIndex, onClose, lang }: LightboxProps) {
+  const c = t[lang].common
   const [current, setCurrent] = useState(0)
   const [fading, setFading] = useState(false)
   const touchStartX = useRef(0)
@@ -95,7 +98,7 @@ export default function Lightbox({ count, images, openIndex, onClose }: Lightbox
 
   return (
     <div className="lb-overlay" onClick={handleOverlayClick} onTouchMove={handleOverlayTouchMove}>
-      <button className="lb-close" onClick={onClose} aria-label="Close">
+      <button className="lb-close" onClick={onClose} aria-label={c.close}>
         <svg viewBox="0 0 14 14" fill="none">
           <line x1="1" y1="1" x2="13" y2="13" stroke="#000000" strokeWidth="2.2" strokeLinecap="round"/>
           <line x1="13" y1="1" x2="1" y2="13" stroke="#000000" strokeWidth="2.2" strokeLinecap="round"/>
@@ -105,7 +108,7 @@ export default function Lightbox({ count, images, openIndex, onClose }: Lightbox
         ref={leftRef}
         className={`lb-arrow lb-arrow-left${pressed === 'left' ? ' lb-arrow-pressed' : ''}`}
         onClick={e => { e.stopPropagation(); if (!atStart) { navigate(-1); setPressed('left') } }}
-        aria-label="Previous"
+        aria-label={c.previous}
         style={{ opacity: atStart ? 0.3 : 1, cursor: atStart ? 'default' : 'pointer' }}
       >
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -128,7 +131,7 @@ export default function Lightbox({ count, images, openIndex, onClose }: Lightbox
         ref={rightRef}
         className={`lb-arrow lb-arrow-right${pressed === 'right' ? ' lb-arrow-pressed' : ''}`}
         onClick={e => { e.stopPropagation(); if (!atEnd) { navigate(1); setPressed('right') } }}
-        aria-label="Next"
+        aria-label={c.next}
         style={{ opacity: atEnd ? 0.3 : 1, cursor: atEnd ? 'default' : 'pointer' }}
       >
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

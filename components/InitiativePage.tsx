@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Lightbox from '@/components/Lightbox'
-import { Lang } from '@/lib/translations'
+import { Lang, t } from '@/lib/translations'
 import { useArrowPress } from '@/lib/useArrowPress'
 
 interface RichBodyItem {
@@ -72,7 +72,7 @@ export default function InitiativePage({ lang, onToggleLang, data }: Props) {
   return (
     <main>
       <Nav lang={lang} onToggleLang={onToggleLang} />
-      <HeroSection hero={data.hero} />
+      <HeroSection hero={data.hero} lang={lang} />
       {data.sections.map((s, i) => (
         <Fragment key={i}>
           {i > 0 && <Divider />}
@@ -88,19 +88,19 @@ export default function InitiativePage({ lang, onToggleLang, data }: Props) {
       {data.stats && <StatsSection stats={data.stats} />}
       {data.apply && <ApplySection label={data.apply} />}
       {!data.stats && <Divider />}
-      <CarouselSection carousel={data.carousel} />
+      <CarouselSection carousel={data.carousel} lang={lang} />
       <Footer lang={lang} />
     </main>
   )
 }
 
-function HeroSection({ hero }: { hero: InitiativePageData['hero'] }) {
+function HeroSection({ hero, lang }: { hero: InitiativePageData['hero']; lang: Lang }) {
   return (
     <section className="ip-hero">
       <div className="ip-hero-inner">
         <div className="ip-hero-text">
           <h1 className="ip-hero-name">{hero.name}</h1>
-          <span className="ip-hero-goal-label">The goal</span>
+          <span className="ip-hero-goal-label">{t[lang].common.goalLabel}</span>
           <p className="ip-hero-goal">{hero.goal}</p>
         </div>
         <div className="ip-hero-img-wrap">
@@ -199,7 +199,7 @@ function ApplySection({ label }: { label: string }) {
   )
 }
 
-function CarouselSection({ carousel }: { carousel: InitiativePageData['carousel'] }) {
+function CarouselSection({ carousel, lang }: { carousel: InitiativePageData['carousel']; lang: Lang }) {
   const [lbEvent, setLbEvent] = useState<number | null>(null)
   const [lbIndex, setLbIndex] = useState<number | null>(null)
 
@@ -221,7 +221,7 @@ function CarouselSection({ carousel }: { carousel: InitiativePageData['carousel'
         <h2 className="ip-section-heading ip-carousel-heading">{carousel.heading}</h2>
         {carousel.events.map((event, i) => (
           <div key={i} className={i > 0 ? 'ip-event-track-gap' : undefined}>
-            <EventTrack event={event} onImageClick={(idx) => openLightbox(i, idx)} />
+            <EventTrack event={event} onImageClick={(idx) => openLightbox(i, idx)} lang={lang} />
           </div>
         ))}
       </div>
@@ -231,13 +231,14 @@ function CarouselSection({ carousel }: { carousel: InitiativePageData['carousel'
           images={activeEvent.items}
           openIndex={lbIndex}
           onClose={closeLightbox}
+          lang={lang}
         />
       )}
     </section>
   )
 }
 
-function EventTrack({ event, onImageClick }: { event: CarouselEvent; onImageClick: (i: number) => void }) {
+function EventTrack({ event, onImageClick, lang }: { event: CarouselEvent; onImageClick: (i: number) => void; lang: Lang }) {
   const trackRef = useRef<HTMLDivElement>(null)
   const [atStart, setAtStart] = useState(true)
   const [atEnd, setAtEnd] = useState(false)
@@ -281,7 +282,7 @@ function EventTrack({ event, onImageClick }: { event: CarouselEvent; onImageClic
             ref={leftRef}
             className={`ip-chevron-btn${pressed === 'left' ? ' ip-chevron-btn-pressed' : ''}`}
             onClick={atStart ? undefined : () => { scrollLeft(); setPressed('left') }}
-            aria-label="Scroll left"
+            aria-label={t[lang].common.scrollLeft}
             style={{ opacity: atStart ? 0.3 : 1, cursor: atStart ? 'default' : 'pointer' }}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -292,7 +293,7 @@ function EventTrack({ event, onImageClick }: { event: CarouselEvent; onImageClic
             ref={rightRef}
             className={`ip-chevron-btn${pressed === 'right' ? ' ip-chevron-btn-pressed' : ''}`}
             onClick={atEnd ? undefined : () => { scrollRight(); setPressed('right') }}
-            aria-label="Scroll right"
+            aria-label={t[lang].common.scrollRight}
             style={{ opacity: atEnd ? 0.3 : 1, cursor: atEnd ? 'default' : 'pointer' }}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

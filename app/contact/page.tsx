@@ -5,7 +5,7 @@ import { t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import SearchableDropdown from '@/components/SearchableDropdown'
-import { COUNTRIES } from '@/lib/countries'
+import { COUNTRIES, COUNTRY_LABELS_FR } from '@/lib/countries'
 
 const NAVY = '#0A1128'
 const MAX_MSG = 500
@@ -13,6 +13,7 @@ const MAX_MSG = 500
 export default function ContactPage() {
   const [lang, toggleLang] = useLang()
   const p = t[lang].contactPage
+  const c = t[lang].common
 
   const [form, setForm] = useState({
     firstName: '', lastName: '', email: '', phone: '',
@@ -109,7 +110,7 @@ export default function ContactPage() {
                   onChange={e => { set('email')(e); setEmailError(false) }}
                   style={emailError ? { borderColor: '#c0392b' } : undefined}
                 />
-                {emailError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>Please enter a valid email address.</p>}
+                {emailError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.emailInvalid}</p>}
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.phone}</label>
@@ -126,8 +127,11 @@ export default function ContactPage() {
                   value={form.country}
                   onChange={v => { setForm(prev => ({ ...prev, country: v })); setCountryError(false) }}
                   error={countryError}
+                  labels={lang === 'fr' ? COUNTRY_LABELS_FR : undefined}
+                  placeholder={c.searchPlaceholder}
+                  noMatchesText={c.noMatches}
                 />
-                {countryError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>Please select a country.</p>}
+                {countryError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.countryRequired}</p>}
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.city} <span>*</span></label>

@@ -46,7 +46,7 @@ function PhotoBanner({ lang }: { lang: Lang }) {
   return (
     <div className="os-photo-banner" style={{ height: '750px', background: '#1a2a44', borderTop: '2px solid #D4AF37', borderBottom: '2px solid #D4AF37', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.25)', fontSize: '13px', letterSpacing: '0.22em', position: 'relative', overflow: 'hidden' }}>
       {p.photoBanner.startsWith('/images/') ? (
-        <Image src={p.photoBanner} alt="Our Story" fill priority style={{ objectFit: 'cover' }} />
+        <Image src={p.photoBanner} alt={p.hero.h1} fill priority style={{ objectFit: 'cover' }} />
       ) : (
         p.photoBanner
       )}

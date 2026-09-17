@@ -44,6 +44,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
   const [headerHeight, setHeaderHeight] = useState(64)
   const n = t[lang].nav
   const d = n.dropdowns
+  const c = t[lang].common
 
   useEffect(() => {
     function measure() {
@@ -180,7 +181,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
             className="mobile-menu-btn"
             onClick={toggleMenu}
             style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', minHeight: '44px', minWidth: '44px', alignItems: 'center', justifyContent: 'center', padding: '0', flexShrink: 0 }}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={menuOpen ? c.closeMenu : c.openMenu}
           >
             <div style={{ position: 'relative', width: '24px', height: '24px' }}>
               <svg
@@ -356,7 +357,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                     style={{ display: 'flex', alignItems: 'center', background: 'none', border: 'none', color: '#fff', fontWeight: 400, padding: '20px', cursor: 'pointer', fontFamily: 'inherit' }}
                   >
                     {backArrow}
-                    <span className="nav-back-underline">Back</span>
+                    <span className="nav-back-underline">{c.back}</span>
                   </button>
                   {divider}
 
@@ -400,7 +401,7 @@ export default function Nav({ lang, onToggleLang }: NavProps) {
                     style={{ display: 'flex', alignItems: 'center', background: 'none', border: 'none', color: '#fff', fontWeight: 400, padding: '20px', cursor: 'pointer', fontFamily: 'inherit' }}
                   >
                     {backArrow}
-                    <span className="nav-back-underline">Back</span>
+                    <span className="nav-back-underline">{c.back}</span>
                   </button>
                   {divider}
 
