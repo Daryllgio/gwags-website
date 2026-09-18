@@ -840,7 +840,7 @@ input:-webkit-autofill:active {
 }
 
 .tl2-year-num.active {
-  font-size: 70px;
+  font-size: 65px;
   color: #0A1128;
 }
 
@@ -1595,7 +1595,7 @@ input:-webkit-autofill:active {
   .tl2-month-text { font-size: 16px !important; }
   /* Timeline — tablet */
   .tl2-year-num { font-size: 35px !important; }
-  .tl2-year-num.active { font-size: 60px !important; }
+  .tl2-year-num.active { font-size: 55px !important; }
   .tl2-title { font-size: 21px !important; }
   .tl2-body { font-size: 17px !important; }
   .tl2-content { max-width: 50% !important; }
@@ -1617,7 +1617,7 @@ input:-webkit-autofill:active {
   .os-closing-btn { font-size: 14px !important; }
   /* Timeline — small phone */
   .tl2-year-num { font-size: 25px !important; }
-  .tl2-year-num.active { font-size: 50px !important; }
+  .tl2-year-num.active { font-size: 45px !important; }
 
   /* PHONE TIMELINE (≤480px): full-width content, normal padding (content is not moved).
      The narrow content + masked gold line only applies to iPad portrait / tablet (≥480px).
@@ -1716,7 +1716,7 @@ input:-webkit-autofill:active {
   .tl2-body { font-size: 16px !important; }
   /* MOBILE: Timeline year number */
   .tl2-year-num { font-size: 30px !important; }
-  .tl2-year-num.active { font-size: 50px !important; }
+  .tl2-year-num.active { font-size: 45px !important; }
   /* MOBILE: Timeline content width — VERTICAL TIMELINE: content width - adjust here (phone ≤768px) */
   .tl2-content { max-width: 60% !important; }
   .tl2-image-col { max-width: 60% !important; }
@@ -1771,7 +1771,7 @@ input:-webkit-autofill:active {
 
 /* Our Story — narrow phones (≤375px): must follow comprehensive blocks to win cascade */
 @media (max-width: 375px) {
-  .tl2-year-num.active { font-size: 45px !important; }
+  .tl2-year-num.active { font-size: 40px !important; }
   .tl2-year-num { font-size: 25px !important; }
   .tl2-image-ph.active { height: 260px !important; }
   .tl2-body { font-size: 14px !important; }
