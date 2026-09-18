@@ -742,12 +742,13 @@ input:-webkit-autofill:active {
 /* Drop cap on first narrative paragraph */
 .narrative-drop-cap::first-letter {
   float: left;
-  font-size: 64px;
+  font-size: 65px;
   font-family: Georgia, "Times New Roman", serif;
   color: #D4AF37;
   line-height: 0.78;
   margin: 4px 10px 0 0;
 }
+@media (min-width: 768px) and (max-width: 1024px) { .narrative-drop-cap::first-letter { font-size: 58px !important; } }
 
 /* ── Timeline v2 ── */
 .tl2-section {
@@ -1578,9 +1579,12 @@ input:-webkit-autofill:active {
   .os-photo-banner { height: 280px !important; }
   .os-narrative { padding: 48px 20px !important; }
   .os-narrative-h3 { font-size: 23px !important; }
-  .narrative-drop-cap::first-letter { font-size: 48px !important; }
+  .narrative-drop-cap::first-letter { font-size: 50px !important; }
   .tl2-month-text { font-size: 15px !important; }
   .os-closing-btn { font-size: 15px !important; }
+}
+@media (max-width: 480px) {
+  .narrative-drop-cap::first-letter { font-size: 44px !important; }
 }
 
 /* Our Story — tablet (769–1024px) */
@@ -1772,7 +1776,7 @@ input:-webkit-autofill:active {
   .tl2-image-ph.active { height: 260px !important; }
   .tl2-body { font-size: 14px !important; }
   .tl2-title { font-size: 17px !important; }
-  .narrative-drop-cap::first-letter { font-size: 40px !important; }
+  .narrative-drop-cap::first-letter { font-size: 38px !important; }
   .os-hero-section .os-hero-h1 { font-size: 25px !important; }
 }
 
