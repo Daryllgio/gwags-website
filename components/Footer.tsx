@@ -49,7 +49,7 @@ export default function Footer({ lang }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="footer-col-heading" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '15px', fontWeight: 600, letterSpacing: '0.2em', marginBottom: '18px' }}>
+            <h4 className="footer-col-heading" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '16px', fontWeight: 600, letterSpacing: '0.2em', marginBottom: '18px' }}>
               {f.col1.heading}
             </h4>
             {f.col1.links.map((link) => (
@@ -62,7 +62,7 @@ export default function Footer({ lang }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="footer-col-heading" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '15px', fontWeight: 600, letterSpacing: '0.2em', marginBottom: '18px' }}>
+            <h4 className="footer-col-heading" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '16px', fontWeight: 600, letterSpacing: '0.2em', marginBottom: '18px' }}>
               {f.col2.heading}
             </h4>
             {f.col2.links.map((link) => (
