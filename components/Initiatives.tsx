@@ -58,7 +58,7 @@ export default function Initiatives({ lang }: InitiativesProps) {
                   <a href={routes[i]} className="ini-card-title ini-card-title-link" style={{ color: '#fff', fontSize: '18px', fontWeight: 500, marginBottom: '12px', lineHeight: 1.35, display: 'block', textDecoration: 'none' }}>
                     <span className="ini-title-underline">{item.title}</span>
                   </a>
-                  <p className="body-text ini-card-desc" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '17px', lineHeight: 1.68, flex: 1 }}>
+                  <p className="body-text ini-card-desc" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', lineHeight: 1.68, flex: 1 }}>
                     {item.desc}
                   </p>
                 </div>
