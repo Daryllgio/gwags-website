@@ -1833,19 +1833,19 @@ input:-webkit-autofill:active {
   /* Initiatives */
   .ini-img-ph    { height: 215px !important; }
   .ini-card-body { padding: 14px 0 20px 0 !important; }
-  .ini-card-title { font-size: 18px !important; }
-  .ini-card-desc  { font-size: 17px !important; }
+  .ini-card-title { font-size: 17px !important; }
+  .ini-card-desc  { font-size: 16px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 24px 18px 22px !important; }
-  .wg-card-title { font-size: 18px !important; }
-  .wg-card-desc  { font-size: 17px !important; }
+  .wg-card-title { font-size: 17px !important; }
+  .wg-card-desc  { font-size: 16px !important; }
 
   /* More About */
   .ma-img-ph    { height: 215px !important; }
   .ma-card-body { padding: 16px 0 24px 0 !important; }
-  .ma-card-title { font-size: 18px !important; }
-  .ma-card-desc  { font-size: 17px !important; }
+  .ma-card-title { font-size: 17px !important; }
+  .ma-card-desc  { font-size: 16px !important; }
 
   /* Leadership */
   .lp-heading       { font-size: 30px !important; }
@@ -1875,19 +1875,19 @@ input:-webkit-autofill:active {
   /* Initiatives */
   .ini-img-ph    { height: 215px !important; }
   .ini-card-body { padding: 14px 0 20px 0 !important; }
-  .ini-card-title { font-size: 17px !important; }
-  .ini-card-desc  { font-size: 16px !important; }
+  .ini-card-title { font-size: 16px !important; }
+  .ini-card-desc  { font-size: 15px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 24px 16px 20px !important; }
-  .wg-card-title { font-size: 17px !important; }
-  .wg-card-desc  { font-size: 16px !important; }
+  .wg-card-title { font-size: 16px !important; }
+  .wg-card-desc  { font-size: 15px !important; }
 
   /* More About */
   .ma-img-ph    { height: 215px !important; }
   .ma-card-body { padding: 16px 0 24px 0 !important; }
-  .ma-card-title { font-size: 17px !important; }
-  .ma-card-desc  { font-size: 16px !important; }
+  .ma-card-title { font-size: 16px !important; }
+  .ma-card-desc  { font-size: 15px !important; }
 
   /* Leadership */
   .lp-heading       { font-size: 28px !important; }
@@ -1927,19 +1927,19 @@ input:-webkit-autofill:active {
   /* Initiatives */
   .ini-img-ph    { height: 215px !important; }
   .ini-card-body { padding: 14px 0 20px 0 !important; }
-  .ini-card-title { font-size: 16px !important; }
-  .ini-card-desc  { font-size: 15px !important; }
+  .ini-card-title { font-size: 15px !important; }
+  .ini-card-desc  { font-size: 14px !important; }
 
   /* Why Gwags */
   .wg-card       { padding: 20px 14px 18px !important; }
-  .wg-card-title { font-size: 16px !important; }
-  .wg-card-desc  { font-size: 15px !important; }
+  .wg-card-title { font-size: 15px !important; }
+  .wg-card-desc  { font-size: 14px !important; }
 
   /* More About */
   .ma-img-ph    { height: 215px !important; }
   .ma-card-body { padding: 16px 0 24px 0 !important; }
-  .ma-card-title { font-size: 16px !important; }
-  .ma-card-desc  { font-size: 15px !important; }
+  .ma-card-title { font-size: 15px !important; }
+  .ma-card-desc  { font-size: 14px !important; }
 
   /* Leadership */
   .lp-heading       { font-size: 26px !important; }
@@ -2038,13 +2038,13 @@ input:-webkit-autofill:active {
 
 /* WhatWeAre pillar titles */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .wwa-pillar-title { font-size: 18px !important; }
-}
-@media (max-width: 767px) {
   .wwa-pillar-title { font-size: 17px !important; }
 }
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   .wwa-pillar-title { font-size: 16px !important; }
+}
+@media (max-width: 480px) {
+  .wwa-pillar-title { font-size: 15px !important; }
 }
 
 /* WhatWeAre H2 — follows main h2 rule, no separate override needed */
@@ -2099,7 +2099,7 @@ input:-webkit-autofill:active {
   display: inline-block;
   position: relative;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 17px;
   color: #0A1128;
   text-decoration: none;
 }
@@ -2115,25 +2115,26 @@ input:-webkit-autofill:active {
 @media (hover: hover) {
   .wwa-vision-link:hover::after { animation: card-underline-retract 0.5s ease forwards; }
 }
-@media (min-width: 481px) and (max-width: 767px) { .wwa-vision-link { font-size: 16px !important; } }
-@media (max-width: 480px) { .wwa-vision-link { font-size: 15px !important; } }
+@media (min-width: 768px) and (max-width: 1024px) { .wwa-vision-link { font-size: 16px !important; } }
+@media (min-width: 481px) and (max-width: 767px) { .wwa-vision-link { font-size: 15px !important; } }
+@media (max-width: 480px) { .wwa-vision-link { font-size: 14px !important; } }
 
 /* Leadership Quote name and role */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .lq-name { font-size: 18px !important; }
-  .lq-role { font-size: 17px !important; }
-}
-@media (min-width: 481px) and (max-width: 767px) {
   .lq-name { font-size: 17px !important; }
   .lq-role { font-size: 16px !important; }
 }
-@media (max-width: 480px) {
+@media (min-width: 481px) and (max-width: 767px) {
   .lq-name { font-size: 16px !important; }
   .lq-role { font-size: 15px !important; }
 }
-@media (max-width: 375px) {
+@media (max-width: 480px) {
   .lq-name { font-size: 15px !important; }
   .lq-role { font-size: 14px !important; }
+}
+@media (max-width: 375px) {
+  .lq-name { font-size: 14px !important; }
+  .lq-role { font-size: 13px !important; }
 }
 
 /* Leadership Quote circle — proportional across screen sizes */
@@ -3419,22 +3420,22 @@ input:-webkit-autofill:active {
 @media (max-width: 375px) {
   .body-text { font-size: 14px !important; }
   .hero-body { font-size: 14px !important; }
-  .ini-card-desc { font-size: 14px !important; }
-  .wg-card-desc { font-size: 14px !important; }
-  .ma-card-desc { font-size: 14px !important; }
+  .ini-card-desc { font-size: 13px !important; }
+  .wg-card-desc { font-size: 13px !important; }
+  .ma-card-desc { font-size: 13px !important; }
   .gi-card-desc { font-size: 14px !important; }
   .hero-h1 { font-size: 28px !important; }
   .hww-hero-h1 { font-size: 25px !important; }
   main h2 { font-size: 20px !important; }
   .eyebrow { font-size: 13px !important; }
   .nav-logo-text { font-size: 16px !important; }
-  .wwa-pillar-title { font-size: 15px !important; }
-  .ini-card-title { font-size: 15px !important; }
-  .ma-card-title { font-size: 15px !important; }
+  .wwa-pillar-title { font-size: 14px !important; }
+  .ini-card-title { font-size: 14px !important; }
+  .ma-card-title { font-size: 14px !important; }
   .footer-tagline { font-size: 14px !important; }
   .card-learn-more { font-size: 13px !important; }
-  .wwa-vision-link { font-size: 14px !important; }
-  .wg-card-title { font-size: 15px !important; }
+  .wwa-vision-link { font-size: 13px !important; }
+  .wg-card-title { font-size: 14px !important; }
   .footer-link { font-size: 13px !important; }
   .footer-copy { font-size: 13px !important; }
   .footer-privacy-terms { font-size: 13px !important; }
