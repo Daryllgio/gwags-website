@@ -7,16 +7,17 @@
    atomic, race-safe "claim once" primitive that self-cleans via TTL with
    no cleanup job needed, and Upstash is Vercel's Marketplace-native Redis.
 
-   IMPORTANT: this does nothing until UPSTASH_REDIS_REST_URL and
-   UPSTASH_REDIS_REST_TOKEN are provisioned (Vercel Marketplace → Upstash)
-   and set as environment variables — that step requires explicit approval
-   and is NOT done by this change. Until then, `claimEventOnce` always
-   returns true (process normally), which is exactly today's pre-hardening
-   behavior — nothing regresses if the store is never configured, but
-   duplicate Stripe deliveries also aren't deduplicated yet. */
+   Reads the Vercel-native env vars that the Upstash-via-Marketplace
+   integration injects automatically (KV_REST_API_URL / KV_REST_API_TOKEN)
+   rather than the raw Upstash names, so no manual env var setup is needed
+   beyond provisioning the integration itself. Until those are present in a
+   given environment, `claimEventOnce` always returns true (process
+   normally), which is exactly today's pre-hardening behavior — nothing
+   regresses if the store is ever missing, but duplicate Stripe deliveries
+   also aren't deduplicated in that case. */
 
-const UPSTASH_URL = process.env.UPSTASH_REDIS_REST_URL
-const UPSTASH_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN
+const UPSTASH_URL = process.env.KV_REST_API_URL
+const UPSTASH_TOKEN = process.env.KV_REST_API_TOKEN
 
 // Comfortably longer than Stripe's own webhook retry window (Stripe stops
 // retrying after ~3 days), so a key can never expire before Stripe would
@@ -43,7 +44,7 @@ export async function claimEventOnce(eventId: string): Promise<boolean> {
   if (!UPSTASH_URL || !UPSTASH_TOKEN) {
     if (!warnedUnconfigured) {
       console.warn(
-        '[idempotency] UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN not set — ' +
+        '[idempotency] KV_REST_API_URL / KV_REST_API_TOKEN not set — ' +
         'webhook idempotency is DISABLED, every delivery (including Stripe retries) ' +
         'will be processed. See lib/idempotency.ts.'
       )
