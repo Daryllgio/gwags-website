@@ -49,7 +49,7 @@ export default function MoreAbout({ lang }: MoreAboutProps) {
                 <div className="ma-card-title" style={{ fontFamily: 'Georgia, serif', fontSize: '18px', fontWeight: 600, color: '#0A1128', marginBottom: '10px', lineHeight: 1.3 }}>
                   {card.title}
                 </div>
-                <p className="body-text ma-card-desc" style={{ fontSize: '18px', color: '#4A4A4A', lineHeight: 1.7 }}>
+                <p className="body-text ma-card-desc" style={{ fontSize: '17px', color: '#4A4A4A', lineHeight: 1.7 }}>
                   {card.desc}
                 </p>
                 <Link href={card.href} className="card-learn-more" style={{ color: '#0A1128', marginTop: '12px' }}>
