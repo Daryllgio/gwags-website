@@ -15,7 +15,7 @@ export default function LeadershipQuote({ lang }: LeadershipQuoteProps) {
           &ldquo;
         </div>
 
-        <p className="leadership-quote-text" style={{ color: '#fff', fontSize: '23px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.75, marginBottom: '40px', fontStyle: 'italic' }}>
+        <p className="leadership-quote-text" style={{ color: '#fff', fontSize: '20px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.75, marginBottom: '40px', fontStyle: 'italic' }}>
           {q.text}
         </p>
 
