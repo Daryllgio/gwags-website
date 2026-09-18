@@ -1654,7 +1654,7 @@ input:-webkit-autofill:active {
   .body-text { font-size: 17px !important; }
   .hero-body { font-size: 17px !important; }
   /* TABLET: eyebrow text size */
-  .eyebrow { font-size: 15px !important; }
+  .eyebrow { font-size: 16px !important; }
   .gi-eyebrow { font-size: 18px !important; margin-bottom: 9px !important; }
   /* TABLET: How We Work step & card titles */
   .hww-step-title { font-size: 17px !important; }
@@ -1981,7 +1981,10 @@ input:-webkit-autofill:active {
 
 /* ── Language toggle — shrinks at 1024px to match hamburger breakpoint ── */
 .nav-lang-toggle { font-size: 16px; }
-@media (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+  .nav-lang-toggle { font-size: 16px !important; padding: 3px 8px !important; }
+}
+@media (min-width: 481px) and (max-width: 767px) {
   .nav-lang-toggle { font-size: 15px !important; padding: 3px 8px !important; }
 }
 @media (max-width: 480px) {
@@ -2096,7 +2099,7 @@ input:-webkit-autofill:active {
   display: inline-block;
   position: relative;
   font-weight: 500;
-  font-size: 17px;
+  font-size: 18px;
   color: #0A1128;
   text-decoration: none;
 }
@@ -2362,7 +2365,7 @@ input:-webkit-autofill:active {
 .card-learn-more {
   display: inline-block;
   position: relative;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
   text-decoration: none;
 }
