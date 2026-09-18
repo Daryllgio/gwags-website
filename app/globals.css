@@ -763,10 +763,14 @@ input:-webkit-autofill:active {
 
 .tl2-eyebrow {
   color: #D4AF37;
-  font-size: 15px;
+  font-size: 17px;
   letter-spacing: 0.22em;
   margin: 0 0 14px 0;
 }
+@media (min-width: 768px) and (max-width: 1024px) { .tl2-eyebrow { font-size: 16px !important; } }
+@media (min-width: 481px) and (max-width: 767px) { .tl2-eyebrow { font-size: 15px !important; } }
+@media (max-width: 480px) { .tl2-eyebrow { font-size: 14px !important; } }
+@media (max-width: 375px) { .tl2-eyebrow { font-size: 13px !important; } }
 
 .tl2-h2 {
   color: #0A1128;
@@ -777,6 +781,9 @@ input:-webkit-autofill:active {
   margin: 0;
   max-width: 480px;
 }
+@media (min-width: 768px) and (max-width: 1024px) { .tl2-h2 { font-size: 28px !important; } }
+@media (min-width: 481px) and (max-width: 767px) { .tl2-h2 { font-size: 24px !important; } }
+@media (max-width: 480px) { .tl2-h2 { font-size: 22px !important; } }
 
 .tl2-year-group {
   position: relative;
@@ -1573,6 +1580,7 @@ input:-webkit-autofill:active {
   .os-narrative-h3 { font-size: 23px !important; }
   .narrative-drop-cap::first-letter { font-size: 48px !important; }
   .tl2-month-text { font-size: 15px !important; }
+  .os-closing-btn { font-size: 15px !important; }
 }
 
 /* Our Story — tablet (769–1024px) */
@@ -1602,6 +1610,7 @@ input:-webkit-autofill:active {
   .os-hero-section .os-hero-h1 { font-size: 30px !important; }
   .os-narrative-h3 { font-size: 21px !important; }
   .tl2-month-text { font-size: 15px !important; }
+  .os-closing-btn { font-size: 14px !important; }
   /* Timeline — small phone */
   .tl2-year-num { font-size: 25px !important; }
   .tl2-year-num.active { font-size: 55px !important; }
@@ -1701,7 +1710,6 @@ input:-webkit-autofill:active {
   .whatweare-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
   /* MOBILE: Timeline body text */
   .tl2-body { font-size: 16px !important; }
-  .tl2-eyebrow { font-size: 15px !important; }
   /* MOBILE: Timeline year number */
   .tl2-year-num { font-size: 30px !important; }
   .tl2-year-num.active { font-size: 55px !important; }
