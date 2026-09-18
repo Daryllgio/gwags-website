@@ -434,12 +434,14 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  /* "Manage your donation" — Stripe Customer Portal lookup by email, shown as
-     an alternate view within Step 1's panel (same fixed dimensions, so it can't
+  /* "Manage your donation" — requests a secure, short-lived portal-access
+     link by email (server never returns a Stripe portal URL directly here;
+     it emails one if a matching recurring donation exists), shown as an
+     alternate view within Step 1's panel (same fixed dimensions, so it can't
      overflow the desktop layout's pinned-button sizing). */
   const [manageMode, setManageMode] = useState(false)
   const [manageEmail, setManageEmail] = useState('')
-  const [manageStatus, setManageStatus] = useState<'idle' | 'loading'>('idle')
+  const [manageStatus, setManageStatus] = useState<'idle' | 'loading' | 'sent'>('idle')
   const [manageError, setManageError] = useState<string | null>(null)
 
   /* CHANGE 9: Google Pay / Apple Pay via Stripe Payment Request API */
@@ -734,8 +736,12 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
     setStep(frequency === 'monthly' ? 6 : 5)
   }
 
-  /* "Manage your donation" — looks up the donor's Stripe Customer by email and
-     redirects to their Stripe-hosted Billing Portal session. */
+  /* "Manage your donation" — requests a secure, short-lived management link
+     be emailed to the donor if a matching recurring donation exists. The
+     server never returns a portal URL directly here (see
+     /api/create-portal-session); the donor clicks the emailed link, which
+     redirects to their Stripe-hosted Billing Portal session only after the
+     link's token is verified server-side. */
   const handleManageSubmit = async () => {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(manageEmail.trim())) {
       setManageError(d.manageEmailInvalid)
@@ -750,12 +756,12 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
         body: JSON.stringify({ email: manageEmail.trim(), lang }),
       })
       const data = await res.json()
-      if (!res.ok || !data.url) {
+      if (!res.ok) {
         setManageError(data.error || d.genericError)
         setManageStatus('idle')
         return
       }
-      window.location.href = data.url
+      setManageStatus('sent')
     } catch {
       setManageError(d.genericError)
       setManageStatus('idle')
@@ -770,28 +776,34 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
         {/* ── Manage your donation: alternate view, same panel dimensions as the steps ── */}
         {manageMode && (
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '16px', background: '#ffffff' }}>
-          <StepHeader title={d.manageText} onBack={() => { setManageMode(false); setManageError(null) }} backLabel={c.back} />
-          <p style={{ color: NAVY, fontSize: '14px', lineHeight: 1.6, margin: 0 }}>
-            {d.manageDescription}
-          </p>
-          <div>
-            <label style={labelStyle}>{d.manageEmailLabel}</label>
-            <input
-              type="email"
-              value={manageEmail}
-              onChange={e => { setManageEmail(e.target.value); setManageError(null) }}
-              style={{ ...inputStyle, border: `1.5px solid ${manageError ? ERR_RED : ORIGINAL_BORDER}` }}
-            />
-            {manageError && <p style={errStyle}>{manageError}</p>}
-          </div>
-          <button
-            type="button"
-            onClick={handleManageSubmit}
-            disabled={manageStatus === 'loading'}
-            style={{ ...actionBtnStyle, marginTop: stepBtnMargin, opacity: manageStatus === 'loading' ? 0.7 : 1, cursor: manageStatus === 'loading' ? 'not-allowed' : 'pointer' }}
-          >
-            {manageStatus === 'loading' ? '...' : d.manageSubmit}
-          </button>
+          <StepHeader title={d.manageText} onBack={() => { setManageMode(false); setManageError(null); setManageStatus('idle') }} backLabel={c.back} />
+          {manageStatus === 'sent' ? (
+            <p style={{ color: SUCCESS_GREEN, fontSize: '14px', lineHeight: 1.6, margin: 0 }}>{d.manageSent}</p>
+          ) : (
+            <>
+              <p style={{ color: NAVY, fontSize: '14px', lineHeight: 1.6, margin: 0 }}>
+                {d.manageDescription}
+              </p>
+              <div>
+                <label style={labelStyle}>{d.manageEmailLabel}</label>
+                <input
+                  type="email"
+                  value={manageEmail}
+                  onChange={e => { setManageEmail(e.target.value); setManageError(null) }}
+                  style={{ ...inputStyle, border: `1.5px solid ${manageError ? ERR_RED : ORIGINAL_BORDER}` }}
+                />
+                {manageError && <p style={errStyle}>{manageError}</p>}
+              </div>
+              <button
+                type="button"
+                onClick={handleManageSubmit}
+                disabled={manageStatus === 'loading'}
+                style={{ ...actionBtnStyle, marginTop: stepBtnMargin, opacity: manageStatus === 'loading' ? 0.7 : 1, cursor: manageStatus === 'loading' ? 'not-allowed' : 'pointer' }}
+              >
+                {manageStatus === 'loading' ? '...' : d.manageSubmit}
+              </button>
+            </>
+          )}
         </div>
         )}
 
