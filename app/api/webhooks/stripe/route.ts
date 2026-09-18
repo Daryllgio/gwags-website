@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { getResendClient, getFromEmail } from '@/lib/mail'
+import { claimEventOnce } from '@/lib/idempotency'
 
 export const runtime = 'nodejs'
 
@@ -268,6 +269,17 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error('webhook: signature verification failed:', err)
     return NextResponse.json({ error: 'Invalid signature.' }, { status: 400 })
+  }
+
+  // Claim this event ID before doing any work, so two concurrent deliveries
+  // of the same event can't both process it (see lib/idempotency.ts for the
+  // atomic mechanism, its current status, and why unconfigured = process
+  // normally rather than fail-closed). Handler behavior below this point is
+  // unchanged — this only decides whether they run at all.
+  const shouldProcess = await claimEventOnce(event.id)
+  if (!shouldProcess) {
+    console.log(`webhook: duplicate delivery of ${event.type} (${event.id}) — already processed, skipping.`)
+    return NextResponse.json({ received: true, duplicate: true })
   }
 
   // Processing errors (including email failures) are logged but must never
