@@ -20,13 +20,13 @@ export default function CTA({ lang }: CTAProps) {
         <div className="cta-buttons" style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link
             href="/partner"
-            style={{ background: '#D4AF37', color: '#0A1128', fontSize: '15px', fontWeight: 500, padding: '13px 24px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em', textDecoration: 'none', display: 'inline-block' }}
+            style={{ background: '#D4AF37', color: '#0A1128', fontSize: '16px', fontWeight: 500, padding: '13px 24px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em', textDecoration: 'none', display: 'inline-block' }}
           >
             {c.btn1}
           </Link>
           <Link
             href="/get-involved"
-            style={{ background: 'none', color: 'rgba(255,255,255,0.92)', fontSize: '15px', padding: '13px 24px', border: '1px solid rgba(255,255,255,0.85)', borderRadius: '3px', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}
+            style={{ background: 'none', color: 'rgba(255,255,255,0.92)', fontSize: '16px', padding: '13px 24px', border: '1px solid rgba(255,255,255,0.85)', borderRadius: '3px', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}
           >
             {c.btn2}
           </Link>
