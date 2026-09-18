@@ -1634,7 +1634,7 @@ input:-webkit-autofill:active {
 
 /* Base eyebrow size (desktop). Must sit BEFORE the responsive blocks below
    so the !important overrides in those blocks can win at smaller breakpoints. */
-.eyebrow { font-size: 16px !important; }
+.eyebrow { font-size: 17px !important; }
 .gi-eyebrow { font-size: 19px; font-weight: 700; letter-spacing: normal; margin-bottom: 10px; }
 
 /* ================================================================
@@ -1654,7 +1654,7 @@ input:-webkit-autofill:active {
   .body-text { font-size: 17px !important; }
   .hero-body { font-size: 17px !important; }
   /* TABLET: eyebrow text size */
-  .eyebrow { font-size: 16px !important; }
+  .eyebrow { font-size: 15px !important; }
   .gi-eyebrow { font-size: 18px !important; margin-bottom: 9px !important; }
   /* TABLET: How We Work step & card titles */
   .hww-step-title { font-size: 17px !important; }
@@ -2035,13 +2035,13 @@ input:-webkit-autofill:active {
 
 /* WhatWeAre pillar titles */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .wwa-pillar-title { font-size: 17px !important; }
+  .wwa-pillar-title { font-size: 18px !important; }
 }
 @media (max-width: 767px) {
-  .wwa-pillar-title { font-size: 16px !important; }
+  .wwa-pillar-title { font-size: 17px !important; }
 }
 @media (max-width: 480px) {
-  .wwa-pillar-title { font-size: 15px !important; }
+  .wwa-pillar-title { font-size: 16px !important; }
 }
 
 /* WhatWeAre H2 — follows main h2 rule, no separate override needed */
@@ -2169,7 +2169,7 @@ input:-webkit-autofill:active {
 
 /* Button font — 15px desktop/tablet, 14px mobile/small phone */
 @media (max-width: 767px) {
-  .hero-btn { font-size: 14px !important; }
+  .hero-btn { font-size: 15px !important; }
   .hww-cta-btn-dark { font-size: 14px !important; }
   .hww-cta-btn-outline { font-size: 14px !important; }
   .or-cta-btn-dark { font-size: 14px !important; }
@@ -3425,7 +3425,7 @@ input:-webkit-autofill:active {
   main h2 { font-size: 20px !important; }
   .eyebrow { font-size: 13px !important; }
   .nav-logo-text { font-size: 16px !important; }
-  .wwa-pillar-title { font-size: 14px !important; }
+  .wwa-pillar-title { font-size: 15px !important; }
   .ini-card-title { font-size: 15px !important; }
   .ma-card-title { font-size: 15px !important; }
   .footer-tagline { font-size: 14px !important; }
@@ -3435,6 +3435,8 @@ input:-webkit-autofill:active {
   .footer-link { font-size: 14px !important; }
   .footer-copy { font-size: 14px !important; }
   .footer-privacy-terms { font-size: 14px !important; }
+  .mob-item { font-size: 14px !important; }
+  .hero-btn { font-size: 14px !important; }
   .ip-section-heading { font-size: 20px !important; }
   .ed-gallery-link { font-size: 20px !important; }
   .ip-stats-heading { font-size: 20px !important; }
