@@ -400,7 +400,7 @@ export const t = {
         steps: [
           {
             title: 'Shared vision and values',
-            body: 'Every affiliation begins with alignment. Organizations must demonstrate a genuine commitment to ethical governance, transparency, accountability, and a measurable approach to impact.',
+            body: 'Every Gwags-affiliated organization must demonstrate a genuine commitment to ethical governance, transparency, accountability, and a measurable approach to impact.',
           },
           {
             title: 'Joining the network',
@@ -1490,7 +1490,7 @@ export const t = {
         steps: [
           {
             title: 'Vision et valeurs partagées',
-            body: "Toute affiliation commence par un alignement. Les organisations doivent démontrer un engagement sincère envers la gouvernance éthique, la transparence, la responsabilité et une approche mesurable de l'impact.",
+            body: "Toute organisation affiliée à Gwags doit démontrer un engagement sincère envers la gouvernance éthique, la transparence, la responsabilité et une approche mesurable de l'impact.",
           },
           {
             title: 'Rejoindre le réseau',
