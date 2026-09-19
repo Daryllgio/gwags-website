@@ -89,7 +89,7 @@ export const t = {
       body: 'Gwags carries its own portfolio of initiatives, each designed around a specific dimension of societal transformation. These are the building blocks of our broader institutional mission.',
       items: [
         { title: 'Gwags Scholars Program', desc: 'Providing educational funding and professional development opportunities to outstanding Cameroonian students.', tag: 'EXCELLENCE' },
-        { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY' },
+        { title: 'Mbal Lekeaka Fund', desc: 'A grant program for community-led initiatives that demonstrate measurable impact.', tag: 'COMMUNITY' },
         { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH' },
         { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.', tag: 'YOUTH' },
       ],
@@ -388,7 +388,7 @@ export const t = {
         h2: 'Our commitment in action.',
         items: [
           { title: 'Gwags Scholars Program', desc: 'Providing educational funding and professional development opportunities to outstanding Cameroonian students.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
-          { title: 'Mbal Lekeaka Fund', desc: 'A grant program channeling resources directly into community-led initiatives that demonstrate real, measurable impact on the ground.', tag: 'COMMUNITY', href: '/initiatives/mbal-lekeaka-fund' },
+          { title: 'Mbal Lekeaka Fund', desc: 'A grant program for community-led initiatives that demonstrate measurable impact.', tag: 'COMMUNITY', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH', href: '/initiatives/health-outreach' },
           { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.', tag: 'YOUTH', href: '/initiatives/ajong-foretia' },
         ],
@@ -1180,7 +1180,7 @@ export const t = {
       body: 'Gwags porte son propre portefeuille d\'initiatives, chacune conçue autour d\'une dimension spécifique de la transformation sociale. Ce sont les piliers de notre mission institutionnelle plus large.',
       items: [
         { title: 'Programme Gwags Scholars', desc: 'Offrir un financement éducatif et des opportunités de développement professionnel aux étudiants camerounais exceptionnels.', tag: 'EXCELLENCE' },
-        { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ' },
+        { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de subventions pour des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ' },
         { title: 'Programme de Santé Communautaire', desc: 'Apporter des soins de santé gratuits et l\'éducation médicale aux communautés mal desservies.', tag: 'SANTÉ' },
         { title: 'Soutien aux Orphelins Ajong Foretia', desc: 'Soutenir les enfants orphelins à travers la fourniture de fournitures de vie essentielles et des opportunités éducatives.', tag: 'JEUNESSE' },
       ],
@@ -1478,7 +1478,7 @@ export const t = {
         h2: 'Notre engagement en action.',
         items: [
           { title: 'Programme Gwags Scholars', desc: 'Offrir un financement éducatif et des opportunités de développement professionnel aux étudiants camerounais exceptionnels.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
-          { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de bourses canalisant des ressources directement vers des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ', href: '/initiatives/mbal-lekeaka-fund' },
+          { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de subventions pour des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Programme de Santé Communautaire', desc: "Apporter des soins de santé gratuits et l'éducation médicale aux communautés mal desservies.", tag: 'SANTÉ', href: '/initiatives/health-outreach' },
           { title: 'Soutien aux Orphelins Ajong Foretia', desc: 'Soutenir les enfants orphelins à travers la fourniture de fournitures de vie essentielles et des opportunités éducatives.', tag: 'JEUNESSE', href: '/initiatives/ajong-foretia' },
         ],
