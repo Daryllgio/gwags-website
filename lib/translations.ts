@@ -90,7 +90,7 @@ export const t = {
       items: [
         { title: 'Gwags Scholars Program', desc: 'Providing educational funding and professional development opportunities to outstanding Cameroonian students.', tag: 'EXCELLENCE' },
         { title: 'Mbal Lekeaka Fund', desc: 'A grant program for community-led initiatives that demonstrate measurable impact.', tag: 'COMMUNITY' },
-        { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH' },
+        { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities.', tag: 'HEALTH' },
         { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.', tag: 'YOUTH' },
       ],
     },
@@ -389,7 +389,7 @@ export const t = {
         items: [
           { title: 'Gwags Scholars Program', desc: 'Providing educational funding and professional development opportunities to outstanding Cameroonian students.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
           { title: 'Mbal Lekeaka Fund', desc: 'A grant program for community-led initiatives that demonstrate measurable impact.', tag: 'COMMUNITY', href: '/initiatives/mbal-lekeaka-fund' },
-          { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities through structured field campaigns.', tag: 'HEALTH', href: '/initiatives/health-outreach' },
+          { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities.', tag: 'HEALTH', href: '/initiatives/health-outreach' },
           { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.', tag: 'YOUTH', href: '/initiatives/ajong-foretia' },
         ],
       },
@@ -1181,8 +1181,8 @@ export const t = {
       items: [
         { title: 'Programme Gwags Scholars', desc: 'Offrir un financement éducatif et des opportunités de développement professionnel aux étudiants camerounais exceptionnels.', tag: 'EXCELLENCE' },
         { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de subventions pour des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ' },
-        { title: 'Programme de Santé Communautaire', desc: 'Apporter des soins de santé gratuits et l\'éducation médicale aux communautés mal desservies.', tag: 'SANTÉ' },
-        { title: 'Soutien aux Orphelins Ajong Foretia', desc: 'Soutenir les enfants orphelins à travers la fourniture de fournitures de vie essentielles et des opportunités éducatives.', tag: 'JEUNESSE' },
+        { title: 'Programme de Santé Communautaire', desc: 'Offrir des soins de santé gratuits et une éducation médicale aux communautés défavorisées.', tag: 'SANTÉ' },
+        { title: 'Soutien aux Orphelins Ajong Foretia', desc: 'Soutenir les enfants orphelins en leur offrant des fournitures essentielles et des opportunités éducatives.', tag: 'JEUNESSE' },
       ],
     },
     whyGwags: {
@@ -1479,8 +1479,8 @@ export const t = {
         items: [
           { title: 'Programme Gwags Scholars', desc: 'Offrir un financement éducatif et des opportunités de développement professionnel aux étudiants camerounais exceptionnels.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
           { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de subventions pour des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ', href: '/initiatives/mbal-lekeaka-fund' },
-          { title: 'Programme de Santé Communautaire', desc: "Apporter des soins de santé gratuits et l'éducation médicale aux communautés mal desservies.", tag: 'SANTÉ', href: '/initiatives/health-outreach' },
-          { title: 'Soutien aux Orphelins Ajong Foretia', desc: 'Soutenir les enfants orphelins à travers la fourniture de fournitures de vie essentielles et des opportunités éducatives.', tag: 'JEUNESSE', href: '/initiatives/ajong-foretia' },
+          { title: 'Programme de Santé Communautaire', desc: 'Offrir des soins de santé gratuits et une éducation médicale aux communautés défavorisées.', tag: 'SANTÉ', href: '/initiatives/health-outreach' },
+          { title: 'Soutien aux Orphelins Ajong Foretia', desc: 'Soutenir les enfants orphelins en leur offrant des fournitures essentielles et des opportunités éducatives.', tag: 'JEUNESSE', href: '/initiatives/ajong-foretia' },
         ],
       },
       coordination: {
