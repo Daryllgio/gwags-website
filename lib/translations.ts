@@ -1509,7 +1509,7 @@ export const t = {
         cards: [
           {
             title: 'Objectifs partagés',
-            body: "Gwags s'associe avec des organisations pour réaliser des initiatives dont les objectifs convergent. Chaque partenariat est construit autour d'objectifs clairs, de rôles définis et de résultats mesurables.",
+            body: "Gwags s'associe avec des organisations pour réaliser des initiatives aux objectifs communs. Chaque partenariat est construit autour d'attentes claires, de rôles définis et de résultats mesurables.",
           },
           {
             title: 'Collaboration, pas dépendance',
