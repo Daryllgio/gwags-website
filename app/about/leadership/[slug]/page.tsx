@@ -68,17 +68,19 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     image: '/images/leadership/ornella-ebolo.jpg',
   },
   'gloria-alana-asopjio': {
-    name: 'Gloria Alana Asopjio',
+    name: 'Gloria Asopjio',
     role: 'Founding Member',
     bio: "Gloria was one of the founding members of the Gwags Foundation, leading outreach coordination and the procurement of resources for the foundation's early programs.",
     bioFr: "Gloria a été l'une des membres fondatrices de la Fondation Gwags, dirigeant la coordination de la sensibilisation et l'approvisionnement en ressources pour les premiers programmes de la fondation.",
     linkedin: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
+    image: '/images/leadership/gloria-asopjio.jpg',
   },
   'alissa-kenne-mokem': {
-    name: 'Alissa Kenne Mokem',
+    name: 'Alissa Mokem',
     role: 'Founding Member',
     bio: "Alissa was one of the founding members of the Gwags Foundation, managing the foundation's financial operations.",
     bioFr: "Alissa a été l'une des membres fondatrices de la Fondation Gwags, gérant les opérations financières de la fondation.",
+    image: '/images/leadership/alissa-mokem.jpg',
   },
 }
 
