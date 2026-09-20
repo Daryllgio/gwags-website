@@ -423,7 +423,7 @@ export const t = {
           },
           {
             title: 'Collaboration, not dependency',
-            body: 'Partnerships with Gwags are built on mutual contribution and full independence. There is no governance overlap or structural obligation beyond the agreed scope of work.',
+            body: "Partnerships with Gwags are built on mutual contribution and full independence. There is no interference in each other's governance or structural obligation beyond the agreed scope of work.",
           },
           {
             title: 'Long-term perspective',
@@ -1513,7 +1513,7 @@ export const t = {
           },
           {
             title: 'Collaboration, pas dépendance',
-            body: "Les partenariats avec Gwags reposent sur une contribution mutuelle et une indépendance totale. Il n'y a aucun chevauchement de gouvernance ni d'obligation structurelle au-delà du cadre de travail convenu.",
+            body: "Les partenariats avec Gwags reposent sur une contribution mutuelle et une indépendance totale. Il n'y a aucune ingérence dans la gouvernance respective des parties ni d'obligation structurelle au-delà du cadre de travail convenu.",
           },
           {
             title: 'Perspective à long terme',
