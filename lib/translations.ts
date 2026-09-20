@@ -427,7 +427,7 @@ export const t = {
           },
           {
             title: 'Long-term perspective',
-            body: 'Gwags approaches every partnership with a long-term view. Collaborations are designed not just for immediate results, but to build a foundation for ongoing cooperation as both organizations grow.',
+            body: 'Gwags approaches every partnership with a long-term view. Collaborations are designed not just for immediate results, but to build a foundation for ongoing cooperation.',
           },
         ],
       },
@@ -1517,7 +1517,7 @@ export const t = {
           },
           {
             title: 'Perspective à long terme',
-            body: "Gwags aborde chaque partenariat avec une vision à long terme. Les collaborations sont conçues non seulement pour des résultats immédiats, mais pour construire une base de coopération continue à mesure que les deux organisations grandissent.",
+            body: "Gwags aborde chaque partenariat avec une vision à long terme. Les collaborations sont conçues non seulement pour des résultats immédiats, mais pour construire une base de coopération continue.",
           },
         ],
       },
