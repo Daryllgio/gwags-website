@@ -11,7 +11,7 @@ const GOLD = '#D4AF37'
 
 /* ── People data ─────────────────────────────────────────────────────────── */
 
-const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio: string; bioFr?: string; linkedin?: string; image?: string }> = {
+const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio: string; bioFr?: string; linkedin?: string; image?: string; imagePosition?: string }> = {
   'daryll-giovanny-bikak-mbal': {
     name: 'Giovanny Bikak Mbal',
     role: 'Chair, Board Member',
@@ -74,6 +74,7 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     bioFr: "Gloria a coordonné les relations communautaires et le développement de partenariats pour les premières initiatives de l'organisation.",
     linkedin: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
     image: '/images/leadership/gloria-asopjio.jpg',
+    imagePosition: 'center 63%',
   },
   'alissa-mokem': {
     name: 'Alissa Mokem',
@@ -81,6 +82,7 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     bio: "Alissa managed the organization's financial operations.",
     bioFr: "Alissa a assuré la gestion financière de l'organisation.",
     image: '/images/leadership/alissa-mokem.jpg',
+    imagePosition: 'center 26%',
   },
 }
 
@@ -134,7 +136,7 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
 
           <div className="pp-photo" style={{ position: 'relative', overflow: 'hidden' }}>
             {person.image ? (
-              <Image src={person.image} alt={person.name} fill style={{ objectFit: 'cover', objectPosition: 'top' }} />
+              <Image src={person.image} alt={person.name} fill style={{ objectFit: 'cover', objectPosition: person.imagePosition ?? 'top' }} />
             ) : (
               <PersonSilhouette size={80} />
             )}
