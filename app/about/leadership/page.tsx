@@ -50,32 +50,36 @@ const executiveTeam = [
 const historicalLeadershipData = {
   en: [
     {
-      name: 'Gloria Alana Asopjio',
+      name: 'Gloria Asopjio',
       role: 'Founding Member',
       bio: "Gloria was one of the founding members of the Gwags Foundation, leading outreach coordination and the procurement of resources for the foundation's early programs.",
       href: '/about/leadership/gloria-alana-asopjio',
       linkedinUrl: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
+      image: '/images/leadership/gloria-asopjio.jpg',
     },
     {
-      name: 'Alissa Kenne Mokem',
+      name: 'Alissa Mokem',
       role: 'Founding Member',
       bio: "Alissa was one of the founding members of the Gwags Foundation, managing the foundation's financial operations.",
       href: '/about/leadership/alissa-kenne-mokem',
+      image: '/images/leadership/alissa-mokem.jpg',
     },
   ],
   fr: [
     {
-      name: 'Gloria Alana Asopjio',
+      name: 'Gloria Asopjio',
       role: 'Membre fondatrice',
       bio: "Gloria a été l'une des membres fondatrices de la Fondation Gwags, dirigeant la coordination de la sensibilisation et l'approvisionnement en ressources pour les premiers programmes de la fondation.",
       href: '/about/leadership/gloria-alana-asopjio',
       linkedinUrl: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
+      image: '/images/leadership/gloria-asopjio.jpg',
     },
     {
-      name: 'Alissa Kenne Mokem',
+      name: 'Alissa Mokem',
       role: 'Membre fondatrice',
       bio: "Alissa a été l'une des membres fondatrices de la Fondation Gwags, gérant les opérations financières de la fondation.",
       href: '/about/leadership/alissa-kenne-mokem',
+      image: '/images/leadership/alissa-mokem.jpg',
     },
   ],
 }
@@ -355,7 +359,7 @@ export default function LeadershipPage() {
             <SectionTitle>{lang === 'fr' ? 'Anciens Dirigeants' : 'Historical Leadership'}</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredHistorical.map(p => (
-                <PersonCard key={p.name} name={p.name} role={p.role} bio={p.bio} href={p.href} showLink={false} linkedinUrl={p.linkedinUrl} />
+                <PersonCard key={p.name} name={p.name} role={p.role} bio={p.bio} href={p.href} showLink={false} linkedinUrl={p.linkedinUrl} image={p.image} />
               ))}
             </div>
           </section>
