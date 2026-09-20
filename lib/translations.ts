@@ -88,7 +88,7 @@ export const t = {
       h2: 'Programs built to create lasting change.',
       body: 'Gwags carries its own portfolio of initiatives, each designed around a specific dimension of societal transformation. These are the building blocks of our broader institutional mission.',
       items: [
-        { title: 'Gwags Scholars Program', desc: 'Providing educational funding and professional development opportunities to outstanding Cameroonian students.', tag: 'EXCELLENCE' },
+        { title: 'Gwags Scholars Program', desc: 'Providing educational funding and professional development opportunities to students across Cameroon.', tag: 'EXCELLENCE' },
         { title: 'Mbal Lekeaka Fund', desc: 'A grant program for community-led initiatives that demonstrate measurable impact.', tag: 'COMMUNITY' },
         { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities.', tag: 'HEALTH' },
         { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.', tag: 'YOUTH' },
@@ -387,7 +387,7 @@ export const t = {
         eyebrow: 'OUR INITIATIVES',
         h2: 'Our commitment in action.',
         items: [
-          { title: 'Gwags Scholars Program', desc: 'Providing educational funding and professional development opportunities to outstanding Cameroonian students.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
+          { title: 'Gwags Scholars Program', desc: 'Providing educational funding and professional development opportunities to students across Cameroon.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
           { title: 'Mbal Lekeaka Fund', desc: 'A grant program for community-led initiatives that demonstrate measurable impact.', tag: 'COMMUNITY', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Health Outreach Program', desc: 'Bringing free healthcare and medical education to underserved communities.', tag: 'HEALTH', href: '/initiatives/health-outreach' },
           { title: 'Ajong Foretia Orphan Support', desc: 'Supporting orphaned children through the provision of essential living supplies and educational opportunities.', tag: 'YOUTH', href: '/initiatives/ajong-foretia' },
@@ -1179,7 +1179,7 @@ export const t = {
       h2: 'Des programmes construits pour créer un changement durable.',
       body: 'Gwags porte son propre portefeuille d\'initiatives, chacune conçue autour d\'une dimension spécifique de la transformation sociale. Ce sont les piliers de notre mission institutionnelle plus large.',
       items: [
-        { title: 'Programme Gwags Scholars', desc: 'Offrir un financement éducatif et des opportunités de développement professionnel aux étudiants camerounais exceptionnels.', tag: 'EXCELLENCE' },
+        { title: 'Programme Gwags Scholars', desc: 'Offrir un financement éducatif et des opportunités de développement professionnel aux étudiants à travers le Cameroun.', tag: 'EXCELLENCE' },
         { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de subventions pour des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ' },
         { title: 'Programme de Santé Communautaire', desc: 'Offrir des soins de santé gratuits et une éducation médicale aux communautés défavorisées.', tag: 'SANTÉ' },
         { title: 'Soutien aux Orphelins Ajong Foretia', desc: 'Soutenir les enfants orphelins en leur offrant des fournitures essentielles et des opportunités éducatives.', tag: 'JEUNESSE' },
@@ -1477,7 +1477,7 @@ export const t = {
         eyebrow: 'NOS INITIATIVES',
         h2: 'Notre engagement en action.',
         items: [
-          { title: 'Programme Gwags Scholars', desc: 'Offrir un financement éducatif et des opportunités de développement professionnel aux étudiants camerounais exceptionnels.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
+          { title: 'Programme Gwags Scholars', desc: 'Offrir un financement éducatif et des opportunités de développement professionnel aux étudiants à travers le Cameroun.', tag: 'EXCELLENCE', href: '/initiatives/scholars' },
           { title: 'Fonds Mbal Lekeaka', desc: 'Un programme de subventions pour des initiatives communautaires à impact mesurable.', tag: 'COMMUNAUTÉ', href: '/initiatives/mbal-lekeaka-fund' },
           { title: 'Programme de Santé Communautaire', desc: 'Offrir des soins de santé gratuits et une éducation médicale aux communautés défavorisées.', tag: 'SANTÉ', href: '/initiatives/health-outreach' },
           { title: 'Soutien aux Orphelins Ajong Foretia', desc: 'Soutenir les enfants orphelins en leur offrant des fournitures essentielles et des opportunités éducatives.', tag: 'JEUNESSE', href: '/initiatives/ajong-foretia' },
