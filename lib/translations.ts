@@ -404,7 +404,7 @@ export const t = {
           },
           {
             title: 'Joining the network',
-            body: "Organizations gain access to the Gwags institutional framework, including use of the Gwags brand, integration into the network, and access to resources. Gwags works with affiliated organizations to coordinate programs and identify opportunities for collaboration within the network.",
+            body: "Organizations gain access to the Gwags institutional framework, including use of the Gwags brand, integration into the network, and access to resources. Gwags works alongside affiliated organizations to optimize their operations and identify collaboration opportunities between members of the network.",
           },
           {
             title: 'Scaling together',
@@ -1494,7 +1494,7 @@ export const t = {
           },
           {
             title: 'Rejoindre le réseau',
-            body: "Les organisations accèdent au cadre institutionnel de Gwags, y compris l'utilisation de la marque Gwags, l'intégration au réseau et l'accès aux ressources. Gwags travaille avec les organisations affiliées pour coordonner les programmes et identifier les opportunités de collaboration au sein du réseau.",
+            body: "Les organisations accèdent au cadre institutionnel de Gwags, y compris l'utilisation de la marque Gwags, l'intégration au réseau et l'accès aux ressources. Gwags accompagne les organisations affiliées dans l'optimisation de leurs opérations et identifie des opportunités de collaboration entre les membres du réseau.",
           },
           {
             title: 'Croître ensemble',
