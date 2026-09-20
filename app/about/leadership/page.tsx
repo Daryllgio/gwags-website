@@ -52,7 +52,7 @@ const historicalLeadershipData = {
     {
       name: 'Gloria Asopjio',
       role: 'Founding Member',
-      bio: "Gloria was one of the founding members of the Gwags Foundation, leading outreach coordination and the procurement of resources for the foundation's early programs.",
+      bio: "Gloria led outreach coordination and the procurement of resources for the foundation's early programs.",
       href: '/about/leadership/gloria-asopjio',
       linkedinUrl: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
       image: '/images/leadership/gloria-asopjio.jpg',
@@ -60,7 +60,7 @@ const historicalLeadershipData = {
     {
       name: 'Alissa Mokem',
       role: 'Founding Member',
-      bio: "Alissa was one of the founding members of the Gwags Foundation, managing the foundation's financial operations.",
+      bio: "Alissa managed the foundation's financial operations.",
       href: '/about/leadership/alissa-mokem',
       image: '/images/leadership/alissa-mokem.jpg',
     },
@@ -69,7 +69,7 @@ const historicalLeadershipData = {
     {
       name: 'Gloria Asopjio',
       role: 'Membre fondatrice',
-      bio: "Gloria a été l'une des membres fondatrices de la Fondation Gwags, dirigeant la coordination de la sensibilisation et l'approvisionnement en ressources pour les premiers programmes de la fondation.",
+      bio: "Gloria a dirigé la coordination de la sensibilisation et l'approvisionnement en ressources pour les premiers programmes de la fondation.",
       href: '/about/leadership/gloria-asopjio',
       linkedinUrl: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
       image: '/images/leadership/gloria-asopjio.jpg',
@@ -77,7 +77,7 @@ const historicalLeadershipData = {
     {
       name: 'Alissa Mokem',
       role: 'Membre fondatrice',
-      bio: "Alissa a été l'une des membres fondatrices de la Fondation Gwags, gérant les opérations financières de la fondation.",
+      bio: "Alissa a géré les opérations financières de la fondation.",
       href: '/about/leadership/alissa-mokem',
       image: '/images/leadership/alissa-mokem.jpg',
     },
