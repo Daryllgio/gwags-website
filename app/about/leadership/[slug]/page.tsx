@@ -79,7 +79,7 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     name: 'Alissa Mokem',
     role: 'Founding Member',
     bio: "Alissa managed the foundation's financial operations.",
-    bioFr: "Alissa a géré les opérations financières de la fondation.",
+    bioFr: "Alissa a assuré la gestion financière de la fondation.",
     image: '/images/leadership/alissa-mokem.jpg',
   },
 }

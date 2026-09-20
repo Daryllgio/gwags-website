@@ -77,7 +77,7 @@ const historicalLeadershipData = {
     {
       name: 'Alissa Mokem',
       role: 'Membre fondatrice',
-      bio: "Alissa a géré les opérations financières de la fondation.",
+      bio: "Alissa a assuré la gestion financière de la fondation.",
       href: '/about/leadership/alissa-mokem',
       image: '/images/leadership/alissa-mokem.jpg',
     },
