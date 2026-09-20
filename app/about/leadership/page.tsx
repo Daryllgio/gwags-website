@@ -281,7 +281,7 @@ export default function LeadershipPage() {
           </h1>
           <p className="leading-relaxed self-center lp-subtitle" style={{ color: NAVY, fontSize: '18px' }}>
             {lang === 'fr'
-              ? "Nos équipes de gouvernance et exécutive rassemblent une expertise dans le leadership organisationnel, la mise en œuvre des programmes, les opérations et l'engagement communautaire. Nos leaders sont guidés par la mission de l'institution de construire l'infrastructure qui permet aux organisations de créer un impact à grande échelle."
+              ? "Notre Conseil d'Administration et notre Comité Exécutif réunissent des compétences en direction stratégique, en gestion de programmes, en opérations et en engagement communautaire. Leur action est portée par la mission de l'institution : bâtir l'infrastructure permettant aux organisations de générer un impact durable."
               : "Our governance and executive teams bring together expertise across organizational leadership, program delivery, operations, and community engagement. Our leaders are guided by the institution's mission to build the infrastructure that enables organizations to create impact at scale."}
           </p>
         </div>
