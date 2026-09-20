@@ -415,7 +415,7 @@ export const t = {
       workingWith: {
         eyebrow: 'PARTNERING WITH GWAGS',
         h2: 'What to expect as a partner.',
-        intro: 'Through partnership, Gwags collaborates with organizations outside its network to co-develop initiatives and work toward a shared outcome.',
+        intro: 'Through partnership, Gwags collaborates with organizations outside its network to co-develop initiatives.',
         cards: [
           {
             title: 'Shared objectives',
@@ -1505,7 +1505,7 @@ export const t = {
       workingWith: {
         eyebrow: 'PARTENARIAT AVEC GWAGS',
         h2: 'Ce à quoi s\'attendre en tant que partenaire.',
-        intro: "Par le biais du partenariat, Gwags collabore avec des organisations en dehors de son réseau pour co-développer des initiatives et travailler vers un résultat commun.",
+        intro: "Par le biais du partenariat, Gwags collabore avec des organisations en dehors de son réseau pour concevoir des initiatives communes.",
         cards: [
           {
             title: 'Objectifs partagés',
