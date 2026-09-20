@@ -70,16 +70,16 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
   'gloria-asopjio': {
     name: 'Gloria Asopjio',
     role: 'Founding Member',
-    bio: "Gloria led outreach coordination and the procurement of resources for the foundation's early programs.",
-    bioFr: "Gloria a dirigé la coordination de la sensibilisation et l'approvisionnement en ressources pour les premiers programmes de la fondation.",
+    bio: "Gloria led community outreach and partnership development for the organization's early programs.",
+    bioFr: "Gloria a coordonné les relations communautaires et le développement de partenariats pour les premières initiatives de l'organisation.",
     linkedin: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
     image: '/images/leadership/gloria-asopjio.jpg',
   },
   'alissa-mokem': {
     name: 'Alissa Mokem',
     role: 'Founding Member',
-    bio: "Alissa managed the foundation's financial operations.",
-    bioFr: "Alissa a assuré la gestion financière de la fondation.",
+    bio: "Alissa managed the organization's financial operations.",
+    bioFr: "Alissa a assuré la gestion financière de l'organisation.",
     image: '/images/leadership/alissa-mokem.jpg',
   },
 }
