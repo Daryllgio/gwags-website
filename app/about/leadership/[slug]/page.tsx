@@ -67,7 +67,7 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     bio: "The Chief Communications Officer leads Gwags's external engagement, institutional communications, and the development of strategic partnerships.",
     image: '/images/leadership/ornella-ebolo.jpg',
   },
-  'gloria-alana-asopjio': {
+  'gloria-asopjio': {
     name: 'Gloria Asopjio',
     role: 'Founding Member',
     bio: "Gloria was one of the founding members of the Gwags Foundation, leading outreach coordination and the procurement of resources for the foundation's early programs.",
@@ -75,7 +75,7 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     linkedin: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
     image: '/images/leadership/gloria-asopjio.jpg',
   },
-  'alissa-kenne-mokem': {
+  'alissa-mokem': {
     name: 'Alissa Mokem',
     role: 'Founding Member',
     bio: "Alissa was one of the founding members of the Gwags Foundation, managing the foundation's financial operations.",
