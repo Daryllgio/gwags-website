@@ -27,7 +27,7 @@ const governanceBoard = [
     role: 'Board Member',
     roleFr: "Membre du Conseil d'Administration",
     bio:  "Winner leads the Governance, Ethics and Regulatory Committee. He oversees Board composition, director nominations, ethical compliance, and regulatory alignment across all jurisdictions in which Gwags operates.",
-    bioFr: "Winner dirige le Comité de Gouvernance, d'Éthique et de Conformité Réglementaire. Il supervise la composition du Conseil d'administration, les nominations des administrateurs, la conformité éthique et l'alignement réglementaire dans toutes les juridictions où Gwags opère.",
+    bioFr: "Winner dirige le Comité de Gouvernance, d'Éthique et de Conformité Réglementaire. Il supervise la composition du Conseil d'administration, les nominations des administrateurs et la conformité éthique et réglementaire dans l'ensemble des juridictions où Gwags opère.",
     href: '/about/leadership/noa-winner',
     image: '/images/leadership/winner-noa.jpg',
   },
