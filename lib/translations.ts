@@ -408,7 +408,7 @@ export const t = {
           },
           {
             title: 'Scaling together',
-            body: 'The Gwags model is built to grow the impact, reach, and capacity of every organization within the network. Affiliated organizations gain access to funding pathways, partnership opportunities, governance frameworks, and strategic visibility that would be difficult to build independently.',
+            body: 'The Gwags model is built to grow the impact, reach, and capacity of every organization within the network. Affiliated organizations gain access to funding pathways, partnership opportunities, governance frameworks, and strategic visibility. Assets that would be difficult to build independently.',
           },
         ],
       },
@@ -1498,7 +1498,7 @@ export const t = {
           },
           {
             title: 'Croître ensemble',
-            body: "Le modèle Gwags est conçu pour accroître l'impact, la portée et la capacité de chaque organisation au sein du réseau. Les organisations affiliées accèdent à des voies de financement, des opportunités de partenariat, des cadres de gouvernance et une visibilité stratégique qu'il serait difficile de construire de manière indépendante.",
+            body: "Le modèle Gwags est conçu pour accroître l'impact, la portée et la capacité de chaque organisation au sein du réseau. Les organisations affiliées accèdent à des sources de financement, des opportunités de partenariat, des cadres de gouvernance et une visibilité stratégique. Des atouts difficilement accessibles de manière indépendante.",
           },
         ],
       },
