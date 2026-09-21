@@ -520,7 +520,7 @@ export const t = {
       hero: {
         eyebrow: 'OUR ROLE',
         h1: 'We exist to structure what others start.',
-        body: 'Across the world, organizations are working to tackle the challenges their communities face. But commitment alone rarely provides the structure, resources, and networks needed to create impact beyond their current capacity. That is where Gwags comes in.',
+        body: 'Across the world, organizations are working to tackle the challenges their communities face. But ambition without infrastructure rarely translates into lasting impact. Gwags bridges that gap by providing the institutional framework that turns commitment into sustained, measurable change.',
       },
       visionMission: {
         vision: {
@@ -1610,7 +1610,7 @@ export const t = {
       hero: {
         eyebrow: 'NOTRE RÔLE',
         h1: "Nous existons pour structurer ce que d'autres commencent.",
-        body: "À travers le monde, des organisations travaillent à relever les défis auxquels font face leurs communautés. Mais l'engagement seul suffit rarement à fournir la structure, les ressources et les réseaux nécessaires pour créer un impact au-delà de leur capacité actuelle. C'est là qu'intervient Gwags.",
+        body: "À travers le monde, des organisations s'efforcent de relever les défis auxquels font face leurs communautés. Mais l'ambition sans infrastructure se traduit rarement en impact durable. Gwags comble ce vide en offrant le cadre institutionnel qui transforme l'engagement en changement mesurable et pérenne.",
       },
       visionMission: {
         vision: {
