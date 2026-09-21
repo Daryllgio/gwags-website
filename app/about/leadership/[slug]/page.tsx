@@ -11,7 +11,7 @@ const GOLD = '#D4AF37'
 
 /* ── People data ─────────────────────────────────────────────────────────── */
 
-const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio: string; bioFr?: string; linkedin?: string; image?: string; imagePosition?: string }> = {
+const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio: string | string[]; bioFr?: string | string[]; linkedin?: string; image?: string; imagePosition?: string }> = {
   'daryll-giovanny-bikak-mbal': {
     name: 'Giovanny Bikak Mbal',
     role: 'Chair, Board Member',
@@ -25,8 +25,18 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     name: 'Vianney Tanifor',
     role: 'Board Member',
     roleFr: "Membre du Conseil d'Administration",
-    bio: "Vianney leads the Audit & Finance Committee. He manages the institution's financial integrity, budget oversight, reserve management, and internal controls.",
-    bioFr: "Vianney dirige le Comité d'Audit et des Finances. Il gère l'intégrité financière de l'institution, la supervision budgétaire, la gestion des réserves et les contrôles internes.",
+    bio: [
+      "Vianney Tanifor serves on the Governance Board of Gwags Global Impact Institution, where he leads the Audit & Finance Committee. His work is shaped by a broader commitment to medicine, public health, research, and public policy, with a particular interest in strengthening healthcare systems and advancing sustainable development in Cameroon. Through Gwags, he has worked across institutional governance, health initiatives, program implementation, and partnerships aimed at expanding opportunities and improving community well-being.",
+      "Vianney studies Biological Sciences and Political Science at the University of Maryland, Baltimore County, where his academic and research experiences have deepened his interest in the relationship between disease, healthcare delivery, and the policies that shape access to care. He is especially interested in neuroinfectious disease and in how scientific evidence can inform stronger health systems, better policy, and more effective responses to the health challenges facing underserved communities.",
+      "His work with Gwags has allowed him to apply these interests directly. During a major health campaign in Cameroon, he participated in surgical care, contributed to project financing and implementation, and helped collect health data that is now being analyzed to better understand disease patterns in the communities served. In Geneva, he presented the work of Gwags and was invited to discuss healthcare challenges in Cameroon. He has also partnered with the World Health Organization to support skills-development workshops for medical students in Cameroon.",
+      "Vianney hopes to build a career that bridges medicine, research, public service, and policy. His long-term interests center on contributing to better health outcomes not only through clinical and scientific work, but also through the institutions, policies, and systems that determine how healthcare is delivered and who is able to access it.",
+    ],
+    bioFr: [
+      "Vianney Tanifor siège au Conseil d'Administration de Gwags Global Impact Institution, où il préside le Comité d'Audit et des Finances. Son parcours s'inscrit dans un engagement plus large envers la médecine, la santé publique, la recherche et les politiques publiques, avec un intérêt particulier pour le renforcement des systèmes de santé et le développement durable au Cameroun. Au sein de Gwags, il a contribué à la gouvernance institutionnelle, aux initiatives de santé, à la mise en œuvre de programmes et à des partenariats visant à élargir les opportunités et à améliorer le bien-être des communautés.",
+      "Vianney poursuit des études en sciences biologiques et en sciences politiques à l'Université du Maryland, comté de Baltimore, où ses expériences académiques et de recherche ont approfondi son intérêt pour les liens entre la maladie, la prestation des soins de santé et les politiques qui déterminent l'accès aux soins. Il s'intéresse particulièrement aux maladies neuro-infectieuses et à la manière dont les données scientifiques peuvent contribuer à des systèmes de santé plus solides, de meilleures politiques et des réponses plus efficaces aux défis sanitaires auxquels font face les communautés défavorisées.",
+      "Son engagement au sein de Gwags lui a permis de mettre ces intérêts en pratique. Lors d'une importante campagne de santé au Cameroun, il a participé aux soins chirurgicaux, contribué au financement et à la mise en œuvre du projet, et aidé à collecter des données sanitaires actuellement en cours d'analyse pour mieux comprendre les tendances épidémiologiques dans les communautés desservies. À Genève, il a présenté les travaux de Gwags et a été invité à discuter des enjeux de santé au Cameroun. Il a également collaboré avec l'Organisation mondiale de la Santé pour soutenir des ateliers de développement des compétences destinés aux étudiants en médecine au Cameroun.",
+      "Vianney aspire à bâtir une carrière à la croisée de la médecine, de la recherche, du service public et des politiques publiques. Ses ambitions à long terme portent sur l'amélioration des résultats en matière de santé, non seulement par le travail clinique et scientifique, mais aussi par les institutions, les politiques et les systèmes qui déterminent comment les soins sont dispensés et qui peut y accéder.",
+    ],
     linkedin: 'https://www.linkedin.com/in/vianney-tanifor-9a76b0280/',
     image: '/images/leadership/vianney-tanifor.jpg',
   },
@@ -162,7 +172,13 @@ export default function ProfilePage({ params }: { params: { slug: string } }) {
             )}
           </div>
 
-          <p className="pp-bio">{lang === 'fr' && person.bioFr ? person.bioFr : person.bio}</p>
+          {(() => {
+            const content = lang === 'fr' && person.bioFr ? person.bioFr : person.bio
+            const paragraphs = Array.isArray(content) ? content : [content]
+            return paragraphs.map((para, i) => (
+              <p key={i} className="pp-bio" style={i < paragraphs.length - 1 ? { marginBottom: '20px' } : undefined}>{para}</p>
+            ))
+          })()}
 
         </div>
 
