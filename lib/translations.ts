@@ -1523,7 +1523,7 @@ export const t = {
       },
       cta: {
         h2: 'Souhaitez-vous travailler avec nous ?',
-        body: "Découvrez comment votre organisation peut s'engager avec Gwags à travers l'affiliation ou le partenariat.",
+        body: 'Découvrez comment votre organisation peut collaborer avec Gwags par le biais d’une affiliation ou d’un partenariat.',
         btn1: 'Devenir partenaire',
         btn2: 'Rejoindre le réseau',
       },
