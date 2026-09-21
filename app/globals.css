@@ -1866,8 +1866,8 @@ input:-webkit-autofill:active {
   .lp-subtitle      { font-size: 17px !important; }
   .lp-person-name   { font-size: 20px !important; }
   .lp-person-role   { font-size: 20px !important; }
-  .lp-person-bio  { font-size: 16.5px !important; }
-  .view-profile-link { font-size: 15.5px !important; }
+  .lp-person-bio  { font-size: 16px !important; }
+  .view-profile-link { font-size: 15px !important; }
   .lp-person-img  { height: 260px !important; }
   .lp-no-results  { font-size: 17px !important; }
 

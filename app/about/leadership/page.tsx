@@ -126,7 +126,7 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true, li
 
       {/* Bio */}
       {showBio && bio && (
-        <p className="mt-2 leading-relaxed lp-person-bio" style={{ color: NAVY, fontSize: '16.5px', fontWeight: 400 }}>{bio}</p>
+        <p className="mt-2 leading-relaxed lp-person-bio" style={{ color: NAVY, fontSize: '16px', fontWeight: 400 }}>{bio}</p>
       )}
 
       {/* LinkedIn Connect */}
@@ -149,7 +149,7 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true, li
         <a
           href={href}
           className="mt-3 inline-block view-profile-link"
-          style={{ color: NAVY, fontSize: '15.5px', fontWeight: 500, textDecoration: 'none' }}
+          style={{ color: NAVY, fontSize: '15px', fontWeight: 500, textDecoration: 'none' }}
         >
           {lang === 'fr' ? 'Voir le profil' : 'View profile'}
         </a>
