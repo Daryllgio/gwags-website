@@ -17,8 +17,8 @@ const governanceBoard = [
     name: 'Giovanny Bikak Mbal',
     role: 'Chair, Board Member',
     roleFr: 'Président du Conseil d\'administration',
-    bio:  "As Chair, Giovanny shapes and approves the institution's strategies, advocates for the institution's issues, and sets the organization's overall direction. He also serves as Interim Executive Director.",
-    bioFr: "En tant que Président, Giovanny façonne et approuve les stratégies de l'institution, défend les causes de l'institution et définit l'orientation générale de l'organisation. Il occupe également le poste de Directeur Exécutif par intérim.",
+    bio:  "As Chair, Giovanny shapes the institution's strategies, advocates for the institution's issues, and sets the organization's overall direction. He also serves as Interim Executive Director.",
+    bioFr: "En tant que Président, Giovanny façonne les stratégies de l'institution, défend les causes de l'institution et définit l'orientation générale de l'organisation. Il occupe également le poste de Directeur Exécutif par intérim.",
     href: '/about/leadership/daryll-giovanny-bikak-mbal',
     image: '/images/leadership/giovanny-bikak-mbal.jpg',
   },
@@ -52,7 +52,7 @@ const historicalLeadershipData = {
     {
       name: 'Gloria Asopjio',
       role: 'Founding Member',
-      bio: "Gloria led community outreach and partnership development for the organization's early programs.",
+      bio: "Gloria led community outreach for the organization's early programs.",
       href: '/about/leadership/gloria-asopjio',
       linkedinUrl: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
       image: '/images/leadership/gloria-asopjio.jpg',
@@ -72,7 +72,7 @@ const historicalLeadershipData = {
     {
       name: 'Gloria Asopjio',
       role: 'Membre fondatrice',
-      bio: "Gloria a coordonné les relations communautaires et le développement de partenariats pour les premières initiatives de l'organisation.",
+      bio: "Gloria a coordonné les relations communautaires pour les premières initiatives de l'organisation.",
       href: '/about/leadership/gloria-asopjio',
       linkedinUrl: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
       image: '/images/leadership/gloria-asopjio.jpg',
