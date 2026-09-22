@@ -1,4 +1,4 @@
-import { Lang } from '@/lib/translations'
+import type { Lang } from '@/lib/translations'
 
 export interface NetworkOrg {
   slug: string
