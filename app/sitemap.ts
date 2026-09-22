@@ -18,7 +18,7 @@ const leadershipSlugs = Object.keys(LEADERSHIP_PEOPLE).filter((slug) => !slug.st
 // Network org detail pages are excluded while their data is still placeholder
 // content (see lib/network.ts) — they'll be picked up automatically once real
 // organizations replace the "Placeholder ..." entries.
-const networkSlugs = NETWORK_ORGS.filter((org) => !org.name.startsWith('Placeholder ')).map((org) => org.slug)
+const networkSlugs = NETWORK_ORGS.filter((org) => !org.name.en.startsWith('Placeholder ')).map((org) => org.slug)
 
 const scholarsBatches = Object.keys(t.en.scholarsBatches)
 const ajongForetiaSlugs = Object.keys(ajongForetiaEvents)

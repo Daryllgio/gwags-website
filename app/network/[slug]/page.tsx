@@ -1,6 +1,7 @@
 'use client'
 import { useLang } from '@/lib/useLang'
 import Link from 'next/link'
+import Image from 'next/image'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { t } from '@/lib/translations'
@@ -65,10 +66,14 @@ export default function OrgDetailPage({ params }: { params: { slug: string } }) 
       <section className="ip-hero">
         <div className="ip-hero-inner">
           <div className="ip-hero-text">
-            <h1 className="ip-hero-name">{org.name}</h1>
+            <h1 className="ip-hero-name">{localized(org.name, lang)}</h1>
           </div>
           <div className="ip-hero-img-wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <OrgIcon />
+            {org.logo ? (
+              <Image src={org.logo} alt={localized(org.name, lang)} fill style={{ objectFit: 'contain', padding: '48px' }} />
+            ) : (
+              <OrgIcon />
+            )}
           </div>
         </div>
       </section>

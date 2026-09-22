@@ -47,7 +47,7 @@ function contentHash(value: unknown): string {
 // since sitemap.ts can't be imported directly (Next's page/route file export
 // contract doesn't allow it) — see the comment in app/sitemap.ts.
 const leadershipSlugs = Object.keys(PEOPLE).filter((slug) => !slug.startsWith('placeholder-'))
-const networkSlugs = NETWORK_ORGS.filter((org) => !org.name.startsWith('Placeholder ')).map((org) => org.slug)
+const networkSlugs = NETWORK_ORGS.filter((org) => !org.name.en.startsWith('Placeholder ')).map((org) => org.slug)
 const scholarsBatches = Object.keys(t.en.scholarsBatches)
 
 type PageEntry = { url: string; data: unknown }

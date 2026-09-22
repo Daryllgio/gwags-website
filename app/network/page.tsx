@@ -1,6 +1,7 @@
 'use client'
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLang } from '@/lib/useLang'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -19,13 +20,17 @@ function OrgIcon() {
   )
 }
 
-function OrgCard({ slug, name, description, sector, country }: { slug: string; name: string; description: string; sector: string; country: string }) {
+function OrgCard({ slug, name, logo, description, sector, country }: { slug: string; name: string; logo?: string; description: string; sector: string; country: string }) {
   const href = `/network/${slug}`
   return (
     <div className="nw-card">
       <Link href={href} style={{ display: 'block', textDecoration: 'none' }}>
-        <div className="nw-card-img">
-          <OrgIcon />
+        <div className="nw-card-img" style={{ position: 'relative' }}>
+          {logo ? (
+            <Image src={logo} alt={name} fill style={{ objectFit: 'contain', padding: '16px' }} />
+          ) : (
+            <OrgIcon />
+          )}
         </div>
       </Link>
       <div className="nw-card-body">
@@ -47,8 +52,8 @@ export default function NetworkPage() {
 
   const filtered = useMemo(() =>
     NETWORK_ORGS.filter(o =>
-      o.name.toLowerCase().includes(search.toLowerCase())
-    ), [search])
+      localized(o.name, lang).toLowerCase().includes(search.toLowerCase())
+    ), [search, lang])
 
   return (
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
@@ -115,7 +120,8 @@ export default function NetworkPage() {
               <OrgCard
                 key={org.slug}
                 slug={org.slug}
-                name={org.name}
+                name={localized(org.name, lang)}
+                logo={org.logo}
                 description={localized(org.description, lang)}
                 sector={localized(org.sector, lang)}
                 country={localized(org.country, lang)}

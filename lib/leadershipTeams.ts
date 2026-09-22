@@ -12,8 +12,8 @@ export const governanceBoard = [
     name: 'Winner Noa',
     role: 'Board Member',
     roleFr: "Membre du Conseil d'Administration",
-    bio:  "Winner leads the Governance, Regulations and Ethics Committee. He oversees Board composition, ethical compliance, and regulatory alignment across all jurisdictions in which Gwags operates.",
-    bioFr: "Winner dirige le Comité Gouvernance, Réglementation et Éthique. Il supervise la composition du Conseil d'administration et la conformité éthique et réglementaire dans l'ensemble des juridictions où Gwags opère.",
+    bio:  "Winner leads the Governance, Regulatory & Ethics Committee. He oversees Board composition, ethical compliance, and regulatory alignment across all jurisdictions in which Gwags operates.",
+    bioFr: "Winner dirige le Comité de la gouvernance, de la réglementation et de l'éthique. Il supervise la composition du Conseil d'administration et la conformité éthique et réglementaire dans l'ensemble des juridictions où Gwags opère.",
     href: '/about/leadership/noa-winner',
     image: '/images/leadership/winner-noa.jpg',
   },
@@ -30,7 +30,7 @@ export const governanceBoard = [
 
 export const executiveTeam = [
   { name: 'Shifu Hammadina', role: 'Chief Program Officer',      roleFr: 'Directeur des Programmes',      bio: "Shifu leads the design, execution, and evaluation of all Gwags programs, translating the institution's strategy into measurable field impact.",        bioFr: "Shifu dirige la conception, l'exécution et l'évaluation de l'ensemble des programmes de Gwags, traduisant la stratégie de l'institution en impact mesurable sur le terrain.", linkedinUrl: 'https://www.linkedin.com/in/shifu-afayi-h-3708412a3/', image: '/images/leadership/shifu-hammadina.jpg' },
-  { name: 'Ornella Ebolo', role: 'Chief Communications Officer',  roleFr: 'Directeur de la Communication', bio: "Ornella oversees Gwags's communications strategy and public presence across all platforms.",                   bioFr: "Ornella supervise la stratégie de communication de Gwags et sa présence publique sur toutes les plateformes.", image: '/images/leadership/ornella-ebolo.jpg', imagePosition: 'center 15%' },
+  { name: 'Ornella Ebolo', role: 'Chief Communications Officer',  roleFr: 'Directrice de la Communication', bio: "Ornella oversees Gwags's communications strategy and public presence across all platforms.",                   bioFr: "Ornella supervise la stratégie de communication de Gwags et sa présence publique sur toutes les plateformes.", image: '/images/leadership/ornella-ebolo.jpg', imagePosition: 'center 15%' },
 ]
 
 export const historicalLeadershipData = {
