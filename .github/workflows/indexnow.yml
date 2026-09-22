@@ -13,6 +13,22 @@ on:
   deployment_status: {}
   workflow_dispatch: {}
 
+# Serializes runs so two overlapping production deploys can't both try to
+# push indexnow-state from the same starting commit (the second push would
+# be a non-fast-forward rejection, silently dropping that run's snapshot
+# update). cancel-in-progress stays false on purpose: a run already past its
+# IndexNow API call must be allowed to finish and persist the snapshot,
+# rather than being killed mid-way and losing that record. If a run is still
+# only *queued* (not yet started) when a newer trigger arrives, GitHub
+# supersedes the queued one — safe here specifically because every run
+# computes an absolute content hash against the last recorded snapshot, not
+# an incremental diff from "the previous deploy", so a skipped queued run
+# causes no lost detections; the next run that actually executes still
+# catches the full accumulated diff.
+concurrency:
+  group: indexnow-state
+  cancel-in-progress: false
+
 permissions:
   contents: read
 
