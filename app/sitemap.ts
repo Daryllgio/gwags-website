@@ -25,16 +25,22 @@ const ajongForetiaSlugs = Object.keys(ajongForetiaEvents)
 const healthOutreachSlugs = Object.keys(healthOutreachEvents)
 const mbalLekeakaFundSlugs = Object.keys(mbalLekeakaFundEvents)
 
+// lastModified is intentionally omitted. Nearly every page's content is
+// sourced from a handful of shared files (lib/translations.ts alone backs
+// 10+ unrelated pages, and the same is true of lib/leadershipPeople.ts,
+// lib/network.ts, and the initiative event data files), so a file's git
+// history reflects edits to OTHER pages just as often as the page in
+// question — it isn't a genuine per-page signal. None of the content
+// objects carry their own updatedAt/modified field either. Per Google's
+// guidance, a fabricated timestamp (e.g. build time) is worse than no
+// lastModified at all, so it's left out until real per-page dates exist.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date()
-
   const entry = (
     path: string,
     priority: number,
     changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']
   ): MetadataRoute.Sitemap[number] => ({
     url: `${BASE_URL}${path}`,
-    lastModified: now,
     changeFrequency,
     priority,
   })
