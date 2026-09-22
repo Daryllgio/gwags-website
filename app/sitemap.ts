@@ -6,7 +6,10 @@ import { ajongForetiaEvents } from '@/lib/ajongForetiaEvents'
 import { healthOutreachEvents } from '@/lib/healthOutreachEvents'
 import { mbalLekeakaFundEvents } from '@/lib/mbalLekeakaFundEvents'
 
-export const BASE_URL = 'https://gwags.org'
+// www.gwags.org is the domain that actually serves content; the bare
+// apex (gwags.org) 308-redirects to it at the DNS/Vercel level, so it's
+// used here as the canonical domain to avoid listing redirecting URLs.
+export const BASE_URL = 'https://www.gwags.org'
 
 // Leadership profile slugs still carrying a "placeholder-" key (unfilled roles,
 // e.g. "[Name Placeholder]") are excluded — they aren't real, publishable pages.
