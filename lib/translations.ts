@@ -205,7 +205,7 @@ export const t = {
     },
     partnerPage: {
       heading: 'Partner With Gwags',
-      subheading: 'Tell us about your organization and how you see us working together. ',
+      subheading: 'Tell us about your organization and how you see us working together.',
       labels: {
         contactName: 'Contact Person Name',
         orgName: 'Organization Name',
