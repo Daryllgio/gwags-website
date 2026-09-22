@@ -1912,7 +1912,6 @@ input:-webkit-autofill:active {
   .lp-person-bio  { font-size: 15px !important; }
   .view-profile-link { font-size: 14px !important; }
   .lp-person-img  { height: 240px !important; }
-  .lp-gloria-photo { object-position: center 53% !important; }
   .lp-header      { gap: 16px !important; }
   .lp-search-input, .lp-dropdown-trigger, .lp-dropdown-option { font-size: 15px !important; }
   .lp-search-btn { font-size: 14px !important; }

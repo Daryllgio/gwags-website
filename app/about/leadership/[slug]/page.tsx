@@ -95,7 +95,6 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     bioFr: "Gloria a coordonné les relations communautaires pour les premières initiatives de l'organisation.",
     linkedin: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
     image: '/images/leadership/gloria-asopjio.jpg',
-    imagePosition: 'center 63%',
   },
   'alissa-mokem': {
     name: 'Alissa Mokem',

@@ -56,8 +56,6 @@ const historicalLeadershipData = {
       href: '/about/leadership/gloria-asopjio',
       linkedinUrl: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
       image: '/images/leadership/gloria-asopjio.jpg',
-      imagePosition: 'center 58%',
-      imageClassName: 'lp-gloria-photo',
     },
     {
       name: 'Alissa Mokem',
@@ -76,8 +74,6 @@ const historicalLeadershipData = {
       href: '/about/leadership/gloria-asopjio',
       linkedinUrl: 'https://www.linkedin.com/in/gloria-alana-asopjio-060012332/',
       image: '/images/leadership/gloria-asopjio.jpg',
-      imagePosition: 'center 58%',
-      imageClassName: 'lp-gloria-photo',
     },
     {
       name: 'Alissa Mokem',
@@ -103,8 +99,8 @@ function PersonIcon() {
   )
 }
 
-function PersonCard({ name, role, bio, href, showBio = true, showLink = true, linkedinUrl, lang = 'en', image, imagePosition = 'top', imageClassName }: {
-  name: string; role: string; bio?: string; href?: string; showBio?: boolean; showLink?: boolean; linkedinUrl?: string; lang?: 'en' | 'fr'; image?: string; imagePosition?: string; imageClassName?: string
+function PersonCard({ name, role, bio, href, showBio = true, showLink = true, linkedinUrl, lang = 'en', image, imagePosition = 'top' }: {
+  name: string; role: string; bio?: string; href?: string; showBio?: boolean; showLink?: boolean; linkedinUrl?: string; lang?: 'en' | 'fr'; image?: string; imagePosition?: string
 }) {
   return (
     <div className="lp-person-card">
@@ -114,7 +110,7 @@ function PersonCard({ name, role, bio, href, showBio = true, showLink = true, li
         style={{ background: '#e8e8e8', position: 'relative', overflow: 'hidden' }}
       >
         {image ? (
-          <Image src={image} alt={name} fill className={imageClassName} style={{ objectFit: 'cover', objectPosition: imagePosition }} />
+          <Image src={image} alt={name} fill style={{ objectFit: 'cover', objectPosition: imagePosition }} />
         ) : (
           <PersonIcon />
         )}
@@ -365,7 +361,7 @@ export default function LeadershipPage() {
             <SectionTitle>{lang === 'fr' ? 'Anciens Dirigeants' : 'Historical Leadership'}</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredHistorical.map(p => (
-                <PersonCard key={p.name} name={p.name} role={p.role} bio={p.bio} href={p.href} showLink={false} linkedinUrl={p.linkedinUrl} image={p.image} imagePosition={p.imagePosition} imageClassName={(p as { imageClassName?: string }).imageClassName} />
+                <PersonCard key={p.name} name={p.name} role={p.role} bio={p.bio} href={p.href} showLink={false} linkedinUrl={p.linkedinUrl} image={p.image} imagePosition={p.imagePosition} />
               ))}
             </div>
           </section>
