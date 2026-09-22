@@ -1,0 +1,73 @@
+name: IndexNow
+
+# Runs automatically once Vercel reports a successful *production* deployment
+# of main (a GitHub "deployment" + "deployment_status" pair, created by
+# Vercel's native GitHub integration — not a custom deploy step). Preview
+# deployments report environment "Preview" and are ignored by the `if:`
+# below; failed/errored builds never reach state "success" and are ignored
+# too.
+#
+# workflow_dispatch is included only so this can be run on demand while
+# testing the workflow itself; it is not part of the normal automatic path.
+on:
+  deployment_status: {}
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    if: github.event_name == 'workflow_dispatch' || (github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Production')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # only this job needs to push the updated snapshot
+    steps:
+      - name: Checkout deployed commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha || github.sha }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch previous IndexNow snapshot
+        # The snapshot is NOT part of this branch — it lives on the
+        # dedicated `indexnow-state` branch (see that branch's README for
+        # why). Falls back to an empty snapshot on the very first run.
+        run: |
+          mkdir -p data
+          git fetch origin indexnow-state
+          git show origin/indexnow-state:data/indexnow-snapshot.json > data/indexnow-snapshot.json \
+            || echo '{}' > data/indexnow-snapshot.json
+
+      - name: Submit changed URLs to IndexNow
+        run: npm run indexnow
+
+      - name: Persist updated snapshot to indexnow-state
+        # scripts/indexnow.mts only rewrites data/indexnow-snapshot.json when
+        # a submission actually succeeded (see that file). If nothing
+        # changed, or the submission failed, this file is byte-identical to
+        # what was fetched above, and the diff check below skips the push —
+        # so this never creates a commit (and never triggers a Vercel
+        # deployment) when there's nothing new to record.
+        run: |
+          git fetch origin indexnow-state
+          git worktree add /tmp/indexnow-state origin/indexnow-state
+          cp data/indexnow-snapshot.json /tmp/indexnow-state/data/indexnow-snapshot.json
+          cd /tmp/indexnow-state
+          if git diff --quiet -- data/indexnow-snapshot.json; then
+            echo "Snapshot unchanged — nothing to persist."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/indexnow-snapshot.json
+          git commit -m "Update IndexNow snapshot after ${{ github.event.deployment.sha || github.sha }}"
+          git push origin HEAD:indexnow-state

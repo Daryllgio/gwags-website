@@ -1,33 +1,34 @@
 // IndexNow submission script.
 //
 // Diffs the current set of sitemap URLs (and a content hash per URL, derived
-// from the same data that renders each page) against a snapshot committed at
+// from the same data that renders each page) against a snapshot at
 // data/indexnow-snapshot.json, and submits only newly added, materially
 // updated, or removed URLs to the IndexNow API. Unchanged pages are never
 // resubmitted.
 //
-// This is a manually-run operational script, not wired into the Next.js
-// build or an automatic deploy hook. Run it after a deploy whose changes you
-// want search engines notified about:
+// Runs automatically after every successful production deployment via
+// .github/workflows/indexnow.yml — see that file for how the snapshot
+// persists across runs (a dedicated `indexnow-state` branch, not this
+// branch's working tree and not Vercel's filesystem).
 //
-//   node scripts/indexnow.ts            # submit changes, update snapshot
-//   node scripts/indexnow.ts --dry-run  # show what would be submitted, no
-//                                       # network call, snapshot untouched
+// Can also be run by hand for local testing; it only reads/writes the local
+// data/indexnow-snapshot.json file and has no awareness of the state branch:
 //
-// Requires Node 22.6+ (uses native TypeScript execution / type stripping).
+//   npm run indexnow              # submit changes, update local snapshot
+//   npm run indexnow -- --dry-run # preview only, no network call, no write
 
 import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { t } from '../lib/translations.ts'
-import { PEOPLE } from '../lib/leadershipPeople.ts'
-import { governanceBoard, executiveTeam, historicalLeadershipData } from '../lib/leadershipTeams.ts'
-import { NETWORK_ORGS } from '../lib/network.ts'
-import { ajongForetiaEvents } from '../lib/ajongForetiaEvents.ts'
-import { healthOutreachEvents } from '../lib/healthOutreachEvents.ts'
-import { mbalLekeakaFundEvents } from '../lib/mbalLekeakaFundEvents.ts'
+import { t } from '@/lib/translations'
+import { PEOPLE } from '@/lib/leadershipPeople'
+import { governanceBoard, executiveTeam, historicalLeadershipData } from '@/lib/leadershipTeams'
+import { NETWORK_ORGS } from '@/lib/network'
+import { ajongForetiaEvents } from '@/lib/ajongForetiaEvents'
+import { healthOutreachEvents } from '@/lib/healthOutreachEvents'
+import { mbalLekeakaFundEvents } from '@/lib/mbalLekeakaFundEvents'
 
 const BASE_URL = 'https://www.gwags.org'
 const INDEXNOW_KEY = 'd2edd5d0441342c19650dd2ec1a418af'

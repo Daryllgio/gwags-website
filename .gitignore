@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.env*
+
+# IndexNow snapshot state lives on the `indexnow-state` branch, not main
+# (see .github/workflows/indexnow.yml) — ignore local runs' output here.
+/data/indexnow-snapshot.json
