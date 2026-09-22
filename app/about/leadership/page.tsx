@@ -44,7 +44,7 @@ const governanceBoard = [
 
 const executiveTeam = [
   { name: 'Shifu Hammadina', role: 'Chief Program Officer',      roleFr: 'Directeur des Programmes',      bio: "Shifu leads the design, execution, and evaluation of all Gwags programs, translating the institution's strategy into measurable field impact.",        bioFr: "Shifu dirige la conception, l'exécution et l'évaluation de l'ensemble des programmes de Gwags, traduisant la stratégie de l'institution en impact mesurable sur le terrain.", linkedinUrl: 'https://www.linkedin.com/in/shifu-afayi-h-3708412a3/', image: '/images/leadership/shifu-hammadina.jpg' },
-  { name: 'Ornella Ebolo', role: 'Chief Communications Officer',  roleFr: 'Directeur de la Communication', bio: "Ornella oversees Gwags's communications strategy and public presence across all platforms.",                   bioFr: "Ornella supervise la stratégie de communication de Gwags et sa présence publique sur toutes les plateformes.", image: '/images/leadership/ornella-ebolo.jpg' },
+  { name: 'Ornella Ebolo', role: 'Chief Communications Officer',  roleFr: 'Directeur de la Communication', bio: "Ornella oversees Gwags's communications strategy and public presence across all platforms.",                   bioFr: "Ornella supervise la stratégie de communication de Gwags et sa présence publique sur toutes les plateformes.", image: '/images/leadership/ornella-ebolo.jpg', imagePosition: 'center 15%' },
 ]
 
 const historicalLeadershipData = {

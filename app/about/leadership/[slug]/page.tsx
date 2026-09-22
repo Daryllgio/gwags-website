@@ -86,6 +86,7 @@ const PEOPLE: Record<string, { name: string; role: string; roleFr?: string; bio:
     roleFr: 'Directeur de la Communication',
     bio: "The Chief Communications Officer leads Gwags's external engagement, institutional communications, and the development of strategic partnerships.",
     image: '/images/leadership/ornella-ebolo.jpg',
+    imagePosition: 'center 16%',
   },
   'gloria-asopjio': {
     name: 'Gloria Asopjio',
