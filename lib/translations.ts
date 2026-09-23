@@ -646,6 +646,7 @@ export const t = {
       hero: {
         name: 'Mbal Lekeaka Fund',
         goal: 'To provide direct financial support to community-led initiatives that address real needs on the ground but lack the resources to execute, scale, or sustain their work.',
+        image: '/images/mbal-lekeaka-fund/hero.jpg',
       },
       sections: [
         {
@@ -1736,6 +1737,7 @@ export const t = {
       hero: {
         name: 'Fonds Mbal Lekeaka',
         goal: 'Fournir un soutien financier direct aux initiatives communautaires qui répondent à des besoins réels sur le terrain mais qui manquent de ressources pour exécuter, développer ou pérenniser leur travail.',
+        image: '/images/mbal-lekeaka-fund/hero.jpg',
       },
       sections: [
         {
