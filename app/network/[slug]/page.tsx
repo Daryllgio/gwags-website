@@ -84,7 +84,10 @@ export default function OrgDetailPage({ params }: { params: { slug: string } }) 
           <div className="ip-grid">
             <h2 className="ip-section-heading">{dt.aboutHeading}</h2>
             <div>
-              <p className="ip-section-body">{dt.aboutText}</p>
+              <p className="ip-section-body" style={{ marginBottom: '20px' }}>{localized(org.description, lang)}</p>
+              {org.bio[lang].map((para, i) => (
+                <p key={i} className="ip-section-body" style={i < org.bio[lang].length - 1 ? { marginBottom: '20px' } : undefined}>{para}</p>
+              ))}
             </div>
           </div>
         </div>
