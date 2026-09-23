@@ -14,7 +14,7 @@ const routes = [
 
 const imagePlaceholders = [
   '/images/scholars/scholars-image-ii.png',
-  'Photo: Mbal Lekeaka Fund',
+  '/images/mbal-lekeaka-fund/mbf.jpg',
   '/images/health-outreach/nguti-health-campaign/2T8A1050.jpg',
   '/images/ajong-foretia/coeur-de-jesus/DSC_1215.JPG',
 ]
