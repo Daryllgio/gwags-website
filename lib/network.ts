@@ -11,17 +11,17 @@ export interface NetworkOrg {
   /** Detail-page placeholders — replace when the organization is confirmed */
   year: string
   activeInitiatives: string
-  website: string
-  instagram: string
-  linkedin: string
+  website?: string
+  instagram?: string
+  linkedin?: string
 }
 
 export const NETWORK_ORGS: NetworkOrg[] = [
   {
     slug: 'org-1',
     name: { en: 'Junior Espoir Foundation', fr: 'Fondation Junior Espoir' },
-    logo: '/images/network/fondation-junior-espoir.jpg',
-    sector: { en: 'Health', fr: 'Santé' },
+    logo: '/images/network/fondation-junior-espoir.png',
+    sector: { en: 'Social Inclusion & Community Development', fr: 'Inclusion sociale et développement communautaire' },
     country: { en: 'Cameroon', fr: 'Cameroun' },
     description: {
       en: 'The Junior Espoir Foundation is a Cameroonian organization dedicated to inclusion, dignity, and support for vulnerable populations through social, humanitarian, and community-based initiatives.',
@@ -41,11 +41,8 @@ export const NETWORK_ORGS: NetworkOrg[] = [
         "La Fondation Junior Espoir travaille également à mobiliser les communautés et les partenaires institutionnels autour de projets à impact concret et durable, avec la conviction que la solidarité constitue un levier collectif de transformation sociale et que la différence représente une richesse plutôt qu'un motif d'exclusion.",
       ],
     },
-    year: '2025', // UPDATE: replace with real affiliation year
+    year: '2026',
     activeInitiatives: '2', // UPDATE: replace with real count
-    website: '#',   // UPDATE: organization website URL
-    instagram: '#', // UPDATE: organization Instagram URL
-    linkedin: '#',  // UPDATE: organization LinkedIn URL
   },
 ]
 

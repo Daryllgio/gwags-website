@@ -112,29 +112,39 @@ export default function OrgDetailPage({ params }: { params: { slug: string } }) 
         </div>
       </section>
 
-      <div className="ip-divider" />
+      {(org.website || org.instagram || org.linkedin) && (
+        <>
+          <div className="ip-divider" />
 
-      {/* Connect */}
-      <section className="ip-section ip-section-white">
-        <div className="ip-content-inner">
-          <div className="ip-grid">
-            <h2 className="ip-section-heading">{dt.connectHeading}</h2>
-            <div className="nw-connect-col">
-              <a href={org.website} target="_blank" rel="noopener noreferrer" className="card-learn-more" style={{ color: NAVY }}>
-                {dt.websiteLabel}
-              </a>
-              <div className="nw-connect-row">
-                <a href={org.instagram} target="_blank" rel="noopener noreferrer" className="pp-connect" aria-label="Instagram">
-                  <div className="pp-connect-circle"><InstagramIcon /></div>
-                </a>
-                <a href={org.linkedin} target="_blank" rel="noopener noreferrer" className="pp-connect" aria-label="LinkedIn">
-                  <div className="pp-connect-circle"><span className="pp-connect-in">in</span></div>
-                </a>
+          {/* Connect */}
+          <section className="ip-section ip-section-white">
+            <div className="ip-content-inner">
+              <div className="ip-grid">
+                <h2 className="ip-section-heading">{dt.connectHeading}</h2>
+                <div className="nw-connect-col">
+                  {org.website && (
+                    <a href={org.website} target="_blank" rel="noopener noreferrer" className="card-learn-more" style={{ color: NAVY }}>
+                      {dt.websiteLabel}
+                    </a>
+                  )}
+                  <div className="nw-connect-row">
+                    {org.instagram && (
+                      <a href={org.instagram} target="_blank" rel="noopener noreferrer" className="pp-connect" aria-label="Instagram">
+                        <div className="pp-connect-circle"><InstagramIcon /></div>
+                      </a>
+                    )}
+                    {org.linkedin && (
+                      <a href={org.linkedin} target="_blank" rel="noopener noreferrer" className="pp-connect" aria-label="LinkedIn">
+                        <div className="pp-connect-circle"><span className="pp-connect-in">in</span></div>
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        </>
+      )}
 
       <Footer lang={lang} />
     </main>

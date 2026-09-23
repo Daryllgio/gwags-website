@@ -20,7 +20,7 @@ function OrgIcon() {
   )
 }
 
-function OrgCard({ slug, name, logo, description, sector, country }: { slug: string; name: string; logo?: string; description: string; sector: string; country: string }) {
+function OrgCard({ slug, name, logo, description }: { slug: string; name: string; logo?: string; description: string }) {
   const href = `/network/${slug}`
   return (
     <div className="nw-card">
@@ -36,7 +36,6 @@ function OrgCard({ slug, name, logo, description, sector, country }: { slug: str
       <div className="nw-card-body">
         <Link href={href} className="nw-card-name">{name}</Link>
         <p className="nw-card-desc">{description}</p>
-        <p className="nw-card-subtitle">{sector} · {country}</p>
         <a href={href} className="view-profile-link" style={{ color: NAVY, fontSize: '15.5px', fontWeight: 500 }}>
           View profile
         </a>
@@ -123,8 +122,6 @@ export default function NetworkPage() {
                 name={localized(org.name, lang)}
                 logo={org.logo}
                 description={localized(org.description, lang)}
-                sector={localized(org.sector, lang)}
-                country={localized(org.country, lang)}
               />
             ))}
           </div>
