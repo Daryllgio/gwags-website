@@ -15,7 +15,7 @@ const imagePlaceholders = [
 const cardImages: (string | undefined)[] = [
   '/images/about/our-story.jpg',
   '/images/about/how-we-work.jpg',
-  undefined,
+  '/images/health-outreach/nguti-health-campaign/2T8A0977.jpg',
 ]
 
 export default function MoreAbout({ lang }: MoreAboutProps) {
