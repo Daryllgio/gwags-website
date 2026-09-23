@@ -70,7 +70,7 @@ export default function OrgDetailPage({ params }: { params: { slug: string } }) 
           </div>
           <div className="ip-hero-img-wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {org.logo ? (
-              <Image src={org.logo} alt={localized(org.name, lang)} fill style={{ objectFit: 'contain', padding: '48px' }} />
+              <Image src={org.logoHero || org.logo} alt={localized(org.name, lang)} fill style={{ objectFit: 'cover' }} />
             ) : (
               <OrgIcon />
             )}

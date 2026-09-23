@@ -4,6 +4,8 @@ export interface NetworkOrg {
   slug: string
   name: { en: string; fr: string }
   logo?: string
+  /** Optional separate asset sized for the wider profile-detail hero box; falls back to `logo` */
+  logoHero?: string
   sector: { en: string; fr: string }
   country: { en: string; fr: string }
   description: { en: string; fr: string }
@@ -20,7 +22,8 @@ export const NETWORK_ORGS: NetworkOrg[] = [
   {
     slug: 'org-1',
     name: { en: 'Junior Espoir Foundation', fr: 'Fondation Junior Espoir' },
-    logo: '/images/network/fondation-junior-espoir.png',
+    logo: '/images/network/fondation-junior-espoir-card.png',
+    logoHero: '/images/network/fondation-junior-espoir-hero.png',
     sector: { en: 'Social Inclusion & Community Development', fr: 'Inclusion sociale et développement communautaire' },
     country: { en: 'Cameroon', fr: 'Cameroun' },
     description: {

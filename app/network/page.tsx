@@ -27,7 +27,7 @@ function OrgCard({ slug, name, logo, description }: { slug: string; name: string
       <Link href={href} style={{ display: 'block', textDecoration: 'none' }}>
         <div className="nw-card-img" style={{ position: 'relative' }}>
           {logo ? (
-            <Image src={logo} alt={name} fill style={{ objectFit: 'contain', padding: '16px' }} />
+            <Image src={logo} alt={name} fill style={{ objectFit: 'cover' }} />
           ) : (
             <OrgIcon />
           )}
