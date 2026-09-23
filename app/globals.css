@@ -3906,7 +3906,7 @@ input:-webkit-autofill:active {
 }
 @media (max-width: 767px) {
   .legal-doc { padding: 56px 28px 72px; }
-  .legal-title { font-size: 28px; }
+  .legal-title { font-size: 27px; }
   .legal-heading { font-size: 17px; }
   .legal-body { font-size: 16px; }
   .legal-list li { font-size: 16px; }
@@ -3921,7 +3921,7 @@ input:-webkit-autofill:active {
   .legal-updated { font-size: 14px; }
 }
 @media (max-width: 375px) {
-  .legal-title { font-size: 22px; }
+  .legal-title { font-size: 23px; }
   .legal-heading { font-size: 15px; }
   .legal-body { font-size: 14px; }
   .legal-list li { font-size: 14px; }
