@@ -39,8 +39,8 @@ export const PEOPLE: Record<string, { name: string; role: string; roleFr?: strin
   },
   'noa-winner': {
     name: 'Winner Noa',
-    role: 'Board Member of Gwags Global Impact Institution',
-    roleFr: "Membre du Conseil d'administration de Gwags Global Impact Institution",
+    role: 'Board Member',
+    roleFr: "Membre du Conseil d'administration",
     bio: [
       "Winner Noa is a Board Member of Gwags Global Impact Institution and Chair of the Governance, Regulatory & Ethics Committee. In this capacity, he leads the Board's work on governance standards, board composition and effectiveness, ethical oversight, and regulatory alignment across the jurisdictions in which Gwags operates. He also advises on the institutional frameworks required to support the organization's continued growth and development.",
       "Since Gwags' early years, Winner has played an instrumental role in shaping the models that have accompanied the institution's evolution. From its early focus on direct community support, through its shift toward youth empowerment and capacity building, he has contributed to designing approaches that strengthened the sustainability and long-term relevance of its work. As Gwags evolved into a Global Impact Institution, he played a central role in developing its current model of structuring, financing, and accelerating impact beyond its own programs, enabling the institution to strengthen locally rooted organizations and extend impact through them.",
