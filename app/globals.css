@@ -522,6 +522,65 @@ main > footer {
 }
 .donate-heart { animation: heart-beat 1.6s ease-in-out infinite; display: flex; }
 
+/* ── Donation modal responsive typography ──
+   Base values are desktop (≥1025px); each tier below steps down together
+   with the rest of the site's breakpoint system. !important is required
+   everywhere since every element also carries its own inline fontSize. */
+.donate-text-lg       { font-size: 19px !important; }
+.donate-text-md-lg    { font-size: 16px !important; }
+.donate-text-md       { font-size: 15px !important; }
+.donate-text-sm       { font-size: 14px !important; }
+.donate-text-xs-12    { font-size: 12px !important; }
+.donate-text-xs-13    { font-size: 13px !important; }
+.donate-amount-display { font-size: 22px !important; }
+.donate-modal-logo     { font-size: 20px !important; }
+.donate-modal-logo-sub { font-size: 12px !important; }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .donate-text-lg       { font-size: 18px !important; }
+  .donate-text-md-lg    { font-size: 15px !important; }
+  .donate-text-md       { font-size: 15px !important; }
+  .donate-text-sm       { font-size: 14px !important; }
+  .donate-text-xs-12    { font-size: 12px !important; }
+  .donate-text-xs-13    { font-size: 13px !important; }
+  .donate-amount-display { font-size: 21px !important; }
+  .donate-modal-logo     { font-size: 19px !important; }
+  .donate-modal-logo-sub { font-size: 12px !important; }
+}
+@media (max-width: 767px) {
+  .donate-text-lg       { font-size: 17px !important; }
+  .donate-text-md-lg    { font-size: 15px !important; }
+  .donate-text-md       { font-size: 14px !important; }
+  .donate-text-sm       { font-size: 13px !important; }
+  .donate-text-xs-12    { font-size: 11px !important; }
+  .donate-text-xs-13    { font-size: 12px !important; }
+  .donate-amount-display { font-size: 20px !important; }
+  .donate-modal-logo     { font-size: 18px !important; }
+  .donate-modal-logo-sub { font-size: 11px !important; }
+}
+@media (max-width: 480px) {
+  .donate-text-lg       { font-size: 16px !important; }
+  .donate-text-md-lg    { font-size: 14px !important; }
+  .donate-text-md       { font-size: 14px !important; }
+  .donate-text-sm       { font-size: 13px !important; }
+  .donate-text-xs-12    { font-size: 11px !important; }
+  .donate-text-xs-13    { font-size: 12px !important; }
+  .donate-amount-display { font-size: 19px !important; }
+  .donate-modal-logo     { font-size: 17px !important; }
+  .donate-modal-logo-sub { font-size: 11px !important; }
+}
+@media (max-width: 375px) {
+  .donate-text-lg       { font-size: 15px !important; }
+  .donate-text-md-lg    { font-size: 14px !important; }
+  .donate-text-md       { font-size: 13px !important; }
+  .donate-text-sm       { font-size: 12px !important; }
+  .donate-text-xs-12    { font-size: 11px !important; }
+  .donate-text-xs-13    { font-size: 12px !important; }
+  .donate-amount-display { font-size: 18px !important; }
+  .donate-modal-logo     { font-size: 16px !important; }
+  .donate-modal-logo-sub { font-size: 11px !important; }
+}
+
 /* Donation step transition — fade + subtle 25px shift (one panel at a time) */
 @keyframes donate-step-fade-in {
   from { opacity: 0; transform: translateX(25px); }

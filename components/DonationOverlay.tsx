@@ -185,7 +185,7 @@ function StepHeader({ title, onBack, backLabel = 'Back' }: { title: string; onBa
             </button>
           )}
         </div>
-        <h3 style={{ color: NAVY, fontSize: '16px', fontWeight: 600, margin: 0, fontFamily: 'inherit', textAlign: 'center' }}>
+        <h3 className="donate-text-md-lg" style={{ color: NAVY, fontSize: '16px', fontWeight: 600, margin: 0, fontFamily: 'inherit', textAlign: 'center' }}>
           {title}
         </h3>
         <div />
@@ -399,13 +399,13 @@ function DonationSuccessSummary({ d, amount, isMonthlySupporter = false }: { d: 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', textAlign: 'center', width: '100%' }}>
       <span className="donate-heart"><CelebrateHeartIcon size={56} /></span>
-      <p style={{ fontWeight: 700, fontSize: '19px', color: NAVY, margin: 0 }}>{d.thankYouForSupport}</p>
+      <p className="donate-text-lg" style={{ fontWeight: 700, fontSize: '19px', color: NAVY, margin: 0 }}>{d.thankYouForSupport}</p>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
-        <p style={{ fontSize: '15px', color: NAVY, margin: 0 }}>
+        <p className="donate-text-md" style={{ fontSize: '15px', color: NAVY, margin: 0 }}>
           {d.youveMadeADonationPrefix}{amount.toFixed(2)}{d.youveMadeADonationSuffix}
         </p>
         {isMonthlySupporter && (
-          <p style={{ fontSize: '15px', color: NAVY, margin: 0 }}>{d.nowMonthlySupporterText}</p>
+          <p className="donate-text-md" style={{ fontSize: '15px', color: NAVY, margin: 0 }}>{d.nowMonthlySupporterText}</p>
         )}
       </div>
     </div>
@@ -778,21 +778,22 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '16px', background: '#ffffff' }}>
           <StepHeader title={d.manageText} onBack={() => { setManageMode(false); setManageError(null); setManageStatus('idle') }} backLabel={c.back} />
           {manageStatus === 'sent' ? (
-            <p style={{ color: SUCCESS_GREEN, fontSize: '14px', lineHeight: 1.6, margin: 0 }}>{d.manageSent}</p>
+            <p className="donate-text-sm" style={{ color: SUCCESS_GREEN, fontSize: '14px', lineHeight: 1.6, margin: 0 }}>{d.manageSent}</p>
           ) : (
             <>
-              <p style={{ color: NAVY, fontSize: '14px', lineHeight: 1.6, margin: 0 }}>
+              <p className="donate-text-sm" style={{ color: NAVY, fontSize: '14px', lineHeight: 1.6, margin: 0 }}>
                 {d.manageDescription}
               </p>
               <div>
-                <label style={labelStyle}>{d.manageEmailLabel}</label>
+                <label className="donate-text-sm" style={labelStyle}>{d.manageEmailLabel}</label>
                 <input
+                  className="donate-text-md"
                   type="email"
                   value={manageEmail}
                   onChange={e => { setManageEmail(e.target.value); setManageError(null) }}
                   style={{ ...inputStyle, border: `1.5px solid ${manageError ? ERR_RED : ORIGINAL_BORDER}` }}
                 />
-                {manageError && <p style={errStyle}>{manageError}</p>}
+                {manageError && <p className="donate-text-xs-13" style={errStyle}>{manageError}</p>}
               </div>
               <button
                 type="button"
@@ -871,8 +872,9 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
           {/* Custom amount + validation */}
           <div>
             <div style={{ position: 'relative' }}>
-              <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: belowMinAmount ? ERR_RED : NAVY, fontSize: '15px', fontWeight: 500 }}>$</span>
+              <span className="donate-text-md" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: belowMinAmount ? ERR_RED : NAVY, fontSize: '15px', fontWeight: 500 }}>$</span>
               <input
+                className="donate-text-md"
                 type="number"
                 min="1"
                 placeholder=""
@@ -940,7 +942,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                 </div>
               )}
             </div>
-            {amountError && <p style={errStyle}>{d.amountRequiredError}</p>}
+            {amountError && <p className="donate-text-xs-13" style={errStyle}>{d.amountRequiredError}</p>}
           </div>
 
           {/* Already a donor? Look up their Stripe Customer Portal by email. */}
@@ -948,7 +950,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
             <button
               type="button"
               onClick={() => setManageMode(true)}
-              className="donate-email-link"
+              className="donate-email-link donate-text-xs-13"
               style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: NAVY, fontSize: '13px', fontWeight: 500, fontFamily: 'inherit', display: 'inline-block' }}
             >
               {d.manageTriggerLink}
@@ -956,7 +958,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
           </div>
 
           {/* FIX 1/7: desktop pins button to bottom; phone/tablet flow naturally */}
-          <button type="button" onClick={handleStep1Next} style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}>
+          <button className="donate-text-md" type="button" onClick={handleStep1Next} style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}>
             {donateLabel}
           </button>
         </div>
@@ -969,36 +971,39 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             <div>
-              <label style={labelStyle}>{d.firstNameLabel} <span>*</span></label>
+              <label className="donate-text-sm" style={labelStyle}>{d.firstNameLabel} <span>*</span></label>
               <input
+                className="donate-text-md"
                 type="text"
                 value={firstName}
                 onChange={e => { setFirstName(capitalizeWords(e.target.value)); setStep2Errors(p => ({ ...p, firstName: false })) }}
                 style={{ ...inputStyle, border: `1.5px solid ${step2Errors.firstName ? ERR_RED : ORIGINAL_BORDER}` }}
               />
-              {step2Errors.firstName && <p style={errStyle}>{d.requiredError}</p>}
+              {step2Errors.firstName && <p className="donate-text-xs-13" style={errStyle}>{d.requiredError}</p>}
             </div>
             <div>
-              <label style={labelStyle}>{d.lastNameLabel} <span>*</span></label>
+              <label className="donate-text-sm" style={labelStyle}>{d.lastNameLabel} <span>*</span></label>
               <input
+                className="donate-text-md"
                 type="text"
                 value={lastName}
                 onChange={e => { setLastName(capitalizeWords(e.target.value)); setStep2Errors(p => ({ ...p, lastName: false })) }}
                 style={{ ...inputStyle, border: `1.5px solid ${step2Errors.lastName ? ERR_RED : ORIGINAL_BORDER}` }}
               />
-              {step2Errors.lastName && <p style={errStyle}>{d.requiredError}</p>}
+              {step2Errors.lastName && <p className="donate-text-xs-13" style={errStyle}>{d.requiredError}</p>}
             </div>
           </div>
 
           <div>
-            <label style={labelStyle}>{d.emailFieldLabel} <span>*</span></label>
+            <label className="donate-text-sm" style={labelStyle}>{d.emailFieldLabel} <span>*</span></label>
             <input
+              className="donate-text-md"
               type="email"
               value={email}
               onChange={e => { setEmail(e.target.value); setStep2Errors(p => ({ ...p, email: false })) }}
               style={{ ...inputStyle, border: `1.5px solid ${step2Errors.email ? ERR_RED : ORIGINAL_BORDER}` }}
             />
-            {step2Errors.email && <p style={errStyle}>{d.emailInvalidShort}</p>}
+            {step2Errors.email && <p className="donate-text-xs-13" style={errStyle}>{d.emailInvalidShort}</p>}
           </div>
 
           {/* Terms checkbox */}
@@ -1011,17 +1016,18 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                   onChange={checked => { setTermsAccepted(checked); if (checked) setTermsError(false) }}
                 />
               </div>
-              <label htmlFor="terms-accept" style={{ fontSize: termsFontSize, color: NAVY, cursor: 'pointer', lineHeight: 1.5 }}>
+              <label htmlFor="terms-accept" className="donate-text-md" style={{ fontSize: termsFontSize, color: NAVY, cursor: 'pointer', lineHeight: 1.5 }}>
                 {d.acceptTermsPrefix}{' '}
                 <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: NAVY, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>{d.termsLinkLabel}</a>
                 {' '}{d.andConnector}{' '}
                 <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: NAVY, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>{d.privacyLinkLabel}</a>
               </label>
             </div>
-            {termsError && <p style={{ ...errStyle, marginTop: '4px' }}>{d.acceptTermsRequired}</p>}
+            {termsError && <p className="donate-text-xs-13" style={{ ...errStyle, marginTop: '4px' }}>{d.acceptTermsRequired}</p>}
           </div>
 
           <button
+            className="donate-text-md"
             type="button"
             onClick={(e) => { if (!e.isTrusted) return; handleStep2Next() }}
             style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}
@@ -1062,7 +1068,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                 {/* FIX 3: "Or donate with other methods" separator */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <hr style={{ flex: 1, border: 'none', borderTop: `1px solid ${ORIGINAL_BORDER}`, margin: 0 }} />
-                  <span style={{ fontSize: '12px', color: 'rgba(10,17,40,0.5)', whiteSpace: 'nowrap' }}>{d.orOtherMethods}</span>
+                  <span className="donate-text-xs-12" style={{ fontSize: '12px', color: 'rgba(10,17,40,0.5)', whiteSpace: 'nowrap' }}>{d.orOtherMethods}</span>
                   <hr style={{ flex: 1, border: 'none', borderTop: `1px solid ${ORIGINAL_BORDER}`, margin: 0 }} />
                 </div>
 
@@ -1124,7 +1130,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                       )}
                     </div>
                   </div>
-                  <label htmlFor="cover-fee" style={{ fontSize: '14px', color: NAVY, cursor: 'pointer', userSelect: 'none' }}>
+                  <label htmlFor="cover-fee" className="donate-text-sm" style={{ fontSize: '14px', color: NAVY, cursor: 'pointer', userSelect: 'none' }}>
                     {d.coverFeeLabel}
                   </label>
                   <div ref={tooltipRef} style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
@@ -1164,14 +1170,14 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                 <hr style={{ borderColor: 'rgba(10,17,40,0.12)', margin: '0', borderStyle: 'solid', borderWidth: '0 0 1px' }} />
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: '15px', fontWeight: 600, color: NAVY }}>{d.totalLabel}</span>
-                  <span style={{ fontSize: '15px', fontWeight: 600, color: NAVY }}>
+                  <span className="donate-text-md" style={{ fontSize: '15px', fontWeight: 600, color: NAVY }}>{d.totalLabel}</span>
+                  <span className="donate-text-md" style={{ fontSize: '15px', fontWeight: 600, color: NAVY }}>
                     ${totalAmount > 0 ? totalAmount.toFixed(2) : '0.00'}
                   </span>
                 </div>
 
                 {status === 'error' && (
-                  <p style={{ color: ERR_RED, fontSize: '14px', margin: 0 }}>{errorMessage || d.genericError}</p>
+                  <p className="donate-text-sm" style={{ color: ERR_RED, fontSize: '14px', margin: 0 }}>{errorMessage || d.genericError}</p>
                 )}
 
                 {/* Fix 1: the success animation plays in place on this button,
@@ -1184,7 +1190,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                   type="button"
                   onClick={handleComplete}
                   disabled={status === 'loading' || successAnimating}
-                  className={successAnimating ? 'donate-success-btn' : undefined}
+                  className={successAnimating ? 'donate-success-btn donate-text-md' : 'donate-text-md'}
                   style={{
                     ...actionBtnStyle,
                     opacity: status === 'loading' ? 0.7 : 1,
@@ -1221,15 +1227,15 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                   })}
                   uncheckedBorderColor={referralError ? ERR_RED : ORIGINAL_BORDER}
                 />
-                <label htmlFor={`referral-${key}`} style={{ fontSize: '14px', color: NAVY, cursor: 'pointer' }}>
+                <label htmlFor={`referral-${key}`} className="donate-text-sm" style={{ fontSize: '14px', color: NAVY, cursor: 'pointer' }}>
                   {d.referralOptions[key]}
                 </label>
               </div>
             ))}
           </div>
-          {referralError && <p style={errStyle}>{d.pleaseSelectOneOption}</p>}
+          {referralError && <p className="donate-text-xs-13" style={errStyle}>{d.pleaseSelectOneOption}</p>}
 
-          <button type="button" onClick={handleReferralNext} style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}>
+          <button className="donate-text-md" type="button" onClick={handleReferralNext} style={{ ...actionBtnStyle, marginTop: stepBtnMargin }}>
             {d.nextLabel}
           </button>
         </div>
@@ -1244,16 +1250,16 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
           <DonationSuccessSummary d={d} amount={baseAmount} />
 
           <div style={upsellCardStyle}>
-            <h4 style={{ margin: 0, fontSize: '16px', fontWeight: 700, fontFamily: 'inherit' }}>{d.becomeMonthlySupporterTitle}</h4>
-            <p style={{ margin: 0, fontSize: '14px', lineHeight: 1.6 }}>{d.becomeMonthlySupporterBody}</p>
+            <h4 className="donate-text-md-lg" style={{ margin: 0, fontSize: '16px', fontWeight: 700, fontFamily: 'inherit' }}>{d.becomeMonthlySupporterTitle}</h4>
+            <p className="donate-text-sm" style={{ margin: 0, fontSize: '14px', lineHeight: 1.6 }}>{d.becomeMonthlySupporterBody}</p>
 
             {!showUpsellCustomInput ? (
               <div>
-                <div style={{ fontSize: '22px', fontWeight: 700 }}>${baseAmount.toFixed(2)}{d.usdPerMonthSuffix}</div>
+                <div className="donate-amount-display" style={{ fontSize: '22px', fontWeight: 700 }}>${baseAmount.toFixed(2)}{d.usdPerMonthSuffix}</div>
                 <button
                   type="button"
                   onClick={() => setShowUpsellCustomInput(true)}
-                  className="donate-email-link"
+                  className="donate-email-link donate-text-xs-13"
                   style={{ ...subtleLinkStyle, color: '#ffffff' }}
                 >
                   {d.orAnotherAmountLink}
@@ -1261,8 +1267,9 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
               </div>
             ) : (
               <div style={{ position: 'relative' }}>
-                <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: NAVY, fontSize: '15px', fontWeight: 500 }}>$</span>
+                <span className="donate-text-md" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: NAVY, fontSize: '15px', fontWeight: 500 }}>$</span>
                 <input
+                  className="donate-text-md"
                   type="number"
                   min="1"
                   value={upsellCustomAmount}
@@ -1273,10 +1280,11 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
             )}
 
             {upsellStatus === 'error' && (
-              <p style={{ color: '#ffb4a8', fontSize: '13px', margin: 0 }}>{upsellError || d.genericError}</p>
+              <p className="donate-text-xs-13" style={{ color: '#ffb4a8', fontSize: '13px', margin: 0 }}>{upsellError || d.genericError}</p>
             )}
 
             <button
+              className="donate-text-md"
               type="button"
               onClick={handleUpgradeToMonthly}
               disabled={upsellStatus === 'loading'}
@@ -1284,7 +1292,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
             >
               {upsellStatus === 'loading' ? '...' : d.yesGiveMonthlyBtn}
             </button>
-            <button type="button" onClick={() => setStep(6)} style={upsellSecondaryBtnStyle}>
+            <button className="donate-text-md" type="button" onClick={() => setStep(6)} style={upsellSecondaryBtnStyle}>
               {d.notAtThisTimeBtn}
             </button>
           </div>
@@ -1385,7 +1393,7 @@ function ExitReminder({ lang, onClose, onConfirmClose, onBack, theme = 'dark', h
                 ‹
               </button>
             </div>
-            <h3 style={{ color: textColor, fontSize: '16px', fontWeight: 600, margin: 0, fontFamily: 'inherit', textAlign: 'center' }}>
+            <h3 className="donate-text-md-lg" style={{ color: textColor, fontSize: '16px', fontWeight: 600, margin: 0, fontFamily: 'inherit', textAlign: 'center' }}>
               {d.exitTitle}
             </h3>
             <div />
@@ -1396,16 +1404,17 @@ function ExitReminder({ lang, onClose, onConfirmClose, onBack, theme = 'dark', h
 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', textAlign: 'center' }}>
         <BellIcon />
-        <p style={{ color: textColor, fontSize: '16px', lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
+        <p className="donate-text-md-lg" style={{ color: textColor, fontSize: '16px', lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
           {d.exitBody}
         </p>
         {reminderStatus !== 'sent' && (
           <>
             <div style={{ width: '100%', textAlign: 'left' }}>
-              <label style={{ display: 'block', color: textColor, fontSize: '14px', fontWeight: 600, marginBottom: '6px' }}>
+              <label className="donate-text-sm" style={{ display: 'block', color: textColor, fontSize: '14px', fontWeight: 600, marginBottom: '6px' }}>
                 {d.exitEmailLabel}
               </label>
               <input
+                className="donate-text-md"
                 type="email"
                 value={reminderEmail}
                 onChange={e => { setReminderEmail(e.target.value); setEmailError(false) }}
@@ -1424,7 +1433,7 @@ function ExitReminder({ lang, onClose, onConfirmClose, onBack, theme = 'dark', h
                 }}
               />
               {emailError && (
-                <p style={{ color: errColor, fontSize: '13px', margin: '4px 0 0' }}>{d.exitEmailRequired}</p>
+                <p className="donate-text-xs-13" style={{ color: errColor, fontSize: '13px', margin: '4px 0 0' }}>{d.exitEmailRequired}</p>
               )}
             </div>
             <div style={{ width: '100%', textAlign: 'left' }}>
@@ -1438,19 +1447,19 @@ function ExitReminder({ lang, onClose, onConfirmClose, onBack, theme = 'dark', h
                     uncheckedBg={fieldBg}
                   />
                 </div>
-                <label htmlFor="exit-terms-accept" style={{ fontSize: termsFontSize, color: textColor, cursor: 'pointer', lineHeight: 1.5 }}>
+                <label htmlFor="exit-terms-accept" className="donate-text-md" style={{ fontSize: termsFontSize, color: textColor, cursor: 'pointer', lineHeight: 1.5 }}>
                   {d.acceptTermsPrefix}{' '}
                   <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: textColor, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>{d.termsLinkLabel}</a>
                   {' '}{d.andConnector}{' '}
                   <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: textColor, textDecoration: 'underline', textDecorationThickness: '1px', textUnderlineOffset: '2px' }}>{d.privacyLinkLabel}</a>
                 </label>
               </div>
-              {exitTermsError && <p style={{ color: errColor, fontSize: '13px', margin: '4px 0 0' }}>{d.acceptTermsRequired}</p>}
+              {exitTermsError && <p className="donate-text-xs-13" style={{ color: errColor, fontSize: '13px', margin: '4px 0 0' }}>{d.acceptTermsRequired}</p>}
             </div>
           </>
         )}
         {reminderStatus === 'sent' && (
-          <p style={{ color: '#D4AF37', fontSize: '16px', margin: 0, fontWeight: 600 }}>{d.exitSentMessage}</p>
+          <p className="donate-text-md-lg" style={{ color: '#D4AF37', fontSize: '16px', margin: 0, fontWeight: 600 }}>{d.exitSentMessage}</p>
         )}
       </div>
 
@@ -1458,10 +1467,11 @@ function ExitReminder({ lang, onClose, onConfirmClose, onBack, theme = 'dark', h
         /* CHANGE 5: on mobile (pinButtons=false) use an explicit 32px gap above the
            buttons instead of the auto-collapsed spacing. */
         <div style={{ marginTop: pinButtons ? 'auto' : '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <button type="button" onClick={handleRemindMe} style={{ ...actionBtnStyle }}>
+          <button className="donate-text-md" type="button" onClick={handleRemindMe} style={{ ...actionBtnStyle }}>
             {d.remindMeLaterBtn}
           </button>
           <button
+            className="donate-text-md"
             type="button"
             onClick={onConfirmClose}
             style={{
@@ -1500,8 +1510,8 @@ function TopBar({ onClose, subtitle, padding = '10px 20px', closeLabel = 'Close'
       padding,
     }}>
       <div>
-        <div className="nav-logo-text" style={{ color: NAVY, fontSize: '20px', fontWeight: 500, letterSpacing: '0.1em', fontFamily: 'Georgia, serif' }}>Gwags</div>
-        <div className="nav-logo-subtitle" style={{ color: NAVY, fontSize: '12px', letterSpacing: '0.2em', marginTop: '1px' }}>{subtitle}</div>
+        <div className="nav-logo-text donate-modal-logo" style={{ color: NAVY, fontSize: '20px', fontWeight: 500, letterSpacing: '0.1em', fontFamily: 'Georgia, serif' }}>Gwags</div>
+        <div className="nav-logo-subtitle donate-modal-logo-sub" style={{ color: NAVY, fontSize: '12px', letterSpacing: '0.2em', marginTop: '1px' }}>{subtitle}</div>
       </div>
       <button
         type="button"
@@ -1586,7 +1596,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
       )}
       <div style={{ padding: '24px 20px 40px' }}>
         {showText && (
-          <p style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: `0 0 ${introGap}` }}>
+          <p className="donate-text-md" style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: `0 0 ${introGap}` }}>
             {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
           </p>
         )}
@@ -1791,7 +1801,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
             <div className="donation-photo" style={{ background: '#E6E3DC', borderRadius: '8px', height: '220px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
             </div>
-            <p style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: 0 }}>
+            <p className="donate-text-md" style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: 0 }}>
               {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
             </p>
             {/* Fix 3: subtle focus overlay once past Step 1 — photo and text
