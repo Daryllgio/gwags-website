@@ -136,7 +136,7 @@ function GetInvolvedContent() {
                 background: NAVY,
                 color: '#ffffff',
                 fontWeight: 600,
-                fontSize: '15px',
+                fontSize: '16px',
                 padding: '14px 32px',
                 borderRadius: '6px',
                 border: 'none',

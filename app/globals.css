@@ -441,6 +441,7 @@ main > footer {
   .gi-body-text { font-size: 17px !important; margin-bottom: 17px !important; }
   .gi-hero-h1 { font-size: 32px !important; }
   .gi-hero-desc { font-size: 17px !important; }
+  .donate-btn { font-size: 15px !important; }
   .gi-page-hero { margin-bottom: 50px !important; }
   .gi-two-col-gap { margin-bottom: 50px !important; }
   .gi-divider { margin-bottom: 50px !important; }
@@ -453,6 +454,7 @@ main > footer {
   .gi-body-text { font-size: 16px !important; margin-bottom: 14px !important; }
   .gi-hero-h1 { font-size: 28px !important; }
   .gi-hero-desc { font-size: 16px !important; }
+  .donate-btn { font-size: 14px !important; }
   .gi-page-hero { margin-bottom: 40px !important; }
   .gi-two-col-gap { margin-bottom: 40px !important; }
   .gi-divider { margin-bottom: 40px !important; }
@@ -462,6 +464,8 @@ main > footer {
   .gi-body-text { font-size: 15px !important; margin-bottom: 12px !important; }
   .gi-hero-h1 { font-size: 26px !important; }
   .gi-hero-desc { font-size: 15px !important; }
+  .gi-cta-link { font-size: 14px !important; }
+  .donate-btn { font-size: 14px !important; }
   .gi-page-hero { margin-bottom: 35px !important; }
   .gi-two-col-gap { margin-bottom: 35px !important; }
   .gi-divider { margin-bottom: 35px !important; }
@@ -3436,6 +3440,12 @@ input:-webkit-autofill:active {
 @media (max-width: 375px) {
   .body-text { font-size: 14px !important; }
   .hero-body { font-size: 14px !important; }
+  .gi-hero-h1 { font-size: 24px !important; }
+  .gi-hero-desc { font-size: 14px !important; }
+  .gi-eyebrow { font-size: 15px !important; }
+  .gi-body-text { font-size: 14px !important; }
+  .gi-cta-link { font-size: 13px !important; }
+  .donate-btn { font-size: 13px !important; }
   .ini-card-desc { font-size: 13px !important; }
   .wg-card-desc { font-size: 13px !important; }
   .ma-card-desc { font-size: 13px !important; }
@@ -3870,7 +3880,7 @@ input:-webkit-autofill:active {
 .legal-section:last-child { margin-bottom: 0; }
 .legal-heading {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 700;
   color: #0A1128;
   line-height: 1.3;
@@ -3899,7 +3909,7 @@ input:-webkit-autofill:active {
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .legal-title { font-size: 31px !important; }
-  .legal-heading { font-size: 18px !important; }
+  .legal-heading { font-size: 19px !important; }
   .legal-body { font-size: 17px; }
   .legal-list li { font-size: 17px; }
   .legal-updated { font-size: 16px; }
@@ -3907,7 +3917,7 @@ input:-webkit-autofill:active {
 @media (max-width: 767px) {
   .legal-doc { padding: 56px 28px 72px; }
   .legal-title { font-size: 27px !important; }
-  .legal-heading { font-size: 17px !important; }
+  .legal-heading { font-size: 18px !important; }
   .legal-body { font-size: 16px; }
   .legal-list li { font-size: 16px; }
   .legal-updated { font-size: 15px; }
@@ -3915,14 +3925,14 @@ input:-webkit-autofill:active {
 @media (max-width: 480px) {
   .legal-doc { padding: 44px 22px 60px; }
   .legal-title { font-size: 25px !important; }
-  .legal-heading { font-size: 16px !important; }
+  .legal-heading { font-size: 17px !important; }
   .legal-body { font-size: 15px; }
   .legal-list li { font-size: 15px; }
   .legal-updated { font-size: 14px; }
 }
 @media (max-width: 375px) {
   .legal-title { font-size: 23px !important; }
-  .legal-heading { font-size: 15px !important; }
+  .legal-heading { font-size: 16px !important; }
   .legal-body { font-size: 14px; }
   .legal-list li { font-size: 14px; }
   .legal-updated { font-size: 13px; }
