@@ -3898,31 +3898,31 @@ input:-webkit-autofill:active {
 .legal-list li:last-child { margin-bottom: 0; }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .legal-title { font-size: 31px; }
-  .legal-heading { font-size: 18px; }
+  .legal-title { font-size: 31px !important; }
+  .legal-heading { font-size: 18px !important; }
   .legal-body { font-size: 17px; }
   .legal-list li { font-size: 17px; }
   .legal-updated { font-size: 16px; }
 }
 @media (max-width: 767px) {
   .legal-doc { padding: 56px 28px 72px; }
-  .legal-title { font-size: 27px; }
-  .legal-heading { font-size: 17px; }
+  .legal-title { font-size: 27px !important; }
+  .legal-heading { font-size: 17px !important; }
   .legal-body { font-size: 16px; }
   .legal-list li { font-size: 16px; }
   .legal-updated { font-size: 15px; }
 }
 @media (max-width: 480px) {
   .legal-doc { padding: 44px 22px 60px; }
-  .legal-title { font-size: 25px; }
-  .legal-heading { font-size: 14px; }
+  .legal-title { font-size: 25px !important; }
+  .legal-heading { font-size: 16px !important; }
   .legal-body { font-size: 15px; }
   .legal-list li { font-size: 15px; }
   .legal-updated { font-size: 14px; }
 }
 @media (max-width: 375px) {
-  .legal-title { font-size: 23px; }
-  .legal-heading { font-size: 15px; }
+  .legal-title { font-size: 23px !important; }
+  .legal-heading { font-size: 15px !important; }
   .legal-body { font-size: 14px; }
   .legal-list li { font-size: 14px; }
   .legal-updated { font-size: 13px; }
