@@ -1961,6 +1961,8 @@ input:-webkit-autofill:active {
      .stats-ticker-cell — Stats ticker cell padding
    ================================================================ */
 
+.ma-heading { font-size: 30px !important; }
+
 /* === TABLET (768px – 1024px) === */
 @media (min-width: 768px) and (max-width: 1024px) {
   /* Hero section */
@@ -1981,6 +1983,7 @@ input:-webkit-autofill:active {
   /* More About */
   .ma-img-ph    { height: 215px !important; }
   .ma-card-body { padding: 16px 0 24px 0 !important; }
+  .ma-heading    { font-size: 28px !important; }
   .ma-card-title { font-size: 17px !important; }
   .ma-card-desc  { font-size: 16px !important; }
 
@@ -2025,6 +2028,7 @@ input:-webkit-autofill:active {
   /* More About */
   .ma-img-ph    { height: 215px !important; }
   .ma-card-body { padding: 16px 0 24px 0 !important; }
+  .ma-heading    { font-size: 24px !important; }
   .ma-card-title { font-size: 16px !important; }
   .ma-card-desc  { font-size: 15px !important; }
 
@@ -2077,6 +2081,7 @@ input:-webkit-autofill:active {
   /* More About */
   .ma-img-ph    { height: 215px !important; }
   .ma-card-body { padding: 16px 0 24px 0 !important; }
+  .ma-heading    { font-size: 22px !important; }
   .ma-card-title { font-size: 15px !important; }
   .ma-card-desc  { font-size: 14px !important; }
 
@@ -3577,6 +3582,7 @@ input:-webkit-autofill:active {
   .ini-card-desc { font-size: 13px !important; }
   .wg-card-desc { font-size: 13px !important; }
   .ma-card-desc { font-size: 13px !important; }
+  .ma-heading { font-size: 20px !important; }
   .gi-card-desc { font-size: 14px !important; }
   .hero-h1 { font-size: 28px !important; }
   .hww-hero-h1 { font-size: 25px !important; }
