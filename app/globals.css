@@ -3871,7 +3871,6 @@ input:-webkit-autofill:active {
   margin: 0;
 }
 .nw-card-desc { font-size: 16.5px; color: #4A4A4A; line-height: 1.6; margin: 8px 0 10px; }
-.nw-card-subtitle { font-size: 16px; color: #6B6B6B; margin: 0 0 12px; }
 
 /* Bottom CTA */
 .nw-cta-section {
@@ -3949,7 +3948,6 @@ input:-webkit-autofill:active {
 @media (min-width: 768px) and (max-width: 1024px) {
   .nw-card-img { height: 260px; }
   .nw-card-name { font-size: 19px; }
-  .nw-card-subtitle { font-size: 15px; }
   .nw-card-desc { font-size: 16px; }
   .nw-cta-section { padding: 60px 28px; }
   .nw-cta-heading { font-size: 28px !important; }
@@ -3964,7 +3962,6 @@ input:-webkit-autofill:active {
   .nw-grid { grid-template-columns: 1fr; gap: 36px; max-width: 400px; margin: 0 auto; }
   .nw-card-img { height: 240px; }
   .nw-card-name { font-size: 18px; }
-  .nw-card-subtitle { font-size: 14px; }
   .nw-card-desc { font-size: 15px; }
   .nw-cta-section { padding: 48px 28px; margin-top: 56px; margin-bottom: -4px; }
   .nw-cta-heading { font-size: 24px !important; }
@@ -3980,7 +3977,6 @@ input:-webkit-autofill:active {
 @media (max-width: 480px) {
   .nw-card-img { height: 240px; }
   .nw-card-name { font-size: 17px; }
-  .nw-card-subtitle { font-size: 13px; }
   .nw-card-desc { font-size: 14px; }
   .nw-cta-section { padding: 36px 28px; }
   .nw-cta-heading { font-size: 22px !important; }
@@ -3992,7 +3988,6 @@ input:-webkit-autofill:active {
 }
 @media (max-width: 375px) {
   .nw-card-name { font-size: 16px; }
-  .nw-card-subtitle { font-size: 12px; }
   .nw-card-desc { font-size: 13px; }
   .nw-cta-subtext { font-size: 13px; }
   .nw-detail-item { font-size: 14px; }
