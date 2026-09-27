@@ -2486,7 +2486,7 @@ input:-webkit-autofill:active {
 }
 
 .pp-card-title {
-  font-size:     19px;
+  font-size:     18px;
   font-weight:   600;
   font-family:   Georgia, "Times New Roman", serif;
   color:         #0A1128;
@@ -2611,7 +2611,7 @@ input:-webkit-autofill:active {
   .pp-connect        { flex-direction: column; align-items: flex-start; gap: 8px; }
   .pp-connect-label  { font-size: 17px; }
   .pp-connect-in     { font-size: 15px; }
-  .pp-card-title     { font-size: 18px; }
+  .pp-card-title     { font-size: 17px; }
   .pp-card-desc      { font-size: 16px; }
   .pp-learn-more     { font-size: 16px; }
   .pp-divider        { margin-left: 60px; margin-right: 60px; }
@@ -2648,7 +2648,7 @@ input:-webkit-autofill:active {
   .pp-connect-label  { font-size: 16px; }
   .pp-connect-circle { width: 28px; height: 28px; }
   .pp-connect-in     { font-size: 14px; }
-  .pp-card-title     { font-size: 17px; }
+  .pp-card-title     { font-size: 16px; }
   .pp-card-desc      { font-size: 15px; }
   .pp-learn-more     { font-size: 15px; }
   .pp-divider        { margin-left: 20px; margin-right: 20px; }
@@ -2675,7 +2675,7 @@ input:-webkit-autofill:active {
   .pp-connect-label  { font-size: 15px; }
   .pp-connect-circle { width: 27px; height: 27px; }
   .pp-connect-in { font-size: 13px; }
-  .pp-card-title { font-size: 16px; }
+  .pp-card-title { font-size: 15px; }
   .pp-card-desc  { font-size: 14px; }
   .pp-learn-more { font-size: 14px; }
   .pp-ma-heading { font-size: 22px !important; }
@@ -3622,7 +3622,7 @@ input:-webkit-autofill:active {
   .pp-bio        { font-size: 14px !important; }
   .pp-connect-label { font-size: 14px !important; }
   .pp-connect-in { font-size: 12px !important; }
-  .pp-card-title { font-size: 15px !important; }
+  .pp-card-title { font-size: 14px !important; }
   .pp-ma-heading { font-size: 20px !important; }
   .pp-card-desc  { font-size: 13px !important; }
   .pp-learn-more { font-size: 13px !important; }
