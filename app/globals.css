@@ -739,6 +739,67 @@ input:-webkit-autofill:active {
   .form-row { grid-template-columns: 1fr !important; }
 }
 
+/* ── Contact/Partner page heading + status text (own dedicated classes,
+   not inherited from generic main h1/.body-text) ── */
+.form-page-h1 { font-size: 36px !important; }
+.form-page-subheading { font-size: 18px !important; }
+.form-success-banner { font-size: 17px !important; }
+.form-field-error { font-size: 13px !important; }
+.form-error-msg { font-size: 15px !important; }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .form-page-h1 { font-size: 32px !important; }
+  .form-page-subheading { font-size: 17px !important; }
+  .form-success-banner { font-size: 16px !important; }
+  .form-label { font-size: 15px !important; }
+  .form-input { font-size: 15px !important; }
+  .form-char-count { font-size: 13px !important; }
+  .form-submit-btn { font-size: 15px !important; }
+  .form-field-error { font-size: 13px !important; }
+  .form-error-msg { font-size: 15px !important; }
+  .sdd-option { font-size: 15px !important; }
+  .sdd-empty { font-size: 14px !important; }
+}
+@media (max-width: 767px) {
+  .form-page-h1 { font-size: 28px !important; }
+  .form-page-subheading { font-size: 16px !important; }
+  .form-success-banner { font-size: 15px !important; }
+  .form-label { font-size: 14px !important; }
+  .form-input { font-size: 14px !important; }
+  .form-char-count { font-size: 12px !important; }
+  .form-submit-btn { font-size: 14px !important; }
+  .form-field-error { font-size: 12px !important; }
+  .form-error-msg { font-size: 14px !important; }
+  .sdd-option { font-size: 14px !important; }
+  .sdd-empty { font-size: 13px !important; }
+}
+@media (max-width: 480px) {
+  .form-page-h1 { font-size: 26px !important; }
+  .form-page-subheading { font-size: 15px !important; }
+  .form-success-banner { font-size: 14px !important; }
+  .form-label { font-size: 14px !important; }
+  .form-input { font-size: 14px !important; }
+  .form-char-count { font-size: 12px !important; }
+  .form-submit-btn { font-size: 14px !important; }
+  .form-field-error { font-size: 12px !important; }
+  .form-error-msg { font-size: 14px !important; }
+  .sdd-option { font-size: 14px !important; }
+  .sdd-empty { font-size: 13px !important; }
+}
+@media (max-width: 375px) {
+  .form-page-h1 { font-size: 24px !important; }
+  .form-page-subheading { font-size: 14px !important; }
+  .form-success-banner { font-size: 13px !important; }
+  .form-label { font-size: 13px !important; }
+  .form-input { font-size: 13px !important; }
+  .form-char-count { font-size: 11px !important; }
+  .form-submit-btn { font-size: 13px !important; }
+  .form-field-error { font-size: 11px !important; }
+  .form-error-msg { font-size: 13px !important; }
+  .sdd-option { font-size: 13px !important; }
+  .sdd-empty { font-size: 12px !important; }
+}
+
 /* ── Searchable dropdown (contact + partner forms) ── */
 .sdd-wrap { position: relative; width: 100%; }
 .sdd-input {

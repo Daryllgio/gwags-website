@@ -62,15 +62,15 @@ export default function ContactPage() {
       <Nav lang={lang} onToggleLang={toggleLang} />
 
       <div className="form-page-container" style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 28px' }}>
-        <h1 style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '12px' }}>
+        <h1 className="form-page-h1" style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '12px' }}>
           {p.heading}
         </h1>
-        <p className="body-text" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.75, marginBottom: '48px' }}>
+        <p className="form-page-subheading" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.75, marginBottom: '48px' }}>
           {p.subheading}
         </p>
 
         {status === 'success' ? (
-          <div style={{ padding: '32px', background: '#f0f7f0', borderRadius: '8px', color: '#2d7a2d', fontSize: '17px', textAlign: 'center' }}>
+          <div className="form-success-banner" style={{ padding: '32px', background: '#f0f7f0', borderRadius: '8px', color: '#2d7a2d', fontSize: '17px', textAlign: 'center' }}>
             {p.success}
           </div>
         ) : (
@@ -110,7 +110,7 @@ export default function ContactPage() {
                   onChange={e => { set('email')(e); setEmailError(false) }}
                   style={emailError ? { borderColor: '#c0392b' } : undefined}
                 />
-                {emailError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.emailInvalid}</p>}
+                {emailError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.emailInvalid}</p>}
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.phone}</label>
@@ -131,7 +131,7 @@ export default function ContactPage() {
                   placeholder={c.searchPlaceholder}
                   noMatchesText={c.noMatches}
                 />
-                {countryError && <p style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.countryRequired}</p>}
+                {countryError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.countryRequired}</p>}
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.city} <span>*</span></label>
@@ -156,7 +156,7 @@ export default function ContactPage() {
             </div>
 
             {status === 'error' && (
-              <p style={{ color: '#c0392b', fontSize: '15px', margin: 0 }}>{p.error}</p>
+              <p className="form-error-msg" style={{ color: '#c0392b', fontSize: '15px', margin: 0 }}>{p.error}</p>
             )}
 
             <button
