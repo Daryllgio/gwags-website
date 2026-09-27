@@ -1994,6 +1994,8 @@ input:-webkit-autofill:active {
   .view-profile-link { font-size: 15px !important; }
   .lp-person-img  { height: 260px !important; }
   .lp-no-results  { font-size: 17px !important; }
+  .lp-search-input, .lp-dropdown-trigger, .lp-dropdown-option { font-size: 15px !important; }
+  .lp-search-btn { font-size: 14px !important; }
 
   /* Get Involved (homepage) */
   .gi-card-box   { padding: 0 0 20px 0 !important; }
@@ -2037,8 +2039,8 @@ input:-webkit-autofill:active {
   .view-profile-link { font-size: 14px !important; }
   .lp-person-img  { height: 240px !important; }
   .lp-header      { gap: 16px !important; }
-  .lp-search-input, .lp-dropdown-trigger, .lp-dropdown-option { font-size: 15px !important; }
-  .lp-search-btn { font-size: 14px !important; }
+  .lp-search-input, .lp-dropdown-trigger, .lp-dropdown-option { font-size: 14px !important; }
+  .lp-search-btn { font-size: 13px !important; }
   .lp-no-results  { font-size: 16px !important; }
 
   /* Get Involved (homepage) */
@@ -2090,6 +2092,8 @@ input:-webkit-autofill:active {
   .lp-person-img  { height: 240px !important; }
   .lp-header      { gap: 14px !important; }
   .lp-no-results  { font-size: 15px !important; }
+  .lp-search-input, .lp-dropdown-trigger, .lp-dropdown-option { font-size: 13px !important; }
+  .lp-search-btn { font-size: 12px !important; }
 
   /* Get Involved (homepage) */
   .gi-card-box   { padding: 0 0 14px 0 !important; }
@@ -2606,6 +2610,10 @@ input:-webkit-autofill:active {
   .pp-bio            { font-size: 17px; max-width: 460px; }
   .pp-connect        { flex-direction: column; align-items: flex-start; gap: 8px; }
   .pp-connect-label  { font-size: 17px; }
+  .pp-connect-in     { font-size: 15px; }
+  .pp-card-title     { font-size: 18px; }
+  .pp-card-desc      { font-size: 16px; }
+  .pp-learn-more     { font-size: 16px; }
   .pp-divider        { margin-left: 60px; margin-right: 60px; }
   .pp-foundation-col { margin-left: 0; padding-left: 60px; padding-right: 60px; }
   .pp-ma-heading     { font-size: 28px !important; }
@@ -2639,10 +2647,10 @@ input:-webkit-autofill:active {
   .lp-person-card .pp-connect { margin-bottom: 0; }
   .pp-connect-label  { font-size: 16px; }
   .pp-connect-circle { width: 28px; height: 28px; }
-  .pp-connect-in     { font-size: 15px; }
-  .pp-card-title     { font-size: 18px; }
-  .pp-card-desc      { font-size: 16px; }
-  .pp-learn-more     { font-size: 16px; }
+  .pp-connect-in     { font-size: 14px; }
+  .pp-card-title     { font-size: 17px; }
+  .pp-card-desc      { font-size: 15px; }
+  .pp-learn-more     { font-size: 15px; }
   .pp-divider        { margin-left: 20px; margin-right: 20px; }
   .pp-foundation-col { padding-top: 40px; padding-bottom: 64px; padding-left: 20px; padding-right: 20px; }
   .pp-ma-heading     { font-size: 24px !important; margin-bottom: 32px; }
@@ -2666,10 +2674,10 @@ input:-webkit-autofill:active {
   .pp-bio        { font-size: 15px; }
   .pp-connect-label  { font-size: 15px; }
   .pp-connect-circle { width: 27px; height: 27px; }
-  .pp-connect-in { font-size: 15px; }
-  .pp-card-title { font-size: 17px; }
-  .pp-card-desc  { font-size: 15px; }
-  .pp-learn-more { font-size: 15px; }
+  .pp-connect-in { font-size: 13px; }
+  .pp-card-title { font-size: 16px; }
+  .pp-card-desc  { font-size: 14px; }
+  .pp-learn-more { font-size: 14px; }
   .pp-ma-heading { font-size: 22px !important; }
 }
 
@@ -3606,12 +3614,18 @@ input:-webkit-autofill:active {
   .lp-person-role   { font-size: 16px !important; }
   .lp-person-bio    { font-size: 14px !important; }
   .view-profile-link { font-size: 13px !important; }
-  .lp-search-input, .lp-dropdown-trigger, .lp-dropdown-option { font-size: 14px !important; }
-  .lp-search-btn    { font-size: 13px !important; }
+  .lp-search-input, .lp-dropdown-trigger, .lp-dropdown-option { font-size: 12px !important; }
+  .lp-search-btn    { font-size: 11px !important; }
   .lp-no-results    { font-size: 14px !important; }
+  .pp-name       { font-size: 24px !important; }
+  .pp-role       { font-size: 24px !important; }
+  .pp-bio        { font-size: 14px !important; }
+  .pp-connect-label { font-size: 14px !important; }
+  .pp-connect-in { font-size: 12px !important; }
+  .pp-card-title { font-size: 15px !important; }
   .pp-ma-heading { font-size: 20px !important; }
-  .pp-card-desc  { font-size: 14px !important; }
-  .pp-learn-more { font-size: 14px !important; }
+  .pp-card-desc  { font-size: 13px !important; }
+  .pp-learn-more { font-size: 13px !important; }
   .cta-h2 { font-size: 20px !important; }
   .ip-winner-name   { font-size: 15px !important; }
   .ip-winner-detail { font-size: 14px !important; }
@@ -3868,7 +3882,7 @@ input:-webkit-autofill:active {
 }
 .nw-cta-heading {
   font-family: Georgia, serif;
-  font-size: 30px;
+  font-size: 30px !important;
   font-weight: 400;
   line-height: 1.25;
   color: #0A1128;
@@ -3934,11 +3948,11 @@ input:-webkit-autofill:active {
 }
 @media (min-width: 768px) and (max-width: 1024px) {
   .nw-card-img { height: 260px; }
-  .nw-card-name { font-size: 20px; }
-  .nw-card-subtitle { font-size: 16px; }
-  .nw-card-desc { font-size: 16.5px; }
+  .nw-card-name { font-size: 19px; }
+  .nw-card-subtitle { font-size: 15px; }
+  .nw-card-desc { font-size: 16px; }
   .nw-cta-section { padding: 60px 28px; }
-  .nw-cta-heading { font-size: 28px; }
+  .nw-cta-heading { font-size: 28px !important; }
   .nw-cta-subtext { font-size: 16px; }
   .nw-detail-hero { padding: 56px 40px 20px; }
   .nw-detail-img { width: 280px; }
@@ -3950,10 +3964,10 @@ input:-webkit-autofill:active {
   .nw-grid { grid-template-columns: 1fr; gap: 36px; max-width: 400px; margin: 0 auto; }
   .nw-card-img { height: 240px; }
   .nw-card-name { font-size: 18px; }
-  .nw-card-subtitle { font-size: 15px; }
+  .nw-card-subtitle { font-size: 14px; }
   .nw-card-desc { font-size: 15px; }
   .nw-cta-section { padding: 48px 28px; margin-top: 56px; margin-bottom: -4px; }
-  .nw-cta-heading { font-size: 24px; }
+  .nw-cta-heading { font-size: 24px !important; }
   .nw-cta-subtext { font-size: 15px; }
   .nw-detail-hero { padding: 48px 24px 16px; }
   .nw-detail-hero-inner { flex-direction: column; gap: 24px; }
@@ -3965,14 +3979,25 @@ input:-webkit-autofill:active {
 }
 @media (max-width: 480px) {
   .nw-card-img { height: 240px; }
-  .nw-card-name { font-size: 18px; }
+  .nw-card-name { font-size: 17px; }
+  .nw-card-subtitle { font-size: 13px; }
+  .nw-card-desc { font-size: 14px; }
   .nw-cta-section { padding: 36px 28px; }
-  .nw-cta-heading { font-size: 22px; }
-  .nw-cta-subtext { font-size: 15px; }
+  .nw-cta-heading { font-size: 22px !important; }
+  .nw-cta-subtext { font-size: 14px; }
   .nw-detail-hero { padding: 36px 20px 14px; }
   .nw-detail-name { font-size: 25px; }
   .nw-detail-subtitle { font-size: 15px; }
   .nw-detail-item { font-size: 15px; }
+}
+@media (max-width: 375px) {
+  .nw-card-name { font-size: 16px; }
+  .nw-card-subtitle { font-size: 12px; }
+  .nw-card-desc { font-size: 13px; }
+  .nw-cta-subtext { font-size: 13px; }
+  .nw-detail-item { font-size: 14px; }
+  .ip-hero-name { font-size: 25px !important; }
+  .ip-section-body { font-size: 14px !important; }
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -4032,7 +4057,7 @@ input:-webkit-autofill:active {
   .legal-heading { font-size: 19px !important; }
   .legal-body { font-size: 17px; }
   .legal-list li { font-size: 17px; }
-  .legal-updated { font-size: 16px; }
+  .legal-updated { font-size: 16px; margin-bottom: 36px; }
 }
 @media (max-width: 767px) {
   .legal-doc { padding: 56px 28px 72px; }
@@ -4040,7 +4065,7 @@ input:-webkit-autofill:active {
   .legal-heading { font-size: 18px !important; }
   .legal-body { font-size: 16px; }
   .legal-list li { font-size: 16px; }
-  .legal-updated { font-size: 15px; }
+  .legal-updated { font-size: 15px; margin-bottom: 30px; }
 }
 @media (max-width: 480px) {
   .legal-doc { padding: 44px 22px 60px; }
@@ -4048,12 +4073,12 @@ input:-webkit-autofill:active {
   .legal-heading { font-size: 17px !important; }
   .legal-body { font-size: 15px; }
   .legal-list li { font-size: 15px; }
-  .legal-updated { font-size: 14px; }
+  .legal-updated { font-size: 14px; margin-bottom: 26px; }
 }
 @media (max-width: 375px) {
   .legal-title { font-size: 23px !important; }
   .legal-heading { font-size: 16px !important; }
   .legal-body { font-size: 14px; }
   .legal-list li { font-size: 14px; }
-  .legal-updated { font-size: 13px; }
+  .legal-updated { font-size: 13px; margin-bottom: 22px; }
 }
