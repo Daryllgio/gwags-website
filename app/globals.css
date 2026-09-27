@@ -1988,7 +1988,7 @@ input:-webkit-autofill:active {
   .lp-heading       { font-size: 30px !important; }
   .lp-section-title { font-size: 26px !important; }
   .lp-subtitle      { font-size: 17px !important; }
-  .lp-person-name   { font-size: 20px !important; }
+  .lp-person-name   { font-size: 19px !important; }
   .lp-person-role   { font-size: 20px !important; }
   .lp-person-bio  { font-size: 16px !important; }
   .view-profile-link { font-size: 15px !important; }
@@ -2085,7 +2085,7 @@ input:-webkit-autofill:active {
   .lp-section-title { font-size: 23px !important; }
   .lp-subtitle    { font-size: 15px !important; }
   .lp-container   { padding-top: 36px !important; }
-  .lp-person-name { font-size: 18px !important; }
+  .lp-person-name { font-size: 17px !important; }
   .lp-person-role { font-size: 18px !important; }
   .lp-person-bio  { font-size: 15px !important; }
   .view-profile-link { font-size: 14px !important; }
@@ -3870,7 +3870,7 @@ input:-webkit-autofill:active {
   text-decoration: none;
   margin: 0;
 }
-.nw-card-desc { font-size: 16.5px; color: #4A4A4A; line-height: 1.6; margin: 8px 0 10px; }
+.nw-card-desc { font-size: 16px; color: #4A4A4A; line-height: 1.6; margin: 8px 0 10px; }
 
 /* Bottom CTA */
 .nw-cta-section {
@@ -3977,7 +3977,7 @@ input:-webkit-autofill:active {
 @media (max-width: 480px) {
   .nw-card-img { height: 240px; }
   .nw-card-name { font-size: 17px; }
-  .nw-card-desc { font-size: 14px; }
+  .nw-card-desc { font-size: 15px; }
   .nw-cta-section { padding: 36px 28px; }
   .nw-cta-heading { font-size: 22px !important; }
   .nw-cta-subtext { font-size: 15px; }
@@ -3988,7 +3988,7 @@ input:-webkit-autofill:active {
 }
 @media (max-width: 375px) {
   .nw-card-name { font-size: 16px; }
-  .nw-card-desc { font-size: 13px; }
+  .nw-card-desc { font-size: 14px; }
   .nw-cta-subtext { font-size: 14px; }
   .nw-detail-item { font-size: 14px; }
   .ip-hero-name { font-size: 25px !important; }
