@@ -26,6 +26,12 @@ export const ALLOWED_FILE_TYPES: Record<string, string[]> = {
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document': ['.docx'],
   'image/jpeg': ['.jpg', '.jpeg'],
   'image/png': ['.png'],
+  // Added for the Scholars/Mbal Lekeaka/Network forms, whose upload fields
+  // advertise "PDF, DOC, DOCX" — legacy .doc wasn't previously accepted.
+  'application/msword': ['.doc'],
+  // Added for the Mbal Lekeaka Fund application's detailed budget upload.
+  'application/vnd.ms-excel': ['.xls'],
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx'],
 }
 
 // ── Result types — lets callers distinguish every outcome without try/catch ──

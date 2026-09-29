@@ -5,7 +5,10 @@ import { t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import SearchableDropdown from '@/components/SearchableDropdown'
-import { COUNTRIES, SECTORS, COUNTRY_LABELS_FR, SECTOR_LABELS_FR } from '@/lib/countries'
+import MultiSelectDropdown from '@/components/MultiSelectDropdown'
+import RegionStateField from '@/components/RegionStateField'
+import SocialMediaRows, { SocialRow } from '@/components/SocialMediaRows'
+import { COUNTRIES, COUNTRY_LABELS_FR, SECTORS, SECTOR_LABELS_FR } from '@/lib/countries'
 
 const NAVY = '#0A1128'
 const MAX_DESC = 300
@@ -17,57 +20,55 @@ export default function PartnerPage() {
   const c = t[lang].common
 
   const [form, setForm] = useState({
-    contactName: '', orgName: '', orgEmail: '', orgPhone: '',
-    website: '', country: '', city: '', sector: '', sectorOther: '',
+    contactName: '', contactEmail: '', contactPhone: '',
+    orgName: '', orgEmail: '', orgPhone: '',
+    website: '', country: '', region: '', city: '', sectorOther: '',
     orgDesc: '', message: '', honeypot: '',
   })
+  const [sectors, setSectors] = useState<string[]>([])
+  const [socialRows, setSocialRows] = useState<SocialRow[]>([{ platform: '', url: '' }])
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [emailError, setEmailError] = useState(false)
-  const [countryError, setCountryError] = useState(false)
-  const [sectorError, setSectorError] = useState(false)
-  const [sectorOtherError, setSectorOtherError] = useState(false)
+  const [errors, setErrors] = useState<Record<string, boolean>>({})
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(prev => ({ ...prev, [k]: e.target.value }))
 
+  const clearErr = (k: string) => setErrors(prev => { const n = { ...prev }; delete n[k]; return n })
+  const err = (k: string) => !!errors[k]
+
+  const countryLabels = lang === 'fr' ? COUNTRY_LABELS_FR : undefined
+  const sectorLabels = lang === 'fr' ? SECTOR_LABELS_FR : undefined
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    let hasError = false
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{3,}$/.test(form.orgEmail.trim())) {
-      setEmailError(true)
-      hasError = true
-    } else {
-      setEmailError(false)
-    }
-    if (!form.country) {
-      setCountryError(true)
-      hasError = true
-    } else {
-      setCountryError(false)
-    }
-    if (!form.sector) {
-      setSectorError(true)
-      hasError = true
-    } else {
-      setSectorError(false)
-    }
-    if (form.sector === 'Other' && !form.sectorOther.trim()) {
-      setSectorOtherError(true)
-      hasError = true
-    } else {
-      setSectorOtherError(false)
-    }
-    if (hasError) return
+    const nextErrors: Record<string, boolean> = {}
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{3,}$/.test(form.orgEmail.trim())) nextErrors.orgEmail = true
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{3,}$/.test(form.contactEmail.trim())) nextErrors.contactEmail = true
+    if (!form.country) nextErrors.country = true
+    if (!form.region) nextErrors.region = true
+    if (sectors.length === 0) nextErrors.sectors = true
+    if (sectors.includes('Other') && !form.sectorOther.trim()) nextErrors.sectorOther = true
+
+    setErrors(nextErrors)
+    if (Object.keys(nextErrors).length > 0) return
+
     setStatus('loading')
     try {
       const res = await fetch('/api/partner', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, sector: form.sector === 'Other' ? form.sectorOther.trim() : form.sector }),
+        body: JSON.stringify({
+          ...form,
+          lang,
+          sectors,
+          socialMedia: socialRows.filter(r => r.platform && r.url),
+        }),
       })
       if (!res.ok) throw new Error()
       setStatus('success')
-      setForm({ contactName: '', orgName: '', orgEmail: '', orgPhone: '', website: '', country: '', city: '', sector: '', sectorOther: '', orgDesc: '', message: '', honeypot: '' })
+      setForm({ contactName: '', contactEmail: '', contactPhone: '', orgName: '', orgEmail: '', orgPhone: '', website: '', country: '', region: '', city: '', sectorOther: '', orgDesc: '', message: '', honeypot: '' })
+      setSectors([])
+      setSocialRows([{ platform: '', url: '' }])
     } catch {
       setStatus('error')
     }
@@ -100,16 +101,30 @@ export default function PartnerPage() {
               <input required className="form-input" type="text" value={form.contactName} onChange={set('contactName')} />
             </div>
 
-            {/* Org Name + Website */}
+            {/* Contact Person Email + Phone */}
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
-                <label className="form-label">{p.labels.orgName} <span>*</span></label>
-                <input required className="form-input" type="text" value={form.orgName} onChange={set('orgName')} />
+                <label className="form-label">{p.labels.contactEmail} <span>*</span></label>
+                <input
+                  required
+                  className="form-input"
+                  type="email"
+                  value={form.contactEmail}
+                  onChange={e => { set('contactEmail')(e); clearErr('contactEmail') }}
+                  style={err('contactEmail') ? { borderColor: '#c0392b' } : undefined}
+                />
+                {err('contactEmail') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.emailInvalid}</p>}
               </div>
               <div className="form-field">
-                <label className="form-label">{p.labels.website}</label>
-                <input className="form-input" type="url" placeholder="https://" value={form.website} onChange={set('website')} />
+                <label className="form-label">{p.labels.contactPhone} <span>*</span></label>
+                <input required className="form-input" type="tel" value={form.contactPhone} onChange={set('contactPhone')} />
               </div>
+            </div>
+
+            {/* Org Name */}
+            <div className="form-field">
+              <label className="form-label">{p.labels.orgName} <span>*</span></label>
+              <input required className="form-input" type="text" value={form.orgName} onChange={set('orgName')} />
             </div>
 
             {/* Org Email + Phone */}
@@ -121,52 +136,67 @@ export default function PartnerPage() {
                   className="form-input"
                   type="email"
                   value={form.orgEmail}
-                  onChange={e => { set('orgEmail')(e); setEmailError(false) }}
-                  style={emailError ? { borderColor: '#c0392b' } : undefined}
+                  onChange={e => { set('orgEmail')(e); clearErr('orgEmail') }}
+                  style={err('orgEmail') ? { borderColor: '#c0392b' } : undefined}
                 />
-                {emailError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.emailInvalid}</p>}
+                {err('orgEmail') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.emailInvalid}</p>}
               </div>
               <div className="form-field">
-                <label className="form-label">{p.labels.orgPhone}</label>
+                <label className="form-label">{p.labels.orgPhone} <span>({c.optional})</span></label>
                 <input className="form-input" type="tel" placeholder={p.phonePlaceholder} value={form.orgPhone} onChange={set('orgPhone')} />
               </div>
             </div>
 
-            {/* Country + City */}
+            {/* Country + Region */}
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
                 <label className="form-label">{p.labels.country} <span>*</span></label>
                 <SearchableDropdown
                   options={COUNTRIES}
                   value={form.country}
-                  onChange={v => { setForm(prev => ({ ...prev, country: v })); setCountryError(false) }}
-                  error={countryError}
-                  labels={lang === 'fr' ? COUNTRY_LABELS_FR : undefined}
+                  onChange={v => { setForm(prev => ({ ...prev, country: v, region: '' })); clearErr('country') }}
+                  error={err('country')}
+                  labels={countryLabels}
                   placeholder={c.searchPlaceholder}
                   noMatchesText={c.noMatches}
                 />
-                {countryError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.countryRequired}</p>}
+                {err('country') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.countryRequired}</p>}
               </div>
               <div className="form-field">
-                <label className="form-label">{p.labels.city} <span>*</span></label>
-                <input required className="form-input" type="text" value={form.city} onChange={set('city')} />
+                <label className="form-label">{p.labels.region} <span>*</span></label>
+                <RegionStateField
+                  country={form.country}
+                  value={form.region}
+                  onChange={v => { setForm(prev => ({ ...prev, region: v })); clearErr('region') }}
+                  error={err('region')}
+                  searchPlaceholder={c.searchPlaceholder}
+                  noMatchesText={c.noMatches}
+                  textPlaceholder={p.regionTextPlaceholder}
+                />
               </div>
             </div>
 
-            {/* Sector */}
+            {/* City */}
+            <div className="form-field">
+              <label className="form-label">{p.labels.city} <span>*</span></label>
+              <input required className="form-input" type="text" value={form.city} onChange={set('city')} />
+            </div>
+
+            {/* Sector (multi-select) */}
             <div className="form-field">
               <label className="form-label">{p.labels.sector} <span>*</span></label>
-              <SearchableDropdown
+              <p className="form-char-count" style={{ textAlign: 'left', margin: '0 0 2px' }}>{c.selectAllThatApply}</p>
+              <MultiSelectDropdown
                 options={SECTORS}
-                value={form.sector}
-                onChange={v => { setForm(prev => ({ ...prev, sector: v, sectorOther: v === 'Other' ? prev.sectorOther : '' })); setSectorError(false); setSectorOtherError(false) }}
-                error={sectorError}
-                labels={lang === 'fr' ? SECTOR_LABELS_FR : undefined}
+                values={sectors}
+                onChange={v => { setSectors(v); clearErr('sectors') }}
+                error={err('sectors')}
+                labels={sectorLabels}
                 placeholder={c.searchPlaceholder}
-                noMatchesText={c.noMatches}
+                removeLabel={c.remove}
               />
-              {sectorError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.sectorRequired}</p>}
-              {form.sector === 'Other' && (
+              {err('sectors') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.sectorRequired}</p>}
+              {sectors.includes('Other') && (
                 <div style={{ marginTop: '10px' }}>
                   <input
                     required
@@ -174,12 +204,31 @@ export default function PartnerPage() {
                     type="text"
                     placeholder={p.sectorOtherPlaceholder}
                     value={form.sectorOther}
-                    onChange={e => { set('sectorOther')(e); setSectorOtherError(false) }}
-                    style={sectorOtherError ? { borderColor: '#c0392b' } : undefined}
+                    onChange={e => { set('sectorOther')(e); clearErr('sectorOther') }}
+                    style={err('sectorOther') ? { borderColor: '#c0392b' } : undefined}
                   />
-                  {sectorOtherError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.sectorOtherRequired}</p>}
+                  {err('sectorOther') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.sectorOtherRequired}</p>}
                 </div>
               )}
+            </div>
+
+            {/* Website */}
+            <div className="form-field">
+              <label className="form-label">{p.labels.website} <span>({c.optional})</span></label>
+              <input className="form-input" type="url" placeholder="https://" value={form.website} onChange={set('website')} />
+            </div>
+
+            {/* Social Media */}
+            <div className="form-field">
+              <label className="form-label">{p.labels.socialMedia} <span>({c.optional})</span></label>
+              <SocialMediaRows
+                rows={socialRows}
+                onChange={setSocialRows}
+                addLabel={c.addAnother}
+                removeLabel={c.remove}
+                platformPlaceholder={c.platformPlaceholder}
+                urlPlaceholder={c.urlPlaceholder}
+              />
             </div>
 
             {/* Org description */}

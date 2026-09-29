@@ -56,6 +56,7 @@ export interface InitiativePageData {
     items: StatItem[]
   }
   apply?: string
+  applyHref?: string
   carousel: {
     heading: string
     events: CarouselEvent[]
@@ -86,7 +87,7 @@ export default function InitiativePage({ lang, onToggleLang, data }: Props) {
         </>
       )}
       {data.stats && <StatsSection stats={data.stats} />}
-      {data.apply && <ApplySection label={data.apply} />}
+      {data.apply && <ApplySection label={data.apply} href={data.applyHref ?? '#'} />}
       {!data.stats && <Divider />}
       <CarouselSection carousel={data.carousel} lang={lang} />
       <Footer lang={lang} />
@@ -190,11 +191,10 @@ function StatsSection({ stats }: { stats: NonNullable<InitiativePageData['stats'
   )
 }
 
-function ApplySection({ label }: { label: string }) {
+function ApplySection({ label, href }: { label: string; href: string }) {
   return (
     <section className="ip-apply-section">
-      {/* UPDATE: Replace "#" with Microsoft Form URL */}
-      <a href="#" className="ip-apply-btn">{label}</a>
+      <Link href={href} className="ip-apply-btn">{label}</Link>
     </section>
   )
 }

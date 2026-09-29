@@ -1,0 +1,65 @@
+// Shared option lists for the application/affiliation forms. Follows the same
+// pattern as lib/countries.ts: the canonical value stored in form state and
+// submitted to the API/emails is always the English string; a separate FR
+// map supplies the localized label shown to French-language visitors.
+
+export const FUND_SECTORS = [
+  'Health', 'Education', 'Economic Opportunity', 'Community Development', 'Other',
+]
+
+export const FUND_SECTOR_LABELS_FR: Record<string, string> = {
+  'Health': 'Santé',
+  'Education': 'Éducation',
+  'Economic Opportunity': 'Opportunités économiques',
+  'Community Development': 'Développement communautaire',
+  'Other': 'Autre',
+}
+
+export const NETWORK_LEGAL_STATUS = ['Registered nonprofit', 'Informal group', 'Other']
+
+export const NETWORK_LEGAL_STATUS_LABELS_FR: Record<string, string> = {
+  'Registered nonprofit': 'Association enregistrée',
+  'Informal group': 'Groupe informel',
+  'Other': 'Autre',
+}
+
+export const SOCIAL_PLATFORMS = ['Facebook', 'LinkedIn', 'X', 'Instagram']
+
+export const YEAR_OF_STUDY = ['1st Year', '2nd Year', '3rd Year', '4th Year', '5th Year or above']
+
+export const YEAR_OF_STUDY_LABELS_FR: Record<string, string> = {
+  '1st Year': '1re année',
+  '2nd Year': '2e année',
+  '3rd Year': '3e année',
+  '4th Year': '4e année',
+  '5th Year or above': '5e année ou plus',
+}
+
+export const SCHOLARS_REFERRAL = ['Social media', 'University', 'Friend or family', 'Gwags website', 'Other']
+
+export const SCHOLARS_REFERRAL_LABELS_FR: Record<string, string> = {
+  'Social media': 'Réseaux sociaux',
+  'University': 'Université',
+  'Friend or family': 'Proche',
+  'Gwags website': 'Site web de Gwags',
+  'Other': 'Autre',
+}
+
+export const FUND_REFERRAL = ['Social media', 'Partner organization', 'Gwags website', 'Other']
+
+export const FUND_REFERRAL_LABELS_FR: Record<string, string> = {
+  'Social media': 'Réseaux sociaux',
+  'Partner organization': 'Organisation partenaire',
+  'Gwags website': 'Site web de Gwags',
+  'Other': 'Autre',
+}
+
+export const NETWORK_REFERRAL = ['Social media', 'Partner organization', 'Gwags website', 'Gwags team member', 'Other']
+
+export const NETWORK_REFERRAL_LABELS_FR: Record<string, string> = {
+  'Social media': 'Réseaux sociaux',
+  'Partner organization': 'Organisation partenaire',
+  'Gwags website': 'Site web de Gwags',
+  'Gwags team member': "Membre de l'équipe Gwags",
+  'Other': 'Autre',
+}

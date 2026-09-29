@@ -861,6 +861,218 @@ input:-webkit-autofill:active {
   .sdd-menu { max-height: 200px; }
 }
 
+/* ── Multi-select dropdown (sector "select all that apply" fields) ── */
+.msd-wrap { position: relative; width: 100%; }
+.msd-display { min-height: 17px; cursor: pointer; }
+.msd-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.msd-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(10,17,40,0.06);
+  color: #0A1128;
+  border-radius: 5px;
+  padding: 3px 6px 3px 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.msd-chip-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0A1128;
+  opacity: 0.5;
+  font-size: 15px;
+  line-height: 1;
+  padding: 2px;
+  font-family: inherit;
+}
+.msd-chip-remove:hover { opacity: 0.9; }
+.msd-option { display: flex; align-items: center; gap: 10px; }
+.msd-checkbox {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(10,17,40,0.3);
+  border-radius: 4px;
+  position: relative;
+}
+.msd-checkbox-checked {
+  background: #0A1128;
+  border-color: #0A1128;
+}
+.msd-checkbox-checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid #ffffff;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+
+/* ── Date field (DD/MM/YYYY calendar popup) ── */
+.dtf-wrap { position: relative; width: 100%; }
+.dtf-display { justify-content: space-between; cursor: pointer; }
+.dtf-cal-icon { flex-shrink: 0; margin-left: 8px; }
+.dtf-popup {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 30;
+  background: #ffffff;
+  border: 1.5px solid rgba(10,17,40,0.2);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(10,17,40,0.14);
+  padding: 14px;
+  width: 280px;
+  font-family: inherit;
+}
+.dtf-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.dtf-nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #0A1128;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  line-height: 1;
+  font-family: inherit;
+}
+.dtf-nav-btn:hover { background: rgba(10,17,40,0.06); }
+.dtf-month-label { font-size: 14.5px; font-weight: 600; color: #0A1128; }
+.dtf-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); margin-bottom: 4px; }
+.dtf-weekday { text-align: center; font-size: 11.5px; color: #8A8A8A; font-weight: 600; padding: 4px 0; }
+.dtf-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.dtf-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+.dtf-cell-empty { visibility: hidden; }
+.dtf-day {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13.5px;
+  color: #0A1128;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  font-family: inherit;
+  transition: background 0.12s ease;
+}
+.dtf-day:hover { background: rgba(10,17,40,0.08); }
+.dtf-day-today { font-weight: 700; }
+.dtf-day-selected { background: #0A1128; color: #ffffff; font-weight: 600; }
+.dtf-day-selected:hover { background: #0A1128; }
+@media (max-width: 480px) {
+  .dtf-popup { width: 250px; padding: 12px; }
+}
+
+/* ── Dynamic social media platform + URL rows ── */
+.smr-wrap { display: flex; flex-direction: column; gap: 10px; }
+.smr-row { display: grid; grid-template-columns: 150px 1fr auto; gap: 10px; align-items: center; }
+.smr-platform { min-width: 0; }
+.smr-url { min-width: 0; }
+.smr-remove {
+  background: none;
+  border: 1.5px solid rgba(10,17,40,0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  color: #0A1128;
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  line-height: 1;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+.smr-remove:hover { background: rgba(10,17,40,0.06); }
+.smr-add {
+  align-self: flex-start;
+  background: none;
+  border: 1.5px dashed rgba(10,17,40,0.3);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0A1128;
+  cursor: pointer;
+  font-family: inherit;
+}
+.smr-add:hover { background: rgba(10,17,40,0.04); }
+@media (max-width: 767px) {
+  .smr-row { grid-template-columns: 1fr; }
+  .smr-remove { justify-self: flex-start; width: auto; padding: 0 14px; }
+}
+
+/* ── File upload field ── */
+.fuf-wrap { display: flex; flex-direction: column; gap: 8px; }
+.fuf-native-input { display: none; }
+.fuf-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.fuf-choose-btn {
+  background: #ffffff;
+  border: 1.5px solid rgba(10,17,40,0.2);
+  border-radius: 8px;
+  padding: 11px 18px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #0A1128;
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+.fuf-choose-btn:hover { background: rgba(10,17,40,0.04); }
+.fuf-filename { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.fuf-filename-text {
+  font-size: 14px;
+  color: #0A1128;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 260px;
+}
+.fuf-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0A1128;
+  opacity: 0.5;
+  font-size: 17px;
+  line-height: 1;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+.fuf-remove:hover { opacity: 0.9; }
+.fuf-meta { font-size: 13px; color: #8A8A8A; margin: 0; }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .msd-chip { font-size: 13px !important; }
+  .dtf-month-label { font-size: 14px !important; }
+  .dtf-day { font-size: 13px !important; }
+  .fuf-choose-btn { font-size: 14px !important; }
+  .fuf-filename-text { font-size: 13.5px !important; }
+  .fuf-meta { font-size: 12.5px !important; }
+}
+@media (max-width: 767px) {
+  .msd-chip { font-size: 12.5px !important; }
+  .dtf-month-label { font-size: 13.5px !important; }
+  .dtf-day { font-size: 12.5px !important; }
+  .fuf-choose-btn { font-size: 13.5px !important; }
+  .fuf-filename-text { font-size: 13px !important; max-width: 200px; }
+  .fuf-meta { font-size: 12px !important; }
+}
+@media (max-width: 480px) {
+  .msd-chip { font-size: 12px !important; }
+  .dtf-month-label { font-size: 13px !important; }
+  .dtf-day { font-size: 12px !important; }
+  .fuf-choose-btn { font-size: 13px !important; padding: 10px 14px; }
+  .fuf-filename-text { max-width: 160px; }
+  .fuf-meta { font-size: 11.5px !important; }
+}
+
 /* ── Our Story Page ── */
 
 /* Drop cap on first narrative paragraph */

@@ -16,6 +16,7 @@ export default function ScholarsPage() {
         sections: p.sections,
         keyDates: p.keyDates,
         apply: p.apply,
+        applyHref: '/apply/scholars',
         carousel: p.carousel,
       }}
     />
