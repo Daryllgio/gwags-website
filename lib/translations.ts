@@ -1501,7 +1501,7 @@ export const t = {
         yearOfStudy: "Niveau d'études actuel",
         writtenResponse: 'Réponse écrite',
         transcript: 'Relevé de notes',
-        referral: 'Comment avez-vous pris connaissance de ce programme ?',
+        referral: 'Comment avez-vous entendu parler de ce programme ?',
       },
       writtenResponsePlaceholder: 'Votre réponse...',
       yearOfStudyPlaceholder: 'Sélectionnez votre niveau d\'études',

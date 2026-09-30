@@ -35,12 +35,12 @@ export const YEAR_OF_STUDY_LABELS_FR: Record<string, string> = {
   '5th Year or above': '5e année ou plus',
 }
 
-export const SCHOLARS_REFERRAL = ['Social media', 'University', 'Friend or family', 'Gwags website', 'Other']
+export const SCHOLARS_REFERRAL = ['Social media', 'Your university', 'Friend or family', 'Gwags website', 'Other']
 
 export const SCHOLARS_REFERRAL_LABELS_FR: Record<string, string> = {
   'Social media': 'Réseaux sociaux',
-  'University': 'Université',
-  'Friend or family': 'Proche',
+  'Your university': 'Votre université',
+  'Friend or family': 'Ami ou famille',
   'Gwags website': 'Site web de Gwags',
   'Other': 'Autre',
 }
