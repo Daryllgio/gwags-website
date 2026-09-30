@@ -230,6 +230,7 @@ export default function PartnerPage() {
                 removeLabel={c.remove}
                 platformPlaceholder={c.platformPlaceholder}
                 urlPlaceholder={c.urlPlaceholder}
+                noMatchesText={c.noMatches}
               />
             </div>
 

@@ -6,6 +6,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import WordCountTextarea from '@/components/WordCountTextarea'
 import FileUploadField from '@/components/FileUploadField'
+import SearchableDropdown from '@/components/SearchableDropdown'
 import { YEAR_OF_STUDY, YEAR_OF_STUDY_LABELS_FR, SCHOLARS_REFERRAL, SCHOLARS_REFERRAL_LABELS_FR } from '@/lib/formOptions'
 
 const NAVY = '#0A1128'
@@ -133,15 +134,15 @@ export default function ScholarsApplicationPage() {
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.yearOfStudy} <span>*</span></label>
-                <select
-                  className="form-input form-select"
+                <SearchableDropdown
+                  options={YEAR_OF_STUDY}
                   value={form.yearOfStudy}
-                  onChange={e => { set('yearOfStudy')(e); setYearError(false) }}
-                  style={yearError ? { borderColor: '#c0392b' } : undefined}
-                >
-                  <option value="">{p.yearOfStudyPlaceholder}</option>
-                  {YEAR_OF_STUDY.map(y => <option key={y} value={y}>{yearLabels?.[y] ?? y}</option>)}
-                </select>
+                  onChange={v => { setForm(prev => ({ ...prev, yearOfStudy: v })); setYearError(false) }}
+                  error={yearError}
+                  labels={yearLabels}
+                  placeholder={p.yearOfStudyPlaceholder}
+                  noMatchesText={c.noMatches}
+                />
                 {yearError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.yearOfStudyRequired}</p>}
               </div>
             </div>
@@ -178,10 +179,14 @@ export default function ScholarsApplicationPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.referral}</label>
-              <select className="form-input form-select" value={form.referral} onChange={e => { set('referral')(e); setReferralOtherError(false) }}>
-                <option value=""></option>
-                {SCHOLARS_REFERRAL.map(r => <option key={r} value={r}>{referralLabels?.[r] ?? r}</option>)}
-              </select>
+              <SearchableDropdown
+                options={SCHOLARS_REFERRAL}
+                value={form.referral}
+                onChange={v => { setForm(prev => ({ ...prev, referral: v })); setReferralOtherError(false) }}
+                labels={referralLabels}
+                placeholder={c.searchPlaceholder}
+                noMatchesText={c.noMatches}
+              />
               {form.referral === 'Other' && (
                 <div style={{ marginTop: '10px' }}>
                   <input

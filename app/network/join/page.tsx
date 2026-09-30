@@ -187,15 +187,15 @@ export default function NetworkJoinPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.legalStatus} <span>*</span></label>
-              <select
-                className="form-input form-select"
+              <SearchableDropdown
+                options={NETWORK_LEGAL_STATUS}
                 value={form.legalStatus}
-                onChange={e => { set('legalStatus')(e); clearErr('legalStatus') }}
-                style={err('legalStatus') ? { borderColor: '#c0392b' } : undefined}
-              >
-                <option value=""></option>
-                {NETWORK_LEGAL_STATUS.map(ls => <option key={ls} value={ls}>{legalStatusLabels?.[ls] ?? ls}</option>)}
-              </select>
+                onChange={v => { setForm(prev => ({ ...prev, legalStatus: v })); clearErr('legalStatus') }}
+                error={err('legalStatus')}
+                labels={legalStatusLabels}
+                placeholder={c.searchPlaceholder}
+                noMatchesText={c.noMatches}
+              />
               {needsLegalDoc && (
                 <div style={{ marginTop: '10px' }}>
                   <FileUploadField
@@ -247,6 +247,7 @@ export default function NetworkJoinPage() {
                 removeLabel={c.remove}
                 platformPlaceholder={c.platformPlaceholder}
                 urlPlaceholder={c.urlPlaceholder}
+                noMatchesText={c.noMatches}
               />
             </div>
 
@@ -307,10 +308,14 @@ export default function NetworkJoinPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.referral}</label>
-              <select className="form-input form-select" value={form.referral} onChange={e => { set('referral')(e); clearErr('referralOther') }}>
-                <option value=""></option>
-                {NETWORK_REFERRAL.map(r => <option key={r} value={r}>{referralLabels?.[r] ?? r}</option>)}
-              </select>
+              <SearchableDropdown
+                options={NETWORK_REFERRAL}
+                value={form.referral}
+                onChange={v => { setForm(prev => ({ ...prev, referral: v })); clearErr('referralOther') }}
+                labels={referralLabels}
+                placeholder={c.searchPlaceholder}
+                noMatchesText={c.noMatches}
+              />
               {form.referral === 'Other' && (
                 <div style={{ marginTop: '10px' }}>
                   <input

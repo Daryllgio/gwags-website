@@ -208,16 +208,15 @@ export default function MbalLekeakaApplicationPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.legalStatusQuestion} <span>*</span></label>
-              <select
-                className="form-input form-select"
+              <SearchableDropdown
+                options={['yes', 'no']}
                 value={form.hasLegalStatus}
-                onChange={e => { set('hasLegalStatus')(e); clearErr('hasLegalStatus') }}
-                style={err('hasLegalStatus') ? { borderColor: '#c0392b' } : undefined}
-              >
-                <option value=""></option>
-                <option value="yes">{c.yes}</option>
-                <option value="no">{c.no}</option>
-              </select>
+                onChange={v => { setForm(prev => ({ ...prev, hasLegalStatus: v })); clearErr('hasLegalStatus') }}
+                error={err('hasLegalStatus')}
+                labels={{ yes: c.yes, no: c.no }}
+                placeholder={c.searchPlaceholder}
+                noMatchesText={c.noMatches}
+              />
               {form.hasLegalStatus === 'yes' && (
                 <div style={{ marginTop: '10px' }}>
                   <FileUploadField
@@ -251,6 +250,7 @@ export default function MbalLekeakaApplicationPage() {
                 removeLabel={c.remove}
                 platformPlaceholder={c.platformPlaceholder}
                 urlPlaceholder={c.urlPlaceholder}
+                noMatchesText={c.noMatches}
               />
             </div>
 
@@ -392,10 +392,14 @@ export default function MbalLekeakaApplicationPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.referral}</label>
-              <select className="form-input form-select" value={form.referral} onChange={e => { set('referral')(e); clearErr('referralOther') }}>
-                <option value=""></option>
-                {FUND_REFERRAL.map(r => <option key={r} value={r}>{referralLabels?.[r] ?? r}</option>)}
-              </select>
+              <SearchableDropdown
+                options={FUND_REFERRAL}
+                value={form.referral}
+                onChange={v => { setForm(prev => ({ ...prev, referral: v })); clearErr('referralOther') }}
+                labels={referralLabels}
+                placeholder={c.searchPlaceholder}
+                noMatchesText={c.noMatches}
+              />
               {form.referral === 'Other' && (
                 <div style={{ marginTop: '10px' }}>
                   <input

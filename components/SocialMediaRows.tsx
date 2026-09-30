@@ -1,4 +1,5 @@
 'use client'
+import SearchableDropdown from './SearchableDropdown'
 import { SOCIAL_PLATFORMS } from '@/lib/formOptions'
 
 export interface SocialRow {
@@ -13,10 +14,11 @@ interface SocialMediaRowsProps {
   removeLabel: string
   platformPlaceholder: string
   urlPlaceholder: string
+  noMatchesText?: string
   max?: number
 }
 
-export default function SocialMediaRows({ rows, onChange, addLabel, removeLabel, platformPlaceholder, urlPlaceholder, max = 4 }: SocialMediaRowsProps) {
+export default function SocialMediaRows({ rows, onChange, addLabel, removeLabel, platformPlaceholder, urlPlaceholder, noMatchesText = 'No matches', max = 4 }: SocialMediaRowsProps) {
   const usedPlatforms = new Set(rows.map(r => r.platform).filter(Boolean))
 
   function updateRow(i: number, patch: Partial<SocialRow>) {
@@ -38,14 +40,15 @@ export default function SocialMediaRows({ rows, onChange, addLabel, removeLabel,
         const availableOptions = SOCIAL_PLATFORMS.filter(p => p === row.platform || !usedPlatforms.has(p))
         return (
           <div className="smr-row" key={i}>
-            <select
-              className="form-input form-select smr-platform"
-              value={row.platform}
-              onChange={e => updateRow(i, { platform: e.target.value })}
-            >
-              <option value="">{platformPlaceholder}</option>
-              {availableOptions.map(p => <option key={p} value={p}>{p}</option>)}
-            </select>
+            <div className="smr-platform">
+              <SearchableDropdown
+                options={availableOptions}
+                value={row.platform}
+                onChange={v => updateRow(i, { platform: v })}
+                placeholder={platformPlaceholder}
+                noMatchesText={noMatchesText}
+              />
+            </div>
             <input
               className="form-input smr-url"
               type="url"
