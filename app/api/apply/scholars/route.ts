@@ -6,6 +6,7 @@ import { uploadFormFile, deleteFormFile } from '@/lib/formUploads'
 import { getProgramsEmail } from '@/lib/emailRouting'
 import { createSubmission, findSubmissionByIdempotencyKey } from '@/lib/db/submissions'
 import { scholarsApplications } from '@/lib/db/schema'
+import { isScholarsApplicationOpen } from '@/lib/featureFlags'
 
 const FORM_TYPE = 'scholars-application'
 
@@ -15,13 +16,19 @@ const CONFIRMATION_COPY: Record<string, { subject: string; body: string }> = {
     body: 'Your application has been received. You will receive an email confirmation shortly.',
   },
   fr: {
-    subject: 'Votre candidature au Programme de Bourses Gwags a été reçue',
+    subject: 'Votre candidature au programme Gwags Scholars a été reçue',
     body: 'Votre candidature a bien été reçue. Un courriel de confirmation vous sera envoyé sous peu.',
   },
 }
 
 export async function POST(req: NextRequest) {
   let uploadedPathname: string | null = null
+
+  // Independent of middleware.ts's route-level block — never trust that a
+  // request reaching this handler was already gated upstream.
+  if (!isScholarsApplicationOpen()) {
+    return NextResponse.json({ error: 'Applications are not currently open.' }, { status: 403 })
+  }
 
   try {
     if (isRateLimited(getClientIp(req))) {

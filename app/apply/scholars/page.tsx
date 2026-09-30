@@ -177,7 +177,7 @@ export default function ScholarsApplicationPage() {
             </div>
 
             <div className="form-field">
-              <label className="form-label">{p.labels.referral} <span>({c.optional})</span></label>
+              <label className="form-label">{p.labels.referral}</label>
               <select className="form-input form-select" value={form.referral} onChange={e => { set('referral')(e); setReferralOtherError(false) }}>
                 <option value=""></option>
                 {SCHOLARS_REFERRAL.map(r => <option key={r} value={r}>{referralLabels?.[r] ?? r}</option>)}

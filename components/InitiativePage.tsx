@@ -57,6 +57,9 @@ export interface InitiativePageData {
   }
   apply?: string
   applyHref?: string
+  /** Renders the apply button as a non-interactive, visibly closed state
+   * instead of a link — used while the Scholars application isn't yet open. */
+  applyDisabled?: boolean
   carousel: {
     heading: string
     events: CarouselEvent[]
@@ -87,7 +90,7 @@ export default function InitiativePage({ lang, onToggleLang, data }: Props) {
         </>
       )}
       {data.stats && <StatsSection stats={data.stats} />}
-      {data.apply && <ApplySection label={data.apply} href={data.applyHref ?? '#'} />}
+      {data.apply && <ApplySection label={data.apply} href={data.applyHref ?? '#'} disabled={data.applyDisabled} />}
       {!data.stats && <Divider />}
       <CarouselSection carousel={data.carousel} lang={lang} />
       <Footer lang={lang} />
@@ -191,10 +194,14 @@ function StatsSection({ stats }: { stats: NonNullable<InitiativePageData['stats'
   )
 }
 
-function ApplySection({ label, href }: { label: string; href: string }) {
+function ApplySection({ label, href, disabled }: { label: string; href: string; disabled?: boolean }) {
   return (
     <section className="ip-apply-section">
-      <Link href={href} className="ip-apply-btn">{label}</Link>
+      {disabled ? (
+        <span className="ip-apply-btn ip-apply-btn-disabled" aria-disabled="true">{label}</span>
+      ) : (
+        <Link href={href} className="ip-apply-btn">{label}</Link>
+      )}
     </section>
   )
 }

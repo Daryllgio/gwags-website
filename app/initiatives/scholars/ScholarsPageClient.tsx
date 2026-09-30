@@ -1,0 +1,25 @@
+'use client'
+import { useLang } from '@/lib/useLang'
+import { t } from '@/lib/translations'
+import InitiativePage from '@/components/InitiativePage'
+
+export default function ScholarsPageClient({ applicationOpen }: { applicationOpen: boolean }) {
+  const [lang, toggleLang] = useLang()
+  const p = t[lang].scholarsPage
+
+  return (
+    <InitiativePage
+      lang={lang}
+      onToggleLang={toggleLang}
+      data={{
+        hero: p.hero,
+        sections: p.sections,
+        keyDates: p.keyDates,
+        apply: p.apply,
+        applyHref: '/apply/scholars',
+        applyDisabled: !applicationOpen,
+        carousel: p.carousel,
+      }}
+    />
+  )
+}

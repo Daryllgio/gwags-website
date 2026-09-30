@@ -144,7 +144,7 @@ export default function PartnerPage() {
                 {err('orgEmail') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.emailInvalid}</p>}
               </div>
               <div className="form-field">
-                <label className="form-label">{p.labels.orgPhone} <span>({c.optional})</span></label>
+                <label className="form-label">{p.labels.orgPhone}</label>
                 <input className="form-input" type="tel" placeholder={p.phonePlaceholder} value={form.orgPhone} onChange={set('orgPhone')} />
               </div>
             </div>
@@ -216,13 +216,13 @@ export default function PartnerPage() {
 
             {/* Website */}
             <div className="form-field">
-              <label className="form-label">{p.labels.website} <span>({c.optional})</span></label>
+              <label className="form-label">{p.labels.website}</label>
               <input className="form-input" type="url" placeholder="https://" value={form.website} onChange={set('website')} />
             </div>
 
             {/* Social Media */}
             <div className="form-field">
-              <label className="form-label">{p.labels.socialMedia} <span>({c.optional})</span></label>
+              <label className="form-label">{p.labels.socialMedia}</label>
               <SocialMediaRows
                 rows={socialRows}
                 onChange={setSocialRows}

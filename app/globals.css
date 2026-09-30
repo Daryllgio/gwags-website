@@ -3172,6 +3172,16 @@ input:-webkit-autofill:active {
   .ip-apply-btn:hover { opacity: 0.85; }
 }
 
+/* Disabled/closed state — applications not yet open. pointer-events: none
+   also suppresses the hover rule above (no combined-hover event reaches a
+   non-interactive element), on top of this being a <span>, not a <Link>. */
+.ip-apply-btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  user-select: none;
+}
+
 /* Carousel section */
 .ip-carousel-section {
   padding: 60px 80px;

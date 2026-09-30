@@ -238,12 +238,12 @@ export default function MbalLekeakaApplicationPage() {
             </div>
 
             <div className="form-field">
-              <label className="form-label">{p.labels.website} <span>({c.optional})</span></label>
+              <label className="form-label">{p.labels.website}</label>
               <input className="form-input" type="url" placeholder="https://" value={form.website} onChange={set('website')} />
             </div>
 
             <div className="form-field">
-              <label className="form-label">{p.labels.socialMedia} <span>({c.optional})</span></label>
+              <label className="form-label">{p.labels.socialMedia}</label>
               <SocialMediaRows
                 rows={socialRows}
                 onChange={setSocialRows}
@@ -369,7 +369,7 @@ export default function MbalLekeakaApplicationPage() {
             </div>
 
             <div className="form-field">
-              <label className="form-label">{p.labels.q4} <span>({c.optional})</span></label>
+              <label className="form-label">{p.labels.q4}</label>
               <WordCountTextarea value={form.q4} onChange={v => setForm(prev => ({ ...prev, q4: v }))} maxWords={200} wordsLabel={c.words} rows={5} />
             </div>
 
@@ -391,7 +391,7 @@ export default function MbalLekeakaApplicationPage() {
             </div>
 
             <div className="form-field">
-              <label className="form-label">{p.labels.referral} <span>({c.optional})</span></label>
+              <label className="form-label">{p.labels.referral}</label>
               <select className="form-input form-select" value={form.referral} onChange={e => { set('referral')(e); clearErr('referralOther') }}>
                 <option value=""></option>
                 {FUND_REFERRAL.map(r => <option key={r} value={r}>{referralLabels?.[r] ?? r}</option>)}

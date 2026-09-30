@@ -217,7 +217,7 @@ export default function NetworkJoinPage() {
 
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
-                <label className="form-label">{p.labels.orgEmail} <span>({c.optional})</span></label>
+                <label className="form-label">{p.labels.orgEmail}</label>
                 <input
                   className="form-input"
                   type="email"
@@ -228,18 +228,18 @@ export default function NetworkJoinPage() {
                 {err('orgEmail') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.emailInvalid}</p>}
               </div>
               <div className="form-field">
-                <label className="form-label">{p.labels.orgPhone} <span>({c.optional})</span></label>
+                <label className="form-label">{p.labels.orgPhone}</label>
                 <input className="form-input" type="tel" value={form.orgPhone} onChange={set('orgPhone')} />
               </div>
             </div>
 
             <div className="form-field">
-              <label className="form-label">{p.labels.website} <span>({c.optional})</span></label>
+              <label className="form-label">{p.labels.website}</label>
               <input className="form-input" type="url" placeholder="https://" value={form.website} onChange={set('website')} />
             </div>
 
             <div className="form-field">
-              <label className="form-label">{p.labels.socialMedia} <span>({c.optional})</span></label>
+              <label className="form-label">{p.labels.socialMedia}</label>
               <SocialMediaRows
                 rows={socialRows}
                 onChange={setSocialRows}
@@ -306,7 +306,7 @@ export default function NetworkJoinPage() {
             </div>
 
             <div className="form-field">
-              <label className="form-label">{p.labels.referral} <span>({c.optional})</span></label>
+              <label className="form-label">{p.labels.referral}</label>
               <select className="form-input form-select" value={form.referral} onChange={e => { set('referral')(e); clearErr('referralOther') }}>
                 <option value=""></option>
                 {NETWORK_REFERRAL.map(r => <option key={r} value={r}>{referralLabels?.[r] ?? r}</option>)}
