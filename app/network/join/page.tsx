@@ -28,6 +28,7 @@ export default function NetworkJoinPage() {
     contactFirstName: '', contactLastName: '', contactRole: '', contactEmail: '', contactPhone: '',
     teamSize: '', q1: '', q2: '', q3: '', referral: '', referralOther: '', honeypot: '',
   })
+  const [idempotencyKey] = useState(() => crypto.randomUUID())
   const [sectors, setSectors] = useState<string[]>([])
   const [legalDoc, setLegalDoc] = useState<File | null>(null)
   const [socialRows, setSocialRows] = useState<SocialRow[]>([{ platform: '', url: '' }])
@@ -71,6 +72,7 @@ export default function NetworkJoinPage() {
       const fd = new FormData()
       Object.entries(form).forEach(([k, v]) => fd.append(k, v))
       fd.append('lang', lang)
+      fd.append('idempotencyKey', idempotencyKey)
       fd.append('sectors', JSON.stringify(sectors))
       fd.append('socialMedia', JSON.stringify(socialRows.filter(r => r.platform && r.url)))
       if (legalDoc) fd.append('legalDoc', legalDoc)

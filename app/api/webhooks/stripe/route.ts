@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { getResendClient, getFromEmail } from '@/lib/mail'
 import { claimEventOnce } from '@/lib/idempotency'
+import { getDonationsEmail } from '@/lib/emailRouting'
 
 export const runtime = 'nodejs'
 
@@ -121,7 +122,7 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
     ).catch(err => console.error('webhook: failed to send donor thank-you email:', err))
   }
 
-  const internalEmail = process.env.CONTACT_EMAIL
+  const internalEmail = getDonationsEmail()
   if (internalEmail) {
     await sendMail(
       internalEmail,
@@ -162,7 +163,7 @@ async function handleSubscriptionCreated(subscription: Stripe.Subscription) {
     ).catch(err => console.error('webhook: failed to send subscription thank-you email:', err))
   }
 
-  const internalEmail = process.env.CONTACT_EMAIL
+  const internalEmail = getDonationsEmail()
   if (internalEmail) {
     await sendMail(
       internalEmail,
@@ -186,7 +187,7 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
   const amount = formatAmount(amountCents)
 
   // No donor-facing email here — they initiated the cancellation themselves.
-  const internalEmail = process.env.CONTACT_EMAIL
+  const internalEmail = getDonationsEmail()
   if (internalEmail) {
     await sendMail(
       internalEmail,
@@ -236,7 +237,7 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
     ).catch(err => console.error('webhook: failed to send payment-failed email:', err))
   }
 
-  const internalEmail = process.env.CONTACT_EMAIL
+  const internalEmail = getDonationsEmail()
   if (internalEmail) {
     await sendMail(
       internalEmail,

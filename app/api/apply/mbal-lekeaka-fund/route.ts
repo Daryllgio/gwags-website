@@ -3,6 +3,9 @@ import { getResendClient, getFromAddress, getFromEmail, escapeHtml, formatTimest
 import { getClientIp, isRateLimited } from '@/lib/rateLimit'
 import { cleanText, isValidEmail } from '@/lib/validate'
 import { uploadFormFile, deleteFormFile, UploadFormFileResult } from '@/lib/formUploads'
+import { getProgramsEmail } from '@/lib/emailRouting'
+import { createSubmission, findSubmissionByIdempotencyKey, DocumentInput, SocialLinkInput } from '@/lib/db/submissions'
+import { mbalLekeakaFundApplications } from '@/lib/db/schema'
 
 const FORM_TYPE = 'mbal-lekeaka-fund-application'
 
@@ -44,6 +47,11 @@ export async function POST(req: NextRequest) {
 
     if (typeof formData.get('honeypot') === 'string' && (formData.get('honeypot') as string).trim().length > 0) {
       return NextResponse.json({ ok: true })
+    }
+
+    const idempotencyKey = cleanText(formData.get('idempotencyKey'), 200)
+    if (!idempotencyKey) {
+      return NextResponse.json({ error: 'Missing idempotency key' }, { status: 400 })
     }
 
     const lang = formData.get('lang') === 'fr' ? 'fr' : 'en'
@@ -99,6 +107,18 @@ export async function POST(req: NextRequest) {
     if (endDate < startDate) {
       return NextResponse.json({ error: 'End date must be after start date' }, { status: 400 })
     }
+    const yearEstablishedNum = parseInt(yearEstablished, 10)
+    const estimatedBeneficiariesNum = parseInt(estimatedBeneficiaries, 10)
+    if (!Number.isFinite(yearEstablishedNum) || !Number.isFinite(estimatedBeneficiariesNum)) {
+      return NextResponse.json({ error: 'Invalid numeric field' }, { status: 400 })
+    }
+
+    // Idempotency check happens before any upload, so a retried/duplicated
+    // submit request never re-uploads to Blob.
+    const existing = await findSubmissionByIdempotencyKey(idempotencyKey)
+    if (existing) {
+      return NextResponse.json({ ok: true, referenceId: existing.referenceId })
+    }
 
     let legalDocResult: UploadFormFileResult | null = null
     let legalDocFile: File | null = null
@@ -126,25 +146,90 @@ export async function POST(req: NextRequest) {
     }
     uploadedPathnames.push(budgetResult.pathname)
 
-    const sectorDisplay = sectors.map(s => s === 'Other' ? (sectorOther || 'Other') : s).join(', ')
-    const referralDisplay = referral === 'Other' ? (referralOther || 'Other') : (referral || 'Not provided')
-    const socialDisplay = socialMedia.length > 0 ? socialMedia.map(r => `${r.platform}: ${r.url}`).join('\n') : 'Not provided'
-    const timestamp = formatTimestamp()
+    const documents: DocumentInput[] = []
+    if (legalDocFile && legalDocResult?.ok) {
+      documents.push({
+        category: 'legal_status_proof',
+        originalFilename: legalDocFile.name,
+        blobPathname: legalDocResult.pathname,
+        mimeType: legalDocFile.type,
+        fileSize: legalDocFile.size,
+      })
+    }
+    documents.push({
+      category: 'detailed_budget',
+      originalFilename: budgetFile.name,
+      blobPathname: budgetResult.pathname,
+      mimeType: budgetFile.type,
+      fileSize: budgetFile.size,
+    })
+    const socialLinks: SocialLinkInput[] = socialMedia
 
-    const uploadsText = [
-      legalDocFile && legalDocResult ? fileMeta('Legal status document', legalDocFile, legalDocResult) : '',
-      fileMeta('Detailed budget', budgetFile, budgetResult),
-    ].filter(Boolean).join('\n\n')
+    let result
+    try {
+      result = await createSubmission({
+        formType: 'mbal_lekeaka_fund_application',
+        idempotencyKey,
+        applicantName: `${contactFirstName} ${contactLastName}`,
+        applicantEmail: contactEmail,
+        documents,
+        socialLinks,
+        insertFormRow: async (tx, submissionId) => {
+          await tx.insert(mbalLekeakaFundApplications).values({
+            submissionId,
+            orgName,
+            yearEstablished: yearEstablishedNum,
+            country, region, city,
+            sectors,
+            sectorOther: sectors.includes('Other') ? (sectorOther || null) : null,
+            hasLegalStatus: hasLegalStatus === 'yes',
+            website: website || null,
+            contactFirstName, contactLastName, contactRole, contactPhone, contactEmail,
+            projectTitle, projectCountry, projectRegion, projectCity,
+            targetBeneficiaries,
+            estimatedBeneficiaries: estimatedBeneficiariesNum,
+            startDate, endDate, totalBudget,
+            q1, q2, q3,
+            q4: q4 || null,
+            referral: referral || null,
+            referralOther: referralOther || null,
+          })
+        },
+      })
+    } catch (dbErr) {
+      for (const p of uploadedPathnames) await deleteFormFile(p).catch(() => {})
+      console.error('Mbal Lekeaka application DB persistence error:', dbErr instanceof Error ? dbErr.message : 'unknown')
+      return NextResponse.json({ error: 'Failed to submit application' }, { status: 500 })
+    }
 
-    const resend = getResendClient()
+    if (!result) {
+      for (const p of uploadedPathnames) await deleteFormFile(p).catch(() => {})
+      const raced = await findSubmissionByIdempotencyKey(idempotencyKey)
+      return NextResponse.json({ ok: true, referenceId: raced?.referenceId })
+    }
 
-    const { error: adminError } = await resend.emails.send({
-      from: getFromAddress(),
-      to: process.env.PARTNERSHIPS_EMAIL || process.env.CONTACT_EMAIL || 'contact@gwags.org',
-      replyTo: contactEmail,
-      subject: `Mbal Lekeaka Fund Application — ${orgName}`,
-      text: `MBAL LEKEAKA FUND APPLICATION
+    // From here on, the application is durably persisted. Email failures are
+    // notification-only problems — log them, never undo the submission.
+    try {
+      const sectorDisplay = sectors.map(s => s === 'Other' ? (sectorOther || 'Other') : s).join(', ')
+      const referralDisplay = referral === 'Other' ? (referralOther || 'Other') : (referral || 'Not provided')
+      const socialDisplay = socialMedia.length > 0 ? socialMedia.map(r => `${r.platform}: ${r.url}`).join('\n') : 'Not provided'
+      const timestamp = formatTimestamp()
+      const uploadsText = [
+        legalDocFile && legalDocResult ? fileMeta('Legal status document', legalDocFile, legalDocResult) : '',
+        fileMeta('Detailed budget', budgetFile, budgetResult),
+      ].filter(Boolean).join('\n\n')
 
+      const resend = getResendClient()
+
+      const { error: adminError } = await resend.emails.send({
+        from: getFromAddress(),
+        to: getProgramsEmail(),
+        replyTo: contactEmail,
+        subject: `Mbal Lekeaka Fund Application — ${orgName}`,
+        text: `MBAL LEKEAKA FUND APPLICATION
+
+Reference: ${result.referenceId}
 Organization: ${orgName}
 Year established: ${yearEstablished}
 Country: ${country}
@@ -187,8 +272,9 @@ How did you hear about this fund: ${referralDisplay}
 ${uploadsText}
 
 Submitted: ${timestamp}`,
-      html: `
+        html: `
 <h2>Mbal Lekeaka Fund Application</h2>
+<p><strong>Reference:</strong> ${escapeHtml(result.referenceId)}</p>
 <p><strong>Organization:</strong> ${escapeHtml(orgName)}</p>
 <p><strong>Year established:</strong> ${escapeHtml(yearEstablished)}</p>
 <p><strong>Country:</strong> ${escapeHtml(country)}</p>
@@ -224,27 +310,24 @@ Submitted: ${timestamp}`,
 <p>${escapeHtml(uploadsText).replace(/\n/g, '<br>')}</p>
 <hr />
 <p style="color:#888;font-size:12px;">Submitted: ${timestamp}</p>`,
-    })
+      })
+      if (adminError) console.error('Mbal Lekeaka application notification email error')
 
-    if (adminError) {
-      throw new Error('Failed to send notification email')
+      const confirmation = CONFIRMATION_COPY[lang]
+      const { error: confirmError } = await resend.emails.send({
+        from: getFromAddress(),
+        to: contactEmail,
+        replyTo: getFromEmail(),
+        subject: confirmation.subject,
+        html: renderBrandedEmail(`<p>${escapeHtml(confirmation.body)}</p>`),
+        text: confirmation.body,
+      })
+      if (confirmError) console.error('Mbal Lekeaka application confirmation email error')
+    } catch (emailErr) {
+      console.error('Mbal Lekeaka application: email step failed, submission already persisted:', emailErr instanceof Error ? emailErr.message : 'unknown')
     }
 
-    const confirmation = CONFIRMATION_COPY[lang]
-    const { error: confirmError } = await resend.emails.send({
-      from: getFromAddress(),
-      to: contactEmail,
-      replyTo: getFromEmail(),
-      subject: confirmation.subject,
-      html: renderBrandedEmail(`<p>${escapeHtml(confirmation.body)}</p>`),
-      text: confirmation.body,
-    })
-
-    if (confirmError) {
-      console.error('Mbal Lekeaka application confirmation email error')
-    }
-
-    return NextResponse.json({ ok: true })
+    return NextResponse.json({ ok: true, referenceId: result.referenceId })
   } catch (err) {
     for (const p of uploadedPathnames) await deleteFormFile(p).catch(() => {})
     console.error('Mbal Lekeaka application API error:', err instanceof Error ? err.message : 'unknown')

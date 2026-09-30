@@ -25,6 +25,7 @@ export default function PartnerPage() {
     website: '', country: '', region: '', city: '', sectorOther: '',
     orgDesc: '', message: '', honeypot: '',
   })
+  const [idempotencyKey] = useState(() => crypto.randomUUID())
   const [sectors, setSectors] = useState<string[]>([])
   const [socialRows, setSocialRows] = useState<SocialRow[]>([{ platform: '', url: '' }])
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
@@ -60,6 +61,7 @@ export default function PartnerPage() {
         body: JSON.stringify({
           ...form,
           lang,
+          idempotencyKey,
           sectors,
           socialMedia: socialRows.filter(r => r.platform && r.url),
         }),

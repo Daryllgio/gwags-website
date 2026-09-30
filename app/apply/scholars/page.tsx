@@ -23,6 +23,7 @@ export default function ScholarsApplicationPage() {
     writtenResponse: '', referral: '', referralOther: '', honeypot: '',
   })
   const [transcript, setTranscript] = useState<File | null>(null)
+  const [idempotencyKey] = useState(() => crypto.randomUUID())
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [emailError, setEmailError] = useState(false)
   const [yearError, setYearError] = useState(false)
@@ -55,6 +56,7 @@ export default function ScholarsApplicationPage() {
       const fd = new FormData()
       Object.entries(form).forEach(([k, v]) => fd.append(k, v))
       fd.append('lang', lang)
+      fd.append('idempotencyKey', idempotencyKey)
       if (transcript) fd.append('transcript', transcript)
 
       const res = await fetch('/api/apply/scholars', { method: 'POST', body: fd })

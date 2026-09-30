@@ -3,6 +3,9 @@ import { getResendClient, getFromAddress, getFromEmail, escapeHtml, formatTimest
 import { getClientIp, isRateLimited } from '@/lib/rateLimit'
 import { cleanText, isValidEmail } from '@/lib/validate'
 import { uploadFormFile, deleteFormFile } from '@/lib/formUploads'
+import { getProgramsEmail } from '@/lib/emailRouting'
+import { createSubmission, findSubmissionByIdempotencyKey } from '@/lib/db/submissions'
+import { scholarsApplications } from '@/lib/db/schema'
 
 const FORM_TYPE = 'scholars-application'
 
@@ -31,6 +34,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: true })
     }
 
+    const idempotencyKey = cleanText(formData.get('idempotencyKey'), 200)
+    if (!idempotencyKey) {
+      return NextResponse.json({ error: 'Missing idempotency key' }, { status: 400 })
+    }
+
     const lang = formData.get('lang') === 'fr' ? 'fr' : 'en'
     const firstName = cleanText(formData.get('firstName'), 100)
     const lastName = cleanText(formData.get('lastName'), 100)
@@ -50,6 +58,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
     }
 
+    // Idempotency check happens before any upload, so a retried/duplicated
+    // submit request never re-uploads to Blob.
+    const existing = await findSubmissionByIdempotencyKey(idempotencyKey)
+    if (existing) {
+      return NextResponse.json({ ok: true, referenceId: existing.referenceId })
+    }
+
     const transcriptFile = formData.get('transcript')
     if (!(transcriptFile instanceof File) || transcriptFile.size === 0) {
       return NextResponse.json({ error: 'Academic transcript is required' }, { status: 400 })
@@ -63,17 +78,58 @@ export async function POST(req: NextRequest) {
     uploadedPathname = uploadResult.pathname
 
     const referralDisplay = referral === 'Other' ? (referralOther || 'Other') : (referral || 'Not provided')
-    const timestamp = formatTimestamp()
 
-    const resend = getResendClient()
+    let result
+    try {
+      result = await createSubmission({
+        formType: 'scholars_application',
+        idempotencyKey,
+        applicantName: `${firstName} ${lastName}`,
+        applicantEmail: email,
+        documents: [{
+          category: 'academic_transcript',
+          originalFilename: transcriptFile.name,
+          blobPathname: uploadResult.pathname,
+          mimeType: transcriptFile.type,
+          fileSize: transcriptFile.size,
+        }],
+        insertFormRow: async (tx, submissionId) => {
+          await tx.insert(scholarsApplications).values({
+            submissionId,
+            firstName, lastName, phone, email, university, fieldOfStudy, yearOfStudy, writtenResponse,
+            referral: referral || null,
+            referralOther: referralOther || null,
+          })
+        },
+      })
+    } catch (dbErr) {
+      if (uploadedPathname) await deleteFormFile(uploadedPathname).catch(() => {})
+      console.error('Scholars application DB persistence error:', dbErr instanceof Error ? dbErr.message : 'unknown')
+      return NextResponse.json({ error: 'Failed to submit application' }, { status: 500 })
+    }
 
-    const { error: adminError } = await resend.emails.send({
-      from: getFromAddress(),
-      to: process.env.CONTACT_EMAIL || 'contact@gwags.org',
-      replyTo: email,
-      subject: `Scholars Program Application — ${firstName} ${lastName}`,
-      text: `GWAGS SCHOLARS PROGRAM APPLICATION
+    if (!result) {
+      // Idempotency race: a concurrent request with the same key already
+      // committed. Our upload is redundant — clean it up and return success.
+      if (uploadedPathname) await deleteFormFile(uploadedPathname).catch(() => {})
+      const raced = await findSubmissionByIdempotencyKey(idempotencyKey)
+      return NextResponse.json({ ok: true, referenceId: raced?.referenceId })
+    }
 
+    // From here on, the application is durably persisted. Email failures are
+    // notification-only problems — log them, never undo the submission.
+    try {
+      const resend = getResendClient()
+      const timestamp = formatTimestamp()
+
+      const { error: adminError } = await resend.emails.send({
+        from: getFromAddress(),
+        to: getProgramsEmail(),
+        replyTo: email,
+        subject: `Scholars Program Application — ${firstName} ${lastName}`,
+        text: `GWAGS SCHOLARS PROGRAM APPLICATION
+
+Reference: ${result.referenceId}
 Name: ${firstName} ${lastName}
 Phone: ${phone}
 Email: ${email}
@@ -92,8 +148,9 @@ Academic transcript:
   Blob pathname: ${uploadResult.pathname}
 
 Submitted: ${timestamp}`,
-      html: `
+        html: `
 <h2>Gwags Scholars Program Application</h2>
+<p><strong>Reference:</strong> ${escapeHtml(result.referenceId)}</p>
 <p><strong>Name:</strong> ${escapeHtml(firstName)} ${escapeHtml(lastName)}</p>
 <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
 <p><strong>Email:</strong> ${escapeHtml(email)}</p>
@@ -109,27 +166,24 @@ Submitted: ${timestamp}`,
 <p>Filename: ${escapeHtml(transcriptFile.name)}<br>Type: ${escapeHtml(transcriptFile.type)}<br>Size: ${transcriptFile.size} bytes<br>Blob pathname: ${escapeHtml(uploadResult.pathname)}</p>
 <hr />
 <p style="color:#888;font-size:12px;">Submitted: ${timestamp}</p>`,
-    })
+      })
+      if (adminError) console.error('Scholars application notification email error')
 
-    if (adminError) {
-      throw new Error('Failed to send notification email')
+      const confirmation = CONFIRMATION_COPY[lang]
+      const { error: confirmError } = await resend.emails.send({
+        from: getFromAddress(),
+        to: email,
+        replyTo: getFromEmail(),
+        subject: confirmation.subject,
+        html: renderBrandedEmail(`<p>${escapeHtml(confirmation.body)}</p>`),
+        text: confirmation.body,
+      })
+      if (confirmError) console.error('Scholars application confirmation email error')
+    } catch (emailErr) {
+      console.error('Scholars application: email step failed, submission already persisted:', emailErr instanceof Error ? emailErr.message : 'unknown')
     }
 
-    const confirmation = CONFIRMATION_COPY[lang]
-    const { error: confirmError } = await resend.emails.send({
-      from: getFromAddress(),
-      to: email,
-      replyTo: getFromEmail(),
-      subject: confirmation.subject,
-      html: renderBrandedEmail(`<p>${escapeHtml(confirmation.body)}</p>`),
-      text: confirmation.body,
-    })
-
-    if (confirmError) {
-      console.error('Scholars application confirmation email error')
-    }
-
-    return NextResponse.json({ ok: true })
+    return NextResponse.json({ ok: true, referenceId: result.referenceId })
   } catch (err) {
     if (uploadedPathname) {
       await deleteFormFile(uploadedPathname).catch(() => {})

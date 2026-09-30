@@ -7,9 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "indexnow": "tsx scripts/indexnow.mts"
+    "indexnow": "tsx scripts/indexnow.mts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "@stripe/react-stripe-js": "^6.6.0",
     "@stripe/stripe-js": "^9.8.0",
     "@tabler/icons-react": "^3.31.0",
@@ -17,6 +20,7 @@
     "@vercel/blob": "^2.8.0",
     "country-state-city": "^3.2.1",
     "d3": "^7.9.0",
+    "drizzle-orm": "^0.45.3",
     "next": "14.2.35",
     "react": "^18",
     "react-dom": "^18",
@@ -30,6 +34,8 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "dotenv": "^18.0.4",
+    "drizzle-kit": "^0.31.11",
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
     "postcss": "^8",

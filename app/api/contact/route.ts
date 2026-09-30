@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getResendClient, getFromAddress, escapeHtml, formatTimestamp } from '@/lib/mail'
 import { getClientIp, isRateLimited } from '@/lib/rateLimit'
 import { cleanText, isValidEmail } from '@/lib/validate'
+import { getContactEmail } from '@/lib/emailRouting'
 
 export async function POST(req: NextRequest) {
   try {
@@ -37,7 +38,7 @@ export async function POST(req: NextRequest) {
     const resend = getResendClient()
     const { error } = await resend.emails.send({
       from: getFromAddress(),
-      to: process.env.CONTACT_EMAIL || 'contact@gwags.org',
+      to: getContactEmail(),
       replyTo: email,
       subject: `New Contact Inquiry from ${firstName} ${lastName}`,
       text: `New Contact Inquiry

@@ -33,6 +33,7 @@ export default function MbalLekeakaApplicationPage() {
     q1: '', q2: '', q3: '', q4: '',
     referral: '', referralOther: '', honeypot: '',
   })
+  const [idempotencyKey] = useState(() => crypto.randomUUID())
   const [sectors, setSectors] = useState<string[]>([])
   const [legalDoc, setLegalDoc] = useState<File | null>(null)
   const [socialRows, setSocialRows] = useState<SocialRow[]>([{ platform: '', url: '' }])
@@ -83,6 +84,7 @@ export default function MbalLekeakaApplicationPage() {
       const fd = new FormData()
       Object.entries(form).forEach(([k, v]) => fd.append(k, v))
       fd.append('lang', lang)
+      fd.append('idempotencyKey', idempotencyKey)
       fd.append('sectors', JSON.stringify(sectors))
       fd.append('socialMedia', JSON.stringify(socialRows.filter(r => r.platform && r.url)))
       fd.append('startDate', startDate)

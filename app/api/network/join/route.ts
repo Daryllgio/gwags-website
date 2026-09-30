@@ -3,6 +3,9 @@ import { getResendClient, getFromAddress, getFromEmail, escapeHtml, formatTimest
 import { getClientIp, isRateLimited } from '@/lib/rateLimit'
 import { cleanText, isValidEmail } from '@/lib/validate'
 import { uploadFormFile, deleteFormFile } from '@/lib/formUploads'
+import { getProgramsEmail } from '@/lib/emailRouting'
+import { createSubmission, findSubmissionByIdempotencyKey, DocumentInput, SocialLinkInput } from '@/lib/db/submissions'
+import { networkAffiliationApplications } from '@/lib/db/schema'
 
 const FORM_TYPE = 'network-affiliation'
 
@@ -39,6 +42,11 @@ export async function POST(req: NextRequest) {
 
     if (typeof formData.get('honeypot') === 'string' && (formData.get('honeypot') as string).trim().length > 0) {
       return NextResponse.json({ ok: true })
+    }
+
+    const idempotencyKey = cleanText(formData.get('idempotencyKey'), 200)
+    if (!idempotencyKey) {
+      return NextResponse.json({ error: 'Missing idempotency key' }, { status: 400 })
     }
 
     const lang = formData.get('lang') === 'fr' ? 'fr' : 'en'
@@ -86,6 +94,18 @@ export async function POST(req: NextRequest) {
     if (orgEmail && !isValidEmail(orgEmail)) {
       return NextResponse.json({ error: 'Invalid organization email address' }, { status: 400 })
     }
+    const yearEstablishedNum = parseInt(yearEstablished, 10)
+    const teamSizeNum = parseInt(teamSize, 10)
+    if (!Number.isFinite(yearEstablishedNum) || !Number.isFinite(teamSizeNum)) {
+      return NextResponse.json({ error: 'Invalid numeric field' }, { status: 400 })
+    }
+
+    // Idempotency check happens before any upload, so a retried/duplicated
+    // submit request never re-uploads to Blob.
+    const existing = await findSubmissionByIdempotencyKey(idempotencyKey)
+    if (existing) {
+      return NextResponse.json({ ok: true, referenceId: existing.referenceId })
+    }
 
     const needsLegalDoc = legalStatus === 'Registered nonprofit' || legalStatus === 'Other'
     let legalDocFile: File | null = null
@@ -104,23 +124,79 @@ export async function POST(req: NextRequest) {
       legalDocPathname = uploadResult.pathname
     }
 
-    const sectorDisplay = sectors.map(s => s === 'Other' ? (sectorOther || 'Other') : s).join(', ')
-    const referralDisplay = referral === 'Other' ? (referralOther || 'Other') : (referral || 'Not provided')
-    const socialDisplay = socialMedia.length > 0 ? socialMedia.map(r => `${r.platform}: ${r.url}`).join('\n') : 'Not provided'
-    const uploadsText = legalDocFile
-      ? `Legal status document:\n  Filename: ${legalDocFile.name}\n  Type: ${legalDocFile.type}\n  Size: ${legalDocFile.size} bytes\n  Blob pathname: ${legalDocPathname}`
-      : 'No legal status document uploaded'
-    const timestamp = formatTimestamp()
+    const documents: DocumentInput[] = legalDocFile
+      ? [{
+        category: 'legal_status_proof',
+        originalFilename: legalDocFile.name,
+        blobPathname: legalDocPathname,
+        mimeType: legalDocFile.type,
+        fileSize: legalDocFile.size,
+      }]
+      : []
+    const socialLinks: SocialLinkInput[] = socialMedia
 
-    const resend = getResendClient()
+    let result
+    try {
+      result = await createSubmission({
+        formType: 'network_affiliation',
+        idempotencyKey,
+        applicantName: `${contactFirstName} ${contactLastName}`,
+        applicantEmail: contactEmail,
+        documents,
+        socialLinks,
+        insertFormRow: async (tx, submissionId) => {
+          await tx.insert(networkAffiliationApplications).values({
+            submissionId,
+            orgName,
+            yearEstablished: yearEstablishedNum,
+            country, region, city,
+            sectors,
+            sectorOther: sectors.includes('Other') ? (sectorOther || null) : null,
+            legalStatus,
+            orgEmail: orgEmail || null,
+            orgPhone: orgPhone || null,
+            website: website || null,
+            contactFirstName, contactLastName, contactRole, contactEmail, contactPhone,
+            teamSize: teamSizeNum,
+            q1, q2, q3,
+            referral: referral || null,
+            referralOther: referralOther || null,
+          })
+        },
+      })
+    } catch (dbErr) {
+      if (uploadedPathname) await deleteFormFile(uploadedPathname).catch(() => {})
+      console.error('Network affiliation DB persistence error:', dbErr instanceof Error ? dbErr.message : 'unknown')
+      return NextResponse.json({ error: 'Failed to submit application' }, { status: 500 })
+    }
 
-    const { error: adminError } = await resend.emails.send({
-      from: getFromAddress(),
-      to: process.env.PARTNERSHIPS_EMAIL || process.env.CONTACT_EMAIL || 'contact@gwags.org',
-      replyTo: contactEmail,
-      subject: `Network Affiliation Submission — ${orgName}`,
-      text: `NETWORK AFFILIATION SUBMISSION
+    if (!result) {
+      if (uploadedPathname) await deleteFormFile(uploadedPathname).catch(() => {})
+      const raced = await findSubmissionByIdempotencyKey(idempotencyKey)
+      return NextResponse.json({ ok: true, referenceId: raced?.referenceId })
+    }
 
+    // From here on, the application is durably persisted. Email failures are
+    // notification-only problems — log them, never undo the submission.
+    try {
+      const sectorDisplay = sectors.map(s => s === 'Other' ? (sectorOther || 'Other') : s).join(', ')
+      const referralDisplay = referral === 'Other' ? (referralOther || 'Other') : (referral || 'Not provided')
+      const socialDisplay = socialMedia.length > 0 ? socialMedia.map(r => `${r.platform}: ${r.url}`).join('\n') : 'Not provided'
+      const uploadsText = legalDocFile
+        ? `Legal status document:\n  Filename: ${legalDocFile.name}\n  Type: ${legalDocFile.type}\n  Size: ${legalDocFile.size} bytes\n  Blob pathname: ${legalDocPathname}`
+        : 'No legal status document uploaded'
+      const timestamp = formatTimestamp()
+
+      const resend = getResendClient()
+
+      const { error: adminError } = await resend.emails.send({
+        from: getFromAddress(),
+        to: getProgramsEmail(),
+        replyTo: contactEmail,
+        subject: `Network Affiliation Submission — ${orgName}`,
+        text: `NETWORK AFFILIATION SUBMISSION
+
+Reference: ${result.referenceId}
 Organization: ${orgName}
 Year established: ${yearEstablished}
 Country: ${country}
@@ -153,8 +229,9 @@ How did you hear about the network: ${referralDisplay}
 ${uploadsText}
 
 Submitted: ${timestamp}`,
-      html: `
+        html: `
 <h2>Network Affiliation Submission</h2>
+<p><strong>Reference:</strong> ${escapeHtml(result.referenceId)}</p>
 <p><strong>Organization:</strong> ${escapeHtml(orgName)}</p>
 <p><strong>Year established:</strong> ${escapeHtml(yearEstablished)}</p>
 <p><strong>Country:</strong> ${escapeHtml(country)}</p>
@@ -182,27 +259,24 @@ Submitted: ${timestamp}`,
 <p>${escapeHtml(uploadsText).replace(/\n/g, '<br>')}</p>
 <hr />
 <p style="color:#888;font-size:12px;">Submitted: ${timestamp}</p>`,
-    })
+      })
+      if (adminError) console.error('Network affiliation notification email error')
 
-    if (adminError) {
-      throw new Error('Failed to send notification email')
+      const confirmation = CONFIRMATION_COPY[lang]
+      const { error: confirmError } = await resend.emails.send({
+        from: getFromAddress(),
+        to: contactEmail,
+        replyTo: getFromEmail(),
+        subject: confirmation.subject,
+        html: renderBrandedEmail(`<p>${escapeHtml(confirmation.body)}</p>`),
+        text: confirmation.body,
+      })
+      if (confirmError) console.error('Network affiliation confirmation email error')
+    } catch (emailErr) {
+      console.error('Network affiliation: email step failed, submission already persisted:', emailErr instanceof Error ? emailErr.message : 'unknown')
     }
 
-    const confirmation = CONFIRMATION_COPY[lang]
-    const { error: confirmError } = await resend.emails.send({
-      from: getFromAddress(),
-      to: contactEmail,
-      replyTo: getFromEmail(),
-      subject: confirmation.subject,
-      html: renderBrandedEmail(`<p>${escapeHtml(confirmation.body)}</p>`),
-      text: confirmation.body,
-    })
-
-    if (confirmError) {
-      console.error('Network affiliation confirmation email error')
-    }
-
-    return NextResponse.json({ ok: true })
+    return NextResponse.json({ ok: true, referenceId: result.referenceId })
   } catch (err) {
     if (uploadedPathname) {
       await deleteFormFile(uploadedPathname).catch(() => {})
