@@ -170,6 +170,7 @@ export default function MbalLekeakaApplicationPage() {
                   searchPlaceholder={c.searchPlaceholder}
                   noMatchesText={c.noMatches}
                   textPlaceholder={p.regionTextPlaceholder}
+                  disabledPlaceholder={c.selectCountryFirst}
                 />
               </div>
             </div>
@@ -318,6 +319,7 @@ export default function MbalLekeakaApplicationPage() {
                   searchPlaceholder={c.searchPlaceholder}
                   noMatchesText={c.noMatches}
                   textPlaceholder={p.regionTextPlaceholder}
+                  disabledPlaceholder={c.selectCountryFirst}
                 />
               </div>
             </div>

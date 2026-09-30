@@ -7,10 +7,19 @@ const MONTH_NAMES: Record<Lang, string[]> = {
   fr: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
 }
 
+const MONTH_ABBR: Record<Lang, string[]> = {
+  en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  fr: ['Janv', 'Févr', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'],
+}
+
 const WEEKDAY_NAMES: Record<Lang, string[]> = {
   en: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
   fr: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
 }
+
+const YEAR_GRID_SIZE = 12
+
+type ViewMode = 'days' | 'months' | 'years'
 
 interface DateFieldProps {
   /** ISO 'YYYY-MM-DD' or '' — display is always rendered as DD/MM/YYYY
@@ -35,6 +44,7 @@ function formatDisplay(value: string) {
 
 export default function DateField({ value, onChange, lang, error, id, placeholder = 'DD/MM/YYYY' }: DateFieldProps) {
   const [open, setOpen] = useState(false)
+  const [viewMode, setViewMode] = useState<ViewMode>('days')
   const ref = useRef<HTMLDivElement>(null)
   const today = new Date()
   const selected = value ? new Date(value + 'T00:00:00') : null
@@ -43,7 +53,10 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false)
+        setViewMode('days')
+      }
     }
     document.addEventListener('mousedown', handleClick)
     return () => document.removeEventListener('mousedown', handleClick)
@@ -53,12 +66,28 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
     const base = selected ?? today
     setViewYear(base.getFullYear())
     setViewMonth(base.getMonth())
+    setViewMode('days')
     setOpen(o => !o)
+  }
+
+  function closeCalendar() {
+    setOpen(false)
+    setViewMode('days')
   }
 
   function selectDay(day: number) {
     onChange(`${viewYear}-${pad(viewMonth + 1)}-${pad(day)}`)
-    setOpen(false)
+    closeCalendar()
+  }
+
+  function selectMonth(month: number) {
+    setViewMonth(month)
+    setViewMode('days')
+  }
+
+  function selectYear(year: number) {
+    setViewYear(year)
+    setViewMode('months')
   }
 
   function prevMonth() {
@@ -77,6 +106,17 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
     } else {
       setViewMonth(m => m + 1)
     }
+  }
+
+  const yearGridStart = viewYear - Math.floor(YEAR_GRID_SIZE / 2) + 1
+  const yearGridYears = Array.from({ length: YEAR_GRID_SIZE }, (_, i) => yearGridStart + i)
+
+  function prevYearPage() {
+    setViewYear(y => y - YEAR_GRID_SIZE)
+  }
+
+  function nextYearPage() {
+    setViewYear(y => y + YEAR_GRID_SIZE)
   }
 
   const firstDayOfMonth = new Date(viewYear, viewMonth, 1).getDay()
@@ -101,7 +141,11 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
         tabIndex={0}
         role="button"
         aria-haspopup="dialog"
-        onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCalendar() } }}
+        aria-expanded={open}
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCalendar() }
+          else if (e.key === 'Escape') closeCalendar()
+        }}
       >
         {value ? formatDisplay(value) : <span className="sdd-placeholder">{placeholder}</span>}
         <svg className="dtf-cal-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -111,29 +155,81 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
         </svg>
       </div>
       {open && (
-        <div className="dtf-popup" role="dialog">
-          <div className="dtf-header">
-            <button type="button" className="dtf-nav-btn" onClick={prevMonth} aria-label="Previous month">‹</button>
-            <span className="dtf-month-label">{MONTH_NAMES[lang][viewMonth]} {viewYear}</span>
-            <button type="button" className="dtf-nav-btn" onClick={nextMonth} aria-label="Next month">›</button>
-          </div>
-          <div className="dtf-weekdays">
-            {WEEKDAY_NAMES[lang].map((w, i) => <span key={i} className="dtf-weekday">{w}</span>)}
-          </div>
-          <div className="dtf-grid">
-            {cells.map((day, i) => day === null ? (
-              <span key={i} className="dtf-cell dtf-cell-empty" />
-            ) : (
-              <button
-                type="button"
-                key={i}
-                className={`dtf-cell dtf-day${isSelected(day) ? ' dtf-day-selected' : ''}${isToday(day) && !isSelected(day) ? ' dtf-day-today' : ''}`}
-                onClick={() => selectDay(day)}
-              >
-                {day}
-              </button>
-            ))}
-          </div>
+        <div className="dtf-popup" role="dialog" onKeyDown={e => { if (e.key === 'Escape') closeCalendar() }}>
+          {viewMode === 'days' && (
+            <>
+              <div className="dtf-header">
+                <button type="button" className="dtf-nav-btn" onClick={prevMonth} aria-label="Previous month">‹</button>
+                <button type="button" className="dtf-month-label dtf-header-btn" onClick={() => setViewMode('years')}>
+                  {MONTH_NAMES[lang][viewMonth]} {viewYear}
+                </button>
+                <button type="button" className="dtf-nav-btn" onClick={nextMonth} aria-label="Next month">›</button>
+              </div>
+              <div className="dtf-weekdays">
+                {WEEKDAY_NAMES[lang].map((w, i) => <span key={i} className="dtf-weekday">{w}</span>)}
+              </div>
+              <div className="dtf-grid">
+                {cells.map((day, i) => day === null ? (
+                  <span key={i} className="dtf-cell dtf-cell-empty" />
+                ) : (
+                  <button
+                    type="button"
+                    key={i}
+                    className={`dtf-cell dtf-day${isSelected(day) ? ' dtf-day-selected' : ''}${isToday(day) && !isSelected(day) ? ' dtf-day-today' : ''}`}
+                    onClick={() => selectDay(day)}
+                  >
+                    {day}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+
+          {viewMode === 'months' && (
+            <>
+              <div className="dtf-header">
+                <button type="button" className="dtf-nav-btn" onClick={() => setViewYear(y => y - 1)} aria-label="Previous year">‹</button>
+                <button type="button" className="dtf-month-label dtf-header-btn" onClick={() => setViewMode('years')}>
+                  {viewYear}
+                </button>
+                <button type="button" className="dtf-nav-btn" onClick={() => setViewYear(y => y + 1)} aria-label="Next year">›</button>
+              </div>
+              <div className="dtf-month-grid">
+                {MONTH_ABBR[lang].map((m, i) => (
+                  <button
+                    type="button"
+                    key={i}
+                    className={`dtf-month-cell${i === viewMonth ? ' dtf-month-cell-selected' : ''}`}
+                    onClick={() => selectMonth(i)}
+                  >
+                    {m}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+
+          {viewMode === 'years' && (
+            <>
+              <div className="dtf-header">
+                <button type="button" className="dtf-nav-btn" onClick={prevYearPage} aria-label="Previous years">‹</button>
+                <span className="dtf-month-label">{yearGridYears[0]}–{yearGridYears[yearGridYears.length - 1]}</span>
+                <button type="button" className="dtf-nav-btn" onClick={nextYearPage} aria-label="Next years">›</button>
+              </div>
+              <div className="dtf-month-grid">
+                {yearGridYears.map(y => (
+                  <button
+                    type="button"
+                    key={y}
+                    className={`dtf-month-cell${y === viewYear ? ' dtf-month-cell-selected' : ''}`}
+                    onClick={() => selectYear(y)}
+                  >
+                    {y}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       )}
     </div>

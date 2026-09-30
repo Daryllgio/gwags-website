@@ -149,6 +149,7 @@ export default function NetworkJoinPage() {
                   searchPlaceholder={c.searchPlaceholder}
                   noMatchesText={c.noMatches}
                   textPlaceholder={p.regionTextPlaceholder}
+                  disabledPlaceholder={c.selectCountryFirst}
                 />
               </div>
             </div>

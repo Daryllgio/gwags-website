@@ -16,11 +16,15 @@ interface SearchableDropdownProps {
    * platform...). Defaults to true, preserving the original type-to-filter
    * behavior used by long lists like Country/Region. */
   searchable?: boolean
+  /** When true, the field cannot be opened, focused, or typed into — shows
+   * `placeholder` and nothing else. Used for Region/State before a Country
+   * is chosen. */
+  disabled?: boolean
 }
 
 export default function SearchableDropdown({
   options, value, onChange, placeholder = 'Type to search…', error = false, id, labels,
-  noMatchesText = 'No matches', searchable = true,
+  noMatchesText = 'No matches', searchable = true, disabled = false,
 }: SearchableDropdownProps) {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
@@ -42,6 +46,7 @@ export default function SearchableDropdown({
   }, [])
 
   const openDropdown = () => {
+    if (disabled) return
     setQuery('')
     setOpen(true)
     if (searchable) {
@@ -55,6 +60,7 @@ export default function SearchableDropdown({
   }
 
   const toggleDropdown = () => {
+    if (disabled) return
     if (open) closeDropdown()
     else openDropdown()
   }
@@ -129,14 +135,15 @@ export default function SearchableDropdown({
       ) : (
         <div
           id={id}
-          className="form-input sdd-input sdd-display"
+          className={`form-input sdd-input sdd-display${disabled ? ' sdd-input-disabled' : ''}`}
           style={error ? { borderColor: '#c0392b' } : undefined}
-          onClick={toggleDropdown}
-          tabIndex={0}
+          onClick={disabled ? undefined : toggleDropdown}
+          tabIndex={disabled ? -1 : 0}
           role="button"
           aria-haspopup="listbox"
           aria-expanded={open}
-          onKeyDown={handleTriggerKeyDown}
+          aria-disabled={disabled || undefined}
+          onKeyDown={disabled ? undefined : handleTriggerKeyDown}
         >
           {value ? labelOf(value) : <span className="sdd-placeholder">{placeholder}</span>}
         </div>
