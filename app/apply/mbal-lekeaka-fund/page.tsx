@@ -137,6 +137,8 @@ export default function MbalLekeakaApplicationPage() {
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <input type="text" name="honeypot" value={form.honeypot} onChange={set('honeypot')} style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
+            <h2 className="form-section-heading">{p.orgSectionHeading}</h2>
+
             <div className="form-field">
               <label className="form-label">{p.labels.orgName} <span>*</span></label>
               <input required className="form-input" type="text" value={form.orgName} onChange={set('orgName')} />
@@ -221,6 +223,7 @@ export default function MbalLekeakaApplicationPage() {
               />
               {form.hasLegalStatus === 'yes' && (
                 <div style={{ marginTop: '10px' }}>
+                  <p className="form-helper-text">{p.legalDocHelperText}</p>
                   <FileUploadField
                     file={legalDoc}
                     onChange={f => { setLegalDoc(f); clearErr('legalDoc') }}
