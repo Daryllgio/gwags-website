@@ -188,12 +188,13 @@ export default function NetworkJoinPage() {
             <div className="form-field">
               <label className="form-label">{p.labels.legalStatus} <span>*</span></label>
               <SearchableDropdown
+                searchable={false}
                 options={NETWORK_LEGAL_STATUS}
                 value={form.legalStatus}
                 onChange={v => { setForm(prev => ({ ...prev, legalStatus: v })); clearErr('legalStatus') }}
                 error={err('legalStatus')}
                 labels={legalStatusLabels}
-                placeholder={c.searchPlaceholder}
+                placeholder={c.selectPlaceholder}
                 noMatchesText={c.noMatches}
               />
               {needsLegalDoc && (
@@ -309,11 +310,12 @@ export default function NetworkJoinPage() {
             <div className="form-field">
               <label className="form-label">{p.labels.referral}</label>
               <SearchableDropdown
+                searchable={false}
                 options={NETWORK_REFERRAL}
                 value={form.referral}
                 onChange={v => { setForm(prev => ({ ...prev, referral: v })); clearErr('referralOther') }}
                 labels={referralLabels}
-                placeholder={c.searchPlaceholder}
+                placeholder={c.selectPlaceholder}
                 noMatchesText={c.noMatches}
               />
               {form.referral === 'Other' && (

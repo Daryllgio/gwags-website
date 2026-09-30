@@ -135,6 +135,7 @@ export default function ScholarsApplicationPage() {
               <div className="form-field">
                 <label className="form-label">{p.labels.yearOfStudy} <span>*</span></label>
                 <SearchableDropdown
+                  searchable={false}
                   options={YEAR_OF_STUDY}
                   value={form.yearOfStudy}
                   onChange={v => { setForm(prev => ({ ...prev, yearOfStudy: v })); setYearError(false) }}
@@ -180,11 +181,12 @@ export default function ScholarsApplicationPage() {
             <div className="form-field">
               <label className="form-label">{p.labels.referral}</label>
               <SearchableDropdown
+                searchable={false}
                 options={SCHOLARS_REFERRAL}
                 value={form.referral}
                 onChange={v => { setForm(prev => ({ ...prev, referral: v })); setReferralOtherError(false) }}
                 labels={referralLabels}
-                placeholder={c.searchPlaceholder}
+                placeholder={c.selectPlaceholder}
                 noMatchesText={c.noMatches}
               />
               {form.referral === 'Other' && (

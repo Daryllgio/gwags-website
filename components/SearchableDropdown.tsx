@@ -11,9 +11,17 @@ interface SearchableDropdownProps {
   /** Optional map of option value -> localized display label. The value passed to onChange is always the raw option string. */
   labels?: Record<string, string>
   noMatchesText?: string
+  /** false renders a plain click-to-select list with no typing/filtering —
+   * for short, fixed option sets (year of study, yes/no, referral,
+   * platform...). Defaults to true, preserving the original type-to-filter
+   * behavior used by long lists like Country/Region. */
+  searchable?: boolean
 }
 
-export default function SearchableDropdown({ options, value, onChange, placeholder = 'Type to search…', error = false, id, labels, noMatchesText = 'No matches' }: SearchableDropdownProps) {
+export default function SearchableDropdown({
+  options, value, onChange, placeholder = 'Type to search…', error = false, id, labels,
+  noMatchesText = 'No matches', searchable = true,
+}: SearchableDropdownProps) {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [highlight, setHighlight] = useState(0)
@@ -36,22 +44,52 @@ export default function SearchableDropdown({ options, value, onChange, placehold
   const openDropdown = () => {
     setQuery('')
     setOpen(true)
-    requestAnimationFrame(() => inputRef.current?.focus())
+    if (searchable) {
+      requestAnimationFrame(() => inputRef.current?.focus())
+    }
   }
 
-  const filtered = query.trim() === ''
-    ? options
-    : options.filter(o => labelOf(o).toLowerCase().includes(query.toLowerCase()))
+  const closeDropdown = () => {
+    setOpen(false)
+    setQuery('')
+  }
+
+  const toggleDropdown = () => {
+    if (open) closeDropdown()
+    else openDropdown()
+  }
+
+  const filtered = searchable && query.trim() !== ''
+    ? options.filter(o => labelOf(o).toLowerCase().includes(query.toLowerCase()))
+    : options
 
   useEffect(() => { setHighlight(0) }, [query, open])
 
   const handleSelect = (opt: string) => {
     onChange(opt)
-    setQuery('')
-    setOpen(false)
+    closeDropdown()
   }
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  // Used by the trigger element — a <div> when closed, or always (never
+  // becomes an <input>) in non-searchable mode.
+  const handleTriggerKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      toggleDropdown()
+    } else if (e.key === 'Escape') {
+      closeDropdown()
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      if (!open) { openDropdown(); return }
+      setHighlight(h => Math.min(h + 1, filtered.length - 1))
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      if (open) setHighlight(h => Math.max(h - 1, 0))
+    }
+  }
+
+  // Used only by the open, searchable <input>.
+  const handleInputKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault()
       setHighlight(h => Math.min(h + 1, filtered.length - 1))
@@ -62,14 +100,15 @@ export default function SearchableDropdown({ options, value, onChange, placehold
       e.preventDefault()
       if (filtered[highlight]) handleSelect(filtered[highlight])
     } else if (e.key === 'Escape') {
-      setOpen(false)
-      setQuery('')
+      closeDropdown()
     }
   }
 
+  const showInput = searchable && open
+
   return (
     <div ref={ref} className="sdd-wrap">
-      {open ? (
+      {showInput ? (
         <input
           id={id}
           ref={inputRef}
@@ -78,7 +117,8 @@ export default function SearchableDropdown({ options, value, onChange, placehold
           style={error ? { borderColor: '#c0392b' } : undefined}
           value={query}
           onChange={e => setQuery(e.target.value)}
-          onKeyDown={handleKeyDown}
+          onKeyDown={handleInputKeyDown}
+          onClick={closeDropdown}
           placeholder={value ? labelOf(value) : placeholder}
           autoComplete="off"
           role="combobox"
@@ -91,11 +131,12 @@ export default function SearchableDropdown({ options, value, onChange, placehold
           id={id}
           className="form-input sdd-input sdd-display"
           style={error ? { borderColor: '#c0392b' } : undefined}
-          onClick={openDropdown}
+          onClick={toggleDropdown}
           tabIndex={0}
           role="button"
           aria-haspopup="listbox"
-          onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDropdown() } }}
+          aria-expanded={open}
+          onKeyDown={handleTriggerKeyDown}
         >
           {value ? labelOf(value) : <span className="sdd-placeholder">{placeholder}</span>}
         </div>

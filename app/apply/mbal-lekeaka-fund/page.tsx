@@ -209,12 +209,13 @@ export default function MbalLekeakaApplicationPage() {
             <div className="form-field">
               <label className="form-label">{p.labels.legalStatusQuestion} <span>*</span></label>
               <SearchableDropdown
+                searchable={false}
                 options={['yes', 'no']}
                 value={form.hasLegalStatus}
                 onChange={v => { setForm(prev => ({ ...prev, hasLegalStatus: v })); clearErr('hasLegalStatus') }}
                 error={err('hasLegalStatus')}
                 labels={{ yes: c.yes, no: c.no }}
-                placeholder={c.searchPlaceholder}
+                placeholder={c.selectPlaceholder}
                 noMatchesText={c.noMatches}
               />
               {form.hasLegalStatus === 'yes' && (
@@ -393,11 +394,12 @@ export default function MbalLekeakaApplicationPage() {
             <div className="form-field">
               <label className="form-label">{p.labels.referral}</label>
               <SearchableDropdown
+                searchable={false}
                 options={FUND_REFERRAL}
                 value={form.referral}
                 onChange={v => { setForm(prev => ({ ...prev, referral: v })); clearErr('referralOther') }}
                 labels={referralLabels}
-                placeholder={c.searchPlaceholder}
+                placeholder={c.selectPlaceholder}
                 noMatchesText={c.noMatches}
               />
               {form.referral === 'Other' && (

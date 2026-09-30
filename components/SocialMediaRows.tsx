@@ -42,6 +42,7 @@ export default function SocialMediaRows({ rows, onChange, addLabel, removeLabel,
           <div className="smr-row" key={i}>
             <div className="smr-platform">
               <SearchableDropdown
+                searchable={false}
                 options={availableOptions}
                 value={row.platform}
                 onChange={v => updateRow(i, { platform: v })}

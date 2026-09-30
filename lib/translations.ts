@@ -4,6 +4,7 @@ export const t = {
   en: {
     common: {
       searchPlaceholder: 'Type to search…',
+      selectPlaceholder: 'Select an option',
       noMatches: 'No matches',
       close: 'Close',
       back: 'Back',
@@ -1237,6 +1238,7 @@ export const t = {
   fr: {
     common: {
       searchPlaceholder: 'Tapez pour rechercher…',
+      selectPlaceholder: 'Sélectionnez une option',
       noMatches: 'Aucun résultat',
       close: 'Fermer',
       back: 'Retour',
