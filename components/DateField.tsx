@@ -80,6 +80,8 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
     closeCalendar()
   }
 
+  // Clicking the month picked from its own grid never changes the year that
+  // was already showing — only clicking a year (below) advances the view.
   function selectMonth(month: number) {
     setViewMonth(month)
     setViewMode('days')
@@ -88,6 +90,16 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
   function selectYear(year: number) {
     setViewYear(year)
     setViewMode('months')
+  }
+
+  // Both controls toggle: clicking the one whose grid is already open closes
+  // it back to the day grid, matching normal dropdown/picker behavior.
+  function toggleMonths() {
+    setViewMode(m => m === 'months' ? 'days' : 'months')
+  }
+
+  function toggleYears() {
+    setViewMode(m => m === 'years' ? 'days' : 'years')
   }
 
   function prevMonth() {
@@ -117,6 +129,21 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
 
   function nextYearPage() {
     setViewYear(y => y + YEAR_GRID_SIZE)
+  }
+
+  // Header navigation arrows mean "step by whatever unit the current grid is
+  // showing" — month in the day grid, year while picking a month, a page of
+  // years while picking a year.
+  function prevNav() {
+    if (viewMode === 'days') prevMonth()
+    else if (viewMode === 'months') setViewYear(y => y - 1)
+    else prevYearPage()
+  }
+
+  function nextNav() {
+    if (viewMode === 'days') nextMonth()
+    else if (viewMode === 'months') setViewYear(y => y + 1)
+    else nextYearPage()
   }
 
   const firstDayOfMonth = new Date(viewYear, viewMonth, 1).getDay()
@@ -156,15 +183,47 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
       </div>
       {open && (
         <div className="dtf-popup" role="dialog" onKeyDown={e => { if (e.key === 'Escape') closeCalendar() }}>
+          <div className="dtf-header">
+            <button
+              type="button"
+              className="dtf-nav-btn"
+              onClick={prevNav}
+              aria-label={viewMode === 'days' ? 'Previous month' : viewMode === 'months' ? 'Previous year' : 'Previous years'}
+            >
+              ‹
+            </button>
+            <div className="dtf-header-center">
+              <button
+                type="button"
+                className={`dtf-header-btn${viewMode === 'months' ? ' dtf-header-btn-active' : ''}`}
+                onClick={toggleMonths}
+                aria-haspopup="true"
+                aria-expanded={viewMode === 'months'}
+              >
+                {MONTH_NAMES[lang][viewMonth]}
+              </button>
+              <button
+                type="button"
+                className={`dtf-header-btn${viewMode === 'years' ? ' dtf-header-btn-active' : ''}`}
+                onClick={toggleYears}
+                aria-haspopup="true"
+                aria-expanded={viewMode === 'years'}
+              >
+                {viewYear}
+              </button>
+            </div>
+            <button
+              type="button"
+              className="dtf-nav-btn"
+              onClick={nextNav}
+              aria-label={viewMode === 'days' ? 'Next month' : viewMode === 'months' ? 'Next year' : 'Next years'}
+            >
+              ›
+            </button>
+          </div>
+
           {viewMode === 'days' && (
             <>
-              <div className="dtf-header">
-                <button type="button" className="dtf-nav-btn" onClick={prevMonth} aria-label="Previous month">‹</button>
-                <button type="button" className="dtf-month-label dtf-header-btn" onClick={() => setViewMode('years')}>
-                  {MONTH_NAMES[lang][viewMonth]} {viewYear}
-                </button>
-                <button type="button" className="dtf-nav-btn" onClick={nextMonth} aria-label="Next month">›</button>
-              </div>
               <div className="dtf-weekdays">
                 {WEEKDAY_NAMES[lang].map((w, i) => <span key={i} className="dtf-weekday">{w}</span>)}
               </div>
@@ -186,49 +245,33 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
           )}
 
           {viewMode === 'months' && (
-            <>
-              <div className="dtf-header">
-                <button type="button" className="dtf-nav-btn" onClick={() => setViewYear(y => y - 1)} aria-label="Previous year">‹</button>
-                <button type="button" className="dtf-month-label dtf-header-btn" onClick={() => setViewMode('years')}>
-                  {viewYear}
+            <div className="dtf-month-grid">
+              {MONTH_ABBR[lang].map((m, i) => (
+                <button
+                  type="button"
+                  key={i}
+                  className={`dtf-month-cell${i === viewMonth ? ' dtf-month-cell-selected' : ''}`}
+                  onClick={() => selectMonth(i)}
+                >
+                  {m}
                 </button>
-                <button type="button" className="dtf-nav-btn" onClick={() => setViewYear(y => y + 1)} aria-label="Next year">›</button>
-              </div>
-              <div className="dtf-month-grid">
-                {MONTH_ABBR[lang].map((m, i) => (
-                  <button
-                    type="button"
-                    key={i}
-                    className={`dtf-month-cell${i === viewMonth ? ' dtf-month-cell-selected' : ''}`}
-                    onClick={() => selectMonth(i)}
-                  >
-                    {m}
-                  </button>
-                ))}
-              </div>
-            </>
+              ))}
+            </div>
           )}
 
           {viewMode === 'years' && (
-            <>
-              <div className="dtf-header">
-                <button type="button" className="dtf-nav-btn" onClick={prevYearPage} aria-label="Previous years">‹</button>
-                <span className="dtf-month-label">{yearGridYears[0]}–{yearGridYears[yearGridYears.length - 1]}</span>
-                <button type="button" className="dtf-nav-btn" onClick={nextYearPage} aria-label="Next years">›</button>
-              </div>
-              <div className="dtf-month-grid">
-                {yearGridYears.map(y => (
-                  <button
-                    type="button"
-                    key={y}
-                    className={`dtf-month-cell${y === viewYear ? ' dtf-month-cell-selected' : ''}`}
-                    onClick={() => selectYear(y)}
-                  >
-                    {y}
-                  </button>
-                ))}
-              </div>
-            </>
+            <div className="dtf-month-grid">
+              {yearGridYears.map(y => (
+                <button
+                  type="button"
+                  key={y}
+                  className={`dtf-month-cell${y === viewYear ? ' dtf-month-cell-selected' : ''}`}
+                  onClick={() => selectYear(y)}
+                >
+                  {y}
+                </button>
+              ))}
+            </div>
           )}
         </div>
       )}

@@ -297,10 +297,15 @@ export default function MbalLekeakaApplicationPage() {
               </div>
             </div>
 
+            <h2 className="form-section-heading">{p.projectSectionHeading}</h2>
+            <p className="form-helper-text">{p.projectSectionSubtitle}</p>
+
             <div className="form-field">
               <label className="form-label">{p.labels.projectTitle} <span>*</span></label>
               <input required className="form-input" type="text" value={form.projectTitle} onChange={set('projectTitle')} />
             </div>
+
+            <h3 className="form-subsection-heading">{p.projectLocationHeading}</h3>
 
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
@@ -361,6 +366,8 @@ export default function MbalLekeakaApplicationPage() {
               <label className="form-label">{p.labels.totalBudget} <span>*</span></label>
               <input required className="form-input" type="text" placeholder={p.totalBudgetPlaceholder} value={form.totalBudget} onChange={set('totalBudget')} />
             </div>
+
+            <h3 className="form-subsection-heading">{p.projectDescriptionHeading}</h3>
 
             <div className="form-field">
               <label className="form-label">{p.labels.q1} <span>*</span></label>
