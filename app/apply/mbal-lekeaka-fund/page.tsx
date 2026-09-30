@@ -259,6 +259,9 @@ export default function MbalLekeakaApplicationPage() {
               />
             </div>
 
+            <h2 className="form-section-heading">{p.contactSectionHeading}</h2>
+            <p className="form-helper-text">{p.contactSectionSubtitle}</p>
+
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
                 <label className="form-label">{p.labels.contactFirstName} <span>*</span></label>
