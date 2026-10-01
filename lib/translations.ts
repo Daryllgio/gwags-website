@@ -1505,7 +1505,7 @@ export const t = {
       sectorOtherRequired: 'Veuillez préciser votre secteur.',
     },
     scholarsApplicationPage: {
-      heading: 'Formulaire de candidature au programme Gwags Scholars',
+      heading: 'Candidature au programme Gwags Scholars',
       subheading: 'Parlez-nous de vous et partagez votre réponse écrite pour postuler.',
       labels: {
         firstName: 'Prénom',
