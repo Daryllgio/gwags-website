@@ -83,8 +83,9 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
     closeCalendar()
   }
 
-  // Clicking the month picked from its own grid never changes the year that
-  // was already showing — only clicking a year (below) advances the view.
+  // Both selections are independent: picking a month only changes the
+  // month (year stays), picking a year only changes the year (month
+  // stays) — neither one opens the other picker afterward.
   function selectMonth(month: number) {
     setViewMonth(month)
     setViewMode('days')
@@ -92,7 +93,7 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
 
   function selectYear(year: number) {
     setViewYear(year)
-    setViewMode('months')
+    setViewMode('days')
   }
 
   // Both controls toggle: clicking the one whose grid is already open closes
