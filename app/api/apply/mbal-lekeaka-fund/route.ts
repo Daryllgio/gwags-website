@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
       !orgName || !yearEstablished || !country || !region || !city || sectors.length === 0 ||
       !hasLegalStatus || !contactFirstName || !contactLastName || !contactRole || !contactPhone || !contactEmail ||
       !projectTitle || !projectCountry || !projectRegion || !projectCity || !targetBeneficiaries ||
-      !estimatedBeneficiaries || !startDate || !endDate || !totalBudget || !amountRequested || !q1 || !q2 || !q3
+      !estimatedBeneficiaries || !startDate || !endDate || !totalBudget || !amountRequested || !q1 || !q2 || !q3 || !referral
     ) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
@@ -192,7 +192,7 @@ export async function POST(req: NextRequest) {
             startDate, endDate, totalBudget, amountRequested,
             q1, q2, q3,
             q4: q4 || null,
-            referral: referral || null,
+            referral,
             referralOther: referralOther || null,
           })
         },

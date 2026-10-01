@@ -56,7 +56,7 @@ export const scholarsApplications = pgTable('scholars_applications', {
   fieldOfStudy: text('field_of_study').notNull(),
   yearOfStudy: text('year_of_study').notNull(),
   writtenResponse: text('written_response').notNull(),
-  referral: text('referral'),
+  referral: text('referral').notNull(),
   referralOther: text('referral_other'),
 })
 
@@ -92,7 +92,7 @@ export const mbalLekeakaFundApplications = pgTable('mbal_lekeaka_fund_applicatio
   q2: text('q2').notNull(),
   q3: text('q3').notNull(),
   q4: text('q4'),
-  referral: text('referral'),
+  referral: text('referral').notNull(),
   referralOther: text('referral_other'),
 })
 

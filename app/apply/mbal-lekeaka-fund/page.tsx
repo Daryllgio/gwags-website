@@ -73,6 +73,7 @@ export default function MbalLekeakaApplicationPage() {
     if (!endDate) nextErrors.endDate = true
     if (startDate && endDate && endDate < startDate) nextErrors.dateOrder = true
     if (!detailedBudget) nextErrors.detailedBudget = true
+    if (!form.referral) nextErrors.referral = true
     if (form.referral === 'Other' && !form.referralOther.trim()) nextErrors.referralOther = true
 
     setErrors(nextErrors)
@@ -410,8 +411,11 @@ export default function MbalLekeakaApplicationPage() {
               <WordCountTextarea value={form.q4} onChange={v => setForm(prev => ({ ...prev, q4: v }))} maxWords={200} wordsLabel={c.words} rows={5} />
             </div>
 
+            <h2 className="form-section-heading">{p.requiredDocumentsHeading}</h2>
+
             <div className="form-field">
-              <label className="form-label">{p.labels.detailedBudget} <span>*</span></label>
+              <label className="form-label">{p.labels.projectBudget} <span>*</span></label>
+              <p className="form-helper-text">{p.budgetHelperText}</p>
               <FileUploadField
                 file={detailedBudget}
                 onChange={f => { setDetailedBudget(f); clearErr('detailedBudget') }}
@@ -428,16 +432,18 @@ export default function MbalLekeakaApplicationPage() {
             </div>
 
             <div className="form-field">
-              <label className="form-label">{p.labels.referral}</label>
+              <label className="form-label">{p.labels.referral} <span>*</span></label>
               <SearchableDropdown
                 searchable={false}
                 options={FUND_REFERRAL}
                 value={form.referral}
-                onChange={v => { setForm(prev => ({ ...prev, referral: v })); clearErr('referralOther') }}
+                onChange={v => { setForm(prev => ({ ...prev, referral: v })); clearErr('referral'); clearErr('referralOther') }}
+                error={err('referral')}
                 labels={referralLabels}
                 placeholder={c.selectPlaceholder}
                 noMatchesText={c.noMatches}
               />
+              {err('referral') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.referralRequired}</p>}
               {form.referral === 'Other' && (
                 <div style={{ marginTop: '10px' }}>
                   <input

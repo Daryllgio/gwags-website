@@ -15,6 +15,13 @@
       "when": 1790800738735,
       "tag": "0001_young_lady_vermin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790822076828,
+      "tag": "0002_classy_swordsman",
+      "breakpoints": true
     }
   ]
 }

@@ -29,6 +29,7 @@ export default function ScholarsApplicationPage() {
   const [emailError, setEmailError] = useState(false)
   const [yearError, setYearError] = useState(false)
   const [transcriptError, setTranscriptError] = useState(false)
+  const [referralError, setReferralError] = useState(false)
   const [referralOtherError, setReferralOtherError] = useState(false)
   const submittingRef = useRef(false)
 
@@ -48,6 +49,7 @@ export default function ScholarsApplicationPage() {
     } else setEmailError(false)
     if (!form.yearOfStudy) { setYearError(true); hasError = true } else setYearError(false)
     if (!transcript) { setTranscriptError(true); hasError = true } else setTranscriptError(false)
+    if (!form.referral) { setReferralError(true); hasError = true } else setReferralError(false)
     if (form.referral === 'Other' && !form.referralOther.trim()) { setReferralOtherError(true); hasError = true } else setReferralOtherError(false)
     if (hasError) return
 
@@ -179,16 +181,18 @@ export default function ScholarsApplicationPage() {
             </div>
 
             <div className="form-field">
-              <label className="form-label">{p.labels.referral}</label>
+              <label className="form-label">{p.labels.referral} <span>*</span></label>
               <SearchableDropdown
                 searchable={false}
                 options={SCHOLARS_REFERRAL}
                 value={form.referral}
-                onChange={v => { setForm(prev => ({ ...prev, referral: v })); setReferralOtherError(false) }}
+                onChange={v => { setForm(prev => ({ ...prev, referral: v })); setReferralError(false); setReferralOtherError(false) }}
+                error={referralError}
                 labels={referralLabels}
                 placeholder={c.selectPlaceholder}
                 noMatchesText={c.noMatches}
               />
+              {referralError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.referralRequired}</p>}
               {form.referral === 'Other' && (
                 <div style={{ marginTop: '10px' }}>
                   <input

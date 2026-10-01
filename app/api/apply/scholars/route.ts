@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
     const referral = cleanText(formData.get('referral'), 50)
     const referralOther = cleanText(formData.get('referralOther'), 150)
 
-    if (!firstName || !lastName || !phone || !email || !university || !fieldOfStudy || !yearOfStudy || !writtenResponse) {
+    if (!firstName || !lastName || !phone || !email || !university || !fieldOfStudy || !yearOfStudy || !writtenResponse || !referral) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
     if (!isValidEmail(email)) {
@@ -104,7 +104,7 @@ export async function POST(req: NextRequest) {
           await tx.insert(scholarsApplications).values({
             submissionId,
             firstName, lastName, phone, email, university, fieldOfStudy, yearOfStudy, writtenResponse,
-            referral: referral || null,
+            referral,
             referralOther: referralOther || null,
           })
         },
