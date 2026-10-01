@@ -100,7 +100,7 @@ export default function NetworkJoinPage() {
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      <div className="form-page-container" style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 28px' }}>
+      <div className="form-page-container" style={{ maxWidth: '820px', margin: '0 auto', padding: '80px 28px' }}>
         <h1 className="form-page-h1" style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '12px' }}>
           {p.heading}
         </h1>
@@ -161,7 +161,7 @@ export default function NetworkJoinPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.sector} <span>*</span></label>
-              <p className="form-char-count" style={{ textAlign: 'left', margin: '0 0 2px' }}>{c.selectAllThatApply}</p>
+              <p className="form-select-hint">{c.selectAllThatApply}</p>
               <MultiSelectDropdown
                 options={FUND_SECTORS}
                 values={sectors}

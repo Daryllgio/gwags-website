@@ -61,7 +61,7 @@ export default function ContactPage() {
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      <div className="form-page-container" style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 28px' }}>
+      <div className="form-page-container" style={{ maxWidth: '820px', margin: '0 auto', padding: '80px 28px' }}>
         <h1 className="form-page-h1" style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '12px' }}>
           {p.heading}
         </h1>

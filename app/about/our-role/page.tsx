@@ -153,7 +153,7 @@ function CTASection({ lang }: { lang: Lang }) {
       <p className="body-text" style={{ color: 'rgba(255,255,255,0.92)', fontSize: '18px', maxWidth: '480px', margin: '0 auto 36px', lineHeight: 1.75 }}>
         {p.body}
       </p>
-      <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+      <div className="or-cta-buttons" style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
         <Link href="/partner" className="or-cta-btn-dark">{p.btn1}</Link>
         <Link href="/get-involved" className="or-cta-btn-outline">{p.btn2}</Link>
       </div>

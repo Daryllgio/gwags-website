@@ -122,22 +122,20 @@ export default function MbalLekeakaApplicationPage() {
     <main style={{ background: '#ffffff', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
       <Nav lang={lang} onToggleLang={toggleLang} />
 
-      <div className="form-page-container" style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 28px' }}>
-        <h1 className="form-page-h1" style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '12px' }}>
+      <div className="form-page-container" style={{ maxWidth: '820px', margin: '0 auto', padding: '80px 28px' }}>
+        <h1 className="form-page-h1" style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '48px' }}>
           {p.heading}
         </h1>
-        <p className="form-page-subheading" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.75, marginBottom: '48px' }}>
-          {p.subheading}
-        </p>
 
         {status === 'success' ? (
           <div className="form-success-banner" style={{ padding: '32px', background: '#f0f7f0', borderRadius: '8px', color: '#2d7a2d', fontSize: '17px', textAlign: 'center' }}>
             {p.success}
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
             <input type="text" name="honeypot" value={form.honeypot} onChange={set('honeypot')} style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
+            <div className="form-section-group">
             <h2 className="form-section-heading">{p.orgSectionHeading}</h2>
 
             <div className="form-field">
@@ -185,7 +183,7 @@ export default function MbalLekeakaApplicationPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.sector} <span>*</span></label>
-              <p className="form-char-count" style={{ textAlign: 'left', margin: '0 0 2px' }}>{c.selectAllThatApply}</p>
+              <p className="form-select-hint">{c.selectAllThatApply}</p>
               <MultiSelectDropdown
                 options={FUND_SECTORS}
                 values={sectors}
@@ -260,8 +258,11 @@ export default function MbalLekeakaApplicationPage() {
               />
             </div>
 
+            </div>
+
+            <div className="form-section-group">
             <h2 className="form-section-heading">{p.contactSectionHeading}</h2>
-            <p className="form-helper-text">{p.contactSectionSubtitle}</p>
+            <p className="form-section-subtitle">{p.contactSectionSubtitle}</p>
 
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
@@ -298,8 +299,11 @@ export default function MbalLekeakaApplicationPage() {
               </div>
             </div>
 
+            </div>
+
+            <div className="form-section-group">
             <h2 className="form-section-heading">{p.projectSectionHeading}</h2>
-            <p className="form-helper-text">{p.projectSectionSubtitle}</p>
+            <p className="form-section-subtitle">{p.projectSectionSubtitle}</p>
 
             <div className="form-field">
               <label className="form-label">{p.labels.projectTitle} <span>*</span></label>
@@ -393,7 +397,7 @@ export default function MbalLekeakaApplicationPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.q1} <span>*</span></label>
-              <WordCountTextarea value={form.q1} onChange={v => setForm(prev => ({ ...prev, q1: v }))} maxWords={300} wordsLabel={c.words} rows={6} required />
+              <WordCountTextarea value={form.q1} onChange={v => setForm(prev => ({ ...prev, q1: v }))} maxWords={300} wordsLabel={c.words} rows={8} required />
             </div>
 
             <div className="form-field">
@@ -403,14 +407,17 @@ export default function MbalLekeakaApplicationPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.q3} <span>*</span></label>
-              <WordCountTextarea value={form.q3} onChange={v => setForm(prev => ({ ...prev, q3: v }))} maxWords={200} wordsLabel={c.words} rows={5} required />
+              <WordCountTextarea value={form.q3} onChange={v => setForm(prev => ({ ...prev, q3: v }))} maxWords={200} wordsLabel={c.words} rows={8} required />
             </div>
 
             <div className="form-field">
               <label className="form-label">{p.labels.q4}</label>
-              <WordCountTextarea value={form.q4} onChange={v => setForm(prev => ({ ...prev, q4: v }))} maxWords={200} wordsLabel={c.words} rows={5} />
+              <WordCountTextarea value={form.q4} onChange={v => setForm(prev => ({ ...prev, q4: v }))} maxWords={200} wordsLabel={c.words} rows={8} />
             </div>
 
+            </div>
+
+            <div className="form-section-group">
             <h2 className="form-section-heading">{p.requiredDocumentsHeading}</h2>
 
             <div className="form-field">
@@ -431,6 +438,9 @@ export default function MbalLekeakaApplicationPage() {
               />
             </div>
 
+            </div>
+
+            <div className="form-section-group">
             <h2 className="form-section-heading">{p.additionalInfoHeading}</h2>
 
             <div className="form-field">
@@ -459,6 +469,7 @@ export default function MbalLekeakaApplicationPage() {
                   />
                 </div>
               )}
+            </div>
             </div>
 
             {status === 'error' && (

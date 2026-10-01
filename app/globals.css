@@ -342,6 +342,10 @@ main > footer {
   .cta-h2 { font-size: 24px !important; }
   .cta-buttons { flex-direction: column !important; align-items: center !important; }
   .cta-buttons a { min-width: 240px !important; text-align: center !important; }
+  .or-cta-buttons { flex-direction: column !important; align-items: center !important; }
+  .or-cta-btn-dark, .or-cta-btn-outline { min-width: 240px !important; text-align: center !important; }
+  .os-closing-btn { min-width: 240px !important; text-align: center !important; }
+  .nw-cta-btn { min-width: 240px !important; text-align: center !important; }
 }
 
 /* All site CTAs: step down at the same tiers as More About (70/60/48/36),
@@ -700,49 +704,57 @@ input:-webkit-autofill:active {
 @media (max-width: 480px) {
   .form-page-container { padding-top: 55px !important; }
 }
-.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field { display: flex; flex-direction: column; gap: 4px; }
+.form-section-group { display: flex; flex-direction: column; gap: 24px; }
 .form-section-heading {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   color: #0A1128;
   font-family: inherit;
   margin: 0;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(10,17,40,0.1);
 }
-.form-label { font-size: 15px; font-weight: 600; color: #0A1128; }
+.form-section-subtitle { font-size: 16px; color: #4A4A4A; line-height: 1.6; margin: 0; }
+.form-section-heading + .form-section-subtitle { margin-top: -19px; }
+.form-section-heading + .form-field { margin-top: -9px; }
+.form-section-subtitle + .form-field,
+.form-section-subtitle + .form-row { margin-top: -9px; }
+.form-label { font-size: 15px; font-weight: 500; color: #0A1128; }
 .form-label span { color: #0A1128; }
 .form-input {
   padding: 12px 14px;
-  border: 1.5px solid rgba(10,17,40,0.2);
-  border-radius: 8px;
+  border: 1.5px solid rgba(10,17,40,0.32);
+  border-radius: 10px;
   font-size: 15px;
   color: #0A1128;
   background: #fff;
   outline: none;
   font-family: inherit;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
   width: 100%;
   box-sizing: border-box;
 }
-.form-input:focus { border-color: rgba(10,17,40,0.5); }
+.form-input:focus { border-color: rgba(10,17,40,0.55); background: rgba(10,17,40,0.03); }
 .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230A1128' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
 .form-textarea { resize: vertical; min-height: 120px; }
 .form-char-count { font-size: 13px; color: #8A8A8A; margin: 4px 0 0 0; text-align: right; }
+.form-select-hint { font-size: 13px; color: #4A4A4A; margin: 0 0 2px; text-align: left; }
 .form-helper-text { font-size: 14px; color: #4A4A4A; line-height: 1.6; margin: 0 0 10px; }
 .form-submit-btn {
   display: inline-block;
   background: #0A1128;
   color: #ffffff;
   font-weight: 600;
-  padding: 14px 32px;
+  padding: 14px 40px;
   border-radius: 6px;
   border: none;
   cursor: pointer;
   font-family: inherit;
   font-size: 15px;
-  transition: opacity 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   align-self: flex-start;
+}
+@media (hover: hover) {
+  .form-submit-btn:hover:not(:disabled) { background: #1a2550; box-shadow: 0 4px 14px rgba(10,17,40,0.25); }
 }
 .form-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 @media (max-width: 767px) {
@@ -761,10 +773,12 @@ input:-webkit-autofill:active {
   .form-page-h1 { font-size: 32px !important; }
   .form-page-subheading { font-size: 17px !important; }
   .form-success-banner { font-size: 16px !important; }
-  .form-section-heading { font-size: 19px !important; }
+  .form-section-heading { font-size: 17px !important; }
+  .form-section-subtitle { font-size: 16px !important; }
   .form-label { font-size: 15px !important; }
   .form-input { font-size: 15px !important; }
   .form-char-count { font-size: 13px !important; }
+  .form-select-hint { font-size: 13px !important; }
   .form-helper-text { font-size: 13.5px !important; }
   .form-submit-btn { font-size: 15px !important; }
   .form-field-error { font-size: 13px !important; }
@@ -776,10 +790,12 @@ input:-webkit-autofill:active {
   .form-page-h1 { font-size: 28px !important; }
   .form-page-subheading { font-size: 16px !important; }
   .form-success-banner { font-size: 15px !important; }
-  .form-section-heading { font-size: 18px !important; }
+  .form-section-heading { font-size: 16px !important; }
+  .form-section-subtitle { font-size: 15px !important; }
   .form-label { font-size: 14px !important; }
   .form-input { font-size: 14px !important; }
   .form-char-count { font-size: 12px !important; }
+  .form-select-hint { font-size: 12px !important; }
   .form-helper-text { font-size: 13px !important; }
   .form-submit-btn { font-size: 14px !important; }
   .form-field-error { font-size: 12px !important; }
@@ -791,10 +807,12 @@ input:-webkit-autofill:active {
   .form-page-h1 { font-size: 26px !important; }
   .form-page-subheading { font-size: 15px !important; }
   .form-success-banner { font-size: 14px !important; }
-  .form-section-heading { font-size: 17px !important; }
+  .form-section-heading { font-size: 15px !important; }
+  .form-section-subtitle { font-size: 14px !important; }
   .form-label { font-size: 14px !important; }
   .form-input { font-size: 14px !important; }
   .form-char-count { font-size: 12px !important; }
+  .form-select-hint { font-size: 12px !important; }
   .form-helper-text { font-size: 13px !important; }
   .form-submit-btn { font-size: 14px !important; }
   .form-field-error { font-size: 12px !important; }
@@ -806,10 +824,12 @@ input:-webkit-autofill:active {
   .form-page-h1 { font-size: 24px !important; }
   .form-page-subheading { font-size: 14px !important; }
   .form-success-banner { font-size: 13px !important; }
-  .form-section-heading { font-size: 16px !important; }
+  .form-section-heading { font-size: 14px !important; }
+  .form-section-subtitle { font-size: 13px !important; }
   .form-label { font-size: 13px !important; }
   .form-input { font-size: 13px !important; }
   .form-char-count { font-size: 11px !important; }
+  .form-select-hint { font-size: 11px !important; }
   .form-helper-text { font-size: 12px !important; }
   .form-submit-btn { font-size: 13px !important; }
   .form-field-error { font-size: 11px !important; }
@@ -1101,7 +1121,7 @@ input:-webkit-autofill:active {
   flex-shrink: 0;
 }
 .fuf-remove:hover { opacity: 0.9; }
-.fuf-meta { font-size: 13px; color: #8A8A8A; margin: 0; }
+.fuf-meta { font-size: 13px; color: #4A4A4A; margin: 0; }
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .msd-chip { font-size: 13px !important; }
@@ -1615,7 +1635,7 @@ input:-webkit-autofill:active {
   color: #ffffff;
   font-size: 16px;
   font-weight: 500;
-  padding: 14px 32px;
+  padding: 13px 24px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -1631,7 +1651,7 @@ input:-webkit-autofill:active {
   background: none;
   color: #0A1128;
   font-size: 16px;
-  padding: 14px 32px;
+  padding: 13px 24px;
   border: 1.5px solid rgba(10,17,40,0.4);
   border-radius: 3px;
   cursor: pointer;
@@ -1893,9 +1913,9 @@ input:-webkit-autofill:active {
 .or-cta-btn-dark {
   background: #D4AF37;
   color: #0A1128;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
-  padding: 14px 32px;
+  padding: 13px 24px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -1913,8 +1933,8 @@ input:-webkit-autofill:active {
 .or-cta-btn-outline {
   background: none;
   color: rgba(255,255,255,0.92);
-  font-size: 15px;
-  padding: 14px 32px;
+  font-size: 16px;
+  padding: 13px 24px;
   border: 1.5px solid rgba(255,255,255,0.85);
   border-radius: 3px;
   cursor: pointer;
@@ -2593,16 +2613,20 @@ input:-webkit-autofill:active {
   .hero-btn { font-size: 15px !important; }
   .hww-cta-btn-dark { font-size: 15px !important; }
   .hww-cta-btn-outline { font-size: 15px !important; }
-  .or-cta-btn-dark { font-size: 14px !important; }
-  .or-cta-btn-outline { font-size: 14px !important; }
 }
 @media (min-width: 481px) and (max-width: 767px) {
   .cta-buttons a { font-size: 15px !important; }
+  .or-cta-btn-dark { font-size: 15px !important; }
+  .or-cta-btn-outline { font-size: 15px !important; }
+  .nw-cta-btn { font-size: 15px !important; }
 }
 @media (max-width: 480px) {
   .cta-buttons a { font-size: 14px !important; }
   .hww-cta-btn-dark { font-size: 14px !important; }
   .hww-cta-btn-outline { font-size: 14px !important; }
+  .or-cta-btn-dark { font-size: 14px !important; }
+  .or-cta-btn-outline { font-size: 14px !important; }
+  .nw-cta-btn { font-size: 14px !important; }
 }
 
 /* HWW CTA buttons — match homepage CTA button mobile/tablet layout */
@@ -4172,6 +4196,14 @@ input:-webkit-autofill:active {
   line-height: 1.25;
   color: #0A1128;
   margin: 0 0 14px;
+}
+.nw-cta-btn {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 13px 24px;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  display: inline-block;
 }
 .nw-cta-subtext {
   font-size: 18px;

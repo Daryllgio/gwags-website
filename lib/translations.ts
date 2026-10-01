@@ -260,7 +260,6 @@ export const t = {
     },
     scholarsApplicationPage: {
       heading: 'Gwags Scholars Program Application',
-      subheading: 'Tell us about yourself and share your written response to apply.',
       labels: {
         firstName: 'First Name',
         lastName: 'Last Name',
@@ -285,7 +284,6 @@ export const t = {
     },
     mbalLekeakaApplicationPage: {
       heading: 'Mbal Lekeaka Fund Application',
-      subheading: 'Tell us about your organization and your proposed project.',
       orgSectionHeading: 'About your organization',
       legalDocHelperText: "Attach an official document confirming your organization's legal status. This may include an incorporation certificate or equivalent.",
       contactSectionHeading: 'Primary Contact',
@@ -325,7 +323,7 @@ export const t = {
         referral: 'How did you hear about this fund?',
       },
       requiredDocumentsHeading: 'Required Documents',
-      budgetHelperText: 'Upload a document showing how the total budget is distributed across expense categories.',
+      budgetHelperText: 'Upload a document showing how the budget is distributed across expense categories.',
       additionalInfoHeading: 'Additional Information',
       referralRequired: 'Please select how you heard about this fund.',
       regionTextPlaceholder: 'Region or state',
@@ -1506,7 +1504,6 @@ export const t = {
     },
     scholarsApplicationPage: {
       heading: 'Candidature au programme Gwags Scholars',
-      subheading: 'Parlez-nous de vous et partagez votre réponse écrite pour postuler.',
       labels: {
         firstName: 'Prénom',
         lastName: 'Nom',
@@ -1531,7 +1528,6 @@ export const t = {
     },
     mbalLekeakaApplicationPage: {
       heading: 'Candidature au Fonds Mbal Lekeaka',
-      subheading: 'Parlez-nous de votre organisation et du projet que vous proposez.',
       orgSectionHeading: 'À propos de votre organisation',
       legalDocHelperText: "Veuillez fournir un document officiel attestant du statut juridique de votre organisation, tel qu'un certificat d'incorporation ou tout document équivalent.",
       contactSectionHeading: 'Coordonnées du représentant',
@@ -1571,7 +1567,7 @@ export const t = {
         referral: 'Comment avez-vous pris connaissance de ce fonds ?',
       },
       requiredDocumentsHeading: 'Documents à fournir',
-      budgetHelperText: 'Fournissez un document détaillant la répartition du budget total par poste de dépense.',
+      budgetHelperText: 'Fournissez un document détaillant la répartition du budget par poste de dépense.',
       additionalInfoHeading: 'Informations complémentaires',
       referralRequired: 'Veuillez indiquer comment vous avez connu ce fonds.',
       regionTextPlaceholder: 'Région ou état',

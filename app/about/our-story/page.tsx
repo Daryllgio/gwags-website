@@ -192,7 +192,7 @@ function ClosingSection({ lang }: { lang: Lang }) {
         <Link
           href="/get-involved"
           className="os-closing-btn"
-          style={{ display: 'inline-block', background: '#D4AF37', color: '#0A1128', fontSize: '16px', fontWeight: 500, padding: '14px 36px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em', textDecoration: 'none' }}
+          style={{ display: 'inline-block', background: '#D4AF37', color: '#0A1128', fontSize: '16px', fontWeight: 500, padding: '13px 24px', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em', textDecoration: 'none' }}
         >
           {p.closing.btn}
         </Link>

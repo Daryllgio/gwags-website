@@ -131,7 +131,7 @@ export default function NetworkPage() {
         <div className="nw-cta-section">
           <h2 className="nw-cta-heading">{n.cta.text}</h2>
           <p className="nw-cta-subtext">{n.cta.subtext}</p>
-          <Link href="/network/join" className="form-submit-btn" style={{ textDecoration: 'none', fontWeight: 500, background: '#D4AF37', color: '#0A1128' }}>
+          <Link href="/network/join" className="nw-cta-btn" style={{ textDecoration: 'none', background: '#D4AF37', color: '#0A1128' }}>
             {n.cta.link}
           </Link>
         </div>
