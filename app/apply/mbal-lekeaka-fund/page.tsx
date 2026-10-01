@@ -305,8 +305,6 @@ export default function MbalLekeakaApplicationPage() {
               <input required className="form-input" type="text" value={form.projectTitle} onChange={set('projectTitle')} />
             </div>
 
-            <h3 className="form-subsection-heading">{p.projectLocationHeading}</h3>
-
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
                 <label className="form-label">{p.labels.projectCountry} <span>*</span></label>

@@ -291,7 +291,6 @@ export const t = {
       contactSectionSubtitle: "Provide the contact details of your organization's representative for this funding application.",
       projectSectionHeading: 'About the project',
       projectSectionSubtitle: 'Details about the project for which you are seeking funding.',
-      projectLocationHeading: 'Project Location',
       labels: {
         orgName: 'Organization Name',
         yearEstablished: 'Year Established',
@@ -1533,7 +1532,6 @@ export const t = {
       contactSectionSubtitle: "Indiquez les coordonnées du représentant de l'organisation pour cette demande de financement.",
       projectSectionHeading: 'À propos du projet',
       projectSectionSubtitle: 'Informations sur le projet pour lequel vous sollicitez un financement.',
-      projectLocationHeading: 'Lieu du projet',
       labels: {
         orgName: "Nom de l'organisation",
         yearEstablished: 'Année de création',
