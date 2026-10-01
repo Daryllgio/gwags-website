@@ -431,6 +431,8 @@ export default function MbalLekeakaApplicationPage() {
               />
             </div>
 
+            <h2 className="form-section-heading">{p.additionalInfoHeading}</h2>
+
             <div className="form-field">
               <label className="form-label">{p.labels.referral} <span>*</span></label>
               <SearchableDropdown
