@@ -30,6 +30,9 @@ interface DateFieldProps {
   error?: boolean
   id?: string
   placeholder?: string
+  /** ISO 'YYYY-MM-DD' — days before this are shown disabled and cannot be
+   * selected. Used to keep an End Date from preceding its Start Date. */
+  minDate?: string
 }
 
 function pad(n: number) {
@@ -42,7 +45,7 @@ function formatDisplay(value: string) {
   return `${d}/${m}/${y}`
 }
 
-export default function DateField({ value, onChange, lang, error, id, placeholder = 'DD/MM/YYYY' }: DateFieldProps) {
+export default function DateField({ value, onChange, lang, error, id, placeholder = 'DD/MM/YYYY', minDate }: DateFieldProps) {
   const [open, setOpen] = useState(false)
   const [viewMode, setViewMode] = useState<ViewMode>('days')
   const ref = useRef<HTMLDivElement>(null)
@@ -63,7 +66,7 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
   }, [])
 
   function openCalendar() {
-    const base = selected ?? today
+    const base = selected ?? (minDate ? new Date(minDate + 'T00:00:00') : today)
     setViewYear(base.getFullYear())
     setViewMonth(base.getMonth())
     setViewMode('days')
@@ -157,6 +160,8 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
     !!selected && selected.getFullYear() === viewYear && selected.getMonth() === viewMonth && selected.getDate() === day
   const isToday = (day: number) =>
     today.getFullYear() === viewYear && today.getMonth() === viewMonth && today.getDate() === day
+  const isDisabled = (day: number) =>
+    !!minDate && `${viewYear}-${pad(viewMonth + 1)}-${pad(day)}` < minDate
 
   return (
     <div ref={ref} className="dtf-wrap">
@@ -228,18 +233,21 @@ export default function DateField({ value, onChange, lang, error, id, placeholde
                 {WEEKDAY_NAMES[lang].map((w, i) => <span key={i} className="dtf-weekday">{w}</span>)}
               </div>
               <div className="dtf-grid">
-                {cells.map((day, i) => day === null ? (
-                  <span key={i} className="dtf-cell dtf-cell-empty" />
-                ) : (
-                  <button
-                    type="button"
-                    key={i}
-                    className={`dtf-cell dtf-day${isSelected(day) ? ' dtf-day-selected' : ''}${isToday(day) && !isSelected(day) ? ' dtf-day-today' : ''}`}
-                    onClick={() => selectDay(day)}
-                  >
-                    {day}
-                  </button>
-                ))}
+                {cells.map((day, i) => {
+                  if (day === null) return <span key={i} className="dtf-cell dtf-cell-empty" />
+                  const disabledDay = isDisabled(day)
+                  return (
+                    <button
+                      type="button"
+                      key={i}
+                      className={`dtf-cell dtf-day${isSelected(day) ? ' dtf-day-selected' : ''}${isToday(day) && !isSelected(day) ? ' dtf-day-today' : ''}${disabledDay ? ' dtf-day-disabled' : ''}`}
+                      onClick={() => { if (!disabledDay) selectDay(day) }}
+                      disabled={disabledDay}
+                    >
+                      {day}
+                    </button>
+                  )
+                })}
               </div>
             </>
           )}

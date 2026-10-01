@@ -87,6 +87,7 @@ export const mbalLekeakaFundApplications = pgTable('mbal_lekeaka_fund_applicatio
   startDate: date('start_date').notNull(),
   endDate: date('end_date').notNull(),
   totalBudget: text('total_budget').notNull(),
+  amountRequested: text('amount_requested').notNull(),
   q1: text('q1').notNull(),
   q2: text('q2').notNull(),
   q3: text('q3').notNull(),

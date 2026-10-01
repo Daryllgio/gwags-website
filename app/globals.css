@@ -1014,6 +1014,8 @@ input:-webkit-autofill:active {
 .dtf-day-today { font-weight: 700; }
 .dtf-day-selected { background: #0A1128; color: #ffffff; font-weight: 600; }
 .dtf-day-selected:hover { background: #0A1128; }
+.dtf-day-disabled { opacity: 0.3; cursor: not-allowed; }
+.dtf-day-disabled:hover { background: none; }
 .dtf-month-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
 .dtf-month-cell {
   background: none;

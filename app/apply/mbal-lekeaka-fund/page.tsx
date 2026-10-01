@@ -29,7 +29,7 @@ export default function MbalLekeakaApplicationPage() {
     sectorOther: '', hasLegalStatus: '', website: '',
     contactFirstName: '', contactLastName: '', contactRole: '', contactPhone: '', contactEmail: '',
     projectTitle: '', projectCountry: '', projectRegion: '', projectCity: '',
-    targetBeneficiaries: '', estimatedBeneficiaries: '', totalBudget: '',
+    targetBeneficiaries: '', estimatedBeneficiaries: '', totalBudget: '', amountRequested: '',
     q1: '', q2: '', q3: '', q4: '',
     referral: '', referralOther: '', honeypot: '',
   })
@@ -100,7 +100,7 @@ export default function MbalLekeakaApplicationPage() {
         sectorOther: '', hasLegalStatus: '', website: '',
         contactFirstName: '', contactLastName: '', contactRole: '', contactPhone: '', contactEmail: '',
         projectTitle: '', projectCountry: '', projectRegion: '', projectCity: '',
-        targetBeneficiaries: '', estimatedBeneficiaries: '', totalBudget: '',
+        targetBeneficiaries: '', estimatedBeneficiaries: '', totalBudget: '', amountRequested: '',
         q1: '', q2: '', q3: '', q4: '',
         referral: '', referralOther: '', honeypot: '',
       })
@@ -353,11 +353,31 @@ export default function MbalLekeakaApplicationPage() {
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
                 <label className="form-label">{p.labels.startDate} <span>*</span></label>
-                <DateField value={startDate} onChange={v => { setStartDate(v); clearErr('startDate'); clearErr('dateOrder') }} lang={lang} error={err('startDate') || err('dateOrder')} placeholder={c.datePlaceholder} />
+                <DateField
+                  value={startDate}
+                  onChange={v => {
+                    setStartDate(v)
+                    clearErr('startDate'); clearErr('dateOrder')
+                    // A previously-chosen End Date that now precedes the new
+                    // Start Date is no longer valid — clear it rather than
+                    // silently leaving an invalid range in place.
+                    setEndDate(prevEnd => (prevEnd && prevEnd < v) ? '' : prevEnd)
+                  }}
+                  lang={lang}
+                  error={err('startDate') || err('dateOrder')}
+                  placeholder={c.datePlaceholder}
+                />
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.endDate} <span>*</span></label>
-                <DateField value={endDate} onChange={v => { setEndDate(v); clearErr('endDate'); clearErr('dateOrder') }} lang={lang} error={err('endDate') || err('dateOrder')} placeholder={c.datePlaceholder} />
+                <DateField
+                  value={endDate}
+                  onChange={v => { setEndDate(v); clearErr('endDate'); clearErr('dateOrder') }}
+                  lang={lang}
+                  error={err('endDate') || err('dateOrder')}
+                  placeholder={c.datePlaceholder}
+                  minDate={startDate || undefined}
+                />
               </div>
             </div>
             {err('dateOrder') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '-14px 0 0' }}>{p.dateOrderError}</p>}
@@ -367,7 +387,10 @@ export default function MbalLekeakaApplicationPage() {
               <input required className="form-input" type="text" placeholder={p.totalBudgetPlaceholder} value={form.totalBudget} onChange={set('totalBudget')} />
             </div>
 
-            <h3 className="form-subsection-heading">{p.projectDescriptionHeading}</h3>
+            <div className="form-field">
+              <label className="form-label">{p.labels.amountRequested} <span>*</span></label>
+              <input required className="form-input" type="text" placeholder={p.amountRequestedPlaceholder} value={form.amountRequested} onChange={set('amountRequested')} />
+            </div>
 
             <div className="form-field">
               <label className="form-label">{p.labels.q1} <span>*</span></label>

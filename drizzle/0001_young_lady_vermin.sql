@@ -1,0 +1,1 @@
+ALTER TABLE "mbal_lekeaka_fund_applications" ADD COLUMN "amount_requested" text NOT NULL;

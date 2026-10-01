@@ -77,6 +77,7 @@ export async function POST(req: NextRequest) {
     const startDate = cleanText(formData.get('startDate'), 10)
     const endDate = cleanText(formData.get('endDate'), 10)
     const totalBudget = cleanText(formData.get('totalBudget'), 100)
+    const amountRequested = cleanText(formData.get('amountRequested'), 100)
     const q1 = cleanText(formData.get('q1'), 3000)
     const q2 = cleanText(formData.get('q2'), 5000)
     const q3 = cleanText(formData.get('q3'), 2000)
@@ -97,7 +98,7 @@ export async function POST(req: NextRequest) {
       !orgName || !yearEstablished || !country || !region || !city || sectors.length === 0 ||
       !hasLegalStatus || !contactFirstName || !contactLastName || !contactRole || !contactPhone || !contactEmail ||
       !projectTitle || !projectCountry || !projectRegion || !projectCity || !targetBeneficiaries ||
-      !estimatedBeneficiaries || !startDate || !endDate || !totalBudget || !q1 || !q2 || !q3
+      !estimatedBeneficiaries || !startDate || !endDate || !totalBudget || !amountRequested || !q1 || !q2 || !q3
     ) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
@@ -105,7 +106,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
     }
     if (endDate < startDate) {
-      return NextResponse.json({ error: 'End date must be after start date' }, { status: 400 })
+      return NextResponse.json({ error: 'The proposed end date must be after the proposed start date.' }, { status: 400 })
     }
     const yearEstablishedNum = parseInt(yearEstablished, 10)
     const estimatedBeneficiariesNum = parseInt(estimatedBeneficiaries, 10)
@@ -188,7 +189,7 @@ export async function POST(req: NextRequest) {
             projectTitle, projectCountry, projectRegion, projectCity,
             targetBeneficiaries,
             estimatedBeneficiaries: estimatedBeneficiariesNum,
-            startDate, endDate, totalBudget,
+            startDate, endDate, totalBudget, amountRequested,
             q1, q2, q3,
             q4: q4 || null,
             referral: referral || null,
@@ -254,6 +255,7 @@ Estimated number of beneficiaries: ${estimatedBeneficiaries}
 Proposed start date: ${startDate}
 Proposed end date: ${endDate}
 Total project budget: ${totalBudget}
+Amount requested from Gwags: ${amountRequested}
 
 Q1 — Need addressed:
 ${q1}
@@ -298,6 +300,7 @@ Submitted: ${timestamp}`,
 <p><strong>Proposed start date:</strong> ${escapeHtml(startDate)}</p>
 <p><strong>Proposed end date:</strong> ${escapeHtml(endDate)}</p>
 <p><strong>Total project budget:</strong> ${escapeHtml(totalBudget)}</p>
+<p><strong>Amount requested from Gwags:</strong> ${escapeHtml(amountRequested)}</p>
 <hr />
 <p><strong>Need addressed:</strong></p><p>${escapeHtml(q1).replace(/\n/g, '<br>')}</p>
 <p><strong>Implementation approach:</strong></p><p>${escapeHtml(q2).replace(/\n/g, '<br>')}</p>
