@@ -1535,7 +1535,7 @@ export const t = {
       orgSectionHeading: 'À propos de votre organisation',
       legalDocHelperText: "Veuillez fournir un document officiel attestant du statut juridique de votre organisation, tel qu'un certificat d'incorporation ou tout document équivalent.",
       contactSectionHeading: 'Coordonnées du représentant',
-      contactSectionSubtitle: "Indiquez les coordonnées du représentant de l'organisation pour cette demande de financement.",
+      contactSectionSubtitle: 'Indiquez les coordonnées du représentant de votre organisation pour cette demande de financement.',
       projectSectionHeading: 'À propos du projet',
       projectSectionSubtitle: 'Informations sur le projet pour lequel vous sollicitez un financement.',
       labels: {
