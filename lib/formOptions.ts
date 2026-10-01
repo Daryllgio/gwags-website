@@ -4,7 +4,10 @@
 // map supplies the localized label shown to French-language visitors.
 
 export const FUND_SECTORS = [
-  'Health', 'Education', 'Economic Opportunity', 'Community Development', 'Other',
+  'Health', 'Education', 'Economic Opportunity', 'Community Development', 'Youth Empowerment',
+  'Environment & Climate', 'Agriculture', 'Water & Sanitation', 'Disability & Inclusion',
+  'Food Security & Nutrition', 'Arts & Culture', 'Gender Equality', 'Humanitarian Aid',
+  'Human Rights & Social Justice', 'Peace & Social Cohesion', 'Other',
 ]
 
 export const FUND_SECTOR_LABELS_FR: Record<string, string> = {
@@ -12,6 +15,17 @@ export const FUND_SECTOR_LABELS_FR: Record<string, string> = {
   'Education': 'Éducation',
   'Economic Opportunity': 'Opportunités économiques',
   'Community Development': 'Développement communautaire',
+  'Youth Empowerment': 'Autonomisation des jeunes',
+  'Environment & Climate': 'Environnement et climat',
+  'Agriculture': 'Agriculture',
+  'Water & Sanitation': 'Eau et assainissement',
+  'Disability & Inclusion': 'Handicap et inclusion',
+  'Food Security & Nutrition': 'Sécurité alimentaire et nutrition',
+  'Arts & Culture': 'Arts et culture',
+  'Gender Equality': 'Égalité des genres',
+  'Humanitarian Aid': 'Aide humanitaire',
+  'Human Rights & Social Justice': 'Droits humains et justice sociale',
+  'Peace & Social Cohesion': 'Consolidation de la paix et cohésion sociale',
   'Other': 'Autre',
 }
 
