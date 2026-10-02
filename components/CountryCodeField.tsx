@@ -22,6 +22,10 @@ export default function CountryCodeField({ value, onChange, lang, error, id, pla
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [highlight, setHighlight] = useState(0)
+  // The initial value is a default we pre-fill, not something the user
+  // actually chose — it reads as placeholder-colored text until they
+  // actively pick an option, so it doesn't look like a confirmed selection.
+  const [touched, setTouched] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const listboxId = useId()
@@ -56,15 +60,19 @@ export default function CountryCodeField({ value, onChange, lang, error, id, pla
   }
 
   const filtered = query.trim() !== ''
-    ? COUNTRIES.filter(c =>
-        nameOf(c).toLowerCase().includes(query.toLowerCase()) ||
-        getDialCode(c).includes(query.trim().replace(/^\+/, '')))
+    ? COUNTRIES.filter(c => {
+        const q = query.trim().toLowerCase()
+        const qDigits = q.replace(/^\+/, '')
+        const codeDigits = getDialCode(c).replace(/^\+/, '')
+        return nameOf(c).toLowerCase().includes(q) || codeDigits.startsWith(qDigits)
+      })
     : COUNTRIES
 
   useEffect(() => { setHighlight(0) }, [query, open])
 
   const handleSelect = (countryName: string) => {
     onChange(countryName)
+    setTouched(true)
     closeDropdown()
   }
 
@@ -93,7 +101,6 @@ export default function CountryCodeField({ value, onChange, lang, error, id, pla
           value={query}
           onChange={e => setQuery(e.target.value)}
           onKeyDown={handleInputKeyDown}
-          onClick={closeDropdown}
           placeholder={value ? getDialCode(value) : placeholder}
           autoComplete="off"
           role="combobox"
@@ -113,7 +120,11 @@ export default function CountryCodeField({ value, onChange, lang, error, id, pla
           aria-expanded={open}
           onKeyDown={handleTriggerKeyDown}
         >
-          {value ? getDialCode(value) : <span className="sdd-placeholder">{placeholder}</span>}
+          {value ? (
+            touched ? getDialCode(value) : <span className="sdd-placeholder">{getDialCode(value)}</span>
+          ) : (
+            <span className="sdd-placeholder">{placeholder}</span>
+          )}
         </div>
       )}
       <div id={listboxId} className={`sdd-menu ccf-menu${open ? ' sdd-menu-open' : ''}`} role="listbox">
