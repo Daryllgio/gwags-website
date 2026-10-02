@@ -50,7 +50,11 @@ const COUNTRY_DIAL_CODE: Record<string, string> = {}
 for (const name of COUNTRIES) {
   const iso = COUNTRY_ISO[name]
   const phonecode = iso ? Country.getCountryByCode(iso)?.phonecode : undefined
-  COUNTRY_DIAL_CODE[name] = phonecode ? `+${phonecode}` : ''
+  // country-state-city's phonecode is inconsistent: most countries give a bare
+  // number ('237'), but some NANP members already include the '+' and an area
+  // code ('+1-268' for Antigua) — strip any existing '+' before adding our own
+  // so every result has exactly one.
+  COUNTRY_DIAL_CODE[name] = phonecode ? `+${phonecode.replace(/^\+/, '')}` : ''
 }
 
 /** International calling code (e.g. '+237') for a country in our COUNTRIES
