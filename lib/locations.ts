@@ -45,3 +45,16 @@ export function getStatesForCountry(countryName: string): string[] {
   if (!iso) return []
   return State.getStatesOfCountry(iso).map(s => s.name)
 }
+
+const COUNTRY_DIAL_CODE: Record<string, string> = {}
+for (const name of COUNTRIES) {
+  const iso = COUNTRY_ISO[name]
+  const phonecode = iso ? Country.getCountryByCode(iso)?.phonecode : undefined
+  COUNTRY_DIAL_CODE[name] = phonecode ? `+${phonecode}` : ''
+}
+
+/** International calling code (e.g. '+237') for a country in our COUNTRIES
+ * list, or '' if unknown. */
+export function getDialCode(countryName: string): string {
+  return COUNTRY_DIAL_CODE[countryName] ?? ''
+}
