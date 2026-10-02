@@ -8,11 +8,15 @@ import SearchableDropdown from '@/components/SearchableDropdown'
 import MultiSelectDropdown from '@/components/MultiSelectDropdown'
 import RegionStateField from '@/components/RegionStateField'
 import DateField from '@/components/DateField'
+import YearField from '@/components/YearField'
+import CountryCodeField from '@/components/CountryCodeField'
 import SocialMediaRows, { SocialRow } from '@/components/SocialMediaRows'
 import FileUploadField from '@/components/FileUploadField'
 import WordCountTextarea from '@/components/WordCountTextarea'
 import { COUNTRIES, COUNTRY_LABELS_FR } from '@/lib/countries'
 import { FUND_SECTORS, FUND_SECTOR_LABELS_FR, FUND_REFERRAL, FUND_REFERRAL_LABELS_FR } from '@/lib/formOptions'
+import { formatThousands, stripThousands } from '@/lib/formatNumber'
+import { getDialCode } from '@/lib/locations'
 
 const NAVY = '#0A1128'
 const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024
@@ -27,7 +31,7 @@ export default function MbalLekeakaApplicationPage() {
   const [form, setForm] = useState({
     orgName: '', yearEstablished: '', country: '', region: '', city: '',
     sectorOther: '', hasLegalStatus: '', website: '',
-    contactFirstName: '', contactLastName: '', contactRole: '', contactPhone: '', contactEmail: '',
+    contactFirstName: '', contactLastName: '', contactRole: '', contactPhoneCountry: 'Cameroon', contactPhone: '', contactEmail: '',
     projectTitle: '', projectCountry: '', projectRegion: '', projectCity: '',
     targetBeneficiaries: '', estimatedBeneficiaries: '', totalBudget: '', amountRequested: '',
     q1: '', q2: '', q3: '', q4: '',
@@ -48,6 +52,9 @@ export default function MbalLekeakaApplicationPage() {
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(prev => ({ ...prev, [k]: e.target.value }))
 
+  const setAmount = (k: 'totalBudget' | 'amountRequested') => (e: React.ChangeEvent<HTMLInputElement>) =>
+    setForm(prev => ({ ...prev, [k]: stripThousands(e.target.value) }))
+
   const clearErr = (k: string) => setErrors(prev => { const n = { ...prev }; delete n[k]; return n })
   const err = (k: string) => !!errors[k]
 
@@ -60,6 +67,7 @@ export default function MbalLekeakaApplicationPage() {
     if (submittingRef.current) return
 
     const nextErrors: Record<string, boolean> = {}
+    if (!form.yearEstablished) nextErrors.yearEstablished = true
     if (!form.country) nextErrors.country = true
     if (!form.region) nextErrors.region = true
     if (sectors.length === 0) nextErrors.sectors = true
@@ -84,6 +92,7 @@ export default function MbalLekeakaApplicationPage() {
     try {
       const fd = new FormData()
       Object.entries(form).forEach(([k, v]) => fd.append(k, v))
+      fd.set('contactPhone', `${getDialCode(form.contactPhoneCountry)} ${form.contactPhone}`.trim())
       fd.append('lang', lang)
       fd.append('idempotencyKey', idempotencyKey)
       fd.append('sectors', JSON.stringify(sectors))
@@ -99,7 +108,7 @@ export default function MbalLekeakaApplicationPage() {
       setForm({
         orgName: '', yearEstablished: '', country: '', region: '', city: '',
         sectorOther: '', hasLegalStatus: '', website: '',
-        contactFirstName: '', contactLastName: '', contactRole: '', contactPhone: '', contactEmail: '',
+        contactFirstName: '', contactLastName: '', contactRole: '', contactPhoneCountry: 'Cameroon', contactPhone: '', contactEmail: '',
         projectTitle: '', projectCountry: '', projectRegion: '', projectCity: '',
         targetBeneficiaries: '', estimatedBeneficiaries: '', totalBudget: '', amountRequested: '',
         q1: '', q2: '', q3: '', q4: '',
@@ -145,7 +154,12 @@ export default function MbalLekeakaApplicationPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.yearEstablished} <span>*</span></label>
-              <input required className="form-input" type="number" min="1800" max="2100" value={form.yearEstablished} onChange={set('yearEstablished')} />
+              <YearField
+                value={form.yearEstablished}
+                onChange={v => { setForm(prev => ({ ...prev, yearEstablished: v })); clearErr('yearEstablished') }}
+                error={err('yearEstablished')}
+                placeholder={c.yearPlaceholder}
+              />
             </div>
 
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
@@ -283,7 +297,15 @@ export default function MbalLekeakaApplicationPage() {
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
                 <label className="form-label">{p.labels.contactPhone} <span>*</span></label>
-                <input required className="form-input" type="tel" value={form.contactPhone} onChange={set('contactPhone')} />
+                <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '8px' }}>
+                  <CountryCodeField
+                    value={form.contactPhoneCountry}
+                    onChange={v => setForm(prev => ({ ...prev, contactPhoneCountry: v }))}
+                    lang={lang}
+                    noMatchesText={c.noMatches}
+                  />
+                  <input required className="form-input" type="tel" value={form.contactPhone} onChange={set('contactPhone')} />
+                </div>
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.contactEmail} <span>*</span></label>
@@ -387,12 +409,12 @@ export default function MbalLekeakaApplicationPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.totalBudget} <span>*</span></label>
-              <input required className="form-input" type="text" placeholder={p.totalBudgetPlaceholder} value={form.totalBudget} onChange={set('totalBudget')} />
+              <input required className="form-input" type="text" inputMode="numeric" placeholder={p.totalBudgetPlaceholder} value={formatThousands(form.totalBudget, lang)} onChange={setAmount('totalBudget')} />
             </div>
 
             <div className="form-field">
               <label className="form-label">{p.labels.amountRequested} <span>*</span></label>
-              <input required className="form-input" type="text" placeholder={p.amountRequestedPlaceholder} value={form.amountRequested} onChange={set('amountRequested')} />
+              <input required className="form-input" type="text" inputMode="numeric" placeholder={p.amountRequestedPlaceholder} value={formatThousands(form.amountRequested, lang)} onChange={setAmount('amountRequested')} />
             </div>
 
             <div className="form-field">

@@ -36,7 +36,9 @@ export async function POST(req: NextRequest) {
     }
 
     const lang = body.lang === 'fr' ? 'fr' : 'en'
-    const contactName = cleanText(body.contactName, 100)
+    const contactFirstName = cleanText(body.contactFirstName, 100)
+    const contactLastName = cleanText(body.contactLastName, 100)
+    const contactRole = cleanText(body.contactRole, 150)
     const contactEmail = cleanText(body.contactEmail, 200)
     const contactPhone = cleanText(body.contactPhone, 40)
     const orgName = cleanText(body.orgName, 150)
@@ -60,7 +62,7 @@ export async function POST(req: NextRequest) {
         .slice(0, 4)
       : []
 
-    if (!contactName || !contactEmail || !contactPhone || !orgName || !orgEmail || !country || !region || !city || sectors.length === 0 || !orgDesc || !message) {
+    if (!contactFirstName || !contactLastName || !contactRole || !contactEmail || !contactPhone || !orgName || !orgEmail || !country || !region || !city || sectors.length === 0 || !orgDesc || !message) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
     if (!isValidEmail(orgEmail) || !isValidEmail(contactEmail)) {
@@ -77,13 +79,13 @@ export async function POST(req: NextRequest) {
       result = await createSubmission({
         formType: 'partnership_submission',
         idempotencyKey,
-        applicantName: contactName,
+        applicantName: `${contactFirstName} ${contactLastName}`,
         applicantEmail: contactEmail,
         socialLinks: socialMedia,
         insertFormRow: async (tx, submissionId) => {
           await tx.insert(partnershipSubmissions).values({
             submissionId,
-            contactName, contactEmail, contactPhone,
+            contactFirstName, contactLastName, contactRole, contactEmail, contactPhone,
             orgName, orgEmail,
             orgPhone: orgPhone || null,
             website: website || null,
@@ -122,7 +124,7 @@ export async function POST(req: NextRequest) {
         text: `PARTNERSHIP INQUIRY
 
 Reference: ${result.referenceId}
-Contact: ${contactName}
+Contact: ${contactFirstName} ${contactLastName} (${contactRole})
 Contact email: ${contactEmail}
 Contact phone: ${contactPhone}
 Organization: ${orgName}
@@ -146,7 +148,7 @@ Submitted: ${timestamp}`,
         html: `
 <h2>Partnership Inquiry</h2>
 <p><strong>Reference:</strong> ${escapeHtml(result.referenceId)}</p>
-<p><strong>Contact:</strong> ${escapeHtml(contactName)}</p>
+<p><strong>Contact:</strong> ${escapeHtml(contactFirstName)} ${escapeHtml(contactLastName)} (${escapeHtml(contactRole)})</p>
 <p><strong>Contact email:</strong> ${escapeHtml(contactEmail)}</p>
 <p><strong>Contact phone:</strong> ${escapeHtml(contactPhone)}</p>
 <p><strong>Organization:</strong> ${escapeHtml(orgName)}</p>

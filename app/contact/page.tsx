@@ -62,12 +62,9 @@ export default function ContactPage() {
       <Nav lang={lang} onToggleLang={toggleLang} />
 
       <div className="form-page-container" style={{ maxWidth: '820px', margin: '0 auto', padding: '80px 28px' }}>
-        <h1 className="form-page-h1" style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '12px' }}>
+        <h1 className="form-page-h1" style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '48px' }}>
           {p.heading}
         </h1>
-        <p className="form-page-subheading" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.75, marginBottom: '48px' }}>
-          {p.subheading}
-        </p>
 
         {status === 'success' ? (
           <div className="form-success-banner" style={{ padding: '32px', background: '#f0f7f0', borderRadius: '8px', color: '#2d7a2d', fontSize: '17px', textAlign: 'center' }}>

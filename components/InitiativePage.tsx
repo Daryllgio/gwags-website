@@ -11,6 +11,7 @@ import { useArrowPress } from '@/lib/useArrowPress'
 interface RichBodyItem {
   label: string
   text: string
+  items?: string[]
 }
 
 export interface KeyDateItem {
@@ -141,6 +142,13 @@ function ContentSection({ heading, body, richBody }: {
                   <div key={i} className="ip-rich-item">
                     <dt className="ip-rich-label">{item.label}</dt>
                     <dd className="ip-rich-text">{item.text}</dd>
+                    {item.items && (
+                      <dd>
+                        <ul className="ip-rich-list">
+                          {item.items.map((li, j) => <li key={j}>{li}</li>)}
+                        </ul>
+                      </dd>
+                    )}
                   </div>
                 ))}
               </dl>

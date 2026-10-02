@@ -29,15 +29,10 @@ export const FUND_SECTOR_LABELS_FR: Record<string, string> = {
   'Other': 'Autre',
 }
 
-export const NETWORK_LEGAL_STATUS = ['Registered nonprofit', 'Informal group', 'Other']
-
-export const NETWORK_LEGAL_STATUS_LABELS_FR: Record<string, string> = {
-  'Registered nonprofit': 'Association enregistrée',
-  'Informal group': 'Groupe informel',
-  'Other': 'Autre',
-}
-
 export const SOCIAL_PLATFORMS = ['Facebook', 'LinkedIn', 'X', 'Instagram']
+
+// Ranges are the same literal text in both languages, so no _LABELS_FR map is needed.
+export const ORGANIZATION_SIZE = ['1-10', '11-50', '51-100', '101-300', '300-500', '500-750', '750-1000', '1000-3000', '3000-5000', '5000+']
 
 export const YEAR_OF_STUDY = ['1st Year', '2nd Year', '3rd Year', '4th Year', '5th Year or above']
 

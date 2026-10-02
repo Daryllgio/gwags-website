@@ -7,11 +7,14 @@ import Footer from '@/components/Footer'
 import SearchableDropdown from '@/components/SearchableDropdown'
 import MultiSelectDropdown from '@/components/MultiSelectDropdown'
 import RegionStateField from '@/components/RegionStateField'
+import YearField from '@/components/YearField'
+import CountryCodeField from '@/components/CountryCodeField'
 import SocialMediaRows, { SocialRow } from '@/components/SocialMediaRows'
 import FileUploadField from '@/components/FileUploadField'
 import WordCountTextarea from '@/components/WordCountTextarea'
 import { COUNTRIES, COUNTRY_LABELS_FR } from '@/lib/countries'
-import { FUND_SECTORS, FUND_SECTOR_LABELS_FR, NETWORK_LEGAL_STATUS, NETWORK_LEGAL_STATUS_LABELS_FR, NETWORK_REFERRAL, NETWORK_REFERRAL_LABELS_FR } from '@/lib/formOptions'
+import { FUND_SECTORS, FUND_SECTOR_LABELS_FR, NETWORK_REFERRAL, NETWORK_REFERRAL_LABELS_FR, ORGANIZATION_SIZE } from '@/lib/formOptions'
+import { getDialCode } from '@/lib/locations'
 
 const NAVY = '#0A1128'
 const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024
@@ -23,10 +26,10 @@ export default function NetworkJoinPage() {
   const c = t[lang].common
 
   const [form, setForm] = useState({
-    orgName: '', yearEstablished: '', country: '', region: '', city: '',
-    sectorOther: '', legalStatus: '', orgEmail: '', orgPhone: '', website: '',
-    contactFirstName: '', contactLastName: '', contactRole: '', contactEmail: '', contactPhone: '',
-    teamSize: '', q1: '', q2: '', q3: '', referral: '', referralOther: '', honeypot: '',
+    orgName: '', yearEstablished: '', country: '', region: '', city: '', teamSize: '',
+    sectorOther: '', legalStatus: '', orgEmail: '', orgPhoneCountry: 'Cameroon', orgPhone: '', website: '',
+    contactFirstName: '', contactLastName: '', contactRole: '', contactEmail: '', contactPhoneCountry: 'Cameroon', contactPhone: '',
+    q1: '', q2: '', q3: '', referral: '', referralOther: '', honeypot: '',
   })
   const [idempotencyKey] = useState(() => crypto.randomUUID())
   const [sectors, setSectors] = useState<string[]>([])
@@ -44,15 +47,16 @@ export default function NetworkJoinPage() {
 
   const countryLabels = lang === 'fr' ? COUNTRY_LABELS_FR : undefined
   const sectorLabels = lang === 'fr' ? FUND_SECTOR_LABELS_FR : undefined
-  const legalStatusLabels = lang === 'fr' ? NETWORK_LEGAL_STATUS_LABELS_FR : undefined
   const referralLabels = lang === 'fr' ? NETWORK_REFERRAL_LABELS_FR : undefined
-  const needsLegalDoc = form.legalStatus === 'Registered nonprofit' || form.legalStatus === 'Other'
+  const needsLegalDoc = form.legalStatus === 'yes'
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (submittingRef.current) return
 
     const nextErrors: Record<string, boolean> = {}
+    if (!form.yearEstablished) nextErrors.yearEstablished = true
+    if (!form.teamSize) nextErrors.teamSize = true
     if (!form.country) nextErrors.country = true
     if (!form.region) nextErrors.region = true
     if (sectors.length === 0) nextErrors.sectors = true
@@ -71,6 +75,8 @@ export default function NetworkJoinPage() {
     try {
       const fd = new FormData()
       Object.entries(form).forEach(([k, v]) => fd.append(k, v))
+      fd.set('orgPhone', form.orgPhone ? `${getDialCode(form.orgPhoneCountry)} ${form.orgPhone}`.trim() : '')
+      fd.set('contactPhone', `${getDialCode(form.contactPhoneCountry)} ${form.contactPhone}`.trim())
       fd.append('lang', lang)
       fd.append('idempotencyKey', idempotencyKey)
       fd.append('sectors', JSON.stringify(sectors))
@@ -81,10 +87,10 @@ export default function NetworkJoinPage() {
       if (!res.ok) throw new Error()
       setStatus('success')
       setForm({
-        orgName: '', yearEstablished: '', country: '', region: '', city: '',
-        sectorOther: '', legalStatus: '', orgEmail: '', orgPhone: '', website: '',
-        contactFirstName: '', contactLastName: '', contactRole: '', contactEmail: '', contactPhone: '',
-        teamSize: '', q1: '', q2: '', q3: '', referral: '', referralOther: '', honeypot: '',
+        orgName: '', yearEstablished: '', country: '', region: '', city: '', teamSize: '',
+        sectorOther: '', legalStatus: '', orgEmail: '', orgPhoneCountry: 'Cameroon', orgPhone: '', website: '',
+        contactFirstName: '', contactLastName: '', contactRole: '', contactEmail: '', contactPhoneCountry: 'Cameroon', contactPhone: '',
+        q1: '', q2: '', q3: '', referral: '', referralOther: '', honeypot: '',
       })
       setSectors([])
       setLegalDoc(null)
@@ -101,20 +107,20 @@ export default function NetworkJoinPage() {
       <Nav lang={lang} onToggleLang={toggleLang} />
 
       <div className="form-page-container" style={{ maxWidth: '820px', margin: '0 auto', padding: '80px 28px' }}>
-        <h1 className="form-page-h1" style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '12px' }}>
+        <h1 className="form-page-h1" style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '48px' }}>
           {p.heading}
         </h1>
-        <p className="form-page-subheading" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.75, marginBottom: '48px' }}>
-          {p.subheading}
-        </p>
 
         {status === 'success' ? (
           <div className="form-success-banner" style={{ padding: '32px', background: '#f0f7f0', borderRadius: '8px', color: '#2d7a2d', fontSize: '17px', textAlign: 'center' }}>
             {p.success}
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
             <input type="text" name="honeypot" value={form.honeypot} onChange={set('honeypot')} style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+
+            <div className="form-section-group">
+            <h2 className="form-section-heading">{p.orgSectionHeading}</h2>
 
             <div className="form-field">
               <label className="form-label">{p.labels.orgName} <span>*</span></label>
@@ -123,7 +129,12 @@ export default function NetworkJoinPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.yearEstablished} <span>*</span></label>
-              <input required className="form-input" type="number" min="1800" max="2100" value={form.yearEstablished} onChange={set('yearEstablished')} />
+              <YearField
+                value={form.yearEstablished}
+                onChange={v => { setForm(prev => ({ ...prev, yearEstablished: v })); clearErr('yearEstablished') }}
+                error={err('yearEstablished')}
+                placeholder={c.yearPlaceholder}
+              />
             </div>
 
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
@@ -160,6 +171,19 @@ export default function NetworkJoinPage() {
             </div>
 
             <div className="form-field">
+              <label className="form-label">{p.labels.teamSize} <span>*</span></label>
+              <SearchableDropdown
+                searchable={false}
+                options={ORGANIZATION_SIZE}
+                value={form.teamSize}
+                onChange={v => { setForm(prev => ({ ...prev, teamSize: v })); clearErr('teamSize') }}
+                error={err('teamSize')}
+                placeholder={c.selectPlaceholder}
+                noMatchesText={c.noMatches}
+              />
+            </div>
+
+            <div className="form-field">
               <label className="form-label">{p.labels.sector} <span>*</span></label>
               <p className="form-select-hint">{c.selectAllThatApply}</p>
               <MultiSelectDropdown
@@ -187,19 +211,20 @@ export default function NetworkJoinPage() {
             </div>
 
             <div className="form-field">
-              <label className="form-label">{p.labels.legalStatus} <span>*</span></label>
+              <label className="form-label">{p.labels.legalStatusQuestion} <span>*</span></label>
               <SearchableDropdown
                 searchable={false}
-                options={NETWORK_LEGAL_STATUS}
+                options={['yes', 'no']}
                 value={form.legalStatus}
                 onChange={v => { setForm(prev => ({ ...prev, legalStatus: v })); clearErr('legalStatus') }}
                 error={err('legalStatus')}
-                labels={legalStatusLabels}
+                labels={{ yes: c.yes, no: c.no }}
                 placeholder={c.selectPlaceholder}
                 noMatchesText={c.noMatches}
               />
               {needsLegalDoc && (
                 <div style={{ marginTop: '10px' }}>
+                  <p className="form-helper-text">{p.legalDocHelperText}</p>
                   <FileUploadField
                     file={legalDoc}
                     onChange={f => { setLegalDoc(f); clearErr('legalDoc') }}
@@ -231,7 +256,15 @@ export default function NetworkJoinPage() {
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.orgPhone}</label>
-                <input className="form-input" type="tel" value={form.orgPhone} onChange={set('orgPhone')} />
+                <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '8px' }}>
+                  <CountryCodeField
+                    value={form.orgPhoneCountry}
+                    onChange={v => setForm(prev => ({ ...prev, orgPhoneCountry: v }))}
+                    lang={lang}
+                    noMatchesText={c.noMatches}
+                  />
+                  <input className="form-input" type="tel" value={form.orgPhone} onChange={set('orgPhone')} />
+                </div>
               </div>
             </div>
 
@@ -253,6 +286,12 @@ export default function NetworkJoinPage() {
               />
             </div>
 
+            </div>
+
+            <div className="form-section-group">
+            <h2 className="form-section-heading">{p.contactSectionHeading}</h2>
+            <p className="form-section-subtitle">{p.contactSectionSubtitle}</p>
+
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
                 <label className="form-label">{p.labels.contactFirstName} <span>*</span></label>
@@ -271,6 +310,18 @@ export default function NetworkJoinPage() {
 
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
+                <label className="form-label">{p.labels.contactPhone} <span>*</span></label>
+                <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '8px' }}>
+                  <CountryCodeField
+                    value={form.contactPhoneCountry}
+                    onChange={v => setForm(prev => ({ ...prev, contactPhoneCountry: v }))}
+                    lang={lang}
+                    noMatchesText={c.noMatches}
+                  />
+                  <input required className="form-input" type="tel" value={form.contactPhone} onChange={set('contactPhone')} />
+                </div>
+              </div>
+              <div className="form-field">
                 <label className="form-label">{p.labels.contactEmail} <span>*</span></label>
                 <input
                   required
@@ -282,31 +333,32 @@ export default function NetworkJoinPage() {
                 />
                 {err('contactEmail') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.emailInvalid}</p>}
               </div>
-              <div className="form-field">
-                <label className="form-label">{p.labels.contactPhone} <span>*</span></label>
-                <input required className="form-input" type="tel" value={form.contactPhone} onChange={set('contactPhone')} />
-              </div>
             </div>
 
-            <div className="form-field">
-              <label className="form-label">{p.labels.teamSize} <span>*</span></label>
-              <input required className="form-input" type="number" min="1" placeholder={p.teamSizePlaceholder} value={form.teamSize} onChange={set('teamSize')} />
             </div>
+
+            <div className="form-section-group">
+            <h2 className="form-section-heading">{p.orgProfileSectionHeading}</h2>
 
             <div className="form-field">
               <label className="form-label">{p.labels.q1} <span>*</span></label>
-              <WordCountTextarea value={form.q1} onChange={v => setForm(prev => ({ ...prev, q1: v }))} maxWords={300} wordsLabel={c.words} rows={6} required />
+              <WordCountTextarea value={form.q1} onChange={v => setForm(prev => ({ ...prev, q1: v }))} maxWords={300} wordsLabel={c.words} rows={8} required />
             </div>
 
             <div className="form-field">
               <label className="form-label">{p.labels.q2} <span>*</span></label>
-              <WordCountTextarea value={form.q2} onChange={v => setForm(prev => ({ ...prev, q2: v }))} maxWords={200} wordsLabel={c.words} rows={5} required />
+              <WordCountTextarea value={form.q2} onChange={v => setForm(prev => ({ ...prev, q2: v }))} maxWords={200} wordsLabel={c.words} rows={8} required />
             </div>
 
             <div className="form-field">
               <label className="form-label">{p.labels.q3} <span>*</span></label>
-              <WordCountTextarea value={form.q3} onChange={v => setForm(prev => ({ ...prev, q3: v }))} maxWords={300} wordsLabel={c.words} rows={6} required />
+              <WordCountTextarea value={form.q3} onChange={v => setForm(prev => ({ ...prev, q3: v }))} maxWords={300} wordsLabel={c.words} rows={8} required />
             </div>
+
+            </div>
+
+            <div className="form-section-group">
+            <h2 className="form-section-heading">{p.additionalInfoHeading}</h2>
 
             <div className="form-field">
               <label className="form-label">{p.labels.referral}</label>
@@ -332,6 +384,7 @@ export default function NetworkJoinPage() {
                   />
                 </div>
               )}
+            </div>
             </div>
 
             {status === 'error' && (

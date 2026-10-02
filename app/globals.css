@@ -904,6 +904,11 @@ input:-webkit-autofill:active {
   .sdd-menu { max-height: 200px; }
 }
 
+/* ── Country dial code field (phone number rows) ── */
+.ccf-wrap { width: 100%; }
+.ccf-display, .ccf-input { padding-right: 32px; text-align: left; }
+.ccf-menu { left: 0; right: auto; width: 260px; }
+
 /* ── Multi-select dropdown (sector "select all that apply" fields) ── */
 .msd-wrap { position: relative; width: 100%; }
 .msd-display { min-height: 17px; cursor: pointer; }
@@ -1004,6 +1009,7 @@ input:-webkit-autofill:active {
 .dtf-header-btn:hover { background: rgba(10,17,40,0.06); }
 .dtf-header-btn-active { background: rgba(10,17,40,0.08); }
 .dtf-header-btn-active:hover { background: rgba(10,17,40,0.08); }
+.dtf-header-label { font-family: inherit; font-size: 14.5px; font-weight: 600; color: #0A1128; padding: 4px 8px; }
 .dtf-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); margin-bottom: 4px; }
 .dtf-weekday { text-align: center; font-size: 11.5px; color: #8A8A8A; font-weight: 600; padding: 4px 0; }
 .dtf-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
@@ -1126,6 +1132,7 @@ input:-webkit-autofill:active {
 @media (min-width: 768px) and (max-width: 1024px) {
   .msd-chip { font-size: 13px !important; }
   .dtf-header-btn { font-size: 14px !important; }
+  .dtf-header-label { font-size: 14px !important; }
   .dtf-day { font-size: 13px !important; }
   .dtf-month-cell { font-size: 13px !important; }
   .fuf-choose-btn { font-size: 14px !important; }
@@ -1135,6 +1142,7 @@ input:-webkit-autofill:active {
 @media (max-width: 767px) {
   .msd-chip { font-size: 12.5px !important; }
   .dtf-header-btn { font-size: 13.5px !important; }
+  .dtf-header-label { font-size: 13.5px !important; }
   .dtf-day { font-size: 12.5px !important; }
   .dtf-month-cell { font-size: 12.5px !important; }
   .fuf-choose-btn { font-size: 13.5px !important; }
@@ -1144,6 +1152,7 @@ input:-webkit-autofill:active {
 @media (max-width: 480px) {
   .msd-chip { font-size: 12px !important; }
   .dtf-header-btn { font-size: 13px !important; }
+  .dtf-header-label { font-size: 13px !important; }
   .dtf-day { font-size: 12px !important; }
   .dtf-month-cell { font-size: 12px !important; }
   .fuf-choose-btn { font-size: 13px !important; padding: 10px 14px; }
@@ -3136,6 +3145,23 @@ input:-webkit-autofill:active {
   padding: 0;
 }
 
+.ip-rich-list {
+  font-size: 18px;
+  color: #4A4A4A;
+  line-height: 1.85;
+  margin: 10px 0 0;
+  padding: 0 0 0 20px;
+  list-style: disc;
+}
+
+.ip-rich-list li {
+  margin-bottom: 6px;
+}
+
+.ip-rich-list li:last-child {
+  margin-bottom: 0;
+}
+
 /* Key dates */
 .ip-dates-list {
   list-style: none;
@@ -3475,6 +3501,7 @@ input:-webkit-autofill:active {
   .ip-section-body { font-size: 17px !important; }
   .ip-rich-label { font-size: 17px !important; }
   .ip-rich-text { font-size: 17px !important; }
+  .ip-rich-list { font-size: 17px !important; }
   .ip-dates-label { font-size: 17px !important; }
   .ip-dates-val { font-size: 17px !important; }
   .ip-batch-link { font-size: 18px !important; }
@@ -3525,6 +3552,7 @@ input:-webkit-autofill:active {
   .ip-section-body { font-size: 16px !important; }
   .ip-rich-label { font-size: 16px !important; }
   .ip-rich-text { font-size: 16px !important; }
+  .ip-rich-list { font-size: 16px !important; }
   .ip-dates-label { font-size: 16px !important; }
   .ip-dates-val { font-size: 16px !important; }
   .ip-batch-link { font-size: 17px !important; }
@@ -3568,6 +3596,7 @@ input:-webkit-autofill:active {
   .ip-section-body { font-size: 15px !important; }
   .ip-rich-label { font-size: 15px !important; }
   .ip-rich-text { font-size: 15px !important; }
+  .ip-rich-list { font-size: 15px !important; }
   .ip-dates-label { font-size: 15px !important; }
   .ip-dates-val { font-size: 15px !important; }
   .ip-batch-link { font-size: 16px !important; }

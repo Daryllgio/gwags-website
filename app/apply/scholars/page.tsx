@@ -7,7 +7,9 @@ import Footer from '@/components/Footer'
 import WordCountTextarea from '@/components/WordCountTextarea'
 import FileUploadField from '@/components/FileUploadField'
 import SearchableDropdown from '@/components/SearchableDropdown'
+import CountryCodeField from '@/components/CountryCodeField'
 import { YEAR_OF_STUDY, YEAR_OF_STUDY_LABELS_FR, SCHOLARS_REFERRAL, SCHOLARS_REFERRAL_LABELS_FR } from '@/lib/formOptions'
+import { getDialCode } from '@/lib/locations'
 
 const NAVY = '#0A1128'
 const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024
@@ -19,7 +21,7 @@ export default function ScholarsApplicationPage() {
   const c = t[lang].common
 
   const [form, setForm] = useState({
-    firstName: '', lastName: '', phone: '', email: '',
+    firstName: '', lastName: '', phoneCountry: 'Cameroon', phone: '', email: '',
     university: '', fieldOfStudy: '', yearOfStudy: '',
     writtenResponse: '', referral: '', referralOther: '', honeypot: '',
   })
@@ -31,6 +33,8 @@ export default function ScholarsApplicationPage() {
   const [transcriptError, setTranscriptError] = useState(false)
   const [referralError, setReferralError] = useState(false)
   const [referralOtherError, setReferralOtherError] = useState(false)
+  const [ambassadorCommitment, setAmbassadorCommitment] = useState(false)
+  const [ambassadorError, setAmbassadorError] = useState(false)
   const submittingRef = useRef(false)
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
@@ -51,6 +55,7 @@ export default function ScholarsApplicationPage() {
     if (!transcript) { setTranscriptError(true); hasError = true } else setTranscriptError(false)
     if (!form.referral) { setReferralError(true); hasError = true } else setReferralError(false)
     if (form.referral === 'Other' && !form.referralOther.trim()) { setReferralOtherError(true); hasError = true } else setReferralOtherError(false)
+    if (!ambassadorCommitment) { setAmbassadorError(true); hasError = true } else setAmbassadorError(false)
     if (hasError) return
 
     submittingRef.current = true
@@ -58,6 +63,7 @@ export default function ScholarsApplicationPage() {
     try {
       const fd = new FormData()
       Object.entries(form).forEach(([k, v]) => fd.append(k, v))
+      fd.set('phone', `${getDialCode(form.phoneCountry)} ${form.phone}`.trim())
       fd.append('lang', lang)
       fd.append('idempotencyKey', idempotencyKey)
       if (transcript) fd.append('transcript', transcript)
@@ -65,8 +71,9 @@ export default function ScholarsApplicationPage() {
       const res = await fetch('/api/apply/scholars', { method: 'POST', body: fd })
       if (!res.ok) throw new Error()
       setStatus('success')
-      setForm({ firstName: '', lastName: '', phone: '', email: '', university: '', fieldOfStudy: '', yearOfStudy: '', writtenResponse: '', referral: '', referralOther: '', honeypot: '' })
+      setForm({ firstName: '', lastName: '', phoneCountry: 'Cameroon', phone: '', email: '', university: '', fieldOfStudy: '', yearOfStudy: '', writtenResponse: '', referral: '', referralOther: '', honeypot: '' })
       setTranscript(null)
+      setAmbassadorCommitment(false)
     } catch {
       setStatus('error')
     } finally {
@@ -105,7 +112,15 @@ export default function ScholarsApplicationPage() {
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
                 <label className="form-label">{p.labels.phone} <span>*</span></label>
-                <input required className="form-input" type="tel" value={form.phone} onChange={set('phone')} />
+                <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '8px' }}>
+                  <CountryCodeField
+                    value={form.phoneCountry}
+                    onChange={v => setForm(prev => ({ ...prev, phoneCountry: v }))}
+                    lang={lang}
+                    noMatchesText={c.noMatches}
+                  />
+                  <input required className="form-input" type="tel" value={form.phone} onChange={set('phone')} />
+                </div>
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.email} <span>*</span></label>
@@ -154,7 +169,7 @@ export default function ScholarsApplicationPage() {
                 onChange={v => setForm(prev => ({ ...prev, writtenResponse: v }))}
                 placeholder={p.writtenResponsePlaceholder}
                 wordsLabel={c.words}
-                rows={7}
+                rows={8}
                 required
               />
             </div>
@@ -204,6 +219,22 @@ export default function ScholarsApplicationPage() {
                   {referralOtherError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{c.otherSpecifyRequired}</p>}
                 </div>
               )}
+            </div>
+
+            <div className="form-field">
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                <input
+                  type="checkbox"
+                  id="ambassadorCommitment"
+                  checked={ambassadorCommitment}
+                  onChange={e => { setAmbassadorCommitment(e.target.checked); setAmbassadorError(false) }}
+                  style={{ marginTop: '3px', width: '16px', height: '16px', flexShrink: 0, cursor: 'pointer', accentColor: NAVY }}
+                />
+                <label htmlFor="ambassadorCommitment" className="form-label" style={{ fontWeight: 400, cursor: 'pointer', lineHeight: 1.5 }}>
+                  {p.ambassadorCommitment}
+                </label>
+              </div>
+              {ambassadorError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.ambassadorCommitmentRequired}</p>}
             </div>
 
             {status === 'error' && (

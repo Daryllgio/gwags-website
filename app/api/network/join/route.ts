@@ -95,8 +95,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid organization email address' }, { status: 400 })
     }
     const yearEstablishedNum = parseInt(yearEstablished, 10)
-    const teamSizeNum = parseInt(teamSize, 10)
-    if (!Number.isFinite(yearEstablishedNum) || !Number.isFinite(teamSizeNum)) {
+    if (!Number.isFinite(yearEstablishedNum)) {
       return NextResponse.json({ error: 'Invalid numeric field' }, { status: 400 })
     }
 
@@ -107,7 +106,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: true, referenceId: existing.referenceId })
     }
 
-    const needsLegalDoc = legalStatus === 'Registered nonprofit' || legalStatus === 'Other'
+    const needsLegalDoc = legalStatus === 'yes'
     let legalDocFile: File | null = null
     let legalDocPathname = ''
     if (needsLegalDoc) {
@@ -157,7 +156,7 @@ export async function POST(req: NextRequest) {
             orgPhone: orgPhone || null,
             website: website || null,
             contactFirstName, contactLastName, contactRole, contactEmail, contactPhone,
-            teamSize: teamSizeNum,
+            teamSize,
             q1, q2, q3,
             referral: referral || null,
             referralOther: referralOther || null,
@@ -203,7 +202,7 @@ Country: ${country}
 Region/State: ${region}
 City: ${city}
 Sector(s): ${sectorDisplay}
-Legal status: ${legalStatus}
+Holds legal status: ${legalStatus === 'yes' ? 'Yes' : 'No'}
 Organization email: ${orgEmail || 'Not provided'}
 Organization phone: ${orgPhone || 'Not provided'}
 Website: ${website || 'Not provided'}
@@ -213,7 +212,7 @@ ${socialDisplay}
 Contact: ${contactFirstName} ${contactLastName} (${contactRole})
 Contact email: ${contactEmail}
 Contact phone: ${contactPhone}
-Number of team members: ${teamSize}
+Organization size: ${teamSize}
 
 Mission and core activities:
 ${q1}
@@ -238,7 +237,7 @@ Submitted: ${timestamp}`,
 <p><strong>Region/State:</strong> ${escapeHtml(region)}</p>
 <p><strong>City:</strong> ${escapeHtml(city)}</p>
 <p><strong>Sector(s):</strong> ${escapeHtml(sectorDisplay)}</p>
-<p><strong>Legal status:</strong> ${escapeHtml(legalStatus)}</p>
+<p><strong>Holds legal status:</strong> ${legalStatus === 'yes' ? 'Yes' : 'No'}</p>
 <p><strong>Organization email:</strong> ${escapeHtml(orgEmail || 'Not provided')}</p>
 <p><strong>Organization phone:</strong> ${escapeHtml(orgPhone || 'Not provided')}</p>
 <p><strong>Website:</strong> ${escapeHtml(website || 'Not provided')}</p>
@@ -247,7 +246,7 @@ Submitted: ${timestamp}`,
 <p><strong>Contact:</strong> ${escapeHtml(contactFirstName)} ${escapeHtml(contactLastName)} (${escapeHtml(contactRole)})</p>
 <p><strong>Contact email:</strong> ${escapeHtml(contactEmail)}</p>
 <p><strong>Contact phone:</strong> ${escapeHtml(contactPhone)}</p>
-<p><strong>Number of team members:</strong> ${escapeHtml(teamSize)}</p>
+<p><strong>Organization size:</strong> ${escapeHtml(teamSize)}</p>
 <hr />
 <p><strong>Mission and core activities:</strong></p><p>${escapeHtml(q1).replace(/\n/g, '<br>')}</p>
 <p><strong>Communities/populations served:</strong></p><p>${escapeHtml(q2).replace(/\n/g, '<br>')}</p>

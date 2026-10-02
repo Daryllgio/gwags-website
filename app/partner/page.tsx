@@ -7,8 +7,10 @@ import Footer from '@/components/Footer'
 import SearchableDropdown from '@/components/SearchableDropdown'
 import MultiSelectDropdown from '@/components/MultiSelectDropdown'
 import RegionStateField from '@/components/RegionStateField'
+import CountryCodeField from '@/components/CountryCodeField'
 import SocialMediaRows, { SocialRow } from '@/components/SocialMediaRows'
 import { COUNTRIES, COUNTRY_LABELS_FR, SECTORS, SECTOR_LABELS_FR } from '@/lib/countries'
+import { getDialCode } from '@/lib/locations'
 
 const NAVY = '#0A1128'
 const MAX_DESC = 300
@@ -20,8 +22,8 @@ export default function PartnerPage() {
   const c = t[lang].common
 
   const [form, setForm] = useState({
-    contactName: '', contactEmail: '', contactPhone: '',
-    orgName: '', orgEmail: '', orgPhone: '',
+    contactFirstName: '', contactLastName: '', contactRole: '', contactEmail: '', contactPhoneCountry: 'Cameroon', contactPhone: '',
+    orgName: '', orgEmail: '', orgPhoneCountry: 'Cameroon', orgPhone: '',
     website: '', country: '', region: '', city: '', sectorOther: '',
     orgDesc: '', message: '', honeypot: '',
   })
@@ -60,6 +62,8 @@ export default function PartnerPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...form,
+          contactPhone: `${getDialCode(form.contactPhoneCountry)} ${form.contactPhone}`.trim(),
+          orgPhone: form.orgPhone ? `${getDialCode(form.orgPhoneCountry)} ${form.orgPhone}`.trim() : '',
           lang,
           idempotencyKey,
           sectors,
@@ -68,7 +72,7 @@ export default function PartnerPage() {
       })
       if (!res.ok) throw new Error()
       setStatus('success')
-      setForm({ contactName: '', contactEmail: '', contactPhone: '', orgName: '', orgEmail: '', orgPhone: '', website: '', country: '', region: '', city: '', sectorOther: '', orgDesc: '', message: '', honeypot: '' })
+      setForm({ contactFirstName: '', contactLastName: '', contactRole: '', contactEmail: '', contactPhoneCountry: 'Cameroon', contactPhone: '', orgName: '', orgEmail: '', orgPhoneCountry: 'Cameroon', orgPhone: '', website: '', country: '', region: '', city: '', sectorOther: '', orgDesc: '', message: '', honeypot: '' })
       setSectors([])
       setSocialRows([{ platform: '', url: '' }])
     } catch {
@@ -81,30 +85,55 @@ export default function PartnerPage() {
       <Nav lang={lang} onToggleLang={toggleLang} />
 
       <div className="form-page-container" style={{ maxWidth: '820px', margin: '0 auto', padding: '80px 28px' }}>
-        <h1 className="form-page-h1" style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '12px' }}>
+        <h1 className="form-page-h1" style={{ color: NAVY, fontSize: '36px', fontWeight: 400, fontFamily: 'Georgia, serif', lineHeight: 1.2, marginBottom: '48px' }}>
           {p.heading}
         </h1>
-        <p className="form-page-subheading" style={{ color: '#4A4A4A', fontSize: '18px', lineHeight: 1.75, marginBottom: '48px' }}>
-          {p.subheading}
-        </p>
 
         {status === 'success' ? (
           <div className="form-success-banner" style={{ padding: '32px', background: '#f0f7f0', borderRadius: '8px', color: '#2d7a2d', fontSize: '17px', textAlign: 'center' }}>
             {p.success}
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
             {/* Honeypot */}
             <input type="text" name="honeypot" value={form.honeypot} onChange={set('honeypot')} style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
-            {/* Contact Person Name */}
-            <div className="form-field">
-              <label className="form-label">{p.labels.contactName} <span>*</span></label>
-              <input required className="form-input" type="text" value={form.contactName} onChange={set('contactName')} />
+            <div className="form-section-group">
+            <h2 className="form-section-heading">{p.contactSectionHeading}</h2>
+            <p className="form-section-subtitle">{p.contactSectionSubtitle}</p>
+
+            {/* First name + Last name */}
+            <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div className="form-field">
+                <label className="form-label">{p.labels.contactFirstName} <span>*</span></label>
+                <input required className="form-input" type="text" value={form.contactFirstName} onChange={set('contactFirstName')} />
+              </div>
+              <div className="form-field">
+                <label className="form-label">{p.labels.contactLastName} <span>*</span></label>
+                <input required className="form-input" type="text" value={form.contactLastName} onChange={set('contactLastName')} />
+              </div>
             </div>
 
-            {/* Contact Person Email + Phone */}
+            {/* Role */}
+            <div className="form-field">
+              <label className="form-label">{p.labels.contactRole} <span>*</span></label>
+              <input required className="form-input" type="text" value={form.contactRole} onChange={set('contactRole')} />
+            </div>
+
+            {/* Phone + Email */}
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div className="form-field">
+                <label className="form-label">{p.labels.contactPhone} <span>*</span></label>
+                <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '8px' }}>
+                  <CountryCodeField
+                    value={form.contactPhoneCountry}
+                    onChange={v => setForm(prev => ({ ...prev, contactPhoneCountry: v }))}
+                    lang={lang}
+                    noMatchesText={c.noMatches}
+                  />
+                  <input required className="form-input" type="tel" value={form.contactPhone} onChange={set('contactPhone')} />
+                </div>
+              </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.contactEmail} <span>*</span></label>
                 <input
@@ -117,11 +146,12 @@ export default function PartnerPage() {
                 />
                 {err('contactEmail') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.emailInvalid}</p>}
               </div>
-              <div className="form-field">
-                <label className="form-label">{p.labels.contactPhone} <span>*</span></label>
-                <input required className="form-input" type="tel" value={form.contactPhone} onChange={set('contactPhone')} />
-              </div>
             </div>
+
+            </div>
+
+            <div className="form-section-group">
+            <h2 className="form-section-heading">{p.orgSectionHeading}</h2>
 
             {/* Org Name */}
             <div className="form-field">
@@ -145,7 +175,15 @@ export default function PartnerPage() {
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.orgPhone}</label>
-                <input className="form-input" type="tel" placeholder={p.phonePlaceholder} value={form.orgPhone} onChange={set('orgPhone')} />
+                <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '8px' }}>
+                  <CountryCodeField
+                    value={form.orgPhoneCountry}
+                    onChange={v => setForm(prev => ({ ...prev, orgPhoneCountry: v }))}
+                    lang={lang}
+                    noMatchesText={c.noMatches}
+                  />
+                  <input className="form-input" type="tel" placeholder={p.phonePlaceholder} value={form.orgPhone} onChange={set('orgPhone')} />
+                </div>
               </div>
             </div>
 
@@ -249,6 +287,11 @@ export default function PartnerPage() {
               <p className="form-char-count">{form.orgDesc.length}/{MAX_DESC}</p>
             </div>
 
+            </div>
+
+            <div className="form-section-group">
+            <h2 className="form-section-heading">{p.interestSectionHeading}</h2>
+
             {/* Message */}
             <div className="form-field">
               <label className="form-label">{p.labels.message} <span>*</span></label>
@@ -261,6 +304,7 @@ export default function PartnerPage() {
                 rows={6}
               />
               <p className="form-char-count">{form.message.length}/{MAX_MSG}</p>
+            </div>
             </div>
 
             {status === 'error' && (
