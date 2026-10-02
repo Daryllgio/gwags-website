@@ -1,0 +1,1 @@
+ALTER TABLE "network_affiliation_applications" ALTER COLUMN "team_size" SET DATA TYPE text;

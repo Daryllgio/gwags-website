@@ -22,6 +22,20 @@
       "when": 1790822076828,
       "tag": "0002_classy_swordsman",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1790909251100,
+      "tag": "0003_lush_blacklash",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1790995651000,
+      "tag": "0004_fuzzy_beacon",
+      "breakpoints": true
     }
   ]
 }

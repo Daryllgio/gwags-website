@@ -114,7 +114,7 @@ export const networkAffiliationApplications = pgTable('network_affiliation_appli
   contactRole: text('contact_role').notNull(),
   contactEmail: text('contact_email').notNull(),
   contactPhone: text('contact_phone').notNull(),
-  teamSize: integer('team_size').notNull(),
+  teamSize: text('team_size').notNull(),
   q1: text('q1').notNull(),
   q2: text('q2').notNull(),
   q3: text('q3').notNull(),
@@ -124,7 +124,9 @@ export const networkAffiliationApplications = pgTable('network_affiliation_appli
 
 export const partnershipSubmissions = pgTable('partnership_submissions', {
   submissionId: uuid('submission_id').primaryKey().references(() => submissions.id, { onDelete: 'cascade' }),
-  contactName: text('contact_name').notNull(),
+  contactFirstName: text('contact_first_name').notNull(),
+  contactLastName: text('contact_last_name').notNull(),
+  contactRole: text('contact_role').notNull(),
   contactEmail: text('contact_email').notNull(),
   contactPhone: text('contact_phone').notNull(),
   orgName: text('org_name').notNull(),
