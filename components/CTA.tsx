@@ -25,7 +25,7 @@ export default function CTA({ lang }: CTAProps) {
             {c.btn1}
           </Link>
           <Link
-            href="/get-involved"
+            href="/network/join"
             style={{ background: 'none', color: 'rgba(255,255,255,0.92)', fontSize: '16px', padding: '13px 24px', border: '1px solid rgba(255,255,255,0.85)', borderRadius: '3px', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}
           >
             {c.btn2}

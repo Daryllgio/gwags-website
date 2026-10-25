@@ -15,6 +15,7 @@ export default function HealthOutreachPage() {
         hero: p.hero,
         sections: p.sections,
         stats: p.stats,
+        programContact: true,
         carousel: p.carousel,
       }}
     />

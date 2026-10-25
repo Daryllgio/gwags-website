@@ -56,14 +56,17 @@ function getExtension(filename: string): string {
 /** Rejects on size or type. Checked here regardless of any client-side
  * validation a form may add later — the browser's reported `file.type`
  * and `file.name` are both attacker-controlled input. */
-export function validateFile(file: { name: string; size: number; type: string }):
+export function validateFile(
+  file: { name: string; size: number; type: string },
+  maxSizeBytes: number = MAX_FILE_SIZE_BYTES,
+):
   | { ok: true }
   | { ok: false; code: FormUploadErrorCode; message: string } {
-  if (file.size > MAX_FILE_SIZE_BYTES) {
+  if (file.size > maxSizeBytes) {
     return {
       ok: false,
       code: 'file_too_large',
-      message: `File exceeds the ${Math.floor(MAX_FILE_SIZE_BYTES / (1024 * 1024))}MB limit.`,
+      message: `File exceeds the ${Math.floor(maxSizeBytes / (1024 * 1024))}MB limit.`,
     }
   }
 
@@ -121,8 +124,8 @@ export function buildStoragePath(formType: string, originalFilename: string): st
 /** Validates, then uploads to the private store under a fresh, collision-proof
  * path. `formType` groups uploads by which future form produced them (e.g.
  * "scholars-application", "partner-inquiry") — pass anything stable per form. */
-export async function uploadFormFile(formType: string, file: File): Promise<UploadFormFileResult> {
-  const validation = validateFile(file)
+export async function uploadFormFile(formType: string, file: File, maxSizeBytes: number = MAX_FILE_SIZE_BYTES): Promise<UploadFormFileResult> {
+  const validation = validateFile(file, maxSizeBytes)
   if (!validation.ok) return validation
 
   const pathname = buildStoragePath(formType, file.name)

@@ -61,6 +61,9 @@ export interface InitiativePageData {
   /** Renders the apply button as a non-interactive, visibly closed state
    * instead of a link — used while the Scholars application isn't yet open. */
   applyDisabled?: boolean
+  /** When true, renders the "contact us at program@gwags.org" line near the
+   * application/information area. */
+  programContact?: boolean
   carousel: {
     heading: string
     events: CarouselEvent[]
@@ -92,6 +95,7 @@ export default function InitiativePage({ lang, onToggleLang, data }: Props) {
       )}
       {data.stats && <StatsSection stats={data.stats} />}
       {data.apply && <ApplySection label={data.apply} href={data.applyHref ?? '#'} disabled={data.applyDisabled} />}
+      {data.programContact && <ProgramContactNote lang={lang} />}
       {!data.stats && <Divider />}
       <CarouselSection carousel={data.carousel} lang={lang} />
       <Footer lang={lang} />
@@ -197,6 +201,25 @@ function StatsSection({ stats }: { stats: NonNullable<InitiativePageData['stats'
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
+
+function ProgramContactNote({ lang }: { lang: Lang }) {
+  const c = t[lang].common
+  // Wrapped in the same section/content-inner container as the content
+  // sections so it sits on the exact left edge as the section headings, and
+  // reuses `.ip-section-body` for identical body-text size/line-height/color
+  // across all breakpoints.
+  return (
+    <section className="ip-section ip-section-white ip-contact-section">
+      <div className="ip-content-inner">
+        <p className="ip-section-body">
+          {c.programContactBefore}
+          <a href="mailto:program@gwags.org" className="ip-program-contact-link">program@gwags.org</a>
+          {c.programContactAfter}
+        </p>
       </div>
     </section>
   )
