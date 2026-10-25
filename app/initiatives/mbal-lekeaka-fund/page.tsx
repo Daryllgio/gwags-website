@@ -16,6 +16,7 @@ export default function MbalLekeakaPage() {
         sections: p.sections,
         apply: p.apply,
         applyHref: '/apply/mbal-lekeaka-fund',
+        programContact: true,
         carousel: p.carousel,
       }}
     />

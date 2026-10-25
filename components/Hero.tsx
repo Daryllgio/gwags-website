@@ -35,7 +35,7 @@ export default function Hero({ lang }: HeroProps) {
 
         <div className="hero-buttons" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginTop: h.body ? '0' : '40px' }}>
           <Link
-            href="/get-involved"
+            href="/network/join"
             className="hero-btn"
             style={{ background: '#D4AF37', color: '#0A1128', fontSize: '16px', fontWeight: 500, padding: '14px 32px', border: 'none', borderRadius: '3px', cursor: 'pointer', letterSpacing: '0.06em', textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
           >

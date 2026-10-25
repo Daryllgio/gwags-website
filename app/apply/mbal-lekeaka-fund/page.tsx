@@ -168,7 +168,7 @@ export default function MbalLekeakaApplicationPage() {
                 <SearchableDropdown
                   options={COUNTRIES}
                   value={form.country}
-                  onChange={v => { setForm(prev => ({ ...prev, country: v, region: '' })); clearErr('country') }}
+                  onChange={v => { setForm(prev => ({ ...prev, country: v, region: '', city: '' })); clearErr('country') }}
                   error={err('country')}
                   labels={countryLabels}
                   placeholder={c.searchPlaceholder}
@@ -192,7 +192,15 @@ export default function MbalLekeakaApplicationPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.city} <span>*</span></label>
-              <input required className="form-input" type="text" value={form.city} onChange={set('city')} />
+              <input
+                required
+                className="form-input"
+                type="text"
+                value={form.city}
+                onChange={set('city')}
+                disabled={!form.country || !form.region}
+                placeholder={!form.country ? c.selectCountryFirst : (!form.region ? c.selectRegionFirst : undefined)}
+              />
             </div>
 
             <div className="form-field">
@@ -338,7 +346,7 @@ export default function MbalLekeakaApplicationPage() {
                 <SearchableDropdown
                   options={COUNTRIES}
                   value={form.projectCountry}
-                  onChange={v => { setForm(prev => ({ ...prev, projectCountry: v, projectRegion: '' })); clearErr('projectCountry') }}
+                  onChange={v => { setForm(prev => ({ ...prev, projectCountry: v, projectRegion: '', projectCity: '' })); clearErr('projectCountry') }}
                   error={err('projectCountry')}
                   labels={countryLabels}
                   placeholder={c.searchPlaceholder}
@@ -362,7 +370,15 @@ export default function MbalLekeakaApplicationPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.projectCity} <span>*</span></label>
-              <input required className="form-input" type="text" value={form.projectCity} onChange={set('projectCity')} />
+              <input
+                required
+                className="form-input"
+                type="text"
+                value={form.projectCity}
+                onChange={set('projectCity')}
+                disabled={!form.projectCountry || !form.projectRegion}
+                placeholder={!form.projectCountry ? c.selectCountryFirst : (!form.projectRegion ? c.selectRegionFirst : undefined)}
+              />
             </div>
 
             <div className="form-field">

@@ -5,6 +5,7 @@ const PREFIXES: Record<(typeof formTypeEnum.enumValues)[number], string> = {
   mbal_lekeaka_fund_application: 'MLF',
   network_affiliation: 'NET',
   partnership_submission: 'PTN',
+  volunteer_submission: 'VOL',
 }
 
 /** Human-readable, sortable-ish, not guaranteed globally sequential — the

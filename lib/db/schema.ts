@@ -22,6 +22,7 @@ export const formTypeEnum = pgEnum('form_type', [
   'mbal_lekeaka_fund_application',
   'network_affiliation',
   'partnership_submission',
+  'volunteer_submission',
 ])
 
 /* Common header row shared by every form type. Form-specific fields live in
@@ -142,6 +143,30 @@ export const partnershipSubmissions = pgTable('partnership_submissions', {
   message: text('message').notNull(),
 })
 
+export const volunteerSubmissions = pgTable('volunteer_submissions', {
+  submissionId: uuid('submission_id').primaryKey().references(() => submissions.id, { onDelete: 'cascade' }),
+  firstName: text('first_name').notNull(),
+  lastName: text('last_name').notNull(),
+  dateOfBirth: date('date_of_birth').notNull(),
+  gender: text('gender').notNull(),
+  email: text('email').notNull(),
+  phone: text('phone').notNull(),
+  country: text('country').notNull(),
+  region: text('region').notNull(),
+  city: text('city').notNull(),
+  currentStatus: text('current_status').notNull(),
+  currentStatusOther: text('current_status_other'),
+  fieldOrProfession: text('field_or_profession').notNull(),
+  // Small, fixed-vocabulary multi-selects — native array columns, same choice
+  // as mbal_lekeaka/network sectors (see note there).
+  languages: text('languages').array().notNull(),
+  skills: text('skills').array().notNull(),
+  skillsOther: text('skills_other'),
+  availability: text('availability').notNull(),
+  referral: text('referral').notNull(),
+  referralOther: text('referral_other'),
+})
+
 /** One row per uploaded document, for any form type. `category` is a free
  * string rather than an enum since new document kinds may be added per form
  * without a schema migration (e.g. 'academic_transcript', 'legal_status_proof',
@@ -178,6 +203,7 @@ export const submissionsRelations = relations(submissions, ({ one, many }) => ({
   mbalLekeakaFundApplication: one(mbalLekeakaFundApplications, { fields: [submissions.id], references: [mbalLekeakaFundApplications.submissionId] }),
   networkAffiliationApplication: one(networkAffiliationApplications, { fields: [submissions.id], references: [networkAffiliationApplications.submissionId] }),
   partnershipSubmission: one(partnershipSubmissions, { fields: [submissions.id], references: [partnershipSubmissions.submissionId] }),
+  volunteerSubmission: one(volunteerSubmissions, { fields: [submissions.id], references: [volunteerSubmissions.submissionId] }),
   documents: many(submissionDocuments),
   socialLinks: many(submissionSocialLinks),
 }))
@@ -196,6 +222,10 @@ export const networkAffiliationApplicationsRelations = relations(networkAffiliat
 
 export const partnershipSubmissionsRelations = relations(partnershipSubmissions, ({ one }) => ({
   submission: one(submissions, { fields: [partnershipSubmissions.submissionId], references: [submissions.id] }),
+}))
+
+export const volunteerSubmissionsRelations = relations(volunteerSubmissions, ({ one }) => ({
+  submission: one(submissions, { fields: [volunteerSubmissions.submissionId], references: [submissions.id] }),
 }))
 
 export const submissionDocumentsRelations = relations(submissionDocuments, ({ one }) => ({

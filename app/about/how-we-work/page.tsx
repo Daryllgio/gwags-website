@@ -224,7 +224,7 @@ function CTASection({ lang }: { lang: Lang }) {
       </p>
       <div className="hww-cta-buttons" style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
         <Link href="/partner" className="hww-cta-btn-dark">{p.btn1}</Link>
-        <Link href="/get-involved" className="hww-cta-btn-outline">{p.btn2}</Link>
+        <Link href="/network/join" className="hww-cta-btn-outline">{p.btn2}</Link>
       </div>
     </section>
   )

@@ -143,7 +143,7 @@ export default function NetworkJoinPage() {
                 <SearchableDropdown
                   options={COUNTRIES}
                   value={form.country}
-                  onChange={v => { setForm(prev => ({ ...prev, country: v, region: '' })); clearErr('country') }}
+                  onChange={v => { setForm(prev => ({ ...prev, country: v, region: '', city: '' })); clearErr('country') }}
                   error={err('country')}
                   labels={countryLabels}
                   placeholder={c.searchPlaceholder}
@@ -167,7 +167,15 @@ export default function NetworkJoinPage() {
 
             <div className="form-field">
               <label className="form-label">{p.labels.city} <span>*</span></label>
-              <input required className="form-input" type="text" value={form.city} onChange={set('city')} />
+              <input
+                required
+                className="form-input"
+                type="text"
+                value={form.city}
+                onChange={set('city')}
+                disabled={!form.country || !form.region}
+                placeholder={!form.country ? c.selectCountryFirst : (!form.region ? c.selectRegionFirst : undefined)}
+              />
             </div>
 
             <div className="form-field">

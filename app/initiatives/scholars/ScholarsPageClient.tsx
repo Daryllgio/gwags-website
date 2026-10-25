@@ -18,6 +18,7 @@ export default function ScholarsPageClient({ applicationOpen }: { applicationOpe
         apply: p.apply,
         applyHref: '/apply/scholars',
         applyDisabled: !applicationOpen,
+        programContact: true,
         carousel: p.carousel,
       }}
     />

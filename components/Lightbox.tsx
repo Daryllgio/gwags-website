@@ -1,8 +1,14 @@
 'use client'
-import { useEffect, useState, useRef, useCallback } from 'react'
+import { useEffect, useLayoutEffect, useState, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { useArrowPress } from '@/lib/useArrowPress'
 import { Lang, t } from '@/lib/translations'
+
+// useLayoutEffect runs synchronously before the browser paints — essential so
+// the body scroll-lock is in place before the overlay is ever shown, with no
+// flicker. It warns under SSR, so fall back to useEffect on the server (where
+// it would be a no-op anyway).
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 interface LightboxProps {
   count: number
@@ -17,29 +23,41 @@ export default function Lightbox({ count, images, openIndex, onClose, lang }: Li
   const [current, setCurrent] = useState(0)
   const [fading, setFading] = useState(false)
   const touchStartX = useRef(0)
-  const scrollYRef = useRef(0)
 
-  useEffect(() => {
-    if (openIndex !== null) {
-      setCurrent(openIndex)
-      setFading(false)
-      scrollYRef.current = window.scrollY
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${scrollYRef.current}px`
-      document.body.style.width = '100%'
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      document.body.style.overflow = ''
-      window.scrollTo(0, scrollYRef.current)
-    }
+  useIsomorphicLayoutEffect(() => {
+    if (openIndex === null) return
+
+    setCurrent(openIndex)
+    setFading(false)
+
+    // Lock the page at its exact current scroll position for as long as the
+    // viewer is open. `position: fixed` + `top: -scrollY` freezes the page
+    // without the browser losing where we were, so the underlying page cannot
+    // scroll at all while the lightbox is up (fixes the open-time scroll jump).
+    // The inner horizontal carousel keeps its own scrollLeft — it is never
+    // unmounted, so it stays on the same image.
+    const scrollY = window.scrollY
+    const { body } = document
+    body.style.position = 'fixed'
+    body.style.top = `-${scrollY}px`
+    body.style.width = '100%'
+    body.style.overflow = 'hidden'
+
+    // Restoration runs in cleanup so it fires whether the viewer closes by the
+    // prop going null OR by the component unmounting (callers conditionally
+    // render it). As a layout-effect cleanup it runs synchronously before the
+    // next paint, and we disable smooth scrolling for the restore so the page
+    // snaps back to the saved position with no visible movement.
     return () => {
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      document.body.style.overflow = ''
+      const html = document.documentElement
+      const prevBehavior = html.style.scrollBehavior
+      html.style.scrollBehavior = 'auto'
+      body.style.position = ''
+      body.style.top = ''
+      body.style.width = ''
+      body.style.overflow = ''
+      window.scrollTo(0, scrollY)
+      html.style.scrollBehavior = prevBehavior
     }
   }, [openIndex])
 

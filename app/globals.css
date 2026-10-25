@@ -734,6 +734,8 @@ input:-webkit-autofill:active {
   box-sizing: border-box;
 }
 .form-input:focus { border-color: rgba(10,17,40,0.55); background: rgba(10,17,40,0.03); }
+.form-input:disabled { opacity: 0.55; cursor: not-allowed; background: rgba(10,17,40,0.03); }
+.form-input:disabled::placeholder { color: rgba(10,17,40,0.4); }
 .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230A1128' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
 .form-textarea { resize: vertical; min-height: 120px; }
 .form-char-count { font-size: 13px; color: #8A8A8A; margin: 4px 0 0 0; text-align: right; }
@@ -3261,6 +3263,22 @@ input:-webkit-autofill:active {
   display: flex;
   justify-content: center;
 }
+/* The contact line reuses .ip-section-body for its text; only the email
+   link needs its own treatment so it reads as a clickable mailto link. */
+.ip-program-contact-link {
+  color: #0A1128;
+  font-weight: 500;
+  text-decoration: underline;
+}
+/* Gap between the contact line and the divider below it = this section's
+   bottom padding. Overridden per breakpoint with a two-class selector so it
+   beats the generic .ip-section padding without touching other sections'
+   spacing or this section's top/left edges. Ordered so the narrowest query
+   wins at small widths. */
+.ip-section.ip-contact-section { padding-bottom: 55px; }
+@media (min-width: 768px) and (max-width: 1024px) { .ip-section.ip-contact-section { padding-bottom: 50px; } }
+@media (max-width: 767px) { .ip-section.ip-contact-section { padding-bottom: 45px; } }
+@media (max-width: 480px) { .ip-section.ip-contact-section { padding-bottom: 35px; } }
 
 .ip-apply-btn {
   display: inline-block;

@@ -72,3 +72,75 @@ export const NETWORK_REFERRAL_LABELS_FR: Record<string, string> = {
   'Gwags team member': "Membre de l'équipe Gwags",
   'Other': 'Autre',
 }
+
+// ── Volunteer application options ──
+
+export const VOLUNTEER_GENDER = ['Woman', 'Man', 'Prefer not to say']
+
+export const VOLUNTEER_GENDER_LABELS_FR: Record<string, string> = {
+  'Woman': 'Femme',
+  'Man': 'Homme',
+  'Prefer not to say': 'Je préfère ne pas répondre',
+}
+
+export const VOLUNTEER_STATUS = ['Student', 'Professional', 'Other']
+
+export const VOLUNTEER_STATUS_LABELS_FR: Record<string, string> = {
+  'Student': 'Étudiant(e)',
+  'Professional': 'Professionnel(le)',
+  'Other': 'Autre',
+}
+
+export const VOLUNTEER_AVAILABILITY = ['5 to 10 hours', '11 to 15 hours', '16 to 20 hours', 'More than 20 hours']
+
+export const VOLUNTEER_AVAILABILITY_LABELS_FR: Record<string, string> = {
+  '5 to 10 hours': '5 à 10 heures',
+  '11 to 15 hours': '11 à 15 heures',
+  '16 to 20 hours': '16 à 20 heures',
+  'More than 20 hours': 'Plus de 20 heures',
+}
+
+export const VOLUNTEER_REFERRAL = ['Social media', 'University', 'Friend or family', 'Gwags website', 'Partner organization', 'Other']
+
+export const VOLUNTEER_REFERRAL_LABELS_FR: Record<string, string> = {
+  'Social media': 'Réseaux sociaux',
+  'University': 'Université',
+  'Friend or family': 'Proche',
+  'Gwags website': 'Site web de Gwags',
+  'Partner organization': 'Organisation partenaire',
+  'Other': 'Autre',
+}
+
+// Flat alphabetical list of volunteer skills (English canonical value →
+// French label), with "Other" pinned last so its reveal-a-text-field
+// behavior reads naturally at the bottom of the list.
+export const VOLUNTEER_SKILLS = [
+  'Accounting and finance', 'Community outreach', 'Content writing', 'Curriculum development',
+  'Event planning', 'Fundraising', 'Grant writing', 'Graphic design', 'Human resources',
+  'Legal research', 'Photography', 'Policy analysis', 'Project management', 'Public health',
+  'Public speaking', 'Social media management', 'UX/UI design', 'Video production and editing',
+  'Web development', 'Other',
+]
+
+export const VOLUNTEER_SKILL_LABELS_FR: Record<string, string> = {
+  'Accounting and finance': 'Comptabilité et finance',
+  'Community outreach': 'Mobilisation communautaire',
+  'Content writing': 'Rédaction de contenu',
+  'Curriculum development': 'Conception de programmes éducatifs',
+  'Event planning': "Organisation d'événements",
+  'Fundraising': 'Collecte de fonds',
+  'Grant writing': 'Rédaction de demandes de subvention',
+  'Graphic design': 'Design graphique',
+  'Human resources': 'Ressources humaines',
+  'Legal research': 'Recherche juridique',
+  'Photography': 'Photographie',
+  'Policy analysis': 'Analyse de politiques publiques',
+  'Project management': 'Gestion de projet',
+  'Public health': 'Santé publique',
+  'Public speaking': 'Prise de parole en public',
+  'Social media management': 'Gestion des réseaux sociaux',
+  'UX/UI design': 'Conception UX/UI',
+  'Video production and editing': 'Production et montage vidéo',
+  'Web development': 'Développement web',
+  'Other': 'Autre',
+}

@@ -122,7 +122,7 @@ export default function ContactPage() {
                 <SearchableDropdown
                   options={COUNTRIES}
                   value={form.country}
-                  onChange={v => { setForm(prev => ({ ...prev, country: v })); setCountryError(false) }}
+                  onChange={v => { setForm(prev => ({ ...prev, country: v, city: '' })); setCountryError(false) }}
                   error={countryError}
                   labels={lang === 'fr' ? COUNTRY_LABELS_FR : undefined}
                   placeholder={c.searchPlaceholder}
@@ -132,7 +132,15 @@ export default function ContactPage() {
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.city} <span>*</span></label>
-                <input required className="form-input" type="text" value={form.city} onChange={set('city')} />
+                <input
+                  required
+                  className="form-input"
+                  type="text"
+                  value={form.city}
+                  onChange={set('city')}
+                  disabled={!form.country}
+                  placeholder={!form.country ? c.selectCountryFirst : undefined}
+                />
               </div>
             </div>
 
