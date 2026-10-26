@@ -59,18 +59,35 @@ function reminderEmail(lang: 'en' | 'fr', donateUrl: string): { subject: string;
      marker the webhook uses to distinguish one-time donations.
 
    Checking PaymentIntents (not Charges) because a Charge's `invoice` field is
-   not a reliable one-time/subscription discriminator here. Subscriptions are
-   intentionally never queried: an existing recurring donation must never
-   auto-suppress. Any Stripe error fails open (send anyway) so we never
-   silently drop a legitimate reminder. */
+   not a reliable one-time/subscription discriminator here.
+
+   A NEW monthly donation started after the request also suppresses: a
+   subscription whose `created` is after the request AND whose status is
+   'active' (a `default_incomplete` subscription only becomes 'active' once its
+   first payment succeeds). This is NOT a blanket active-subscription check —
+   it is scoped to subscriptions created after the reminder, so:
+     - a pre-existing subscription (created before the request) never suppresses;
+     - an automatic renewal never suppresses (renewals don't create a new
+       subscription, so `created` is unchanged);
+     - a failed/incomplete first payment leaves status 'incomplete', so it
+       never suppresses.
+
+   Any Stripe error fails open (send anyway) so we never silently drop a
+   legitimate reminder. */
 async function hasAlreadyDonated(email: string, since: Date): Promise<boolean> {
   try {
     const stripe = getStripe()
     const sinceUnix = Math.floor(since.getTime() / 1000)
     const customers = await stripe.customers.list({ email, limit: 20 })
     for (const customer of customers.data) {
+      // New one-time donation completed after the request.
       const intents = await stripe.paymentIntents.list({ customer: customer.id, created: { gt: sinceUnix }, limit: 20 })
       if (intents.data.some(pi => pi.status === 'succeeded' && pi.description === ONE_TIME_DONATION_DESCRIPTION)) return true
+
+      // New monthly donation established after the request whose initial
+      // payment succeeded (status becomes 'active' only then).
+      const subs = await stripe.subscriptions.list({ customer: customer.id, status: 'active', created: { gt: sinceUnix }, limit: 20 })
+      if (subs.data.length > 0) return true
     }
     return false
   } catch (err) {

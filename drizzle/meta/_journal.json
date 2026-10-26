@@ -57,6 +57,13 @@
       "when": 1792986799982,
       "tag": "0007_gray_gunslinger",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1793032000989,
+      "tag": "0008_dry_karma",
+      "breakpoints": true
     }
   ]
 }

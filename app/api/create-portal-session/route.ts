@@ -75,28 +75,33 @@ export async function POST(req: NextRequest) {
 
     const customerId = await findActiveSubscriptionCustomerId(trimmedEmail)
 
-    if (customerId) {
-      const token = createPortalAccessToken(customerId)
-      const accessUrl = `${req.nextUrl.origin}/api/portal-access?token=${encodeURIComponent(token)}`
-
-      const resend = getResendClient()
-      const { error } = await resend.emails.send({
-        from: `"Gwags Global Impact Institution" <${getFromEmail()}>`,
-        to: trimmedEmail,
-        subject: 'Manage your recurring donation — Gwags',
-        html: portalRequestEmailHtml(accessUrl),
-      })
-      if (error) console.error('create-portal-session: failed to send secure link email:', error)
-    } else {
-      // No enumeration via response timing: do comparable async work on the
-      // "no match" path so this branch doesn't consistently return faster
-      // than the "found a customer, sent an email" branch above.
-      await new Promise(resolve => setTimeout(resolve, 250))
+    // Explicit eligibility feedback (intentional product decision — not the
+    // prior anti-enumeration neutral message). Rate limiting above remains the
+    // abuse protection.
+    if (!customerId) {
+      // Scenario B: no eligible monthly donation — tell the donor immediately.
+      return NextResponse.json({ status: 'not_found', message: d.manageNotFound })
     }
 
-    // Always the same shape/status regardless of whether a match was found —
-    // the requester must not be able to tell donor-existence from the response.
-    return NextResponse.json({ success: true, message: d.manageSent })
+    const token = createPortalAccessToken(customerId)
+    const accessUrl = `${req.nextUrl.origin}/api/portal-access?token=${encodeURIComponent(token)}`
+
+    const resend = getResendClient()
+    const { error } = await resend.emails.send({
+      from: `"Gwags Global Impact Institution" <${getFromEmail()}>`,
+      to: trimmedEmail,
+      subject: 'Manage your recurring donation — Gwags',
+      html: portalRequestEmailHtml(accessUrl),
+    })
+
+    if (error) {
+      // Scenario C: eligible, but delivery failed — do NOT claim it was sent.
+      console.error('create-portal-session: failed to send secure link email:', error)
+      return NextResponse.json({ status: 'email_failed', error: d.manageEmailFailed }, { status: 502 })
+    }
+
+    // Scenario A: eligible subscription found AND email accepted by Resend.
+    return NextResponse.json({ status: 'sent', message: d.manageFoundSent })
   } catch (err) {
     console.error('create-portal-session error:', err)
     return NextResponse.json({ error: d.genericError }, { status: 500 })

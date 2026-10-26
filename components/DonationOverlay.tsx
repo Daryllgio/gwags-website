@@ -446,7 +446,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
      overflow the desktop layout's pinned-button sizing). */
   const [manageMode, setManageMode] = useState(initialManage)
   const [manageEmail, setManageEmail] = useState('')
-  const [manageStatus, setManageStatus] = useState<'idle' | 'loading' | 'sent'>('idle')
+  const [manageStatus, setManageStatus] = useState<'idle' | 'loading' | 'sent' | 'notfound'>('idle')
   const [manageError, setManageError] = useState<string | null>(null)
 
   /* CHANGE 9: Google Pay / Apple Pay via Stripe Payment Request API */
@@ -762,10 +762,18 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
       })
       const data = await res.json()
       if (!res.ok) {
+        // Includes Scenario C (eligible but email delivery failed, HTTP 502):
+        // surface the error and return to the form so the donor can retry.
         setManageError(data.error || d.genericError)
         setManageStatus('idle')
         return
       }
+      if (data.status === 'not_found') {
+        // Scenario B: no eligible monthly donation — immediate, explicit.
+        setManageStatus('notfound')
+        return
+      }
+      // Scenario A: found + email sent.
       setManageStatus('sent')
     } catch {
       setManageError(d.genericError)
@@ -783,7 +791,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
         <div style={{ flex: fill ? 1 : undefined, display: 'flex', flexDirection: 'column', gap: '16px', background: '#ffffff' }}>
           <StepHeader title={d.manageText} onBack={() => { setManageMode(false); setManageError(null); setManageStatus('idle') }} backLabel={c.back} />
           {manageStatus === 'sent' ? (
-            <p className="donate-text-sm" style={{ color: SUCCESS_GREEN, fontSize: '14px', lineHeight: 1.6, margin: 0 }}>{d.manageSent}</p>
+            <p className="donate-text-sm" style={{ color: SUCCESS_GREEN, fontSize: '14px', lineHeight: 1.6, margin: 0 }}>{d.manageFoundSent}</p>
           ) : (
             <>
               <p className="donate-text-sm" style={{ color: NAVY, fontSize: '14px', lineHeight: 1.6, margin: 0 }}>
@@ -795,10 +803,13 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
                   className="donate-text-md"
                   type="email"
                   value={manageEmail}
-                  onChange={e => { setManageEmail(e.target.value); setManageError(null) }}
+                  onChange={e => { setManageEmail(e.target.value); setManageError(null); if (manageStatus === 'notfound') setManageStatus('idle') }}
                   style={{ ...inputStyle, border: `1.5px solid ${manageError ? ERR_RED : ORIGINAL_BORDER}` }}
                 />
                 {manageError && <p className="donate-text-xs-13" style={errStyle}>{manageError}</p>}
+                {manageStatus === 'notfound' && !manageError && (
+                  <p className="donate-text-xs-13" style={{ color: NAVY, fontSize: '13px', lineHeight: 1.5, margin: '6px 0 0' }}>{d.manageNotFound}</p>
+                )}
               </div>
               <button
                 type="button"

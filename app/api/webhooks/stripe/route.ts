@@ -39,6 +39,58 @@ function escapeHtml(str: string): string {
 const formatAmount = (cents: number) => `$${(cents / 100).toFixed(2)}`
 const formatDate = () => new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })
 
+/* Currency-aware money formatter (invoice amounts carry their own currency). */
+const formatMoney = (cents: number, currency: string) =>
+  new Intl.NumberFormat(currency.toLowerCase() === 'usd' ? 'en-US' : 'en-US', { style: 'currency', currency: currency.toUpperCase() }).format(cents / 100)
+
+/* One combined, Gwags-branded confirmation+thank-you email for a SUCCESSFUL
+   monthly payment — used for both the initial payment and every renewal, so a
+   donor receives exactly one payment-confirmation email per successful monthly
+   charge (no separate receipt + thank-you). Bilingual via the subscription's
+   stored `lang` metadata. Not a tax receipt — deliberately avoids that wording. */
+function monthlyPaymentEmail(
+  lang: 'en' | 'fr',
+  o: { amount: string; dateStr: string; reference: string; isInitial: boolean; portalUrl: string | null; name: string },
+): { subject: string; html: string } {
+  const manage = o.portalUrl
+  if (lang === 'fr') {
+    return {
+      subject: o.isInitial ? 'Merci pour votre don mensuel à Gwags' : 'Merci pour votre don mensuel — paiement confirmé',
+      html: `
+        <p>Cher/Chère ${escapeHtml(o.name)},</p>
+        <p>${o.isInitial
+          ? 'Merci de devenir donateur mensuel de Gwags Global Impact Institution.'
+          : 'Merci pour votre soutien mensuel continu à Gwags Global Impact Institution.'}</p>
+        <p>Nous confirmons que votre don mensuel a bien été traité avec succès.</p>
+        <p><strong>Montant :</strong> ${o.amount}<br>
+           <strong>Date du paiement :</strong> ${escapeHtml(o.dateStr)}<br>
+           <strong>Fréquence :</strong> Mensuel<br>
+           <strong>Référence :</strong> ${escapeHtml(o.reference)}</p>
+        ${manage ? `<p><a href="${manage}" style="color:${NAVY}; font-weight:600;">Gérer votre don mensuel</a></p>` : ''}
+        <p>Pour toute question, écrivez-nous à <a href="mailto:donate@gwags.org" style="color:${NAVY};">donate@gwags.org</a>.</p>
+        <p>Avec gratitude,<br>L'équipe Gwags</p>
+      `,
+    }
+  }
+  return {
+    subject: o.isInitial ? 'Thank you for your monthly donation to Gwags' : 'Thank you for your monthly donation — payment confirmed',
+    html: `
+      <p>Dear ${escapeHtml(o.name)},</p>
+      <p>${o.isInitial
+        ? 'Thank you for becoming a monthly donor to Gwags Global Impact Institution.'
+        : 'Thank you for your continued monthly support of Gwags Global Impact Institution.'}</p>
+      <p>This confirms your monthly donation was processed successfully.</p>
+      <p><strong>Amount:</strong> ${o.amount}<br>
+         <strong>Payment date:</strong> ${escapeHtml(o.dateStr)}<br>
+         <strong>Frequency:</strong> Monthly<br>
+         <strong>Reference:</strong> ${escapeHtml(o.reference)}</p>
+      ${manage ? `<p><a href="${manage}" style="color:${NAVY}; font-weight:600;">Manage your monthly donation</a></p>` : ''}
+      <p>If you have any questions, please reach out to us at <a href="mailto:donate@gwags.org" style="color:${NAVY};">donate@gwags.org</a>.</p>
+      <p>With gratitude,<br>The Gwags Team</p>
+    `,
+  }
+}
+
 /* Simple, readable HTML shell matching the site's navy/gold palette —
    not a marketing template, just a clean wrapper around the message body. */
 function emailShell(bodyHtml: string): string {
@@ -73,16 +125,20 @@ async function sendMail(to: string, subject: string, bodyHtml: string, fromName:
    should be rare, since Stripe only sends events for customers that genuinely
    exist), the internal notification email should still go out rather than the
    whole handler aborting silently. */
-async function retrieveCustomerSafe(customerId: string): Promise<{ email: string | null; name: string }> {
+async function retrieveCustomerSafe(customerId: string): Promise<{ email: string | null; name: string; lang: 'en' | 'fr' }> {
   try {
     const customer = await stripe.customers.retrieve(customerId)
+    if (customer.deleted) return { email: null, name: 'Anonymous donor', lang: 'en' }
     return {
-      email: !customer.deleted ? customer.email : null,
-      name: (!customer.deleted && customer.name) || 'Anonymous donor',
+      email: customer.email,
+      name: customer.name || 'Anonymous donor',
+      // Donor language is stamped onto the Customer at donation time (see
+      // create-subscription / upgrade-to-monthly) so renewal emails localize.
+      lang: customer.metadata?.lang === 'fr' ? 'fr' : 'en',
     }
   } catch (err) {
     console.error('webhook: failed to retrieve customer:', err)
-    return { email: null, name: 'Anonymous donor' }
+    return { email: null, name: 'Anonymous donor', lang: 'en' }
   }
 }
 
@@ -142,44 +198,58 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
   }
 }
 
-async function handleSubscriptionCreated(subscription: Stripe.Subscription) {
-  const customerId = typeof subscription.customer === 'string' ? subscription.customer : subscription.customer.id
-  const { email, name } = await retrieveCustomerSafe(customerId)
-  const amountCents = subscription.items.data[0]?.price.unit_amount ?? 0
-  const amount = formatAmount(amountCents)
+/* Fires for both the initial subscription payment (billing_reason
+   'subscription_create') and each successful renewal ('subscription_cycle').
+   This is the single source of truth for "a monthly donation payment
+   succeeded", so the donor gets exactly ONE combined confirmation+thank-you
+   email per successful monthly charge. It intentionally replaces the old
+   customer.subscription.created email, which fired on subscription creation
+   BEFORE the first payment was confirmed (the subscription is created
+   `default_incomplete`). The internal "new subscription" notification fires
+   only on the initial payment, now gated on real payment success. */
+async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
+  const billingReason = invoice.billing_reason
+  if (billingReason !== 'subscription_create' && billingReason !== 'subscription_cycle') return
+  const isInitial = billingReason === 'subscription_create'
 
-  const portalUrl = await getPortalUrl(customerId)
+  const customerId = typeof invoice.customer === 'string' ? invoice.customer : invoice.customer?.id
+
+  const cust = customerId ? await retrieveCustomerSafe(customerId) : { email: null as string | null, name: 'Anonymous donor', lang: 'en' as const }
+  const lang = cust.lang
+  const email = invoice.customer_email || cust.email
+  const name = invoice.customer_name || cust.name
+  const amount = formatMoney(invoice.amount_paid, invoice.currency)
+  const paidAt = invoice.status_transitions?.paid_at ? new Date(invoice.status_transitions.paid_at * 1000) : new Date()
+  const dateStr = paidAt.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', { dateStyle: 'medium' })
+  const reference = invoice.number || invoice.id
+  const portalUrl = customerId ? await getPortalUrl(customerId) : null
 
   if (email) {
-    await sendMail(
-      email,
-      'Thank you for your monthly donation to Gwags',
-      `
-        <p>Dear ${escapeHtml(name)},</p>
-        <p>Thank you for becoming a monthly donor to Gwags Global Impact Institution, with a recurring gift of <strong>${amount} / month</strong>.</p>
-        <p>Your ongoing support gives us the stability to plan ahead and sustain the programs that matter most. You'll be charged automatically each month, and you're free to manage or cancel your recurring gift at any time.</p>
-        ${portalUrl ? `<p><a href="${portalUrl}" style="color:${NAVY}; font-weight:600;">Manage your donation</a></p>` : ''}
-        <p>If you have any questions, please reach out to us at <a href="mailto:donate@gwags.org" style="color:${NAVY};">donate@gwags.org</a>.</p>
-        <p>With gratitude,<br>The Gwags Team</p>
-      `,
-      'Gwags Global Impact Institution',
-    ).catch(err => console.error('webhook: failed to send subscription thank-you email:', err))
+    const { subject, html } = monthlyPaymentEmail(lang, { amount, dateStr, reference, isInitial, portalUrl, name })
+    await sendMail(email, subject, html, 'Gwags Global Impact Institution')
+      .catch(err => console.error('webhook: failed to send monthly payment confirmation email:', err))
   }
 
-  const internalEmail = getDonationsEmail()
-  if (internalEmail) {
-    await sendMail(
-      internalEmail,
-      `New monthly subscription started — ${amount} / month`,
-      `
-        <p><strong>New monthly subscription</strong></p>
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email || 'Not provided')}</p>
-        <p><strong>Monthly amount:</strong> ${amount}</p>
-        <p><strong>Date:</strong> ${formatDate()}</p>
-      `,
-      'Gwags Website',
-    ).catch(err => console.error('webhook: failed to send internal notification email:', err))
+  // Internal notification on the START of a monthly donation only (not every
+  // renewal), preserving the prior "new subscription" alert but now gated on a
+  // genuinely successful first payment.
+  if (isInitial) {
+    const internalEmail = getDonationsEmail()
+    if (internalEmail) {
+      await sendMail(
+        internalEmail,
+        `New monthly donation started — ${amount} / month`,
+        `
+          <p><strong>New monthly donation</strong></p>
+          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(email || 'Not provided')}</p>
+          <p><strong>Monthly amount:</strong> ${amount}</p>
+          <p><strong>Reference:</strong> ${escapeHtml(reference)}</p>
+          <p><strong>Date:</strong> ${formatDate()}</p>
+        `,
+        'Gwags Website',
+      ).catch(err => console.error('webhook: failed to send internal notification email:', err))
+    }
   }
 }
 
@@ -295,8 +365,11 @@ export async function POST(req: NextRequest) {
       case 'payment_intent.succeeded':
         await handlePaymentIntentSucceeded(event.data.object as Stripe.PaymentIntent)
         break
-      case 'customer.subscription.created':
-        await handleSubscriptionCreated(event.data.object as Stripe.Subscription)
+      case 'invoice.payment_succeeded':
+        // Initial monthly payment + every renewal — the single source of truth
+        // for a successful monthly donation (see handler). Replaces the former
+        // customer.subscription.created email, which fired before payment.
+        await handleInvoicePaymentSucceeded(event.data.object as Stripe.Invoice)
         break
       case 'customer.subscription.deleted':
         await handleSubscriptionDeleted(event.data.object as Stripe.Subscription)

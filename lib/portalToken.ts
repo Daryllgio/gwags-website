@@ -1,4 +1,4 @@
-import { createCipheriv, createDecipheriv, hkdfSync, randomBytes } from 'crypto'
+import { createCipheriv, createDecipheriv, hkdfSync, randomBytes, randomUUID } from 'crypto'
 
 /* Secure, short-lived Stripe Customer Portal access tokens.
    No donor account/session system exists on this site, so ownership of the
@@ -33,12 +33,18 @@ function deriveKey(): Buffer {
 interface TokenPayload {
   cid: string
   exp: number
+  /** Unique token id — recorded on redemption to enforce single use. */
+  jti: string
 }
 
 export function createPortalAccessToken(customerId: string): string {
   const key = deriveKey()
   const iv = randomBytes(12)
-  const payload: TokenPayload = { cid: customerId, exp: Math.floor(Date.now() / 1000) + TOKEN_TTL_SECONDS }
+  const payload: TokenPayload = {
+    cid: customerId,
+    exp: Math.floor(Date.now() / 1000) + TOKEN_TTL_SECONDS,
+    jti: randomUUID(),
+  }
 
   const cipher = createCipheriv('aes-256-gcm', key, iv)
   const ciphertext = Buffer.concat([cipher.update(JSON.stringify(payload), 'utf8'), cipher.final()])
@@ -50,7 +56,7 @@ export function createPortalAccessToken(customerId: string): string {
 /* Returns the customer ID only if the token decrypts, authenticates, and
    hasn't expired. Any failure (malformed, tampered, wrong key, expired)
    fails closed and returns null — never throws to the caller. */
-export function verifyPortalAccessToken(token: string): { customerId: string } | null {
+export function verifyPortalAccessToken(token: string): { customerId: string; jti: string; expiresAt: Date } | null {
   try {
     const parts = token.split('.')
     if (parts.length !== 3) return null
@@ -65,10 +71,10 @@ export function verifyPortalAccessToken(token: string): { customerId: string } |
     const plaintext = Buffer.concat([decipher.update(ciphertext), decipher.final()]).toString('utf8')
 
     const payload = JSON.parse(plaintext) as Partial<TokenPayload>
-    if (typeof payload.cid !== 'string' || !payload.cid || typeof payload.exp !== 'number') return null
+    if (typeof payload.cid !== 'string' || !payload.cid || typeof payload.exp !== 'number' || typeof payload.jti !== 'string' || !payload.jti) return null
     if (Math.floor(Date.now() / 1000) > payload.exp) return null
 
-    return { customerId: payload.cid }
+    return { customerId: payload.cid, jti: payload.jti, expiresAt: new Date(payload.exp * 1000) }
   } catch {
     return null
   }

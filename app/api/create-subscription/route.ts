@@ -26,6 +26,9 @@ export async function POST(req: NextRequest) {
     const customer = await stripe.customers.create({
       name: typeof name === 'string' && name.trim() ? name.trim() : undefined,
       email: email.trim(),
+      // Stamp language so the invoice.payment_succeeded webhook localizes the
+      // initial + renewal confirmation emails.
+      metadata: { lang: resolveLang(lang) },
     })
 
     // No fixed pricing catalog for recurring donations — create a Price on the
@@ -42,6 +45,9 @@ export async function POST(req: NextRequest) {
       items: [{ price: price.id }],
       payment_behavior: 'default_incomplete',
       payment_settings: { save_default_payment_method: 'on_subscription' },
+      // Persist the donor's language so the invoice.payment_succeeded webhook
+      // can localize the (initial + renewal) confirmation emails.
+      metadata: { lang: resolveLang(lang) },
       expand: ['latest_invoice.confirmation_secret'],
     })
 

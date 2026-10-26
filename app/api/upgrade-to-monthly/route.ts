@@ -25,6 +25,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: d.paymentStartError }, { status: 400 })
     }
 
+    // Stamp language on the existing customer so the invoice.payment_succeeded
+    // webhook localizes the monthly confirmation + renewal emails.
+    await stripe.customers.update(customerId, { metadata: { lang: resolveLang(lang) } }).catch(() => {})
+
     const price = await stripe.prices.create({
       currency: 'usd',
       unit_amount: Math.round(amount * 100),
@@ -38,6 +42,8 @@ export async function POST(req: NextRequest) {
       default_payment_method: paymentMethodId,
       payment_behavior: 'default_incomplete',
       payment_settings: { save_default_payment_method: 'on_subscription' },
+      // Persist the donor's language for the invoice.payment_succeeded emails.
+      metadata: { lang: resolveLang(lang) },
       expand: ['latest_invoice.confirmation_secret'],
     })
 

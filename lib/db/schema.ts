@@ -300,3 +300,15 @@ export const problemReports = pgTable('problem_reports', {
 }, table => ({
   statusIdx: index('problem_reports_status_idx').on(table.status),
 }))
+
+/* Enforces single-use for Stripe Billing Portal management links. Each emailed
+   link's token carries a unique `jti`; redeeming it inserts that jti here. The
+   PRIMARY KEY makes the insert atomic — two concurrent redemptions of the same
+   link can't both succeed. Only the opaque jti + timestamps are stored, never
+   the token itself. `expiresAt` mirrors the token's own 15-minute expiry so
+   rows can be pruned later without parsing tokens. */
+export const portalLinkRedemptions = pgTable('portal_link_redemptions', {
+  jti: text('jti').primaryKey(),
+  redeemedAt: timestamp('redeemed_at', { withTimezone: true }).notNull().defaultNow(),
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+})
