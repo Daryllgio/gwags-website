@@ -3059,9 +3059,10 @@ input:-webkit-autofill:active {
   margin: 0 80px;
 }
 
-/* Content sections — always white */
+/* Content sections — always white. Vertical padding here IS the gap between a
+   divider and the content above/below it (dividers carry no vertical margin). */
 .ip-section {
-  padding: 60px 80px;
+  padding: 50px 80px;
 }
 
 .ip-section-white { background: #fff; }
@@ -3270,15 +3271,9 @@ input:-webkit-autofill:active {
   font-weight: 500;
   text-decoration: underline;
 }
-/* Gap between the contact line and the divider below it = this section's
-   bottom padding. Overridden per breakpoint with a two-class selector so it
-   beats the generic .ip-section padding without touching other sections'
-   spacing or this section's top/left edges. Ordered so the narrowest query
-   wins at small widths. */
-.ip-section.ip-contact-section { padding-bottom: 55px; }
-@media (min-width: 768px) and (max-width: 1024px) { .ip-section.ip-contact-section { padding-bottom: 50px; } }
-@media (max-width: 767px) { .ip-section.ip-contact-section { padding-bottom: 45px; } }
-@media (max-width: 480px) { .ip-section.ip-contact-section { padding-bottom: 35px; } }
+/* Divider spacing (the gap to the content above and below each divider) is
+   governed by the adjacent section padding — see .ip-section and
+   .ip-carousel-section above. */
 
 .ip-apply-btn {
   display: inline-block;
@@ -3308,9 +3303,10 @@ input:-webkit-autofill:active {
   user-select: none;
 }
 
-/* Carousel section */
+/* Carousel section. Top padding is the gap below the divider that precedes the
+   gallery, so it matches the section padding above the divider. */
 .ip-carousel-section {
-  padding: 60px 80px;
+  padding: 50px 80px 60px;
 }
 
 .ip-carousel-inner {
@@ -3512,7 +3508,7 @@ input:-webkit-autofill:active {
   .ip-hero-name { font-size: 35px !important; text-align: left !important; max-width: 680px !important; margin-bottom: 20px !important; }
   .ip-hero-goal-label { text-align: left !important; }
   .ip-hero-goal { font-size: 17px !important; text-align: left !important; max-width: 550px !important; }
-  .ip-section { padding: 60px 40px; }
+  .ip-section { padding: 45px 40px; }
   .ip-divider { margin: 0 40px; }
   .ip-section-heading { font-size: 28px !important; }
   .ed-gallery-link { font-size: 28px !important; }
@@ -3532,7 +3528,7 @@ input:-webkit-autofill:active {
   .ip-stats-value { font-size: 35px !important; }
   .ip-stats-label { font-size: 19px !important; }
   .ip-apply-section { padding: 48px 40px; }
-  .ip-carousel-section { padding: 60px 40px; }
+  .ip-carousel-section { padding: 45px 40px 60px; }
   .ip-carousel-card { width: 300px !important; }
   .ip-carousel-card-img { width: 300px !important; height: 230px !important; }
   .ip-carousel-card-scholars { width: 310px !important; }
@@ -3561,7 +3557,7 @@ input:-webkit-autofill:active {
   .ip-hero-name { font-size: 30px !important; text-align: center; max-width: 100%; margin-bottom: 36px !important; }
   .ip-hero-goal-label { font-size: 14px !important; text-align: center; }
   .ip-hero-goal { font-size: 15px !important; text-align: center; max-width: 100%; }
-  .ip-section { padding: 48px 24px; }
+  .ip-section { padding: 40px 24px; }
   .ip-divider { margin: 0 24px; }
   .ip-grid { grid-template-columns: 1fr; gap: 24px; }
   .ip-section-heading { font-size: 24px !important; }
@@ -3583,7 +3579,7 @@ input:-webkit-autofill:active {
   .ip-stats-label { font-size: 18px !important; }
   .ip-apply-btn { font-size: 15px !important; }
   .ip-apply-section { padding: 40px 24px; }
-  .ip-carousel-section { padding: 48px 24px; }
+  .ip-carousel-section { padding: 40px 24px 48px; }
   .ip-carousel-card { width: 290px; }
   .ip-carousel-card-img { width: 290px; height: 220px; }
   .ip-carousel-card-scholars { width: 300px; }

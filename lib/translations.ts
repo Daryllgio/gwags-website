@@ -343,8 +343,7 @@ export const t = {
       yearOfStudyRequired: 'Please select your current year of study.',
       transcriptRequired: 'Please upload your academic transcript.',
       referralRequired: 'Please select how you heard about this program.',
-      ambassadorCommitment: 'If selected as a Gwags Scholar, I commit to becoming a Gwags Ambassador. This role will involve promoting Gwags initiatives within my campus and community and sharing my experience as a scholar.',
-      ambassadorCommitmentRequired: 'You must agree to the Gwags Ambassador commitment to submit your application.',
+      ambassadorCommitment: 'If selected as a Gwags Scholar, I am interested in serving as a Gwags Ambassador and acknowledge the responsibilities associated with this role.',
     },
     mbalLekeakaApplicationPage: {
       heading: 'Mbal Lekeaka Fund Application',
@@ -808,10 +807,11 @@ export const t = {
           richBody: [
             { label: 'Who can apply', text: 'Undergraduate students currently enrolled at a university in Cameroon.' },
             { label: 'What is required', text: 'An academic transcript and a written response to the application prompt.' },
-            { label: 'What scholars receive', text: 'A financial award of 150,000 FCFA and access to internship placements. The program selects 10 scholars per batch.' },
-            { label: 'Beyond the scholarship', text: 'Every Gwags Scholar will become a Gwags Ambassador, representing Gwags on campus and in their community. As ambassadors, scholars will be expected to:', items: [
-              'Promote Gwags initiatives within their campus and community.',
-              'Share their experience as a Gwags Scholar.',
+            { label: 'What scholars receive', text: 'A financial award of 150,000 FCFA and access to internship placements. The program selects 10 scholars per cohort.' },
+            { label: 'Beyond the scholarship', text: 'Every Gwags Scholar is eligible to become a Gwags Ambassador. Ambassadors represent Gwags within their campus and community and are expected to:', items: [
+              'Promote Gwags and its initiatives within their campus and community, helping Gwags reach and engage more young people.',
+              'Share their experience as Gwags Scholars and how the scholarship has contributed to their education.',
+              'Share observations on the needs and challenges of their campus and community, to help inform future initiatives.',
             ] },
             { label: 'Selection criteria', text: 'Selection is based on academic merit and the quality of the written submission.' },
             { label: 'Language', text: 'Applications are accepted in both English and French.' },
@@ -820,14 +820,14 @@ export const t = {
       ],
       keyDates: {
         heading: 'Key dates',
-        batch: '2027 Batch',
+        batch: '2027 Cohort',
         items: [
           { label: 'Applications open', date: 'January 2027' },
           { label: 'Applications close', date: 'March 2027' },
           { label: 'Results released', date: 'May 2027' },
         ],
       },
-      apply: 'Apply now',
+      apply: 'Apply',
       carousel: {
         heading: 'Our Scholars',
         events: [
@@ -1651,15 +1651,14 @@ export const t = {
       },
       writtenResponsePlaceholder: 'Votre réponse...',
       yearOfStudyPlaceholder: 'Sélectionnez votre niveau d\'études',
-      submit: 'Soumettre la candidature',
+      submit: 'Soumettre votre candidature',
       success: 'Votre candidature a bien été reçue. Un courriel de confirmation vous sera envoyé sous peu.',
       error: 'Une erreur s\'est produite. Veuillez réessayer.',
       emailInvalid: 'Veuillez saisir une adresse email valide.',
       yearOfStudyRequired: 'Veuillez sélectionner votre niveau d\'études actuel.',
       transcriptRequired: 'Veuillez téléverser votre relevé de notes.',
       referralRequired: 'Veuillez indiquer comment vous avez connu ce programme.',
-      ambassadorCommitment: "En cas de sélection en tant que boursier Gwags, je m'engage à devenir ambassadeur Gwags. À ce titre, je serai appelé(e) à promouvoir les initiatives de Gwags au sein de mon campus et de ma communauté, ainsi qu'à témoigner de mon parcours en tant que boursier.",
-      ambassadorCommitmentRequired: "Vous devez accepter l'engagement d'ambassadeur Gwags pour soumettre votre candidature.",
+      ambassadorCommitment: "En cas de sélection en tant que boursier(ère) Gwags, je souhaite exercer le rôle d'ambassadeur(drice) Gwags et reconnais les responsabilités associées à cette fonction.",
     },
     mbalLekeakaApplicationPage: {
       heading: 'Candidature au Fonds Mbal Lekeaka',
@@ -2123,10 +2122,11 @@ export const t = {
           richBody: [
             { label: 'Qui peut postuler', text: 'Les étudiants de licence actuellement inscrits dans une université au Cameroun.' },
             { label: 'Ce qui est requis', text: 'Un relevé de notes académique et une réponse écrite à l\'invite de candidature.' },
-            { label: 'Ce que les boursiers reçoivent', text: 'Une bourse de 150 000 FCFA et un accès à des placements en stage. Le programme sélectionne 10 boursiers par promotion.' },
-            { label: 'Au-delà de la bourse', text: "Chaque boursier Gwags se verra attribuer le statut d'ambassadeur et représentera l'institution au sein de son campus et de sa communauté. À ce titre, les ambassadeurs seront appelés à :", items: [
-              'Promouvoir les initiatives de Gwags au sein de leur campus et de leur communauté.',
-              'Témoigner de leur parcours en tant que boursiers Gwags.',
+            { label: 'Ce que les boursiers reçoivent', text: 'Une bourse de 150 000 FCFA et un accès à des placements en stage. Le programme sélectionne 10 boursiers par cohorte.' },
+            { label: 'Au-delà de la bourse', text: "Chaque boursier(ère) Gwags est éligible au rôle d'ambassadeur(drice) Gwags. Les ambassadeurs représentent l'institution au sein de leur établissement et de leur communauté et sont appelés à :", items: [
+              'Faire connaître Gwags et ses initiatives au sein de leur établissement et de leur communauté, afin de toucher et de mobiliser davantage de jeunes.',
+              'Partager leur expérience en tant que boursiers(ères) Gwags et la contribution de la bourse à leur parcours universitaire.',
+              "Partager leurs observations sur les besoins et les défis de leur établissement et de leur communauté, afin d'éclairer les futures initiatives.",
             ] },
             { label: 'Critères de sélection', text: 'La sélection est basée sur le mérite académique et la qualité de la soumission écrite.' },
             { label: 'Langue', text: 'Les candidatures sont acceptées en anglais et en français.' },
@@ -2135,18 +2135,18 @@ export const t = {
       ],
       keyDates: {
         heading: 'Dates clés',
-        batch: 'Promotion 2027',
+        batch: 'Cohorte 2027',
         items: [
           { label: 'Ouverture des candidatures', date: 'Janvier 2027' },
           { label: 'Clôture des candidatures', date: 'Mars 2027' },
           { label: 'Publication des résultats', date: 'Mai 2027' },
         ],
       },
-      apply: 'Postuler maintenant',
+      apply: 'Postuler',
       carousel: {
         heading: 'Nos Boursiers',
         events: [
-          { label: 'Promotion 2026', href: '/initiatives/scholars/2026', imagePosition: 'top', cardVariant: 'scholars', items: [
+          { label: 'Cohorte 2026', href: '/initiatives/scholars/2026', imagePosition: 'top', cardVariant: 'scholars', items: [
             '/images/scholars/scholar-01.jpg',
             '/images/scholars/scholar-02.jpg',
             '/images/scholars/scholar-03.jpg',
@@ -2164,7 +2164,7 @@ export const t = {
     scholarsBatches: {
       '2026': {
         title: 'Les Boursiers Gwags',
-        batchLabel: 'Promotion 2026',
+        batchLabel: 'Cohorte 2026',
         universityLabel: 'Université',
         programLabel: 'Programme',
         scholars: [

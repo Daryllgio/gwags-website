@@ -57,6 +57,8 @@ export async function POST(req: NextRequest) {
     const writtenResponse = cleanText(formData.get('writtenResponse'), 20000)
     const referral = cleanText(formData.get('referral'), 50)
     const referralOther = cleanText(formData.get('referralOther'), 150)
+    // Optional — never part of the required-fields check below.
+    const ambassadorInterest = formData.get('ambassadorInterest') === 'true'
 
     if (!firstName || !lastName || !phone || !email || !university || !fieldOfStudy || !yearOfStudy || !writtenResponse || !referral) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
@@ -106,6 +108,7 @@ export async function POST(req: NextRequest) {
             firstName, lastName, phone, email, university, fieldOfStudy, yearOfStudy, writtenResponse,
             referral,
             referralOther: referralOther || null,
+            ambassadorInterest,
           })
         },
       })
@@ -144,6 +147,7 @@ University: ${university}
 Field of study: ${fieldOfStudy}
 Current year of study: ${yearOfStudy}
 How did you hear about this program: ${referralDisplay}
+Interested in Gwags Ambassador role: ${ambassadorInterest ? 'Yes' : 'No'}
 
 Written response:
 ${writtenResponse}
@@ -164,6 +168,7 @@ Submitted: ${timestamp}`,
 <p><strong>University:</strong> ${escapeHtml(university)}</p>
 <p><strong>Field of study:</strong> ${escapeHtml(fieldOfStudy)}</p>
 <p><strong>Current year of study:</strong> ${escapeHtml(yearOfStudy)}</p>
+<p><strong>Interested in Gwags Ambassador role:</strong> ${ambassadorInterest ? 'Yes' : 'No'}</p>
 <p><strong>How did you hear about this program:</strong> ${escapeHtml(referralDisplay)}</p>
 <hr />
 <p><strong>Written response:</strong></p>
