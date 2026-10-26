@@ -238,3 +238,65 @@ export const submissionDocumentsRelations = relations(submissionDocuments, ({ on
 export const submissionSocialLinksRelations = relations(submissionSocialLinks, ({ one }) => ({
   submission: one(submissions, { fields: [submissionSocialLinks.submissionId], references: [submissions.id] }),
 }))
+
+/* ── Donation support tables ──────────────────────────────────────────────
+   Standalone from the `submissions` system above: these back the donation
+   overlay's "Remind me later" and "Report a problem" flows, which have no
+   file uploads, no shared header row, and their own lifecycle. Stripe
+   remains the system of record for donations themselves — nothing here
+   stores payment data. */
+
+export const reminderStatusEnum = pgEnum('reminder_status', [
+  'scheduled', // awaiting its ~24h send window
+  'sent',      // reminder email delivered via Resend
+  'failed',    // exhausted retries without a successful send
+  'skipped',   // donor appears to have already donated — no reminder sent
+])
+
+/* One row per "remind me later" request. The scheduled cron claims a due row,
+   sends exactly one reminder, and records the outcome — see
+   app/api/cron/send-reminders. */
+export const donationReminders = pgTable('donation_reminders', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  email: text('email').notNull(),
+  lang: text('lang').notNull().default('en'),
+  status: reminderStatusEnum('status').notNull().default('scheduled'),
+  scheduledAt: timestamp('scheduled_at', { withTimezone: true }).notNull(),
+  sentAt: timestamp('sent_at', { withTimezone: true }),
+  attempts: integer('attempts').notNull().default(0),
+  lastError: text('last_error'),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+}, table => ({
+  dueIdx: index('donation_reminders_due_idx').on(table.status, table.scheduledAt),
+  emailIdx: index('donation_reminders_email_idx').on(table.email),
+}))
+
+export const reportStatusEnum = pgEnum('report_status', [
+  'submitted',
+  'under_review',
+  'resolved',
+])
+
+export const reportNotificationStatusEnum = pgEnum('report_notification_status', [
+  'pending', // stored, internal email not yet confirmed sent
+  'sent',    // internal notification email delivered via Resend
+  'failed',  // stored, but the internal email could not be sent
+])
+
+/* One row per "report a problem" submission. The report is persisted FIRST,
+   then the internal notification email is attempted — so a Resend failure
+   never loses the stored report (notificationStatus records that outcome). */
+export const problemReports = pgTable('problem_reports', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  referenceId: text('reference_id').notNull().unique(),
+  name: text('name'),
+  email: text('email'),
+  category: text('category'),
+  description: text('description').notNull(),
+  status: reportStatusEnum('status').notNull().default('submitted'),
+  notificationStatus: reportNotificationStatusEnum('notification_status').notNull().default('pending'),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+}, table => ({
+  statusIdx: index('problem_reports_status_idx').on(table.status),
+}))

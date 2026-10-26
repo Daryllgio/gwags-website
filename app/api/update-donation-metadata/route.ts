@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Stripe from 'stripe'
+import { getStripe } from '@/lib/stripe'
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY
-if (!stripeSecretKey) throw new Error('STRIPE_SECRET_KEY is not set')
-const stripe = new Stripe(stripeSecretKey)
+const stripe = getStripe()
 
 /* Best-effort attachment of optional post-payment data (referral source) to
    the donation's own PaymentIntent or Subscription via Stripe metadata —

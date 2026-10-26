@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Stripe from 'stripe'
 import { verifyPortalAccessToken } from '@/lib/portalToken'
 import { getClientIp, isRateLimited } from '@/lib/rateLimit'
+import { getStripe } from '@/lib/stripe'
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY
-if (!stripeSecretKey) throw new Error('STRIPE_SECRET_KEY is not set')
-const stripe = new Stripe(stripeSecretKey)
+const stripe = getStripe()
 
 /* Redeems a secure portal-access token (minted by create-portal-session and
    delivered only via email) and redirects to a real Stripe Customer Portal
@@ -14,7 +12,8 @@ const stripe = new Stripe(stripeSecretKey)
    fixed, hardcoded path on this same site — never a client-supplied URL —
    so there is no open-redirect surface here. */
 export async function GET(req: NextRequest) {
-  const failUrl = new URL('/get-involved?portal=invalid', req.nextUrl.origin)
+  // Expired/invalid/tampered tokens land on the dedicated explanation page.
+  const failUrl = new URL('/manage-donation/invalid', req.nextUrl.origin)
 
   if (isRateLimited(getClientIp(req))) {
     return NextResponse.redirect(new URL('/get-involved', req.nextUrl.origin))
@@ -34,7 +33,10 @@ export async function GET(req: NextRequest) {
   try {
     const session = await stripe.billingPortal.sessions.create({
       customer: verified.customerId,
-      return_url: `${req.nextUrl.origin}/get-involved`,
+      // `?portal=return` is how /get-involved knows the donor is coming back
+      // from a real Billing Portal session (the return_url is server-set here,
+      // never client-controllable) and can show the return confirmation.
+      return_url: `${req.nextUrl.origin}/get-involved?portal=return`,
     })
     return NextResponse.redirect(session.url)
   } catch (err) {

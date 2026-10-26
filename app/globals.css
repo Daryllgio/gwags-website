@@ -964,6 +964,20 @@ input:-webkit-autofill:active {
   transform: rotate(45deg);
 }
 
+/* ── Manage-link invalid page ── */
+@media (max-width: 767px) {
+  .mli-container { padding: 64px 24px !important; }
+  .mli-title { font-size: 27px !important; }
+  .mli-desc { font-size: 16px !important; }
+}
+@media (max-width: 480px) {
+  .mli-container { padding: 52px 20px !important; }
+  .mli-title { font-size: 24px !important; }
+  .mli-desc { font-size: 15px !important; }
+  .mli-actions { flex-direction: column; }
+  .mli-btn-primary, .mli-btn-secondary { width: 100%; box-sizing: border-box; text-align: center; }
+}
+
 /* ── Date field (DD/MM/YYYY calendar popup) ── */
 .dtf-wrap { position: relative; width: 100%; }
 .dtf-display { justify-content: space-between; cursor: pointer; }

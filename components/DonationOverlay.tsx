@@ -4,6 +4,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import type { PaymentRequest as StripePaymentRequest } from '@stripe/stripe-js'
 import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { Lang, t } from '@/lib/translations'
+import { MIN_DONATION_USD } from '@/lib/donation'
 import DonationFAQ from '@/components/DonationFAQ'
 
 const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
@@ -29,9 +30,10 @@ function getStripePromise(lang: Lang) {
 
 const ONCE_AMOUNTS = [1000, 500, 100, 50, 25, 5]
 const MONTHLY_AMOUNTS = [200, 100, 50, 30, 10, 5]
-/* Fix 2: minimum for the custom "$" amount field. Every preset button is
-   already >= this, so only custom entries ever need the check. */
-const MIN_DONATION_AMOUNT = 5
+/* Minimum for the custom "$" amount field. Every preset button is already
+   >= this. Sourced from the shared constant so the overlay and the payment
+   APIs can never enforce different minimums. */
+const MIN_DONATION_AMOUNT = MIN_DONATION_USD
 
 const REFERRAL_SOURCES = [
   'friendOrFamily', 'linkedIn', 'searchEngine', 'gwagsEvent',
@@ -156,6 +158,9 @@ const upsellSecondaryBtnStyle: React.CSSProperties = {
 interface OverlayProps {
   lang: Lang
   onClose: () => void
+  /** Open directly on the "manage your monthly donation" email-entry screen
+      (used by the invalid-link page's "Request a New Link" button). */
+  initialManage?: boolean
 }
 
 function StepHeader({ title, onBack, backLabel = 'Back' }: { title: string; onBack?: () => void; backLabel?: string }) {
@@ -412,7 +417,7 @@ function DonationSuccessSummary({ d, amount, isMonthlySupporter = false }: { d: 
   )
 }
 
-function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinalSignal }: { lang: Lang; mode?: 'desktop' | 'tablet' | 'phone'; onStepChange?: (step: number) => void; onClose: () => void; jumpToFinalSignal?: number }) {
+function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinalSignal, initialManage = false }: { lang: Lang; mode?: 'desktop' | 'tablet' | 'phone'; onStepChange?: (step: number) => void; onClose: () => void; jumpToFinalSignal?: number; initialManage?: boolean }) {
   const d = t[lang].donationOverlay
   const c = t[lang].common
   /* FIX 1/7: desktop fills the fixed-height panel (button pinned to bottom);
@@ -439,7 +444,7 @@ function DonateForm({ lang, mode = 'desktop', onStepChange, onClose, jumpToFinal
      it emails one if a matching recurring donation exists), shown as an
      alternate view within Step 1's panel (same fixed dimensions, so it can't
      overflow the desktop layout's pinned-button sizing). */
-  const [manageMode, setManageMode] = useState(false)
+  const [manageMode, setManageMode] = useState(initialManage)
   const [manageEmail, setManageEmail] = useState('')
   const [manageStatus, setManageStatus] = useState<'idle' | 'loading' | 'sent'>('idle')
   const [manageError, setManageError] = useState<string | null>(null)
@@ -1360,7 +1365,7 @@ function ExitReminder({ lang, onClose, onConfirmClose, onBack, theme = 'dark', h
       await fetch('/api/reminder', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: reminderEmail }),
+        body: JSON.stringify({ email: reminderEmail, lang }),
       })
     } catch { /* store best-effort */ }
     setReminderStatus('sent')
@@ -1537,7 +1542,7 @@ function TopBar({ onClose, subtitle, padding = '10px 20px', closeLabel = 'Close'
    - CHANGE 4: the top bar scrolls away naturally on Step 1, but becomes fixed
      (pinned above the scroll area) from Step 2 onward / while the exit-reminder
      screen is showing. */
-function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInline, onDonateStepChange, jumpToFinalSignal }: {
+function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInline, onDonateStepChange, jumpToFinalSignal, initialManage }: {
   lang: Lang
   mode: 'phone' | 'tablet'
   exitMode: boolean
@@ -1547,6 +1552,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
   includeFaqInline: boolean
   onDonateStepChange?: (step: number) => void
   jumpToFinalSignal?: number
+  initialManage?: boolean
 }) {
   const d = t[lang].donationOverlay
   const n = t[lang].nav
@@ -1601,7 +1607,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
           </p>
         )}
         <Elements key={lang} stripe={getStripePromise(lang)}>
-          <DonateForm lang={lang} mode={mode} onClose={onClose} jumpToFinalSignal={jumpToFinalSignal}
+          <DonateForm lang={lang} mode={mode} onClose={onClose} jumpToFinalSignal={jumpToFinalSignal} initialManage={initialManage}
             onStepChange={(s) => { setDonateStep(s); onDonateStepChange?.(s) }} />
         </Elements>
         {includeFaqInline && <DonationFAQ lang={lang} mode="phone" />}
@@ -1642,7 +1648,7 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
   )
 }
 
-export default function DonationOverlay({ lang, onClose }: OverlayProps) {
+export default function DonationOverlay({ lang, onClose, initialManage = false }: OverlayProps) {
   const d = t[lang].donationOverlay
   const c = t[lang].common
   const [exitMode, setExitMode] = useState(false)
@@ -1717,7 +1723,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
   if (vp === 'phone') {
     return (
       <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: '#ffffff', display: 'flex', flexDirection: 'column' }}>
-        <StackedBody lang={lang} mode="phone" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline onDonateStepChange={handleDonateStepChange} jumpToFinalSignal={jumpToFinalSignal} />
+        <StackedBody lang={lang} mode="phone" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline onDonateStepChange={handleDonateStepChange} jumpToFinalSignal={jumpToFinalSignal} initialManage={initialManage} />
       </div>
     )
   }
@@ -1729,7 +1735,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
       <div style={{ position: 'fixed', inset: 0, zIndex: 9999, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 16px' }}>
         <div className="donation-portal-tablet" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px', width: '90vw', maxWidth: '450px', maxHeight: '92vh' }}>
           <div style={{ width: '100%', flex: '1 1 auto', minHeight: 0, background: '#ffffff', borderRadius: '12px', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }}>
-            <StackedBody lang={lang} mode="tablet" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline={false} onDonateStepChange={handleDonateStepChange} jumpToFinalSignal={jumpToFinalSignal} />
+            <StackedBody lang={lang} mode="tablet" exitMode={exitMode} onX={handleX} onBack={() => setExitMode(false)} onClose={onClose} includeFaqInline={false} onDonateStepChange={handleDonateStepChange} jumpToFinalSignal={jumpToFinalSignal} initialManage={initialManage} />
           </div>
           {/* CHANGE 6: FAQ below the portal, 2×2 */}
           <DonationFAQ lang={lang} mode="tablet" />
@@ -1824,7 +1830,7 @@ export default function DonationOverlay({ lang, onClose }: OverlayProps) {
               {/* Panel 1: Donation form */}
               <div style={{ minWidth: '100%', padding: '48px 36px 20px', display: 'flex', flexDirection: 'column', background: '#ffffff' }}>
                 <Elements key={lang} stripe={getStripePromise(lang)}>
-                  <DonateForm lang={lang} mode="desktop" onClose={onClose} onStepChange={handleDonateStepChange} jumpToFinalSignal={jumpToFinalSignal} />
+                  <DonateForm lang={lang} mode="desktop" onClose={onClose} onStepChange={handleDonateStepChange} jumpToFinalSignal={jumpToFinalSignal} initialManage={initialManage} />
                 </Elements>
               </div>
 

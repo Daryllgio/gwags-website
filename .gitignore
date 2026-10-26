@@ -39,3 +39,7 @@ next-env.d.ts
 # IndexNow snapshot state lives on the `indexnow-state` branch, not main
 # (see .github/workflows/indexnow.yml) — ignore local runs' output here.
 /data/indexnow-snapshot.json
+
+# Legacy local stubs from the old fs-based reminder/report (now Neon-backed)
+reminder-emails.json
+reported-problems.json

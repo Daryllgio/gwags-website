@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { t, type Lang } from '@/lib/translations'
+import { getStripe } from '@/lib/stripe'
+import { MIN_DONATION_USD } from '@/lib/donation'
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY
-if (!stripeSecretKey) throw new Error('STRIPE_SECRET_KEY is not set')
-const stripe = new Stripe(stripeSecretKey)
+const stripe = getStripe()
 
-const MIN_AMOUNT = 0.5 // Stripe's minimum charge amount for USD
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
 const resolveLang = (lang: unknown): Lang => (lang === 'fr' ? 'fr' : 'en')
@@ -17,7 +16,7 @@ export async function POST(req: NextRequest) {
     const { amount, name, email, lang } = await req.json()
     d = t[resolveLang(lang)].donationOverlay
 
-    if (typeof amount !== 'number' || !Number.isFinite(amount) || amount < MIN_AMOUNT) {
+    if (typeof amount !== 'number' || !Number.isFinite(amount) || amount < MIN_DONATION_USD) {
       return NextResponse.json({ error: d.amountTooLowError }, { status: 400 })
     }
     if (typeof email !== 'string' || !EMAIL_RE.test(email.trim())) {

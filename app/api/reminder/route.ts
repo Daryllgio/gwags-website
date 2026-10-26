@@ -1,31 +1,49 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { writeFile, readFile } from 'fs/promises'
-import { join } from 'path'
+import { and, eq } from 'drizzle-orm'
+import { db } from '@/lib/db/client'
+import { donationReminders } from '@/lib/db/schema'
+import { getClientIp, isRateLimited } from '@/lib/rateLimit'
+import { cleanText, isValidEmail } from '@/lib/validate'
 
-const DB_PATH = join(process.cwd(), 'reminder-emails.json')
+export const runtime = 'nodejs'
+
+const REMINDER_DELAY_MS = 24 * 60 * 60 * 1000 // ~24 hours
 
 export async function POST(req: NextRequest) {
   try {
-    const { email } = await req.json()
-    if (!email || typeof email !== 'string') {
-      return NextResponse.json({ error: 'Email is required' }, { status: 400 })
+    if (isRateLimited(getClientIp(req))) {
+      return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 })
     }
 
-    let emails: string[] = []
-    try {
-      const existing = await readFile(DB_PATH, 'utf-8')
-      emails = JSON.parse(existing)
-    } catch {
-      // file doesn't exist yet
+    const body = await req.json().catch(() => ({}))
+    const email = cleanText(body.email, 200)
+    const lang = body.lang === 'fr' ? 'fr' : 'en'
+
+    if (!email || !isValidEmail(email)) {
+      return NextResponse.json({ error: 'A valid email address is required.' }, { status: 400 })
     }
 
-    emails.push(email.trim())
-    await writeFile(DB_PATH, JSON.stringify(emails, null, 2))
+    // Prevent accidental duplicates: if this email already has a reminder
+    // waiting to be sent, treat the repeat request as a no-op success rather
+    // than scheduling (and later sending) a second reminder.
+    const existing = await db
+      .select({ id: donationReminders.id })
+      .from(donationReminders)
+      .where(and(eq(donationReminders.email, email), eq(donationReminders.status, 'scheduled')))
+      .limit(1)
 
-    console.log(`[reminder] Stored email: ${email}`)
+    if (existing.length === 0) {
+      await db.insert(donationReminders).values({
+        email,
+        lang,
+        status: 'scheduled',
+        scheduledAt: new Date(Date.now() + REMINDER_DELAY_MS),
+      })
+    }
+
     return NextResponse.json({ success: true })
   } catch (err) {
-    console.error('[reminder] Error:', err)
+    console.error('reminder: unexpected error:', err instanceof Error ? err.message : 'unknown')
     return NextResponse.json({ error: 'Internal error' }, { status: 500 })
   }
 }

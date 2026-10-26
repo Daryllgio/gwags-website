@@ -4,10 +4,9 @@ import { t, type Lang } from '@/lib/translations'
 import { getResendClient, getFromEmail, renderBrandedEmail } from '@/lib/mail'
 import { createPortalAccessToken } from '@/lib/portalToken'
 import { getClientIp, isRateLimited } from '@/lib/rateLimit'
+import { getStripe } from '@/lib/stripe'
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY
-if (!stripeSecretKey) throw new Error('STRIPE_SECRET_KEY is not set')
-const stripe = new Stripe(stripeSecretKey)
+const stripe = getStripe()
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 const ACTIVE_SUBSCRIPTION_STATUSES: Stripe.Subscription.Status[] = ['active', 'trialing', 'past_due']

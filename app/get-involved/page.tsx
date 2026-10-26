@@ -45,19 +45,39 @@ const EYEBROW_STYLE: React.CSSProperties = {
 function GetInvolvedContent() {
   const [lang, toggleLang] = useLang()
   const [donateOpen, setDonateOpen] = useState(false)
+  // Opens the donation overlay straight on the "manage your monthly donation"
+  // email-entry screen (used by the invalid-link page's "Request a New Link").
+  const [donateManage, setDonateManage] = useState(false)
   const searchParams = useSearchParams()
   const router = useRouter()
   const actionParam = searchParams.get('action')
+  const portalParam = searchParams.get('portal')
+  // Only `?portal=return` is ever produced by Stripe redirecting back from a
+  // real Billing Portal session (the return_url is set server-side, never by
+  // the client), so it's a trustworthy signal that the donor just returned.
+  const [portalReturn, setPortalReturn] = useState(false)
   const p = t[lang].getInvolvedPage
 
   useEffect(() => {
     if (actionParam === 'donate') {
       setDonateOpen(true)
+    } else if (actionParam === 'manage') {
+      setDonateManage(true)
+      setDonateOpen(true)
     }
   }, [actionParam])
 
+  useEffect(() => {
+    if (portalParam === 'return') {
+      setPortalReturn(true)
+      // Strip the param so a refresh/bookmark doesn't re-show the banner.
+      router.replace('/get-involved', { scroll: false })
+    }
+  }, [portalParam, router])
+
   const closeDonate = () => {
     setDonateOpen(false)
+    setDonateManage(false)
     if (actionParam) {
       router.replace('/get-involved', { scroll: false })
     }
@@ -68,6 +88,31 @@ function GetInvolvedContent() {
       <Nav lang={lang} onToggleLang={toggleLang} />
 
       <div className="gi-page-container">
+        {portalReturn && (
+          <div
+            role="status"
+            className="gi-portal-return"
+            style={{
+              display: 'flex', alignItems: 'flex-start', gap: '12px',
+              background: '#f0f7f0', border: '1px solid rgba(45,122,45,0.25)',
+              borderRadius: '8px', padding: '16px 18px', marginBottom: '32px',
+              color: '#2d7a2d', fontSize: '15px', lineHeight: 1.6,
+            }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: '1px' }}>
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            <span>{p.portalReturnMessage}</span>
+            <button
+              type="button"
+              onClick={() => setPortalReturn(false)}
+              aria-label={t[lang].common.close}
+              style={{ marginLeft: 'auto', background: 'none', border: 'none', color: '#2d7a2d', cursor: 'pointer', fontSize: '18px', lineHeight: 1, padding: '0 2px', flexShrink: 0 }}
+            >
+              ×
+            </button>
+          </div>
+        )}
         {/* SECTION 1: Hero */}
         <div className="gi-page-hero" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '150px', alignItems: 'start' }}>
           <h1 className="gi-hero-h1" style={{ color: NAVY, fontSize: '35px', fontFamily: 'var(--font-heading-serif), Georgia, serif', fontWeight: 600, lineHeight: 1.1, margin: 0, textTransform: 'uppercase' }}>
@@ -170,7 +215,7 @@ function GetInvolvedContent() {
 
       <Footer lang={lang} />
 
-      {donateOpen && <DonationOverlay lang={lang} onClose={closeDonate} />}
+      {donateOpen && <DonationOverlay lang={lang} onClose={closeDonate} initialManage={donateManage} />}
     </main>
   )
 }

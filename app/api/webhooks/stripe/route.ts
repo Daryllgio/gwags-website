@@ -3,6 +3,7 @@ import Stripe from 'stripe'
 import { getResendClient, getFromEmail } from '@/lib/mail'
 import { claimEventOnce } from '@/lib/idempotency'
 import { getDonationsEmail } from '@/lib/emailRouting'
+import { getStripe } from '@/lib/stripe'
 
 export const runtime = 'nodejs'
 
@@ -11,7 +12,7 @@ function requireEnv(value: string | undefined, name: string): string {
   return value
 }
 
-const stripe = new Stripe(requireEnv(process.env.STRIPE_SECRET_KEY, 'STRIPE_SECRET_KEY'))
+const stripe = getStripe()
 const webhookSecret = requireEnv(process.env.STRIPE_WEBHOOK_SECRET, 'STRIPE_WEBHOOK_SECRET')
 
 const NAVY = '#0A1128'
@@ -91,7 +92,7 @@ async function getPortalUrl(customerId: string): Promise<string | null> {
   try {
     const session = await stripe.billingPortal.sessions.create({
       customer: customerId,
-      return_url: `${process.env.SITE_URL || 'http://localhost:3000'}/get-involved`,
+      return_url: `${process.env.SITE_URL || 'http://localhost:3000'}/get-involved?portal=return`,
     })
     return session.url
   } catch (err) {
