@@ -4,6 +4,7 @@ import { getResendClient, getFromEmail } from '@/lib/mail'
 import { claimEventOnce } from '@/lib/idempotency'
 import { getDonationsEmail } from '@/lib/emailRouting'
 import { getStripe } from '@/lib/stripe'
+import { ONE_TIME_DONATION_DESCRIPTION } from '@/lib/donation'
 
 export const runtime = 'nodejs'
 
@@ -18,12 +19,13 @@ const webhookSecret = requireEnv(process.env.STRIPE_WEBHOOK_SECRET, 'STRIPE_WEBH
 const NAVY = '#0A1128'
 const GOLD = '#D4AF37'
 
-/* Literal description set by /api/create-payment-intent for standalone
-   one-time donations. Subscription invoices also fire payment_intent.succeeded,
-   but Stripe generates those PaymentIntents internally and never sets this
-   exact description — checking it reliably excludes monthly renewal charges
-   from the one-time donor/internal emails below. */
-const ONE_TIME_DESCRIPTION = 'Gwags One-time Donation'
+/* Description set by /api/create-payment-intent for standalone one-time
+   donations. Subscription invoices also fire payment_intent.succeeded, but
+   Stripe generates those PaymentIntents internally and never sets this exact
+   description — checking it reliably excludes monthly renewal charges from the
+   one-time donor/internal emails below. Shared constant so this and the
+   reminder cron's eligibility check stay in lockstep. */
+const ONE_TIME_DESCRIPTION = ONE_TIME_DONATION_DESCRIPTION
 
 function escapeHtml(str: string): string {
   return str

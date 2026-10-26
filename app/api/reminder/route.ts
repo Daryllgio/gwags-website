@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { and, eq } from 'drizzle-orm'
+import { and, eq, sql } from 'drizzle-orm'
 import { db } from '@/lib/db/client'
 import { donationReminders } from '@/lib/db/schema'
 import { getClientIp, isRateLimited } from '@/lib/rateLimit'
@@ -25,11 +25,13 @@ export async function POST(req: NextRequest) {
 
     // Prevent accidental duplicates: if this email already has a reminder
     // waiting to be sent, treat the repeat request as a no-op success rather
-    // than scheduling (and later sending) a second reminder.
+    // than scheduling (and later sending) a second reminder. Compared
+    // case-insensitively so differently-cased spellings of the same address
+    // don't slip through as separate pending reminders.
     const existing = await db
       .select({ id: donationReminders.id })
       .from(donationReminders)
-      .where(and(eq(donationReminders.email, email), eq(donationReminders.status, 'scheduled')))
+      .where(and(sql`lower(${donationReminders.email}) = lower(${email})`, eq(donationReminders.status, 'scheduled')))
       .limit(1)
 
     if (existing.length === 0) {

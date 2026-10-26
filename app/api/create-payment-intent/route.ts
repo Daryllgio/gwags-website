@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { t, type Lang } from '@/lib/translations'
 import { getStripe } from '@/lib/stripe'
-import { MIN_DONATION_USD } from '@/lib/donation'
+import { MIN_DONATION_USD, ONE_TIME_DONATION_DESCRIPTION } from '@/lib/donation'
 
 const stripe = getStripe()
 
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(amount * 100),
       currency: 'usd',
-      description: 'Gwags One-time Donation',
+      description: ONE_TIME_DONATION_DESCRIPTION,
       payment_method_types: ['card'],
       customer: customer.id,
       setup_future_usage: 'off_session',

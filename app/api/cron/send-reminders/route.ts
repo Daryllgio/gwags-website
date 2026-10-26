@@ -3,6 +3,7 @@ import { and, eq, lte, sql } from 'drizzle-orm'
 import { db } from '@/lib/db/client'
 import { donationReminders } from '@/lib/db/schema'
 import { getStripe } from '@/lib/stripe'
+import { ONE_TIME_DONATION_DESCRIPTION } from '@/lib/donation'
 import { getResendClient, getFromAddress, renderBrandedEmail } from '@/lib/mail'
 
 export const runtime = 'nodejs'
@@ -40,17 +41,36 @@ function reminderEmail(lang: 'en' | 'fr', donateUrl: string): { subject: string;
   }
 }
 
-/* Best-effort "already donated?" check. Any Stripe error means we proceed to
-   send the reminder rather than risk silently skipping a legitimate one. */
+/* Best-effort "already donated since requesting the reminder?" check.
+
+   A reminder is suppressed ONLY when the donor completed a NEW, confirmed
+   one-time donation AFTER they asked for the reminder. The rules below map
+   directly to the required scenarios:
+
+   - `created: { gt: since }` — only donations made after the request count,
+     so a historical gift never invalidates a newer reminder (Scenario 1), and
+     the Stripe query stays narrow rather than scanning all history.
+   - `status === 'succeeded'` — only confirmed payments count, so failed,
+     incomplete, or abandoned attempts never suppress (Scenario 3).
+   - `description === ONE_TIME_DONATION_DESCRIPTION` — standalone one-time
+     gifts only. Stripe never puts this description on subscription invoice
+     PaymentIntents, so neither a pre-existing monthly donor nor their renewals
+     suppress a reminder for an additional gift (Scenario 4). This is the same
+     marker the webhook uses to distinguish one-time donations.
+
+   Checking PaymentIntents (not Charges) because a Charge's `invoice` field is
+   not a reliable one-time/subscription discriminator here. Subscriptions are
+   intentionally never queried: an existing recurring donation must never
+   auto-suppress. Any Stripe error fails open (send anyway) so we never
+   silently drop a legitimate reminder. */
 async function hasAlreadyDonated(email: string, since: Date): Promise<boolean> {
   try {
     const stripe = getStripe()
+    const sinceUnix = Math.floor(since.getTime() / 1000)
     const customers = await stripe.customers.list({ email, limit: 20 })
     for (const customer of customers.data) {
-      const subs = await stripe.subscriptions.list({ customer: customer.id, status: 'active', limit: 5 })
-      if (subs.data.length > 0) return true
-      const charges = await stripe.charges.list({ customer: customer.id, limit: 10 })
-      if (charges.data.some(c => c.paid && c.created * 1000 >= since.getTime())) return true
+      const intents = await stripe.paymentIntents.list({ customer: customer.id, created: { gt: sinceUnix }, limit: 20 })
+      if (intents.data.some(pi => pi.status === 'succeeded' && pi.description === ONE_TIME_DONATION_DESCRIPTION)) return true
     }
     return false
   } catch (err) {
