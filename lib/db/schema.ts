@@ -59,6 +59,9 @@ export const scholarsApplications = pgTable('scholars_applications', {
   writtenResponse: text('written_response').notNull(),
   referral: text('referral').notNull(),
   referralOther: text('referral_other'),
+  // Optional interest in the Gwags Ambassador role — captured for reviewers,
+  // never gates submission. Defaults false for pre-existing rows.
+  ambassadorInterest: boolean('ambassador_interest').notNull().default(false),
 })
 
 export const mbalLekeakaFundApplications = pgTable('mbal_lekeaka_fund_applications', {

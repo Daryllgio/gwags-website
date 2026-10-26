@@ -213,7 +213,7 @@ function ProgramContactNote({ lang }: { lang: Lang }) {
   // reuses `.ip-section-body` for identical body-text size/line-height/color
   // across all breakpoints.
   return (
-    <section className="ip-section ip-section-white ip-contact-section">
+    <section className="ip-section ip-section-white">
       <div className="ip-content-inner">
         <p className="ip-section-body">
           {c.programContactBefore}

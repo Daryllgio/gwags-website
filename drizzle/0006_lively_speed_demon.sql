@@ -1,0 +1,1 @@
+ALTER TABLE "scholars_applications" ADD COLUMN "ambassador_interest" boolean DEFAULT false NOT NULL;

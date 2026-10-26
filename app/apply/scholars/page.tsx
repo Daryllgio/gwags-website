@@ -34,7 +34,6 @@ export default function ScholarsApplicationPage() {
   const [referralError, setReferralError] = useState(false)
   const [referralOtherError, setReferralOtherError] = useState(false)
   const [ambassadorCommitment, setAmbassadorCommitment] = useState(false)
-  const [ambassadorError, setAmbassadorError] = useState(false)
   const submittingRef = useRef(false)
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
@@ -55,7 +54,6 @@ export default function ScholarsApplicationPage() {
     if (!transcript) { setTranscriptError(true); hasError = true } else setTranscriptError(false)
     if (!form.referral) { setReferralError(true); hasError = true } else setReferralError(false)
     if (form.referral === 'Other' && !form.referralOther.trim()) { setReferralOtherError(true); hasError = true } else setReferralOtherError(false)
-    if (!ambassadorCommitment) { setAmbassadorError(true); hasError = true } else setAmbassadorError(false)
     if (hasError) return
 
     submittingRef.current = true
@@ -66,6 +64,7 @@ export default function ScholarsApplicationPage() {
       fd.set('phone', `${getDialCode(form.phoneCountry)} ${form.phone}`.trim())
       fd.append('lang', lang)
       fd.append('idempotencyKey', idempotencyKey)
+      fd.append('ambassadorInterest', String(ambassadorCommitment))
       if (transcript) fd.append('transcript', transcript)
 
       const res = await fetch('/api/apply/scholars', { method: 'POST', body: fd })
@@ -227,14 +226,13 @@ export default function ScholarsApplicationPage() {
                   type="checkbox"
                   id="ambassadorCommitment"
                   checked={ambassadorCommitment}
-                  onChange={e => { setAmbassadorCommitment(e.target.checked); setAmbassadorError(false) }}
+                  onChange={e => setAmbassadorCommitment(e.target.checked)}
                   style={{ marginTop: '3px', width: '16px', height: '16px', flexShrink: 0, cursor: 'pointer', accentColor: NAVY }}
                 />
                 <label htmlFor="ambassadorCommitment" className="form-label" style={{ fontWeight: 400, cursor: 'pointer', lineHeight: 1.5 }}>
                   {p.ambassadorCommitment}
                 </label>
               </div>
-              {ambassadorError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.ambassadorCommitmentRequired}</p>}
             </div>
 
             {status === 'error' && (

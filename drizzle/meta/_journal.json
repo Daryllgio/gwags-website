@@ -43,6 +43,13 @@
       "when": 1792822050300,
       "tag": "0005_luxuriant_speed_demon",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1792982300438,
+      "tag": "0006_lively_speed_demon",
+      "breakpoints": true
     }
   ]
 }
