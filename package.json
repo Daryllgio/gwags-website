@@ -9,7 +9,9 @@
     "lint": "next lint",
     "indexnow": "tsx scripts/indexnow.mts",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate"
+    "db:migrate": "drizzle-kit migrate",
+    "db:migrate:prod": "drizzle-kit migrate --config=drizzle.config.prod.ts",
+    "db:status": "tsx scripts/db-status.mts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
