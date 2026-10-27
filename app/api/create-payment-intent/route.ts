@@ -33,7 +33,10 @@ export async function POST(req: NextRequest) {
       payment_method_types: ['card'],
       customer: customer.id,
       setup_future_usage: 'off_session',
-      receipt_email: typeof email === 'string' && email.trim() ? email.trim() : undefined,
+      // No `receipt_email`: it would trigger a separate Stripe receipt if the
+      // account's "Successful payments" emails are ever enabled, duplicating
+      // our single Gwags thank-you. The donor's email lives on the Customer
+      // (created above) and the webhook reads it from there instead.
       metadata: typeof name === 'string' && name.trim() ? { donor_name: name.trim() } : undefined,
     })
 

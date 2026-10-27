@@ -154,8 +154,13 @@ async function getPortalUrl(customerId: string): Promise<string | null> {
 async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent) {
   if (paymentIntent.description !== ONE_TIME_DESCRIPTION) return
 
-  const email = paymentIntent.receipt_email
-  const name = paymentIntent.metadata?.donor_name || 'Anonymous donor'
+  // Donor email comes from the Customer (create-payment-intent always creates
+  // one with the donor's email) rather than `receipt_email`, so we don't rely
+  // on a field whose only other effect is triggering a duplicate Stripe receipt.
+  const customerId = typeof paymentIntent.customer === 'string' ? paymentIntent.customer : paymentIntent.customer?.id
+  const cust = customerId ? await retrieveCustomerSafe(customerId) : { email: null as string | null, name: 'Anonymous donor' }
+  const email = cust.email
+  const name = paymentIntent.metadata?.donor_name || cust.name || 'Anonymous donor'
   const amount = formatAmount(paymentIntent.amount)
 
   if (email) {
