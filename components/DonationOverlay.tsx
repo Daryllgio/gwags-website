@@ -1357,7 +1357,7 @@ function ExitReminder({ lang, onClose, onConfirmClose, onBack, theme = 'dark', h
   const c = t[lang].common
   const [reminderEmail, setReminderEmail] = useState('')
   const [emailError, setEmailError] = useState(false)
-  const [reminderStatus, setReminderStatus] = useState<'idle' | 'sent'>('idle')
+  const [reminderStatus, setReminderStatus] = useState<'idle' | 'loading' | 'sent'>('idle')
   const [exitTermsAccepted, setExitTermsAccepted] = useState(false)
   const [exitTermsError, setExitTermsError] = useState(false)
 
@@ -1369,9 +1369,11 @@ function ExitReminder({ lang, onClose, onConfirmClose, onBack, theme = 'dark', h
   const errColor = isDark ? '#ff6b6b' : ERR_RED
 
   const handleRemindMe = async () => {
+    if (reminderStatus === 'loading') return
     if (!reminderEmail.trim()) setEmailError(true)
     if (!exitTermsAccepted) setExitTermsError(true)
     if (!reminderEmail.trim() || !exitTermsAccepted) return
+    setReminderStatus('loading')
     try {
       await fetch('/api/reminder', {
         method: 'POST',
@@ -1483,8 +1485,14 @@ function ExitReminder({ lang, onClose, onConfirmClose, onBack, theme = 'dark', h
         /* CHANGE 5: on mobile (pinButtons=false) use an explicit 32px gap above the
            buttons instead of the auto-collapsed spacing. */
         <div style={{ marginTop: pinButtons ? 'auto' : '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <button className="donate-text-md" type="button" onClick={handleRemindMe} style={{ ...actionBtnStyle }}>
-            {d.remindMeLaterBtn}
+          <button
+            className="donate-text-md"
+            type="button"
+            onClick={handleRemindMe}
+            disabled={reminderStatus === 'loading'}
+            style={{ ...actionBtnStyle, opacity: reminderStatus === 'loading' ? 0.7 : 1, cursor: reminderStatus === 'loading' ? 'not-allowed' : 'pointer' }}
+          >
+            {reminderStatus === 'loading' ? '...' : d.remindMeLaterBtn}
           </button>
           <button
             className="donate-text-md"

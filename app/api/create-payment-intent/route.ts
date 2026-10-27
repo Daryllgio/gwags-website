@@ -24,6 +24,9 @@ export async function POST(req: NextRequest) {
     const customer = await stripe.customers.create({
       name: typeof name === 'string' && name.trim() ? name.trim() : undefined,
       email: typeof email === 'string' && email.trim() ? email.trim() : undefined,
+      // Stamp language so the webhook's donor thank-you email localizes it,
+      // same as create-subscription / upgrade-to-monthly do for monthly gifts.
+      metadata: { lang: resolveLang(lang) },
     })
 
     const paymentIntent = await stripe.paymentIntents.create({

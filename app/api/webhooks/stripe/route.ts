@@ -41,7 +41,7 @@ const formatDate = () => new Date().toLocaleString('en-US', { dateStyle: 'medium
 
 /* Currency-aware money formatter (invoice amounts carry their own currency). */
 const formatMoney = (cents: number, currency: string) =>
-  new Intl.NumberFormat(currency.toLowerCase() === 'usd' ? 'en-US' : 'en-US', { style: 'currency', currency: currency.toUpperCase() }).format(cents / 100)
+  new Intl.NumberFormat('en-US', { style: 'currency', currency: currency.toUpperCase() }).format(cents / 100)
 
 /* ONE Gwags-branded thank-you email per successful monthly payment — used for
    both the initial payment and every renewal. The donated amount is woven into
@@ -79,6 +79,64 @@ function monthlyPaymentEmail(
       ${manage ? `<p><a href="${manage}" style="color:${NAVY}; font-weight:600;">Manage your monthly donation</a></p>` : ''}
       <p>If you have any questions, please reach out to us at <a href="mailto:donate@gwags.org" style="color:${NAVY};">donate@gwags.org</a>.</p>
       <p>With gratitude,<br>The Gwags Team</p>
+    `,
+  }
+}
+
+/* Bilingual one-time-donation thank-you, mirroring monthlyPaymentEmail's
+   pattern — the donor's `lang` is read from their Customer (now stamped at
+   create-payment-intent time). */
+function oneTimeThankYouEmail(lang: 'en' | 'fr', o: { name: string; amount: string }): { subject: string; html: string } {
+  if (lang === 'fr') {
+    return {
+      subject: 'Merci pour votre don à Gwags',
+      html: `
+        <p>Cher/Chère ${escapeHtml(o.name)},</p>
+        <p>Merci pour votre généreux don de <strong>${o.amount}</strong> à Gwags Global Impact Institution.</p>
+        <p>Votre don ponctuel soutient directement les programmes et partenariats qui constituent notre mission — en construisant l'infrastructure qui aide les organisations à créer un impact durable.</p>
+        <p>Pour toute question concernant votre don, écrivez-nous à <a href="mailto:donate@gwags.org" style="color:${NAVY};">donate@gwags.org</a>.</p>
+        <p>Avec gratitude,<br>L'équipe Gwags</p>
+      `,
+    }
+  }
+  return {
+    subject: 'Thank you for your donation to Gwags',
+    html: `
+      <p>Dear ${escapeHtml(o.name)},</p>
+      <p>Thank you for your generous gift of <strong>${o.amount}</strong> to Gwags Global Impact Institution.</p>
+      <p>Your one-time donation directly supports the programs and partnerships that make up our mission — building the infrastructure that helps organizations create lasting impact.</p>
+      <p>If you have any questions about your donation, please reach out to us at <a href="mailto:donate@gwags.org" style="color:${NAVY};">donate@gwags.org</a>.</p>
+      <p>With gratitude,<br>The Gwags Team</p>
+    `,
+  }
+}
+
+/* Bilingual failed-monthly-payment notice. Donor language comes from the
+   Customer via retrieveCustomerSafe, same as handleInvoicePaymentSucceeded. */
+function paymentFailedEmail(lang: 'en' | 'fr', o: { name: string; portalUrl: string | null }): { subject: string; html: string } {
+  const manage = o.portalUrl
+  if (lang === 'fr') {
+    return {
+      subject: "Action requise : votre don mensuel à Gwags n'a pas pu être traité",
+      html: `
+        <p>Cher/Chère ${escapeHtml(o.name)},</p>
+        <p>Nous souhaitions vous informer que votre dernier don mensuel à Gwags Global Impact Institution n'a pas pu être traité.</p>
+        <p>Cela arrive parfois pour des raisons simples, comme une carte expirée ou des coordonnées de facturation à mettre à jour. Votre don récurrent est toujours actif, et nous apprécierions votre aide pour le remettre en ordre.</p>
+        ${manage ? `<p><a href="${manage}" style="color:${NAVY}; font-weight:600;">Mettre à jour vos informations de paiement</a></p>` : ''}
+        <p>Pour toute question, écrivez-nous à <a href="mailto:donate@gwags.org" style="color:${NAVY};">donate@gwags.org</a>.</p>
+        <p>Merci pour votre soutien continu,<br>L'équipe Gwags</p>
+      `,
+    }
+  }
+  return {
+    subject: 'Action needed: your monthly donation to Gwags could not be processed',
+    html: `
+      <p>Dear ${escapeHtml(o.name)},</p>
+      <p>We wanted to let you know that your most recent monthly donation to Gwags Global Impact Institution could not be processed.</p>
+      <p>This sometimes happens for simple reasons, like an expired card or updated billing details. Your recurring gift is still active, and we'd appreciate your help getting it back on track.</p>
+      ${manage ? `<p><a href="${manage}" style="color:${NAVY}; font-weight:600;">Update your payment details</a></p>` : ''}
+      <p>If you have any questions, please reach out to us at <a href="mailto:donate@gwags.org" style="color:${NAVY};">donate@gwags.org</a>.</p>
+      <p>Thank you for your continued support,<br>The Gwags Team</p>
     `,
   }
 }
@@ -158,24 +216,15 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
   // one with the donor's email) rather than `receipt_email`, so we don't rely
   // on a field whose only other effect is triggering a duplicate Stripe receipt.
   const customerId = typeof paymentIntent.customer === 'string' ? paymentIntent.customer : paymentIntent.customer?.id
-  const cust = customerId ? await retrieveCustomerSafe(customerId) : { email: null as string | null, name: 'Anonymous donor' }
+  const cust = customerId ? await retrieveCustomerSafe(customerId) : { email: null as string | null, name: 'Anonymous donor', lang: 'en' as const }
   const email = cust.email
   const name = paymentIntent.metadata?.donor_name || cust.name || 'Anonymous donor'
   const amount = formatAmount(paymentIntent.amount)
 
   if (email) {
-    await sendMail(
-      email,
-      'Thank you for your donation to Gwags',
-      `
-        <p>Dear ${escapeHtml(name)},</p>
-        <p>Thank you for your generous gift of <strong>${amount}</strong> to Gwags Global Impact Institution.</p>
-        <p>Your one-time donation directly supports the programs and partnerships that make up our mission — building the infrastructure that helps organizations create lasting impact.</p>
-        <p>If you have any questions about your donation, please reach out to us at <a href="mailto:donate@gwags.org" style="color:${NAVY};">donate@gwags.org</a>.</p>
-        <p>With gratitude,<br>The Gwags Team</p>
-      `,
-      'Gwags Global Impact Institution',
-    ).catch(err => console.error('webhook: failed to send donor thank-you email:', err))
+    const { subject, html } = oneTimeThankYouEmail(cust.lang, { name, amount })
+    await sendMail(email, subject, html, 'Gwags Global Impact Institution')
+      .catch(err => console.error('webhook: failed to send donor thank-you email:', err))
   }
 
   const internalEmail = getDonationsEmail()
@@ -273,10 +322,11 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
 }
 
 async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
-  const email = invoice.customer_email
-  const name = invoice.customer_name || 'Anonymous donor'
-  const amount = formatAmount(invoice.amount_due)
   const customerId = typeof invoice.customer === 'string' ? invoice.customer : invoice.customer?.id
+  const cust = customerId ? await retrieveCustomerSafe(customerId) : { email: null as string | null, name: 'Anonymous donor', lang: 'en' as const }
+  const email = invoice.customer_email || cust.email
+  const name = invoice.customer_name || cust.name
+  const amount = formatAmount(invoice.amount_due)
 
   // Current Stripe API versions don't expose a single flat failure-reason
   // field directly on the Invoice object the way older versions did via
@@ -290,19 +340,9 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
   const portalUrl = customerId ? await getPortalUrl(customerId) : null
 
   if (email) {
-    await sendMail(
-      email,
-      'Action needed: your monthly donation to Gwags could not be processed',
-      `
-        <p>Dear ${escapeHtml(name)},</p>
-        <p>We wanted to let you know that your most recent monthly donation to Gwags Global Impact Institution could not be processed.</p>
-        <p>This sometimes happens for simple reasons, like an expired card or updated billing details. Your recurring gift is still active, and we'd appreciate your help getting it back on track.</p>
-        ${portalUrl ? `<p><a href="${portalUrl}" style="color:${NAVY}; font-weight:600;">Update your payment details</a></p>` : ''}
-        <p>If you have any questions, please reach out to us at <a href="mailto:donate@gwags.org" style="color:${NAVY};">donate@gwags.org</a>.</p>
-        <p>Thank you for your continued support,<br>The Gwags Team</p>
-      `,
-      'Gwags Global Impact Institution',
-    ).catch(err => console.error('webhook: failed to send payment-failed email:', err))
+    const { subject, html } = paymentFailedEmail(cust.lang, { name, portalUrl })
+    await sendMail(email, subject, html, 'Gwags Global Impact Institution')
+      .catch(err => console.error('webhook: failed to send payment-failed email:', err))
   }
 
   const internalEmail = getDonationsEmail()

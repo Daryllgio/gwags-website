@@ -47,12 +47,15 @@ function ReportForm({ lang, onClose }: { lang: Lang; onClose: () => void }) {
   const [textErr, setTextErr] = useState(false)
   const [confirmErr, setConfirmErr] = useState(false)
   const [sent, setSent] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   const submit = async () => {
+    if (submitting) return
     let bad = false
     if (!text.trim()) { setTextErr(true); bad = true }
     if (!confirm) { setConfirmErr(true); bad = true }
     if (bad) return
+    setSubmitting(true)
     try {
       await fetch('/api/report', {
         method: 'POST',
@@ -99,9 +102,9 @@ function ReportForm({ lang, onClose }: { lang: Lang; onClose: () => void }) {
       </label>
       {confirmErr && <p style={{ color: ERR_RED, fontSize: '11px', margin: 0 }}>{r.confirmRequired}</p>}
       <div style={{ display: 'flex', gap: '8px' }}>
-        <button type="button" onClick={submit}
-          style={{ flex: 1, padding: '10px', background: SOLID_BLUE, color: '#ffffff', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>
-          {r.submit}
+        <button type="button" onClick={submit} disabled={submitting}
+          style={{ flex: 1, padding: '10px', background: SOLID_BLUE, color: '#ffffff', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: submitting ? 'not-allowed' : 'pointer', fontFamily: 'inherit', opacity: submitting ? 0.7 : 1 }}>
+          {submitting ? '...' : r.submit}
         </button>
         <button type="button" onClick={onClose}
           style={{ flex: 1, padding: '10px', background: '#ffffff', color: NAVY, border: `1.5px solid ${ORIGINAL_BORDER}`, borderRadius: '6px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>

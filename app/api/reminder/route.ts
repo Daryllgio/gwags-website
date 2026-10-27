@@ -28,20 +28,31 @@ export async function POST(req: NextRequest) {
     // than scheduling (and later sending) a second reminder. Compared
     // case-insensitively so differently-cased spellings of the same address
     // don't slip through as separate pending reminders.
-    const existing = await db
-      .select({ id: donationReminders.id })
-      .from(donationReminders)
-      .where(and(sql`lower(${donationReminders.email}) = lower(${email})`, eq(donationReminders.status, 'scheduled')))
-      .limit(1)
+    //
+    // The check-then-insert below is only race-safe because it runs inside a
+    // transaction holding a Postgres advisory lock keyed on the lowercased
+    // email — without it, two near-simultaneous requests (e.g. a double
+    // click) could both pass the SELECT before either INSERT commits, since
+    // there's no unique constraint on email to fall back on. The lock is
+    // released automatically when the transaction ends.
+    await db.transaction(async tx => {
+      await tx.execute(sql`select pg_advisory_xact_lock(hashtext(lower(${email})))`)
 
-    if (existing.length === 0) {
-      await db.insert(donationReminders).values({
-        email,
-        lang,
-        status: 'scheduled',
-        scheduledAt: new Date(Date.now() + REMINDER_DELAY_MS),
-      })
-    }
+      const existing = await tx
+        .select({ id: donationReminders.id })
+        .from(donationReminders)
+        .where(and(sql`lower(${donationReminders.email}) = lower(${email})`, eq(donationReminders.status, 'scheduled')))
+        .limit(1)
+
+      if (existing.length === 0) {
+        await tx.insert(donationReminders).values({
+          email,
+          lang,
+          status: 'scheduled',
+          scheduledAt: new Date(Date.now() + REMINDER_DELAY_MS),
+        })
+      }
+    })
 
     return NextResponse.json({ success: true })
   } catch (err) {
