@@ -43,29 +43,25 @@ const formatDate = () => new Date().toLocaleString('en-US', { dateStyle: 'medium
 const formatMoney = (cents: number, currency: string) =>
   new Intl.NumberFormat(currency.toLowerCase() === 'usd' ? 'en-US' : 'en-US', { style: 'currency', currency: currency.toUpperCase() }).format(cents / 100)
 
-/* One combined, Gwags-branded confirmation+thank-you email for a SUCCESSFUL
-   monthly payment — used for both the initial payment and every renewal, so a
-   donor receives exactly one payment-confirmation email per successful monthly
-   charge (no separate receipt + thank-you). Bilingual via the subscription's
-   stored `lang` metadata. Not a tax receipt — deliberately avoids that wording. */
+/* ONE Gwags-branded thank-you email per successful monthly payment — used for
+   both the initial payment and every renewal. The donated amount is woven into
+   the prose (no separate receipt email, no invoice-style line-item breakdown),
+   per the intended donor experience. Bilingual via the donor's stored `lang`.
+   Deliberately NOT a tax receipt. */
 function monthlyPaymentEmail(
   lang: 'en' | 'fr',
-  o: { amount: string; dateStr: string; reference: string; isInitial: boolean; portalUrl: string | null; name: string },
+  o: { amount: string; isInitial: boolean; portalUrl: string | null; name: string },
 ): { subject: string; html: string } {
   const manage = o.portalUrl
   if (lang === 'fr') {
     return {
-      subject: o.isInitial ? 'Merci pour votre don mensuel à Gwags' : 'Merci pour votre don mensuel — paiement confirmé',
+      subject: 'Merci pour votre don mensuel à Gwags',
       html: `
         <p>Cher/Chère ${escapeHtml(o.name)},</p>
         <p>${o.isInitial
-          ? 'Merci de devenir donateur mensuel de Gwags Global Impact Institution.'
-          : 'Merci pour votre soutien mensuel continu à Gwags Global Impact Institution.'}</p>
-        <p>Nous confirmons que votre don mensuel a bien été traité avec succès.</p>
-        <p><strong>Montant :</strong> ${o.amount}<br>
-           <strong>Date du paiement :</strong> ${escapeHtml(o.dateStr)}<br>
-           <strong>Fréquence :</strong> Mensuel<br>
-           <strong>Référence :</strong> ${escapeHtml(o.reference)}</p>
+          ? `Merci de devenir donateur mensuel de Gwags Global Impact Institution avec un don de <strong>${o.amount} par mois</strong>. Votre premier don mensuel a bien été reçu.`
+          : `Merci pour votre soutien mensuel continu à Gwags Global Impact Institution. Nous venons de recevoir votre don mensuel de <strong>${o.amount}</strong>.`}</p>
+        <p>Votre générosité nous permet de planifier sur le long terme et de soutenir durablement nos programmes.</p>
         ${manage ? `<p><a href="${manage}" style="color:${NAVY}; font-weight:600;">Gérer votre don mensuel</a></p>` : ''}
         <p>Pour toute question, écrivez-nous à <a href="mailto:donate@gwags.org" style="color:${NAVY};">donate@gwags.org</a>.</p>
         <p>Avec gratitude,<br>L'équipe Gwags</p>
@@ -73,17 +69,13 @@ function monthlyPaymentEmail(
     }
   }
   return {
-    subject: o.isInitial ? 'Thank you for your monthly donation to Gwags' : 'Thank you for your monthly donation — payment confirmed',
+    subject: 'Thank you for your monthly donation to Gwags',
     html: `
       <p>Dear ${escapeHtml(o.name)},</p>
       <p>${o.isInitial
-        ? 'Thank you for becoming a monthly donor to Gwags Global Impact Institution.'
-        : 'Thank you for your continued monthly support of Gwags Global Impact Institution.'}</p>
-      <p>This confirms your monthly donation was processed successfully.</p>
-      <p><strong>Amount:</strong> ${o.amount}<br>
-         <strong>Payment date:</strong> ${escapeHtml(o.dateStr)}<br>
-         <strong>Frequency:</strong> Monthly<br>
-         <strong>Reference:</strong> ${escapeHtml(o.reference)}</p>
+        ? `Thank you for becoming a monthly donor to Gwags Global Impact Institution with a gift of <strong>${o.amount} per month</strong>. Your first monthly donation has been received.`
+        : `Thank you for your continued monthly support of Gwags Global Impact Institution. We've just received your monthly donation of <strong>${o.amount}</strong>.`}</p>
+      <p>Your generosity gives us the stability to plan ahead and sustain the programs that matter most.</p>
       ${manage ? `<p><a href="${manage}" style="color:${NAVY}; font-weight:600;">Manage your monthly donation</a></p>` : ''}
       <p>If you have any questions, please reach out to us at <a href="mailto:donate@gwags.org" style="color:${NAVY};">donate@gwags.org</a>.</p>
       <p>With gratitude,<br>The Gwags Team</p>
@@ -219,13 +211,11 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
   const email = invoice.customer_email || cust.email
   const name = invoice.customer_name || cust.name
   const amount = formatMoney(invoice.amount_paid, invoice.currency)
-  const paidAt = invoice.status_transitions?.paid_at ? new Date(invoice.status_transitions.paid_at * 1000) : new Date()
-  const dateStr = paidAt.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', { dateStyle: 'medium' })
-  const reference = invoice.number || invoice.id
+  const reference = invoice.number || invoice.id // internal notification only
   const portalUrl = customerId ? await getPortalUrl(customerId) : null
 
   if (email) {
-    const { subject, html } = monthlyPaymentEmail(lang, { amount, dateStr, reference, isInitial, portalUrl, name })
+    const { subject, html } = monthlyPaymentEmail(lang, { amount, isInitial, portalUrl, name })
     await sendMail(email, subject, html, 'Gwags Global Impact Institution')
       .catch(err => console.error('webhook: failed to send monthly payment confirmation email:', err))
   }
