@@ -9,7 +9,7 @@ import { cleanText, isValidEmail } from '@/lib/validate'
 
 export const runtime = 'nodejs'
 
-const MAX_DESCRIPTION = 5000
+const MAX_DESCRIPTION = 500
 
 function generateReferenceId(): string {
   const now = new Date()

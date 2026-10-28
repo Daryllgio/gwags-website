@@ -75,7 +75,7 @@ function ReportForm({ lang, onClose }: { lang: Lang; onClose: () => void }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
       <div>
         <p style={{ fontSize: '15px', fontWeight: 700, color: NAVY, margin: '0 0 4px' }}>{r.title}</p>
-        <p style={{ fontSize: '13px', color: '#8A8A8A', lineHeight: 1.5, margin: 0 }}>{r.subtext}</p>
+        <p style={{ fontSize: '13px', color: NAVY, lineHeight: 1.5, margin: 0 }}>{r.subtext}</p>
       </div>
       <div>
         <textarea
