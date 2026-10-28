@@ -1,21 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getResendClient, getFromAddress, getFromEmail, escapeHtml, formatTimestamp, renderBrandedEmail } from '@/lib/mail'
+import { getResendClient, getFromAddress, escapeHtml, formatTimestamp } from '@/lib/mail'
 import { getClientIp, isRateLimited } from '@/lib/rateLimit'
 import { cleanText, isValidEmail } from '@/lib/validate'
 import { getContactEmail } from '@/lib/emailRouting'
 import { createSubmission, findSubmissionByIdempotencyKey, SocialLinkInput } from '@/lib/db/submissions'
 import { partnershipSubmissions } from '@/lib/db/schema'
-
-const CONFIRMATION_COPY: Record<string, { subject: string; body: string }> = {
-  en: {
-    subject: 'Your Gwags partnership inquiry has been received',
-    body: 'Thank you. Your submission has been received.',
-  },
-  fr: {
-    subject: "Votre demande de partenariat Gwags a été reçue",
-    body: 'Merci. Votre soumission a été reçue.',
-  },
-}
 
 export async function POST(req: NextRequest) {
   try {
@@ -35,7 +24,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing idempotency key' }, { status: 400 })
     }
 
-    const lang = body.lang === 'fr' ? 'fr' : 'en'
     const contactFirstName = cleanText(body.contactFirstName, 100)
     const contactLastName = cleanText(body.contactLastName, 100)
     const contactRole = cleanText(body.contactRole, 150)
@@ -170,17 +158,6 @@ Submitted: ${timestamp}`,
 <p style="color:#888;font-size:12px;">Submitted: ${timestamp}</p>`,
       })
       if (error) console.error('Partner notification email error:', error)
-
-      const confirmation = CONFIRMATION_COPY[lang]
-      const { error: confirmError } = await resend.emails.send({
-        from: getFromAddress(),
-        to: contactEmail,
-        replyTo: getFromEmail(),
-        subject: confirmation.subject,
-        html: renderBrandedEmail(`<p>${escapeHtml(confirmation.body)}</p>`),
-        text: confirmation.body,
-      })
-      if (confirmError) console.error('Partner confirmation email error')
     } catch (emailErr) {
       console.error('Partner: email step failed, submission already persisted:', emailErr instanceof Error ? emailErr.message : 'unknown')
     }
