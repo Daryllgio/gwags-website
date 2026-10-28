@@ -5,7 +5,10 @@ import { t } from '@/lib/translations'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import SearchableDropdown from '@/components/SearchableDropdown'
+import RegionStateField from '@/components/RegionStateField'
+import CountryCodeField from '@/components/CountryCodeField'
 import { COUNTRIES, COUNTRY_LABELS_FR } from '@/lib/countries'
+import { getDialCode } from '@/lib/locations'
 
 const NAVY = '#0A1128'
 const MAX_MSG = 500
@@ -16,12 +19,13 @@ export default function ContactPage() {
   const c = t[lang].common
 
   const [form, setForm] = useState({
-    firstName: '', lastName: '', email: '', phone: '',
-    country: '', city: '', message: '', website: '',
+    firstName: '', lastName: '', email: '', phoneCountry: 'Cameroon', phone: '',
+    country: '', region: '', city: '', message: '', website: '',
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [emailError, setEmailError] = useState(false)
   const [countryError, setCountryError] = useState(false)
+  const [regionError, setRegionError] = useState(false)
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(prev => ({ ...prev, [k]: e.target.value }))
@@ -41,17 +45,26 @@ export default function ContactPage() {
     } else {
       setCountryError(false)
     }
+    if (!form.region) {
+      setRegionError(true)
+      hasError = true
+    } else {
+      setRegionError(false)
+    }
     if (hasError) return
     setStatus('loading')
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          phone: form.phone ? `${getDialCode(form.phoneCountry)} ${form.phone}`.trim() : '',
+        }),
       })
       if (!res.ok) throw new Error()
       setStatus('success')
-      setForm({ firstName: '', lastName: '', email: '', phone: '', country: '', city: '', message: '', website: '' })
+      setForm({ firstName: '', lastName: '', email: '', phoneCountry: 'Cameroon', phone: '', country: '', region: '', city: '', message: '', website: '' })
     } catch {
       setStatus('error')
     }
@@ -111,18 +124,26 @@ export default function ContactPage() {
               </div>
               <div className="form-field">
                 <label className="form-label">{p.labels.phone}</label>
-                <input className="form-input" type="tel" placeholder={p.phonePlaceholder} value={form.phone} onChange={set('phone')} />
+                <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '8px' }}>
+                  <CountryCodeField
+                    value={form.phoneCountry}
+                    onChange={v => setForm(prev => ({ ...prev, phoneCountry: v }))}
+                    lang={lang}
+                    noMatchesText={c.noMatches}
+                  />
+                  <input className="form-input" type="tel" placeholder={p.phonePlaceholder} value={form.phone} onChange={set('phone')} />
+                </div>
               </div>
             </div>
 
-            {/* Country + City */}
+            {/* Country + Region */}
             <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div className="form-field">
                 <label className="form-label">{p.labels.country} <span>*</span></label>
                 <SearchableDropdown
                   options={COUNTRIES}
                   value={form.country}
-                  onChange={v => { setForm(prev => ({ ...prev, country: v, city: '' })); setCountryError(false) }}
+                  onChange={v => { setForm(prev => ({ ...prev, country: v, region: '', city: '' })); setCountryError(false) }}
                   error={countryError}
                   labels={lang === 'fr' ? COUNTRY_LABELS_FR : undefined}
                   placeholder={c.searchPlaceholder}
@@ -131,17 +152,32 @@ export default function ContactPage() {
                 {countryError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.countryRequired}</p>}
               </div>
               <div className="form-field">
-                <label className="form-label">{p.labels.city} <span>*</span></label>
-                <input
-                  required
-                  className="form-input"
-                  type="text"
-                  value={form.city}
-                  onChange={set('city')}
-                  disabled={!form.country}
-                  placeholder={!form.country ? c.selectCountryFirst : undefined}
+                <label className="form-label">{p.labels.region} <span>*</span></label>
+                <RegionStateField
+                  country={form.country}
+                  value={form.region}
+                  onChange={v => { setForm(prev => ({ ...prev, region: v })); setRegionError(false) }}
+                  error={regionError}
+                  searchPlaceholder={c.searchPlaceholder}
+                  noMatchesText={c.noMatches}
+                  textPlaceholder={p.regionTextPlaceholder}
+                  disabledPlaceholder={c.selectCountryFirst}
                 />
               </div>
+            </div>
+
+            {/* City */}
+            <div className="form-field">
+              <label className="form-label">{p.labels.city} <span>*</span></label>
+              <input
+                required
+                className="form-input"
+                type="text"
+                value={form.city}
+                onChange={set('city')}
+                disabled={!form.country || !form.region}
+                placeholder={!form.country ? c.selectCountryFirst : (!form.region ? c.selectRegionFirst : undefined)}
+              />
             </div>
 
             {/* Message */}

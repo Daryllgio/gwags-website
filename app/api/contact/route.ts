@@ -22,10 +22,11 @@ export async function POST(req: NextRequest) {
     const email = cleanText(body.email, 200)
     const phone = cleanText(body.phone, 40)
     const country = cleanText(body.country, 100)
+    const region = cleanText(body.region, 150)
     const city = cleanText(body.city, 100)
     const message = cleanText(body.message, 500)
 
-    if (!firstName || !lastName || !email || !country || !city || !message) {
+    if (!firstName || !lastName || !email || !country || !region || !city || !message) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
     if (!isValidEmail(email)) {
@@ -47,6 +48,7 @@ Name: ${firstName} ${lastName}
 Email: ${email}
 Phone: ${phoneDisplay}
 Country: ${country}
+Region/State: ${region}
 City: ${city}
 
 Message:
@@ -59,6 +61,7 @@ Submitted: ${timestamp}`,
 <p><strong>Email:</strong> ${escapeHtml(email)}</p>
 <p><strong>Phone:</strong> ${escapeHtml(phoneDisplay)}</p>
 <p><strong>Country:</strong> ${escapeHtml(country)}</p>
+<p><strong>Region/State:</strong> ${escapeHtml(region)}</p>
 <p><strong>City:</strong> ${escapeHtml(city)}</p>
 <hr />
 <p><strong>Message:</strong></p>
