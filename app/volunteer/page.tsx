@@ -336,6 +336,7 @@ export default function VolunteerApplicationPage() {
                         onChange={e => { set('skillsOther')(e); clearErr('skillsOther') }}
                         style={err('skillsOther') ? { borderColor: '#c0392b' } : undefined}
                       />
+                      <p className="form-select-hint" style={{ margin: '4px 0 0' }}>{p.skillsOtherHelper}</p>
                     </div>
                   )}
                 />

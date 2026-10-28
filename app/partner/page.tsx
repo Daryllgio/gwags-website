@@ -258,6 +258,7 @@ export default function PartnerPage() {
                       onChange={e => { set('sectorOther')(e); clearErr('sectorOther') }}
                       style={err('sectorOther') ? { borderColor: '#c0392b' } : undefined}
                     />
+                    <p className="form-select-hint" style={{ margin: '4px 0 0' }}>{p.sectorOtherHelper}</p>
                     {err('sectorOther') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.sectorOtherRequired}</p>}
                   </div>
                 )}

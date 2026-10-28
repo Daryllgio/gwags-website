@@ -217,6 +217,7 @@ export default function NetworkJoinPage() {
                       onChange={e => { set('sectorOther')(e); clearErr('sectorOther') }}
                       style={err('sectorOther') ? { borderColor: '#c0392b' } : undefined}
                     />
+                    <p className="form-select-hint" style={{ margin: '4px 0 0' }}>{p.sectorOtherHelper}</p>
                   </div>
                 )}
               />
