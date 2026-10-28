@@ -33,7 +33,7 @@ export default function VolunteerApplicationPage() {
   const [form, setForm] = useState({
     firstName: '', lastName: '', gender: '', email: '',
     phoneCountry: 'Cameroon', phone: '', country: '', region: '', city: '',
-    currentStatus: '', statusOther: '', fieldOrProfession: '',
+    currentStatus: '', fieldOrProfession: '',
     availability: '', referral: '', referralOther: '', skillsOther: '', honeypot: '',
   })
   const [idempotencyKey] = useState(() => crypto.randomUUID())
@@ -59,6 +59,14 @@ export default function VolunteerApplicationPage() {
   const referralLabels = lang === 'fr' ? VOLUNTEER_REFERRAL_LABELS_FR : undefined
   const skillLabels = lang === 'fr' ? VOLUNTEER_SKILL_LABELS_FR : undefined
 
+  // Label for the single conditional field shown below Current Status —
+  // depends on which status is selected; no field at all for Unemployed.
+  const conditionalStatusLabel = form.currentStatus === 'Student' ? p.fieldOfStudyLabel
+    : form.currentStatus === 'Employed' ? p.jobTitleLabel
+    : form.currentStatus === 'Self-employed' ? p.occupationLabel
+    : form.currentStatus === 'Other' ? p.pleaseSpecifyLabel
+    : ''
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (submittingRef.current) return
@@ -70,7 +78,7 @@ export default function VolunteerApplicationPage() {
     if (!form.country) nextErrors.country = true
     if (!form.region) nextErrors.region = true
     if (!form.currentStatus) nextErrors.currentStatus = true
-    if (form.currentStatus === 'Other' && !form.statusOther.trim()) nextErrors.statusOther = true
+    if (form.currentStatus && form.currentStatus !== 'Unemployed' && !form.fieldOrProfession.trim()) nextErrors.fieldOrProfession = true
     if (languages.length === 0) nextErrors.languages = true
     if (skills.length === 0) nextErrors.skills = true
     if (skills.includes('Other') && !form.skillsOther.trim()) nextErrors.skillsOther = true
@@ -101,7 +109,7 @@ export default function VolunteerApplicationPage() {
       setForm({
         firstName: '', lastName: '', gender: '', email: '',
         phoneCountry: 'Cameroon', phone: '', country: '', region: '', city: '',
-        currentStatus: '', statusOther: '', fieldOrProfession: '',
+        currentStatus: '', fieldOrProfession: '',
         availability: '', referral: '', referralOther: '', skillsOther: '', honeypot: '',
       })
       setDateOfBirth('')
@@ -252,30 +260,29 @@ export default function VolunteerApplicationPage() {
                   searchable={false}
                   options={VOLUNTEER_STATUS}
                   value={form.currentStatus}
-                  onChange={v => { setForm(prev => ({ ...prev, currentStatus: v })); clearErr('currentStatus'); clearErr('statusOther') }}
+                  onChange={v => {
+                    setForm(prev => ({ ...prev, currentStatus: v, fieldOrProfession: '' }))
+                    clearErr('currentStatus')
+                    clearErr('fieldOrProfession')
+                  }}
                   error={err('currentStatus')}
                   labels={statusLabels}
                   placeholder={p.statusPlaceholder}
                   noMatchesText={c.noMatches}
+                  belowTrigger={form.currentStatus && form.currentStatus !== 'Unemployed' && (
+                    <div style={{ marginTop: '10px' }}>
+                      <label className="form-label">{conditionalStatusLabel} <span>*</span></label>
+                      <input
+                        required
+                        className="form-input"
+                        type="text"
+                        value={form.fieldOrProfession}
+                        onChange={e => { set('fieldOrProfession')(e); clearErr('fieldOrProfession') }}
+                        style={err('fieldOrProfession') ? { borderColor: '#c0392b' } : undefined}
+                      />
+                    </div>
+                  )}
                 />
-                {form.currentStatus === 'Other' && (
-                  <div style={{ marginTop: '10px' }}>
-                    <input
-                      required
-                      className="form-input"
-                      type="text"
-                      placeholder={c.otherSpecify}
-                      value={form.statusOther}
-                      onChange={e => { set('statusOther')(e); clearErr('statusOther') }}
-                      style={err('statusOther') ? { borderColor: '#c0392b' } : undefined}
-                    />
-                  </div>
-                )}
-              </div>
-
-              <div className="form-field">
-                <label className="form-label">{p.labels.fieldOrProfession} <span>*</span></label>
-                <input required className="form-input" type="text" value={form.fieldOrProfession} onChange={set('fieldOrProfession')} />
               </div>
 
               <div className="form-field">
@@ -307,28 +314,32 @@ export default function VolunteerApplicationPage() {
                   searchable
                   options={VOLUNTEER_SKILLS}
                   values={skills}
-                  onChange={v => { setSkills(v); clearErr('skills'); if (!v.includes('Other')) clearErr('skillsOther') }}
+                  onChange={v => {
+                    setSkills(v)
+                    clearErr('skills')
+                    if (!v.includes('Other')) { clearErr('skillsOther'); setForm(prev => ({ ...prev, skillsOther: '' })) }
+                  }}
                   error={err('skills')}
                   labels={skillLabels}
                   placeholder={c.selectPlaceholder}
                   searchPlaceholder={p.skillsSearchPlaceholder}
                   noMatchesText={c.noMatches}
                   removeLabel={c.remove}
+                  belowTrigger={skills.includes('Other') && (
+                    <div style={{ marginTop: '10px' }}>
+                      <input
+                        required
+                        className="form-input"
+                        type="text"
+                        placeholder={c.otherSpecify}
+                        value={form.skillsOther}
+                        onChange={e => { set('skillsOther')(e); clearErr('skillsOther') }}
+                        style={err('skillsOther') ? { borderColor: '#c0392b' } : undefined}
+                      />
+                    </div>
+                  )}
                 />
                 {err('skills') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.skillsRequired}</p>}
-                {skills.includes('Other') && (
-                  <div style={{ marginTop: '10px' }}>
-                    <input
-                      required
-                      className="form-input"
-                      type="text"
-                      placeholder={c.otherSpecify}
-                      value={form.skillsOther}
-                      onChange={e => { set('skillsOther')(e); clearErr('skillsOther') }}
-                      style={err('skillsOther') ? { borderColor: '#c0392b' } : undefined}
-                    />
-                  </div>
-                )}
               </div>
 
               <div className="form-field">
@@ -374,26 +385,30 @@ export default function VolunteerApplicationPage() {
                   searchable={false}
                   options={VOLUNTEER_REFERRAL}
                   value={form.referral}
-                  onChange={v => { setForm(prev => ({ ...prev, referral: v })); clearErr('referral'); clearErr('referralOther') }}
+                  onChange={v => {
+                    setForm(prev => ({ ...prev, referral: v, referralOther: v !== 'Other' ? '' : prev.referralOther }))
+                    clearErr('referral')
+                    clearErr('referralOther')
+                  }}
                   error={err('referral')}
                   labels={referralLabels}
                   placeholder={c.selectPlaceholder}
                   noMatchesText={c.noMatches}
+                  belowTrigger={form.referral === 'Other' && (
+                    <div style={{ marginTop: '10px' }}>
+                      <input
+                        required
+                        className="form-input"
+                        type="text"
+                        placeholder={c.otherSpecify}
+                        value={form.referralOther}
+                        onChange={e => { set('referralOther')(e); clearErr('referralOther') }}
+                        style={err('referralOther') ? { borderColor: '#c0392b' } : undefined}
+                      />
+                    </div>
+                  )}
                 />
                 {err('referral') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.referralRequired}</p>}
-                {form.referral === 'Other' && (
-                  <div style={{ marginTop: '10px' }}>
-                    <input
-                      required
-                      className="form-input"
-                      type="text"
-                      placeholder={c.otherSpecify}
-                      value={form.referralOther}
-                      onChange={e => { set('referralOther')(e); clearErr('referralOther') }}
-                      style={err('referralOther') ? { borderColor: '#c0392b' } : undefined}
-                    />
-                  </div>
-                )}
               </div>
             </div>
 

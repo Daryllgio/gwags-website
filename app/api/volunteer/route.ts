@@ -61,7 +61,6 @@ export async function POST(req: NextRequest) {
     const region = cleanText(formData.get('region'), 150)
     const city = cleanText(formData.get('city'), 100)
     const currentStatus = cleanText(formData.get('currentStatus'), 50)
-    const statusOther = cleanText(formData.get('statusOther'), 150)
     const fieldOrProfession = cleanText(formData.get('fieldOrProfession'), 200)
     const availability = cleanText(formData.get('availability'), 50)
     const skillsOther = cleanText(formData.get('skillsOther'), 200)
@@ -71,9 +70,13 @@ export async function POST(req: NextRequest) {
     const languages = parseJsonArray(formData.get('languages')).filter((s): s is string => typeof s === 'string')
     const skills = parseJsonArray(formData.get('skills')).filter((s): s is string => typeof s === 'string')
 
+    // fieldOrProfession is the single conditional field below Current Status
+    // (Field of Study / Job Title / Occupation / Please Specify) — required
+    // for every status except Unemployed, which has no conditional field.
     if (
       !firstName || !lastName || !dateOfBirth || !gender || !email || !phone ||
-      !country || !region || !city || !currentStatus || !fieldOrProfession ||
+      !country || !region || !city || !currentStatus ||
+      (currentStatus !== 'Unemployed' && !fieldOrProfession) ||
       languages.length === 0 || skills.length === 0 || !availability || !referral
     ) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
@@ -128,8 +131,7 @@ export async function POST(req: NextRequest) {
             gender, email, phone,
             country, region, city,
             currentStatus,
-            currentStatusOther: currentStatus === 'Other' ? (statusOther || null) : null,
-            fieldOrProfession,
+            fieldOrProfession: fieldOrProfession || null,
             languages,
             skills,
             skillsOther: skills.includes('Other') ? (skillsOther || null) : null,
@@ -156,11 +158,20 @@ export async function POST(req: NextRequest) {
     // From here on, the application is durably persisted. Email failures are
     // notification-only problems — log them, never undo the submission.
     try {
-      const statusDisplay = currentStatus === 'Other' ? (statusOther || 'Other') : currentStatus
       const skillsDisplay = skills.map(s => s === 'Other' ? (skillsOther || 'Other') : s).join(', ')
       const referralDisplay = referral === 'Other' ? (referralOther || 'Other') : referral
       const languagesDisplay = languages.join(', ')
       const timestamp = formatTimestamp()
+
+      // The conditional field below Current Status has a different label
+      // per status (and no field at all for Unemployed) — mirror that here
+      // so the internal notification clearly identifies what the value means.
+      const conditionalFieldLabel =
+        currentStatus === 'Student' ? 'Field of Study'
+        : currentStatus === 'Employed' ? 'Current Job Title or Role'
+        : currentStatus === 'Self-employed' ? 'Occupation or Business Activity'
+        : currentStatus === 'Other' ? 'Please Specify'
+        : null
 
       const resend = getResendClient()
 
@@ -181,8 +192,8 @@ Country: ${country}
 Region/State: ${region}
 City: ${city}
 
-Current status: ${statusDisplay}
-Field of study or profession: ${fieldOrProfession}
+Current status: ${currentStatus}${conditionalFieldLabel ? `
+${conditionalFieldLabel}: ${fieldOrProfession}` : ''}
 Languages spoken: ${languagesDisplay}
 
 Skills: ${skillsDisplay}
@@ -209,8 +220,8 @@ Submitted: ${timestamp}`,
 <p><strong>Region/State:</strong> ${escapeHtml(region)}</p>
 <p><strong>City:</strong> ${escapeHtml(city)}</p>
 <hr />
-<p><strong>Current status:</strong> ${escapeHtml(statusDisplay)}</p>
-<p><strong>Field of study or profession:</strong> ${escapeHtml(fieldOrProfession)}</p>
+<p><strong>Current status:</strong> ${escapeHtml(currentStatus)}</p>
+${conditionalFieldLabel ? `<p><strong>${escapeHtml(conditionalFieldLabel)}:</strong> ${escapeHtml(fieldOrProfession)}</p>` : ''}
 <p><strong>Languages spoken:</strong> ${escapeHtml(languagesDisplay)}</p>
 <hr />
 <p><strong>Skills:</strong> ${escapeHtml(skillsDisplay)}</p>

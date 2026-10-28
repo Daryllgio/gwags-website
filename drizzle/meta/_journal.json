@@ -64,6 +64,13 @@
       "when": 1793032000989,
       "tag": "0008_dry_karma",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1793155602820,
+      "tag": "0009_secret_nextwave",
+      "breakpoints": true
     }
   ]
 }

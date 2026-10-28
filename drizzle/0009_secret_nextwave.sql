@@ -1,0 +1,1 @@
+ALTER TABLE "volunteer_submissions" ALTER COLUMN "field_or_profession" DROP NOT NULL;

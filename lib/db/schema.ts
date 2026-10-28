@@ -158,8 +158,16 @@ export const volunteerSubmissions = pgTable('volunteer_submissions', {
   region: text('region').notNull(),
   city: text('city').notNull(),
   currentStatus: text('current_status').notNull(),
+  // No longer populated: the single conditional field below Current Status
+  // (fieldOrProfession) now also carries the "Other, please specify" text,
+  // so there's nothing left for this column to hold. Column kept (nullable
+  // already) rather than dropped, since dropping it isn't necessary to
+  // support the new behavior.
   currentStatusOther: text('current_status_other'),
-  fieldOrProfession: text('field_or_profession').notNull(),
+  // Nullable: Unemployed has no conditional field, so this column can be
+  // empty for that status (Student/Employed/Self-employed/Other all fill it
+  // with their own differently-labeled value — see VOLUNTEER_STATUS).
+  fieldOrProfession: text('field_or_profession'),
   // Small, fixed-vocabulary multi-selects — native array columns, same choice
   // as mbal_lekeaka/network sectors (see note there).
   languages: text('languages').array().notNull(),

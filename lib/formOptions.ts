@@ -83,11 +83,13 @@ export const VOLUNTEER_GENDER_LABELS_FR: Record<string, string> = {
   'Prefer not to say': 'Je préfère ne pas répondre',
 }
 
-export const VOLUNTEER_STATUS = ['Student', 'Professional', 'Other']
+export const VOLUNTEER_STATUS = ['Student', 'Employed', 'Self-employed', 'Unemployed', 'Other']
 
 export const VOLUNTEER_STATUS_LABELS_FR: Record<string, string> = {
   'Student': 'Étudiant(e)',
-  'Professional': 'Professionnel(le)',
+  'Employed': 'Employé(e)',
+  'Self-employed': 'Travailleur(se) indépendant(e)',
+  'Unemployed': 'Sans emploi',
   'Other': 'Autre',
 }
 
