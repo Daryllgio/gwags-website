@@ -74,10 +74,13 @@ function ReportForm({ lang, onClose }: { lang: Lang; onClose: () => void }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
       <div>
+        <p style={{ fontSize: '15px', fontWeight: 700, color: NAVY, margin: '0 0 4px' }}>{r.title}</p>
+        <p style={{ fontSize: '13px', color: '#8A8A8A', lineHeight: 1.5, margin: 0 }}>{r.subtext}</p>
+      </div>
+      <div>
         <textarea
           value={text}
           onChange={e => { if (e.target.value.length <= MAX_REPORT) { setText(e.target.value); setTextErr(false) } }}
-          placeholder={r.placeholder}
           rows={4}
           style={{
             width: '100%', padding: '10px 12px',
@@ -231,11 +234,11 @@ export default function DonationFAQ({ lang, mode }: { lang: Lang; mode: 'desktop
               >
                 {isReport ? (
                   <>
-                    {/* CHANGE 9: bolded question heading, X stays on the same row */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', marginBottom: '10px' }}>
-                      <p style={{ fontSize: '15px', fontWeight: 700, color: NAVY, margin: 0 }}>{label(key)}</p>
+                    {/* ReportForm renders its own title + subtext above the field;
+                        this row just keeps the close button top-right. */}
+                    <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '4px' }}>
                       <button type="button" aria-label={c.close} onClick={() => setOpenItem(null)}
-                        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', flexShrink: 0, marginTop: '2px' }}>
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', flexShrink: 0 }}>
                         <XIcon />
                       </button>
                     </div>

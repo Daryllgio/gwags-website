@@ -67,9 +67,6 @@ export async function POST(req: NextRequest) {
 
 Reference: ${referenceId}
 Submitted: ${timestamp}
-Name: ${name || 'Not provided'}
-Email: ${email || 'Not provided'}
-Category: ${category || 'Not provided'}
 
 Problem description:
 ${description}`,
@@ -77,9 +74,6 @@ ${description}`,
           <h2 style="font-size:18px;margin:0 0 16px;">New problem report</h2>
           <p style="margin:0 0 6px;"><strong>Reference:</strong> ${escapeHtml(referenceId)}</p>
           <p style="margin:0 0 6px;"><strong>Submitted:</strong> ${escapeHtml(timestamp)}</p>
-          <p style="margin:0 0 6px;"><strong>Name:</strong> ${escapeHtml(name || 'Not provided')}</p>
-          <p style="margin:0 0 6px;"><strong>Email:</strong> ${escapeHtml(email || 'Not provided')}</p>
-          <p style="margin:0 0 6px;"><strong>Category:</strong> ${escapeHtml(category || 'Not provided')}</p>
           <hr style="border:none;border-top:1px solid rgba(10,17,40,0.12);margin:16px 0;" />
           <p style="margin:0 0 8px;"><strong>Problem description:</strong></p>
           <p style="margin:0;white-space:pre-wrap;">${escapeHtml(description)}</p>
