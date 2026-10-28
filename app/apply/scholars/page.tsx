@@ -197,27 +197,31 @@ export default function ScholarsApplicationPage() {
                 searchable={false}
                 options={SCHOLARS_REFERRAL}
                 value={form.referral}
-                onChange={v => { setForm(prev => ({ ...prev, referral: v })); setReferralError(false); setReferralOtherError(false) }}
+                onChange={v => {
+                  setForm(prev => ({ ...prev, referral: v, referralOther: v !== 'Other' ? '' : prev.referralOther }))
+                  setReferralError(false)
+                  setReferralOtherError(false)
+                }}
                 error={referralError}
                 labels={referralLabels}
                 placeholder={c.selectPlaceholder}
                 noMatchesText={c.noMatches}
+                belowTrigger={form.referral === 'Other' && (
+                  <div style={{ marginTop: '10px' }}>
+                    <input
+                      required
+                      className="form-input"
+                      type="text"
+                      placeholder={c.otherSpecify}
+                      value={form.referralOther}
+                      onChange={e => { set('referralOther')(e); setReferralOtherError(false) }}
+                      style={referralOtherError ? { borderColor: '#c0392b' } : undefined}
+                    />
+                    {referralOtherError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{c.otherSpecifyRequired}</p>}
+                  </div>
+                )}
               />
               {referralError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.referralRequired}</p>}
-              {form.referral === 'Other' && (
-                <div style={{ marginTop: '10px' }}>
-                  <input
-                    required
-                    className="form-input"
-                    type="text"
-                    placeholder={c.otherSpecify}
-                    value={form.referralOther}
-                    onChange={e => { set('referralOther')(e); setReferralOtherError(false) }}
-                    style={referralOtherError ? { borderColor: '#c0392b' } : undefined}
-                  />
-                  {referralOtherError && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{c.otherSpecifyRequired}</p>}
-                </div>
-              )}
             </div>
 
             <div className="form-field">

@@ -209,25 +209,29 @@ export default function MbalLekeakaApplicationPage() {
               <MultiSelectDropdown
                 options={FUND_SECTORS}
                 values={sectors}
-                onChange={v => { setSectors(v); clearErr('sectors') }}
+                onChange={v => {
+                  setSectors(v)
+                  clearErr('sectors')
+                  if (!v.includes('Other')) { clearErr('sectorOther'); setForm(prev => ({ ...prev, sectorOther: '' })) }
+                }}
                 error={err('sectors')}
                 labels={sectorLabels}
                 placeholder={c.searchPlaceholder}
                 removeLabel={c.remove}
+                belowTrigger={sectors.includes('Other') && (
+                  <div style={{ marginTop: '10px' }}>
+                    <input
+                      required
+                      className="form-input"
+                      type="text"
+                      placeholder={c.otherSpecify}
+                      value={form.sectorOther}
+                      onChange={e => { set('sectorOther')(e); clearErr('sectorOther') }}
+                      style={err('sectorOther') ? { borderColor: '#c0392b' } : undefined}
+                    />
+                  </div>
+                )}
               />
-              {sectors.includes('Other') && (
-                <div style={{ marginTop: '10px' }}>
-                  <input
-                    required
-                    className="form-input"
-                    type="text"
-                    placeholder={c.otherSpecify}
-                    value={form.sectorOther}
-                    onChange={e => { set('sectorOther')(e); clearErr('sectorOther') }}
-                    style={err('sectorOther') ? { borderColor: '#c0392b' } : undefined}
-                  />
-                </div>
-              )}
             </div>
 
             <div className="form-field">
@@ -487,26 +491,30 @@ export default function MbalLekeakaApplicationPage() {
                 searchable={false}
                 options={FUND_REFERRAL}
                 value={form.referral}
-                onChange={v => { setForm(prev => ({ ...prev, referral: v })); clearErr('referral'); clearErr('referralOther') }}
+                onChange={v => {
+                  setForm(prev => ({ ...prev, referral: v, referralOther: v !== 'Other' ? '' : prev.referralOther }))
+                  clearErr('referral')
+                  clearErr('referralOther')
+                }}
                 error={err('referral')}
                 labels={referralLabels}
                 placeholder={c.selectPlaceholder}
                 noMatchesText={c.noMatches}
+                belowTrigger={form.referral === 'Other' && (
+                  <div style={{ marginTop: '10px' }}>
+                    <input
+                      required
+                      className="form-input"
+                      type="text"
+                      placeholder={c.otherSpecify}
+                      value={form.referralOther}
+                      onChange={e => { set('referralOther')(e); clearErr('referralOther') }}
+                      style={err('referralOther') ? { borderColor: '#c0392b' } : undefined}
+                    />
+                  </div>
+                )}
               />
               {err('referral') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.referralRequired}</p>}
-              {form.referral === 'Other' && (
-                <div style={{ marginTop: '10px' }}>
-                  <input
-                    required
-                    className="form-input"
-                    type="text"
-                    placeholder={c.otherSpecify}
-                    value={form.referralOther}
-                    onChange={e => { set('referralOther')(e); clearErr('referralOther') }}
-                    style={err('referralOther') ? { borderColor: '#c0392b' } : undefined}
-                  />
-                </div>
-              )}
             </div>
             </div>
 

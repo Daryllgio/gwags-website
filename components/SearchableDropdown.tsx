@@ -20,11 +20,20 @@ interface SearchableDropdownProps {
    * `placeholder` and nothing else. Used for Region/State before a Country
    * is chosen. */
   disabled?: boolean
+  /** Conditional content (e.g. an Other "please specify" input) rendered
+   * in-flow between the trigger and the options panel, inside this
+   * component's own positioning context. This is what keeps it visible
+   * above the panel instead of underneath it — the panel is absolutely
+   * positioned at `top: 100%` of this wrapper, so inserting in-flow content
+   * here grows the wrapper and pushes the panel down below it, rather than
+   * the panel overlapping content a parent would otherwise render after the
+   * whole component closes. */
+  belowTrigger?: React.ReactNode
 }
 
 export default function SearchableDropdown({
   options, value, onChange, placeholder = 'Type to search…', error = false, id, labels,
-  noMatchesText = 'No matches', searchable = true, disabled = false,
+  noMatchesText = 'No matches', searchable = true, disabled = false, belowTrigger,
 }: SearchableDropdownProps) {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
@@ -148,6 +157,7 @@ export default function SearchableDropdown({
           {value ? labelOf(value) : <span className="sdd-placeholder">{placeholder}</span>}
         </div>
       )}
+      {belowTrigger}
       <div id={listboxId} className={`sdd-menu${open ? ' sdd-menu-open' : ''}`} role="listbox">
         {filtered.length === 0 ? (
           <div className="sdd-empty">{noMatchesText}</div>

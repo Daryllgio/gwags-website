@@ -17,11 +17,16 @@ interface MultiSelectDropdownProps {
   searchable?: boolean
   searchPlaceholder?: string
   noMatchesText?: string
+  /** Conditional content (e.g. an Other "please specify" input) rendered
+   * in-flow between the trigger and the options panel, inside this
+   * component's own positioning context — see SearchableDropdown's
+   * `belowTrigger` for why this is what keeps it visible above the panel. */
+  belowTrigger?: React.ReactNode
 }
 
 export default function MultiSelectDropdown({
   options, values, onChange, placeholder = 'Select…', error = false, id, labels, removeLabel = 'Remove',
-  searchable = false, searchPlaceholder, noMatchesText = 'No matches',
+  searchable = false, searchPlaceholder, noMatchesText = 'No matches', belowTrigger,
 }: MultiSelectDropdownProps) {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
@@ -157,6 +162,7 @@ export default function MultiSelectDropdown({
           )}
         </div>
       )}
+      {belowTrigger}
       <div id={listboxId} className={`sdd-menu${open ? ' sdd-menu-open' : ''}`} role="listbox" aria-multiselectable="true">
         {filtered.length === 0 ? (
           <div className="sdd-empty">{noMatchesText}</div>

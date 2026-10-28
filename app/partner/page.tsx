@@ -238,27 +238,31 @@ export default function PartnerPage() {
               <MultiSelectDropdown
                 options={SECTORS}
                 values={sectors}
-                onChange={v => { setSectors(v); clearErr('sectors') }}
+                onChange={v => {
+                  setSectors(v)
+                  clearErr('sectors')
+                  if (!v.includes('Other')) { clearErr('sectorOther'); setForm(prev => ({ ...prev, sectorOther: '' })) }
+                }}
                 error={err('sectors')}
                 labels={sectorLabels}
                 placeholder={c.searchPlaceholder}
                 removeLabel={c.remove}
+                belowTrigger={sectors.includes('Other') && (
+                  <div style={{ marginTop: '10px' }}>
+                    <input
+                      required
+                      className="form-input"
+                      type="text"
+                      placeholder={p.sectorOtherPlaceholder}
+                      value={form.sectorOther}
+                      onChange={e => { set('sectorOther')(e); clearErr('sectorOther') }}
+                      style={err('sectorOther') ? { borderColor: '#c0392b' } : undefined}
+                    />
+                    {err('sectorOther') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.sectorOtherRequired}</p>}
+                  </div>
+                )}
               />
               {err('sectors') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.sectorRequired}</p>}
-              {sectors.includes('Other') && (
-                <div style={{ marginTop: '10px' }}>
-                  <input
-                    required
-                    className="form-input"
-                    type="text"
-                    placeholder={p.sectorOtherPlaceholder}
-                    value={form.sectorOther}
-                    onChange={e => { set('sectorOther')(e); clearErr('sectorOther') }}
-                    style={err('sectorOther') ? { borderColor: '#c0392b' } : undefined}
-                  />
-                  {err('sectorOther') && <p className="form-field-error" style={{ color: '#c0392b', fontSize: '13px', margin: '4px 0 0' }}>{p.sectorOtherRequired}</p>}
-                </div>
-              )}
             </div>
 
             {/* Website */}
