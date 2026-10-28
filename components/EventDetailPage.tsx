@@ -136,15 +136,24 @@ function GallerySection({ gallery, lang }: { gallery: NonNullable<EventDetailDat
 }
 
 export default function EventDetailPage({ lang, onToggleLang, data }: Props) {
-  // Next's own hash-anchor scroll on cross-page navigation can fire before
-  // the gallery images finish laying out, landing short of the target.
-  // Re-running the scroll after mount (once this page's content, including
-  // the gallery, has rendered) makes the landing position reliable; the
-  // scroll-margin-top on .ed-gallery-section keeps the sticky nav clear.
+  // Reading location.hash synchronously on mount is one tick too early during
+  // a client-side route change — the hash and this page's final layout can
+  // both still be settling, so the check below would silently see an empty
+  // hash and land at the top of the page instead of the gallery. Deferring
+  // two animation frames waits that out; the scroll-margin-top on
+  // .ed-gallery-section keeps the sticky nav clear once we do scroll.
   useEffect(() => {
-    if (window.location.hash !== '#gallery') return
-    const target = document.getElementById('gallery')
-    target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    let raf2 = 0
+    const raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(() => {
+        if (window.location.hash !== '#gallery') return
+        document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      })
+    })
+    return () => {
+      cancelAnimationFrame(raf1)
+      cancelAnimationFrame(raf2)
+    }
   }, [])
 
   return (
