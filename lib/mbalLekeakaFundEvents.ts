@@ -21,7 +21,7 @@ export const mbalLekeakaFundEvents: Record<string, Record<Lang, EventDetailData>
           ],
         },
       ],
-      galleryLink: { text: 'View Gallery', href: '/initiatives/health-outreach/nguti-health-campaign' },
+      galleryLink: { text: 'View Gallery', href: '/initiatives/health-outreach/nguti-health-campaign#gallery' },
     },
     fr: {
       heroTitle: 'Campagne de Santé CAMESA Nguti',
@@ -41,7 +41,7 @@ export const mbalLekeakaFundEvents: Record<string, Record<Lang, EventDetailData>
           ],
         },
       ],
-      galleryLink: { text: 'Voir la galerie', href: '/initiatives/health-outreach/nguti-health-campaign' },
+      galleryLink: { text: 'Voir la galerie', href: '/initiatives/health-outreach/nguti-health-campaign#gallery' },
     },
   },
 }

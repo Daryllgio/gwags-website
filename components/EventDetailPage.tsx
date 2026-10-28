@@ -1,5 +1,5 @@
 'use client'
-import { useState, Fragment } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
@@ -115,7 +115,7 @@ function GallerySection({ gallery, lang }: { gallery: NonNullable<EventDetailDat
   const count = gallery.images?.length ?? gallery.count
 
   return (
-    <section className="ed-gallery-section">
+    <section id="gallery" className="ed-gallery-section">
       <div className="ip-content-inner">
         <h2 className="ip-section-heading ed-gallery-heading">{gallery.heading}</h2>
       </div>
@@ -136,6 +136,17 @@ function GallerySection({ gallery, lang }: { gallery: NonNullable<EventDetailDat
 }
 
 export default function EventDetailPage({ lang, onToggleLang, data }: Props) {
+  // Next's own hash-anchor scroll on cross-page navigation can fire before
+  // the gallery images finish laying out, landing short of the target.
+  // Re-running the scroll after mount (once this page's content, including
+  // the gallery, has rendered) makes the landing position reliable; the
+  // scroll-margin-top on .ed-gallery-section keeps the sticky nav clear.
+  useEffect(() => {
+    if (window.location.hash !== '#gallery') return
+    const target = document.getElementById('gallery')
+    target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [])
+
   return (
     <main>
       <Nav lang={lang} onToggleLang={onToggleLang} />

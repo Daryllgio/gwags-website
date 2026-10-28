@@ -3843,6 +3843,9 @@ input:-webkit-autofill:active {
 .ed-gallery-section {
   background: #fff;
   padding: 60px 80px 80px;
+  /* Offsets the anchor-scroll target so the sticky nav (~50-64px tall
+     depending on breakpoint) never overlaps the gallery heading. */
+  scroll-margin-top: 80px;
 }
 
 .ed-gallery-inner {
