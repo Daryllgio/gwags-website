@@ -168,8 +168,8 @@ export async function POST(req: NextRequest) {
       // so the internal notification clearly identifies what the value means.
       const conditionalFieldLabel =
         currentStatus === 'Student' ? 'Field of Study'
-        : currentStatus === 'Employed' ? 'Current Job Title or Role'
-        : currentStatus === 'Self-employed' ? 'Occupation or Business Activity'
+        : currentStatus === 'Employed' ? 'Job Title'
+        : currentStatus === 'Self-employed' ? 'Occupation'
         : currentStatus === 'Other' ? 'Please Specify'
         : null
 
