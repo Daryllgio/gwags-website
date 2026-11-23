@@ -5,6 +5,7 @@ import "./globals.css";
 const sourceSerif4 = Source_Serif_4({
   subsets: ["latin"],
   weight: ["600", "700"],
+  display: "swap",
   variable: "--font-heading-serif",
 });
 
