@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getResendClient, getFromAddress, getFromEmail, escapeHtml, formatTimestamp, renderBrandedEmail } from '@/lib/mail'
+import { getResendClient, getFromAddress, escapeHtml, formatTimestamp } from '@/lib/mail'
 import { getClientIp, isRateLimited } from '@/lib/rateLimit'
 import { cleanText, isValidEmail } from '@/lib/validate'
 import { uploadFormFile, deleteFormFile } from '@/lib/formUploads'
@@ -10,16 +10,17 @@ import { volunteerSubmissions } from '@/lib/db/schema'
 const FORM_TYPE = 'volunteer'
 const MAX_CV_SIZE_BYTES = 10 * 1024 * 1024 // 10 MB — larger than the shared 5 MB default
 
-const CONFIRMATION_COPY: Record<string, { subject: string; body: string }> = {
-  en: {
-    subject: 'Your Gwags volunteer application has been received',
-    body: 'Your application has been received. You will receive an email confirmation shortly.',
-  },
-  fr: {
-    subject: 'Votre candidature de bénévolat Gwags a été reçue',
-    body: 'Votre candidature a bien été reçue. Un courriel de confirmation vous sera envoyé sous peu.',
-  },
-}
+// DISABLED — confirmation emails not yet polished
+// const CONFIRMATION_COPY: Record<string, { subject: string; body: string }> = {
+//   en: {
+//     subject: 'Your Gwags volunteer application has been received',
+//     body: 'Your application has been received. You will receive an email confirmation shortly.',
+//   },
+//   fr: {
+//     subject: 'Votre candidature de bénévolat Gwags a été reçue',
+//     body: 'Votre candidature a bien été reçue. Un courriel de confirmation vous sera envoyé sous peu.',
+//   },
+// }
 
 function parseJsonArray(value: FormDataEntryValue | null): unknown[] {
   if (typeof value !== 'string') return []
@@ -50,7 +51,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing idempotency key' }, { status: 400 })
     }
 
-    const lang = formData.get('lang') === 'fr' ? 'fr' : 'en'
+    // const lang = formData.get('lang') === 'fr' ? 'fr' : 'en'
     const firstName = cleanText(formData.get('firstName'), 100)
     const lastName = cleanText(formData.get('lastName'), 100)
     const dateOfBirth = cleanText(formData.get('dateOfBirth'), 10)

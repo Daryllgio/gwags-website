@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getResendClient, getFromAddress, getFromEmail, escapeHtml, formatTimestamp, renderBrandedEmail } from '@/lib/mail'
+import { getResendClient, getFromAddress, escapeHtml, formatTimestamp } from '@/lib/mail'
 import { getClientIp, isRateLimited } from '@/lib/rateLimit'
 import { cleanText, isValidEmail } from '@/lib/validate'
 import { uploadFormFile, deleteFormFile } from '@/lib/formUploads'
@@ -10,16 +10,17 @@ import { isScholarsApplicationOpen } from '@/lib/featureFlags'
 
 const FORM_TYPE = 'scholars-application'
 
-const CONFIRMATION_COPY: Record<string, { subject: string; body: string }> = {
-  en: {
-    subject: 'Your Gwags Scholars Program application has been received',
-    body: 'Your application has been received. You will receive an email confirmation shortly.',
-  },
-  fr: {
-    subject: 'Votre candidature au programme Gwags Scholars a été reçue',
-    body: 'Votre candidature a bien été reçue. Un courriel de confirmation vous sera envoyé sous peu.',
-  },
-}
+// DISABLED — confirmation emails not yet polished
+// const CONFIRMATION_COPY: Record<string, { subject: string; body: string }> = {
+//   en: {
+//     subject: 'Your Gwags Scholars Program application has been received',
+//     body: 'Your application has been received. You will receive an email confirmation shortly.',
+//   },
+//   fr: {
+//     subject: 'Votre candidature au programme Gwags Scholars a été reçue',
+//     body: 'Votre candidature a bien été reçue. Un courriel de confirmation vous sera envoyé sous peu.',
+//   },
+// }
 
 export async function POST(req: NextRequest) {
   let uploadedPathname: string | null = null
@@ -46,7 +47,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing idempotency key' }, { status: 400 })
     }
 
-    const lang = formData.get('lang') === 'fr' ? 'fr' : 'en'
+    // const lang = formData.get('lang') === 'fr' ? 'fr' : 'en'
     const firstName = cleanText(formData.get('firstName'), 100)
     const lastName = cleanText(formData.get('lastName'), 100)
     const phone = cleanText(formData.get('phone'), 40)
