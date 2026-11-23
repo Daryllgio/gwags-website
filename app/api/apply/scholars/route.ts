@@ -181,16 +181,17 @@ Submitted: ${timestamp}`,
       })
       if (adminError) console.error('Scholars application notification email error')
 
-      const confirmation = CONFIRMATION_COPY[lang]
-      const { error: confirmError } = await resend.emails.send({
-        from: getFromAddress(),
-        to: email,
-        replyTo: getFromEmail(),
-        subject: confirmation.subject,
-        html: renderBrandedEmail(`<p>${escapeHtml(confirmation.body)}</p>`),
-        text: confirmation.body,
-      })
-      if (confirmError) console.error('Scholars application confirmation email error')
+      // DISABLED — confirmation emails not yet polished
+      // const confirmation = CONFIRMATION_COPY[lang]
+      // const { error: confirmError } = await resend.emails.send({
+      //   from: getFromAddress(),
+      //   to: email,
+      //   replyTo: getFromEmail(),
+      //   subject: confirmation.subject,
+      //   html: renderBrandedEmail(`<p>${escapeHtml(confirmation.body)}</p>`),
+      //   text: confirmation.body,
+      // })
+      // if (confirmError) console.error('Scholars application confirmation email error')
     } catch (emailErr) {
       console.error('Scholars application: email step failed, submission already persisted:', emailErr instanceof Error ? emailErr.message : 'unknown')
     }

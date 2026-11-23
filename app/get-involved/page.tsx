@@ -80,6 +80,8 @@ function GetInvolvedContent() {
     setDonateManage(false)
     if (actionParam) {
       router.replace('/get-involved', { scroll: false })
+    } else {
+      window.history.replaceState(null, '', '/get-involved')
     }
   }
 
@@ -142,7 +144,10 @@ function GetInvolvedContent() {
               {p.support.text}
             </p>
             <button
-              onClick={() => setDonateOpen(true)}
+              onClick={() => {
+                setDonateOpen(true)
+                window.history.replaceState(null, '', '/donate')
+              }}
               className="donate-btn"
               style={{
                 display: 'inline-flex',
