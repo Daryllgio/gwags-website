@@ -3,6 +3,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import type { PaymentRequest as StripePaymentRequest } from '@stripe/stripe-js'
 import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, PaymentRequestButtonElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import Image from 'next/image'
 import { Lang, t } from '@/lib/translations'
 import { MIN_DONATION_USD } from '@/lib/donation'
 import DonationFAQ from '@/components/DonationFAQ'
@@ -1612,8 +1613,8 @@ function StackedBody({ lang, mode, exitMode, onX, onBack, onClose, includeFaqInl
   const introBlock = (
     <div style={{ display: exitMode ? 'none' : 'flex', flexDirection: 'column', flexShrink: 0 }}>
       {!hidePhoto && (
-      <div className="donation-photo" style={{ position: 'relative', background: '#E6E3DC', width: '100%', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-        <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
+      <div className="donation-photo" style={{ position: 'relative', background: '#E6E3DC', width: '100%', height: '200px', flexShrink: 0, overflow: 'hidden' }}>
+        <Image src="/images/donation/hero.jpg" alt="Gwags health outreach" fill style={{ objectFit: 'cover' }} />
         {/* Fix 3: same subtle focus overlay as desktop/landscape-tablet, applied
             to the photo once the text has dropped, for visual consistency. */}
         {!showText && <div style={{ position: 'absolute', inset: 0, background: FOCUS_OVERLAY, pointerEvents: 'none' }} />}
@@ -1823,8 +1824,8 @@ export default function DonationOverlay({ lang, onClose, initialManage = false }
             gap: '24px',
             borderRight: '1px solid rgba(10,17,40,0.08)',
           }}>
-            <div className="donation-photo" style={{ background: '#E6E3DC', borderRadius: '8px', height: '220px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ color: 'rgba(10,17,40,0.3)', fontSize: '12px', letterSpacing: '0.12em' }}>Photo</span>
+            <div className="donation-photo" style={{ position: 'relative', background: '#E6E3DC', borderRadius: '8px', height: '220px', overflow: 'hidden' }}>
+              <Image src="/images/donation/hero.jpg" alt="Gwags health outreach" fill style={{ objectFit: 'cover', borderRadius: '8px' }} />
             </div>
             <p className="donate-text-md" style={{ color: NAVY, fontSize: '15px', lineHeight: 1.8, margin: 0 }}>
               {d.sideText}<a href="mailto:donate@gwags.org" className="donate-email-link"><strong>donate@gwags.org</strong></a>.
